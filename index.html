@@ -364,7 +364,17 @@
   <p class="section-label">See it in action</p>
   <h2 class="section-title">Real software, real screens</h2>
   <p class="section-sub">Here's what Accelent looks like on your desktop — no demos, no mockups.</p>
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(460px,1fr)); gap:24px; margin-top:16px;">
+
+  <!-- Dashboard hero screenshot -->
+  <div style="border-radius:14px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.15); border:1px solid var(--border); margin-bottom:24px;">
+    <div style="background:var(--dark); color:#fff; padding:12px 20px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px;">
+      <span style="color:var(--sky);">📊</span> Live Dashboard — Total Balance, Income, Expenses & Stock Alerts at a glance
+    </div>
+    <img src="ss-dashboard.png" alt="Accelent dashboard" style="width:100%; display:block;" />
+  </div>
+
+  <!-- 4-column grid -->
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(440px,1fr)); gap:24px; margin-bottom:24px;">
     <div style="border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.12); border:1px solid var(--border);">
       <div style="background:var(--teal); color:#fff; padding:10px 16px; font-size:13px; font-weight:600;">Sales & Invoicing</div>
       <img src="ss-sales.png" alt="Sales invoicing screen" style="width:100%; display:block;" />
@@ -374,13 +384,90 @@
       <img src="ss-inventory.png" alt="Inventory management screen" style="width:100%; display:block;" />
     </div>
     <div style="border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.12); border:1px solid var(--border);">
-      <div style="background:var(--teal); color:#fff; padding:10px 16px; font-size:13px; font-weight:600;">Purchase Orders & Stock</div>
+      <div style="background:var(--teal); color:#fff; padding:10px 16px; font-size:13px; font-weight:600;">Purchase Orders & Stock Alerts</div>
       <img src="ss-purchases.png" alt="Purchase orders screen" style="width:100%; display:block;" />
     </div>
     <div style="border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.12); border:1px solid var(--border);">
-      <div style="background:var(--teal); color:#fff; padding:10px 16px; font-size:13px; font-weight:600;">Account Statements</div>
-      <img src="ss-accounts.png" alt="Account statement screen" style="width:100%; display:block;" />
+      <div style="background:var(--teal); color:#fff; padding:10px 16px; font-size:13px; font-weight:600;">GST Returns & Reports</div>
+      <img src="ss-gst.png" alt="GST returns screen" style="width:100%; display:block;" />
     </div>
+  </div>
+
+  <!-- Desktop + Mobile side by side -->
+  <div style="border-radius:14px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.15); border:1px solid var(--border);">
+    <div style="background:var(--dark); color:#fff; padding:12px 20px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px;">
+      <span style="color:var(--sky);">📱</span> Desktop + Mobile working together in real time
+    </div>
+    <img src="ss-mobile.png" alt="Desktop and mobile app side by side" style="width:100%; display:block;" />
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section style="background:var(--white); padding:80px 5%;">
+  <p class="section-label">Why Accelent?</p>
+  <h2 class="section-title">See how we compare</h2>
+  <p class="section-sub">Simple, affordable and built for Indian small businesses.</p>
+  <div style="overflow-x:auto; margin-top:8px;">
+    <table style="width:100%; max-width:800px; border-collapse:collapse; font-size:15px;">
+      <thead>
+        <tr style="background:var(--dark); color:#fff;">
+          <th style="padding:14px 20px; text-align:left; border-radius:10px 0 0 0;">Feature</th>
+          <th style="padding:14px 20px; text-align:center; background:var(--teal);">Accelent</th>
+          <th style="padding:14px 20px; text-align:center;">Tally</th>
+          <th style="padding:14px 20px; text-align:center; border-radius:0 10px 0 0;">Excel</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border); background:var(--bg);">
+          <td style="padding:13px 20px; font-weight:500;">Easy to use</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Simple</td>
+          <td style="padding:13px 20px; text-align:center; color:var(--muted);">Complex</td>
+          <td style="padding:13px 20px; text-align:center; color:var(--muted);">Manual</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:13px 20px; font-weight:500;">Mobile App</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Android</td>
+          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗</td>
+          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border); background:var(--bg);">
+          <td style="padding:13px 20px; font-weight:500;">Barcode Scanning</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Built-in</td>
+          <td style="padding:13px 20px; text-align:center; color:var(--muted);">Add-on needed</td>
+          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:13px 20px; font-weight:500;">GST Reports</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Automatic</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a;">✓</td>
+          <td style="padding:13px 20px; text-align:center; color:var(--muted);">Manual</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border); background:var(--bg);">
+          <td style="padding:13px 20px; font-weight:500;">Works Offline</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Always</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a;">✓</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a;">✓</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:13px 20px; font-weight:500;">Desktop–Mobile Messaging</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Built-in</td>
+          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗</td>
+          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border); background:var(--bg);">
+          <td style="padding:13px 20px; font-weight:500;">Free Trial</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ 30 days</td>
+          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗ Paid only</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a;">✓ Free</td>
+        </tr>
+        <tr>
+          <td style="padding:13px 20px; font-weight:500;">Price</td>
+          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">Affordable</td>
+          <td style="padding:13px 20px; text-align:center; color:#dc2626;">Expensive</td>
+          <td style="padding:13px 20px; text-align:center; color:var(--muted);">Free but slow</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
