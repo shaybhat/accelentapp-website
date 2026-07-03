@@ -3,281 +3,187 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Accelent — Professional Accounting Software</title>
-  <meta name="description" content="Accelent is a fast, simple accounting and inventory management solution for small businesses. Manage sales, purchases, GST, stock and more — from desktop and mobile." />
+  <title>Accelent — Professional Accounting Software for Small Business</title>
+  <meta name="description" content="Accelent is a 100% offline, one-time purchase accounting and inventory software for Indian small businesses. GST ready, mobile app included. No monthly fees." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --teal:      #0891b2;
-      --teal-dark: #0e7490;
-      --teal-light:#e0f2fe;
-      --sky:       #7dd3fc;
-      --dark:      #0f172a;
-      --slate:     #334155;
-      --muted:     #64748b;
-      --border:    #e2e8f0;
-      --white:     #ffffff;
-      --bg:        #f8fafc;
+      --teal: #0891b2; --teal-dark: #0e7490; --teal-light: #e0f2fe;
+      --sky: #7dd3fc; --dark: #0f172a; --slate: #334155;
+      --muted: #64748b; --border: #e2e8f0; --white: #ffffff; --bg: #f8fafc;
+      --green: #16a34a; --red: #dc2626;
     }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--slate); background: var(--white); line-height: 1.6; }
 
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      color: var(--slate);
-      background: var(--white);
-      line-height: 1.6;
-    }
-
-    /* ── NAV ─────────────────────────────────────────────── */
+    /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
-      padding: 0 5%;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
+      padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px;
     }
-
-    .nav-brand {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none;
-    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-brand img { height: 32px; width: auto; }
-    .nav-brand span {
-      font-family: 'Inter', sans-serif;
-      font-size: 20px; font-weight: 800;
-      color: var(--teal); letter-spacing: 1px;
-    }
-
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a {
-      text-decoration: none; color: var(--slate);
-      font-size: 14px; font-weight: 500;
-      transition: color .2s;
-    }
+    .nav-brand span { font-size: 20px; font-weight: 800; color: var(--teal); letter-spacing: 1px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--slate); font-size: 14px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--teal); }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 22px; border-radius: 8px;
-      font-weight: 600; font-size: 14px;
-      text-decoration: none; cursor: pointer;
-      transition: all .2s; border: none;
-    }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; cursor: pointer; transition: all .2s; border: none; }
     .btn-primary { background: var(--teal); color: #fff; }
     .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(8,145,178,.35); }
     .btn-outline { background: transparent; color: var(--teal); border: 2px solid var(--teal); }
     .btn-outline:hover { background: var(--teal-light); }
+    .btn-green { background: #16a34a; color: #fff; }
+    .btn-green:hover { background: #15803d; transform: translateY(-1px); }
     .btn-lg { padding: 14px 32px; font-size: 16px; border-radius: 10px; }
+    .btn-wa { background: #25d366; color: #fff; }
+    .btn-wa:hover { background: #22c55e; transform: translateY(-1px); }
 
-    /* ── HERO ─────────────────────────────────────────────── */
-    .hero {
-      background: linear-gradient(135deg, #0f172a 0%, #0c2d3f 50%, #0891b2 100%);
-      color: #fff;
-      padding: 100px 5% 80px;
-      text-align: center;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(125,211,252,.15);
-      border: 1px solid rgba(125,211,252,.3);
-      color: var(--sky);
-      font-size: 12px; font-weight: 600;
-      padding: 5px 14px; border-radius: 20px;
-      margin-bottom: 24px; letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      font-size: clamp(36px, 6vw, 64px);
-      font-weight: 800; line-height: 1.1;
-      margin-bottom: 20px;
-    }
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #0c2d3f 50%, #0891b2 100%); color: #fff; padding: 100px 5% 80px; text-align: center; }
+    .hero-badge-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+    .badge { display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: .5px; }
+    .badge-sky { background: rgba(125,211,252,.15); border: 1px solid rgba(125,211,252,.35); color: var(--sky); }
+    .badge-green { background: rgba(22,163,74,.2); border: 1px solid rgba(22,163,74,.4); color: #4ade80; }
+    .badge-yellow { background: rgba(234,179,8,.15); border: 1px solid rgba(234,179,8,.35); color: #fde047; }
+    .hero h1 { font-size: clamp(34px, 6vw, 62px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
     .hero h1 span { color: var(--sky); }
-
-    .hero p {
-      font-size: clamp(16px, 2vw, 20px);
-      color: rgba(255,255,255,.75);
-      max-width: 600px; margin: 0 auto 40px;
-    }
-
+    .hero p { font-size: clamp(16px, 2vw, 19px); color: rgba(255,255,255,.75); max-width: 640px; margin: 0 auto 40px; }
     .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
     .hero-btns .btn-primary { background: var(--sky); color: var(--dark); }
     .hero-btns .btn-primary:hover { background: #38bdf8; }
+
     .hero-btns .btn-outline { border-color: rgba(255,255,255,.4); color: #fff; }
     .hero-btns .btn-outline:hover { background: rgba(255,255,255,.1); }
+    .hero-note { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,.4); }
 
-    .hero-note {
-      margin-top: 18px;
-      font-size: 12px; color: rgba(255,255,255,.45);
-    }
-
-    /* ── TRUSTED ──────────────────────────────────────────── */
-    .trusted {
-      background: var(--bg);
-      padding: 28px 5%;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
-    .trusted p { font-size: 13px; color: var(--muted); font-weight: 500; }
-
-    /* ── FEATURES ─────────────────────────────────────────── */
+    /* SECTIONS */
     section { padding: 80px 5%; }
+    .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--teal); margin-bottom: 12px; }
+    .section-title { font-size: clamp(26px, 4vw, 40px); font-weight: 800; color: var(--dark); margin-bottom: 14px; line-height: 1.2; }
+    .section-sub { font-size: 17px; color: var(--muted); max-width: 580px; margin-bottom: 48px; }
 
-    .section-label {
-      font-size: 12px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 2px; color: var(--teal); margin-bottom: 12px;
-    }
-    .section-title {
-      font-size: clamp(26px, 4vw, 40px);
-      font-weight: 800; color: var(--dark);
-      margin-bottom: 14px; line-height: 1.2;
-    }
-    .section-sub {
-      font-size: 17px; color: var(--muted);
-      max-width: 560px; margin-bottom: 56px;
-    }
+    /* WHO USES */
+    .who { background: var(--bg); }
+    .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .use-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: all .25s; }
+    .use-card:hover { border-color: var(--teal); box-shadow: 0 6px 20px rgba(8,145,178,.1); transform: translateY(-2px); }
+    .use-card .icon { font-size: 28px; margin-bottom: 12px; }
+    .use-card h3 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .use-card p { font-size: 13px; color: var(--muted); }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
+    /* FEATURES */
+    .features-detail { background: var(--white); }
+    .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+    .feat-block { border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
+    .feat-block:hover { border-color: var(--teal); box-shadow: 0 6px 20px rgba(8,145,178,.1); }
+    .feat-block .f-icon { font-size: 26px; margin-bottom: 12px; }
+    .feat-block h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+    .feat-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .feat-block ul li { font-size: 13px; color: var(--muted); display: flex; gap: 8px; }
+    .feat-block ul li::before { content: "✓"; color: var(--teal); font-weight: 700; flex-shrink: 0; }
 
-    .feature-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 28px;
-      transition: all .25s;
-    }
-    .feature-card:hover {
-      border-color: var(--teal);
-      box-shadow: 0 8px 24px rgba(8,145,178,.12);
-      transform: translateY(-3px);
-    }
+    /* SCREENSHOTS */
+    .screenshots { background: var(--bg); }
+    .ss-hero { border-radius: 14px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.15); border: 1px solid var(--border); margin-bottom: 24px; }
+    .ss-label { padding: 12px 20px; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .ss-label.dark { background: var(--dark); color: #fff; }
+    .ss-label.teal { background: var(--teal); color: #fff; }
+    .ss-hero img { width: 100%; display: block; }
+    .ss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 20px; }
+    .ss-card { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.1); border: 1px solid var(--border); }
+    .ss-card img { width: 100%; display: block; }
 
-    .feature-icon {
-      width: 48px; height: 48px;
-      background: var(--teal-light);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin-bottom: 16px;
-    }
-    .feature-card h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-    .feature-card p  { font-size: 14px; color: var(--muted); line-height: 1.6; }
-
-    /* ── MOBILE SECTION ───────────────────────────────────── */
-    .mobile-section {
-      background: linear-gradient(135deg, #0f172a, #0c2d3f);
-      color: #fff;
-    }
-    .mobile-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center;
-      max-width: 1100px; margin: 0 auto;
-    }
+    /* MOBILE */
+    .mobile-section { background: linear-gradient(135deg, #0f172a, #0c2d3f); color: #fff; }
+    .mobile-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto; }
     .mobile-inner .section-label { color: var(--sky); }
     .mobile-inner .section-title { color: #fff; }
-    .mobile-inner .section-sub   { color: rgba(255,255,255,.65); margin-bottom: 32px; }
+    .mobile-inner .section-sub { color: rgba(255,255,255,.65); margin-bottom: 28px; }
+    .mobile-features { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .mobile-features li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: rgba(255,255,255,.85); }
+    .check { width: 22px; height: 22px; flex-shrink: 0; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-top: 1px; }
+    .mobile-img { border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
+    .mobile-img img { width: 100%; display: block; }
 
-    .mobile-features { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-    .mobile-features li {
-      display: flex; gap: 12px; align-items: flex-start;
-      font-size: 15px; color: rgba(255,255,255,.85);
-    }
-    .mobile-features .check {
-      width: 22px; height: 22px; flex-shrink: 0;
-      background: var(--teal); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; margin-top: 1px;
-    }
+    /* PRICING */
+    .pricing { background: var(--bg); }
+    .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 900px; }
+    .price-card { background: var(--white); border: 2px solid var(--border); border-radius: 16px; padding: 36px 32px; position: relative; transition: all .25s; }
+    .price-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+    .price-card.popular { border-color: var(--teal); box-shadow: 0 8px 32px rgba(8,145,178,.2); }
+    .popular-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--teal); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 20px; white-space: nowrap; }
+    .price-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .price-amount { font-size: 36px; font-weight: 800; color: var(--dark); margin: 12px 0 4px; }
+    .price-amount span { font-size: 14px; font-weight: 400; color: var(--muted); }
+    .price-card p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+    .price-features li { font-size: 14px; color: var(--slate); display: flex; gap: 8px; }
+    .price-features li::before { content: "✓"; color: var(--green); font-weight: 700; }
 
-    .phone-mockup {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 24px;
-      padding: 32px;
-      text-align: center;
-    }
-    .phone-screen {
-      background: #1e293b;
-      border-radius: 16px;
-      padding: 24px 20px;
-      font-size: 13px; color: rgba(255,255,255,.7);
-    }
-    .phone-bar {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 16px;
-    }
-    .phone-bar .app-name { font-weight: 700; font-size: 15px; color: var(--sky); }
-    .conn-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; display: inline-block; margin-right: 4px; }
-    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-    .metric-box {
-      background: rgba(8,145,178,.2); border: 1px solid rgba(8,145,178,.3);
-      border-radius: 10px; padding: 12px; text-align: left;
-    }
-    .metric-box .label { font-size: 10px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .5px; }
-    .metric-box .value { font-size: 18px; font-weight: 700; color: #fff; margin-top: 2px; }
+    /* COMPARISON TABLE */
+    .compare { background: var(--white); }
+    .cmp-table { width: 100%; border-collapse: collapse; font-size: 14px; overflow: hidden; border-radius: 12px; border: 1px solid var(--border); }
+    .cmp-table th { padding: 14px 18px; text-align: center; font-weight: 700; }
+    .cmp-table th:first-child { text-align: left; background: var(--dark); color: #fff; }
+    .cmp-table th.hl { background: var(--teal); color: #fff; }
+    .cmp-table th:not(:first-child):not(.hl) { background: #1e293b; color: rgba(255,255,255,.7); }
+    .cmp-table td { padding: 12px 18px; border-bottom: 1px solid var(--border); }
+    .cmp-table td:first-child { font-weight: 500; }
+    .cmp-table td:not(:first-child) { text-align: center; }
+    .cmp-table tr:last-child td { border-bottom: none; }
+    .cmp-table tr:nth-child(even) td { background: var(--bg); }
+    .yes { color: var(--green); font-weight: 700; }
+    .no { color: var(--red); }
+    .partial { color: #d97706; }
 
-    /* ── HOW IT WORKS ─────────────────────────────────────── */
-    .how { background: var(--bg); }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 32px; max-width: 900px;
-    }
-    .step { text-align: center; }
-    .step-num {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: var(--teal); color: #fff;
-      font-size: 20px; font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 16px;
-    }
-    .step h3 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
-    .step p  { font-size: 14px; color: var(--muted); }
+    /* DATA OWNERSHIP */
+    .data-own { background: var(--bg); }
+    .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .data-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
+    .data-card .icon { font-size: 28px; margin-bottom: 12px; }
+    .data-card h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .data-card p { font-size: 14px; color: var(--muted); }
 
-    /* ── DOWNLOAD ─────────────────────────────────────────── */
-    .download { background: var(--white); text-align: center; }
-    .download-cards {
-      display: flex; gap: 24px; justify-content: center;
-      flex-wrap: wrap; margin-top: 48px;
-    }
-    .download-card {
-      background: var(--bg);
-      border: 2px solid var(--border);
-      border-radius: 16px; padding: 36px 40px;
-      text-align: center; min-width: 240px;
-      transition: all .25s;
-    }
-    .download-card:hover { border-color: var(--teal); box-shadow: 0 8px 24px rgba(8,145,178,.15); }
-    .download-card .icon { font-size: 40px; margin-bottom: 16px; }
-    .download-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
-    .download-card p  { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    /* FAQ */
+    .faq { background: var(--white); }
+    .faq-list { max-width: 760px; display: flex; flex-direction: column; gap: 12px; }
+    details { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    details[open] { border-color: var(--teal); }
+    summary { padding: 16px 20px; font-weight: 600; font-size: 15px; color: var(--dark); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 20px; color: var(--teal); font-weight: 400; flex-shrink: 0; }
+    details[open] summary::after { content: "−"; }
+    .faq-body { padding: 0 20px 16px; font-size: 14px; color: var(--muted); line-height: 1.7; }
 
-    /* ── FOOTER ───────────────────────────────────────────── */
-    footer {
-      background: var(--dark);
-      color: rgba(255,255,255,.5);
-      text-align: center;
-      padding: 32px 5%;
-      font-size: 13px;
-    }
-    footer a { color: var(--sky); text-decoration: none; }
-    footer .powered { margin-top: 8px; font-size: 11px; opacity: .5; }
+    /* CTA */
+    .cta { background: linear-gradient(135deg, #0f172a, #0891b2); color: #fff; text-align: center; }
+    .cta h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin-bottom: 16px; }
+    .cta p { font-size: 17px; color: rgba(255,255,255,.7); margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-    /* ── RESPONSIVE ───────────────────────────────────────── */
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,.5); padding: 48px 5% 28px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand .nav-brand span { color: var(--sky); }
+    .footer-brand p { font-size: 13px; margin-top: 12px; color: rgba(255,255,255,.45); max-width: 260px; line-height: 1.7; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.8); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,.45); text-decoration: none; margin-bottom: 8px; transition: color .2s; }
+    .footer-col a:hover { color: var(--sky); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 12px; }
+    .footer-bottom a { color: var(--sky); text-decoration: none; }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .mobile-inner { grid-template-columns: 1fr; }
-      .phone-mockup { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
+      .ss-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -291,183 +197,235 @@
   </a>
   <div class="nav-links">
     <a href="#features">Features</a>
-    <a href="#mobile">Mobile</a>
-    <a href="#download">Download</a>
-    <a href="mailto:showkatbhat11@gmail.com">Contact</a>
+    <a href="#screenshots">Screenshots</a>
+    <a href="#mobile">Mobile App</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
     <a href="#download" class="btn btn-primary" style="padding:8px 18px;font-size:13px;">Download Free</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">Professional Accounting Software</div>
-  <h1>Run your business<br><span>smarter, faster.</span></h1>
-  <p>Sales, purchases, inventory, GST and reports — all in one place. Manage from your desktop and stay connected on the go with the Accelent mobile app.</p>
-  <div class="hero-btns">
-    <a href="#download" class="btn btn-primary btn-lg">
-      ⬇️ Download for Windows
-    </a>
-    <a href="#mobile" class="btn btn-outline btn-lg">
-      📱 Get Mobile App
-    </a>
+  <div class="hero-badge-row">
+    <span class="badge badge-green">100% Offline</span>
+    <span class="badge badge-sky">GST Ready</span>
+    <span class="badge badge-sky">Mobile App Included</span>
+    <span class="badge badge-yellow">One-Time Price · No Monthly Fees</span>
   </div>
-  <p class="hero-note">Free trial — no credit card required</p>
+  <h1>Professional Accounting<br><span>Built for India</span></h1>
+  <p>Sales, purchases, inventory, GST, payroll and reports — all in one place. Works offline, runs on your desktop, connects to your phone from anywhere.</p>
+  <div class="hero-btns">
+    <a href="#download" class="btn btn-primary btn-lg">📥 Download for Windows</a>
+    <a href="#download" class="btn btn-green btn-lg">📱 Download Android APK</a>
+    <a href="#features" class="btn btn-outline btn-lg">See All Features</a>
+  </div>
+  <p class="hero-note">Free 30-day trial · No credit card · Your data stays on your computer</p>
 </section>
 
-<!-- TRUSTED -->
-<div class="trusted">
-  <p>Built for small businesses — electrical, retail, wholesale, trading and more</p>
-</div>
+<!-- WHO USES -->
+<section class="who">
+  <p class="section-label">Who uses Accelent?</p>
+  <h2 class="section-title">Built for every small business</h2>
+  <p class="section-sub">Whether you sell goods or services, Accelent fits your workflow from day one.</p>
+  <div class="use-grid">
+    <div class="use-card">
+      <div class="icon">🏪</div>
+      <h3>Retail & Kirana Shops</h3>
+      <p>Fast billing, barcode scanning, stock management and daily cash tracking — all under one roof.</p>
+    </div>
+    <div class="use-card">
+      <div class="icon">🏭</div>
+      <h3>Wholesale Traders</h3>
+      <p>Manage large purchase orders, vendor payments, party ledgers and credit customers with ease.</p>
+    </div>
+    <div class="use-card">
+      <div class="icon">🔧</div>
+      <h3>Service Businesses</h3>
+      <p>Raise service invoices, track recurring clients, manage expenses and view profit at a glance.</p>
+    </div>
+    <div class="use-card">
+      <div class="icon">⚡</div>
+      <h3>Electrical & Hardware</h3>
+      <p>Item-wise stock, HSN codes, GST-compliant bills and low-stock alerts built in automatically.</p>
+    </div>
+    <div class="use-card">
+      <div class="icon">📊</div>
+      <h3>Switching from Excel?</h3>
+      <p>Import your items and parties from CSV. No re-entry. Be up and running in under an hour.</p>
+    </div>
+    <div class="use-card">
+      <div class="icon">💼</div>
+      <h3>Switching from Tally?</h3>
+      <p>Same GST features, simpler interface, mobile companion app — and a fraction of the price.</p>
+    </div>
+  </div>
+</section>
 
 <!-- FEATURES -->
-<section id="features">
+<section id="features" class="features-detail">
   <p class="section-label">Everything you need</p>
   <h2 class="section-title">Accounting made simple</h2>
-  <p class="section-sub">No complexity, no steep learning curve — just the tools small businesses actually use every day.</p>
-
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">🧾</div>
+  <p class="section-sub">No complexity, no steep learning curve. Just the tools small businesses actually use every day.</p>
+  <div class="feat-grid">
+    <div class="feat-block">
+      <div class="f-icon">🧾</div>
       <h3>Sales & Invoicing</h3>
-      <p>Create professional GST invoices in seconds. Track payments, outstanding balances and customer history.</p>
+      <ul>
+        <li>GST invoices with CGST, SGST & IGST</li>
+        <li>Party-wise outstanding tracking</li>
+        <li>Credit customer dashboard</li>
+        <li>Transport & forwarding charges</li>
+        <li>Print or PDF with one click</li>
+      </ul>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">📦</div>
+    <div class="feat-block">
+      <div class="f-icon">📦</div>
       <h3>Purchase Management</h3>
-      <p>Record purchases, manage vendors, track bills and maintain complete purchase history with one click.</p>
+      <ul>
+        <li>Purchase orders sent to vendors</li>
+        <li>Smart receive with quantity check</li>
+        <li>Auto stock update on purchase</li>
+        <li>Vendor history & ledger</li>
+        <li>Low stock to PO in one click</li>
+      </ul>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">📊</div>
+    <div class="feat-block">
+      <div class="f-icon">📊</div>
       <h3>Inventory Control</h3>
-      <p>Real-time stock levels, low-stock alerts, barcode scanning and item-wise profit tracking.</p>
+      <ul>
+        <li>Real-time stock levels</li>
+        <li>Low stock & out-of-stock alerts</li>
+        <li>Barcode scanning from phone camera</li>
+        <li>Item-wise profit margin tracking</li>
+        <li>Smart item code generation</li>
+      </ul>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">📋</div>
-      <h3>GST Management</h3>
-      <p>Automatic CGST, SGST and IGST calculation. GST reports ready for filing — no manual work.</p>
+    <div class="feat-block">
+      <div class="f-icon">📋</div>
+      <h3>GST & Compliance</h3>
+      <ul>
+        <li>Automatic CGST, SGST, IGST split</li>
+        <li>GSTR-1 summary generation</li>
+        <li>E-Invoice & IRN support</li>
+        <li>HSN code management</li>
+        <li>GST liability & ITC register</li>
+      </ul>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">📈</div>
+    <div class="feat-block">
+      <div class="f-icon">↩️</div>
+      <h3>Returns Management</h3>
+      <ul>
+        <li>Sales return with credit notes</li>
+        <li>Purchase return with debit notes</li>
+        <li>Auto stock reversal on return</li>
+        <li>Return history per party</li>
+      </ul>
+    </div>
+    <div class="feat-block">
+      <div class="f-icon">💰</div>
+      <h3>Accounts & Finance</h3>
+      <ul>
+        <li>Multi-bank account management</li>
+        <li>Inter-account transfers</li>
+        <li>Day book & account statements</li>
+        <li>Aging report & overdue tracking</li>
+        <li>Trial balance & annual reports</li>
+      </ul>
+    </div>
+    <div class="feat-block">
+      <div class="f-icon">👥</div>
+      <h3>Employees & Payroll</h3>
+      <ul>
+        <li>Employee profiles & designations</li>
+        <li>Attendance & leave tracking</li>
+        <li>Monthly salary spreadsheet</li>
+        <li>Advance payment management</li>
+        <li>Export payroll to CSV</li>
+      </ul>
+    </div>
+    <div class="feat-block">
+      <div class="f-icon">📈</div>
       <h3>Reports & Analytics</h3>
-      <p>Profit & loss, balance sheet, party ledgers and stock reports. Print or export with one click.</p>
+      <ul>
+        <li>Profit & loss statement</li>
+        <li>Party ledger reports</li>
+        <li>Stock & inventory reports</li>
+        <li>Income vs expense charts</li>
+        <li>Data comparison & audit tools</li>
+      </ul>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">👥</div>
-      <h3>Multi-User Access</h3>
-      <p>Create staff accounts with role-based access. Each user logs in separately with their own password.</p>
+    <div class="feat-block">
+      <div class="f-icon">🔐</div>
+      <h3>Security & Multi-User</h3>
+      <ul>
+        <li>Role-based staff access</li>
+        <li>Audit trail on all changes</li>
+        <li>Data stored locally on your PC</li>
+        <li>No internet subscription needed</li>
+        <li>Finalization & data lock feature</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- SCREENSHOTS -->
-<section style="background:var(--bg); padding:80px 5%;">
+<section id="screenshots" class="screenshots">
   <p class="section-label">See it in action</p>
   <h2 class="section-title">Real software, real screens</h2>
-  <p class="section-sub">Here's what Accelent looks like on your desktop — no demos, no mockups.</p>
+  <p class="section-sub">No demos, no mockups — here is exactly what Accelent looks like on your desktop.</p>
 
-  <!-- Dashboard hero screenshot -->
-  <div style="border-radius:14px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.15); border:1px solid var(--border); margin-bottom:24px;">
-    <div style="background:var(--dark); color:#fff; padding:12px 20px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px;">
-      <span style="color:var(--sky);">📊</span> Live Dashboard — Total Balance, Income, Expenses & Stock Alerts at a glance
-    </div>
-    <img src="ss-dashboard.png" alt="Accelent dashboard" style="width:100%; display:block;" />
+  <div class="ss-hero">
+    <div class="ss-label dark"><span style="color:var(--sky);">📊</span> Live Dashboard — Balance, Income, Expenses, Stock Alerts & Charts at a glance</div>
+    <img src="ss-dashboard.png" alt="Accelent dashboard overview" />
   </div>
 
-  <!-- 4-column grid -->
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(440px,1fr)); gap:24px; margin-bottom:24px;">
-    <div style="border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.12); border:1px solid var(--border);">
-      <div style="background:var(--teal); color:#fff; padding:10px 16px; font-size:13px; font-weight:600;">Sales & Invoicing</div>
-      <img src="ss-sales.png" alt="Sales invoicing screen" style="width:100%; display:block;" />
+  <div class="ss-grid" style="margin-bottom:20px;">
+    <div class="ss-card">
+      <div class="ss-label teal">🧾 Sales & Invoice Creation</div>
+      <img src="ss-sales.png" alt="Sales invoicing" />
     </div>
-    <div style="border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.12); border:1px solid var(--border);">
-      <div style="background:var(--teal); color:#fff; padding:10px 16px; font-size:13px; font-weight:600;">Inventory Management</div>
-      <img src="ss-inventory.png" alt="Inventory management screen" style="width:100%; display:block;" />
+    <div class="ss-card">
+      <div class="ss-label teal">📦 Inventory Management</div>
+      <img src="ss-inventory.png" alt="Inventory management" />
     </div>
-    <div style="border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.12); border:1px solid var(--border);">
-      <div style="background:var(--teal); color:#fff; padding:10px 16px; font-size:13px; font-weight:600;">Purchase Orders & Stock Alerts</div>
-      <img src="ss-purchases.png" alt="Purchase orders screen" style="width:100%; display:block;" />
+    <div class="ss-card">
+      <div class="ss-label teal">🛒 Purchase Orders & Low Stock Monitor</div>
+      <img src="ss-purchases.png" alt="Purchase orders" />
     </div>
-    <div style="border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.12); border:1px solid var(--border);">
-      <div style="background:var(--teal); color:#fff; padding:10px 16px; font-size:13px; font-weight:600;">GST Returns & Reports</div>
-      <img src="ss-gst.png" alt="GST returns screen" style="width:100%; display:block;" />
+    <div class="ss-card">
+      <div class="ss-label teal">💰 Account Statements & Bank Accounts</div>
+      <img src="ss-accounts.png" alt="Account statements" />
+    </div>
+    <div class="ss-card">
+      <div class="ss-label teal">↩️ Sales & Purchase Returns</div>
+      <img src="ss-returns.png" alt="Returns management" />
+    </div>
+    <div class="ss-card">
+      <div class="ss-label teal">🏦 Inter-Account Transfers</div>
+      <img src="ss-transfers.png" alt="Account transfers" />
+    </div>
+    <div class="ss-card">
+      <div class="ss-label teal">👥 Employee Management & Payroll</div>
+      <img src="ss-employees.png" alt="Employee payroll" />
+    </div>
+    <div class="ss-card">
+      <div class="ss-label teal">📋 GST Returns & Reports</div>
+      <img src="ss-gst.png" alt="GST returns" />
+    </div>
+    <div class="ss-card">
+      <div class="ss-label teal">📖 Day Book & Annual Reports</div>
+      <img src="ss-daybook.png" alt="Day book reports" />
+    </div>
+    <div class="ss-card">
+      <div class="ss-label teal">🔍 Data Comparison & Audit Tools</div>
+      <img src="ss-datacomp.png" alt="Data comparison" />
     </div>
   </div>
 
-  <!-- Desktop + Mobile side by side -->
-  <div style="border-radius:14px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.15); border:1px solid var(--border);">
-    <div style="background:var(--dark); color:#fff; padding:12px 20px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px;">
-      <span style="color:var(--sky);">📱</span> Desktop + Mobile working together in real time
-    </div>
-    <img src="ss-mobile.png" alt="Desktop and mobile app side by side" style="width:100%; display:block;" />
-  </div>
-</section>
-
-<!-- COMPARISON -->
-<section style="background:var(--white); padding:80px 5%;">
-  <p class="section-label">Why Accelent?</p>
-  <h2 class="section-title">See how we compare</h2>
-  <p class="section-sub">Simple, affordable and built for Indian small businesses.</p>
-  <div style="overflow-x:auto; margin-top:8px;">
-    <table style="width:100%; max-width:800px; border-collapse:collapse; font-size:15px;">
-      <thead>
-        <tr style="background:var(--dark); color:#fff;">
-          <th style="padding:14px 20px; text-align:left; border-radius:10px 0 0 0;">Feature</th>
-          <th style="padding:14px 20px; text-align:center; background:var(--teal);">Accelent</th>
-          <th style="padding:14px 20px; text-align:center;">Tally</th>
-          <th style="padding:14px 20px; text-align:center; border-radius:0 10px 0 0;">Excel</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--border); background:var(--bg);">
-          <td style="padding:13px 20px; font-weight:500;">Easy to use</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Simple</td>
-          <td style="padding:13px 20px; text-align:center; color:var(--muted);">Complex</td>
-          <td style="padding:13px 20px; text-align:center; color:var(--muted);">Manual</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:13px 20px; font-weight:500;">Mobile App</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Android</td>
-          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗</td>
-          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border); background:var(--bg);">
-          <td style="padding:13px 20px; font-weight:500;">Barcode Scanning</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Built-in</td>
-          <td style="padding:13px 20px; text-align:center; color:var(--muted);">Add-on needed</td>
-          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:13px 20px; font-weight:500;">GST Reports</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Automatic</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a;">✓</td>
-          <td style="padding:13px 20px; text-align:center; color:var(--muted);">Manual</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border); background:var(--bg);">
-          <td style="padding:13px 20px; font-weight:500;">Works Offline</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Always</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a;">✓</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a;">✓</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:13px 20px; font-weight:500;">Desktop–Mobile Messaging</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ Built-in</td>
-          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗</td>
-          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border); background:var(--bg);">
-          <td style="padding:13px 20px; font-weight:500;">Free Trial</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">✓ 30 days</td>
-          <td style="padding:13px 20px; text-align:center; color:#dc2626;">✗ Paid only</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a;">✓ Free</td>
-        </tr>
-        <tr>
-          <td style="padding:13px 20px; font-weight:500;">Price</td>
-          <td style="padding:13px 20px; text-align:center; color:#16a34a; font-weight:700;">Affordable</td>
-          <td style="padding:13px 20px; text-align:center; color:#dc2626;">Expensive</td>
-          <td style="padding:13px 20px; text-align:center; color:var(--muted);">Free but slow</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="ss-hero">
+    <div class="ss-label dark"><span style="color:var(--sky);">📱</span> Desktop + Mobile working together in real time — create invoices on PC, monitor from phone</div>
+    <img src="ss-mobile.png" alt="Desktop and mobile side by side" />
   </div>
 </section>
 
@@ -477,103 +435,259 @@
     <div>
       <p class="section-label">Mobile Companion App</p>
       <h2 class="section-title">Your business in your pocket</h2>
-      <p class="section-sub">The Accelent Android app connects to your desktop over WiFi or Tailscale — stay on top of your business from anywhere.</p>
+      <p class="section-sub">The Accelent Android app connects to your desktop over WiFi or Tailscale VPN — stay on top of your business from anywhere in the world.</p>
       <ul class="mobile-features">
-        <li><span class="check">✓</span> View today's sales, stock and balances live</li>
+        <li><span class="check">✓</span> View live sales, stock and balances</li>
         <li><span class="check">✓</span> Create invoices and purchases remotely</li>
         <li><span class="check">✓</span> Scan barcodes with your phone camera</li>
         <li><span class="check">✓</span> Add new inventory items on the spot</li>
-        <li><span class="check">✓</span> Message alerts from desktop to mobile</li>
+        <li><span class="check">✓</span> Real-time messaging with desktop operator</li>
         <li><span class="check">✓</span> Works across different networks via Tailscale</li>
+        <li><span class="check">✓</span> Offline cached data when not connected</li>
       </ul>
-      <div style="margin-top:32px;">
-        <a href="#download" class="btn btn-outline" style="border-color:rgba(125,211,252,.4);color:#7dd3fc;">
-          📱 Download Android APK
-        </a>
+      <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="#download" class="btn btn-green btn-lg">📱 Download Android APK</a>
       </div>
     </div>
-    <div class="phone-mockup">
-      <div class="phone-screen">
-        <div class="phone-bar">
-          <span class="app-name">Accelent</span>
-          <span><span class="conn-dot"></span>Connected</span>
-        </div>
-        <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:12px;">Today's Summary</div>
-        <div class="metric-grid">
-          <div class="metric-box"><div class="label">Sales</div><div class="value">₹24,850</div></div>
-          <div class="metric-box"><div class="label">Purchases</div><div class="value">₹11,200</div></div>
-          <div class="metric-box"><div class="label">Stock Items</div><div class="value">348</div></div>
-          <div class="metric-box"><div class="label">Pending</div><div class="value">3</div></div>
-        </div>
-      </div>
+    <div class="mobile-img">
+      <img src="ss-mobile.png" alt="Mobile app connected to desktop" />
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how">
+<section style="background:var(--bg); padding:80px 5%;">
   <p class="section-label">Get started in minutes</p>
   <h2 class="section-title">Simple setup, instant results</h2>
-  <p class="section-sub">No IT team needed. Download, install and start recording your first sale in under 10 minutes.</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Download</h3>
-      <p>Download the installer for Windows. No internet required after setup.</p>
+  <p class="section-sub">No IT team needed. Download, install and record your first sale in under 10 minutes.</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:32px; max-width:900px;">
+    <div style="text-align:center;">
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--teal);color:#fff;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">1</div>
+      <h3 style="font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;">Download</h3>
+      <p style="font-size:14px;color:var(--muted);">Download the Windows installer. No internet needed after setup.</p>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Install</h3>
-      <p>Extract the folder and run Accelent.exe. Your data stays on your own computer.</p>
+    <div style="text-align:center;">
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--teal);color:#fff;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">2</div>
+      <h3 style="font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;">Install</h3>
+      <p style="font-size:14px;color:var(--muted);">Extract and run Accelent.exe. Your data stays on your own computer.</p>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Connect</h3>
-      <p>Install the mobile app, enter your desktop IP and go — desktop and phone in sync.</p>
+    <div style="text-align:center;">
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--teal);color:#fff;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">3</div>
+      <h3 style="font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;">Connect</h3>
+      <p style="font-size:14px;color:var(--muted);">Install the Android app, enter your desktop IP and both are in sync.</p>
     </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h3>Start selling</h3>
-      <p>Add your products, create your first invoice and you're in business.</p>
+    <div style="text-align:center;">
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--teal);color:#fff;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">4</div>
+      <h3 style="font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;">Start selling</h3>
+      <p style="font-size:14px;color:var(--muted);">Add your products, create your first invoice and you're in business.</p>
     </div>
   </div>
 </section>
 
-<!-- DOWNLOAD -->
-<section id="download" class="download">
-  <p class="section-label">Download</p>
-  <h2 class="section-title">Ready to get started?</h2>
-  <p class="section-sub">Free 30-day trial. No credit card. No internet subscription. Your data, your computer.</p>
-
-  <div class="download-cards">
-    <div class="download-card">
-      <div class="icon">🖥️</div>
-      <h3>Windows Desktop</h3>
-      <p>Windows 10 / 11 (64-bit)<br>Includes full accounting suite</p>
-      <a href="#" class="btn btn-primary btn-lg" id="win-download">
-        ⬇️ Download .exe
-      </a>
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+  <p class="section-label">Pricing</p>
+  <h2 class="section-title">Simple, honest pricing</h2>
+  <p class="section-sub">One-time purchase. No monthly subscription. No per-user fees. Your license, forever.</p>
+  <div class="price-grid">
+    <div class="price-card">
+      <h3>Free Trial</h3>
+      <div class="price-amount">₹0 <span>/ 30 days</span></div>
+      <p>No credit card required. Full access to all features.</p>
+      <ul class="price-features">
+        <li>All features unlocked</li>
+        <li>Desktop + Mobile app</li>
+        <li>Unlimited entries</li>
+        <li>Your data is always yours</li>
+        <li>No internet subscription</li>
+      </ul>
+      <a href="#download" class="btn btn-outline" style="width:100%;justify-content:center;">Start Free Trial</a>
     </div>
-    <div class="download-card">
-      <div class="icon">📱</div>
-      <h3>Android App</h3>
-      <p>Android 8.0 and above<br>Pairs with the desktop app</p>
-      <a href="#" class="btn btn-outline btn-lg" id="apk-download" style="border-color:var(--teal);color:var(--teal);">
-        ⬇️ Download APK
-      </a>
+    <div class="price-card popular">
+      <div class="popular-badge">Most Popular</div>
+      <h3>Full License</h3>
+      <div class="price-amount" style="color:var(--teal);">Contact Us</div>
+      <p>One-time payment. Lifetime access. Free updates.</p>
+      <ul class="price-features">
+        <li>Everything in Trial</li>
+        <li>Lifetime license key</li>
+        <li>Free updates included</li>
+        <li>Priority support via WhatsApp</li>
+        <li>Multi-user staff accounts</li>
+        <li>GST filing ready</li>
+      </ul>
+      <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-primary" style="width:100%;justify-content:center;">💬 WhatsApp Us</a>
+    </div>
+    <div class="price-card" style="background:var(--bg);">
+      <h3>vs. Alternatives</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;">
+          <span style="font-weight:600;">Accelent</span><span style="color:var(--green);font-weight:700;">One-time ✓</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;">
+          <span>Tally Prime</span><span style="color:var(--red);">₹54,000/yr</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;">
+          <span>Zoho Books</span><span style="color:var(--red);">₹24,000/yr</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:10px 0;font-size:14px;">
+          <span>Busy</span><span style="color:var(--red);">₹12,000/yr</span>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <p style="margin-top:28px;font-size:13px;color:var(--muted);">
-    Questions? Write to us at
-    <a href="mailto:showkatbhat11@gmail.com" style="color:var(--teal);">showkatbhat11@gmail.com</a>
-  </p>
+<!-- COMPARISON -->
+<section class="compare">
+  <p class="section-label">Why Accelent?</p>
+  <h2 class="section-title">Feature comparison</h2>
+  <p class="section-sub">See how Accelent stacks up against the alternatives.</p>
+  <div style="overflow-x:auto;">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;width:220px;">Feature</th>
+          <th class="hl">Accelent</th>
+          <th>Tally</th>
+          <th>Zoho Books</th>
+          <th>Excel</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Easy to use</td><td class="yes">✓ Simple</td><td class="partial">Complex</td><td class="partial">Moderate</td><td class="partial">Manual</td></tr>
+        <tr><td>Works 100% offline</td><td class="yes">✓ Always</td><td class="yes">✓</td><td class="no">✗ Cloud only</td><td class="yes">✓</td></tr>
+        <tr><td>Android mobile app</td><td class="yes">✓ Built-in</td><td class="no">✗</td><td class="yes">✓ (extra)</td><td class="no">✗</td></tr>
+        <tr><td>Barcode scanning</td><td class="yes">✓ Phone camera</td><td class="partial">Add-on</td><td class="no">✗</td><td class="no">✗</td></tr>
+        <tr><td>GST reports</td><td class="yes">✓ Automatic</td><td class="yes">✓</td><td class="yes">✓</td><td class="partial">Manual</td></tr>
+        <tr><td>E-Invoice / IRN</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">✗</td></tr>
+        <tr><td>Desktop–Mobile messaging</td><td class="yes">✓ Built-in</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+        <tr><td>Employee & payroll</td><td class="yes">✓</td><td class="yes">✓</td><td class="partial">Limited</td><td class="partial">Manual</td></tr>
+        <tr><td>Data stays on your PC</td><td class="yes">✓ Always</td><td class="yes">✓</td><td class="no">✗ Cloud</td><td class="yes">✓</td></tr>
+        <tr><td>One-time price</td><td class="yes">✓</td><td class="no">✗ Annual</td><td class="no">✗ Monthly</td><td class="yes">✓ (free)</td></tr>
+        <tr><td>Free trial</td><td class="yes">✓ 30 days</td><td class="no">✗</td><td class="yes">✓ 14 days</td><td class="yes">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DATA OWNERSHIP -->
+<section class="data-own">
+  <p class="section-label">Your data. Your freedom.</p>
+  <h2 class="section-title">No lock-in. Ever.</h2>
+  <p class="section-sub">Your business data belongs to you — not to us, not to a cloud server.</p>
+  <div class="data-grid">
+    <div class="data-card">
+      <div class="icon">💾</div>
+      <h3>Stored Locally</h3>
+      <p>All data is saved as an SQLite database on your own computer. No server, no subscription, no risk of data loss if we shut down.</p>
+    </div>
+    <div class="data-card">
+      <div class="icon">📤</div>
+      <h3>Export Anytime</h3>
+      <p>Export invoices, reports, inventory and ledgers to PDF, Excel or CSV at any time — even during the free trial.</p>
+    </div>
+    <div class="data-card">
+      <div class="icon">🔒</div>
+      <h3>Trial Data Safe</h3>
+      <p>When your trial ends, your data is never deleted or locked. Activate a license anytime and continue exactly where you left off.</p>
+    </div>
+    <div class="data-card">
+      <div class="icon">📥</div>
+      <h3>Easy Migration</h3>
+      <p>Coming from Excel or Tally? Import your items and parties via CSV. We help you migrate without starting over.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <p class="section-label">FAQ</p>
+  <h2 class="section-title">Common questions</h2>
+  <p class="section-sub">Everything you need to know before getting started.</p>
+  <div class="faq-list">
+    <details>
+      <summary>Does Accelent work without internet?</summary>
+      <div class="faq-body">Yes — 100% offline. After installation, Accelent never needs an internet connection to work. All your data is stored locally on your computer. Internet is only used once during license activation.</div>
+    </details>
+    <details>
+      <summary>What happens to my data after the trial ends?</summary>
+      <div class="faq-body">Your data is never deleted. You can view and export all your records even after the trial period. Simply activate a license to continue adding new entries.</div>
+    </details>
+    <details>
+      <summary>How does the mobile app connect to the desktop?</summary>
+      <div class="faq-body">On the same WiFi network, enter your desktop's local IP address in the app and you're connected instantly. For remote access (different networks), install the free Tailscale app on both devices — it creates a secure private network between them.</div>
+    </details>
+    <details>
+      <summary>Can I scan barcodes with my phone?</summary>
+      <div class="faq-body">Yes. The Accelent Android app has a built-in barcode scanner using your phone camera. Scan any product barcode during a sale or purchase — it automatically finds the item. If the barcode is new, you can add the item directly from your phone.</div>
+    </details>
+    <details>
+      <summary>Is Accelent GST compliant?</summary>
+      <div class="faq-body">Yes. Accelent automatically calculates CGST, SGST and IGST on every invoice. It generates GSTR-1 summaries and supports E-Invoice with IRN generation for businesses that require it.</div>
+    </details>
+    <details>
+      <summary>Can multiple staff members use it?</summary>
+      <div class="faq-body">Yes. You can create staff accounts with role-based access — for example, a salesperson who can only raise invoices but not view financial reports. Each user logs in with their own password.</div>
+    </details>
+    <details>
+      <summary>What are the system requirements?</summary>
+      <div class="faq-body">Windows 10 or Windows 11 (64-bit). Minimum 4 GB RAM recommended. No internet required after setup. The Android app requires Android 8.0 or above.</div>
+    </details>
+    <details>
+      <summary>How do I get support?</summary>
+      <div class="faq-body">Write to us at <a href="mailto:showkatbhat11@gmail.com" style="color:var(--teal);">showkatbhat11@gmail.com</a> or reach us on WhatsApp for fast responses. Most queries are resolved within 24 hours.</div>
+    </details>
+  </div>
+</section>
+
+<!-- DOWNLOAD & CTA -->
+<section id="download" class="cta">
+  <h2>Ready to run your business smarter?</h2>
+  <p>Free 30-day trial. No credit card. No monthly fees. Your data, your computer, your control.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn btn-primary btn-lg" id="win-download">📥 Download for Windows</a>
+    <a href="#" class="btn btn-green btn-lg" id="apk-download">📱 Download Android APK</a>
+    <a href="mailto:showkatbhat11@gmail.com" class="btn btn-wa btn-lg">💬 WhatsApp / Contact Us</a>
+  </div>
+  <p style="margin-top:20px; font-size:13px; color:rgba(255,255,255,.4);">Windows 10/11 · Android 8.0+ · Questions? <a href="mailto:showkatbhat11@gmail.com" style="color:var(--sky);">showkatbhat11@gmail.com</a></p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 <strong style="color:#fff;">Accelent</strong> — Professional Accounting Software &nbsp;|&nbsp; <a href="mailto:showkatbhat11@gmail.com">Contact</a></p>
-  <p class="powered">Powered by BrandAccShay</p>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="nav-brand" href="#">
+        <img src="logo.png" alt="Accelent" style="height:28px;" />
+        <span>Accelent</span>
+      </a>
+      <p>Professional accounting and inventory software for Indian small businesses. 100% offline. One-time price. Mobile app included.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="#features">Features</a>
+      <a href="#mobile">Mobile App</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#download">Download</a>
+    </div>
+    <div class="footer-col">
+      <h4>GST Tools</h4>
+      <a href="#features">GSTR-1 Reports</a>
+      <a href="#features">E-Invoice / IRN</a>
+      <a href="#features">HSN Codes</a>
+      <a href="#features">GST Ledger</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:showkatbhat11@gmail.com">Contact Us</a>
+      <a href="mailto:showkatbhat11@gmail.com">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 <strong style="color:#fff;">Accelent</strong> — Professional Accounting Software</span>
+    <span>Made with ❤️ for Indian small businesses &nbsp;|&nbsp; <a href="mailto:showkatbhat11@gmail.com">showkatbhat11@gmail.com</a></span>
+  </div>
 </footer>
 
 </body>
