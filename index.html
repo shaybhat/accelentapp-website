@@ -85,6 +85,14 @@
       },
       {
         "@type": "Question",
+        "name": "How many phones can connect to my desktop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "2 phones can be connected at the same time, included free with every license — typically the owner plus one sales or purchase staff member. Need more devices for a bigger team? Contact us to add extra device slots to your plan."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Can I scan barcodes with my phone?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -352,13 +360,13 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-badge-row">
-    <span class="badge badge-green">100% Offline</span>
-    <span class="badge badge-sky">GST Ready</span>
-    <span class="badge badge-sky">Mobile App Included</span>
-    <span class="badge badge-sky">🔐 Encrypted Cloud Backup</span>
-    <span class="badge badge-sky">🌐 18 Languages</span>
-    <span class="badge badge-yellow">One-Time or Yearly · No Monthly Fees</span>
-    <span class="badge badge-green">🆕 New: Pakistan &amp; Sri Lanka Tax Support</span>
+    <a href="#data-ownership" class="badge badge-green" style="text-decoration:none; cursor:pointer;">100% Offline</a>
+    <a href="#gst-compliance" class="badge badge-sky" style="text-decoration:none; cursor:pointer;">GST Ready</a>
+    <a href="#mobile" class="badge badge-sky" style="text-decoration:none; cursor:pointer;">Mobile App Included</a>
+    <a href="#backup" class="badge badge-sky" style="text-decoration:none; cursor:pointer;">🔐 Encrypted Cloud Backup</a>
+    <a href="#languages" class="badge badge-sky" style="text-decoration:none; cursor:pointer;">🌐 18 Languages</a>
+    <a href="#pricing" class="badge badge-yellow" style="text-decoration:none; cursor:pointer;">One-Time or Yearly · No Monthly Fees</a>
+    <a href="#multi-country-tax" class="badge badge-green" style="text-decoration:none; cursor:pointer;">🆕 New: Pakistan &amp; Sri Lanka Tax Support</a>
   </div>
   <h1>Professional Accounting<br><span>Built for India</span></h1>
   <p>Sales, purchases, inventory, GST, payroll and reports — all in one place. Works offline, runs on your desktop, connects to your phone from anywhere.</p>
@@ -446,12 +454,13 @@
       <ul>
         <li>Real-time stock levels</li>
         <li>Low stock & out-of-stock alerts</li>
+        <li>Expiry date tracking & alerts</li>
         <li>Barcode scanning from phone camera</li>
         <li>Item-wise profit margin tracking</li>
-        <li>Smart item code generation</li>
+        <li>Auto-generated item codes — no manual SKU entry</li>
       </ul>
     </div>
-    <div class="feat-block">
+    <div class="feat-block" id="gst-compliance">
       <div class="f-icon">📋</div>
       <h3>GST & Compliance</h3>
       <ul>
@@ -462,7 +471,7 @@
         <li>GST liability & ITC register</li>
       </ul>
     </div>
-    <div class="feat-block">
+    <div class="feat-block" id="multi-country-tax">
       <div class="f-icon">🌏</div>
       <h3>Multi-Country Tax <span style="font-size:11px;font-weight:700;color:#fff;background:var(--green,#16a34a);padding:2px 8px;border-radius:999px;vertical-align:middle;margin-left:6px;">NEW</span></h3>
       <ul>
@@ -470,6 +479,7 @@
         <li>Pakistan: Federal (Goods) &amp; Provincial (Services) GST, per-authority payable</li>
         <li>Sri Lanka: VAT + SSCL compounding</li>
         <li>Nepal, Bangladesh, Bhutan, Maldives: Simple flat-rate VAT</li>
+        <li>Maldives tourism sales: separate USD billing, kept apart from your local-currency books</li>
         <li>Pick your country once at setup — rates &amp; compliance rules follow automatically</li>
       </ul>
     </div>
@@ -492,6 +502,7 @@
         <li>Day book & account statements</li>
         <li>Aging report & overdue tracking</li>
         <li>Trial balance & annual reports</li>
+        <li>Recurring expenses — auto-logged on their due date</li>
       </ul>
     </div>
     <div class="feat-block">
@@ -513,7 +524,7 @@
         <li>Party ledger reports</li>
         <li>Stock & inventory reports</li>
         <li>Income vs expense charts</li>
-        <li>Data comparison & audit tools</li>
+        <li>Sales-vs-purchase comparison to spot pricing or cost mismatches</li>
       </ul>
     </div>
     <div class="feat-block">
@@ -521,13 +532,24 @@
       <h3>Security & Multi-User</h3>
       <ul>
         <li>Role-based staff access</li>
-        <li>Audit trail on all changes</li>
+        <li>Every deleted record is logged and reviewable — undo a mistake or a bad actor's action, nothing vanishes silently</li>
         <li>Data stored locally on your PC</li>
         <li>No internet subscription needed</li>
-        <li>Finalization & data lock feature</li>
+        <li>Year-end finalization locks past entries so closed books can't be edited</li>
       </ul>
     </div>
     <div class="feat-block">
+      <div class="f-icon">📌</div>
+      <h3>Business Task Management</h3>
+      <ul>
+        <li>Central Actions Center — track every open purchase order, dispatch and follow-up in one place</li>
+        <li>Send payment reminders and receipts straight to a customer's WhatsApp</li>
+        <li>Print dispatch lists and bulk receipts</li>
+        <li>Built-in checklist so nothing falls through the cracks</li>
+        <li>Live KPI dashboard — critical, overdue and resolved items at a glance</li>
+      </ul>
+    </div>
+    <div class="feat-block" id="languages">
       <div class="f-icon">🌐</div>
       <h3>18 Languages</h3>
       <ul>
@@ -608,6 +630,7 @@
       <h2 class="section-title">Your business in your pocket</h2>
       <p class="section-sub">The Accelent Android app connects to your desktop over WiFi or Tailscale VPN — stay on top of your business from anywhere in the world.</p>
       <ul class="mobile-features">
+        <li><span class="check">✓</span> 2 phones connected free — one for you, one for a sales or purchase staff member</li>
         <li><span class="check">✓</span> View live sales, stock and balances</li>
         <li><span class="check">✓</span> Create invoices and purchases remotely</li>
         <li><span class="check">✓</span> Scan barcodes with your phone camera</li>
@@ -667,7 +690,7 @@
       <p>No credit card required. Full access to all features.</p>
       <ul class="price-features">
         <li>All features unlocked</li>
-        <li>Desktop + Mobile app</li>
+        <li>Desktop + 2 mobile devices included</li>
         <li>Unlimited entries</li>
         <li>Your data is always yours</li>
         <li>No internet subscription</li>
@@ -742,7 +765,7 @@
       <tbody>
         <tr><td>Easy to use</td><td class="yes">✓ Simple</td><td class="partial">Complex</td><td class="partial">Moderate</td><td class="partial">Manual</td></tr>
         <tr><td>Works 100% offline</td><td class="yes">✓ Always</td><td class="yes">✓</td><td class="no">✗ Cloud only</td><td class="yes">✓</td></tr>
-        <tr><td>Android mobile app</td><td class="yes">✓ Built-in</td><td class="no">✗</td><td class="yes">✓ (extra)</td><td class="no">✗</td></tr>
+        <tr><td>Android mobile app</td><td class="yes">✓ 2 devices free</td><td class="no">✗</td><td class="yes">✓ (extra)</td><td class="no">✗</td></tr>
         <tr><td>Barcode scanning</td><td class="yes">✓ Phone camera</td><td class="partial">Add-on</td><td class="no">✗</td><td class="no">✗</td></tr>
         <tr><td>GST reports</td><td class="yes">✓ Automatic</td><td class="yes">✓</td><td class="yes">✓</td><td class="partial">Manual</td></tr>
         <tr><td>E-Invoice / IRN</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">✗</td></tr>
@@ -757,7 +780,7 @@
 </section>
 
 <!-- DATA OWNERSHIP -->
-<section class="data-own">
+<section id="data-ownership" class="data-own">
   <p class="section-label">Your data. Your freedom.</p>
   <h2 class="section-title">No lock-in. Ever.</h2>
   <p class="section-sub">Your business data belongs to you — not to us, not to a cloud server.</p>
@@ -765,7 +788,7 @@
     <div class="data-card">
       <div class="icon">💾</div>
       <h3>Stored Locally</h3>
-      <p>All data is saved as an SQLite database on your own computer. No server, no subscription, no risk of data loss if we shut down.</p>
+      <p>All data is saved as an SQLite database on your own computer. No server, no subscription, no risk of data loss.</p>
     </div>
     <div class="data-card">
       <div class="icon">📤</div>
@@ -780,7 +803,7 @@
     <div class="data-card">
       <div class="icon">📥</div>
       <h3>Easy Migration</h3>
-      <p>Coming from Excel or Tally? Import your items and parties via CSV. We help you migrate without starting over.</p>
+      <p>Coming from Excel or Tally? Import your items and parties via CSV by our Smart Import button in Inventory Management in less than 2 minutes 0r we help you migrate without starting over.</p>
     </div>
   </div>
 </section>
@@ -789,7 +812,7 @@
 <section id="backup" class="screenshots">
   <p class="section-label">New · 100% Optional</p>
   <h2 class="section-title">Encrypted Cloud Backup — even we can't read it</h2>
-  <p class="section-sub">Accelent stays 100% offline by default. If you want a safety net against a lost, stolen or damaged computer, turn on Cloud Backup — it's opt-in, and it never sends your data to our servers.</p>
+  <p class="section-sub">Accelent stays 100% offline by default. If you want a safety net against a lost, stolen or damaged computer, turn on Cloud Backup and is encrypted — it's opt-in, and it never sends your data to our servers.</p>
 
   <div class="ss-hero">
     <div class="ss-label dark"><span style="color:var(--sky);">☁️</span> Set up once — choose your own folder and password</div>
@@ -844,6 +867,10 @@
     <details>
       <summary>How does the mobile app connect to the desktop?</summary>
       <div class="faq-body">On the same WiFi network, enter your desktop's local IP address in the app and you're connected instantly. For remote access (different networks), install the free Tailscale app on both devices — it creates a secure private network between them.</div>
+    </details>
+    <details>
+      <summary>How many phones can connect to my desktop?</summary>
+      <div class="faq-body">2 phones can be connected at the same time, included free with every license — typically the owner plus one sales or purchase staff member. Need more devices for a bigger team? Contact us to add extra device slots to your plan.</div>
     </details>
     <details>
       <summary>Can I scan barcodes with my phone?</summary>
@@ -912,11 +939,11 @@
       <a href="#download">Download</a>
     </div>
     <div class="footer-col">
-      <h4>GST Tools</h4>
-      <a href="#features">GSTR-1 Reports</a>
-      <a href="#features">E-Invoice / IRN</a>
-      <a href="#features">HSN Codes</a>
-      <a href="#features">GST Ledger</a>
+      <h4>Tax &amp; Compliance</h4>
+      <a href="#features">India GSTR-1 &amp; E-Invoice / IRN</a>
+      <a href="#features">Pakistan Federal &amp; Provincial GST</a>
+      <a href="#features">Sri Lanka VAT + SSCL</a>
+      <a href="#features">Simple VAT — Nepal, Bangladesh, Bhutan, Maldives</a>
     </div>
     <div class="footer-col">
       <h4>Support</h4>
