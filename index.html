@@ -14,9 +14,9 @@
     "name": "Accelent",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Windows 10/11 (64-bit), Android 8.0+",
-    "softwareVersion": "2.3.0",
+    "softwareVersion": "2.3.1",
     "url": "https://accelentapp.com",
-    "downloadUrl": "https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.0/Accelent_Desktop_v2.3.0.zip",
+    "downloadUrl": "https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_Desktop_v2.3.1.zip",
     "description": "Accelent is a 100% offline, one-time or yearly purchase accounting and inventory software for Indian small businesses. GST ready, mobile app included, available in 18 languages, with optional end-to-end encrypted cloud backup.",
     "screenshot": [
       "https://accelentapp.com/ss-dashboard.png",
@@ -121,6 +121,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes — take a photo of a paper bill and Accelent reads the line items, HSN/SAC codes and GST automatically, entirely offline (no cloud AI, nothing leaves your computer). You review the extracted data side-by-side with the original photo, with a reconciliation check confirming the totals match, before it's saved as a purchase entry."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Accelent match my purchases against the GST portal's GSTR-2B statement?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — import your GSTR-2B export from the GST portal and Accelent automatically matches it against your own purchase records, entirely offline. It flags ITC available in 2B that you haven't recorded as a purchase yet, amount mismatches, duplicate invoices, and vendors who haven't filed their invoices at all, with an exportable report you can act on or hand to your accountant."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I lock a financial year once it's closed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Closing a financial year locks every sale, purchase and transaction dated inside it — none of them can be edited or deleted afterward, keeping your filed reports and GST returns accurate. If a genuine correction is ever needed, an admin can reopen that year, and both the closing and the reopening are fully logged for audit."
         }
       },
       {
@@ -376,12 +392,13 @@
     <a href="#pricing" class="badge badge-yellow" style="text-decoration:none; cursor:pointer;">One-Time or Yearly · No Monthly Fees</a>
     <a href="#multi-country-tax" class="badge badge-green" style="text-decoration:none; cursor:pointer;">🆕 New: Pakistan &amp; Sri Lanka Tax Support</a>
     <a href="#ocr-bill-scan" class="badge badge-green" style="text-decoration:none; cursor:pointer;">🆕 New: Scan Vendor Bills (OCR)</a>
+    <a href="#gstr2b-reconciliation" class="badge badge-green" style="text-decoration:none; cursor:pointer;">🆕 New: GSTR-2B Reconciliation</a>
   </div>
   <h1>Professional Accounting<br><span>Built for India</span></h1>
   <p>Sales, purchases, inventory, GST, payroll and reports — all in one place. Works offline, runs on your desktop, connects to your phone from anywhere.</p>
   <div class="hero-btns">
-    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.0/Accelent_Desktop_v2.3.0.zip" class="btn btn-primary btn-lg" target="_blank">📥 Download for Windows</a>
-    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.0/Accelent_v1.6.2.apk" class="btn btn-green btn-lg" target="_blank">📱 Download Android APK</a>
+    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_Desktop_v2.3.1.zip" class="btn btn-primary btn-lg" target="_blank">📥 Download for Windows</a>
+    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_v1.6.2.apk" class="btn btn-green btn-lg" target="_blank">📱 Download Android APK</a>
     <a href="#features" class="btn btn-outline btn-lg">See All Features</a>
   </div>
   <p class="hero-note">Free 45-day trial · No credit card · Your data stays on your computer</p>
@@ -492,6 +509,17 @@
         <li>GST liability & ITC register</li>
       </ul>
     </div>
+    <div class="feat-block" id="gstr2b-reconciliation">
+      <div class="f-icon">🔍</div>
+      <h3>GSTR-2B Reconciliation <span style="font-size:11px;font-weight:700;color:#fff;background:var(--green,#16a34a);padding:2px 8px;border-radius:999px;vertical-align:middle;margin-left:6px;">NEW</span></h3>
+      <ul>
+        <li>Import your GSTR-2B statement from the GST portal — matched against your own purchase records automatically</li>
+        <li>Flags ITC sitting in 2B that was never entered as a purchase — money you could be claiming but aren't</li>
+        <li>Catches amount mismatches, duplicate invoices, and vendors who haven't filed yet</li>
+        <li>Runs entirely offline against your own data — nothing about your purchase ledger is uploaded anywhere</li>
+        <li>Exportable reconciliation report, ready to act on or share with your accountant</li>
+      </ul>
+    </div>
     <div class="feat-block" id="multi-country-tax">
       <div class="f-icon">🌏</div>
       <h3>Multi-Country Tax <span style="font-size:11px;font-weight:700;color:#fff;background:var(--green,#16a34a);padding:2px 8px;border-radius:999px;vertical-align:middle;margin-left:6px;">NEW</span></h3>
@@ -524,6 +552,8 @@
         <li>Aging report & overdue tracking</li>
         <li>Trial balance & annual reports</li>
         <li>Recurring expenses — auto-logged on their due date</li>
+        <li>Year-end closing locks the period — filed reports stay accurate, nothing can be silently edited afterward</li>
+        <li>Need to fix a genuine mistake in a closed year? An admin can reopen it, fully logged either way</li>
       </ul>
     </div>
     <div class="feat-block">
@@ -661,7 +691,7 @@
         <li><span class="check">✓</span> Offline cached data when not connected</li>
       </ul>
       <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
-        <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.0/Accelent_v1.6.2.apk" class="btn btn-green btn-lg" target="_blank">📱 Download Android APK</a>
+        <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_v1.6.2.apk" class="btn btn-green btn-lg" target="_blank">📱 Download Android APK</a>
       </div>
     </div>
     <div class="mobile-img">
@@ -910,6 +940,14 @@
       <div class="faq-body">Yes — take a photo of a paper bill and Accelent reads the line items, HSN/SAC codes and GST automatically. This runs entirely offline on your own computer using local OCR technology — no cloud AI, no internet connection needed, and the bill photo and its data never leave your PC. Before anything is saved, you get a review screen showing the original photo next to the extracted data, with a reconciliation check confirming the vendor, GST and total match exactly.</div>
     </details>
     <details>
+      <summary>Can Accelent match my purchases against the GST portal's GSTR-2B statement? <span style="font-size:10px;font-weight:700;color:#fff;background:var(--green);padding:2px 7px;border-radius:999px;vertical-align:middle;">NEW</span></summary>
+      <div class="faq-body">Yes — import your GSTR-2B export from the GST portal and Accelent automatically matches it against your own purchase records, entirely offline. It flags ITC available in 2B that you haven't recorded as a purchase yet (money you could be claiming but aren't), amount mismatches, duplicate invoices, and vendors who haven't filed their invoices at all — with an exportable report you can act on or hand to your accountant.</div>
+    </details>
+    <details>
+      <summary>Can I lock a financial year once it's closed? <span style="font-size:10px;font-weight:700;color:#fff;background:var(--green);padding:2px 7px;border-radius:999px;vertical-align:middle;">NEW</span></summary>
+      <div class="faq-body">Yes. Closing a financial year locks every sale, purchase and transaction dated inside it — none of them can be edited or deleted afterward, keeping your filed reports and GST returns accurate. If a genuine correction is ever needed, an admin can reopen that year, and both the closing and the reopening are fully logged for audit.</div>
+    </details>
+    <details>
       <summary>Can multiple staff members use it?</summary>
       <div class="faq-body">Yes. You can create staff accounts with role-based access — for example, a salesperson who can only raise invoices but not view financial reports. Each user logs in with their own password.</div>
     </details>
@@ -937,12 +975,12 @@
   <h2>Ready to run your business smarter?</h2>
   <p>Free 45-day trial. No credit card. No monthly fees. Your data, your computer, your control.</p>
   <div class="cta-btns">
-    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.0/Accelent_Desktop_v2.3.0.zip" class="btn btn-primary btn-lg" id="win-download" target="_blank">📥 Download for Windows</a>
-    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.0/Accelent_v1.6.2.apk" class="btn btn-green btn-lg" id="apk-download" target="_blank">📱 Download Android APK</a>
+    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_Desktop_v2.3.1.zip" class="btn btn-primary btn-lg" id="win-download" target="_blank">📥 Download for Windows</a>
+    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_v1.6.2.apk" class="btn btn-green btn-lg" id="apk-download" target="_blank">📱 Download Android APK</a>
     <a href="mailto:support@accelentapp.com" class="btn btn-wa btn-lg">💬 WhatsApp / Contact Us</a>
   </div>
   <p style="margin-top:20px; font-size:13px; color:rgba(255,255,255,.4);">Windows 10/11 · Android 8.0+ · Questions? <a href="mailto:support@accelentapp.com" style="color:var(--sky);">support@accelentapp.com</a></p>
-  <p style="margin-top:8px; font-size:13px;"><a href="https://github.com/shaybhat/accelentapp-website/releases/tag/v2.3.0" target="_blank" style="color:var(--sky);">View full release notes on GitHub →</a></p>
+  <p style="margin-top:8px; font-size:13px;"><a href="https://github.com/shaybhat/accelentapp-website/releases/tag/v2.3.1" target="_blank" style="color:var(--sky);">View full release notes on GitHub →</a></p>
 </section>
 
 <!-- FOOTER -->
