@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Accelent — Professional Accounting Software for Small Business</title>
-  <meta name="description" content="Accelent is a 100% offline, one-time purchase accounting and inventory software for Indian small businesses. GST ready, mobile app included, available in 18 languages. No monthly fees." />
+  <meta name="description" content="Accelent is a 100% offline, one-time purchase accounting and inventory software for South Asian small businesses. GST ready, mobile app included, available in 18 languages. No monthly fees." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
@@ -14,10 +14,10 @@
     "name": "Accelent",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Windows 10/11 (64-bit), Android 8.0+",
-    "softwareVersion": "2.3.1",
+    "softwareVersion": "2.3.2",
     "url": "https://accelentapp.com",
-    "downloadUrl": "https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_Desktop_v2.3.1.zip",
-    "description": "Accelent is a 100% offline, one-time or yearly purchase accounting and inventory software for Indian small businesses. GST ready, mobile app included, available in 18 languages, with optional end-to-end encrypted cloud backup.",
+    "downloadUrl": "https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.2/Accelent_Desktop_v2.3.2.zip",
+    "description": "Accelent is a 100% offline, one-time or yearly purchase accounting and inventory software for South Asian small businesses. GST ready, mobile app included, available in 18 languages, with optional end-to-end encrypted cloud backup.",
     "screenshot": [
       "https://accelentapp.com/ss-dashboard.png",
       "https://accelentapp.com/ss-sales.png",
@@ -104,7 +104,7 @@
         "name": "Is Accelent GST compliant?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Accelent automatically calculates CGST, SGST and IGST on every invoice. It generates GSTR-1 summaries and supports E-Invoice with IRN generation for businesses that require it."
+          "text": "Yes. Accelent automatically calculates CGST, SGST and IGST on every invoice, generates GSTR-1 and GSTR-3B filing-ready files, and builds a portal-compatible E-Invoice JSON for businesses that need IRN generation - see our full GST & E-Invoice guide for exactly how each step works."
         }
       },
       {
@@ -120,7 +120,7 @@
         "name": "Can Accelent read a paper vendor bill automatically?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes — take a photo of a paper bill and Accelent reads the line items, HSN/SAC codes and GST automatically, entirely offline (no cloud AI, nothing leaves your computer). You review the extracted data side-by-side with the original photo, with a reconciliation check confirming the totals match, before it's saved as a purchase entry."
+          "text": "Yes — take a photo of a paper bill and Accelent reads the line items, HSN/SAC codes and GST automatically, entirely offline (no cloud AI, nothing leaves your computer). You review the extracted data side-by-side with the original photo, with a reconciliation check confirming the totals match, before it's saved as a purchase entry. Multi-page bills can be scanned page by page and merged into one purchase."
         }
       },
       {
@@ -189,6 +189,11 @@
       --sky: #7dd3fc; --dark: #0f172a; --slate: #334155;
       --muted: #64748b; --border: #e2e8f0; --white: #ffffff; --bg: #f8fafc;
       --green: #16a34a; --red: #dc2626;
+      /* Matches the desktop app's wordmark spacing redesign (2026-09-18,
+         ui/branding.py's DEFAULT_WORDMARK_SPACING) - one shared value so
+         both "Accelent" occurrences below (nav + footer) stay in sync,
+         the same reasoning as centralizing it in the app itself. */
+      --wordmark-spacing: 3px;
     }
     body { font-family: 'Inter', system-ui, sans-serif; color: var(--slate); background: var(--white); line-height: 1.6; }
 
@@ -200,8 +205,8 @@
       padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px;
     }
     .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-brand img { height: 72px; width: auto; }
-    .nav-brand span { font-size: 20px; font-weight: 800; color: var(--teal); letter-spacing: 1px; }
+    .nav-brand img { height: 44px; width: auto; }
+    .nav-brand span { font-size: 20px; font-weight: 800; color: var(--teal); letter-spacing: var(--wordmark-spacing); }
     .nav-links { display: flex; gap: 24px; align-items: center; }
     .nav-links a { text-decoration: none; color: var(--slate); font-size: 14px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--teal); }
@@ -394,11 +399,11 @@
     <a href="#ocr-bill-scan" class="badge badge-green" style="text-decoration:none; cursor:pointer;">🆕 New: Scan Vendor Bills (OCR)</a>
     <a href="#gstr2b-reconciliation" class="badge badge-green" style="text-decoration:none; cursor:pointer;">🆕 New: GSTR-2B Reconciliation</a>
   </div>
-  <h1>Professional Accounting<br><span>Built for India</span></h1>
+  <h1>Professional Accounting<br><span>Built for South Asia</span></h1>
   <p>Sales, purchases, inventory, GST, payroll and reports — all in one place. Works offline, runs on your desktop, connects to your phone from anywhere.</p>
   <div class="hero-btns">
-    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_Desktop_v2.3.1.zip" class="btn btn-primary btn-lg" target="_blank">📥 Download for Windows</a>
-    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_v1.6.2.apk" class="btn btn-green btn-lg" target="_blank">📱 Download Android APK</a>
+    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.2/Accelent_Desktop_v2.3.2.zip" class="btn btn-primary btn-lg" target="_blank">📥 Download for Windows</a>
+    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.2/Accelent_v1.6.3.apk" class="btn btn-green btn-lg" target="_blank">📱 Download Android APK</a>
     <a href="#features" class="btn btn-outline btn-lg">See All Features</a>
   </div>
   <p class="hero-note">Free 45-day trial · No credit card · Your data stays on your computer</p>
@@ -482,6 +487,7 @@
         <li>Runs entirely on your own PC — no cloud AI, no internet needed, the bill photo and its data never leave your computer</li>
         <li>Side-by-side review screen: original photo next to the extracted data, with a reconciliation check confirming the totals match before you save</li>
         <li>Auto-matches items to your existing inventory, and flags anything uncertain for a quick confirm</li>
+        <li>Bill spans more than one page? Scan each page and merge them into a single purchase — no manual merging afterward</li>
         <li>Full undo/redo while reviewing, plus crash recovery — resume exactly where you left off if interrupted</li>
         <li>One tap creates the purchase entry, with vendor, GST and total shown for a final check before saving</li>
       </ul>
@@ -691,7 +697,7 @@
         <li><span class="check">✓</span> Offline cached data when not connected</li>
       </ul>
       <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
-        <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_v1.6.2.apk" class="btn btn-green btn-lg" target="_blank">📱 Download Android APK</a>
+        <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.2/Accelent_v1.6.3.apk" class="btn btn-green btn-lg" target="_blank">📱 Download Android APK</a>
       </div>
     </div>
     <div class="mobile-img">
@@ -929,7 +935,7 @@
     </details>
     <details>
       <summary>Is Accelent GST compliant?</summary>
-      <div class="faq-body">Yes. Accelent automatically calculates CGST, SGST and IGST on every invoice. It generates GSTR-1 summaries and supports E-Invoice with IRN generation for businesses that require it.</div>
+      <div class="faq-body">Yes. Accelent automatically calculates CGST, SGST and IGST on every invoice, and generates GSTR-1 and GSTR-3B filing-ready files plus a portal-compatible E-Invoice JSON for businesses that need IRN generation. Read the full <a href="gst-einvoice-guide.html" style="color:var(--teal);">GST &amp; E-Invoice guide</a> for the exact step-by-step, including exactly which parts Accelent automates and which you complete on the government portal.</div>
     </details>
     <details>
       <summary>Does Accelent support countries other than India? <span style="font-size:10px;font-weight:700;color:#fff;background:var(--green);padding:2px 7px;border-radius:999px;vertical-align:middle;">NEW</span></summary>
@@ -937,7 +943,7 @@
     </details>
     <details>
       <summary>Can Accelent read a paper vendor bill automatically? <span style="font-size:10px;font-weight:700;color:#fff;background:var(--green);padding:2px 7px;border-radius:999px;vertical-align:middle;">NEW</span></summary>
-      <div class="faq-body">Yes — take a photo of a paper bill and Accelent reads the line items, HSN/SAC codes and GST automatically. This runs entirely offline on your own computer using local OCR technology — no cloud AI, no internet connection needed, and the bill photo and its data never leave your PC. Before anything is saved, you get a review screen showing the original photo next to the extracted data, with a reconciliation check confirming the vendor, GST and total match exactly.</div>
+      <div class="faq-body">Yes — take a photo of a paper bill and Accelent reads the line items, HSN/SAC codes and GST automatically. This runs entirely offline on your own computer using local OCR technology — no cloud AI, no internet connection needed, and the bill photo and its data never leave your PC. Before anything is saved, you get a review screen showing the original photo next to the extracted data, with a reconciliation check confirming the vendor, GST and total match exactly. If the bill runs across more than one page, scan each page in turn and merge them straight into a single purchase entry — no manual merging afterward.</div>
     </details>
     <details>
       <summary>Can Accelent match my purchases against the GST portal's GSTR-2B statement? <span style="font-size:10px;font-weight:700;color:#fff;background:var(--green);padding:2px 7px;border-radius:999px;vertical-align:middle;">NEW</span></summary>
@@ -975,12 +981,12 @@
   <h2>Ready to run your business smarter?</h2>
   <p>Free 45-day trial. No credit card. No monthly fees. Your data, your computer, your control.</p>
   <div class="cta-btns">
-    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_Desktop_v2.3.1.zip" class="btn btn-primary btn-lg" id="win-download" target="_blank">📥 Download for Windows</a>
-    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.1/Accelent_v1.6.2.apk" class="btn btn-green btn-lg" id="apk-download" target="_blank">📱 Download Android APK</a>
+    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.2/Accelent_Desktop_v2.3.2.zip" class="btn btn-primary btn-lg" id="win-download" target="_blank">📥 Download for Windows</a>
+    <a href="https://github.com/shaybhat/accelentapp-website/releases/download/v2.3.2/Accelent_v1.6.3.apk" class="btn btn-green btn-lg" id="apk-download" target="_blank">📱 Download Android APK</a>
     <a href="mailto:support@accelentapp.com" class="btn btn-wa btn-lg">💬 WhatsApp / Contact Us</a>
   </div>
   <p style="margin-top:20px; font-size:13px; color:rgba(255,255,255,.4);">Windows 10/11 · Android 8.0+ · Questions? <a href="mailto:support@accelentapp.com" style="color:var(--sky);">support@accelentapp.com</a></p>
-  <p style="margin-top:8px; font-size:13px;"><a href="https://github.com/shaybhat/accelentapp-website/releases/tag/v2.3.1" target="_blank" style="color:var(--sky);">View full release notes on GitHub →</a></p>
+  <p style="margin-top:8px; font-size:13px;"><a href="https://github.com/shaybhat/accelentapp-website/releases/tag/v2.3.2" target="_blank" style="color:var(--sky);">View full release notes on GitHub →</a></p>
 </section>
 
 <!-- FOOTER -->
@@ -991,7 +997,7 @@
         <img src="logo.png" alt="Accelent" style="height:44px;" />
         <span>Accelent</span>
       </a>
-      <p>Professional accounting and inventory software for Indian small businesses. 100% offline. One-time price. Mobile app included.</p>
+      <p>Professional accounting and inventory software for South Asian small businesses. 100% offline. One-time price. Mobile app included.</p>
     </div>
     <div class="footer-col">
       <h4>Product</h4>
@@ -1004,6 +1010,7 @@
     <div class="footer-col">
       <h4>Tax &amp; Compliance</h4>
       <a href="#features">India GSTR-1 &amp; E-Invoice / IRN</a>
+      <a href="gst-einvoice-guide.html">GST &amp; E-Invoice Guide</a>
       <a href="#features">Pakistan Federal &amp; Provincial GST</a>
       <a href="#features">Sri Lanka VAT + SSCL</a>
       <a href="#features">Simple VAT — Nepal, Bangladesh, Bhutan, Maldives</a>
@@ -1017,7 +1024,7 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 <strong style="color:#fff;">Accelent</strong> — Professional Accounting Software</span>
-    <span>Made with ❤️ for Indian small businesses &nbsp;|&nbsp; <a href="mailto:support@accelentapp.com">support@accelentapp.com</a></span>
+    <span>Made with ❤️ for South Asian small businesses &nbsp;|&nbsp; <a href="mailto:support@accelentapp.com">support@accelentapp.com</a></span>
   </div>
 </footer>
 

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GST & E-Invoice Guide — Accelent</title>
+<meta name="description" content="Step-by-step guide to filing GSTR-1, GSTR-3B and generating e-Invoice IRNs in Accelent, with a clear line between what's automated and what you still do on the GST portal." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧾</text></svg>" />
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --surface-2: #f0ede4;
+    --border: #e2ddd0;
+    --ink: #1c1a15;
+    --ink-soft: #5c574a;
+    --ink-faint: #8b8574;
+    --teal: #0891b2;
+    --teal-dark: #0e7490;
+    --teal-tint: #e0f2fe;
+    --navy: #0f172a;
+    --amber: #b45309;
+    --amber-tint: #fef3e2;
+    --amber-border: #f2d9ad;
+    --green: #15803d;
+    --green-tint: #eaf6ec;
+    --green-border: #bfe3c6;
+    --mono-bg: #fbfaf6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14120e;
+      --surface: #1c1a15;
+      --surface-2: #23201a;
+      --border: #353126;
+      --ink: #efece3;
+      --ink-soft: #b8b1a0;
+      --ink-faint: #837c6b;
+      --teal: #38bdf8;
+      --teal-dark: #7dd3fc;
+      --teal-tint: #0d2a38;
+      --navy: #0b1120;
+      --amber: #f0b054;
+      --amber-tint: #2c2010;
+      --amber-border: #4a3a1c;
+      --green: #6bd68f;
+      --green-tint: #12261a;
+      --green-border: #244a30;
+      --mono-bg: #191712;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14120e;
+    --surface: #1c1a15;
+    --surface-2: #23201a;
+    --border: #353126;
+    --ink: #efece3;
+    --ink-soft: #b8b1a0;
+    --ink-faint: #837c6b;
+    --teal: #38bdf8;
+    --teal-dark: #7dd3fc;
+    --teal-tint: #0d2a38;
+    --navy: #0b1120;
+    --amber: #f0b054;
+    --amber-tint: #2c2010;
+    --amber-border: #4a3a1c;
+    --green: #6bd68f;
+    --green-tint: #12261a;
+    --green-border: #244a30;
+    --mono-bg: #191712;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  h1, h2, h3, .display {
+    font-family: 'IBM Plex Sans', 'Public Sans', sans-serif;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  code, .mono, .filename {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  a { color: var(--teal-dark); }
+
+  .shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 28px 80px;
+  }
+
+  /* ── Masthead ─────────────────────────────────────────── */
+  .masthead {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 32px;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 22px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+  }
+  .masthead .eyebrow {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 0 0 8px;
+  }
+  .masthead h1 {
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.015em;
+  }
+  .masthead .sub {
+    max-width: 44ch;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    margin-top: 8px;
+  }
+  .masthead .meta {
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ── Layout: rail + content ───────────────────────────── */
+  .layout {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 820px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  .rail {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  @media (max-width: 820px) {
+    .rail {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+  }
+  .rail a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 13px;
+    padding: 7px 10px;
+    border-radius: 7px;
+    border-left: 2px solid transparent;
+  }
+  @media (max-width: 820px) {
+    .rail a {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 12px;
+    }
+  }
+  .rail a:hover { background: var(--surface-2); color: var(--ink); }
+  .rail .rail-num { color: var(--ink-faint); font-family: 'IBM Plex Mono', monospace; font-size: 11px; margin-right: 6px; }
+
+  /* ── Legend / quick reference ─────────────────────────── */
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .legend-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .legend-card h3 {
+    margin: 0 0 6px;
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .legend-card p { margin: 0; font-size: 13px; color: var(--ink-soft); }
+  .legend-card.real { border-color: var(--green-border); background: var(--green-tint); }
+  .legend-card.real h3 { color: var(--green); }
+  .legend-card.manual { border-color: var(--amber-border); background: var(--amber-tint); }
+  .legend-card.manual h3 { color: var(--amber); }
+
+  /* ── Sections ─────────────────────────────────────────── */
+  section { margin-bottom: 52px; scroll-margin-top: 20px; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--teal);
+    font-weight: 600;
+  }
+  section h2 {
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .section-dek {
+    color: var(--ink-soft);
+    font-size: 14px;
+    max-width: 68ch;
+    margin: 0 0 22px;
+  }
+
+  /* ── Step list ────────────────────────────────────────── */
+  .steps { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
+  .step {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-n {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    padding-top: 2px;
+  }
+  .step-body h4 {
+    margin: 0 0 4px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .step-body p { margin: 0; font-size: 13.8px; color: var(--ink-soft); }
+  .step-body p + p { margin-top: 6px; }
+
+  .path {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 9px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--teal-dark);
+    white-space: nowrap;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .tag.real { background: var(--green-tint); color: var(--green); border: 1px solid var(--green-border); }
+  .tag.manual { background: var(--amber-tint); color: var(--amber); border: 1px solid var(--amber-border); }
+  .tag.planned { background: var(--teal-tint); color: var(--teal-dark); border: 1px solid var(--teal); }
+
+  /* ── Roadmap ──────────────────────────────────────────── */
+  .roadmap-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
+  .roadmap-item {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr) 74px;
+    gap: 14px;
+    align-items: start;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  @media (max-width: 560px) {
+    .roadmap-item { grid-template-columns: 24px 1fr; }
+    .roadmap-phase { grid-column: 2; justify-self: start; margin-top: 6px; }
+  }
+  .roadmap-phase {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    text-align: right;
+    padding-top: 2px;
+  }
+  .roadmap-item h4 { margin: 0 0 4px; font-size: 14.5px; font-weight: 700; }
+  .roadmap-item p { margin: 0; font-size: 13.8px; color: var(--ink-soft); }
+
+  /* ── Callouts ─────────────────────────────────────────── */
+  .callout {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 16px 18px;
+    margin: 18px 0;
+    font-size: 13.8px;
+  }
+  .callout.warn { background: var(--amber-tint); border-color: var(--amber-border); color: var(--ink); }
+  .callout.info { background: var(--teal-tint); border-color: var(--teal); color: var(--ink); }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 13px; }
+  .callout.warn strong { color: var(--amber); }
+  .callout.info strong { color: var(--teal-dark); }
+
+  /* ── Table ────────────────────────────────────────────── */
+  .table-wrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--border); border-radius: 12px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.3px; min-width: 480px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  th { background: var(--surface-2); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 700; }
+  tr:last-child td { border-bottom: none; }
+  td.mono { font-family: 'IBM Plex Mono', monospace; font-size: 12.3px; color: var(--teal-dark); }
+
+  /* ── Output file chip ─────────────────────────────────── */
+  .outputs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .output-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--mono-bg);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 5px 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Public+Sans:wght@400;500;600&display=swap">
+</head>
+<body>
+
+<div class="shell">
+
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--teal-dark);text-decoration:none;margin-bottom:18px;">← Back to accelentapp.com</a>
+
+  <div class="masthead">
+    <div>
+      <p class="eyebrow">Accelent · Reference Guide</p>
+      <h1>GST Filing &amp; E-Invoice, Step by Step</h1>
+      <p class="sub">How GSTR-1, GSTR-3B, GSTR-2B reconciliation and E-Invoice/IRN actually work inside Accelent 2.3.1 — and exactly where Accelent's job ends and the government portal's job begins.</p>
+    </div>
+    <div class="meta">Covers: GST Returns panel · E-Invoice panel<br>Country profile: India</div>
+  </div>
+
+  <div class="layout">
+    <nav class="rail">
+      <a href="#howitworks"><span class="rail-num">00</span>How it works</a>
+      <a href="#setup"><span class="rail-num">01</span>HSN &amp; rate setup</a>
+      <a href="#config"><span class="rail-num">02</span>One-time config</a>
+      <a href="#cycle"><span class="rail-num">03</span>Monthly/quarterly cycle</a>
+      <a href="#gstr1"><span class="rail-num">04</span>Filing GSTR-1</a>
+      <a href="#gstr3b"><span class="rail-num">05</span>Filing GSTR-3B</a>
+      <a href="#logging"><span class="rail-num">06</span>Log the filing back</a>
+      <a href="#reco"><span class="rail-num">07</span>GSTR-2B reconciliation</a>
+      <a href="#einvoice"><span class="rail-num">08</span>E-Invoice &amp; IRN</a>
+      <a href="#roadmap"><span class="rail-num">09</span>Roadmap</a>
+    </nav>
+
+    <div class="content">
+
+      <section id="howitworks">
+        <div class="legend">
+          <div class="legend-card real">
+            <h3>✅ What Accelent actually does</h3>
+            <p>Builds portal-ready GSTR-1/GSTR-3B JSON and Excel working papers from your real sales &amp; purchase data, auto-tracks your GST ledger and ITC, and matches a downloaded GSTR-2B file against your books line by line.</p>
+          </div>
+          <div class="legend-card manual">
+            <h3>🖐 What you still do on the portal</h3>
+            <p>Upload the generated JSON at <span class="mono">gst.gov.in</span>, actually file the return, get the ARN back, and — for e-Invoice — generate the real IRN at <span class="mono">einvoice1.gst.gov.in</span>. Accelent never submits anything on your behalf.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="setup">
+        <div class="section-head"><span class="section-num">01</span><h2>Prerequisite — HSN code &amp; GST rate on every item</h2></div>
+        <p class="section-dek">Everything downstream (GSTR-1's HSN summary, the e-Invoice JSON) is pulled from these two fields, so this has to be right before you file anything.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-body">
+              <h4>Open Inventory → Add/Edit Item <span class="path">ui/inventory/inventory_panel.py</span></h4>
+              <p>Fill in <strong>HSN Code</strong> (alphanumeric, validated) and <strong>GST Rate (%)</strong> for every item you sell. These save to the <span class="mono">inventory</span> table as <span class="mono">hsn_code</span> and <span class="mono">gst_rate</span>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div class="step-body">
+              <h4>Optional: export a GST/HSN-wise stock summary</h4>
+              <p>Inventory panel has an export button tooltipped "Export a GST / HSN-wise stock summary for return filing" — a quick sanity check before your first filing.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="config">
+        <div class="section-head"><span class="section-num">02</span><h2>One-time setup — GST Returns → Configuration</h2></div>
+        <p class="section-dek">Do this once. Sidebar → <strong>GST Returns</strong>, opens 11 tabs; start on the first.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-body">
+              <h4>⚙️ Configuration tab</h4>
+              <p>Enter your Company GSTIN, Company Name, Registration State, and Filing Frequency (Monthly or Quarterly). Click <strong>Save</strong>. This GSTIN is what every later export and the e-Invoice JSON pulls from — get it right the first time.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cycle">
+        <div class="section-head"><span class="section-num">03</span><h2>What happens automatically, all period long</h2></div>
+        <p class="section-dek">Nothing to click here — this runs in the background as you use the app normally.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">—</div>
+            <div class="step-body">
+              <h4>📒 GST Ledger fills itself <span class="tag real">Automatic</span></h4>
+              <p>Every sale, purchase, and credit/debit note posts a row to the GST Ledger tab as it happens. You can filter and review it any time, or hit <strong>📄 Export Ledger</strong> for a CSV/Excel copy for your own records — this is not a portal upload file, just your working record.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gstr1">
+        <div class="section-head"><span class="section-num">04</span><h2>Filing GSTR-1 (outward supplies)</h2></div>
+        <p class="section-dek">GST Returns → <strong>📈 Reports</strong> tab.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-body">
+              <h4>(Optional) 📈 Generate GSTR Summary</h4>
+              <p>An on-screen breakdown before you commit to anything — B2B, B2C-Large, B2C-Small and HSN summary, pulled straight from <span class="mono">sales_invoices</span>/<span class="mono">sales_items</span>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div class="step-body">
+              <h4>📊 Export GSTR-1 Excel — review first <span class="tag real">Real export</span></h4>
+              <p>A working-paper .xlsx with separate sheets: Summary, B2B (Table 4), B2C-Large (Table 5), B2C-Small (Table 7), HSN Summary (Table 12). Open it, check the numbers look right — this is your last chance before the portal-facing file.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div class="step-body">
+              <h4>📥 Export GSTR-1 JSON — the file you actually upload <span class="tag real">Real export</span></h4>
+              <p>Builds a real GSTR-1-shaped JSON (b2b / b2cs / b2cl / hsn / cdnr / exp / nil sections) matching the GST portal's own offline-tool schema, and saves it via a file dialog.</p>
+              <div class="outputs"><span class="output-chip">📄 GSTR1_&lt;period&gt;_&lt;date&gt;.json</span></div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">4</div>
+            <div class="step-body">
+              <h4>Upload &amp; file on the GST portal <span class="tag manual">You do this</span></h4>
+              <p>Go to <a href="https://www.gst.gov.in" target="_blank" rel="noopener">gst.gov.in</a> → Returns → the Returns Offline Tool → upload that JSON → review → file. Accelent stops at handing you the file.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gstr3b">
+        <div class="section-head"><span class="section-num">05</span><h2>Filing GSTR-3B (summary return &amp; payment)</h2></div>
+        <p class="section-dek">Same Reports tab, same rhythm.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-body">
+              <h4>📑 Calculate GSTR-3B</h4>
+              <p>Computes outward liability, ITC available, and net payable. If the period is overdue, it automatically adds 18% p.a. interest and the applicable late fee — worth checking before you assume the number shown is what you'd pay on time.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div class="step-body">
+              <h4>Save → exports GSTR-3B JSON <span class="tag real">Real export</span></h4>
+              <p>Same offline-tool-style JSON pattern as GSTR-1 — hand this to the portal's GSTR-3B utility.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div class="step-body">
+              <h4>File &amp; pay on the portal <span class="tag manual">You do this</span></h4>
+              <p>Upload, verify the auto-populated figures against your own, pay, and file.</p>
+            </div>
+          </div>
+        </div>
+        <div class="callout info">
+          <strong>Also available</strong>
+          📅 Annual GSTR-9 works the same way — an annual summary you export at year-end, filed the same manual way.
+        </div>
+      </section>
+
+      <section id="logging">
+        <div class="section-head"><span class="section-num">06</span><h2>Closing the loop — log the filing back into Accelent</h2></div>
+        <p class="section-dek">Accelent has no way to know a return was filed unless you tell it.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-body">
+              <h4>📊 Returns tab → ➕ Add Return Record</h4>
+              <p>Type in the Period, Type (GSTR-1/3B/9), Due Date, Filed Date, Liability, and Status, plus the ARN the portal gave you after filing. This is bookkeeping only — nothing here talks to the portal.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div class="step-body">
+              <h4>💰 ITC Register → Claim ITC for Current Period</h4>
+              <p>Marks the period's input tax credit as claimed in your own records once you've actually claimed it in the return.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div class="step-body">
+              <h4>🔄 Reconciliation tab</h4>
+              <p>A sanity check — compares your books' total period liability against the liability you actually filed, so a mismatch is caught before it compounds next period.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reco">
+        <div class="section-head"><span class="section-num">07</span><h2>GSTR-2B Reconciliation (the one real portal-file import)</h2></div>
+        <p class="section-dek">The only place Accelent reads a government file back in, rather than only producing one.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-body">
+              <h4>Download your GSTR-2B from the portal</h4>
+              <p>gst.gov.in → Returns Dashboard → GSTR-2B, download the .xlsx for the period.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div class="step-body">
+              <h4>🧾 GSTR-2B Reconciliation tab → 📥 Import GSTR-2B (.xlsx) <span class="tag real">Real matching</span></h4>
+              <p>Matches its B2B invoices line-by-line against your own <span class="mono">purchases</span> table — flags matched, fuzzy-matched, amount mismatches, invoices missing from your books, duplicates, and entries in your books that never showed up in 2B. This is exactly what catches ITC you're entitled to but haven't recorded.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div class="step-body">
+              <h4>📄 Export CSV</h4>
+              <p>Hand the flagged report to your accountant, or work through it yourself before the ITC claim deadline for the period.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="einvoice">
+        <div class="section-head"><span class="section-num">08</span><h2>E-Invoice &amp; IRN</h2></div>
+        <p class="section-dek">Sidebar → <strong>E-Invoice</strong>. Read this section fully before you rely on it — the IRN part is not automated.</p>
+
+        <div class="callout warn">
+          <strong>Be clear on this before you start</strong>
+          Accelent builds a real, portal-compatible e-Invoice JSON. It does <em>not</em> call the government's IRP API to fetch a real IRN — there's an "IRP Credentials" tab where you can save API credentials, but nothing in the app currently makes a live connection with them. Getting the actual IRN still happens on the government side, outside Accelent.
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-body">
+              <h4>📄 Generate JSON tab</h4>
+              <p>Search and pick the sales invoice you need an IRN for, then <strong>▶ Preview JSON</strong>. Builds the real NIC e-Invoice schema v1.1 payload (SellerDtls / BuyerDtls / ItemList / ValDtls, with proper state-code lookups).</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div class="step-body">
+              <h4>📥 Download JSON <span class="tag real">Real export</span></h4>
+              <p>Saves the payload to disk. Accelent shows you exactly where it goes next: <span class="mono">einvoice1.gst.gov.in → Others → Bulk Generate IRN</span>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div class="step-body">
+              <h4>Generate the IRN on the portal (or via a GSP) <span class="tag manual">You do this</span></h4>
+              <p>Upload the JSON at the e-Invoice portal, or hand it to your GST Suvidha Provider if you use one. You get back a real IRN, an acknowledgement number/date, and a signed QR code — none of which Accelent generates itself.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <strong>Known gap — there's currently no field to bring the IRN back in</strong>
+          Accelent has the data model ready for this (an IRN Log tab, and <span class="mono">irn</span>/<span class="mono">ack_no</span>/<span class="mono">ack_date</span> columns on the invoice), but nothing in the current build actually writes to them — so once you have the real IRN from the portal, there's no working "paste it back in" step yet. Until that's built, keep the IRN/QR code with your filing records outside Accelent (or in the invoice's own Notes field as a practical workaround), not inside the IRN Log tab.
+        </div>
+      </section>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Panel / Tab</th><th>What it produces</th><th>Format</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>GST Returns → Reports</td><td>GSTR-1 filing file</td><td class="mono">.json</td><td>✅ Real</td></tr>
+            <tr><td>GST Returns → Reports</td><td>GSTR-1 working paper</td><td class="mono">.xlsx</td><td>✅ Real</td></tr>
+            <tr><td>GST Returns → Reports</td><td>GSTR-3B filing file</td><td class="mono">.json</td><td>✅ Real</td></tr>
+            <tr><td>GST Returns → Reports</td><td>Annual GSTR-9 summary</td><td class="mono">.json</td><td>✅ Real</td></tr>
+            <tr><td>GST Returns → GSTR-2B Reconciliation</td><td>Matched/flagged report</td><td class="mono">.csv</td><td>✅ Real (import + match)</td></tr>
+            <tr><td>GST Returns → GST Ledger</td><td>Your own transaction ledger</td><td class="mono">.csv/.xlsx</td><td>✅ Real (records, not a filing)</td></tr>
+            <tr><td>E-Invoice → Generate JSON</td><td>NIC e-Invoice payload</td><td class="mono">.json</td><td>✅ Real</td></tr>
+            <tr><td>E-Invoice → IRP Credentials</td><td>Live IRN from government API</td><td>—</td><td>🖐 Not automated — stub</td></tr>
+            <tr><td>E-Invoice → IRN Log</td><td>Record of IRN once issued</td><td>—</td><td>🖐 No write-back yet</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <section id="roadmap">
+        <div class="section-head"><span class="section-num">09</span><h2>E-Invoice &amp; GST Roadmap</h2></div>
+        <p class="section-dek">Not built yet — closes the gaps this guide flagged above. Grouped by real dependency (later items need the data the earlier ones start capturing), not by date. Nothing here is scheduled; it's the order that makes sense to build in whenever work resumes.</p>
+
+        <div class="roadmap-list">
+          <div class="roadmap-item">
+            <div class="step-n">1</div>
+            <div>
+              <h4>Dedicated IRN / Ack / QR DB fields</h4>
+              <p>The data model already exists — <span class="mono">irn_log</span> table, <span class="mono">sales_invoices.irn</span>/<span class="mono">ack_no</span>/<span class="mono">ack_date</span> — but nothing currently writes to it. Foundation for everything below.</p>
+            </div>
+            <div class="roadmap-phase">Phase 1</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="step-n">2</div>
+            <div>
+              <h4>IRP JSON response importer</h4>
+              <p>Import the response you get back from the portal/GSP after generating an IRN, auto-filling IRN, Ack No, Ack Date and the signed QR payload. This is the fix for "no way to bring the IRN back in," flagged above.</p>
+            </div>
+            <div class="roadmap-phase">Phase 1</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="step-n">3</div>
+            <div>
+              <h4>Pre-flight schema validation</h4>
+              <p>Validate the outgoing e-Invoice JSON against the NIC schema before upload — a missing field or bad HSN gets caught locally instead of as a portal rejection.</p>
+            </div>
+            <div class="roadmap-phase">Phase 2</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="step-n">4</div>
+            <div>
+              <h4>Signed QR code on the Accelent PDF</h4>
+              <p>Render the real signed QR code on the printed invoice once it's e-invoiced — depends on Phase 1's IRN/QR data actually being stored first.</p>
+            </div>
+            <div class="roadmap-phase">Phase 2</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="step-n">5</div>
+            <div>
+              <h4>Unified E-Way Bill data in the JSON</h4>
+              <p>Fold E-Way Bill details into the same e-Invoice JSON generation — the 🚚 E-Way Bill tab already exists in GST Returns as its own thing; this ties it to IRN generation the way the real portal often combines the two.</p>
+            </div>
+            <div class="roadmap-phase">Phase 3</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="step-n">6</div>
+            <div>
+              <h4>Compliance &amp; lifecycle safeguards</h4>
+              <p>In-app warnings for the real regulatory clocks — the IRN cancellation window, and the restriction on generating an IRN for an invoice past a certain age — so a deadline doesn't pass unnoticed.</p>
+            </div>
+            <div class="roadmap-phase">Phase 3</div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span>Accelent 2.3.1 · India tax profile</span>
+        <span>Accurate to the code as of this guide's writing — verify against your own installed version if in doubt.</span>
+      </footer>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
