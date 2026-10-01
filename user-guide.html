@@ -1,0 +1,1138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accelent — Complete User Guide</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Segoe UI, Arial, sans-serif; font-size: 14px; color: #2c3e50; background: #f0f4f8; }
+
+  /* Cover */
+  .cover { background: linear-gradient(135deg, #1abc9c 0%, #16a085 50%, #0e6655 100%);
+           color: white; padding: 70px 40px 50px; text-align: center; }
+  .cover h1 { font-size: 42px; letter-spacing: 1px; }
+  .cover .sub { font-size: 18px; opacity: .85; margin-top: 8px; }
+  .cover .ver { font-size: 13px; opacity: .65; margin-top: 16px; letter-spacing: 2px; text-transform: uppercase; }
+  .cover-badges { margin-top: 28px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .badge { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+           padding: 6px 16px; border-radius: 20px; font-size: 13px; }
+
+  /* Layout */
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+  .section { background: white; max-width: 900px; margin: 28px auto; padding: 36px 44px;
+             border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+
+  /* TOC */
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 14px; }
+  .toc-grid a { color: #2980b9; text-decoration: none; line-height: 2; font-size: 13.5px; }
+  .toc-grid a:hover { text-decoration: underline; }
+  .toc-num { color: #1abc9c; font-weight: bold; margin-right: 5px; }
+
+  /* Headings */
+  h2 { font-size: 22px; color: #16a085; border-bottom: 2px solid #e8f8f5;
+       padding-bottom: 10px; margin-bottom: 20px; }
+  h3 { font-size: 16px; color: #2c3e50; margin: 22px 0 9px; }
+  h4 { font-size: 14px; color: #16a085; margin: 14px 0 6px; }
+  p  { line-height: 1.85; margin-bottom: 11px; color: #444; }
+  ul, ol { padding-left: 22px; line-height: 2.1; color: #444; margin-bottom: 10px; }
+
+  /* Steps */
+  .step { display: flex; gap: 14px; align-items: flex-start; margin: 10px 0; }
+  .step-num { background: #1abc9c; color: white; min-width: 28px; height: 28px;
+              border-radius: 50%; display: flex; align-items: center; justify-content: center;
+              font-weight: bold; font-size: 13px; margin-top: 1px; }
+  .step-body { flex: 1; line-height: 1.8; color: #444; }
+
+  /* Callout boxes */
+  .tip  { background: #eaf6fb; border-left: 4px solid #3498db; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .warn { background: #fef9e7; border-left: 4px solid #f39c12; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .good { background: #eafaf1; border-left: 4px solid #2ecc71; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .err  { background: #fdedec; border-left: 4px solid #e74c3c; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+  th { background: #16a085; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 9px 14px; border-bottom: 1px solid #ecf0f1; vertical-align: top; }
+  tr:hover td { background: #f0fdf9; }
+
+  /* Panel cards */
+  .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .panel-card { border: 1px solid #d5f5ee; border-radius: 8px; padding: 14px 16px;
+                background: #f9fffe; }
+  .panel-card h4 { color: #16a085; margin-bottom: 6px; font-size: 14.5px; }
+  .panel-card p  { font-size: 13px; margin: 0; color: #555; line-height: 1.7; }
+
+  /* Concept boxes */
+  .concept { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;
+             padding: 16px 20px; margin: 12px 0; }
+  .concept h4 { color: #2c3e50; margin-bottom: 6px; }
+
+  /* Code */
+  code { background: #ecf0f1; padding: 2px 7px; border-radius: 3px;
+         font-family: Consolas, monospace; font-size: 13px; }
+  .path { background: #2c3e50; color: #1abc9c; padding: 8px 14px; border-radius: 5px;
+          font-family: Consolas, monospace; font-size: 13px; display: inline-block; margin: 6px 0; }
+
+  /* Chapter header */
+  .chapter-banner { background: linear-gradient(90deg, #1abc9c, #16a085);
+                    color: white; padding: 14px 44px; max-width: 900px; margin: 28px auto 0;
+                    border-radius: 10px 10px 0 0; font-size: 13px; letter-spacing: 1px;
+                    text-transform: uppercase; font-weight: bold; }
+  .chapter-banner + .section { margin-top: 0; border-radius: 0 0 10px 10px; }
+
+  footer { text-align: center; padding: 36px; color: #aaa; font-size: 12px; }
+
+  @media(max-width:640px) {
+    .section { padding: 24px 20px; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .panel-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div style="text-align:left;max-width:900px;margin:-50px auto 30px;"><a href="index.html" style="color:white;opacity:.85;text-decoration:none;font-size:13px;">← Back to accelentapp.com</a></div>
+  <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
+  <h1>Accelent</h1>
+  <div class="sub">Complete User Guide — Accounting &amp; Inventory Management</div>
+  <div class="ver">Version 2.3.7 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
+  <div class="cover-badges">
+    <span class="badge">🖥️ Windows Desktop</span>
+    <span class="badge">📱 Android Mobile</span>
+    <span class="badge">🌐 18 Languages</span>
+    <span class="badge">📊 GST Ready</span>
+    <span class="badge">☁️ Remote Access</span>
+    <span class="badge">🔐 Staff Permissions</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ WHAT'S NEW 2.3.7 -->
+<div class="section" id="whatsnew2_3_7">
+  <h2>🆕 What's New in Version 2.3.7</h2>
+  <p>Everything added since version 2.3.0. The biggest additions are <strong>Staff Permissions</strong>, the <strong>yearly subscription</strong>, and complete GST figures for entries made on the phone.</p>
+
+  <h3>🔐 Staff Permissions</h3>
+  <ul>
+    <li>Decide exactly what each staff member can see and do: hide revenue, profit, balances, purchase costs, GST and payroll; stop them editing or deleting past bills, or changing stock, prices and tax rates.</li>
+    <li>Start from a template (Billing Staff, Store Keeper, Accountant, Manager) and adjust 12 checkboxes. The admin always has full access.</li>
+    <li>The same rules apply on the phone app — screens a staff member isn't allowed simply don't appear. See <a href="#ch16">Chapter 16</a>.</li>
+  </ul>
+
+  <h3>🔑 Yearly Subscription</h3>
+  <ul>
+    <li>A license now runs for one year. Renew from 30 days before it ends — early renewal adds the year on top, so you never lose days.</li>
+    <li>If a renewal is missed, bill scanning pauses at once but billing keeps working for 7 more days, so the shop never stops mid-sale.</li>
+    <li>The free trial is 45 days and includes 15 vendor bill scans. See <a href="#ch16">Chapter 16 — Your Subscription</a>.</li>
+  </ul>
+
+  <h3>📊 GST and Accounts Corrections</h3>
+  <ul>
+    <li>Sales and purchases entered on the phone now count in GST Returns (output tax, input tax credit and the summary).</li>
+    <li>The GSTR-1 export now calculates taxable value and tax correctly for every sale, and its HSN summary uses each item's real HSN code. Before exporting, Accelent lists any sold items that still have no HSN code.</li>
+    <li>Deleting or editing a bill now updates its GST entry too, so tax is never counted for a bill that no longer exists, or counted twice.</li>
+    <li>Supplier balances are now the same on the phone and the desktop, and a purchase paid in cash or by bank on the phone is no longer shown as money owed.</li>
+    <li>All of these corrections are applied to your existing data automatically the first time the new version starts.</li>
+  </ul>
+
+  <h3>📱 Phone App (1.6.6)</h3>
+  <ul>
+    <li>A <strong>Pending</strong> purchase or <strong>Unpaid</strong> sale made on the phone is recorded as credit to the supplier or customer (with the customer's credit limit checked), exactly like the desktop.</li>
+    <li>Each staff account uses one phone seat, even after the app is reinstalled on their phone.</li>
+    <li>Menus and figures on the phone follow the staff member's permissions.</li>
+  </ul>
+
+  <h3>Also added since 2.3.0</h3>
+  <ul>
+    <li><strong>Pakistan and Sri Lanka tax support</strong>, alongside India GST and Simple VAT countries.</li>
+    <li><strong>GSTR-2B reconciliation</strong> and <strong>year-end closing</strong>, with a financial-year switch in the status bar.</li>
+    <li><strong>Wrong computer date protection:</strong> if the PC's clock is wrong (for example a weak motherboard battery), Accelent keeps working and asks you to correct the date instead of locking you out.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ WHAT'S NEW 2.3.0 -->
+<div class="section" id="whatsnew">
+  <h2>🆕 What's New in Version 2.3.0</h2>
+  <p>This update brings a fully offline, AI-powered <strong>Scan Vendor Bill</strong> feature to Purchase Panel — photograph a paper bill and Accelent reads the line items, HSN codes, and GST straight off it, with a full review screen before anything is saved. No internet connection is used at any point; the photo never leaves your computer. See <a href="#ch10">Chapter 10 — Purchases</a> for the full walkthrough.</p>
+
+  <h3>📷 Scan Vendor Bill — straighten, then scan</h3>
+  <ul>
+    <li>Pick a photo of the bill and Accelent shows it to you first, with <strong>Rotate Left / Rotate Right</strong> buttons — straighten a sideways or upside-down photo before scanning starts. An already-upright photo scans in a few seconds; a crooked one can take 20–30 seconds while it works out the right orientation on its own, so straightening first is worth it.</li>
+    <li><strong>Cancel Scan actually stops it</strong> — closing the progress box or clicking Cancel Scan now genuinely stops the background scan, instead of just hiding the box while it kept running unseen.</li>
+  </ul>
+
+  <h3>✅ Review screen — verify everything before it touches your books</h3>
+  <ul>
+    <li>The scanned photo sits side-by-side with an editable line-item grid — click any row to jump straight to where it came from on the bill photo.</li>
+    <li>A live <strong>Reconciliation Status</strong> banner checks the line items against the bill's own printed total, so a misread line is obvious before you apply anything.</li>
+    <li><strong>HSN/SAC and GST% now fill in automatically</strong> from the bill's own printed HSN code — a blank or unreadable HSN shows a clear "?" instead of a silently-guessed rate, so you know exactly which rows to double-check.</li>
+    <li><strong>Undo/Redo</strong> (Ctrl+Z) for every edit, add, remove, and bulk action in the grid — a wrong click is never permanent.</li>
+    <li><strong>If you're interrupted mid-review</strong> (the app closes, the computer sleeps, anything) — picking the same photo again offers to resume exactly where you left off, without re-scanning.</li>
+    <li><strong>Auto-Match</strong> now uses smarter fuzzy matching against your existing catalog, with a confirmation popup for anything it's only moderately sure about — never a silent guess.</li>
+    <li><strong>Works for a brand-new vendor with no purchase history too</strong> — every line just becomes a new item, the same as adding one by hand.</li>
+  </ul>
+
+  <h3>💾 Apply &amp; Save Purchase Now</h3>
+  <ul>
+    <li>A new button saves the purchase directly from the review screen — no need to go check the New Purchase form separately to confirm it saved correctly.</li>
+    <li>Shows an exact confirmation (Vendor, Goods Amount, GST, Grand Total) before anything is written, computed the same way the actual save calculates it.</li>
+    <li>Only ever saves the items you just scanned and checked — never anything else that happened to already be sitting in that vendor's purchase form.</li>
+  </ul>
+
+  <div class="tip">💡 Scan Vendor Bill needs local AI components that aren't included in every build — if the button reports it's unavailable, everything else in Accelent works normally; this one feature just isn't set up on that particular install.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ WHAT'S NEW -->
+<div class="section" id="whatsnew2_1_0">
+  <h2>🆕 What's New in Version 2.1.0</h2>
+  <p>This update reworks Purchase Panel's New Purchase screen and extends barcode scanning further. See <a href="#ch10">Chapter 10 — Purchases</a> and <a href="#ch8b">Chapter 8b — Low Stock Monitor</a> for the full walkthroughs.</p>
+
+  <h3>Purchase Panel — New Purchase, redesigned</h3>
+  <ul>
+    <li><strong>Vendor-first flow:</strong> pick a vendor and their usual items auto-fill straight into the Order Items table, ready to review and save.</li>
+    <li><strong>Scan a barcode to add or merge an item</strong> directly into the purchase, with a visible confirmation every time.</li>
+    <li><strong>Per-row barcode status</strong> — see at a glance which items have a barcode, attach one with your phone, or clear a stuck/incorrect scan.</li>
+    <li><strong>➕ Add Item to Same Vendor</strong> for registering a brand-new product mid-purchase, barcode included.</li>
+    <li>All existing payment methods (Cash, Bank Transfer, Cheque, Card, UPI, Credit to Vendor) and full GST (CGST/SGST) recording are unchanged.</li>
+  </ul>
+
+  <h3>Mobile scanning</h3>
+  <ul>
+    <li><strong>Low Stock Monitor's Quick New Order</strong> can now scan a barcode for a brand-new item — previously manual entry only.</li>
+    <li><strong>Every successful phone scan now shows a clear "✓ Scanned" confirmation</strong> instead of silently filling the field.</li>
+    <li><strong>Bigger, easier-to-tap selection checkboxes</strong> in the Order Items tables.</li>
+  </ul>
+
+  <div class="tip">💡 If you're upgrading from an earlier version, no action is needed — open New Purchase as usual and the new screen is there.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ WHAT'S NEW 2.0.1 -->
+<div class="section" id="whatsnew2_0_1">
+  <h2>🆕 What's New in Version 2.0.1</h2>
+  <p>This update is a bug-fix and quality release, based on real day-to-day testing of the app. Nothing about how you use Accelent has changed — these are things that now work correctly, or work better, without any new steps to learn.</p>
+
+  <h3>🌐 Multi-Language Support Expanded</h3>
+  <ul>
+    <li><strong>8 new languages added:</strong> Bengali, Tamil, Telugu, Kannada, Gujarati, Marathi, Punjabi, and Nepali — bringing the total to <strong>14 languages</strong>.</li>
+    <li><strong>The Language dropdown now shows each language's own name in its own script</strong> (e.g. "ਪੰਜਾਬੀ", "தமிழ்") instead of a two-letter code like "pa" or "ta" — so you can find your language without already knowing English.</li>
+  </ul>
+
+  <h3>Global Search</h3>
+  <ul>
+    <li><strong>Vendor search no longer crashes.</strong> It was failing every time due to a database column mismatch.</li>
+    <li><strong>Fixed a rare crash</strong> that could occur right after searching (a background-thread cleanup issue).</li>
+    <li><strong>Item, Purchase Order, and Invoice detail pop-ups now show correct quantities and prices</strong> — some were incorrectly showing 0 due to the same kind of mismatch.</li>
+    <li><strong>Item details now show much more useful information</strong>: rate, value, and a plain-English note for every stock movement (e.g. "Sale to Fuji", "Opening stock via import"), plus a computed Stock Value.</li>
+    <li><strong>Printing from any detail pop-up (PO/Invoice/Item/Customer/Vendor) is fixed</strong> — it used to print a tiny, unreadable sliver of text; it now prints full-size and correctly formatted.</li>
+  </ul>
+
+  <h3>Inventory</h3>
+  <ul>
+    <li><strong>Clicking a row to edit it now works reliably.</strong> A row could highlight without loading its details into the form — that's fixed.</li>
+    <li><strong>Item codes are now a consistent, readable format</strong> (e.g. <code>TOYS-BI-DO-001</code>) so they always display cleanly in the item list, instead of sometimes running too long to read.</li>
+    <li><strong>Audit Trail now shows the ₹ value of every stock movement</strong>, not just the quantity change — including a running <strong>Total value</strong> for whatever you've filtered (e.g. filter Reason = "import" to see exactly how much stock value a bulk import brought in).</li>
+    <li>Added a <strong>🖨️ Print Report</strong> button to the Audit Trail tab.</li>
+  </ul>
+
+  <h3>Stock Expiry Alerts</h3>
+  <ul>
+    <li><strong>This panel now actually works.</strong> It was silently showing an empty list regardless of your data — it's now correctly connected to your live inventory.</li>
+    <li>Added a <strong>right-click menu</strong> on any row for Set Expiry and Print Report, in addition to the existing toolbar buttons.</li>
+  </ul>
+
+  <h3>Sales &amp; Purchase Returns</h3>
+  <ul>
+    <li><strong>Posting a return now actually updates stock.</strong> A Credit Note or Debit Note used to save correctly but leave the item's stock quantity unchanged — returns now correctly increase/decrease stock and show up in the Audit Trail (Reason = "return").</li>
+    <li><strong>Refunds on a Cash sale now correctly reduce Cash in Hand.</strong> Previously the refund amount didn't visibly go anywhere for a walk-in cash customer.</li>
+    <li><strong>Refunds on a Credit sale now correctly reduce what the customer owes</strong>, instead of accidentally adding to their balance.</li>
+    <li><strong>Purchase and Sales Returns are now reflected in your books</strong> — the Profit &amp; Loss, Trading Account, and Balance Sheet reports net returns out of Purchases/Sales instead of ignoring them.</li>
+  </ul>
+
+  <h3>Books of Accounts</h3>
+  <ul>
+    <li><strong>Imported/transferred inventory value is now counted as Opening Stock</strong> in the Profit &amp; Loss, Trading Account, and Balance Sheet reports. Previously, stock brought in through the Smart Import tool (rather than a recorded Purchase) was invisibly counted as pure profit once sold.</li>
+    <li>The <strong>Comparison</strong> report (Inventory Reports → Comparison tab) now uses an item's recorded cost for items with no purchase history in the selected range, instead of showing their full sale price as 100% profit.</li>
+    <li>The Comparison tab has two new columns, <strong>Imported Qty</strong> and <strong>Purchase/Sales Return Qty</strong>, so you can see at a glance why an item's Qty In/Out looks different from its actual stock — no more cross-checking the Audit Trail or Returns panel separately.</li>
+    <li><strong>Gross Profit in the Comparison tab now correctly nets out Sales Returns</strong> — a returned unit is no longer counted as sold revenue/profit.</li>
+  </ul>
+
+  <div class="tip">💡 If you're upgrading from an earlier version, no action is needed — these fixes apply automatically to your existing data the next time you open the app. See <a href="#ch18">Chapter 18 — Upgrading to a New Version</a>.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ TOC -->
+<div class="section">
+  <h2>Table of Contents</h2>
+  <div class="toc-grid">
+    <div>
+      <a href="#ch1"><span class="toc-num">1.</span>What is Accelent?</a><br>
+      <a href="#ch2"><span class="toc-num">2.</span>Accounting Basics for New Users</a><br>
+      <a href="#ch3"><span class="toc-num">3.</span>Installing the Desktop App</a><br>
+      <a href="#ch4"><span class="toc-num">4.</span>First-Time Company Setup</a><br>
+      <a href="#ch5"><span class="toc-num">5.</span>Migrating from Another Software</a><br>
+      <a href="#ch6"><span class="toc-num">6.</span>Language &amp; Theme</a><br>
+      <a href="#ch7"><span class="toc-num">7.</span>Dashboard</a><br>
+      <a href="#ch8"><span class="toc-num">8.</span>Inventory Panel</a><br>
+      <a href="#ch8b"><span class="toc-num">8b.</span>Low Stock Monitor</a><br>
+      <a href="#ch9"><span class="toc-num">9.</span>Sales Panel</a><br>
+    </div>
+    <div>
+      <a href="#ch10"><span class="toc-num">10.</span>Purchases Panel</a><br>
+      <a href="#ch11"><span class="toc-num">11.</span>Expenses &amp; Receipts</a><br>
+      <a href="#ch12"><span class="toc-num">12.</span>Accounts &amp; Transfers</a><br>
+      <a href="#ch13"><span class="toc-num">13.</span>Reports &amp; Aging</a><br>
+      <a href="#ch14"><span class="toc-num">14.</span>Employees &amp; Payroll</a><br>
+      <a href="#ch15"><span class="toc-num">15.</span>GST Returns &amp; E-Invoice</a><br>
+      <a href="#ch16"><span class="toc-num">16.</span>Settings &amp; Admin</a><br>
+      <a href="#ch17"><span class="toc-num">17.</span>Your Data — Location, Backup &amp; Restore</a><br>
+      <a href="#ch18"><span class="toc-num">18.</span>Upgrading to a New Version</a><br>
+      <a href="#ch19"><span class="toc-num">19.</span>Mobile App Setup &amp; Use</a><br>
+      <a href="#ch19b"><span class="toc-num">19b.</span>💬 Desktop–Mobile Messaging</a><br>
+      <a href="#ch20"><span class="toc-num">20.</span>Troubleshooting</a><br>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 1 -->
+<div class="chapter-banner">Chapter 1 — Introduction</div>
+<div class="section" id="ch1">
+  <h2>1. What is Accelent?</h2>
+  <p>Accelent is a complete accounting and inventory management system designed for small and medium businesses — shops, distributors, wholesalers, and service providers. It runs on a Windows PC and pairs with an Android mobile app so you can check your business from anywhere.</p>
+
+  <div class="panel-grid">
+    <div class="panel-card">
+      <h4>🖥️ Desktop App</h4>
+      <p>Full-featured accounting, invoicing, inventory, GST returns, payroll, and reporting. Everything runs on your Windows PC. No internet required for daily use.</p>
+    </div>
+    <div class="panel-card">
+      <h4>📱 Mobile App</h4>
+      <p>View live sales, inventory, and balances from your phone. Create invoices and purchases remotely. Connects to the desktop over your local WiFi or from anywhere via Tailscale.</p>
+    </div>
+    <div class="panel-card">
+      <h4>📊 What it manages</h4>
+      <p>Sales invoices · Purchase bills · Inventory &amp; stock · Parties (customers &amp; vendors) · Bank &amp; cash accounts · Employees &amp; payroll · GST &amp; e-invoicing</p>
+    </div>
+    <div class="panel-card">
+      <h4>🔒 Your data stays yours</h4>
+      <p>All data is stored locally on your PC in a single database file. Nothing is sent to any cloud server. You own it completely.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 2 -->
+<div class="chapter-banner">Chapter 2 — Accounting Basics</div>
+<div class="section" id="ch2">
+  <h2>2. Accounting Basics for New Users</h2>
+  <p>If you are new to accounting software, read this section first. You do not need a degree in accounting — just an understanding of a few key concepts.</p>
+
+  <div class="concept">
+    <h4>💰 Cash vs Bank</h4>
+    <p>Your business has money in two places: <strong>cash in hand</strong> (physical notes in your drawer) and <strong>bank accounts</strong> (money in your bank). Accelent tracks both separately. When you receive cash, the cash balance goes up. When you deposit into a bank, cash goes down and bank goes up.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧾 Invoice (Sales Bill)</h4>
+    <p>An invoice is a bill you give to a customer when they buy from you. It lists the items, quantities, prices, and total amount. In Accelent, every invoice is recorded and linked to the customer's account automatically.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🛒 Purchase Bill</h4>
+    <p>A purchase bill is the bill you receive from a supplier when you buy goods. Recording it in Accelent automatically increases your inventory stock and records the amount owed to that supplier.</p>
+  </div>
+
+  <div class="concept">
+    <h4>👥 Parties (Customers &amp; Vendors)</h4>
+    <p>A <strong>Party</strong> is anyone you do regular business with. Customers owe you money (receivable — shown in green). Vendors/suppliers are people you owe money to (payable — shown in red). Accelent tracks each party's balance automatically from all transactions.</p>
+  </div>
+
+  <div class="concept">
+    <h4>📦 Inventory / Stock</h4>
+    <p>Inventory is the list of items/products you sell. For each item, Accelent tracks the <strong>quantity in stock</strong>, <strong>selling price</strong>, <strong>purchase price</strong>, and <strong>minimum stock level</strong> (when it should alert you to reorder).</p>
+  </div>
+
+  <div class="concept">
+    <h4>⚖️ Opening Balance</h4>
+    <p>When you start using Accelent for the first time, you need to tell the system what you already have — how much cash, how much in each bank account, and how much each customer owes you or you owe each vendor. These are called <strong>Opening Balances</strong> and are entered once during initial setup.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧮 Debit / Credit (Simplified)</h4>
+    <p>You do not need to worry about debit/credit entries in Accelent — the software handles it automatically. When you record a sale, it adds to your income and the customer's balance. When you record a purchase, it adds to your stock and vendor balance. <strong>Just record what happened — Accelent handles the accounting.</strong></p>
+  </div>
+
+  <div class="concept">
+    <h4>📅 Financial Year</h4>
+    <p>In India, the financial year runs from <strong>1 April to 31 March</strong> of the next year. GST returns, balance sheets, and profit &amp; loss are calculated within this period. Accelent's Finalization panel helps you close a financial year cleanly.</p>
+  </div>
+
+  <div class="tip">💡 <strong>Golden Rule:</strong> Record every sale, every purchase, and every expense the same day it happens. The more regular you are, the more accurate your reports and balances will be.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 3 -->
+<div class="chapter-banner">Chapter 3 — Installation</div>
+<div class="section" id="ch3">
+  <h2>3. Installing the Desktop App</h2>
+
+  <h3>What You Need</h3>
+  <ul>
+    <li>Windows 10 or Windows 11 (64-bit)</li>
+    <li><strong>RAM:</strong> 8 GB recommended for the quickest bill scanning. 4 GB is the minimum — everything works, but bill scans take longer.</li>
+    <li>About 1 GB of free disk space</li>
+    <li>The installer: <code>Accelent_Setup_v2.3.7.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
+  </ul>
+
+  <h3>Installing with the Installer (Recommended)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.3.7.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Double-click it. If Windows shows a SmartScreen warning, click <strong>"More info"</strong> then <strong>"Run anyway"</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Follow the steps and click <strong>Install</strong>. The installer also sets up the Windows components that bill scanning needs.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Open Accelent from the Start menu or the desktop shortcut.</div></div>
+
+  <h3>Portable Zip (Alternative)</h3>
+  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.3.7.zip</code> instead and follow these steps:</p>
+
+  <h3>Installation Steps</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.3.7.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Open the extracted <code>Accelent</code> folder. You will see <code>Accelent.exe</code>, <code>setup.bat</code>, and several support folders.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Double-click <strong>Accelent.exe</strong>. Windows may show a SmartScreen warning — click <strong>"More info"</strong> then <strong>"Run anyway"</strong>. This happens because the app is not yet digitally signed.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">The app opens. On first launch, it creates your database file automatically at <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span></div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Right-click <code>Accelent.exe</code> → <em>Send to → Desktop (create shortcut)</em> for easy daily access.</div></div>
+
+  <h3>First-Time Firewall Setup (for Mobile App)</h3>
+  <p>Run this once if you will use the mobile companion app:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">In the <code>Accelent</code> folder, double-click <strong>setup.bat</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Windows asks for Administrator permission — click <strong>Yes</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">The script opens port 8765 in the Windows Firewall and shows your PC's IP address. Note the IP — you may need it for manual phone connection.</div></div>
+
+  <div class="warn">⚠ If you skip setup.bat, the mobile app will not be able to connect to the desktop.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 4 -->
+<div class="chapter-banner">Chapter 4 — First-Time Company Setup</div>
+<div class="section" id="ch4">
+  <h2>4. First-Time Company Setup</h2>
+  <p>When you first open Accelent, spend 10 minutes entering your company details before recording any transactions.</p>
+
+  <h3>Step 1 — Enter Company Information</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings</strong> (⚙️ in the sidebar) → click the <strong>🏢 Company</strong> tab.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Fill in your company name, address, phone number, email, GST number (GSTIN), and PAN number.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Upload your company logo — it will appear on all printed invoices.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Save Company Settings</strong>.</div></div>
+
+  <h3>Step 2 — Set Opening Balances</h3>
+  <p>Opening balances tell the software what you already had on Day 1. Enter these once and do not change them later.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → 📊 Balances</strong> tab.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Click <strong>Edit Cash Balance</strong> — enter your physical cash on hand as of your start date.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>Edit Bank Balances</strong> — enter the closing balance of each bank account from your last bank statement.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Edit Party Balances</strong> — enter how much each customer owes you and how much you owe each supplier as of your start date.</div></div>
+
+  <h3>Step 3 — Add Your Inventory</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to the <strong>Inventory</strong> panel → click <strong>+ Add Item</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">For each product: enter name, category, unit (Pcs/Kg/Box etc.), purchase price, selling price, current stock quantity, and minimum stock level.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Repeat for all products. You can add more items anytime.</div></div>
+
+  <div class="tip">💡 <strong>Tip:</strong> Set a minimum stock level for fast-moving items. Accelent will highlight them in orange/red when stock falls below that level.</div>
+
+  <h3>Step 4 — Choose Language</h3>
+  <p>Go to <strong>Settings → ⚙️ App Settings</strong> → scroll to Language → pick your preferred language. The interface updates immediately. Available: English, Hindi, Urdu, Spanish, French, German.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 5 -->
+<div class="chapter-banner">Chapter 5 — Migrating from Another Software</div>
+<div class="section" id="ch5">
+  <h2>5. Migrating from Another Accounting Software</h2>
+  <p>If you are switching from Tally, Busy, Marg, Vyapar, or any other software, follow these steps. The key idea: <strong>you only need closing balances from the old software — not individual transactions.</strong></p>
+
+  <div class="warn">⚠ Pick a <strong>migration date</strong> — typically the last day of a month or the last day of your financial year. Write down all balances from the old software as of that date. Then start fresh in Accelent from the next day.</div>
+
+  <h3>What to Collect from Your Old Software</h3>
+  <table>
+    <tr><th>What You Need</th><th>Where to Find It</th><th>What to Do in Accelent</th></tr>
+    <tr><td>Cash in hand (closing balance)</td><td>Cash ledger → closing balance</td><td>Settings → Balances → Edit Cash</td></tr>
+    <tr><td>Bank balances (each account)</td><td>Bank ledger or bank statement</td><td>Settings → Balances → Edit Bank</td></tr>
+    <tr><td>Customer outstanding amounts</td><td>Debtors / Sundry Debtors list</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>Supplier outstanding amounts</td><td>Creditors / Sundry Creditors list</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>Inventory items &amp; stock</td><td>Stock summary / item list</td><td>Inventory panel → Add each item with opening qty</td></tr>
+    <tr><td>Employee details</td><td>Employee master / HR module</td><td>Employees panel → Add each employee</td></tr>
+  </table>
+
+  <h3>Migration Steps</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Choose your cut-off date.</strong> Example: "I will migrate as of 31 March 2026 — my Accelent starts from 1 April 2026."</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Print or export the balances</strong> from your old software as of the cut-off date: cash balance, bank balances, outstanding customer amounts, outstanding vendor amounts, and stock list with quantities.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Set up Accelent</strong> — company info (Chapter 4).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Enter opening balances</strong> — cash, bank, party balances from the old software as of cut-off date (Settings → Balances).</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Add your inventory items</strong> with the stock quantities as of cut-off date.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Start recording new transactions</strong> in Accelent from the day after cut-off.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body"><strong>Cross-check after one week:</strong> Go to Accounts and verify that cash and bank balances match what you physically have. If they differ, use Settings → Recalculate to refresh all balances.</div></div>
+
+  <h3>Migrating from Tally</h3>
+  <ol>
+    <li>In Tally, go to <strong>Gateway → Display → Account Books → Ledger</strong> for each party and note the closing balance.</li>
+    <li>For stock: <strong>Gateway → Display → Inventory Books → Stock Summary</strong> — note qty and rate for each item.</li>
+    <li>For cash/bank: <strong>Gateway → Display → Cash/Bank Books</strong> → view closing balance.</li>
+    <li>Enter all of the above into Accelent as opening balances (Chapter 4, Steps 2 and 3).</li>
+  </ol>
+
+  <div class="tip">💡 <strong>Keep your old software accessible</strong> for at least 2–3 months after migration. You may need to look up historical transactions for reference. You do NOT need to enter those old transactions into Accelent.</div>
+
+  <div class="good">✅ <strong>Your historical data is safe in the old software.</strong> Accelent only needs the balances — the starting point. All future transactions go in Accelent.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 6 -->
+<div class="chapter-banner">Chapter 6 — Language &amp; Theme</div>
+<div class="section" id="ch6">
+  <h2>6. Language &amp; Theme</h2>
+
+  <h3>Changing the Language</h3>
+  <p>Accelent supports <strong>18 languages</strong>: English, Hindi (हिंदी), Urdu (اردو), Spanish, French, German, Bengali (বাংলা), Tamil (தமிழ்), Telugu (తెలుగు), Kannada (ಕನ್ನಡ), Gujarati (ગુજરાતી), Marathi (मराठी), Punjabi (ਪੰਜਾਬੀ), Nepali (नेपाली), Sinhala (සිංහල), Pashto (پښتو), Dhivehi (ދިވެހި), and Dzongkha (རྫོང་ཁ).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → ⚙️ App Settings</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Find the <strong>Language</strong> dropdown and select your language — each one is shown in its own script (e.g. "ਪੰਜਾਬੀ", "தமிழ்"), so you don't need to already know English or any code to find yours.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">The interface — all tooltips, tab labels, and navigation hints — updates immediately. No restart needed.</div></div>
+  <div class="tip">💡 Translations for languages added after English/Hindi/Urdu/Spanish/French/German are machine-assisted. If you spot a tooltip that reads oddly in your language, let us know via Settings → Support so we can correct it.</div>
+
+  <h3>Changing the Theme</h3>
+  <p>Go to <strong>Settings → ⚙️ App Settings</strong> → select a colour theme (Light, Dark, or others). The theme changes immediately across all panels.</p>
+
+  <div class="tip">💡 The selected language and theme are saved automatically. They remain the same the next time you open the app.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 7 -->
+<div class="chapter-banner">Chapter 7 — Dashboard</div>
+<div class="section" id="ch7">
+  <h2>7. Dashboard</h2>
+  <p>The Dashboard is your business at a glance. It refreshes every time you navigate to it.</p>
+
+  <table>
+    <tr><th>Section</th><th>What It Shows</th></tr>
+    <tr><td>Today's Sales</td><td>Total invoices issued today and their combined value</td></tr>
+    <tr><td>Today's Expenses</td><td>All expenses recorded today</td></tr>
+    <tr><td>Cash &amp; Bank</td><td>Live balances for all cash and bank accounts</td></tr>
+    <tr><td>Pending Invoices</td><td>Unpaid invoices — customers who still owe you</td></tr>
+    <tr><td>Low Stock Alerts</td><td>Items where current quantity ≤ minimum stock level</td></tr>
+    <tr><td>Recent Transactions</td><td>The last 10 sales, purchases, and expenses</td></tr>
+  </table>
+
+  <div class="tip">💡 The Dashboard does not auto-refresh in real time — click on another panel and come back to see updated figures.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8 -->
+<div class="chapter-banner">Chapter 8 — Inventory</div>
+<div class="section" id="ch8">
+  <h2>8. Inventory Panel</h2>
+  <p>Inventory keeps track of every product you sell — stock levels, prices, categories, and expiry dates.</p>
+
+  <h3>Adding a New Item</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>+ Add Item</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Fill in: Item Name, Category, Unit (Pcs / Kg / Box / Litre etc.), Purchase Price (what you paid), Selling Price (what you charge), Opening Stock (how many you have right now), Minimum Stock Level (alert threshold).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Optionally add: Barcode, HSN Code (for GST), Expiry Date (for perishables).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Save</strong>.</div></div>
+
+  <h3>Stock Color Indicators</h3>
+  <table>
+    <tr><th>Color</th><th>Meaning</th></tr>
+    <tr><td>Normal (white/default)</td><td>Stock is healthy</td></tr>
+    <tr><td>🟠 Orange</td><td>Stock is below minimum level — consider reordering</td></tr>
+    <tr><td>🔴 Red</td><td>Out of stock — 0 quantity remaining</td></tr>
+  </table>
+
+  <h3>Inventory Reports</h3>
+  <p>The <strong>Inventory Reports</strong> panel (separate from main Inventory) gives you stock valuation reports, movement history, and category-wise summaries. Use it for monthly stock audits.</p>
+
+  <h3>Audit Trail</h3>
+  <p>The <strong>Audit Trail</strong> tab (inside Inventory Management) lists every stock change — sales, purchases, adjustments, returns, and imports — with a <strong>Value</strong> column and a running <strong>Total value</strong> for whatever you've filtered. Filter Reason = "import" to see exactly how much stock value a bulk import brought into the business. Use <strong>🖨️ Print Report</strong> to print the current filtered list. This tab is read-only — to correct or delete an item's stock, go to the Inventory Management tab instead.</p>
+
+  <h3>Expiry Alerts</h3>
+  <p>The <strong>Expiry Alerts</strong> panel lists items approaching their expiry date. Items are highlighted in orange (expiring soon) or red (expired). Right-click any row for <strong>Set Expiry</strong> or <strong>Print Report</strong>. Use this to remove expired stock before selling.</p>
+
+  <div class="warn">⚠ Stock levels update automatically when you record a sale (stock goes down) or a purchase (stock goes up). Never manually add or subtract stock except for physical stock audits.</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 8b -->
+<div class="chapter-banner">Chapter 8b — Low Stock Monitor</div>
+<div class="section" id="ch8b">
+  <h2>8b. Low Stock Monitor</h2>
+  <p>Low Stock Monitor lists every item at or below its Minimum Stock Level and gives you two ways to reorder: a quick wizard for registering a brand-new item and vendor together, and a fuller "Order from Vendor" screen for building a proper Purchase Order. Unlike Purchase Panel's New Purchase, orders created here are <strong>drafts</strong> — they don't touch stock or vendor balances until you send them and record the goods received.</p>
+
+  <h3>⚡ Quick New Order</h3>
+  <p>Use this when you're registering a genuinely new product from a genuinely new vendor in one go — item details and vendor details side by side, ending in a draft Purchase Order.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>⚡ Quick New Order</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>1️⃣ Add / Edit Item</strong> — Vendor (type the new vendor's name), Item Name, Category, then click <strong>🔍 Generate</strong> for a Code. Fill in Buy Rate, Sell Price, GST%, HSN, Stock, Min Stock. Scan the product's barcode with <strong>📱 Scan with Phone</strong>, or leave it blank and add one later. Click <strong>💾 Save Item to Inventory</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>2️⃣ Vendor Details & Link</strong> — fill in the vendor's phone, address, TIN/GSTIN, and email, then save to link them and create a draft PO row.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Adjust the Order Qty in the preview row if needed — the total recalculates with GST.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Click <strong>📤 Send Purchase Order</strong>. The PO is marked SENT and appears in <strong>Existing Purchase Orders</strong> below.</div></div>
+
+  <h3>Order from Vendor</h3>
+  <p>Use this for a normal reorder from a vendor you already buy from — it works almost identically to Purchase Panel's New Purchase screen (same vendor-first auto-fill, scan-to-add, and per-row barcode ✓/+📷/🗑 indicators — see Chapter 10 for the full barcode walkthrough), with one key difference: saving here creates a <strong>draft Purchase Order</strong>, not an immediate purchase. Nothing is added to stock or the vendor's balance until the order is sent and later received.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Pick the vendor — their usual items auto-fill into the Order Items table, checkbox on by default.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Uncheck anything you don't want to order this time, adjust quantities, or scan/add new items exactly as in Purchase Panel.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click OK to save the draft, then send it from <strong>Existing Purchase Orders</strong> when ready.</div></div>
+
+  <h3>Existing Purchase Orders</h3>
+  <p>Opens a list of every Purchase Order you've created (from either method above), with a colored status dot: <strong>grey</strong> = draft, <strong>orange</strong> = sent, <strong>blue</strong> = received, <strong>green</strong> = completed (received &amp; fully paid). From here you can send a draft order, record payment against a sent/received order, and mark goods as received. Right-click a row to <strong>🗑️ Delete</strong> a draft/cancelled/completed order or <strong>❌ Cancel</strong> one that's already been sent.</p>
+
+  <div class="good">✅ When you're ready to record the goods, go to Purchase Panel → <strong>📋 Load from PO</strong> and pick the order — it loads the vendor and items into a normal New Purchase form for you to review before saving. That save is the step that finally updates stock and the vendor's payable balance, so a PO by itself never affects them.</div>
+
+  <div class="tip">💡 Choose Quick New Order only for a brand-new item + brand-new vendor together. For anything else — a new item from an existing vendor, an existing item from a new vendor, or a routine reorder — use Order from Vendor instead.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9 -->
+<div class="chapter-banner">Chapter 9 — Sales</div>
+<div class="section" id="ch9">
+  <h2>9. Sales Panel</h2>
+  <p>The Sales panel is where you create customer invoices. Every sale is recorded here.</p>
+
+  <h3>Creating a New Invoice</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">The left side of the Sales panel is the <strong>Invoice Form</strong>. Enter the customer's name — if they are a known party, their balance will appear.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Select the <strong>payment method</strong>: Cash, Bank, UPI, or Credit (on account).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>📷 Scan</strong> to scan a product barcode with the mobile camera, or click <strong>📋 Add Items</strong> to search and select products from your inventory.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Adjust quantities. The total updates automatically.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Optionally enter a discount amount or additional charges (P&amp;F).</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">Click <strong>💾 Save Invoice</strong>. The invoice is saved, stock is reduced, and the customer's balance is updated.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">Click <strong>🖨 Print</strong> to print the invoice. Click <strong>📱 WhatsApp</strong> to share it via WhatsApp.</div></div>
+
+  <h3>Viewing Past Invoices</h3>
+  <p>The right side of the Sales panel shows all saved invoices. You can search by customer name, invoice number, or date range. Each invoice row has buttons to View, Edit, Print, or Delete.</p>
+
+  <h3>Sales Returns</h3>
+  <p>If a customer returns goods, go to the <strong>Returns</strong> panel → <strong>Sales Returns</strong> tab. Select the original invoice, enter the returned items, and save. Stock is restored and a credit note is issued. If the original sale was Cash/Bank/UPI/Card, the refund reduces that Cash/Bank balance directly; if it was a Credit sale, the refund instead reduces what the customer owes you.</p>
+
+  <div class="tip">💡 <strong>Credit sales:</strong> When you select "Credit" as payment, the invoice is marked as <em>Unpaid</em> and the amount is added to the customer's receivable balance. When they pay later, record it as a Receipt in the Receipts panel.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 10 -->
+<div class="chapter-banner">Chapter 10 — Purchases</div>
+<div class="section" id="ch10">
+  <h2>10. Purchases Panel</h2>
+  <p>Record every purchase bill from suppliers here. Stock increases and the vendor's payable balance is tracked automatically.</p>
+
+  <h3>Recording a Purchase</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>+ New Purchase</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Pick or type the <strong>Vendor Name</strong> first — everything below it responds to this. For an existing vendor, address/phone/GSTIN fill in automatically and their usual items load straight into the Order Items table, each pre-checked and ready to go.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Uncheck any row (☑) you don't want included in this bill. Adjust Qty/Rate/GST% per row as needed — the Amount and the Subtotal/GST/Grand Total at the bottom update live.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Add anything not already in the table by scanning it (<strong>📷</strong> field + <strong>📱 Scan with Phone</strong> at the top of Order Items), or register a brand-new product via <strong>➕ Add Item to Same Vendor</strong> below the table.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Fill in Bill Number, Bill Date, and Payment Method (Cash / Bank Transfer / Cheque / Card / UPI / Credit to Vendor) in Bill Details.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">Click <strong>💾 Save Purchase</strong>. Stock and the vendor's balance update immediately.</div></div>
+
+  <h3>Vendor &amp; Item Combinations</h3>
+  <p>The Order Items table and <strong>➕ Add Item to Same Vendor</strong> panel adapt to four situations depending on whether the vendor and the item you're buying already exist in Accelent. The <strong>Vendor Name</strong> field always drives what you see below it, so pick or type the vendor first.</p>
+
+  <h4>1. Existing Vendor + Existing Item</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Start typing the vendor's name in <strong>Vendor Name</strong> and select them from the dropdown. Their address, phone, and GSTIN fill in automatically.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">The Order Items table auto-fills with everything you've bought from this vendor before, each row already checked. Uncheck anything you're not buying this time — there's no delete button by design, so nothing in the table can be removed from inventory by accident.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Update the Qty for anything you are buying, then save.</div></div>
+
+  <h4>2. Existing Vendor + New Item</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Select the existing vendor as above.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">In <strong>➕ Add Item to Same Vendor</strong>, fill in Name, Category, Buy Rate, GST%, Sell Price, and Qty. Click <strong>🔍 Generate</strong> next to Code for an automatic item code, or type your own.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>✅ Add Item to Purchase</strong>. The item is created, linked to this vendor, and added to the Order Items table.</div></div>
+
+  <h4>3. New Vendor + New Item</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Type a vendor name that doesn't already exist. Address/phone/GSTIN will be empty — fill them in if you have them (optional).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Since there's no history for this vendor yet, the Order Items table starts empty — that's expected, not an error.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Use <strong>➕ Add Item to Same Vendor</strong> exactly as in case 2. Accelent creates both the new vendor and the new item the moment you save the purchase.</div></div>
+
+  <h4>4. New Vendor + Existing Item</h4>
+  <p>This is buying a product you already stock from a supplier you haven't bought it from before — for example, your usual vendor is out of stock and you're trying someone new for the same item.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Type the new vendor's name (the Order Items table stays empty — normal for a first purchase).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Scan the item's barcode, or type its exact barcode/item code into the scan field and press Enter. There's currently no name-search for this specific case — an existing item can only be pulled in here by its code/barcode.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save the purchase. The item's own details don't change — Accelent just records that you can also buy it from this vendor, at this rate.</div></div>
+
+  <div class="good">✅ Buying the same item from a second or third vendor never overwrites or breaks its existing details. Accelent keeps a separate price/date record per vendor for every item, so trying a new supplier for one purchase never affects your other vendor relationships.</div>
+
+  <h3>Barcode Scanning &amp; Status</h3>
+  <p>Scan with <strong>📱 Scan with Phone</strong> (or type into the barcode field and press Enter) at the top of Order Items to add an item straight into the purchase.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">If the barcode matches an item already in inventory, it's added to the table — or, if it's already in this bill, its Qty increases by 1 with a confirmation message so you always know what just happened.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">If it doesn't match anything, Accelent tells you so and points you to <strong>➕ Add Item to Same Vendor</strong> below to register it as a new product.</div></div>
+
+  <p>Every row in the Order Items table also shows its own barcode status, in the <strong>🔖</strong> column:</p>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><strong>✓ Barcode</strong> (green) — this item already has a barcode saved. Click it to remove that barcode, e.g. if a scan attached the wrong code.</div></div>
+  <div class="step"><div class="step-num">+</div><div class="step-body"><strong>+📷</strong> (blue) — no barcode yet. Click it to scan and attach one with your phone.</div></div>
+  <div class="step"><div class="step-num">🗑</div><div class="step-body"><strong>🗑 Clear Barcode</strong> — a dedicated reset button for a barcode that got attached but didn't take properly, so you can scan it fresh. Only enabled once the item has a barcode to clear.</div></div>
+
+  <div class="tip">💡 <strong>➕ Add Item to Same Vendor</strong> always links the new item to whichever vendor is currently in <strong>Vendor Name</strong> — new or existing — so double-check the vendor field before registering a new item, especially when scanning several products from the same delivery in a row.</div>
+
+  <h3>📷 Scan Vendor Bill — read a whole paper bill automatically</h3>
+  <p>Instead of typing every line from a supplier's bill by hand, photograph it and let Accelent read the line items, HSN codes, and GST straight off the photo. This runs entirely on your own computer — no internet connection is used, and the photo is never sent anywhere.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Pick or type the <strong>Vendor Name</strong> first, then click <strong>📷 Scan Vendor Bill</strong>. Choose the bill photo — a clear, well-lit shot works best.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Before scanning starts, straighten the photo if needed using <strong>Rotate Left / Rotate Right</strong> — an upright photo scans in a few seconds, a sideways one takes longer while it works out the orientation on its own. Click <strong>▶ Start Scan</strong> when it looks right.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">The review screen opens with the bill photo on one side and an editable grid of everything found on the other. Check the <strong>Reconciliation Status</strong> banner at the top — it tells you whether the line items add up to the bill's own printed total.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Click any row to jump straight to where it came from on the bill photo. Fix anything that reads incorrectly — Description, Category, HSN/SAC, Qty, Unit, Rate, and GST% are all editable. A row Accelent couldn't confidently read shows <strong>⚠️</strong>; type in what's missing and it updates to <strong>✅</strong>. Uncheck any row you don't want to include.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Use <strong>Bulk Actions</strong> to auto-match several rows to your existing catalog at once, or map them to a category — anything only moderately confident opens a confirmation popup so nothing gets matched to the wrong product silently.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">Click <strong>💾 Apply &amp; Save Purchase Now</strong> to save the purchase directly from this screen. A confirmation box shows the exact Vendor, Goods Amount, GST, and Grand Total that will be recorded — check it matches the bill, then confirm. (Or use <strong>Apply All Checked Items to Ledger</strong> instead if you'd rather review the New Purchase form yourself before saving separately.)</div></div>
+
+  <div class="good">✅ Made a mistake in the grid? Ctrl+Z undoes the last edit, add, remove, or bulk action — nothing you do here is permanent until you actually save. And if you get interrupted partway through (the app closes, your computer sleeps), picking the same photo again offers to resume exactly where you left off instead of starting over.</div>
+  <div class="tip">💡 This works for a brand-new vendor with no purchase history too — every line on the bill just becomes a new item, created the same way as adding one by hand. Scan Vendor Bill needs local AI components that aren't included in every install; if it reports being unavailable, everything else in Accelent is unaffected.</div>
+  <div class="tip">💡 <strong>Speed:</strong> on a PC with 8 GB RAM a scan finishes quickly; with 4 GB it still works but takes longer — let it run. <strong>Free trial:</strong> 15 bill scans are included; after that, scanning needs an activated license (everything else keeps working for the rest of the trial). With a subscription, scanning is unlimited.</div>
+
+  <h3>Purchase Returns</h3>
+  <p>Go to <strong>Returns</strong> panel → <strong>Purchase Returns</strong> tab to record goods returned to a supplier. A debit note is created and stock is reduced. The return amount is also netted out of your Purchases figure in the Profit &amp; Loss, Trading Account, and Balance Sheet reports.</p>
+
+  <div class="tip">💡 Always enter the <strong>supplier's bill number</strong> when recording a purchase — it makes it easy to find specific purchases and is required for GST reconciliation.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 11 -->
+<div class="chapter-banner">Chapter 11 — Expenses &amp; Receipts</div>
+<div class="section" id="ch11">
+  <h2>11. Expenses &amp; Receipts</h2>
+
+  <h3>Expenses Panel</h3>
+  <p>Record all business expenses here: rent, electricity, salary advance, transport, office supplies, etc.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>+ Add Expense</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Select Category (Rent / Electricity / Salary / Transport / Other), enter Amount, payment method (Cash or Bank), and a short description.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>Save</strong>. The cash or bank balance is reduced accordingly.</div></div>
+
+  <h3>Recurring Expenses</h3>
+  <p>For expenses that repeat on a schedule (monthly rent, utility bills), use the <strong>Recurring Expenses</strong> panel:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Recurring Expenses</strong> → click <strong>+ New Template</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Set the expense name, amount, category, and recurrence schedule (monthly, weekly, etc.).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Accelent will remind you when due and can post the expense automatically.</div></div>
+
+  <h3>Receipts Panel</h3>
+  <p>The Receipts panel is a ledger of all money received and paid — cash collected, payments to vendors, bank transfers, and salary payments. It is automatically populated from sales, purchases, and expenses. You can also record a standalone receipt here (e.g., when a credit customer pays their outstanding balance).</p>
+
+  <div class="tip">💡 When a credit customer pays you, go to <strong>Receipts → + New Receipt</strong>, select the customer, and enter the amount received. Their outstanding balance will reduce automatically.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 12 -->
+<div class="chapter-banner">Chapter 12 — Accounts &amp; Transfers</div>
+<div class="section" id="ch12">
+  <h2>12. Accounts &amp; Transfers</h2>
+
+  <h3>Accounts Panel</h3>
+  <p>Shows all your money accounts — Cash, and every Bank account. For each account you can see:</p>
+  <ul>
+    <li>Current balance (always live)</li>
+    <li>Full transaction history with dates and descriptions</li>
+    <li>Debit (money in) and credit (money out) columns</li>
+  </ul>
+
+  <h3>Adding a Bank Account</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Accounts</strong> → click <strong>+ Add Bank Account</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Enter bank name, account number, and opening balance (from your bank statement on your start date).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click Save. The bank account now appears in all payment dropdowns (Sales, Purchases, Expenses).</div></div>
+
+  <h3>Transfers Panel</h3>
+  <p>Use the Transfers panel when you move money between your own accounts — for example, depositing cash into your bank account, or transferring between two bank accounts.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Transfers</strong> → click <strong>+ New Transfer</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Select <strong>From Account</strong> (e.g., Cash) and <strong>To Account</strong> (e.g., HDFC Bank), enter the amount and date.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click Save. Cash decreases, bank increases — both balances update.</div></div>
+
+  <div class="warn">⚠ Never record a bank deposit as an "income" or "receipt" — always use the Transfers panel. Recording it elsewhere will inflate your income figures.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 13 -->
+<div class="chapter-banner">Chapter 13 — Reports &amp; Aging</div>
+<div class="section" id="ch13">
+  <h2>13. Reports, Data Comparison &amp; Aging Report</h2>
+
+  <h3>Data Comparison (Reports) Panel</h3>
+  <p>Generates financial summaries and comparisons:</p>
+  <ul>
+    <li><strong>Monthly Sales vs Purchases</strong> — bar chart and table showing each month's totals</li>
+    <li><strong>Net Profit</strong> — Sales minus Purchases and Expenses</li>
+    <li><strong>Party Statement</strong> — full transaction history between you and any party</li>
+    <li><strong>Account Statement</strong> — all transactions for a specific cash or bank account</li>
+  </ul>
+  <p>Use the <strong>Export (Ctrl+E)</strong> button to save the report as a file, or <strong>Print (Ctrl+P)</strong> to print directly.</p>
+
+  <h3>Aging Report Panel</h3>
+  <p>The Aging Report shows how long your customers' outstanding invoices have been unpaid, and how long your supplier bills have been due.</p>
+  <table>
+    <tr><th>Aging Bucket</th><th>Meaning</th></tr>
+    <tr><td>0–30 days</td><td>Recent — normal credit period</td></tr>
+    <tr><td>31–60 days</td><td>Getting old — follow up recommended</td></tr>
+    <tr><td>61–90 days</td><td>Overdue — contact the party</td></tr>
+    <tr><td>90+ days</td><td>Very overdue — escalate or write off</td></tr>
+  </table>
+  <p>Use this report to identify which customers need follow-up calls and which vendor bills need urgent payment.</p>
+
+  <h3>Finalization Panel</h3>
+  <p>At the end of the financial year, go to <strong>Finalization</strong> to generate your <strong>Profit &amp; Loss Statement</strong> and <strong>Balance Sheet</strong>. These reports can be printed or exported for your accountant or auditor.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 14 -->
+<div class="chapter-banner">Chapter 14 — Employees &amp; Payroll</div>
+<div class="section" id="ch14">
+  <h2>14. Employees &amp; Payroll</h2>
+
+  <h3>Adding an Employee</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Employees</strong> panel → click <strong>+ Add Employee</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Enter: Full Name, Designation, Mobile Number, Basic Salary (monthly), and Overtime Multiplier (e.g. 1.5 for time-and-a-half).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click Save.</div></div>
+
+  <h3>Recording Salary Payments</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">In the Employees panel, select the employee and click <strong>Pay Salary</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Confirm the month, base salary, any overtime, and deductions.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Select payment method (Cash or Bank) and click <strong>Confirm Payment</strong>. The cash/bank balance is reduced and the payment is logged.</div></div>
+
+  <h3>Salary Advances</h3>
+  <p>To pay a salary advance, record it as an Expense with category <strong>"Salary Advance"</strong>. When the actual salary is paid, deduct the advance from the salary amount manually.</p>
+
+  <div class="tip">💡 Deactivating an employee (not deleting) preserves their entire payment history while removing them from active payroll. Use <strong>Settings → Balances → Deactivate Employee</strong>.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 15 -->
+<div class="chapter-banner">Chapter 15 — GST Returns &amp; E-Invoice</div>
+<div class="section" id="ch15">
+  <h2>15. GST Returns &amp; E-Invoice (IRN)</h2>
+
+  <h3>GST Returns Panel</h3>
+  <p>This panel helps you prepare your monthly GST filings (GSTR-1, GSTR-3B) by summarising your sales and purchase data with GST breakdowns.</p>
+  <ul>
+    <li><strong>GSTR-1</strong> — Outward supplies (your sales) — filed by the 11th of the next month</li>
+    <li><strong>GSTR-3B</strong> — Summary return of sales and purchases with tax payable — filed by the 20th</li>
+  </ul>
+  <p>Accelent calculates CGST, SGST, and IGST from the HSN codes assigned to your inventory items. Make sure all items have the correct HSN code and GST rate assigned in the Inventory panel.</p>
+  <ul>
+    <li><strong>Phone entries are included:</strong> sales and purchases made on the phone count in output tax, input tax credit and the GST summary, just like desktop entries. Phone entries are treated as within your own state (CGST + SGST).</li>
+    <li><strong>HSN codes:</strong> the GSTR-1 HSN summary groups sales by each item's real HSN code. Before a GSTR-1 export, Accelent lists any sold items that have no HSN code — add them in Inventory first, then export again.</li>
+    <li><strong>Deleted or edited bills:</strong> deleting a bill removes its tax from GST Returns, and editing a sale replaces its tax entry rather than adding a second one.</li>
+  </ul>
+  <div class="warn">⚠ If you filed returns using figures from a version before 2.3.5, compare them with the corrected figures and check with your accountant whether an adjustment is needed in your next return.</div>
+
+  <h3>E-Invoice / IRN Panel</h3>
+  <p>Businesses with annual turnover above the government threshold must generate an <strong>IRN (Invoice Reference Number)</strong> for each B2B invoice through the NIC e-Invoice portal.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to the <strong>E-Invoice</strong> panel.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Select an invoice from the list and click <strong>Generate IRN</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Accelent generates the NIC-compliant JSON file. Submit it to the e-Invoice portal to receive the IRN and QR code.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">The IRN is saved against the invoice and printed on the invoice copy.</div></div>
+
+  <div class="warn">⚠ Consult your CA or tax consultant to confirm your e-Invoice applicability threshold and due dates. Rules change periodically.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 16 -->
+<div class="chapter-banner">Chapter 16 — Settings &amp; Administration</div>
+<div class="section" id="ch16">
+  <h2>16. Settings &amp; Administration</h2>
+
+  <p>The Settings panel has six tabs. Here is what each one does:</p>
+
+  <table>
+    <tr><th>Tab</th><th>What You Can Do</th></tr>
+    <tr><td>🔍 Deletion Watcher</td><td>Audit trail of every record deleted in the app. You can view details, restore deleted records, or permanently remove log entries. <strong>Locked — requires admin PIN to access.</strong></td></tr>
+    <tr><td>⚙️ App Settings</td><td>Recalculate all balances from transactions, backup the database, restore from a backup, set up encrypted Cloud Backup, reset the database (danger!), change language and theme.</td></tr>
+    <tr><td>🏢 Company</td><td>Edit company name, address, contact, GST/TIN, and logo used on invoices and reports.</td></tr>
+    <tr><td>👥 Users</td><td>Create staff accounts, choose what each one can see and do (🔐 Permissions), and decide who can use the phone app. The admin account is the master — keep its password safe.</td></tr>
+    <tr><td>🔑 License</td><td>Activate or renew your subscription, or check your trial status.</td></tr>
+    <tr><td>📊 Balances</td><td>Edit opening balances for cash, bank accounts, parties, customers, and employees.</td></tr>
+  </table>
+
+  <h3>🔒 Why Is the Deletion Watcher Locked?</h3>
+  <p>The Deletion Watcher tab is protected by a <strong>PIN / admin authentication</strong> for a very important reason: it contains the power to <strong>restore any deleted record</strong> — invoices, purchases, expenses, inventory items, and more.</p>
+  <p>If this were open to all staff, any operator could:</p>
+  <ul>
+    <li>Restore a deleted invoice to hide that it was removed</li>
+    <li>View the full audit trail and know they are being watched</li>
+    <li>Permanently delete log entries to erase evidence of tampering</li>
+  </ul>
+  <p>The lock ensures that <strong>only the business owner or admin</strong> can access this sensitive area. Staff who log in as operators will never see this tab at all.</p>
+
+  <h4>How to unlock the Deletion Watcher</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → 🔍 Deletion Watcher</strong>. You will see a 🔒 lock indicator — the table and buttons are disabled.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Click the <strong>Authenticate</strong> button and enter your admin password.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">The indicator changes to 🔓 Active and the full audit trail becomes visible.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">The panel re-locks automatically when you close Settings or switch panels — keeping it secure even if you step away.</div></div>
+
+  <div class="warn">⚠ <strong>Never share your admin password with staff.</strong> The Deletion Watcher is your most powerful recovery and audit tool — it should only be accessed by the business owner.</div>
+
+  <h3>Recalculate Balances</h3>
+  <p>If you ever notice a balance looks wrong, go to <strong>Settings → App Settings → 🔄 Recalculate All Balances</strong>. This recomputes every account balance from the full transaction history and corrects any discrepancy.</p>
+
+  <h3>User Management</h3>
+  <p>You can create separate user accounts for staff (cashiers, data-entry operators, store keepers). Each staff member logs in with their own password. The admin account always has full access to everything.</p>
+
+  <h3>🔐 Staff Permissions — What Each Staff Member Can See and Do</h3>
+  <p>For each staff account you decide exactly what they can see and do. Screens they are not allowed simply disappear from their menu, and the same rules apply on the phone app.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → 👥 Users</strong> and unlock Settings with the admin password.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Next to a staff member, click the <strong>🔐</strong> button (it shows their current template, e.g. <em>🔐 Billing Staff</em>).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Pick a <strong>template</strong> to start from, then tick or untick any of the 12 permissions. Click <strong>Save</strong>.</div></div>
+  <table>
+    <tr><th>Template</th><th>Typical use</th><th>Can do</th></tr>
+    <tr><td>Billing Staff</td><td>Counter / cashier</td><td>Create sales only — no money figures, no purchase costs</td></tr>
+    <tr><td>Store Keeper</td><td>Stock and purchasing</td><td>Purchases, inventory changes, returns, purchase costs</td></tr>
+    <tr><td>Accountant</td><td>Books and GST</td><td>Everything except payroll and editing or deleting past bills</td></tr>
+    <tr><td>Manager</td><td>Trusted senior staff</td><td>Everything (phone access is set separately)</td></tr>
+  </table>
+  <div class="tip">💡 New staff accounts, and accounts that existed before version 2.3.6, start as <strong>Billing Staff</strong>. Give each person what they need with the 🔐 button. Changes apply the next time they log in to the desktop, and on their phone straight away.</div>
+  <div class="warn">⚠ Permissions protect your data from staff — they do not protect the admin account. Anyone who knows the admin password has full access, so keep it private.</div>
+
+  <h3>🔑 Your Subscription</h3>
+  <ul>
+    <li><strong>Free trial:</strong> 45 days with every feature, including 15 vendor bill scans.</li>
+    <li><strong>Subscription:</strong> after activation, your license runs for one year. The status bar shows <em>"Licensed until …"</em>.</li>
+    <li><strong>Renewing:</strong> reminders start 30 days before the end date, and you can renew from Settings → 🔑 License with your renewal key. Renewing early adds the year on top of the days you have left.</li>
+    <li><strong>If the subscription ends:</strong> bill scanning pauses at once, but saving bills keeps working for <strong>7 more days</strong> with a countdown in the status bar. After that, saving pauses until you renew. Your data always stays viewable.</li>
+    <li><strong>One PC per license:</strong> a license is bound to the PC it was activated on. To move to a new PC, contact support.</li>
+  </ul>
+
+  <div class="err">🚨 <strong>Never share your admin password.</strong> If an operator leaves, go to Settings → Users → select that user → click <em>Disable</em>. Their data entry history is preserved but they can no longer log in.</div>
+
+  <h3>🔑 Your Account Recovery Key</h3>
+  <p>The first time you set your own password — either right after installation (replacing the temporary default password) or any time afterwards — Accelent generates a unique <strong>Recovery Key</strong> for your account and shows it to you <strong>exactly once</strong>, in a box you must confirm you've saved before it closes.</p>
+  <div class="tip">💡 This key looks like a series of letter/number groups separated by dashes, e.g. <code>3F7A9C21-8B4E0D6F-...</code>. Copy it to a password manager, write it on paper and keep it in a safe place, or store it in a locked note — anywhere except a file with an obvious name sitting on the same PC.</div>
+  <p>This key exists for one purpose: if you ever forget your admin password, or your account gets locked out after too many wrong attempts, the Recovery Key lets you set a brand-new password yourself, from the login screen, in under a minute — <strong>without losing any business data</strong> and without needing to contact support.</p>
+  <div class="warn">⚠ Accelent never stores your Recovery Key in readable form — only a secure hash of it, the same way passwords are protected. If you lose the key, nobody (including your software provider) can recover it for you. You would need to set a new password through other means and generate a new key.</div>
+
+  <h4>Getting a new Recovery Key</h4>
+  <p>You only ever see a given Recovery Key once. If you've misplaced it, or simply want a fresh one, you can generate a replacement any time you are logged in as admin — the previous key stops working immediately once a new one is issued.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → 👥 Users</strong> (admin account) and use the option to generate a new Recovery Key, or simply change your admin password — a new key is offered automatically whenever you don't already have one on file.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Save the new code exactly as described above. Tick <strong>"I have saved this recovery code somewhere safe"</strong> to close the box — it will not be shown again.</div></div>
+
+  <h3>🔓 Forgot Your Password? Self-Service Recovery</h3>
+  <p>If you ever forget your admin password — or the account locks itself after repeated wrong attempts — you do not need to wait for support. On the login screen, click the small <strong>"Forgot password?"</strong> link below the password field.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>Forgot password?</strong> on the login screen. The <strong>Account Recovery</strong> window opens.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Enter your <strong>username</strong> and the <strong>Recovery Key</strong> you saved earlier (see above).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Enter and confirm a <strong>new password</strong> (minimum 8 characters).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Reset Password</strong>. This also clears any account lockout automatically. Log in immediately with your new password.</div></div>
+  <div class="good">✅ This only resets your login password — none of your invoices, inventory, balances, or other business data are touched in any way.</div>
+  <div class="err">🚨 If you never saved a Recovery Key and are locked out, self-service recovery is not possible — contact your software provider for assistance.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 17 -->
+<div class="chapter-banner">Chapter 17 — Your Data</div>
+<div class="section" id="ch17">
+  <h2>17. Your Data — Location, Backup &amp; Restore</h2>
+
+  <h3>Where Is Your Data?</h3>
+  <p>All your data is stored in a single SQLite database file on your Windows PC:</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\inventory.db</span>
+  </div>
+  <p>There is also an auto-backup folder:</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\backups\</span>
+  </div>
+  <p>Accelent creates an automatic backup every time it starts. Up to 10 recent backups are kept automatically.</p>
+
+  <div class="tip">💡 To open AppData quickly, press <strong>Windows+R</strong>, type <code>%APPDATA%\BrandAccShay</code> and press Enter.</div>
+
+  <h3>Taking a Manual Backup</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → ⚙️ App Settings → 💾 Backup Data</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Choose where to save the backup file (USB drive, Google Drive folder, or external hard disk).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click Save. The backup is a single <code>.db</code> file containing all your data.</div></div>
+
+  <div class="good">✅ <strong>Recommended Backup Routine:</strong><br>
+  • Daily: let Accelent auto-backup (happens automatically on startup)<br>
+  • Weekly: manual backup to a USB drive or Google Drive<br>
+  • Monthly: copy the entire AppData\BrandAccShay folder to an external hard disk</div>
+
+  <h3>Restoring from a Backup</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → ⚙️ App Settings → 📂 Restore Data</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Browse to your backup <code>.db</code> file.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click Open. Accelent will replace the current database with the backup. <strong>The app will restart automatically.</strong></div></div>
+
+  <div class="warn">⚠ Restoring a backup replaces ALL current data with the backup data. Any transactions entered after the backup date will be lost. Restore only when you need to recover from a serious error.</div>
+
+  <h3>☁️ Cloud Backup — Automatic Encrypted Off-Site Backup</h3>
+  <p>The manual backups above are saved locally — if your PC is lost, stolen, or damaged, a local-only backup may go with it. <strong>Cloud Backup</strong> solves this by encrypting a copy of your database on your own PC and saving it into a folder that syncs to <strong>your own</strong> cloud storage (OneDrive, Google Drive, Dropbox, etc.). Your software provider never sees your data — the file is encrypted before it ever leaves your computer.</p>
+
+  <h4>Setting Up Cloud Backup</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup</strong> and click <strong>Set Up Cloud Backup</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Click <strong>Browse...</strong> and choose a folder that is synced by your cloud storage app (e.g. your <code>OneDrive</code> or <code>Google Drive</code> folder).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Choose a <strong>Backup Password</strong> (minimum 8 characters) and confirm it. This password encrypts every backup — remember it, and keep it separate from your admin login password.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Continue</strong>. Accelent runs the first backup and then shows a one-time <strong>Recovery Code</strong> in a box you must confirm you've saved before closing it.</div></div>
+
+  <div class="warn">⚠ <strong>The Cloud Backup password and the Cloud Backup recovery code are separate from your login Recovery Key</strong> (Chapter 16). Keep them clearly labelled apart so you don't mix them up:
+    <ul style="margin-top:6px;">
+      <li><strong>Login Recovery Key</strong> — resets your app password yourself, at the login screen, no support needed.</li>
+      <li><strong>Cloud Backup password</strong> — decrypts your cloud backup files; needed every time you restore.</li>
+      <li><strong>Cloud Backup recovery code</strong> — only useful together with a release code from support, if you forget the Cloud Backup password.</li>
+    </ul>
+  </div>
+
+  <h4>Everyday Use</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>⬆️ Backup Now</strong> any time you want an immediate encrypted backup uploaded to your cloud folder.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Tick <strong>Automatic daily backup</strong> to let Accelent back up your data on its own schedule without you having to remember.</div></div>
+
+  <h4>Restoring from a Cloud Backup</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup → ⬇️ Restore from Cloud Backup</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Select the backup you want from the list (most recent is shown first) and enter your <strong>Backup Password</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Confirm the restore warning. <strong>Current data will be replaced</strong> — restart the app afterwards.</div></div>
+
+  <div class="tip">💡 <strong>Forgot your Cloud Backup password?</strong> Click <strong>"Forgot password? Use recovery code instead"</strong> in the restore window. This path requires both the recovery code you saved at setup <strong>and</strong> a release code from your software provider's support — it exists so that neither piece alone can unlock your backup.</div>
+
+  <div class="good">✅ Cloud Backup is optional and separate from the automatic local backups Accelent already makes on every startup — use both for the strongest protection: local backups for quick same-PC recovery, Cloud Backup for protection if the PC itself is lost or damaged.</div>
+
+  <h3>Moving the App to a New PC</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">On the old PC, take a manual backup (Settings → Backup Data).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Copy the backup <code>.db</code> file to a USB drive or send via Google Drive / WhatsApp.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Install Accelent on the new PC (Chapter 3).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">On first launch, go to Settings → Restore Data → select the backup file from the USB drive. All your data is now on the new PC.</div></div>
+
+  <div class="warn">⚠ Your license is bound to the PC it was activated on. Before moving, contact support so your license can be moved to the new PC; then activate it from Settings → 🔑 License.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 18 -->
+<div class="chapter-banner">Chapter 18 — Upgrading to a New Version</div>
+<div class="section" id="ch18">
+  <h2>18. Upgrading to a New Version</h2>
+  <p>When a new version of Accelent is released, follow these steps. <strong>Your data is always safe during an upgrade</strong> because the database lives separately from the program files.</p>
+
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Take a backup first</strong> — go to Settings → Backup Data and save to a USB drive or cloud. This is a precaution, not usually needed, but always good practice.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Close Accelent</strong> — make sure the app is not running.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Download the new version</strong> — get the latest <code>Accelent_Setup_v….exe</code> from <strong>accelentapp.com</strong>.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Run the installer</strong> over your existing installation. (Using the portable zip instead? Extract it to the same folder as before and click <strong>Yes to All</strong> when asked to replace files.)</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Open Accelent.</strong> It automatically finds your existing database at <code>%APPDATA%\BrandAccShay\inventory.db</code>. All your data is there, and any corrections included in the new version are applied on this first start.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Go to Settings → Recalculate All Balances</strong> — this ensures any database schema changes in the new version are applied correctly.</div></div>
+
+  <div class="good">✅ <strong>You never lose data during an upgrade.</strong> The program files are in one folder; your data is in AppData. Replacing the program files does not touch your data.</div>
+
+  <div class="tip">💡 After upgrading, re-run <code>setup.bat</code> once if you use the mobile app — firewall rules may need refreshing.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 19 -->
+<div class="chapter-banner">Chapter 19 — Mobile App</div>
+<div class="section" id="ch19">
+  <h2>19. Mobile App Setup &amp; Use</h2>
+
+  <h3>Installing the App</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_v1.6.6.apk</code> from <strong>accelentapp.com</strong> on the phone, or transfer it via USB cable, WhatsApp, or Google Drive.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">On the phone, open the file from your Downloads or Files app.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">If prompted about <em>unknown sources</em>, tap <strong>Settings</strong>, enable <em>Install unknown apps</em> for your file manager, then go back and install.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Tap <strong>Install</strong> → <strong>Open</strong>.</div></div>
+
+  <h3>Connecting to the Desktop</h3>
+  <p><strong>Method A — QR Code (Recommended)</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Make sure the desktop app is running on your PC.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Click the <strong>📱 Mobile Connect</strong> button (bottom-right of the desktop).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">A QR code appears. Keep the window open.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">On the phone, open Accelent → tap the ⚙️ icon → <strong>Scan QR Code</strong> → point camera at the desktop screen.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">A green "Connected!" banner confirms the connection.</div></div>
+
+  <p><strong>Method B — Manual IP</strong></p>
+  <p>If QR scanning fails, on the phone go to Settings → type the desktop's IP address in the <em>Desktop IP Address</em> field → tap <strong>Test Connection</strong> → <strong>Save</strong>.</p>
+
+  <h3>Using from Outside the Shop (Tailscale)</h3>
+  <p>When you are away from the shop (mobile data or different WiFi), install <strong>Tailscale</strong> (free) on both the desktop and phone and sign in with the same account. Then scan the Tailscale QR code from the <strong>📱 Mobile Connect</strong> dialog. You can now view and manage your business from anywhere in the world.</p>
+
+  <h3>Mobile App Panels</h3>
+  <div class="panel-grid">
+    <div class="panel-card"><h4>📊 Dashboard</h4><p>Today's sales, expenses, cash &amp; bank balances, and recent transactions. Pull down to refresh.</p></div>
+    <div class="panel-card"><h4>🧾 Sales</h4><p>Browse all invoices. Filter Paid/Unpaid. Tap + to create a new invoice from your phone.</p></div>
+    <div class="panel-card"><h4>🛒 Purchases</h4><p>Browse purchase orders. Tap + to record a new purchase. Stock updates on the desktop instantly.</p></div>
+    <div class="panel-card"><h4>📦 Inventory</h4><p>Search and filter all stock items. Red = out of stock. Orange = low stock.</p></div>
+    <div class="panel-card"><h4>👥 Parties</h4><p>All customers and vendors with live balances. Green = they owe you. Red = you owe them.</p></div>
+    <div class="panel-card"><h4>🏦 Accounts</h4><p>Live cash and bank balances with full transaction history.</p></div>
+  </div>
+
+  <h3>Credit Purchases and Sales on the Phone</h3>
+  <p>When you choose <strong>Pending</strong> on a new purchase, or <strong>Unpaid</strong> on a new sale, the phone hides the Cash / Bank / UPI buttons — nothing is paid yet. The desktop records it as credit: <em>Credit to Vendor</em> for a purchase, <em>Credit to Party</em> for a sale (with the customer's credit limit checked). It appears under that supplier or customer in Accounts, exactly like a credit entry made on the desktop.</p>
+
+  <h3>Who Can Use the Phone App</h3>
+  <ul>
+    <li>The admin can always connect. Staff need the admin to switch their <strong>📱 Mobile</strong> setting on in Settings → 👥 Users.</li>
+    <li>Each staff account uses one phone seat. Reinstalling the app on the same person's phone simply moves their seat — it doesn't use another one.</li>
+    <li>The phone shows only what the staff member's permissions allow; for example, without "See money figures" the dashboard shows a note instead of sales and profit figures.</li>
+  </ul>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 19b -->
+<div class="chapter-banner">Chapter 19b — Desktop–Mobile Messaging</div>
+<div class="section" id="ch19b">
+  <h2>19b. 💬 Desktop–Mobile Messaging</h2>
+  <p>Accelent includes a built-in messaging system that lets the desktop owner and the mobile app user send notes to each other in real time — no WhatsApp or external app needed. Messages are stored securely in your local database.</p>
+
+  <h3>Where Is the Messages Button?</h3>
+  <p>At the very bottom of the desktop window, in the status bar, you will see a <strong>💬 Messages</strong> button. Click it to open the chat window. The button shows an unread count badge when new messages arrive:</p>
+  <table>
+    <tr><th>Button appearance</th><th>Meaning</th></tr>
+    <tr><td><code>💬 Messages</code></td><td>No new messages</td></tr>
+    <tr><td><code>💬 Messages (3)</code> — highlighted in green</td><td>3 unread messages from the mobile app</td></tr>
+  </table>
+
+  <h3>Sending a Message from the Desktop</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>💬 Messages</strong> in the status bar at the bottom of the screen.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">The chat window opens. Previous messages are loaded from history.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Type your message in the text box at the bottom.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Press <strong>Enter</strong> or click <strong>Send</strong>. Your message appears on the right side (blue bubble).</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">The mobile user will see your message within 5 seconds on their phone.</div></div>
+
+  <h3>Sending a Message from the Mobile App</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">On the phone, tap the <strong>💬 Chat</strong> icon from the Dashboard or navigation menu.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Type your message and tap <strong>Send</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">The desktop will receive the message within 5 seconds and show a badge on the 💬 Messages button.</div></div>
+
+  <h3>Desktop Notifications (System Tray)</h3>
+  <p>When the chat window is <strong>closed or minimised</strong> and a new message arrives from the mobile app, a <strong>pop-up notification</strong> appears in the Windows system tray (bottom-right corner of the screen) saying:</p>
+  <p style="text-align:center; font-style:italic; color:#555;">"📱 You have a new message from the mobile app"</p>
+  <p>Click the notification or click <strong>💬 Messages</strong> in the app to read it.</p>
+
+  <h3>How Messages Are Stored</h3>
+  <p>All messages are saved in your local database (<code>inventory.db</code>) — the same file that holds all your business data. They are included in every backup. There is no external server involved — messages only travel between your desktop and phone over your own network.</p>
+
+  <div class="tip">💡 <strong>Common uses for messaging:</strong>
+    <ul style="margin-top:6px;">
+      <li>Owner is away — mobile user asks: "Customer wants 10 boxes of X, do we have stock?" — owner replies from the desktop</li>
+      <li>Desktop operator notifies mobile user: "New payment received from ABC Traders"</li>
+      <li>Quick notes between shop staff without needing personal phone numbers</li>
+    </ul>
+  </div>
+
+  <div class="warn">⚠ <strong>The mobile app must be connected to the desktop</strong> for messages to be delivered. If the phone shows "Not Connected", messages will queue and deliver once the connection is restored.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 20 -->
+<div class="chapter-banner">Chapter 20 — Troubleshooting</div>
+<div class="section" id="ch20">
+  <h2>20. Troubleshooting</h2>
+
+  <table>
+    <tr><th>Problem</th><th>Cause</th><th>Solution</th></tr>
+    <tr><td>App won't open / SmartScreen warning</td><td>App not digitally signed</td><td>Click "More info" → "Run anyway". This is a one-time prompt.</td></tr>
+    <tr><td>Balances look wrong</td><td>Data sync issue</td><td>Settings → App Settings → 🔄 Recalculate All Balances.</td></tr>
+    <tr><td>Stock not updating after a sale</td><td>Item not linked to inventory</td><td>Make sure inventory items are selected from the popup, not typed manually.</td></tr>
+    <tr><td>Invoice panel shows "Feature Under Development"</td><td>App error on first load</td><td>Close the app completely and reopen it. This is rare.</td></tr>
+    <tr><td>GST numbers not appearing on invoice</td><td>Company GSTIN not entered</td><td>Settings → Company → enter your GSTIN → Save.</td></tr>
+    <tr><td>Mobile app shows empty or "Could not load"</td><td>Desktop app not running</td><td>Make sure Accelent is open on the desktop PC.</td></tr>
+    <tr><td>QR scan doesn't work</td><td>Camera permission denied</td><td>Phone Settings → Apps → Accelent → Permissions → enable Camera.</td></tr>
+    <tr><td>Works on WiFi, not on mobile data</td><td>Local IP not reachable remotely</td><td>Install Tailscale on desktop and phone. Use Tailscale QR code.</td></tr>
+    <tr><td>APK won't install on phone</td><td>Unknown sources blocked</td><td>Android Settings → Apps → your file manager → Install unknown apps → enable.</td></tr>
+    <tr><td>Database file missing / app asks to reset</td><td>AppData folder issue</td><td>Restore from a backup: Settings → Restore Data. If no backup, contact support.</td></tr>
+    <tr><td>Forgot admin password / account locked</td><td>Password lost or too many failed login attempts</td><td>Click <strong>"Forgot password?"</strong> on the login screen and use your saved Recovery Key to set a new password yourself (Chapter 16). No Recovery Key saved? Contact your software provider.</td></tr>
+    <tr><td>Forgot Cloud Backup password</td><td>Backup password lost</td><td>In the Restore window click "Forgot password? Use recovery code instead" — requires your saved Cloud Backup recovery code plus a release code from support (Chapter 17).</td></tr>
+    <tr><td>App very slow on first launch</td><td>Initial Python startup</td><td>Normal — first launch takes 5–10 seconds. Subsequent launches are faster.</td></tr>
+    <tr><td>"Computer Date Is Wrong" message</td><td>The PC clock is behind (often a weak motherboard/CMOS battery)</td><td>Set the correct date and time in Windows, or connect to the internet once and restart Accelent. Replace the CMOS battery if it keeps happening.</td></tr>
+    <tr><td>"Phone limit reached" on the phone</td><td>All phone seats are in use</td><td>The message names who is connected. Remove an old phone in Mobile Connect, or upgrade your plan.</td></tr>
+    <tr><td>A staff member can't see a screen or button</td><td>Their permissions don't include it</td><td>Admin: Settings → 👥 Users → 🔐 next to their name → tick the permission → Save. They see it at their next login.</td></tr>
+    <tr><td>Bill scanning says the trial scans are used</td><td>The free trial includes 15 bill scans</td><td>Activate a license for unlimited scanning. Everything else keeps working until the trial ends.</td></tr>
+    <tr><td>"Subscription expired" in the status bar</td><td>The yearly subscription has ended</td><td>Renew from Settings → 🔑 License. Billing keeps working for 7 days after the end date; your data always stays viewable.</td></tr>
+    <tr><td>GSTR-1 export lists items without HSN</td><td>Those items have no HSN code in Inventory</td><td>Add their HSN codes in Inventory, then export again.</td></tr>
+  </table>
+
+  <div class="tip">💡 <strong>Always try first:</strong> Close Accelent completely, wait 5 seconds, reopen it. This fixes 70% of unexpected issues.</div>
+
+  <div class="good">✅ <strong>For any other issue:</strong> Take a screenshot of the error message and contact your software provider with the screenshot and a description of what you were doing when the error occurred.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ QUICK REF -->
+<div class="section">
+  <h2>Quick Reference — Daily Workflow</h2>
+  <table>
+    <tr><th>Task</th><th>Panel</th><th>Steps</th></tr>
+    <tr><td>Record a sale</td><td>Sales</td><td>Fill form → Add items → Select payment → Save Invoice</td></tr>
+    <tr><td>Record a purchase</td><td>Purchases</td><td>+ New Purchase → Vendor → Items → Payment → Save</td></tr>
+    <tr><td>Record an expense</td><td>Expenses</td><td>+ Add Expense → Category → Amount → Cash/Bank → Save</td></tr>
+    <tr><td>Check cash balance</td><td>Accounts</td><td>Click Accounts → Cash tile shows current balance</td></tr>
+    <tr><td>Check what a customer owes</td><td>Accounts → Parties</td><td>Search the party name — balance shown in green (receivable)</td></tr>
+    <tr><td>Receive payment from a customer</td><td>Receipts</td><td>+ New Receipt → Select customer → Amount → Save</td></tr>
+    <tr><td>Pay a vendor</td><td>Receipts</td><td>+ New Payment → Select vendor → Amount → Save</td></tr>
+    <tr><td>Check low stock</td><td>Inventory</td><td>Items shown in orange/red need reordering</td></tr>
+    <tr><td>Reorder from a vendor</td><td>Low Stock Monitor</td><td>Order from Vendor → pick vendor → review items → Save (creates a draft PO)</td></tr>
+    <tr><td>Print an invoice</td><td>Sales</td><td>Find invoice in list → click 🖨 Print button</td></tr>
+    <tr><td>Take a backup</td><td>Settings</td><td>App Settings → 💾 Backup Data → choose location → Save</td></tr>
+  </table>
+</div>
+
+<footer>
+  Accelent v2.3.7 — Complete User Guide<br>
+  Desktop &amp; Mobile Accounting System &nbsp;·&nbsp; 2026<br><br>
+  <em>For support, contact your software provider with a screenshot of any error message.</em>
+</footer>
+
+</body>
+</html>
+
