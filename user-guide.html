@@ -113,158 +113,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════ WHAT'S NEW 2.3.7 -->
-<div class="section" id="whatsnew2_3_7">
-  <h2>🆕 What's New in Version 2.3.7</h2>
-  <p>Everything added since version 2.3.0. The biggest additions are <strong>Staff Permissions</strong>, the <strong>yearly subscription</strong>, and complete GST figures for entries made on the phone.</p>
-
-  <h3>🔐 Staff Permissions</h3>
-  <ul>
-    <li>Decide exactly what each staff member can see and do: hide revenue, profit, balances, purchase costs, GST and payroll; stop them editing or deleting past bills, or changing stock, prices and tax rates.</li>
-    <li>Start from a template (Billing Staff, Store Keeper, Accountant, Manager) and adjust 12 checkboxes. The admin always has full access.</li>
-    <li>The same rules apply on the phone app — screens a staff member isn't allowed simply don't appear. See <a href="#ch16">Chapter 16</a>.</li>
-  </ul>
-
-  <h3>🔑 Yearly Subscription</h3>
-  <ul>
-    <li>A license now runs for one year. Renew from 30 days before it ends — early renewal adds the year on top, so you never lose days.</li>
-    <li>If a renewal is missed, bill scanning pauses at once but billing keeps working for 7 more days, so the shop never stops mid-sale.</li>
-    <li>The free trial is 45 days and includes 15 vendor bill scans. See <a href="#ch16">Chapter 16 — Your Subscription</a>.</li>
-  </ul>
-
-  <h3>📊 GST and Accounts Corrections</h3>
-  <ul>
-    <li>Sales and purchases entered on the phone now count in GST Returns (output tax, input tax credit and the summary).</li>
-    <li>The GSTR-1 export now calculates taxable value and tax correctly for every sale, and its HSN summary uses each item's real HSN code. Before exporting, Accelent lists any sold items that still have no HSN code.</li>
-    <li>Deleting or editing a bill now updates its GST entry too, so tax is never counted for a bill that no longer exists, or counted twice.</li>
-    <li>Supplier balances are now the same on the phone and the desktop, and a purchase paid in cash or by bank on the phone is no longer shown as money owed.</li>
-    <li>All of these corrections are applied to your existing data automatically the first time the new version starts.</li>
-  </ul>
-
-  <h3>📱 Phone App (1.6.6)</h3>
-  <ul>
-    <li>A <strong>Pending</strong> purchase or <strong>Unpaid</strong> sale made on the phone is recorded as credit to the supplier or customer (with the customer's credit limit checked), exactly like the desktop.</li>
-    <li>Each staff account uses one phone seat, even after the app is reinstalled on their phone.</li>
-    <li>Menus and figures on the phone follow the staff member's permissions.</li>
-  </ul>
-
-  <h3>Also added since 2.3.0</h3>
-  <ul>
-    <li><strong>Pakistan and Sri Lanka tax support</strong>, alongside India GST and Simple VAT countries.</li>
-    <li><strong>GSTR-2B reconciliation</strong> and <strong>year-end closing</strong>, with a financial-year switch in the status bar.</li>
-    <li><strong>Wrong computer date protection:</strong> if the PC's clock is wrong (for example a weak motherboard battery), Accelent keeps working and asks you to correct the date instead of locking you out.</li>
-  </ul>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════ WHAT'S NEW 2.3.0 -->
-<div class="section" id="whatsnew">
-  <h2>🆕 What's New in Version 2.3.0</h2>
-  <p>This update brings a fully offline, AI-powered <strong>Scan Vendor Bill</strong> feature to Purchase Panel — photograph a paper bill and Accelent reads the line items, HSN codes, and GST straight off it, with a full review screen before anything is saved. No internet connection is used at any point; the photo never leaves your computer. See <a href="#ch10">Chapter 10 — Purchases</a> for the full walkthrough.</p>
-
-  <h3>📷 Scan Vendor Bill — straighten, then scan</h3>
-  <ul>
-    <li>Pick a photo of the bill and Accelent shows it to you first, with <strong>Rotate Left / Rotate Right</strong> buttons — straighten a sideways or upside-down photo before scanning starts. An already-upright photo scans in a few seconds; a crooked one can take 20–30 seconds while it works out the right orientation on its own, so straightening first is worth it.</li>
-    <li><strong>Cancel Scan actually stops it</strong> — closing the progress box or clicking Cancel Scan now genuinely stops the background scan, instead of just hiding the box while it kept running unseen.</li>
-  </ul>
-
-  <h3>✅ Review screen — verify everything before it touches your books</h3>
-  <ul>
-    <li>The scanned photo sits side-by-side with an editable line-item grid — click any row to jump straight to where it came from on the bill photo.</li>
-    <li>A live <strong>Reconciliation Status</strong> banner checks the line items against the bill's own printed total, so a misread line is obvious before you apply anything.</li>
-    <li><strong>HSN/SAC and GST% now fill in automatically</strong> from the bill's own printed HSN code — a blank or unreadable HSN shows a clear "?" instead of a silently-guessed rate, so you know exactly which rows to double-check.</li>
-    <li><strong>Undo/Redo</strong> (Ctrl+Z) for every edit, add, remove, and bulk action in the grid — a wrong click is never permanent.</li>
-    <li><strong>If you're interrupted mid-review</strong> (the app closes, the computer sleeps, anything) — picking the same photo again offers to resume exactly where you left off, without re-scanning.</li>
-    <li><strong>Auto-Match</strong> now uses smarter fuzzy matching against your existing catalog, with a confirmation popup for anything it's only moderately sure about — never a silent guess.</li>
-    <li><strong>Works for a brand-new vendor with no purchase history too</strong> — every line just becomes a new item, the same as adding one by hand.</li>
-  </ul>
-
-  <h3>💾 Apply &amp; Save Purchase Now</h3>
-  <ul>
-    <li>A new button saves the purchase directly from the review screen — no need to go check the New Purchase form separately to confirm it saved correctly.</li>
-    <li>Shows an exact confirmation (Vendor, Goods Amount, GST, Grand Total) before anything is written, computed the same way the actual save calculates it.</li>
-    <li>Only ever saves the items you just scanned and checked — never anything else that happened to already be sitting in that vendor's purchase form.</li>
-  </ul>
-
-  <div class="tip">💡 Scan Vendor Bill needs local AI components that aren't included in every build — if the button reports it's unavailable, everything else in Accelent works normally; this one feature just isn't set up on that particular install.</div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════ WHAT'S NEW -->
-<div class="section" id="whatsnew2_1_0">
-  <h2>🆕 What's New in Version 2.1.0</h2>
-  <p>This update reworks Purchase Panel's New Purchase screen and extends barcode scanning further. See <a href="#ch10">Chapter 10 — Purchases</a> and <a href="#ch8b">Chapter 8b — Low Stock Monitor</a> for the full walkthroughs.</p>
-
-  <h3>Purchase Panel — New Purchase, redesigned</h3>
-  <ul>
-    <li><strong>Vendor-first flow:</strong> pick a vendor and their usual items auto-fill straight into the Order Items table, ready to review and save.</li>
-    <li><strong>Scan a barcode to add or merge an item</strong> directly into the purchase, with a visible confirmation every time.</li>
-    <li><strong>Per-row barcode status</strong> — see at a glance which items have a barcode, attach one with your phone, or clear a stuck/incorrect scan.</li>
-    <li><strong>➕ Add Item to Same Vendor</strong> for registering a brand-new product mid-purchase, barcode included.</li>
-    <li>All existing payment methods (Cash, Bank Transfer, Cheque, Card, UPI, Credit to Vendor) and full GST (CGST/SGST) recording are unchanged.</li>
-  </ul>
-
-  <h3>Mobile scanning</h3>
-  <ul>
-    <li><strong>Low Stock Monitor's Quick New Order</strong> can now scan a barcode for a brand-new item — previously manual entry only.</li>
-    <li><strong>Every successful phone scan now shows a clear "✓ Scanned" confirmation</strong> instead of silently filling the field.</li>
-    <li><strong>Bigger, easier-to-tap selection checkboxes</strong> in the Order Items tables.</li>
-  </ul>
-
-  <div class="tip">💡 If you're upgrading from an earlier version, no action is needed — open New Purchase as usual and the new screen is there.</div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════ WHAT'S NEW 2.0.1 -->
-<div class="section" id="whatsnew2_0_1">
-  <h2>🆕 What's New in Version 2.0.1</h2>
-  <p>This update is a bug-fix and quality release, based on real day-to-day testing of the app. Nothing about how you use Accelent has changed — these are things that now work correctly, or work better, without any new steps to learn.</p>
-
-  <h3>🌐 Multi-Language Support Expanded</h3>
-  <ul>
-    <li><strong>8 new languages added:</strong> Bengali, Tamil, Telugu, Kannada, Gujarati, Marathi, Punjabi, and Nepali — bringing the total to <strong>14 languages</strong>.</li>
-    <li><strong>The Language dropdown now shows each language's own name in its own script</strong> (e.g. "ਪੰਜਾਬੀ", "தமிழ்") instead of a two-letter code like "pa" or "ta" — so you can find your language without already knowing English.</li>
-  </ul>
-
-  <h3>Global Search</h3>
-  <ul>
-    <li><strong>Vendor search no longer crashes.</strong> It was failing every time due to a database column mismatch.</li>
-    <li><strong>Fixed a rare crash</strong> that could occur right after searching (a background-thread cleanup issue).</li>
-    <li><strong>Item, Purchase Order, and Invoice detail pop-ups now show correct quantities and prices</strong> — some were incorrectly showing 0 due to the same kind of mismatch.</li>
-    <li><strong>Item details now show much more useful information</strong>: rate, value, and a plain-English note for every stock movement (e.g. "Sale to Fuji", "Opening stock via import"), plus a computed Stock Value.</li>
-    <li><strong>Printing from any detail pop-up (PO/Invoice/Item/Customer/Vendor) is fixed</strong> — it used to print a tiny, unreadable sliver of text; it now prints full-size and correctly formatted.</li>
-  </ul>
-
-  <h3>Inventory</h3>
-  <ul>
-    <li><strong>Clicking a row to edit it now works reliably.</strong> A row could highlight without loading its details into the form — that's fixed.</li>
-    <li><strong>Item codes are now a consistent, readable format</strong> (e.g. <code>TOYS-BI-DO-001</code>) so they always display cleanly in the item list, instead of sometimes running too long to read.</li>
-    <li><strong>Audit Trail now shows the ₹ value of every stock movement</strong>, not just the quantity change — including a running <strong>Total value</strong> for whatever you've filtered (e.g. filter Reason = "import" to see exactly how much stock value a bulk import brought in).</li>
-    <li>Added a <strong>🖨️ Print Report</strong> button to the Audit Trail tab.</li>
-  </ul>
-
-  <h3>Stock Expiry Alerts</h3>
-  <ul>
-    <li><strong>This panel now actually works.</strong> It was silently showing an empty list regardless of your data — it's now correctly connected to your live inventory.</li>
-    <li>Added a <strong>right-click menu</strong> on any row for Set Expiry and Print Report, in addition to the existing toolbar buttons.</li>
-  </ul>
-
-  <h3>Sales &amp; Purchase Returns</h3>
-  <ul>
-    <li><strong>Posting a return now actually updates stock.</strong> A Credit Note or Debit Note used to save correctly but leave the item's stock quantity unchanged — returns now correctly increase/decrease stock and show up in the Audit Trail (Reason = "return").</li>
-    <li><strong>Refunds on a Cash sale now correctly reduce Cash in Hand.</strong> Previously the refund amount didn't visibly go anywhere for a walk-in cash customer.</li>
-    <li><strong>Refunds on a Credit sale now correctly reduce what the customer owes</strong>, instead of accidentally adding to their balance.</li>
-    <li><strong>Purchase and Sales Returns are now reflected in your books</strong> — the Profit &amp; Loss, Trading Account, and Balance Sheet reports net returns out of Purchases/Sales instead of ignoring them.</li>
-  </ul>
-
-  <h3>Books of Accounts</h3>
-  <ul>
-    <li><strong>Imported/transferred inventory value is now counted as Opening Stock</strong> in the Profit &amp; Loss, Trading Account, and Balance Sheet reports. Previously, stock brought in through the Smart Import tool (rather than a recorded Purchase) was invisibly counted as pure profit once sold.</li>
-    <li>The <strong>Comparison</strong> report (Inventory Reports → Comparison tab) now uses an item's recorded cost for items with no purchase history in the selected range, instead of showing their full sale price as 100% profit.</li>
-    <li>The Comparison tab has two new columns, <strong>Imported Qty</strong> and <strong>Purchase/Sales Return Qty</strong>, so you can see at a glance why an item's Qty In/Out looks different from its actual stock — no more cross-checking the Audit Trail or Returns panel separately.</li>
-    <li><strong>Gross Profit in the Comparison tab now correctly nets out Sales Returns</strong> — a returned unit is no longer counted as sold revenue/profit.</li>
-  </ul>
-
-  <div class="tip">💡 If you're upgrading from an earlier version, no action is needed — these fixes apply automatically to your existing data the next time you open the app. See <a href="#ch18">Chapter 18 — Upgrading to a New Version</a>.</div>
-</div>
-
 <!-- ═══════════════════════════════════════════════════════════ TOC -->
 <div class="section">
   <h2>Table of Contents</h2>
@@ -315,7 +163,7 @@
     </div>
     <div class="panel-card">
       <h4>📊 What it manages</h4>
-      <p>Sales invoices · Purchase bills · Inventory &amp; stock · Parties (customers &amp; vendors) · Bank &amp; cash accounts · Employees &amp; payroll · GST &amp; e-invoicing</p>
+      <p>Sales invoices · Purchase bills · Inventory &amp; stock · Parties (customers &amp; vendors) · Bank &amp; cash accounts · Employees &amp; payroll · GST &amp; e-invoicing (India), plus tax for Pakistan, Sri Lanka and Simple VAT countries</p>
     </div>
     <div class="panel-card">
       <h4>🔒 Your data stays yours</h4>
@@ -752,6 +600,7 @@
 
   <h3>Finalization Panel</h3>
   <p>At the end of the financial year, go to <strong>Finalization</strong> to generate your <strong>Profit &amp; Loss Statement</strong> and <strong>Balance Sheet</strong>. These reports can be printed or exported for your accountant or auditor.</p>
+  <p>Finalization also closes the financial year. To look at an earlier year, switch the financial year from the status bar at the bottom of the window.</p>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 14 -->
@@ -785,6 +634,7 @@
   <ul>
     <li><strong>GSTR-1</strong> — Outward supplies (your sales) — filed by the 11th of the next month</li>
     <li><strong>GSTR-3B</strong> — Summary return of sales and purchases with tax payable — filed by the 20th</li>
+    <li><strong>GSTR-2B reconciliation</strong> — compares your purchase bills with your suppliers' GSTR-2B, so you claim only the input tax credit they have reported</li>
   </ul>
   <p>Accelent calculates CGST, SGST, and IGST from the HSN codes assigned to your inventory items. Make sure all items have the correct HSN code and GST rate assigned in the Inventory panel.</p>
   <ul>
@@ -792,7 +642,6 @@
     <li><strong>HSN codes:</strong> the GSTR-1 HSN summary groups sales by each item's real HSN code. Before a GSTR-1 export, Accelent lists any sold items that have no HSN code — add them in Inventory first, then export again.</li>
     <li><strong>Deleted or edited bills:</strong> deleting a bill removes its tax from GST Returns, and editing a sale replaces its tax entry rather than adding a second one.</li>
   </ul>
-  <div class="warn">⚠ If you filed returns using figures from a version before 2.3.5, compare them with the corrected figures and check with your accountant whether an adjustment is needed in your next return.</div>
 
   <h3>E-Invoice / IRN Panel</h3>
   <p>Businesses with annual turnover above the government threshold must generate an <strong>IRN (Invoice Reference Number)</strong> for each B2B invoice through the NIC e-Invoice portal.</p>
@@ -857,7 +706,7 @@
     <tr><td>Accountant</td><td>Books and GST</td><td>Everything except payroll and editing or deleting past bills</td></tr>
     <tr><td>Manager</td><td>Trusted senior staff</td><td>Everything (phone access is set separately)</td></tr>
   </table>
-  <div class="tip">💡 New staff accounts, and accounts that existed before version 2.3.6, start as <strong>Billing Staff</strong>. Give each person what they need with the 🔐 button. Changes apply the next time they log in to the desktop, and on their phone straight away.</div>
+  <div class="tip">💡 New staff accounts start as <strong>Billing Staff</strong>. Give each person what they need with the 🔐 button. Changes apply the next time they log in to the desktop, and on their phone straight away.</div>
   <div class="warn">⚠ Permissions protect your data from staff — they do not protect the admin account. Anyone who knows the admin password has full access, so keep it private.</div>
 
   <h3>🔑 Your Subscription</h3>
