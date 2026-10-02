@@ -288,7 +288,7 @@
   <div class="step"><div class="step-num">2</div><div class="step-body">For each product: enter name, category, unit (Pcs/Kg/Box etc.), purchase price, selling price, current stock quantity, and minimum stock level.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Repeat for all products. You can add more items anytime.</div></div>
 
-  <div class="tip">💡 <strong>Tip:</strong> Set a minimum stock level for fast-moving items. Accelent will highlight them in orange/red when stock falls below that level.</div>
+  <div class="tip">💡 <strong>Tip:</strong> Set a minimum stock level for fast-moving items. Accelent marks them 🟡 Low or 🔴 Out when stock falls below that level.</div>
 
   <h3>Step 4 — Choose Language</h3>
   <p>Go to <strong>Settings → ⚙️ App Settings</strong> → scroll to Language → pick your preferred language. The interface updates immediately. Available: English, Hindi, Urdu, Spanish, French, German.</p>
@@ -359,14 +359,19 @@
   <h2>7. Dashboard</h2>
   <p>The Dashboard is your business at a glance. It refreshes every time you navigate to it.</p>
 
+  <figure class="shot"><a href="manual_images/dashboard.png" target="_blank"><img src="manual_images/dashboard.png" alt="Dashboard" loading="lazy"></a><figcaption>The Dashboard — quick-action buttons, this month's figures, charts, stock alerts and recent purchase orders.</figcaption></figure>
+
   <table>
     <tr><th>Section</th><th>What It Shows</th></tr>
-    <tr><td>Today's Sales</td><td>Total invoices issued today and their combined value</td></tr>
-    <tr><td>Today's Expenses</td><td>All expenses recorded today</td></tr>
-    <tr><td>Cash &amp; Bank</td><td>Live balances for all cash and bank accounts</td></tr>
-    <tr><td>Pending Invoices</td><td>Unpaid invoices — customers who still owe you</td></tr>
-    <tr><td>Low Stock Alerts</td><td>Items where current quantity ≤ minimum stock level</td></tr>
-    <tr><td>Recent Transactions</td><td>The last 10 sales, purchases, and expenses</td></tr>
+    <tr><td>Quick buttons</td><td>New Sale, New Purchase, Quick Order, Record Payment and Reports — one click to the most common jobs</td></tr>
+    <tr><td>Total Balance</td><td>All your cash and bank money together</td></tr>
+    <tr><td>Income / Expenses (Month)</td><td>Money earned and spent so far this month</td></tr>
+    <tr><td>Overdue Payments · Pending Invoices</td><td>Customers who still owe you</td></tr>
+    <tr><td>Monthly Purchases</td><td>What you have bought this month</td></tr>
+    <tr><td>Income vs Expenses · Account Distribution</td><td>The last 6 months as a chart, and where your money sits (cash and each bank)</td></tr>
+    <tr><td>Stock Alerts</td><td>Items that are low or out of stock, with the Low Stock / Out of Stock / Suggested Orders counts</td></tr>
+    <tr><td>Recent Purchase Orders</td><td>Your latest orders and whether they are received and paid — <strong>View All Orders</strong> opens the full list</td></tr>
+    <tr><td>Top Items by Inventory Value</td><td>The items holding most of your stock money</td></tr>
   </table>
 
   <div class="tip">💡 The Dashboard does not auto-refresh in real time — click on another panel and come back to see updated figures.</div>
@@ -379,18 +384,19 @@
   <p>Inventory keeps track of every product you sell — stock levels, prices, categories, and expiry dates.</p>
 
   <h3>Adding a New Item</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>+ Add Item</strong>.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-body">Fill in: Item Name, Category, Unit (Pcs / Kg / Box / Litre etc.), Purchase Price (what you paid), Selling Price (what you charge), Opening Stock (how many you have right now), Minimum Stock Level (alert threshold).</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-body">Optionally add: Barcode, HSN Code (for GST), Expiry Date (for perishables).</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>➕ Add New Item</strong> above the item list, and fill in the <strong>Add / Edit Item</strong> form on the left.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Fill in: Item Name, Category, Vendor, Buy Rate (what you paid), Sell Price (what you charge — the Margin is shown below it), GST %, Stock (how many you have right now) and the minimum stock level (alert threshold). Click <strong>🔍 Generate Smart Code</strong> for an item code.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Optionally add: Sub Category, Barcode, MRP (use <strong>Calculate from MRP + Discount %</strong> to work out the price), HSN Code (for GST), Expiry Date (for perishables).</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Save</strong>.</div></div>
 
   <h3>Stock Color Indicators</h3>
   <table>
     <tr><th>Color</th><th>Meaning</th></tr>
-    <tr><td>Normal (white/default)</td><td>Stock is healthy</td></tr>
-    <tr><td>🟠 Orange</td><td>Stock is below minimum level — consider reordering</td></tr>
-    <tr><td>🔴 Red</td><td>Out of stock — 0 quantity remaining</td></tr>
+    <tr><td>🟢 OK</td><td>Stock is healthy</td></tr>
+    <tr><td>🟡 Low</td><td>Stock is below minimum level — consider reordering</td></tr>
+    <tr><td>🔴 Out</td><td>Out of stock — 0 quantity remaining</td></tr>
   </table>
+  <figure class="shot"><a href="manual_images/inventory.png" target="_blank"><img src="manual_images/inventory.png" alt="Inventory Management" loading="lazy"></a><figcaption>Inventory Management — the Add / Edit Item form on the left, every item with its Status on the right.</figcaption></figure>
 
   <h3>Inventory Reports</h3>
   <p>The <strong>Inventory Reports</strong> panel (separate from main Inventory) gives you stock valuation reports, movement history, and category-wise summaries. Use it for monthly stock audits.</p>
@@ -409,6 +415,13 @@
 <div class="section" id="ch8b">
   <h2>8b. Low Stock Monitor</h2>
   <p>Low Stock Monitor lists every item at or below its Minimum Stock Level and gives you two ways to reorder: a quick wizard for registering a brand-new item and vendor together, and a fuller "Order from Vendor" screen for building a proper Purchase Order. Unlike Purchase Panel's New Purchase, orders created here are <strong>drafts</strong> — they don't touch stock or vendor balances until you send them and record the goods received.</p>
+
+  <h3>📋 Show Low Stock Suggestions</h3>
+  <p>The quickest way to reorder everything that is running low at once.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>Show Low Stock Suggestions</strong>. The list shows every item below its minimum stock, with a suggested Order Qty, Rate, GST % and Vendor.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Tick the items to order (or use <strong>Select All</strong> / <strong>Invert</strong>) and adjust any Order Qty.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Keep <strong>Group by vendor and create separate orders</strong> ticked to get one order per vendor, then click <strong>Create Orders for Ticked Items</strong>. The new orders appear in the list behind as drafts.</div></div>
+  <figure class="shot"><a href="manual_images/low-stock-suggestions.png" target="_blank"><img src="manual_images/low-stock-suggestions.png" alt="Low Stock Purchase Suggestions" loading="lazy"></a><figcaption>Low Stock Purchase Suggestions — tick the items, then create one order per vendor.</figcaption></figure>
 
   <h3>⚡ Quick New Order</h3>
   <p>Use this when you're registering a genuinely new product from a genuinely new vendor in one go — item details and vendor details side by side, ending in a draft Purchase Order.</p>
@@ -441,14 +454,16 @@
   <h3>Creating a New Invoice</h3>
   <div class="step"><div class="step-num">1</div><div class="step-body">The left side of the Sales panel is the <strong>Invoice Form</strong>. Enter the customer's name — if they are a known party, their balance will appear.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Select the <strong>payment method</strong>: Cash, Bank, UPI, or Credit (on account).</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>📷 Scan</strong> to scan a product barcode with the mobile camera, or click <strong>📋 Add Items</strong> to search and select products from your inventory.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>📱 Scan with Phone</strong> to scan a product barcode with the phone camera, or click <strong>➕ Add Item</strong> to search and select products from your inventory.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Adjust quantities. The total updates automatically.</div></div>
   <div class="step"><div class="step-num">5</div><div class="step-body">Optionally enter a discount amount or additional charges (P&amp;F).</div></div>
   <div class="step"><div class="step-num">6</div><div class="step-body">Click <strong>💾 Save Invoice</strong>. The invoice is saved, stock is reduced, and the customer's balance is updated.</div></div>
   <div class="step"><div class="step-num">7</div><div class="step-body">Click <strong>🖨 Print</strong> to print the invoice. Click <strong>📱 WhatsApp</strong> to share it via WhatsApp.</div></div>
 
+  <figure class="shot"><a href="manual_images/sales-invoice.png" target="_blank"><img src="manual_images/sales-invoice.png" alt="Create Invoices" loading="lazy"></a><figcaption>Creating an invoice — customer details on the left, items and totals on the right, saved invoices below.</figcaption></figure>
+
   <h3>Viewing Past Invoices</h3>
-  <p>The right side of the Sales panel shows all saved invoices. You can search by customer name, invoice number, or date range. Each invoice row has buttons to View, Edit, Print, or Delete.</p>
+  <p>The <strong>Saved Sales Invoices</strong> list below the form shows all saved invoices; the Source column shows whether each was made on the desktop or the phone. You can search by customer name, invoice number, or date range. Each invoice row has buttons to View, Edit, Print, or Delete.</p>
 
   <h3>Sales Returns</h3>
   <p>If a customer returns goods, go to the <strong>Returns</strong> panel → <strong>Sales Returns</strong> tab. Select the original invoice, enter the returned items, and save. Stock is restored and a credit note is issued. If the original sale was Cash/Bank/UPI/Card, the refund reduces that Cash/Bank balance directly; if it was a Credit sale, the refund instead reduces what the customer owes you.</p>
@@ -565,15 +580,17 @@
   </ul>
 
   <h3>Adding a Bank Account</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Accounts</strong> → click <strong>+ Add Bank Account</strong>.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Accounts</strong> → under Bank Accounts, click <strong>➕ Add New Bank</strong>.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Enter bank name, account number, and opening balance (from your bank statement on your start date).</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Click Save. The bank account now appears in all payment dropdowns (Sales, Purchases, Expenses).</div></div>
 
   <h3>Transfers Panel</h3>
   <p>Use the Transfers panel when you move money between your own accounts — for example, depositing cash into your bank account, or transferring between two bank accounts.</p>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Transfers</strong> → click <strong>+ New Transfer</strong>.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-body">Select <strong>From Account</strong> (e.g., Cash) and <strong>To Account</strong> (e.g., HDFC Bank), enter the amount and date.</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-body">Click Save. Cash decreases, bank increases — both balances update.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Transfers</strong>. In <strong>Inter-Accounts Transfer</strong>, choose <strong>Paid From</strong> (e.g., Cash in Hand) and <strong>Received In</strong> (e.g., HDFC Bank) — the available balance of each is shown beside it.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Enter the Amount and Date, and optionally a Reference and Description.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>Add Transfer</strong>. Cash decreases, bank increases — both balances update. It appears under Recent Transfers.</div></div>
+  <figure class="shot"><a href="manual_images/transfers.png" target="_blank"><img src="manual_images/transfers.png" alt="Transfers" loading="lazy"></a><figcaption>Transfers — the transfer form on the left, Transfer History Search on the right.</figcaption></figure>
+  <p>Use <strong>Transfer History Search</strong> on the right to find past transfers by date and account, and <strong>Print Report</strong> to print them.</p>
 
   <div class="warn">⚠ Never record a bank deposit as an "income" or "receipt" — always use the Transfers panel. Recording it elsewhere will inflate your income figures.</div>
 </div>
@@ -642,6 +659,7 @@
     <li><strong>GSTR-3B</strong> — Summary return of sales and purchases with tax payable — filed by the 20th</li>
     <li><strong>GSTR-2B reconciliation</strong> — compares your purchase bills with your suppliers' GSTR-2B, so you claim only the input tax credit they have reported</li>
   </ul>
+  <figure class="shot"><a href="manual_images/gst-dashboard.png" target="_blank"><img src="manual_images/gst-dashboard.png" alt="GST Management" loading="lazy"></a><figcaption>GST Management — this period's tax liability and input tax credit at the top, and tabs for the ledger, returns, GSTR-2B reconciliation, E-Way Bill and more.</figcaption></figure>
   <p>Accelent calculates CGST, SGST, and IGST from the HSN codes assigned to your inventory items. Make sure all items have the correct HSN code and GST rate assigned in the Inventory panel.</p>
   <ul>
     <li><strong>Phone entries are included:</strong> sales and purchases made on the phone count in output tax, input tax credit and the GST summary, just like desktop entries. Phone entries are treated as within your own state (CGST + SGST).</li>
