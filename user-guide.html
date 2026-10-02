@@ -85,6 +85,11 @@
                     text-transform: uppercase; font-weight: bold; }
   .chapter-banner + .section { margin-top: 0; border-radius: 0 0 10px 10px; }
 
+  .shot { margin: 18px 0; text-align: center; }
+  .shot img { max-width: 100%; height: auto; border: 1px solid #dee2e6; border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .shot figcaption { font-size: 12.5px; color: #777; margin-top: 6px; }
+
   footer { text-align: center; padding: 36px; color: #aaa; font-size: 12px; }
 
   @media(max-width:640px) {
@@ -510,7 +515,8 @@
   <div class="step"><div class="step-num">3</div><div class="step-body">The review screen opens with the bill photo on one side and an editable grid of everything found on the other. Check the <strong>Reconciliation Status</strong> banner at the top — it tells you whether the line items add up to the bill's own printed total.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Click any row to jump straight to where it came from on the bill photo. Fix anything that reads incorrectly — Description, Category, HSN/SAC, Qty, Unit, Rate, and GST% are all editable. A row Accelent couldn't confidently read shows <strong>⚠️</strong>; type in what's missing and it updates to <strong>✅</strong>. Uncheck any row you don't want to include.</div></div>
   <div class="step"><div class="step-num">5</div><div class="step-body">Use <strong>Bulk Actions</strong> to auto-match several rows to your existing catalog at once, or map them to a category — anything only moderately confident opens a confirmation popup so nothing gets matched to the wrong product silently.</div></div>
-  <div class="step"><div class="step-num">6</div><div class="step-body">Click <strong>💾 Apply &amp; Save Purchase Now</strong> to save the purchase directly from this screen. A confirmation box shows the exact Vendor, Goods Amount, GST, and Grand Total that will be recorded — check it matches the bill, then confirm. (Or use <strong>Apply All Checked Items to Ledger</strong> instead if you'd rather review the New Purchase form yourself before saving separately.)</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">Choose how to finish:<br>• <strong>💾 Last Page — Save Now</strong> — saves the purchase straight away (use it on a one-page bill, or on the last page). A confirmation box shows the exact Vendor, Goods Amount, GST, and Grand Total — check it matches the bill, then confirm.<br>• <strong>📷 More Pages? Scan Next</strong> — for a bill printed on more than one page: adds this page's items and opens the photo picker for the next page. On the last page, use <em>Last Page — Save Now</em>; all pages are saved together as one purchase.<br>• <strong>✅ Apply (Save Later)</strong> — adds the items to the New Purchase form without saving, so you can review them there and click <strong>Save Purchase</strong> yourself.</div></div>
+  <figure class="shot"><a href="manual_images/bill-scan-review.png" target="_blank"><img src="manual_images/bill-scan-review.png" alt="Bill Scan Review screen" loading="lazy"></a><figcaption>Bill Scan Review — the bill photo on the left, the items found on the right, and the Reconciliation Status at the top.</figcaption></figure>
 
   <div class="good">✅ Made a mistake in the grid? Ctrl+Z undoes the last edit, add, remove, or bulk action — nothing you do here is permanent until you actually save. And if you get interrupted partway through (the app closes, your computer sleeps), picking the same photo again offers to resume exactly where you left off instead of starting over.</div>
   <div class="tip">💡 This works for a brand-new vendor with no purchase history too — every line on the bill just becomes a new item, created the same way as adding one by hand. Scan Vendor Bill needs local AI components that aren't included in every install; if it reports being unavailable, everything else in Accelent is unaffected.</div>
@@ -699,6 +705,7 @@
   <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → 👥 Users</strong> and unlock Settings with the admin password.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Next to a staff member, click the <strong>🔐</strong> button (it shows their current template, e.g. <em>🔐 Billing Staff</em>).</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Pick a <strong>template</strong> to start from, then tick or untick any of the 12 permissions. Click <strong>Save</strong>.</div></div>
+  <figure class="shot"><a href="manual_images/staff-permissions.png" target="_blank"><img src="manual_images/staff-permissions.png" alt="Staff Permissions window" loading="lazy" style="max-width:420px;width:100%"></a><figcaption>The Permissions window — a starting template at the top, then the 12 permissions in groups.</figcaption></figure>
   <table>
     <tr><th>Template</th><th>Typical use</th><th>Can do</th></tr>
     <tr><td>Billing Staff</td><td>Counter / cashier</td><td>Create sales only — no money figures, no purchase costs</td></tr>
