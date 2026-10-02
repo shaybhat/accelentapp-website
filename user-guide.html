@@ -270,6 +270,25 @@
   <h2>4. First-Time Company Setup</h2>
   <p>When you first open Accelent, spend 10 minutes entering your company details before recording any transactions.</p>
 
+  <h3>Before You Begin — Choose Your Country</h3>
+  <p>The very first time Accelent starts (right after you set your own password), it asks for your <strong>country</strong>. The country decides your <strong>tax rules</strong> and <strong>currency</strong> — GST for India, VAT for the other countries — so every invoice, report and tax return uses the right rates from day one.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">In the <strong>Welcome — Set Up Your Country</strong> window, pick your <strong>Country</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Answer the extra question for your country, if one appears (see the table below).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Check the <strong>Language</strong>. It is pre-filled with your country's main language (for example Hindi for India) — change it to English or any other language you prefer.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Confirm and Continue</strong>.</div></div>
+  <table>
+    <tr><th>Country</th><th>Tax</th><th>Currency</th><th>Extra question</th></tr>
+    <tr><td>India</td><td>GST (CGST + SGST / IGST)</td><td>₹ INR</td><td>—</td></tr>
+    <tr><td>Pakistan</td><td>Federal sales tax on goods, provincial tax on services</td><td>Rs. PKR</td><td><strong>Province</strong> — your business's home province (ICT, Punjab, Sindh, KPK, Balochistan, AJ &amp; Kashmir, Gilgit-Baltistan)</td></tr>
+    <tr><td>Sri Lanka</td><td>VAT 18%, plus SSCL where it applies</td><td>Rs. LKR</td><td>Tick <strong>Financial Institution</strong> (VAT 20.5% on financial items) and/or <strong>SSCL-liable</strong> (annual turnover above LKR 120,000,000) if they apply to you</td></tr>
+    <tr><td>Nepal</td><td>VAT 13%</td><td>Rs. NPR</td><td>—</td></tr>
+    <tr><td>Bangladesh</td><td>VAT 15%</td><td>৳ BDT</td><td>—</td></tr>
+    <tr><td>Bhutan</td><td>Sales tax 7%</td><td>Nu. BTN</td><td>—</td></tr>
+    <tr><td>Maldives</td><td>GST 8% (17% for tourism sales, chosen per invoice)</td><td>Rf. MVR</td><td>—</td></tr>
+  </table>
+  <div class="err">🚨 <strong>Choose carefully — the country cannot be changed later.</strong> Once you save your first sale, purchase or inventory item, the country is locked: changing it would leave your saved amounts in the old currency and tax rules. The only way to choose again is <strong>Settings → App Settings → Reset Database</strong>, which erases all data. Language, on the other hand, can be changed at any time (Chapter 6).</div>
+  <div class="tip">💡 Your country is always shown at the bottom-left of the window, in the status bar — for example <em>India · GST</em>. If your country is not in the list, contact support before you start.</div>
+
   <h3>Step 1 — Enter Company Information</h3>
   <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings</strong> (⚙️ in the sidebar) → click the <strong>🏢 Company</strong> tab.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Fill in your company name, address, phone number, email, GST number (GSTIN), and PAN number.</div></div>
@@ -290,8 +309,8 @@
 
   <div class="tip">💡 <strong>Tip:</strong> Set a minimum stock level for fast-moving items. Accelent marks them 🟡 Low or 🔴 Out when stock falls below that level.</div>
 
-  <h3>Step 4 — Choose Language</h3>
-  <p>Go to <strong>Settings → ⚙️ App Settings</strong> → scroll to Language → pick your preferred language. The interface updates immediately. Available: English, Hindi, Urdu, Spanish, French, German.</p>
+  <h3>Step 4 — Check the Language</h3>
+  <p>You chose a language together with your country. To change it, go to <strong>Settings → ⚙️ App Settings</strong> → Language. The interface updates immediately — see Chapter 6 for all 18 languages.</p>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 5 -->
@@ -965,6 +984,7 @@
     <tr><td>QR scan doesn't work</td><td>Camera permission denied</td><td>Phone Settings → Apps → Accelent → Permissions → enable Camera.</td></tr>
     <tr><td>Works on WiFi, not on mobile data</td><td>Local IP not reachable remotely</td><td>Install Tailscale on desktop and phone. Use Tailscale QR code.</td></tr>
     <tr><td>APK won't install on phone</td><td>Unknown sources blocked</td><td>Android Settings → Apps → your file manager → Install unknown apps → enable.</td></tr>
+    <tr><td>Wrong country chosen at first start</td><td>The country locks after the first sale, purchase or item</td><td>Before entering any data: Settings → App Settings → Reset Database, then pick the country again. After data exists, contact support.</td></tr>
     <tr><td>Database file missing / app asks to reset</td><td>AppData folder issue</td><td>Restore from a backup: Settings → Restore Data. If no backup, contact support.</td></tr>
     <tr><td>Forgot admin password / account locked</td><td>Password lost or too many failed login attempts</td><td>Click <strong>"Forgot password?"</strong> on the login screen and use your saved Recovery Key to set a new password yourself (Chapter 16). No Recovery Key saved? Contact your software provider.</td></tr>
     <tr><td>Forgot Cloud Backup password</td><td>Backup password lost</td><td>In the Restore window click "Forgot password? Use recovery code instead" — requires your saved Cloud Backup recovery code plus a release code from support (Chapter 17).</td></tr>
