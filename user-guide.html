@@ -107,7 +107,7 @@
   <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
   <h1>Accelent</h1>
   <div class="sub">Complete User Guide — Accounting &amp; Inventory Management</div>
-  <div class="ver">Version 2.3.7 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
+  <div class="ver">Version 2.3.8 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
   <div class="cover-badges">
     <span class="badge">🖥️ Windows Desktop</span>
     <span class="badge">📱 Android Mobile</span>
@@ -236,20 +236,20 @@
     <li>Windows 10 or Windows 11 (64-bit)</li>
     <li><strong>RAM:</strong> 8 GB recommended for the quickest bill scanning. 4 GB is the minimum — everything works, but bill scans take longer.</li>
     <li>About 1 GB of free disk space</li>
-    <li>The installer: <code>Accelent_Setup_v2.3.7.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
+    <li>The installer: <code>Accelent_Setup_v2.3.8.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
   </ul>
 
   <h3>Installing with the Installer (Recommended)</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.3.7.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.3.8.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Double-click it. If Windows shows a SmartScreen warning, click <strong>"More info"</strong> then <strong>"Run anyway"</strong>.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Follow the steps and click <strong>Install</strong>. The installer also sets up the Windows components that bill scanning needs.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Open Accelent from the Start menu or the desktop shortcut.</div></div>
 
   <h3>Portable Zip (Alternative)</h3>
-  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.3.7.zip</code> instead and follow these steps:</p>
+  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.3.8.zip</code> instead and follow these steps:</p>
 
   <h3>Installation Steps</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.3.7.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.3.8.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Open the extracted <code>Accelent</code> folder. You will see <code>Accelent.exe</code>, <code>setup.bat</code>, and several support folders.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Double-click <strong>Accelent.exe</strong>. Windows may show a SmartScreen warning — click <strong>"More info"</strong> then <strong>"Run anyway"</strong>. This happens because the app is not yet digitally signed.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">The app opens. On first launch, it creates your database file automatically at <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span></div></div>
@@ -405,8 +405,13 @@
   <h3>Adding a New Item</h3>
   <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>➕ Add New Item</strong> above the item list, and fill in the <strong>Add / Edit Item</strong> form on the left.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Fill in: Item Name, Category, Vendor, Buy Rate (what you paid), Sell Price (what you charge — the Margin is shown below it), GST %, Stock (how many you have right now) and the minimum stock level (alert threshold). Click <strong>🔍 Generate Smart Code</strong> for an item code.</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-body">Optionally add: Sub Category, Barcode, MRP (use <strong>Calculate from MRP + Discount %</strong> to work out the price), HSN Code (for GST), Expiry Date (for perishables).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Optionally add: Sub Category, Barcode, MRP (use <strong>Calculate from MRP + Discount %</strong> to work out the price), HSN Code (for GST), Expiry Date (for perishables). In India, entering an HSN code of 4 or more digits sets the GST % for that code automatically.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Save</strong>.</div></div>
+
+  <h3>Deleting Items</h3>
+  <p>An item can be deleted only if it has never been bought, sold, returned or moved. Items with history stay in Inventory so your bills, reports and stock records remain complete. Every deleted item is kept in <strong>Deletion Watcher</strong> and can be restored from there.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">To remove several unused items at once, click <strong>🧹 Clean Up Unused Items</strong> (shown to the admin only). It lists every item that has never been bought or sold.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Tick the items to remove (use the search box or <strong>Select All shown</strong>), click <strong>🗑️ Delete Selected Items</strong> and confirm with the admin password. A backup of your data is saved first.</div></div>
 
   <h3>Stock Color Indicators</h3>
   <table>
@@ -502,7 +507,8 @@
   <div class="step"><div class="step-num">3</div><div class="step-body">Uncheck any row (☑) you don't want included in this bill. Adjust Qty/Rate/GST% per row as needed — the Amount and the Subtotal/GST/Grand Total at the bottom update live.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Add anything not already in the table by scanning it (<strong>📷</strong> field + <strong>📱 Scan with Phone</strong> at the top of Order Items), or register a brand-new product via <strong>➕ Add Item to Same Vendor</strong> below the table.</div></div>
   <div class="step"><div class="step-num">5</div><div class="step-body">Fill in Bill Number, Bill Date, and Payment Method (Cash / Bank Transfer / Cheque / Card / UPI / Credit to Vendor) in Bill Details.</div></div>
-  <div class="step"><div class="step-num">6</div><div class="step-body">Click <strong>💾 Save Purchase</strong>. Stock and the vendor's balance update immediately.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">Click <strong>💾 Save Purchase</strong>. Stock and the vendor's balance update immediately. If a bill with the same items and total is already saved (under any vendor) within 60 days, Accelent asks before saving it a second time.</div></div>
+  <div class="tip">💡 <strong>Editing or deleting a bill:</strong> select it in the bills list and click <strong>✏️ Edit Bill</strong> or <strong>❌ Delete Bill</strong>. An edit updates the stock and the vendor's account to match the corrected bill. A bill saved under the wrong vendor is best deleted and entered again under the right one — deleting reverses its stock, account entry and GST, and keeps a copy in Deletion Watcher.</div>
 
   <h3>Vendor &amp; Item Combinations</h3>
   <p>The Order Items table and <strong>➕ Add Item to Same Vendor</strong> panel adapt to four situations depending on whether the vendor and the item you're buying already exist in Accelent. The <strong>Vendor Name</strong> field always drives what you see below it, so pick or type the vendor first.</p>
@@ -548,12 +554,13 @@
   <div class="step"><div class="step-num">2</div><div class="step-body">Before scanning starts, straighten the photo if needed using <strong>Rotate Left / Rotate Right</strong> — an upright photo scans in a few seconds, a sideways one takes longer while it works out the orientation on its own. Click <strong>▶ Start Scan</strong> when it looks right.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">The review screen opens with the bill photo on one side and an editable grid of everything found on the other. Check the <strong>Reconciliation Status</strong> banner at the top — it tells you whether the line items add up to the bill's own printed total.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Click any row to jump straight to where it came from on the bill photo. Fix anything that reads incorrectly — Description, Category, HSN/SAC, Qty, Unit, Rate, and GST% are all editable. A row Accelent couldn't confidently read shows <strong>⚠️</strong>; type in what's missing and it updates to <strong>✅</strong>. Uncheck any row you don't want to include.</div></div>
-  <div class="step"><div class="step-num">5</div><div class="step-body">Use <strong>Bulk Actions</strong> to auto-match several rows to your existing catalog at once, or map them to a category — anything only moderately confident opens a confirmation popup so nothing gets matched to the wrong product silently.</div></div>
-  <div class="step"><div class="step-num">6</div><div class="step-body">Choose how to finish:<br>• <strong>💾 Last Page — Save Now</strong> — saves the purchase straight away (use it on a one-page bill, or on the last page). A confirmation box shows the exact Vendor, Goods Amount, GST, and Grand Total — check it matches the bill, then confirm.<br>• <strong>📷 More Pages? Scan Next</strong> — for a bill printed on more than one page: adds this page's items and opens the photo picker for the next page. On the last page, use <em>Last Page — Save Now</em>; all pages are saved together as one purchase.<br>• <strong>✅ Apply (Save Later)</strong> — adds the items to the New Purchase form without saving, so you can review them there and click <strong>Save Purchase</strong> yourself.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">A row whose description matches an item already in Inventory — bought from any vendor — shows <strong>✓ existing item</strong> with its code in the Category column; its quantity is added to that item. Every other row becomes a new item and needs a <strong>Category</strong>, because the category decides the item code. Apply stops and points to any new row without one.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">Use <strong>Bulk Actions</strong> to auto-match several rows to your existing catalog at once, or map them to a category — anything only moderately confident opens a confirmation popup so nothing gets matched to the wrong product silently.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">Choose how to finish:<br>• <strong>💾 Last Page — Save Now</strong> — saves the purchase straight away (use it on a one-page bill, or on the last page). A confirmation box shows the exact Vendor, Goods Amount, GST, and Grand Total — check it matches the bill, then confirm.<br>• <strong>📷 More Pages? Scan Next</strong> — for a bill printed on more than one page: adds this page's items and opens the photo picker for the next page. On the last page, use <em>Last Page — Save Now</em>; all pages are saved together as one purchase.<br>• <strong>✅ Apply (Save Later)</strong> — adds the items to the New Purchase form without saving, so you can review them there and click <strong>Save Purchase</strong> yourself.</div></div>
   <figure class="shot"><a href="manual_images/bill-scan-review.png" target="_blank"><img src="manual_images/bill-scan-review.png" alt="Bill Scan Review screen" loading="lazy"></a><figcaption>Bill Scan Review — the bill photo on the left, the items found on the right, and the Reconciliation Status at the top.</figcaption></figure>
 
   <div class="good">✅ Made a mistake in the grid? Ctrl+Z undoes the last edit, add, remove, or bulk action — nothing you do here is permanent until you actually save. And if you get interrupted partway through (the app closes, your computer sleeps), picking the same photo again offers to resume exactly where you left off instead of starting over.</div>
-  <div class="tip">💡 This works for a brand-new vendor with no purchase history too — every line on the bill just becomes a new item, created the same way as adding one by hand. Scan Vendor Bill needs local AI components that aren't included in every install; if it reports being unavailable, everything else in Accelent is unaffected.</div>
+  <div class="tip">💡 This works for a brand-new vendor with no purchase history too — lines that match items already in Inventory are added to them, and the rest become new items, created the same way as adding one by hand. Scan Vendor Bill needs local AI components that aren't included in every install; if it reports being unavailable, everything else in Accelent is unaffected.</div>
   <div class="tip">💡 <strong>Speed:</strong> on a PC with 8 GB RAM a scan finishes quickly; with 4 GB it still works but takes longer — let it run. <strong>Free trial:</strong> 15 bill scans are included; after that, scanning needs an activated license (everything else keeps working for the rest of the trial). With a subscription, scanning is unlimited.</div>
 
   <h3>Purchase Returns</h3>
@@ -883,7 +890,7 @@
   <h2>19. Mobile App Setup &amp; Use</h2>
 
   <h3>Installing the App</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_v1.6.6.apk</code> from <strong>accelentapp.com</strong> on the phone, or transfer it via USB cable, WhatsApp, or Google Drive.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_v1.6.7.apk</code> from <strong>accelentapp.com</strong> on the phone, or transfer it via USB cable, WhatsApp, or Google Drive.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">On the phone, open the file from your Downloads or Files app.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">If prompted about <em>unknown sources</em>, tap <strong>Settings</strong>, enable <em>Install unknown apps</em> for your file manager, then go back and install.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Tap <strong>Install</strong> → <strong>Open</strong>.</div></div>
@@ -1022,7 +1029,7 @@
 </div>
 
 <footer>
-  Accelent v2.3.7 — Complete User Guide<br>
+  Accelent v2.3.8 — Complete User Guide<br>
   Desktop &amp; Mobile Accounting System &nbsp;·&nbsp; 2026<br><br>
   <em>For support, contact your software provider with a screenshot of any error message.</em>
 </footer>
