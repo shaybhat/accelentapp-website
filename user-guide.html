@@ -107,7 +107,7 @@
   <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
   <h1>Accelent</h1>
   <div class="sub">Complete User Guide — Accounting &amp; Inventory Management</div>
-  <div class="ver">Version 2.4.0 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
+  <div class="ver">Version 2.4.1 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
   <div class="cover-badges">
     <span class="badge">🖥️ Windows Desktop</span>
     <span class="badge">📱 Android Mobile</span>
@@ -155,6 +155,7 @@
 <div class="chapter-banner">Chapter 1 — Introduction</div>
 <div class="section" id="ch1">
   <h2>1. What is Accelent?</h2>
+  <div class="tip">💡 Open this guide any time from the <strong>📖 User Guide</strong> button at the bottom of Accelent, or press <strong>F1</strong>.</div>
   <p>Accelent is a complete accounting and inventory management system designed for small and medium businesses — shops, distributors, wholesalers, and service providers. It runs on a Windows PC and pairs with an Android mobile app so you can check your business from anywhere.</p>
 
   <div class="panel-grid">
@@ -236,20 +237,27 @@
     <li>Windows 10 or Windows 11 (64-bit)</li>
     <li><strong>RAM:</strong> 8 GB recommended for the quickest bill scanning. 4 GB is the minimum — everything works, but bill scans take longer.</li>
     <li>About 1 GB of free disk space</li>
-    <li>The installer: <code>Accelent_Setup_v2.4.0.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
+    <li>The installer: <code>Accelent_Setup_v2.4.1.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
   </ul>
 
   <h3>Installing with the Installer (Recommended)</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.0.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.1.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Double-click it. If Windows shows a SmartScreen warning, click <strong>"More info"</strong> then <strong>"Run anyway"</strong>.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Follow the steps and click <strong>Install</strong>. The installer also sets up the Windows components that bill scanning needs.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Open Accelent from the Start menu or the desktop shortcut.</div></div>
 
+  <h3>Windows SmartScreen and Antivirus</h3>
+  <p>Accelent is not yet digitally signed, so Windows doesn't recognise its publisher. That is why Windows may show <strong>"Windows protected your PC"</strong> the first time you run the installer or the app. It is a one-time prompt.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download Accelent only from <strong>accelentapp.com</strong>. Files from anywhere else may not be genuine.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">On the SmartScreen prompt, click <strong>More info</strong>, check that the file name is <code>Accelent_Setup_…exe</code> or <code>Accelent.exe</code>, then click <strong>Run anyway</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">If your antivirus blocks or quarantines Accelent, restore it from the antivirus quarantine and add the Accelent folder (for an installed copy: <span class="path">C:\Accelent</span>) to the antivirus <strong>exclusions / allowed apps</strong>. Some antivirus products wrongly flag new programs built with Python packaging tools; this is a false alarm.</div></div>
+  <div class="tip">💡 Accelent installs as a normal program folder and works offline. It connects to the internet only to check your licence (and, if you turn it on, to store a share of your encrypted backup key). Your business data never leaves your PC. If a warning still worries you, write to <strong>support@accelentapp.com</strong>.</div>
+
   <h3>Portable Zip (Alternative)</h3>
-  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.0.zip</code> instead and follow these steps:</p>
+  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.1.zip</code> instead and follow these steps:</p>
 
   <h3>Installation Steps</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.0.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.1.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Open the extracted <code>Accelent</code> folder. You will see <code>Accelent.exe</code>, <code>setup.bat</code>, and several support folders.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Double-click <strong>Accelent.exe</strong>. Windows may show a SmartScreen warning — click <strong>"More info"</strong> then <strong>"Run anyway"</strong>. This happens because the app is not yet digitally signed.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">The app opens. On first launch, it creates your database file automatically at <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span></div></div>
@@ -508,7 +516,7 @@
   <div class="step"><div class="step-num">4</div><div class="step-body">Add anything not already in the table by scanning it (<strong>📷</strong> field + <strong>📱 Scan with Phone</strong> at the top of Order Items), or register a brand-new product via <strong>➕ Add Item to Same Vendor</strong> below the table.</div></div>
   <div class="step"><div class="step-num">5</div><div class="step-body">Fill in Bill Number, Bill Date, and Payment Method (Cash / Bank Transfer / Cheque / Card / UPI / Credit to Vendor) in Bill Details.</div></div>
   <div class="step"><div class="step-num">6</div><div class="step-body">Click <strong>💾 Save Purchase</strong>. Stock and the vendor's balance update immediately. If a bill with the same items and total is already saved (under any vendor) within 60 days, Accelent asks before saving it a second time.</div></div>
-  <div class="tip">💡 <strong>Editing or deleting a bill:</strong> select it in the bills list and click <strong>✏️ Edit Bill</strong> or <strong>❌ Delete Bill</strong>. An edit updates the stock and the vendor's account to match the corrected bill. A bill saved under the wrong vendor is best deleted and entered again under the right one — deleting reverses its stock, account entry and GST, and keeps a copy in Deletion Watcher.</div>
+  <div class="tip">💡 <strong>Editing or deleting a bill:</strong> select it in the bills list and click <strong>✏️ Edit Bill</strong> or <strong>❌ Delete Bill</strong>. An edit updates the stock and the vendor's account to match the corrected bill. A bill saved under the wrong vendor is best deleted and entered again under the right one — deleting reverses its stock, account entry and GST, and keeps a copy in Deletion Watcher. After deleting, Accelent offers to delete the bill's items that are now used nowhere else, in the same step. A bill whose goods are already sold can't be deleted; correct it with Edit Bill, or record goods sent back under Returns → Purchase Returns.</div>
 
   <h3>Vendor &amp; Item Combinations</h3>
   <p>The Order Items table and <strong>➕ Add Item to Same Vendor</strong> panel adapt to four situations depending on whether the vendor and the item you're buying already exist in Accelent. The <strong>Vendor Name</strong> field always drives what you see below it, so pick or type the vendor first.</p>
@@ -604,6 +612,9 @@
     <li>Full transaction history with dates and descriptions</li>
     <li>Debit (money in) and credit (money out) columns</li>
   </ul>
+
+  <h3>Customer Credit Statement</h3>
+  <p>Go to <strong>Accounts → Credit Manager → Customer Statement</strong>, type any part of the customer's name (suggestions appear as you type) and press <strong>Show Statement</strong> or Enter. The statement shows the total credit, the amount paid and what is still due, every credit invoice, the <strong>items taken on credit</strong> on each invoice, and every payment received. <strong>Print</strong> gives the same statement on A4 for the customer.</p>
 
   <h3>Adding a Bank Account</h3>
   <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Accounts</strong> → under Bank Accounts, click <strong>➕ Add New Bank</strong>.</div></div>
@@ -735,6 +746,7 @@
   <div class="step"><div class="step-num">2</div><div class="step-body">Click the <strong>Authenticate</strong> button and enter your admin password.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">The indicator changes to 🔓 Active and the full audit trail becomes visible.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">The panel re-locks automatically when you close Settings or switch panels — keeping it secure even if you step away.</div></div>
+  <p>Each row has four buttons: <strong>V</strong> view details, <strong>M</strong> mark as reviewed, <strong>R</strong> restore, <strong>D</strong> delete the entry. To act on many rows at once, select them (click, Shift+click, Ctrl+click or Ctrl+A), right-click and choose <strong>Restore selected</strong>, <strong>Mark selected as reviewed</strong> or <strong>Delete selected entries permanently</strong>.</p>
 
   <div class="warn">⚠ <strong>Never share your admin password with staff.</strong> The Deletion Watcher is your most powerful recovery and audit tool — it should only be accessed by the business owner.</div>
 
@@ -1029,7 +1041,7 @@
 </div>
 
 <footer>
-  Accelent v2.4.0 — Complete User Guide<br>
+  Accelent v2.4.1 — Complete User Guide<br>
   Desktop &amp; Mobile Accounting System &nbsp;·&nbsp; 2026<br><br>
   <em>For support, contact your software provider with a screenshot of any error message.</em>
 </footer>
