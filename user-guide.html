@@ -107,7 +107,7 @@
   <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
   <h1>Accelent</h1>
   <div class="sub">Complete User Guide — Accounting &amp; Inventory Management</div>
-  <div class="ver">Version 2.4.2 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
+  <div class="ver">Version 2.4.3 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
   <div class="cover-badges">
     <span class="badge">🖥️ Windows Desktop</span>
     <span class="badge">📱 Android Mobile</span>
@@ -237,14 +237,19 @@
     <li>Windows 10 or Windows 11 (64-bit)</li>
     <li><strong>RAM:</strong> 8 GB recommended for the quickest bill scanning. 4 GB is the minimum — everything works, but bill scans take longer.</li>
     <li>About 1 GB of free disk space</li>
-    <li>The installer: <code>Accelent_Setup_v2.4.2.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
+    <li>The installer: <code>Accelent_Setup_v2.4.3.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
   </ul>
 
   <h3>Installing with the Installer (Recommended)</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.2.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.3.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Double-click it. If Windows shows a SmartScreen warning, click <strong>"More info"</strong> then <strong>"Run anyway"</strong>.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Follow the steps and click <strong>Install</strong>. The installer also sets up the Windows components that bill scanning needs.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Open Accelent from the Start menu or the desktop shortcut.</div></div>
+
+  <h3>First Login</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Sign in with username <strong>admin</strong> and password <strong>Admin@1234</strong> — capital A, then <code>dmin</code>, the <strong>@</strong> sign, then <code>1234</code>. The login screen shows these until you set your own password.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent then asks you to choose your own password, and shows your <strong>Recovery Key</strong> — save it somewhere safe (see "Your Account Recovery Key").</div></div>
+  <div class="tip">💡 After 5 wrong passwords the account locks for 15 minutes; the login screen tells you how many tries are left and when you can try again. If Accelent was installed on this computer before, your earlier password still applies — uninstalling never deletes your data.</div>
 
   <h3>Windows SmartScreen and Antivirus</h3>
   <p>Accelent is not yet digitally signed, so Windows doesn't recognise its publisher. That is why Windows may show <strong>"Windows protected your PC"</strong> the first time you run the installer or the app. It is a one-time prompt.</p>
@@ -254,10 +259,10 @@
   <div class="tip">💡 Accelent installs as a normal program folder and works offline. It connects to the internet only to check your licence (and, if you turn it on, to store a share of your encrypted backup key). Your business data never leaves your PC. If a warning still worries you, write to <strong>support@accelentapp.com</strong>.</div>
 
   <h3>Portable Zip (Alternative)</h3>
-  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.2.zip</code> instead and follow these steps:</p>
+  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.3.zip</code> instead and follow these steps:</p>
 
   <h3>Installation Steps</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.2.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.3.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Open the extracted <code>Accelent</code> folder. You will see <code>Accelent.exe</code>, <code>setup.bat</code>, and several support folders.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Double-click <strong>Accelent.exe</strong>. Windows may show a SmartScreen warning — click <strong>"More info"</strong> then <strong>"Run anyway"</strong>. This happens because the app is not yet digitally signed.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">The app opens. On first launch, it creates your database file automatically at <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span></div></div>
@@ -412,6 +417,8 @@
     <tr><td>"Can't read this file"</td><td>Save it as <code>.xlsx</code>, close it in Excel, remove any password, then import again.</td></tr>
     <tr><td>A column is used for the wrong thing</td><td>Change that column's dropdown in the import window before clicking Import Now.</td></tr>
     <tr><td>Quantities or rates came in as 0</td><td>Check that the quantity column is set to <em>Stock</em> and the rate column to <em>Purchase Rate</em>, then import again — existing items are updated.</td></tr>
+    <tr><td>One item came in wrong</td><td><strong>Inventory</strong> → select the item → <strong>🗑️ Delete Selected</strong>. An item that has only come in through an import (not bought, sold or returned since) can be deleted; it is also taken off the import's opening stock.</td></tr>
+    <tr><td>The whole import was wrong</td><td>Each import is recorded as one opening-stock entry named <strong>OPST-…</strong> (the import summary shows its name). Go to <strong>Purchases</strong>, select that OPST entry, click <strong>❌ Delete Bill</strong>, then answer <strong>Yes</strong> to delete its items too. Fix the file and import again.</td></tr>
     <tr><td>Many rows skipped</td><td>Read the reasons in the summary (Save Skipped Rows…). Group headings and total lines are skipped on purpose.</td></tr>
   </table>
 
@@ -478,7 +485,7 @@
   <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Save</strong>.</div></div>
 
   <h3>Deleting Items</h3>
-  <p>An item can be deleted only if it has never been bought, sold, returned or moved. Items with history stay in Inventory so your bills, reports and stock records remain complete. Every deleted item is kept in <strong>Deletion Watcher</strong> and can be restored from there.</p>
+  <p>An item can be deleted only if it has never been bought, sold, returned or moved (an item that has only come in through an inventory import, and nothing since, can also be deleted). Items with history stay in Inventory so your bills, reports and stock records remain complete. Every deleted item is kept in <strong>Deletion Watcher</strong> and can be restored from there.</p>
   <div class="step"><div class="step-num">1</div><div class="step-body">To remove several unused items at once, click <strong>🧹 Clean Up Unused Items</strong> (shown to the admin only). It lists every item that has never been bought or sold.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Tick the items to remove (use the search box or <strong>Select All shown</strong>), click <strong>🗑️ Delete Selected Items</strong> and confirm with the admin password. A backup of your data is saved first.</div></div>
 
@@ -1102,7 +1109,7 @@
 </div>
 
 <footer>
-  Accelent v2.4.2 — Complete User Guide<br>
+  Accelent v2.4.3 — Complete User Guide<br>
   Desktop &amp; Mobile Accounting System &nbsp;·&nbsp; 2026<br><br>
   <em>For support, contact your software provider with a screenshot of any error message.</em>
 </footer>
