@@ -107,7 +107,7 @@
   <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
   <h1>Accelent</h1>
   <div class="sub">Complete User Guide — Accounting &amp; Inventory Management</div>
-  <div class="ver">Version 2.4.4 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
+  <div class="ver">Version 2.4.5 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
   <div class="cover-badges">
     <span class="badge">🖥️ Windows Desktop</span>
     <span class="badge">📱 Android Mobile</span>
@@ -237,11 +237,11 @@
     <li>Windows 10 or Windows 11 (64-bit)</li>
     <li><strong>RAM:</strong> 8 GB recommended for the quickest bill scanning. 4 GB is the minimum — everything works, but bill scans take longer.</li>
     <li>About 1 GB of free disk space</li>
-    <li>The installer: <code>Accelent_Setup_v2.4.4.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
+    <li>The installer: <code>Accelent_Setup_v2.4.5.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
   </ul>
 
   <h3>Installing with the Installer (Recommended)</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.4.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.5.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Double-click it. If Windows shows a SmartScreen warning, click <strong>"More info"</strong> then <strong>"Run anyway"</strong>.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Follow the steps and click <strong>Install</strong>. The installer also sets up the Windows components that bill scanning needs.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Open Accelent from the Start menu or the desktop shortcut.</div></div>
@@ -259,10 +259,10 @@
   <div class="tip">💡 Accelent installs as a normal program folder and works offline. It connects to the internet only to check your licence (and, if you turn it on, to store a share of your encrypted backup key). Your business data never leaves your PC. If a warning still worries you, write to <strong>support@accelentapp.com</strong>.</div>
 
   <h3>Portable Zip (Alternative)</h3>
-  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.4.zip</code> instead and follow these steps:</p>
+  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.5.zip</code> instead and follow these steps:</p>
 
   <h3>Installation Steps</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.4.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.5.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Open the extracted <code>Accelent</code> folder. You will see <code>Accelent.exe</code>, <code>setup.bat</code>, and several support folders.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Double-click <strong>Accelent.exe</strong>. Windows may show a SmartScreen warning — click <strong>"More info"</strong> then <strong>"Run anyway"</strong>. This happens because the app is not yet digitally signed.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">The app opens. On first launch, it creates your database file automatically at <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span></div></div>
@@ -483,6 +483,7 @@
   <div class="step"><div class="step-num">2</div><div class="step-body">Fill in: Item Name, Category, Vendor, Buy Rate (what you paid), Sell Price (what you charge — the Margin is shown below it), GST %, Stock (how many you have right now) and the minimum stock level (alert threshold). Click <strong>🔍 Generate Smart Code</strong> for an item code.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Optionally add: Sub Category, Barcode, MRP (use <strong>Calculate from MRP + Discount %</strong> to work out the price), HSN Code (for GST), Expiry Date (for perishables). In India, entering an HSN code of 4 or more digits sets the GST % for that code automatically.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Save</strong>.</div></div>
+  <div class="tip">💡 <strong>Changing the margin quickly:</strong> rest the mouse on <strong>Margin: x%</strong> under Sell Price and scroll the wheel — each step raises or lowers the margin by 1% (hold <strong>Ctrl</strong> for 0.1%) and the Sell Price is worked out again from the Buy Rate. Imported items start at 20%, so this is the fastest way to set the margin you want.</div>
 
   <h3>Deleting Items</h3>
   <p>An item can be deleted only if it has never been bought, sold, returned or moved. Items with history stay in Inventory so your bills, reports and stock records remain complete. Every deleted item is kept in <strong>Deletion Watcher</strong> and can be restored from there, together with its stock.</p>
@@ -746,21 +747,52 @@
 <div class="chapter-banner">Chapter 14 — Employees &amp; Payroll</div>
 <div class="section" id="ch14">
   <h2>14. Employees &amp; Payroll</h2>
+  <p>Accelent keeps your staff records, works out each month's salary from attendance, overtime and advances, pays it from Cash or a bank account, and gives every employee a payslip — printed or on WhatsApp. The steps below follow one month from start to finish.</p>
+
+  <h3>How Accelent Works Out a Salary</h3>
+  <p>Each employee has a <strong>salary type</strong>. The <strong>Amount</strong> you enter means something different for each:</p>
+  <table>
+    <tr><th>Salary type</th><th>Amount means</th><th>Pay for the month</th></tr>
+    <tr><td><strong>Fixed</strong></td><td>per month</td><td>Monthly salary ÷ working days × days worked</td></tr>
+    <tr><td><strong>Daily</strong></td><td>per day</td><td>Daily wage × days worked</td></tr>
+    <tr><td><strong>Hourly</strong></td><td>per hour</td><td>Hourly wage × working hours per day × days worked</td></tr>
+    <tr><td><strong>Piece</strong></td><td>per piece (or your unit)</td><td>Units produced × rate per unit</td></tr>
+  </table>
+  <p><strong>Days worked</strong> = attendance − leaves. <strong>Overtime</strong> (Fixed, Daily, Hourly) = hourly rate × overtime hours × the overtime multiplier (e.g. 1.5). <strong>Net pay</strong> = base pay + overtime − advances recovered. A month in which the employee joined is counted from the joining date.</p>
 
   <h3>Adding an Employee</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Employees</strong> panel → click <strong>+ Add Employee</strong>.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-body">Enter: Full Name, Designation, Mobile Number, Basic Salary (monthly), and Overtime Multiplier (e.g. 1.5 for time-and-a-half).</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-body">Click Save.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Employees</strong> → <strong>➕ Add Employee</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Enter the name, designation, <strong>mobile number</strong> (payslips go to it on WhatsApp), address and <strong>joining date</strong>. Dates are day first: <code>01/08/2026</code> is 1 August 2026; you can also pick it from the calendar. Optionally add an ID proof and a guarantor.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Choose the <strong>Salary Type</strong> and enter the <strong>Amount</strong> — the box shows <em>/ month</em>, <em>/ day</em>, <em>/ hour</em> or <em>/ unit</em> so you can see what it means. For Piece work, also enter the unit name (e.g. <em>pieces</em>).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Set the working days per month, working hours per day and the overtime multiplier, then click <strong>Save Employee</strong>.</div></div>
 
-  <h3>Recording Salary Payments</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">In the Employees panel, select the employee and click <strong>Pay Salary</strong>.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-body">Confirm the month, base salary, any overtime, and deductions.</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-body">Select payment method (Cash or Bank) and click <strong>Confirm Payment</strong>. The cash/bank balance is reduced and the payment is logged.</div></div>
+  <h3>The Salary Sheet</h3>
+  <p>Select an employee and click <strong>📊 Salary Spreadsheet</strong>. It lists every <strong>completed month</strong> since the employee joined — the current month appears once it has ended. For each month you can change <strong>Attendance</strong>, <strong>Leaves</strong>, <strong>OT Hours</strong>, <strong>Advances</strong> and, for piece workers, <strong>Units</strong>; Base Pay, OT Pay, Gross and Net Payable update as you type. The <strong>Status</strong> column shows ⏳ Pending, 📝 Saved, not paid, or ✅ Paid.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>💾 Save (not paid yet)</strong> keeps what you entered without paying anything. Use it during the month; the sheet shows your entries next time. If you close the sheet with unsaved changes, Accelent asks first.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Check before paying:</strong> select the month and click <strong>🖨 Payslip</strong>. For a month not paid yet you get a grey <strong>DRAFT</strong> payslip (marked <em>Not paid yet</em>, without signature or stamp) to agree the figures with the employee.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>💰 Pay Salary</strong> pays every month not paid yet: choose the Cash or bank account, and each month is recorded in the accounts and marked ✅ Paid. A month with no pay (for example piece work with no units entered) is only paid if you say so; otherwise it stays pending.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Straight after paying, Accelent offers the payslip of the latest month: <strong>📄 Send on WhatsApp</strong>, <strong>🖨 View / Print</strong> or <strong>Later</strong>.</div></div>
 
-  <h3>Salary Advances</h3>
-  <p>To pay a salary advance, record it as an Expense with category <strong>"Salary Advance"</strong>. When the actual salary is paid, deduct the advance from the salary amount manually.</p>
+  <h3>Payslips</h3>
+  <p>A payslip shows your company header and logo, the employee's details, days worked, leaves and overtime, the date paid and the account it was paid from, earnings and deductions, <strong>net pay in words</strong>, and your signature and stamp (see <em>Signature &amp; Stamp</em> in Settings → 🏢 Company).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">In the salary sheet, select a paid month and click <strong>🖨 Payslip</strong> to view, print or save it as a PDF, or <strong>📄 Send Payslip on WhatsApp</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">WhatsApp opens the employee's chat with a short message and the payslip PDF copied: press <strong>Ctrl+V</strong> to attach it, then <strong>Send</strong> (as for bills — see <em>Sending Bills on WhatsApp</em>).</div></div>
+  <div class="tip">💡 All paid months of all employees are also in the <strong>Payroll History</strong> tab: choose a month and year, select a row, and use the same <strong>🖨 Payslip</strong> and <strong>📄 Send Payslip on WhatsApp</strong> buttons (double-clicking a row opens the payslip too).</div>
 
-  <div class="tip">💡 Deactivating an employee (not deleting) preserves their entire payment history while removing them from active payroll. Use <strong>Settings → Balances → Deactivate Employee</strong>.</div>
+  <h3>Advances</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Select the employee → <strong>💰 Add Advance</strong> (or open the employee and use the <strong>Advances</strong> tab). Enter the date, amount, reason and the Cash or bank account it is paid from. The money going out is recorded as an <em>Employee Advance</em> expense.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">A <strong>Normal</strong> advance can be up to 40% of a month's pay and no more than the employee has earned so far this month. A larger one is a <strong>Forced</strong> advance and needs an approver's name. For piece workers the month's pay is their last paid month.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Outstanding advances appear in the <strong>Advances</strong> column of the next unpaid month and are deducted from that salary. To recover only part, type the smaller amount there: the rest stays outstanding for the following month.</div></div>
+  <div class="tip">💡 In the employee's <strong>Advances</strong> tab, <strong>Extend</strong> changes an advance's amount — Accelent records only the difference as paid out or handed back. <strong>Close / Settle</strong> marks an advance as finished; if the employee repaid it in cash, record that money under <strong>Receipts</strong>.</div>
+
+  <h3>Correcting a Payment Made by Mistake</h3>
+  <p>A paid month is locked so it can't change by accident. If it was paid with a wrong figure: in the salary sheet, select the month → <strong>↩ Undo Payment</strong> → confirm with the admin password. The payment and its Cash/bank entry are removed, any advances it recovered are outstanding again, and the month goes back to <em>Saved, not paid</em> with the same figures — correct them and click <strong>💰 Pay Salary</strong>. The undo is recorded in the <strong>Deletion Watcher</strong>. A month in a closed financial year can't be undone.</p>
+
+  <h3>Who Can Do What</h3>
+  <p>The admin sees salaries and can pay, undo payments and send payslips. A staff account sees the <strong>📋 Attendance Sheet</strong> instead — attendance, leaves, overtime and units only, no money figures — and can save entries with <strong>💾 Save (not paid yet)</strong> for the admin to pay.</p>
+
+  <h3>When Someone Leaves</h3>
+  <p>Select the employee → <strong>🚫 Terminate</strong>. They leave the active list but their payroll history stays; <strong>Show Terminated</strong> lists them again.</p>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 15 -->
@@ -1121,7 +1153,7 @@
 </div>
 
 <footer>
-  Accelent v2.4.4 — Complete User Guide<br>
+  Accelent v2.4.5 — Complete User Guide<br>
   Desktop &amp; Mobile Accounting System &nbsp;·&nbsp; 2026<br><br>
   <em>For support, contact your software provider with a screenshot of any error message.</em>
 </footer>
