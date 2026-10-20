@@ -107,7 +107,7 @@
   <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
   <h1>Accelent</h1>
   <div class="sub">Complete User Guide — Accounting &amp; Inventory Management</div>
-  <div class="ver">Version 2.4.5 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
+  <div class="ver">Version 2.4.6 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
   <div class="cover-badges">
     <span class="badge">🖥️ Windows Desktop</span>
     <span class="badge">📱 Android Mobile</span>
@@ -132,7 +132,10 @@
       <a href="#ch7"><span class="toc-num">7.</span>Dashboard</a><br>
       <a href="#ch8"><span class="toc-num">8.</span>Inventory Panel</a><br>
       <a href="#ch8b"><span class="toc-num">8b.</span>Low Stock Monitor</a><br>
+      <a href="#ch8c"><span class="toc-num">8c.</span>Production</a><br>
       <a href="#ch9"><span class="toc-num">9.</span>Sales Panel</a><br>
+      <a href="#ch9b"><span class="toc-num">9b.</span>Restaurant</a><br>
+      <a href="#ch9c"><span class="toc-num">9c.</span>Rooms (Hotel, Lodge)</a><br>
     </div>
     <div>
       <a href="#ch10"><span class="toc-num">10.</span>Purchases Panel</a><br>
@@ -237,11 +240,11 @@
     <li>Windows 10 or Windows 11 (64-bit)</li>
     <li><strong>RAM:</strong> 8 GB recommended for the quickest bill scanning. 4 GB is the minimum — everything works, but bill scans take longer.</li>
     <li>About 1 GB of free disk space</li>
-    <li>The installer: <code>Accelent_Setup_v2.4.5.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
+    <li>The installer: <code>Accelent_Setup_v2.4.6.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
   </ul>
 
   <h3>Installing with the Installer (Recommended)</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.5.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.6.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Double-click it. If Windows shows a SmartScreen warning, click <strong>"More info"</strong> then <strong>"Run anyway"</strong>.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Follow the steps and click <strong>Install</strong>. The installer also sets up the Windows components that bill scanning needs.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Open Accelent from the Start menu or the desktop shortcut.</div></div>
@@ -259,10 +262,10 @@
   <div class="tip">💡 Accelent installs as a normal program folder and works offline. It connects to the internet only to check your licence (and, if you turn it on, to store a share of your encrypted backup key). Your business data never leaves your PC. If a warning still worries you, write to <strong>support@accelentapp.com</strong>.</div>
 
   <h3>Portable Zip (Alternative)</h3>
-  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.5.zip</code> instead and follow these steps:</p>
+  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.6.zip</code> instead and follow these steps:</p>
 
   <h3>Installation Steps</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.5.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.6.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Open the extracted <code>Accelent</code> folder. You will see <code>Accelent.exe</code>, <code>setup.bat</code>, and several support folders.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Double-click <strong>Accelent.exe</strong>. Windows may show a SmartScreen warning — click <strong>"More info"</strong> then <strong>"Run anyway"</strong>. This happens because the app is not yet digitally signed.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">The app opens. On first launch, it creates your database file automatically at <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span></div></div>
@@ -288,7 +291,8 @@
   <div class="step"><div class="step-num">1</div><div class="step-body">In the <strong>Welcome — Set Up Your Country</strong> window, pick your <strong>Country</strong>.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Answer the extra question for your country, if one appears (see the table below).</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Check the <strong>Language</strong>. It is pre-filled with your country's main language (for example Hindi for India) — change it to English or any other language you prefer.</div></div>
-  <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Confirm and Continue</strong>.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Choose your <strong>Business</strong>: <em>Shop, trading, services or manufacturing</em>, <em>Restaurant, café or dhaba</em> (see <a href="#ch9b">Chapter 9b</a>) or <em>Hotel, lodge or guest house</em> (see <a href="#ch9c">Chapter 9c</a>). It decides which screens the menu shows, and can be changed later in <strong>Settings → 🏢 Company</strong>.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Click <strong>Confirm and Continue</strong>.</div></div>
   <table>
     <tr><th>Country</th><th>Tax</th><th>Currency</th><th>Extra question</th></tr>
     <tr><td>India</td><td>GST (CGST + SGST / IGST)</td><td>₹ INR</td><td>—</td></tr>
@@ -480,7 +484,7 @@
 
   <h3>Adding a New Item</h3>
   <div class="step"><div class="step-num">1</div><div class="step-body">Click <strong>➕ Add New Item</strong> above the item list, and fill in the <strong>Add / Edit Item</strong> form on the left.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-body">Fill in: Item Name, Category, Vendor, Buy Rate (what you paid), Sell Price (what you charge — the Margin is shown below it), GST %, Stock (how many you have right now) and the minimum stock level (alert threshold). Click <strong>🔍 Generate Smart Code</strong> for an item code.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Fill in: Item Name, Category, Vendor, Buy Rate (what you paid), Sell Price (what you charge — the Margin is shown below it), GST %, <strong>Unit</strong> (pcs, kg, litre, metre… — kg, litre and other measured units allow part quantities such as 0.25), Stock (how many you have right now) and the minimum stock level (alert threshold). Click <strong>🔍 Generate Smart Code</strong> for an item code.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Optionally add: Sub Category, Barcode, MRP (use <strong>Calculate from MRP + Discount %</strong> to work out the price), HSN Code (for GST), Expiry Date (for perishables). In India, entering an HSN code of 4 or more digits sets the GST % for that code automatically.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Click <strong>Save</strong>.</div></div>
   <div class="tip">💡 <strong>Changing the margin quickly:</strong> rest the mouse on <strong>Margin: x%</strong> under Sell Price and scroll the wheel — each step raises or lowers the margin by 1% (hold <strong>Ctrl</strong> for 0.1%) and the Sell Price is worked out again from the Buy Rate. Imported items start at 20%, so this is the fastest way to set the margin you want.</div>
@@ -547,6 +551,42 @@
   <div class="tip">💡 Choose Quick New Order only for a brand-new item + brand-new vendor together. For anything else — a new item from an existing vendor, an existing item from a new vendor, or a routine reorder — use Order from Vendor instead.</div>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════════ CH 8c -->
+<div class="chapter-banner">Chapter 8c — Production</div>
+<div class="section" id="ch8c">
+  <h2>8c. Production (Making Your Own Products)</h2>
+  <p>If you make what you sell — cakes, furniture, garments, spices, assembled goods — Accelent can keep the stock and the cost right for you. You write a <strong>recipe</strong> once (what one batch uses); each time you make something, Accelent takes the materials out of stock, adds the finished items, and works out what each one cost. Open it from <strong>Inventory → 🏭 Production</strong>.</p>
+
+  <h3>Before You Start: Items and Units</h3>
+  <p>Everything is an Inventory item: the <strong>materials</strong> (for a chocolate cake: basin, chocolate, sugar, ghee) and the <strong>finished product</strong> (the cake).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Give each item its <strong>Unit</strong> in the Inventory form: <em>pcs</em>, <em>box</em> and other counted units are whole numbers; <em>kg</em>, <em>g</em>, <em>litre</em>, <em>ml</em>, <em>metre</em> and other measured units allow part quantities such as 0.25 kg.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Bring the materials in through <strong>Purchases</strong>, as you normally buy them. That puts them in stock <em>and</em> tells Accelent what they cost — which is what the cost of your product is worked out from.</div></div>
+
+  <h3>Writing a Recipe</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Production → 🧾 Recipes → ➕ New Recipe</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Finished item:</strong> choose the product, or type its name. If it isn't in Inventory yet, Accelent offers to add it when you save (name, unit, sell price and GST).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>One batch makes:</strong> how many one batch gives, e.g. 10 cakes.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Materials for one batch:</strong> click <strong>➕ Add Material</strong> for each, with the amount one batch uses (e.g. basin 1 kg, chocolate 0.5 kg, sugar 0.8 kg, ghee 1 litre) and, if some is lost, a <strong>Wastage %</strong>. The cost of one batch and of each item is shown below the list.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Click <strong>💾 Save Recipe</strong>. You write a recipe once and use it every time you make that product; open it from the list on the left to change it.</div></div>
+
+  <h3>Making It</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Make</strong> tab: choose the item and <strong>how many</strong> to make. The table shows each material needed, what is in stock, and anything short.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Optionally enter <strong>Labour / other costs</strong> for this run (wages, gas, electricity) — they are added to the cost of what you make.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>🏭 Make</strong> and confirm. The materials go down, the finished items go up, and the run gets a number like <strong>PRD-0001</strong>. It appears in each item's <strong>Item History</strong> as <em>Production</em>.</div></div>
+  <div class="tip">💡 If any material is short, <strong>Make</strong> is switched off and the shortage is shown — buy or make that material first, or make fewer. If a material shows <em>No cost known</em>, it has never been bought through Purchases and has no Buy Rate: set its Buy Rate in Inventory, or the product's cost will leave it out.</div>
+
+  <h3>What It Costs</h3>
+  <p>The cost of a run is the materials used (at their average purchase cost) plus labour and other costs. The finished item's <strong>Buy Rate</strong> becomes its average production cost, so your stock value and your profit on each sale are worked out from what the item really cost you to make. Sell the finished items in Sales as usual.</p>
+
+  <h3>Dishes Made to Order (Restaurants)</h3>
+  <p>A restaurant dish is cooked when it is ordered, not made in advance. Tick <strong>Made to order</strong> on its recipe: the dish then has no stock of its own, and each time it is sold its ingredients come out of stock (a bill that is edited or deleted puts them back). A dish can only be sold when the store has enough of its ingredients. Made-to-order dishes are not listed on the Make tab, and they are left out of the low-stock lists. See <a href="#ch9b">Chapter 9b — Restaurant</a>.</p>
+
+  <h3>History and Undo</h3>
+  <p>The <strong>📜 History</strong> tab lists every run with the materials it used and its cost. If a run was a mistake, the admin can select it and click <strong>↩ Undo Run</strong>: the materials go back into stock, the items it made are taken out, and the item's cost goes back to what it was. Only the latest run of an item can be undone, and only while everything it made is still in stock.</p>
+
+  <div class="tip">💡 Staff need the <strong>Edit inventory</strong> permission to use Production. Without <strong>See purchase costs</strong> they can make things but don't see any costs.</div>
+</div>
+
 <!-- ═══════════════════════════════════════════════════════════ CH 9 -->
 <div class="chapter-banner">Chapter 9 — Sales</div>
 <div class="section" id="ch9">
@@ -581,6 +621,155 @@
   <p>If a customer returns goods, go to the <strong>Returns</strong> panel → <strong>Sales Returns</strong> tab. Select the original invoice, enter the returned items, and save. Stock is restored and a credit note is issued. If the original sale was Cash/Bank/UPI/Card, the refund reduces that Cash/Bank balance directly; if it was a Credit sale, the refund instead reduces what the customer owes you.</p>
 
   <div class="tip">💡 <strong>Credit sales:</strong> When you select "Credit" as payment, the invoice is marked as <em>Unpaid</em> and the amount is added to the customer's receivable balance. When they pay later, record it as a Receipt in the Receipts panel.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9b -->
+<div class="chapter-banner">Chapter 9b — Restaurant</div>
+<div class="section" id="ch9b">
+  <h2>9b. Restaurant (Tables, Kitchen Tickets and Bills)</h2>
+  <p>For a restaurant, café, dhaba or hotel kitchen, Accelent has a <strong>🍽 Restaurant</strong> screen: tap a table, tap the dishes, send a <strong>kitchen ticket (KOT)</strong> to the kitchen, and bill the table when the guests leave. Every bill is saved as a normal sale, so Accounts, GST and the reports include it, and the ingredients each dish uses come out of stock by themselves.</p>
+
+  <h3>Switching It On</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (unlock with the admin password) → <strong>Business Type: Restaurant, café or hotel kitchen</strong> → <strong>Save</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Close and reopen Accelent. The menu on the left now has <strong>🍽 Restaurant</strong> under FINANCE. <strong>Sales</strong>, <strong>Returns</strong>, <strong>Aging Report</strong> and <strong>E-Invoice</strong> are hidden, because a restaurant bills from the Restaurant screen. Nothing is deleted: set the Business Type back and they return.</div></div>
+
+  <h3>Setting Up Your Menu</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Add each dish and drink in <strong>Inventory</strong> with a <strong>Sell Price</strong> (before GST). Its <strong>Category</strong> becomes the menu section: <em>Main Course</em>, <em>Starters</em>, <em>Drinks</em>… Every item with a Sell Price appears on the menu.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Add the <strong>ingredients</strong> as items too (rice, chicken, oil, tea leaves), with units like kg or litre, and buy them through <strong>Purchases</strong> as usual. Ingredients have no Sell Price, so they stay off the menu.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">For each dish cooked in your kitchen, write a <strong>recipe</strong> in <strong>Inventory → 🏭 Production → 🧾 Recipes</strong> (see <a href="#ch8c">Chapter 8c</a>) and tick <strong>Made to order</strong>. Example: one Chicken Biryani uses rice 0.25 kg and chicken 0.2 kg. When the dish is sold, those ingredients go out of stock.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Items you buy in and sell as they are (bottled water, soft drinks) need no recipe: buy them through Purchases, and their own stock goes down when sold.</div></div>
+  <p>Dishes and ingredients are all items in <strong>Inventory</strong>. In its list a made-to-order dish shows <strong>—</strong> for stock and <strong>🍳 Dish</strong> as its status, since it has no stock of its own. To see one kind at a time, use the filter above the list: <strong>Items for sale</strong> (your menu: everything with a Sell Price) or <strong>Materials &amp; ingredients</strong> (everything used in a recipe).</p>
+  <h3>Ingredients Must Be in the Store</h3>
+  <p>A dish is only taken on an order when the store has enough of its ingredients. Accelent counts what the dishes already ordered at other tables will use, because the kitchen is cooking those. If something is short, it tells you what is missing, for example <em>Chicken: needs 0.6 kg, 0.4 kg in the store</em>, and that dish's button is <strong>greyed out</strong>. Buy the ingredients through <strong>Purchases</strong> and the dish is available again. The same check applies when a dish is sold on the Sales screen or from the phone.</p>
+  <div class="tip">💡 A menu button is also greyed out for a bought-in item with no stock left, or a dish with no stock and no <em>Made to order</em> recipe. If your kitchen often cooks before purchases are entered, the admin can untick <strong>Don't take an order for a dish when the store hasn't enough of its ingredients</strong> in <strong>⚙ Restaurant Settings</strong>: dishes are then always allowed, the ingredients go below zero, and the Low Stock Monitor tells you to buy more.</div>
+
+  <h3>Tables</h3>
+  <p>Six tables (Table 1 to Table 6) are set up the first time. Click <strong>🪑 Tables…</strong> to add, rename or remove tables and set their seats (e.g. <em>Garden 1</em>, <em>Cabin A</em>). A table with a running order is shown highlighted with its total and how many minutes it has been open; a free table shows <em>Free</em>.</p>
+
+  <h3>Taking an Order</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click the <strong>table</strong>, then a <strong>menu section</strong>, then the <strong>dishes</strong>. Each tap adds one; tapping again adds another. To find a dish quickly, type in <strong>Search the menu</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">On the order, select a line and use <strong>−</strong> / <strong>+</strong> to change the quantity, <strong>📝 Note</strong> for the kitchen (<em>less spicy</em>, <em>no onion</em>), or <strong>✕ Remove</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>🧑‍🍳 Send to Kitchen (KOT)</strong>. A kitchen ticket is printed with its number (KOT #1, #2… starting again each day), the table and what to cook.</div></div>
+  <p>The <strong>Kitchen</strong> column shows what the kitchen already has (<em>✓ sent</em>) and what is new. When guests order more, add it and send again: the next KOT carries <strong>only the new items</strong>. If a dish is cut after it was sent, the KOT prints it as <strong>CANCEL</strong>; a note changed after sending prints as <strong>NOTE</strong>. A dot on the KOT button means something hasn't gone to the kitchen yet; once the kitchen has everything, the button is greyed out and reads <strong>✓ Kitchen has everything</strong>.</p>
+
+  <h3>Takeaway</h3>
+  <p>Click <strong>🥡 New Takeaway</strong>, enter the customer's name if you like, then add dishes, send the KOT and bill exactly as for a table. Open takeaways are listed under <strong>Takeaway orders</strong> on the left; click one to open it.</p>
+
+  <h3>Billing</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Open the table and click <strong>💵 Bill</strong>. If some items haven't gone to the kitchen, Accelent offers to send them first.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Choose how the guest paid: <strong>Cash</strong>, <strong>UPI</strong>, <strong>Card</strong> or <strong>Bank Transfer</strong> (and into which bank, with a reference if you like). A customer name and phone are optional.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>Save Bill</strong>. The bill is saved as a sale, the money goes into Cash or the bank, the dishes' ingredients come out of stock, the table becomes free, and the bill opens for printing (untick <em>Print the bill</em> to skip that).</div></div>
+
+  <h3>Hotels: Food for Staying Guests</h3>
+  <p>With the Business Type <em>Hotel, lodge or guest house</em>, the Restaurant screen also has <strong>🛏 Room Service</strong> and <strong>🛏 Charge to Room</strong>: the food goes onto the guest's room account and is paid at check-out. See <a href="#ch9c">Chapter 9c — Rooms</a>.</p>
+
+  <h3>Moving or Cancelling an Order</h3>
+  <p><strong>⇄ Move to table</strong> shifts a running order to a free table (guests changed tables, or a takeaway is eaten in). <strong>🗑 Cancel order</strong> drops an order that won't be billed; nothing is saved as a sale and no stock is used.</p>
+  <div class="tip">💡 Food the kitchen already has can only be cancelled (or a dish taken off with − or ✕ Remove) by the <strong>admin</strong>: staff are asked for the admin password. Every such cancellation is recorded in <strong>Settings → 🔍 Deletion Watcher</strong> with the order, the dishes and who did it, so cooked food can't quietly disappear. Items not yet sent to the kitchen can be changed freely.</div>
+
+  <h3>Today's Bills</h3>
+  <p>The <strong>🧾 Today's Bills</strong> tab lists the day's restaurant bills with their total; pick another day with the date box. In a hotel it also lists the food <strong>🛏 charged to rooms</strong> that day, with the room and guest, marked <em>on the room</em> or <em>paid at check-out</em>; the total line adds both, so you see the restaurant's whole day. That food is printed and corrected on the guest's check-out bill, not here. Select a bill and click <strong>🖨 View / Print bill</strong> to print it again, or <strong>🗑 Cancel bill</strong> to delete a wrong bill: the payment is reversed, the ingredients go back into stock, and a copy is kept in the Deletion Watcher.</p>
+
+  <h3>Kitchen Printer</h3>
+  <p>In <strong>⚙ Restaurant Settings</strong>, choose the <strong>Kitchen printer</strong>, for example a small thermal printer in the kitchen. Every KOT, from the PC and from waiters' phones, then prints straight to it, while bills keep printing on your normal printer. Without a kitchen printer, a KOT opens as a preview to print, or goes straight to Windows' default printer if you tick that option.</p>
+
+  <h3>Waiters' Phones</h3>
+  <p>Waiters can take orders at the tables on their phones with the Accelent app (see <a href="#ch19">Chapter 19</a>). When the PC's Business Type is Restaurant or Hotel, the app's dashboard shows <strong>🍽 Restaurant</strong>:</p>
+  <ul>
+    <li>Tap a <strong>table</strong> (busy ones show their total and minutes), or <strong>New Takeaway</strong>, or in a hotel <strong>Room Service</strong> (only when a guest is staying).</li>
+    <li><strong>Add Dishes</strong> opens the menu by section, with search; tap a dish to add one. Change quantities with <strong>− / +</strong>, and tap a dish to give the kitchen a note.</li>
+    <li><strong>Send to Kitchen</strong> prints the KOT at the PC (with the waiter's name). The button then shows <strong>✓ Sent to kitchen</strong> until something new is added.</li>
+    <li><strong>Ask for Bill</strong> tells the counter: the PC beeps, shows a banner with the table and waiter, and marks the table <strong>🧾 Bill asked</strong>. The cashier opens the table and presses 💵 Bill, which takes the payment.</li>
+    <li>In a hotel, <strong>Charge to Room</strong> puts the order on a staying guest's account.</li>
+  </ul>
+  <p>The same rules apply as on the PC: a dish needs its ingredients in the store, and food the kitchen already has can only be taken off or cancelled by the admin. Waiters need the <strong>Create sales</strong> permission and phone access (Settings → 👥 Users). A licence allows a limited number of phone accounts at a time; if a waiter's phone is refused for that reason, contact us about adding more.</p>
+
+  <h3>QR Ordering at the Table</h3>
+  <p>Customers can see the menu and order from their own phone by scanning a QR code on their table. It works over <strong>your restaurant's Wi-Fi only</strong>: nothing goes on the internet, and the customer needs no app and no account.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚙ Restaurant Settings → QR ordering</strong>: tick <em>Customers can see the menu and order…</em>, check <strong>This PC on the Wi-Fi</strong> (the PC's address on the Wi-Fi the customers will join), and fill in the <strong>Wi-Fi name and password</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Click <strong>🖨 Print table QR cards</strong>. Each table gets a card with two codes: <strong>1. Join our Wi-Fi</strong> (the phone joins without typing the password) and <strong>2. Scan to see the menu and order</strong>. Put each card on its table.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">The customer scans both with the phone camera, chooses dishes (with notes, e.g. <em>less spicy</em>), enters their <strong>name and mobile number</strong> (required, and remembered on that phone for the next order), taps <strong>Order</strong>, and can follow it and tap <strong>Ask for Bill</strong>.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">The order appears on the PC as <strong>🔔 QR orders from tables</strong> (with a beep) and on waiters' phones. It shows the customer's name and mobile number. <strong>Check that someone is really at that table</strong>, then <strong>Confirm</strong>: the dishes join the table's order, and you send them with Send to Kitchen. Or <strong>Reject</strong> it with a reason the customer sees.</div></div>
+  <ul>
+    <li>A customer's phone can only see the menu, order for <strong>its own table</strong>, follow its order and ask for the bill. It can't see anything else in Accelent.</li>
+    <li>Each table's code is secret. If cards are copied or taken away, <strong>↻ New codes for all tables</strong> makes the old ones stop working; print new cards.</li>
+    <li>Limits stop pranks: at most 20 of a dish, 3 orders waiting at a table, and 6 orders in 10 minutes from one phone. Untick QR ordering after closing time.</li>
+  </ul>
+  <div class="tip">💡 Keep the PC's Wi-Fi address fixed: in your router, give the PC a <em>reserved address</em> (often called "DHCP reservation"). Otherwise the address can change after a restart, and the printed cards stop working. The customer's phone may say <em>"Wi-Fi has no internet"</em>; ordering still works.</div>
+
+  <h3>GST on Restaurant Bills (India)</h3>
+  <p>A restaurant bill is one restaurant service, so the whole bill carries one GST rate. Choose it in <strong>⚙ Restaurant Settings</strong> (admin only):</p>
+  <ul>
+    <li><strong>5% without input tax credit</strong>: restaurants, cafés, dhabas and takeaway (the usual case, and the default).</li>
+    <li><strong>18% with input tax credit</strong>: a restaurant inside a hotel that is a <em>specified premises</em> (a hotel whose rooms were charged above ₹7,500 a day in the previous year, or which declared itself so).</li>
+  </ul>
+  <p>A hotel using the Rooms screen doesn't need to choose: Accelent switches the restaurant to 18% by itself in a year the premises is a specified premises (see <a href="#ch9c">Chapter 9c</a>).</p>
+  <div class="tip">💡 Ask your CA if you are not sure which applies to you.</div>
+
+  <div class="tip">💡 Staff need the <strong>Create sales</strong> permission to use the Restaurant screen. Cancelling a bill needs <strong>Edit or delete bills</strong>.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9c -->
+<div class="chapter-banner">Chapter 9c — Rooms</div>
+<div class="section" id="ch9c">
+  <h2>9c. Rooms (Hotel, Lodge, Guest House)</h2>
+  <p>For a hotel, lodge or guest house, with or without its own restaurant. Each guest's stay is a running account on their room: the nights add up by themselves, extra charges and food from your restaurant are added to it, and at check-out the guest gets <strong>one GST bill</strong> for everything, with any advance deducted.</p>
+
+  <h3>Switching It On</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (unlock with the admin password) → <strong>Business Type: Hotel, lodge or guest house</strong> → <strong>Save</strong>, then close and reopen Accelent.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">The menu now has <strong>🛏 Rooms</strong> and <strong>🍽 Restaurant</strong> under FINANCE (see <a href="#ch9b">Chapter 9b</a> for the restaurant).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🛏 Rooms → 🚪 Rooms…</strong> → <strong>＋ Add</strong> each room: its number (101), type (Standard, Deluxe, Suite…), <strong>tariff per night</strong> and how many persons it takes.</div></div>
+
+  <h3>The Room Board</h3>
+  <p>Every room is a button. A <strong>highlighted</strong> room is occupied and shows the guest's name and nights so far; a plain room is <strong>vacant</strong> with its tariff; a room with a <strong>dashed border</strong> is waiting to be cleaned after a check-out. Click a room to see it on the right.</p>
+
+  <h3>Check-In</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click a vacant room → <strong>🛎 Check In</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Fill in the guest register details: name, phone, address, <strong>ID proof</strong> (Aadhaar, passport, driving licence…) and its number, nationality, number of persons, coming from and going to, expected nights and the tariff (change it for a discount). The ID number is required unless you turn that off in <strong>⚙ Hotel Settings</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">If the guest pays an <strong>advance</strong>, enter it with how it was paid (cash, UPI, card or bank). It goes into your cash or bank at once, and is deducted at check-out.</div></div>
+
+  <h3>The Guest's Account</h3>
+  <p>Click an occupied room to see everything charged so far, with GST and the amount still to pay:</p>
+  <ul>
+    <li><strong>Room nights</strong> are counted by themselves from the check-in date. <strong>₹ Night Rates</strong> changes the rate of a particular night (a weekend rate, a discount).</li>
+    <li><strong>➕ Add Charge</strong>: choose <em>Part of the room</em> for an extra bed or early check-in (it is added to that night's room value), or <em>Another service</em> for laundry, transport and the like, with its own GST %. <strong>✕ Remove Charge</strong> takes off a charge added by mistake.</li>
+    <li><strong>💵 Advance</strong> records more money received during the stay. The check-out bill shows the advance received and the balance paid; if the advance was more than the bill, it shows the amount <strong>given back</strong>, which is recorded as paid back to the guest.</li>
+    <li><strong>⇄ Move Room</strong> shifts the guest to a vacant room; the old room goes to cleaning.</li>
+    <li><strong>🗑 Cancel Check-in</strong> is for a check-in made by mistake: the room becomes vacant and any advance is booked as paid back.</li>
+  </ul>
+
+  <h3>Food for Guests</h3>
+  <p>On the <strong>🍽 Restaurant</strong> screen:</p>
+  <ul>
+    <li><strong>🛏 Room Service</strong>: choose the guest's room and add the dishes. <strong>Send to Kitchen</strong> prints the KOT <em>and</em> puts the food on the guest's room account at once, so it can't be forgotten.</li>
+    <li>A staying guest eating in the dining hall: take the table's order as usual. When you click <strong>💵 Bill</strong>, the bill window asks <strong>Guest staying in a room?</strong>: choose the guest's room and click <strong>Charge to Room</strong> instead of taking payment. (The <strong>🛏 Charge to Room</strong> button does the same.)</li>
+  </ul>
+  <p>The food goes onto the guest's account at the restaurant's GST rate, its ingredients (or its own stock) come out of the store straight away, and it is paid at check-out.</p>
+  <div class="tip">💡 Nothing a guest ate is left off the check-out bill: room-service food still waiting on an order shows on the guest's account as <strong>⏳ not yet charged</strong>, and at check-out whatever the kitchen has made is added to the bill by itself. Only an order with items never sent to the kitchen stops the check-out until it is sent or cancelled.</div>
+
+  <h3>Check-Out</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Click the room → <strong>🧾 Check Out</strong>. The total, the advance and the amount to pay are shown.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Choose how the guest pays the balance and click <strong>Check Out</strong>. One bill is saved for the whole stay: the room nights, add-ons, other services and food, each at its own GST rate. Only the balance is added to your cash or bank, because the advance was added when it was received.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">The bill opens for printing. The room now shows a dashed border: when it has been cleaned, click it and then <strong>✨ Room Is Ready</strong>.</div></div>
+
+  <h3>Check-outs: Reprinting or Correcting a Bill</h3>
+  <p>The <strong>🧾 Check-outs</strong> tab lists every check-out between two dates with its bill. Select one and click <strong>🖨 View / Print Bill</strong> to print it again. If a bill was made by mistake (a charge forgotten, the wrong payment), click <strong>↩ Cancel Check-out Bill</strong>: the bill and its payment are removed (a copy is kept in the Deletion Watcher) and the guest's stay opens again with every charge still on it. Correct it, then check the guest out again. The food stays out of stock, because it was eaten. A hotel bill can't be deleted from anywhere else.</p>
+
+  <h3>GST on Rooms (India)</h3>
+  <ul>
+    <li>Up to <strong>₹7,500</strong> per room per night: <strong>5%</strong> without input tax credit. Above ₹7,500: <strong>18%</strong>. There is no exemption for cheap rooms.</li>
+    <li>The rate is decided <strong>for each room and each night</strong> on the rate actually charged after any discount, with that night's extra bed or other room add-ons included. A guest who pays ₹6,500 one night and ₹8,000 the next is charged 5% and 18% on those nights.</li>
+    <li><strong>Specified premises:</strong> if any room was billed above ₹7,500 a night in the <em>previous</em> financial year, or you declared the premises a specified premises (tick it in <strong>⚙ Hotel Settings</strong>), your restaurant must charge <strong>18%</strong> for this financial year. Accelent works this out from your own bills and switches the restaurant to 18% by itself; the line at the top of the Rooms screen says which applies.</li>
+  </ul>
+  <div class="tip">💡 Ask your CA if you are not sure which rate applies to you.</div>
+
+  <h3>Room Service by QR Code</h3>
+  <p>With QR ordering switched on (🍽 Restaurant → ⚙ Restaurant Settings, see <a href="#ch9b">Chapter 9b</a>), print a card for each room: <strong>⚙ Hotel Settings → 🖨 Print room QR cards</strong>. A guest staying in the room scans it, sees the menu, enters their name and mobile number and orders. The order reaches the PC and waiters' phones as a QR order for that room; once a waiter confirms it and sends it to the kitchen, it goes on the room's bill. A room with no guest checked in can't order, and room service is paid at check-out. <strong>↻ New codes for all rooms</strong> makes old room cards stop working.</p>
+
+  <h3>Guest Register</h3>
+  <p>The <strong>📒 Guest Register</strong> tab lists every check-in between two dates with the guest's details, ID proof and travel, as kept for the police. Click <strong>🖨 Print Register</strong> for a printed copy.</p>
+
+  <div class="tip">💡 Staff need the <strong>Create sales</strong> permission to use the Rooms screen.</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 10 -->
@@ -836,7 +1025,7 @@
     <tr><th>Tab</th><th>What You Can Do</th></tr>
     <tr><td>🔍 Deletion Watcher</td><td>Audit trail of every record deleted in the app. You can view details, restore deleted records, or permanently remove log entries. <strong>Locked — requires admin PIN to access.</strong></td></tr>
     <tr><td>⚙️ App Settings</td><td>Recalculate all balances from transactions, backup the database, restore from a backup, set up encrypted Cloud Backup, reset the database (danger!), change language and theme.</td></tr>
-    <tr><td>🏢 Company</td><td>Edit company name, address, contact, GST/TIN, logo, and the signature and shop stamp used on invoices and reports.</td></tr>
+    <tr><td>🏢 Company</td><td>Edit company name, address, contact, GST/TIN, logo, and the signature and shop stamp used on invoices and reports. <strong>Business Type</strong> chooses the screens in the menu: a <em>Restaurant</em> gets the 🍽 Restaurant screen instead of Sales, Returns, Aging Report and E-Invoice (see <a href="#ch9b">Chapter 9b</a>), and a <em>Hotel, lodge or guest house</em> also gets 🛏 Rooms (see <a href="#ch9c">Chapter 9c</a>); the change shows after reopening Accelent.</td></tr>
     <tr><td>👥 Users</td><td>Create staff accounts, choose what each one can see and do (🔐 Permissions), and decide who can use the phone app. The admin account is the master — keep its password safe.</td></tr>
     <tr><td>🔑 License</td><td>Activate or renew your subscription, or check your trial status.</td></tr>
     <tr><td>📊 Balances</td><td>Edit opening balances for cash, bank accounts, parties, customers, and employees.</td></tr>
@@ -1013,7 +1202,7 @@
   <h2>19. Mobile App Setup &amp; Use</h2>
 
   <h3>Installing the App</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_v1.6.8.apk</code> from <strong>accelentapp.com</strong> on the phone, or transfer it via USB cable, WhatsApp, or Google Drive.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_v1.7.3.apk</code> from <strong>accelentapp.com</strong> on the phone, or transfer it via USB cable, WhatsApp, or Google Drive.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">On the phone, open the file from your Downloads or Files app.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">If prompted about <em>unknown sources</em>, tap <strong>Settings</strong>, enable <em>Install unknown apps</em> for your file manager, then go back and install.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Tap <strong>Install</strong> → <strong>Open</strong>.</div></div>
@@ -1153,7 +1342,7 @@
 </div>
 
 <footer>
-  Accelent v2.4.5 — Complete User Guide<br>
+  Accelent v2.4.6 — Complete User Guide<br>
   Desktop &amp; Mobile Accounting System &nbsp;·&nbsp; 2026<br><br>
   <em>For support, contact your software provider with a screenshot of any error message.</em>
 </footer>
