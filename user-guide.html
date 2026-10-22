@@ -107,7 +107,7 @@
   <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
   <h1>Accelent</h1>
   <div class="sub">Complete User Guide — Accounting &amp; Inventory Management</div>
-  <div class="ver">Version 2.4.6 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
+  <div class="ver">Version 2.4.7 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
   <div class="cover-badges">
     <span class="badge">🖥️ Windows Desktop</span>
     <span class="badge">📱 Android Mobile</span>
@@ -136,6 +136,7 @@
       <a href="#ch9"><span class="toc-num">9.</span>Sales Panel</a><br>
       <a href="#ch9b"><span class="toc-num">9b.</span>Restaurant</a><br>
       <a href="#ch9c"><span class="toc-num">9c.</span>Rooms (Hotel, Lodge)</a><br>
+      <a href="#ch9d"><span class="toc-num">9d.</span>Partners (Agents, Guides, Drivers)</a><br>
     </div>
     <div>
       <a href="#ch10"><span class="toc-num">10.</span>Purchases Panel</a><br>
@@ -240,11 +241,11 @@
     <li>Windows 10 or Windows 11 (64-bit)</li>
     <li><strong>RAM:</strong> 8 GB recommended for the quickest bill scanning. 4 GB is the minimum — everything works, but bill scans take longer.</li>
     <li>About 1 GB of free disk space</li>
-    <li>The installer: <code>Accelent_Setup_v2.4.6.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
+    <li>The installer: <code>Accelent_Setup_v2.4.7.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
   </ul>
 
   <h3>Installing with the Installer (Recommended)</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.6.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.7.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Double-click it. If Windows shows a SmartScreen warning, click <strong>"More info"</strong> then <strong>"Run anyway"</strong>.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Follow the steps and click <strong>Install</strong>. The installer also sets up the Windows components that bill scanning needs.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Open Accelent from the Start menu or the desktop shortcut.</div></div>
@@ -262,10 +263,10 @@
   <div class="tip">💡 Accelent installs as a normal program folder and works offline. It connects to the internet only to check your licence (and, if you turn it on, to store a share of your encrypted backup key). Your business data never leaves your PC. If a warning still worries you, write to <strong>support@accelentapp.com</strong>.</div>
 
   <h3>Portable Zip (Alternative)</h3>
-  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.6.zip</code> instead and follow these steps:</p>
+  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.7.zip</code> instead and follow these steps:</p>
 
   <h3>Installation Steps</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.6.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.7.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Open the extracted <code>Accelent</code> folder. You will see <code>Accelent.exe</code>, <code>setup.bat</code>, and several support folders.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Double-click <strong>Accelent.exe</strong>. Windows may show a SmartScreen warning — click <strong>"More info"</strong> then <strong>"Run anyway"</strong>. This happens because the app is not yet digitally signed.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">The app opens. On first launch, it creates your database file automatically at <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span></div></div>
@@ -636,6 +637,7 @@
   <div class="step"><div class="step-num">2</div><div class="step-body">Close and reopen Accelent. The menu on the left now has <strong>🍽 Restaurant</strong> under FINANCE. <strong>Sales</strong>, <strong>Returns</strong>, <strong>Aging Report</strong> and <strong>E-Invoice</strong> are hidden, because a restaurant bills from the Restaurant screen. Nothing is deleted: set the Business Type back and they return.</div></div>
 
   <h3>Setting Up Your Menu</h3>
+  <div class="tip">💡 <strong>Start with a sample menu:</strong> while the menu is empty, the Restaurant screen offers <strong>📋 Start with a sample menu</strong> (also in <strong>⚙ Restaurant Settings</strong>). It adds 53 common dishes and drinks in menu sections (starters, main course, rice, breads, breakfast, desserts, hot and cold drinks, juices, mocktails), about 100 ingredients with their units, and a <em>Made to order</em> recipe for each dish; for a hotel with no rooms yet, also rooms 101–104 and 201–204. Nothing you already have is changed: an item with the same name is kept as it is. Then: set your own prices in Inventory (the sample prices are only suggestions), enter what you buy in Purchases (every dish stays greyed out until its ingredients are in stock), check the recipe amounts with your cook in Production → Recipes, and delete the dishes you don't serve.</div>
   <div class="step"><div class="step-num">1</div><div class="step-body">Add each dish and drink in <strong>Inventory</strong> with a <strong>Sell Price</strong> (before GST). Its <strong>Category</strong> becomes the menu section: <em>Main Course</em>, <em>Starters</em>, <em>Drinks</em>… Every item with a Sell Price appears on the menu.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Add the <strong>ingredients</strong> as items too (rice, chicken, oil, tea leaves), with units like kg or litre, and buy them through <strong>Purchases</strong> as usual. Ingredients have no Sell Price, so they stay off the menu.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">For each dish cooked in your kitchen, write a <strong>recipe</strong> in <strong>Inventory → 🏭 Production → 🧾 Recipes</strong> (see <a href="#ch8c">Chapter 8c</a>) and tick <strong>Made to order</strong>. Example: one Chicken Biryani uses rice 0.25 kg and chicken 0.2 kg. When the dish is sold, those ingredients go out of stock.</div></div>
@@ -668,6 +670,7 @@
   <div class="step"><div class="step-num">1</div><div class="step-body">Open the table and click <strong>💵 Bill</strong>. If some items haven't gone to the kitchen, Accelent offers to send them first.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Choose how the guest paid: <strong>Cash</strong>, <strong>UPI</strong>, <strong>Card</strong> or <strong>Bank Transfer</strong> (and into which bank, with a reference if you like). A customer name and phone are optional.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>Save Bill</strong>. The bill is saved as a sale, the money goes into Cash or the bank, the dishes' ingredients come out of stock, the table becomes free, and the bill opens for printing (untick <em>Print the bill</em> to skip that).</div></div>
+  <div class="tip">💡 <strong>The bill on the customer's WhatsApp:</strong> when the bill window has the customer's mobile number (a QR-order customer's number is filled in already), <strong>📄 Send the bill on WhatsApp</strong> is ticked. After saving, the bill is made into a PDF and copied, and WhatsApp opens the customer's chat with a short thank-you message: press <strong>Ctrl+V</strong> to attach the bill, then <strong>Send</strong>. To send it later, select the bill in <strong>Today's Bills</strong> and click <strong>📄 Send on WhatsApp</strong>.</div>
 
   <h3>Hotels: Food for Staying Guests</h3>
   <p>With the Business Type <em>Hotel, lodge or guest house</em>, the Restaurant screen also has <strong>🛏 Room Service</strong> and <strong>🛏 Charge to Room</strong>: the food goes onto the guest's room account and is paid at check-out. See <a href="#ch9c">Chapter 9c — Rooms</a>.</p>
@@ -766,9 +769,10 @@
   <div class="step"><div class="step-num">1</div><div class="step-body">Click the room → <strong>🧾 Check Out</strong>. The total, the advance and the amount to pay are shown.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Choose how the guest pays the balance and click <strong>Check Out</strong>. One bill is saved for the whole stay: the room nights, add-ons, other services and food, each at its own GST rate. Only the balance is added to your cash or bank, because the advance was added when it was received.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">The bill opens for printing. The room now shows an amber border and <em>⚠ To be cleaned</em>: when it has been cleaned, click it and then <strong>✨ Room Is Ready</strong>.</div></div>
+  <div class="tip">💡 <strong>The bill on the guest's WhatsApp:</strong> the check-out window has <strong>📄 Send the bill on WhatsApp to</strong> with the mobile number given at check-in (change it if the guest wants another). It is ticked when there is a number. After check-out, the bill is made into a PDF and copied, and WhatsApp opens the guest's chat: press <strong>Ctrl+V</strong> to attach it, then <strong>Send</strong>.</div>
 
   <h3>Check-outs: Reprinting or Correcting a Bill</h3>
-  <p>The <strong>🧾 Check-outs</strong> tab lists every check-out between two dates with its bill. Select one and click <strong>🖨 View / Print Bill</strong> to print it again. If a bill was made by mistake (a charge forgotten, the wrong payment), click <strong>↩ Cancel Check-out Bill</strong>: the bill and its payment are removed (a copy is kept in the Deletion Watcher) and the guest's stay opens again with every charge still on it. Correct it, then check the guest out again. The food stays out of stock, because it was eaten. A hotel bill can't be deleted from anywhere else.</p>
+  <p>The <strong>🧾 Check-outs</strong> tab lists every check-out between two dates with its bill. Select one and click <strong>🖨 View / Print Bill</strong> to print it again, or <strong>📄 Send on WhatsApp</strong> to send it to the guest. If a bill was made by mistake (a charge forgotten, the wrong payment), click <strong>↩ Cancel Check-out Bill</strong>: the bill and its payment are removed (a copy is kept in the Deletion Watcher) and the guest's stay opens again with every charge still on it. Correct it, then check the guest out again. The food stays out of stock, because it was eaten. A hotel bill can't be deleted from anywhere else.</p>
 
   <h3>GST on Rooms (India)</h3>
   <ul>
@@ -785,6 +789,43 @@
   <p>The <strong>📒 Guest Register</strong> tab lists every check-in between two dates with the guest's details, ID proof and travel, as kept for the police. Click <strong>🖨 Print Register</strong> for a printed copy.</p>
 
   <div class="tip">💡 Staff need the <strong>Create sales</strong> permission to use the Rooms screen.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9d -->
+<div class="chapter-banner">Chapter 9d — Partners</div>
+<div class="section" id="ch9d">
+  <h2>9d. Partners (Travel Agents, Guides, Taxi Drivers)</h2>
+  <p>Travel agents, booking sites, local guides, taxi drivers and partner hotels bring you guests and earn a commission. On the <strong>🤝 Partners</strong> screen (under FINANCE, for a restaurant or hotel) you keep each of them, Accelent works out their commission with the bill, and you pay it from there. The commission is never shown on the guest's bill.</p>
+
+  <h3>Adding a Partner</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🤝 Partners → ➕ New Partner</strong>: the name, what kind of partner (travel agent, booking site, guide, taxi driver, partner hotel) and the phone number.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Commission on rooms:</strong> a <em>% of the room rent</em>, <em>₹ per night</em> or <em>₹ per stay</em>. <strong>On restaurant bills:</strong> a % of the food bill of the guests they bring (0 for none).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Optionally their <strong>PAN</strong> (for TDS) and <strong>GSTIN</strong>. Click <strong>Save</strong>. Each partner gets a code such as <strong>DRV001</strong> (drivers), <strong>GDE001</strong> (guides) or <strong>AGT001</strong> (agents).</div></div>
+
+  <h3>When They Bring Guests</h3>
+  <ul>
+    <li><strong>Rooms:</strong> in the <strong>Check In</strong> window choose <strong>Booked through</strong>. Their usual commission appears; change it if you agreed something else for this stay. At check-out the commission is worked out on the room rent of the nights (extra bed and room add-ons included, before GST; laundry and other services are not counted), plus their restaurant % on any food on the room's bill.</li>
+    <li><strong>Restaurant:</strong> in the <strong>Bill</strong> window choose <strong>Brought by</strong>. The commission is their restaurant % of the food, before GST.</li>
+    <li><strong>QR ordering:</strong> guests can type the driver's or guide's code (e.g. DRV001) on the order page. When the waiter confirms the order, the partner is chosen on the table's order by itself.</li>
+  </ul>
+  <p>After a check-out or bill that earned a commission, Accelent asks whether to <strong>💵 Pay now</strong> (drivers and guides are often paid in cash on the spot) or later.</p>
+
+  <h3>Paying Commission</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">On the Partners screen, choose the partner. The statement shows each stay and bill with its commission, what you paid, and the balance owed.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>💵 Pay Commission</strong>: the amount (what is owed is filled in), and how you paid: cash, UPI, bank transfer or cheque.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">The payment goes into <strong>Expenses</strong> under <strong>Commission</strong>, out of your cash or bank, so the Day Book, account statements and Profit &amp; Loss include it.</div></div>
+  <div class="tip">💡 If a check-out or restaurant bill is cancelled, its commission stops counting by itself. If you had already paid it, the partner's balance shows what they owe you back.</div>
+
+  <h3>Partner Settings (admin)</h3>
+  <ul>
+    <li><strong>Most commission on one stay or bill:</strong> a safety limit, so a typing mistake (50% instead of 5%) can't pay out a fortune.</li>
+    <li><strong>TDS on commission</strong> (off until you switch it on): the rate (2%, or 20% without PAN) and the yearly amount a partner can earn before TDS applies (₹20,000). A company or firm must deduct TDS on commission; an individual or HUF only when last year's business turnover was above ₹1 crore (₹50 lakh for a profession). Ask your accountant whether you must. The TDS held back is shown as owed in the account <em>TDS on commission (payable)</em> until you pay it to the government.</li>
+  </ul>
+
+  <h3>Business by Partner</h3>
+  <p>The <strong>📊 Business by Partner</strong> tab shows, for any dates, how many bills each partner brought, the business (room rent and food) and their commission, what you paid and what is still owed, the biggest first.</p>
+
+  <div class="tip">💡 Staff need the <strong>Expenses</strong> permission to use the Partners screen. Choosing a partner at check-in or on a bill only needs the Rooms or Restaurant screen.</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 10 -->
@@ -1357,7 +1398,7 @@
 </div>
 
 <footer>
-  Accelent v2.4.6 — Complete User Guide<br>
+  Accelent v2.4.7 — Complete User Guide<br>
   Desktop &amp; Mobile Accounting System &nbsp;·&nbsp; 2026<br><br>
   <em>For support, contact your software provider with a screenshot of any error message.</em>
 </footer>
