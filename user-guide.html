@@ -97,6 +97,11 @@
     .toc-grid { grid-template-columns: 1fr; }
     .panel-grid { grid-template-columns: 1fr; }
   }
+  .for-badge { display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 999px;
+               background: rgba(255,255,255,.25); font-size: 11px; letter-spacing: .3px; text-transform: none; }
+  .guide-filter { max-width: 900px; margin: 18px auto 0; padding: 10px 16px; border-radius: 8px;
+                  background: #e8f8f5; color: #2c3e50; font-size: 13.5px; line-height: 1.6; }
+  .guide-filter a { color: #16a085; font-weight: bold; }
 </style>
 </head>
 <body>
@@ -107,7 +112,7 @@
   <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
   <h1>Accelent</h1>
   <div class="sub">Complete User Guide — Accounting &amp; Inventory Management</div>
-  <div class="ver">Version 2.4.7 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
+  <div class="ver">Version 2.4.8 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
   <div class="cover-badges">
     <span class="badge">🖥️ Windows Desktop</span>
     <span class="badge">📱 Android Mobile</span>
@@ -137,6 +142,7 @@
       <a href="#ch9b"><span class="toc-num">9b.</span>Restaurant</a><br>
       <a href="#ch9c"><span class="toc-num">9c.</span>Rooms (Hotel, Lodge)</a><br>
       <a href="#ch9d"><span class="toc-num">9d.</span>Partners (Agents, Guides, Drivers)</a><br>
+      <a href="#ch9e"><span class="toc-num">9e.</span>Housekeeping (Hotels)</a><br>
     </div>
     <div>
       <a href="#ch10"><span class="toc-num">10.</span>Purchases Panel</a><br>
@@ -156,6 +162,7 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 1 -->
+<div class="guide-filter" id="guideFilter">Accelent shows only the screens your kind of business uses (chosen at the first start, or in <strong>Settings → 🏢 Company</strong>). Chapters marked <em>For restaurants and hotels</em>, <em>For hotels</em> or <em>For shops, traders and services</em> apply only to them; the rest are for everyone. Opened from Accelent (F1 or 📖 User Guide), this guide shows only the chapters for your business.</div>
 <div class="chapter-banner">Chapter 1 — Introduction</div>
 <div class="section" id="ch1">
   <h2>1. What is Accelent?</h2>
@@ -241,11 +248,11 @@
     <li>Windows 10 or Windows 11 (64-bit)</li>
     <li><strong>RAM:</strong> 8 GB recommended for the quickest bill scanning. 4 GB is the minimum — everything works, but bill scans take longer.</li>
     <li>About 1 GB of free disk space</li>
-    <li>The installer: <code>Accelent_Setup_v2.4.7.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
+    <li>The installer: <code>Accelent_Setup_v2.4.8.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
   </ul>
 
   <h3>Installing with the Installer (Recommended)</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.7.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.8.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Double-click it. If Windows shows a SmartScreen warning, click <strong>"More info"</strong> then <strong>"Run anyway"</strong>.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Follow the steps and click <strong>Install</strong>. The installer also sets up the Windows components that bill scanning needs.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Open Accelent from the Start menu or the desktop shortcut.</div></div>
@@ -263,10 +270,10 @@
   <div class="tip">💡 Accelent installs as a normal program folder and works offline. It connects to the internet only to check your licence (and, if you turn it on, to store a share of your encrypted backup key). Your business data never leaves your PC. If a warning still worries you, write to <strong>support@accelentapp.com</strong>.</div>
 
   <h3>Portable Zip (Alternative)</h3>
-  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.7.zip</code> instead and follow these steps:</p>
+  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.8.zip</code> instead and follow these steps:</p>
 
   <h3>Installation Steps</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.7.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.8.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Open the extracted <code>Accelent</code> folder. You will see <code>Accelent.exe</code>, <code>setup.bat</code>, and several support folders.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Double-click <strong>Accelent.exe</strong>. Windows may show a SmartScreen warning — click <strong>"More info"</strong> then <strong>"Run anyway"</strong>. This happens because the app is not yet digitally signed.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">The app opens. On first launch, it creates your database file automatically at <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span></div></div>
@@ -553,9 +560,10 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 8c -->
-<div class="chapter-banner">Chapter 8c — Production</div>
-<div class="section" id="ch8c">
+<div class="chapter-banner" data-for="production">Chapter 8c — Production <span class="for-badge">For manufacturers, restaurants and hotels</span></div>
+<div class="section" id="ch8c" data-for="production">
   <h2>8c. Production (Making Your Own Products)</h2>
+  <div class="tip">💡 A restaurant or hotel always has <strong>🏭 Production</strong> (its recipes live there). A shop or trading business sees it after ticking <strong>We make our own products</strong> in <strong>Settings → 🏢 Company</strong> (it is shown by itself where recipes already exist), then closing and reopening Accelent.</div>
   <p>If you make what you sell — cakes, furniture, garments, spices, assembled goods — Accelent can keep the stock and the cost right for you. You write a <strong>recipe</strong> once (what one batch uses); each time you make something, Accelent takes the materials out of stock, adds the finished items, and works out what each one cost. Open it from <strong>Inventory → 🏭 Production</strong>.</p>
 
   <h3>Before You Start: Items and Units</h3>
@@ -591,8 +599,8 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 9 -->
-<div class="chapter-banner">Chapter 9 — Sales</div>
-<div class="section" id="ch9">
+<div class="chapter-banner" data-for="general">Chapter 9 — Sales <span class="for-badge">For shops, traders and services</span></div>
+<div class="section" id="ch9" data-for="general">
   <h2>9. Sales Panel</h2>
   <p>The Sales panel is where you create customer invoices. Every sale is recorded here.</p>
 
@@ -627,8 +635,8 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 9b -->
-<div class="chapter-banner">Chapter 9b — Restaurant</div>
-<div class="section" id="ch9b">
+<div class="chapter-banner" data-for="restaurant hotel">Chapter 9b — Restaurant <span class="for-badge">For restaurants and hotels</span></div>
+<div class="section" id="ch9b" data-for="restaurant hotel">
   <h2>9b. Restaurant (Tables, Kitchen Tickets and Bills)</h2>
   <p>For a restaurant, café, dhaba or hotel kitchen, Accelent has a <strong>🍽 Restaurant</strong> screen: tap a table, tap the dishes, send a <strong>kitchen ticket (KOT)</strong> to the kitchen, and bill the table when the guests leave. Every bill is saved as a normal sale, so Accounts, GST and the reports include it, and the ingredients each dish uses come out of stock by themselves.</p>
 
@@ -662,6 +670,20 @@
   <div class="step"><div class="step-num">2</div><div class="step-body">On the order, select a line and use <strong>−</strong> / <strong>+</strong> to change the quantity, <strong>📝 Note</strong> for the kitchen (<em>less spicy</em>, <em>no onion</em>), or <strong>✕ Remove</strong>.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>🧑‍🍳 Send to Kitchen (KOT)</strong>. A kitchen ticket is printed with its number (KOT #1, #2… starting again each day), the table and what to cook.</div></div>
   <p>The <strong>Kitchen</strong> column shows what the kitchen already has (<em>✓ sent</em>) and what is new. When guests order more, add it and send again: the next KOT carries <strong>only the new items</strong>. If a dish is cut after it was sent, the KOT prints it as <strong>CANCEL</strong>; a note changed after sending prints as <strong>NOTE</strong>. A dot on the KOT button means something hasn't gone to the kitchen yet; once the kitchen has everything, the button is greyed out and reads <strong>✓ Kitchen has everything</strong>.</p>
+
+  <h3>How Busy Is the Kitchen?</h3>
+  <p>The top of the Restaurant screen shows the kitchen's state, for example <strong>🟢 Kitchen: Normal · ~12 min</strong>: <em>Normal, Busy, Very busy, Extra busy</em> or <em>Overloaded</em>, and about how long a dish ordered now will take. It is an <strong>estimate</strong>: Accelent knows what was sent to the kitchen and how long each dish usually takes, and works out what is still to cook for each cook on duty. Click it to see the orders still in the kitchen, oldest first, and which are late. The PC beeps when the kitchen becomes Extra busy.</p>
+  <ul>
+    <li><strong>In that window</strong> the waiting time is <strong>red</strong> after 30 minutes and <strong>amber</strong> from 15 minutes. Each row has <strong>👁 Items</strong> (the dishes on that kitchen ticket) and <strong>🍽 Served</strong>.</li>
+    <li><strong>⏸ Pause QR orders for 20 min:</strong> guests ordering from the table QR are told ordering is paused; waiters can still take orders. It starts again by itself after 20 minutes, or click <strong>▶ Resume QR orders</strong>.</li>
+    <li><strong>⏰ Food waiting too long:</strong> when a kitchen ticket has not been marked served after 30 minutes, the Restaurant screen beeps and shows a red line (for example <em>⏰ Table 7: KOT #4 waiting 40 min</em>), and the same note goes once to every paired waiter's phone, in Messages. Change the minutes, or turn it off (0), in Kitchen Settings → <em>Alert the floor when food waits</em>.</li>
+  </ul>
+  <ul>
+    <li><strong>🍽 Served:</strong> when the food reaches the table, open the order on the PC and click it. This keeps the estimate right. A billed order counts as served.</li>
+    <li><strong>⏰ Late:</strong> a table whose food has waited longer than its slowest dish takes, plus 5 minutes, gets an amber border and <em>Late … min</em>; the order's title says it too.</li>
+    <li><strong>🕑 Timeline:</strong> when the order was opened, each kitchen ticket with its dishes, when it was served, when the bill was asked for and when it was billed.</li>
+  </ul>
+  <div class="tip">💡 <strong>⚙ Restaurant Settings → 🍳 Kitchen Settings</strong> (admin): the cooks on duty, the usual cooking time (12 minutes unless you change it), the time for each menu section and for dishes that differ (biryani 25 minutes, tea 4…), and where each level starts. What happens when the kitchen is busy is your choice: show the expected wait on the QR order page, pause QR ordering while Overloaded (waiters can still take orders), and stop slow dishes while Extra busy or Overloaded.</div>
 
   <h3>Takeaway</h3>
   <p>Click <strong>🥡 New Takeaway</strong>, enter the customer's name if you like, then add dishes, send the KOT and bill exactly as for a table. Open takeaways are listed under <strong>Takeaway orders</strong> below the tables (in a hotel, <strong>Takeaway &amp; room service</strong>); click one to open it.</p>
@@ -700,7 +722,7 @@
   <p>Customers can see the menu and order from their own phone by scanning a QR code on their table. It works over <strong>your restaurant's Wi-Fi only</strong>: nothing goes on the internet, and the customer needs no app and no account.</p>
   <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚙ Restaurant Settings → QR ordering</strong>: tick <em>Customers can see the menu and order…</em>, check <strong>This PC on the Wi-Fi</strong> (the PC's address on the Wi-Fi the customers will join), and fill in the <strong>Wi-Fi name and password</strong>.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Click <strong>🖨 Print table QR cards</strong>. Each table gets a card with two codes: <strong>1. Join our Wi-Fi</strong> (the phone joins without typing the password) and <strong>2. Scan to see the menu and order</strong>. Put each card on its table.</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-body">The customer scans both with the phone camera, chooses dishes (with notes, e.g. <em>less spicy</em>), enters their <strong>name and mobile number</strong> (required, and remembered on that phone for the next order) and, if a driver or guide brought them, that partner's code (e.g. DRV001, see <a href="#ch9d">Chapter 9d</a>), taps <strong>Order</strong>, and can follow it and tap <strong>Ask for Bill</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">The customer scans both with the phone camera, chooses dishes (with notes, e.g. <em>less spicy</em>), enters their <strong>name and mobile number</strong> (required, and remembered on that phone for the next order) and, if a driver or guide brought them, that partner's code (e.g. DRV001, see <a href="#ch9d">Chapter 9d</a>), taps <strong>Order</strong>, and can follow it: <em>Received → Confirmed → Preparing (ready about …) → Served</em>, and tap <strong>Ask for Bill</strong>.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">The order appears on the PC as <strong>🔔 QR orders from tables</strong> (with a beep) and on waiters' phones. It shows the customer's name and mobile number. <strong>Check that someone is really at that table</strong>, then <strong>Confirm</strong>: the dishes join the table's order, and you send them with Send to Kitchen. Or <strong>Reject</strong> it with a reason the customer sees.</div></div>
   <ul>
     <li>A customer's phone can only see the menu, order for <strong>its own table</strong>, follow its order and ask for the bill. It can't see anything else in Accelent.</li>
@@ -722,8 +744,8 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 9c -->
-<div class="chapter-banner">Chapter 9c — Rooms</div>
-<div class="section" id="ch9c">
+<div class="chapter-banner" data-for="hotel">Chapter 9c — Rooms <span class="for-badge">For hotels, lodges and guest houses</span></div>
+<div class="section" id="ch9c" data-for="hotel">
   <h2>9c. Rooms (Hotel, Lodge, Guest House)</h2>
   <p>For a hotel, lodge or guest house, with or without its own restaurant. Each guest's stay is a running account on their room: the nights add up by themselves, extra charges and food from your restaurant are added to it, and at check-out the guest gets <strong>one GST bill</strong> for everything, with any advance deducted.</p>
 
@@ -743,6 +765,7 @@
 
   <h3>Check-In</h3>
   <div class="step"><div class="step-num">1</div><div class="step-body">Click a vacant room → <strong>🛎 Check In</strong>.</div></div>
+  <div class="tip">💡 <strong>📷 Scan ID card…</strong> at the top of the Check In window fills in the guest's details from a photo or scan of their ID, read on this PC (nothing is sent anywhere). <strong>Aadhaar:</strong> use the side with the large QR code; the name, date of birth, gender and address are read, and only the <strong>last 4 digits</strong> of the number are kept (XXXX XXXX 1234). An Aadhaar number typed by hand is kept the same way, and a copy of an Aadhaar card is never kept: UIDAI does not allow hotels to keep them. <strong>Passport</strong> (from the two lines at the bottom), <strong>PAN</strong>, <strong>driving licence</strong> and <strong>voter ID</strong> are read too; a copy of these is kept only if you tick that the guest agreed, and it is deleted a set number of days after check-out (<strong>⚙ Hotel Settings</strong>, 30 days unless you change it). Always check the details against the card before checking in.</div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Fill in the guest register details: name, phone, address, <strong>ID proof</strong> (Aadhaar, passport, driving licence…) and its number, nationality, number of persons, coming from and going to, expected nights and the tariff (change it for a discount). The ID number is required unless you turn that off in <strong>⚙ Hotel Settings</strong>.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">If the guest pays an <strong>advance</strong>, enter it with how it was paid (cash, UPI, card or bank). It goes into your cash or bank at once, and is deducted at check-out.</div></div>
 
@@ -767,7 +790,7 @@
 
   <h3>Check-Out</h3>
   <div class="step"><div class="step-num">1</div><div class="step-body">Click the room → <strong>🧾 Check Out</strong>. The total, the advance and the amount to pay are shown.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-body">Choose how the guest pays the balance and click <strong>Check Out</strong>. One bill is saved for the whole stay: the room nights, add-ons, other services and food, each at its own GST rate. Only the balance is added to your cash or bank, because the advance was added when it was received.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">If room service food on the stay has not been marked served, Accelent first asks whether it was delivered: <strong>✓ Yes, delivered</strong> marks it served and goes on; <strong>✕ Not delivered</strong> stops so you can sort out the order on the Restaurant screen first. Choose how the guest pays the balance and click <strong>Check Out</strong>. One bill is saved for the whole stay: the room nights, add-ons, other services and food, each at its own GST rate. Only the balance is added to your cash or bank, because the advance was added when it was received.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">The bill opens for printing. The room now shows an amber border and <em>⚠ To be cleaned</em>: when it has been cleaned, click it and then <strong>✨ Room Is Ready</strong>.</div></div>
   <div class="tip">💡 <strong>The bill on the guest's WhatsApp:</strong> the check-out window has <strong>📄 Send the bill on WhatsApp to</strong> with the mobile number given at check-in (change it if the guest wants another). It is ticked when there is a number. After check-out, the bill is made into a PDF and copied, and WhatsApp opens the guest's chat: press <strong>Ctrl+V</strong> to attach it, then <strong>Send</strong>.</div>
 
@@ -792,8 +815,8 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 9d -->
-<div class="chapter-banner">Chapter 9d — Partners</div>
-<div class="section" id="ch9d">
+<div class="chapter-banner" data-for="restaurant hotel">Chapter 9d — Partners <span class="for-badge">For restaurants and hotels</span></div>
+<div class="section" id="ch9d" data-for="restaurant hotel">
   <h2>9d. Partners (Travel Agents, Guides, Taxi Drivers)</h2>
   <p>Travel agents, booking sites, local guides, taxi drivers and partner hotels bring you guests and earn a commission. On the <strong>🤝 Partners</strong> screen (under FINANCE, for a restaurant or hotel) you keep each of them, Accelent works out their commission with the bill, and you pay it from there. The commission is never shown on the guest's bill.</p>
 
@@ -826,6 +849,27 @@
   <p>The <strong>📊 Business by Partner</strong> tab shows, for any dates, how many bills each partner brought, the business (room rent and food) and their commission, what you paid and what is still owed, the biggest first.</p>
 
   <div class="tip">💡 Staff need the <strong>Expenses</strong> permission to use the Partners screen. Choosing a partner at check-in or on a bill only needs the Rooms or Restaurant screen.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9e -->
+<div class="chapter-banner" data-for="hotel">Chapter 9e — Housekeeping <span class="for-badge">For hotels, lodges and guest houses</span></div>
+<div class="section" id="ch9e" data-for="hotel">
+  <h2>9e. Housekeeping (Room Cleaning and Laundry)</h2>
+  <p>The <strong>🧹 Housekeeping</strong> screen (under FINANCE, for a hotel) lists the cleaning and laundry jobs for your staff. Most jobs appear by themselves:</p>
+  <ul>
+    <li><strong>A check-out</strong> makes a <em>Clean the room</em> job. When it is done, the room is <strong>Ready</strong> for the next guest by itself (pressing <strong>✨ Room Is Ready</strong> on the Rooms screen also finishes it).</li>
+    <li><strong>Every morning</strong> at the time you set, a <em>Daily cleaning</em> job is made for each occupied room.</li>
+    <li><strong>Guests</strong> can tap <strong>🧹 Clean my room</strong> or <strong>👕 Laundry pickup</strong> on the room QR card (when QR ordering is on). The PC beeps and shows the request at the top. If a daily cleaning was waiting, the guest's request takes its place.</li>
+    <li>The front desk can add any job with <strong>➕ New Task</strong>.</li>
+  </ul>
+
+  <h3>Who Does It</h3>
+  <p>In <strong>⚙ Housekeeping Settings</strong> (admin), tick the employees on duty (add them in 👥 Employees first). Each new job goes to the one with the fewest open jobs; <strong>👤 Give to…</strong> changes it. The Rooms screen shows who is cleaning a room that is waiting to be cleaned.</p>
+
+  <h3>Doing a Job</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Select the job and click <strong>▶ Start</strong> (optional), then <strong>✓ Done</strong> when it is finished. <strong>✕ Cancel task</strong> removes a job that isn't needed.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Laundry:</strong> click <strong>👕 Collected</strong> when the clothes are taken from the room. When they come back, click <strong>✓ Laundry returned…</strong> and enter how many pieces of each kind. The total goes onto the guest's room bill with the laundry GST (18% unless you change it).</div></div>
+  <div class="tip">💡 The laundry price list (shirt, trousers, saree…), the GST on laundry and the time of the daily cleaning are in <strong>⚙ Housekeeping Settings</strong>. The <strong>✓ Done today</strong> tab lists the jobs finished today, by whom, and the laundry charged.</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 10 -->
@@ -1398,11 +1442,36 @@
 </div>
 
 <footer>
-  Accelent v2.4.7 — Complete User Guide<br>
+  Accelent v2.4.8 — Complete User Guide<br>
   Desktop &amp; Mobile Accounting System &nbsp;·&nbsp; 2026<br><br>
   <em>For support, contact your software provider with a screenshot of any error message.</em>
 </footer>
 
+<script>
+/* Opened from Accelent: ?type=general|restaurant|hotel (&production=1) shows only that business's chapters. */
+(function () {
+  var q = new URLSearchParams(location.search), t = q.get("type");
+  var names = {general: "a shop, trading, services or manufacturing business", restaurant: "a restaurant", hotel: "a hotel"};
+  if (!names[t]) return;
+  var prod = q.get("production") === "1" || t !== "general";
+  function shows(f) { return f.split(" ").some(function (x) { return x === t || (x === "production" && prod); }); }
+  var hidden = [];
+  document.querySelectorAll(".section[data-for]").forEach(function (s) {
+    if (shows(s.getAttribute("data-for"))) return;
+    hidden.push(s.id); s.style.display = "none";
+    var b = s.previousElementSibling;
+    if (b && b.classList.contains("chapter-banner")) b.style.display = "none";
+  });
+  hidden.forEach(function (id) {
+    document.querySelectorAll('.toc-grid a[href="#' + id + '"]').forEach(function (a) {
+      a.style.display = "none";
+      var br = a.nextElementSibling; if (br && br.tagName === "BR") br.style.display = "none";
+    });
+  });
+  var n = document.getElementById("guideFilter");
+  if (n) n.innerHTML = "Showing the chapters for " + names[t] + ". <a href=\"" + location.pathname + "\">Show all chapters</a>";
+})();
+</script>
 </body>
 </html>
 
