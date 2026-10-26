@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accelent — د کارونکي لارښود (پښتو)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', 'Noto Naskh Arabic', Tahoma, Arial, sans-serif; font-size: 14px; color: #2c3e50; background: #f0f4f8; }
+
+  /* Cover */
+  .cover { background: linear-gradient(135deg, #1abc9c 0%, #16a085 50%, #0e6655 100%);
+           color: white; padding: 70px 40px 50px; text-align: center; }
+  .cover h1 { font-size: 42px; letter-spacing: 1px; }
+  .cover .sub { font-size: 18px; opacity: .85; margin-top: 8px; }
+  .cover .ver { font-size: 13px; opacity: .65; margin-top: 16px; letter-spacing: 2px; text-transform: uppercase; }
+  .cover-badges { margin-top: 28px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .badge { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+           padding: 6px 16px; border-radius: 20px; font-size: 13px; }
+
+  /* Layout */
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+  .section { background: white; max-width: 900px; margin: 28px auto; padding: 36px 44px;
+             border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+
+  /* TOC */
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 14px; }
+  .toc-grid a { color: #2980b9; text-decoration: none; line-height: 2; font-size: 13.5px; }
+  .toc-grid a:hover { text-decoration: underline; }
+  .toc-num { color: #1abc9c; font-weight: bold; margin-right: 5px; }
+
+  /* Headings */
+  h2 { font-size: 22px; color: #16a085; border-bottom: 2px solid #e8f8f5;
+       padding-bottom: 10px; margin-bottom: 20px; }
+  h3 { font-size: 16px; color: #2c3e50; margin: 22px 0 9px; }
+  h4 { font-size: 14px; color: #16a085; margin: 14px 0 6px; }
+  p  { line-height: 1.85; margin-bottom: 11px; color: #444; }
+  ul, ol { padding-left: 22px; line-height: 2.1; color: #444; margin-bottom: 10px; }
+
+  /* Steps */
+  .step { display: flex; gap: 14px; align-items: flex-start; margin: 10px 0; }
+  .step-num { background: #1abc9c; color: white; min-width: 28px; height: 28px;
+              border-radius: 50%; display: flex; align-items: center; justify-content: center;
+              font-weight: bold; font-size: 13px; margin-top: 1px; }
+  .step-body { flex: 1; line-height: 1.8; color: #444; }
+
+  /* Callout boxes */
+  .tip  { background: #eaf6fb; border-left: 4px solid #3498db; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .warn { background: #fef9e7; border-left: 4px solid #f39c12; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .good { background: #eafaf1; border-left: 4px solid #2ecc71; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .err  { background: #fdedec; border-left: 4px solid #e74c3c; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+  th { background: #16a085; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 9px 14px; border-bottom: 1px solid #ecf0f1; vertical-align: top; }
+  tr:hover td { background: #f0fdf9; }
+
+  /* Panel cards */
+  .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .panel-card { border: 1px solid #d5f5ee; border-radius: 8px; padding: 14px 16px;
+                background: #f9fffe; }
+  .panel-card h4 { color: #16a085; margin-bottom: 6px; font-size: 14.5px; }
+  .panel-card p  { font-size: 13px; margin: 0; color: #555; line-height: 1.7; }
+
+  /* Concept boxes */
+  .concept { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;
+             padding: 16px 20px; margin: 12px 0; }
+  .concept h4 { color: #2c3e50; margin-bottom: 6px; }
+
+  /* Code */
+  code { background: #ecf0f1; padding: 2px 7px; border-radius: 3px;
+         font-family: Consolas, monospace; font-size: 13px; }
+  .path { background: #2c3e50; color: #1abc9c; padding: 8px 14px; border-radius: 5px;
+          font-family: Consolas, monospace; font-size: 13px; display: inline-block; margin: 6px 0; }
+
+  /* Chapter header */
+  .chapter-banner { background: linear-gradient(90deg, #1abc9c, #16a085);
+                    color: white; padding: 14px 44px; max-width: 900px; margin: 28px auto 0;
+                    border-radius: 10px 10px 0 0; font-size: 13px; letter-spacing: 1px;
+                    text-transform: uppercase; font-weight: bold; }
+  .chapter-banner + .section { margin-top: 0; border-radius: 0 0 10px 10px; }
+
+  .shot { margin: 18px 0; text-align: center; }
+  .shot img { max-width: 100%; height: auto; border: 1px solid #dee2e6; border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .shot figcaption { font-size: 12.5px; color: #777; margin-top: 6px; }
+
+  footer { text-align: center; padding: 36px; color: #aaa; font-size: 12px; }
+
+  @media(max-width:640px) {
+    .section { padding: 24px 20px; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .panel-grid { grid-template-columns: 1fr; }
+  }
+  .for-badge { display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 999px;
+               background: rgba(255,255,255,.25); font-size: 11px; letter-spacing: .3px; text-transform: none; }
+  .guide-filter { max-width: 900px; margin: 18px auto 0; padding: 10px 16px; border-radius: 8px;
+                  background: #e8f8f5; color: #2c3e50; font-size: 13.5px; line-height: 1.6; }
+  .guide-filter a { color: #16a085; font-weight: bold; }
+  .lang-bar { text-align: center; padding: 8px; font-size: 15px; background: #ffffff; }
+  .lang-bar a { color: #16a085; text-decoration: none; }
+
+  .lang-bar { text-align: center; padding: 8px; font-size: 15px; background: #ffffff; }
+  .lang-bar a { color: #16a085; text-decoration: none; }
+  .mt-note { max-width: 960px; margin: 12px auto; }
+  /* :dir() follows the nearest dir=, so a chapter still in English (wrapped in dir="ltr") keeps the English layout */
+  ul:dir(rtl), ol:dir(rtl) { padding-left: 0; padding-right: 22px; }
+  .tip:dir(rtl), .warn:dir(rtl), .good:dir(rtl), .err:dir(rtl) {
+      border-left: none; border-right-width: 4px; border-right-style: solid; }
+  .tip:dir(rtl) { border-right-color: #3498db; }
+  .warn:dir(rtl) { border-right-color: #f39c12; }
+  .good:dir(rtl) { border-right-color: #2ecc71; }
+  .err:dir(rtl) { border-right-color: #e74c3c; }
+  th:dir(rtl) { text-align: right; }
+  .toc-num:dir(rtl) { margin-right: 0; margin-left: 5px; }
+  .for-badge:dir(rtl) { margin-left: 0; margin-right: 10px; }
+  /* an English button name inside Urdu text keeps its own direction */
+  strong:dir(rtl), em:dir(rtl), code:dir(rtl) { unicode-bidi: plaintext; }
+  /* English chapters keep the English font and spacing */
+  [lang="en"] { font-family: Segoe UI, Arial, sans-serif; font-size: 14px; line-height: 1.6; }
+  .mt-note { font-family: 'Segoe UI', 'Noto Naskh Arabic', Tahoma, Arial, sans-serif; line-height: 2; }
+
+  body { font-size: 15px; line-height: 2; }
+  h1, h2, h3 { line-height: 1.7; }
+</style>
+</head>
+<body>
+<!-- lang-bar -->
+<div class="lang-bar">🌐 <a class="lang-link" href="user-guide.html">English</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-hi.html">हिन्दी</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ur.html">اردو</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-bn.html">বাংলা</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-mr.html">मराठी</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-gu.html">ગુજરાતી</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-pa.html">ਪੰਜਾਬੀ</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ta.html">தமிழ்</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-te.html">తెలుగు</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-kn.html">ಕನ್ನಡ</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ne.html">नेपाली</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-si.html">සිංහල</a> &nbsp;·&nbsp; <strong>پښتو</strong> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-dv.html">ދިވެހި</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-dz.html">རྫོང་ཁ</a></div>
+<script>document.querySelectorAll('a.lang-link').forEach(function (a) { a.href += location.search; });</script>
+<!-- /lang-bar -->
+<div class="tip mt-note">🌐 دا لارښود له انګلیسي لارښود څخه ژباړل شوی دی. د تڼیو نومونه په انګلیسي ساتل شوي، لکه څنګه چې په پرده کې ښکاري. که کومه خبره روښانه نه وي، پورته <strong>English</strong> باندې کلیک وکړئ او انګلیسي لارښود وګورئ.</div>
+
+<!-- ═══════════════════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div dir="ltr" style="text-align:left;max-width:900px;margin:-50px auto 30px;"><a href="index.html" style="color:white;opacity:.85;text-decoration:none;font-size:13px;">← Back to accelentapp.com</a></div>
+  <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
+  <h1>Accelent</h1>
+  <div class="sub">بشپړ لارښود — حساب ورکول او د ذخیرې (سټاک) مدیریت</div>
+  <div class="ver">نسخه 2.4.9 &nbsp;·&nbsp; ډیسکټاپ + موبایل &nbsp;·&nbsp; 2026</div>
+  <div class="cover-badges">
+    <span class="badge">🖥️ Windows ډیسکټاپ</span>
+    <span class="badge">📱 Android موبایل</span>
+    <span class="badge">🌐 18 ژبې</span>
+    <span class="badge">📊 د GST لپاره چمتو</span>
+    <span class="badge">☁️ له لرې لاسرسی</span>
+    <span class="badge">🔐 د کارکوونکو اجازې</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ TOC -->
+<div class="section">
+  <h2>لړلیک</h2>
+  <div class="toc-grid">
+    <div>
+      <a href="#ch1"><span class="toc-num">1.</span>Accelent څه دی؟</a><br>
+      <a href="#ch2"><span class="toc-num">2.</span>د نویو کارونکو لپاره د حساب ورکولو بنسټونه</a><br>
+      <a href="#ch3"><span class="toc-num">3.</span>د ډیسکټاپ اپ نصبول</a><br>
+      <a href="#ch4"><span class="toc-num">4.</span>د لومړي ځل لپاره د شرکت جوړول</a><br>
+      <a href="#ch5"><span class="toc-num">5.</span>له بل سافټویر څخه لېږدېدل</a><br>
+      <a href="#ch6"><span class="toc-num">6.</span>ژبه او بڼه</a><br>
+      <a href="#ch7"><span class="toc-num">7.</span>ډشبورډ</a><br>
+      <a href="#ch8"><span class="toc-num">8.</span>د ذخیرې پینل</a><br>
+      <a href="#ch8b"><span class="toc-num">8b.</span>د کمې ذخیرې څارنه</a><br>
+      <a href="#ch8c"><span class="toc-num">8c.</span>تولید</a><br>
+      <a href="#ch9"><span class="toc-num">9.</span>د پلور پینل</a><br>
+      <a href="#ch9b"><span class="toc-num">9b.</span>رستورانت</a><br>
+      <a href="#ch9c"><span class="toc-num">9c.</span>کوټې (هوټل، مېلمستون)</a><br>
+      <a href="#ch9d"><span class="toc-num">9d.</span>شریکان (اجنټان، لارښوونکي، چلوونکي)</a><br>
+      <a href="#ch9e"><span class="toc-num">9e.</span>د کور پاکوالی (هوټل)</a><br>
+    </div>
+    <div>
+      <a href="#ch10"><span class="toc-num">10.</span>د پېرود پینل</a><br>
+      <a href="#ch11"><span class="toc-num">11.</span>لګښتونه او رسیدونه</a><br>
+      <a href="#ch12"><span class="toc-num">12.</span>حسابونه او لېږدونې</a><br>
+      <a href="#ch13"><span class="toc-num">13.</span>راپورونه او د پور موده (Aging)</a><br>
+      <a href="#ch14"><span class="toc-num">14.</span>کارکوونکي او معاشونه</a><br>
+      <a href="#ch15"><span class="toc-num">15.</span>د GST راپورونه او برېښنايي انوایس</a><br>
+      <a href="#ch16"><span class="toc-num">16.</span>تنظیمات او اداره</a><br>
+      <a href="#ch17"><span class="toc-num">17.</span>ستاسو معلومات — ځای، بیک اپ او بېرته راګرځول</a><br>
+      <a href="#ch18"><span class="toc-num">18.</span>نوې نسخې ته لوړول</a><br>
+      <a href="#ch19"><span class="toc-num">19.</span>د موبایل اپ جوړول او کارول</a><br>
+      <a href="#ch19b"><span class="toc-num">19b.</span>💬 د ډیسکټاپ–موبایل پیغامونه</a><br>
+      <a href="#ch20"><span class="toc-num">20.</span>د ستونزو حل</a><br>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 1 -->
+<div class="guide-filter" id="guideFilter">Accelent یوازې هغه پردې ښیي چې ستاسو د کاروبار ډول ته اړه لري (په لومړي پیل کې غوره شوی، یا په <strong>Settings → 🏢 Company</strong> کې). هغه څپرکي چې <em>د رستورانتونو او هوټلونو لپاره</em>، <em>د هوټلونو لپاره</em> یا <em>د دوکانونو، سوداګرو او خدماتو لپاره</em> نښه شوي، یوازې د هغوی لپاره دي؛ نور ټول د ټولو لپاره دي. کله چې له Accelent څخه خلاص شي (F1 یا 📖 User Guide)، دا لارښود یوازې ستاسو د کاروبار څپرکي ښیي.</div>
+<div class="chapter-banner">څپرکی 1 — پېژندنه</div>
+<div class="section" id="ch1">
+  <h2>1. Accelent څه دی؟</h2>
+  <div class="tip">💡 دا لارښود هر وخت د Accelent په ښکته برخه کې د <strong>📖 User Guide</strong> تڼۍ څخه خلاص کړئ، یا <strong>F1</strong> کېکاږئ.</div>
+  <p>Accelent د کوچنیو او منځنیو کاروبارونو — دوکانونو، ویشونکو، عمده پلورونکو او خدماتو وړاندې کوونکو — لپاره جوړ شوی بشپړ د حساب ورکولو او ذخیرې مدیریت سیسټم دی. دا په Windows PC چلېږي او د Android موبایل اپ سره نښلي، نو تاسو کولی شئ خپل کاروبار له هر ځایه وګورئ.</p>
+
+  <div class="panel-grid">
+    <div class="panel-card">
+      <h4>🖥️ د ډیسکټاپ اپ</h4>
+      <p>بشپړ حساب ورکول، بلونه، ذخیره، د GST راپورونه، معاشونه او راپورونه. هر څه ستاسو په Windows PC چلېږي. د ورځني کار لپاره انټرنیټ ته اړتیا نشته.</p>
+    </div>
+    <div class="panel-card">
+      <h4>📱 د موبایل اپ</h4>
+      <p>ژوندی پلور، ذخیره او بیلانسونه په خپل تلیفون کې وګورئ. له لرې انوایسونه او پېرودونه جوړ کړئ. ستاسو د سیمه ییز WiFi له لارې، یا د Tailscale له لارې له هر ځایه ډیسکټاپ سره نښلي.</p>
+    </div>
+    <div class="panel-card">
+      <h4>📊 څه اداره کوي</h4>
+      <p>د پلور انوایسونه · د پېرود بلونه · ذخیره او سټاک · اړخونه (پېرودونکي او عرضه کوونکي) · د بانک او نغدو حسابونه · کارکوونکي او معاشونه · GST او برېښنايي انوایس (هند)، او د پاکستان، سریلانکا او Simple VAT هېوادونو مالیه</p>
+    </div>
+    <div class="panel-card">
+      <h4>🔒 ستاسو معلومات ستاسو دي</h4>
+      <p>ټول معلومات ستاسو په PC کې په یوه ډیټابیس فایل کې ساتل کېږي. هیڅ شی کوم کلاوډ سرور ته نه لېږل کېږي. دا بشپړ ستاسو دی.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 2 -->
+<div class="chapter-banner">څپرکی 2 — د حساب ورکولو بنسټونه</div>
+<div class="section" id="ch2">
+  <h2>2. د نویو کارونکو لپاره د حساب ورکولو بنسټونه</h2>
+  <p>که د حساب ورکولو سافټویر ستاسو لپاره نوی وي، لومړی دا برخه ولولئ. د حساب ورکولو سند ته اړتیا نشته — د یو څو اصلي مفکورو پوهېدل بس دي.</p>
+
+  <div class="concept">
+    <h4>💰 نغدې او بانک</h4>
+    <p>ستاسو د کاروبار پیسې په دوو ځایونو کې دي: <strong>لاس ته نغدې</strong> (ستاسو په دراز کې نوټونه) او <strong>بانکي حساب</strong> (په بانک کې پیسې). Accelent دواړه جلا جلا حسابوي. کله چې نغدې ترلاسه کړئ، د نغدو بیلانس زیاتېږي. کله چې په بانک کې یې جمع کړئ، نغدې کمېږي او بانک زیاتېږي.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧾 انوایس (د پلور بل)</h4>
+    <p>انوایس هغه بل دی چې تاسو یې پېرودونکي ته ورکوئ کله چې له تاسو څخه څه واخلي. پکې توکي، اندازه، بیه او ټولټال وي. په Accelent کې هر انوایس ثبتېږي او په اوتومات ډول د پېرودونکي له حساب سره نښلي.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🛒 د پېرود بل</h4>
+    <p>د پېرود بل هغه بل دی چې کله تاسو سامان اخلئ له عرضه کوونکي څخه راځي. کله چې یې په Accelent کې ثبت کړئ، ستاسو ذخیره په اوتومات ډول زیاتېږي، او هغه عرضه کوونکي ته د ورکړې پیسې هم ثبتېږي.</p>
+  </div>
+
+  <div class="concept">
+    <h4>👥 اړخونه (پېرودونکي او عرضه کوونکي)</h4>
+    <p><strong>اړخ (Party)</strong> هر هغه څوک دی چې تاسو ورسره منظمه راکړه ورکړه کوئ. پېرودونکي تاسو ته پیسې پوروړي دي (ترلاسه کېدونکې — په شین رنګ ښودل کېږي). تاسو عرضه کوونکو ته پیسې پوروړي یاست (ورکول کېدونکې — په سور رنګ ښودل کېږي). Accelent د ټولو راکړو ورکړو څخه د هر اړخ بیلانس په اوتومات ډول حسابوي.</p>
+  </div>
+
+  <div class="concept">
+    <h4>📦 ذخیره / سټاک</h4>
+    <p>ذخیره د هغو توکو لېست دی چې تاسو یې پلورئ. د هر توکي لپاره Accelent <strong>په سټاک کې اندازه</strong>، <strong>د پلور بیه</strong>، <strong>د پېرود بیه</strong> او <strong>د سټاک لږترلږه کچه</strong> (کله چې تاسو ته د بیا امر کولو خبرتیا درکړي) څاري.</p>
+  </div>
+
+  <div class="concept">
+    <h4>⚖️ پرانیستونکي بیلانسونه</h4>
+    <p>کله چې تاسو لومړی ځل Accelent کارول پیلوئ، باید سافټویر ته ووایئ چې تاسو سره دمخه څه شته — څومره نغدې، په هر بانکي حساب کې څومره، هر پېرودونکی تاسو ته څومره پوروړی دی، او تاسو هر عرضه کوونکي ته څومره پوروړي یاست. دې ته <strong>پرانیستونکي بیلانسونه (Opening Balances)</strong> ویل کېږي او د پیل په جوړښت کې یوازې یو ځل داخلېږي.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧮 ډیبټ / کریډټ (په ساده ډول)</h4>
+    <p>په Accelent کې د ډیبټ/کریډټ د ثبتونو اندېښنه مه کوئ — سافټویر یې پخپله اداره کوي. کله چې پلور ثبت کړئ، ستاسو عاید او د پېرودونکي بیلانس ته اضافه کېږي. کله چې پېرود ثبت کړئ، ستاسو سټاک او د عرضه کوونکي بیلانس ته اضافه کېږي. <strong>یوازې هغه څه ثبت کړئ چې پېښ شوي — حساب ورکول Accelent پخپله اداره کوي.</strong></p>
+  </div>
+
+  <div class="concept">
+    <h4>📅 مالي کال</h4>
+    <p>په هند کې مالي کال <strong>له اپرېل 1 څخه د راتلونکي کال تر مارچ 31 پورې</strong> دی. د GST راپورونه، بیلانس شیټ او ګټه او زیان په همدې موده کې حسابېږي. د Accelent د Finalization پینل تاسو سره مرسته کوي چې مالي کال په پاکه توګه وتړئ.</p>
+  </div>
+
+  <div class="tip">💡 <strong>طلايي قاعده:</strong> هر پلور، هر پېرود او هر لګښت په همغه ورځ ثبت کړئ. هر څومره چې منظم یاست، ستاسو راپورونه او بیلانسونه هومره دقیق وي.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 3 -->
+<div class="chapter-banner">څپرکی 3 — نصبول</div>
+<div class="section" id="ch3">
+  <h2>3. د ډیسکټاپ اپ نصبول</h2>
+
+  <h3>تاسو څه ته اړتیا لرئ</h3>
+  <ul>
+    <li>Windows 10 یا Windows 11 (64-bit)</li>
+    <li><strong>RAM:</strong> د بلونو د چټک سکین لپاره 8 GB وړاندیز کېږي. لږترلږه 4 GB — هر څه چلېږي، خو د بل سکین ډېر وخت نیسي.</li>
+    <li>شاوخوا 1 GB خالي ډیسک ځای</li>
+    <li>نصبوونکی: <code>Accelent_Setup_v2.4.9.exe</code>، له <strong>accelentapp.com</strong> څخه ښکته شوی</li>
+  </ul>
+
+  <h3>د نصبوونکي له لارې نصبول (وړاندیز شوی)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">له <strong>accelentapp.com</strong> → Download for Windows څخه <code>Accelent_Setup_v2.4.9.exe</code> ښکته کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">پرې دوه ځله کلیک وکړئ. که Windows SmartScreen خبرداری وښود، <strong>"More info"</strong> او بیا <strong>"Run anyway"</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ګامونه تعقیب کړئ او <strong>Install</strong> کلیک کړئ. نصبوونکی هغه Windows برخې هم پخپله جوړوي چې د بل سکین ورته اړتیا لري.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Accelent له Start مینو یا د ډیسکټاپ له شارټ کټ څخه خلاص کړئ.</div></div>
+
+  <h3>لومړی ننوتل</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د کارونکي نوم <strong>admin</strong> او پټنوم <strong>Admin@1234</strong> سره ننوځئ — لوی A، بیا <code>dmin</code>، د <strong>@</strong> نښه، بیا <code>1234</code>. د ننوتلو پرده دا تر هغه ښیي چې تاسو خپل پټنوم وټاکئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">بیا Accelent تاسو ته وايي چې خپل پټنوم وټاکئ او ستاسو <strong>Recovery Key</strong> ښیي — په خوندي ځای کې یې وساتئ ("ستاسو د حساب Recovery Key" وګورئ).</div></div>
+  <div class="tip">💡 له 5 غلطو پټنومونو وروسته حساب د 15 دقیقو لپاره قلفېږي؛ د ننوتلو پرده وايي چې څو هڅې پاتې دي او کله بیا هڅه کولی شئ. که په دې کمپیوټر کې دمخه Accelent نصب و، ستاسو زوړ پټنوم کار کوي — ایستل هیڅکله ستاسو معلومات نه پاکوي.</div>
+
+  <h3>Windows SmartScreen او ضد ویروس</h3>
+  <p>Accelent لا ډیجیټل لاسلیک نه دی شوی، نو Windows یې خپرونکی نه پېژني. له همدې امله، کله چې تاسو لومړی ځل نصبوونکی یا اپ چلوئ، Windows ښايي <strong>"Windows protected your PC"</strong> وښيي. دا یوازې یو ځل پېښېږي.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Accelent یوازې له <strong>accelentapp.com</strong> څخه ښکته کړئ. له نورو ځایونو فایلونه ښايي اصلي نه وي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">په SmartScreen کې <strong>More info</strong> کلیک کړئ، وګورئ چې د فایل نوم <code>Accelent_Setup_…exe</code> یا <code>Accelent.exe</code> دی، او بیا <strong>Run anyway</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">که ستاسو ضد ویروس Accelent بند یا quarantine کړي، له quarantine څخه یې بېرته راوباسئ او د Accelent فولډر (د نصب شوې نسخې لپاره: <span class="path">C:\Accelent</span>) د ضد ویروس <strong>exclusions / allowed apps</strong> ته اضافه کړئ. ځینې ضد ویروسونه د Python بسته کولو وسیلو په مرسته جوړ شوي نوي پروګرامونه په غلطه نښه کوي؛ دا یو غلط خبرداری دی.</div></div>
+  <div class="tip">💡 Accelent د یو عادي پروګرام فولډر په توګه نصبېږي او پرته له انټرنیټ چلېږي. دا یوازې ستاسو د جواز کتلو لپاره انټرنیټ ته نښلي (او، که تاسو یې فعال کړئ، ستاسو د کوډ شوي بیک اپ کیلي د یوې برخې ساتلو لپاره). ستاسو د کاروبار معلومات هیڅکله ستاسو له PC څخه نه وځي. که خبرداری لا هم تاسو اندېښمن کوي، <strong>support@accelentapp.com</strong> ته ولیکئ.</div>
+
+  <h3>د لېږد وړ Zip (بدیل)</h3>
+  <p>که نه غواړئ نصب یې کړئ، د دې پر ځای <code>Accelent_Desktop_v2.4.9.zip</code> ښکته کړئ او دا ګامونه تعقیب کړئ:</p>
+
+  <h3>د نصبولو ګامونه</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">پر <code>Accelent_Desktop_v2.4.9.zip</code> ښي کلیک → <strong>Extract All</strong>. یو دایمي ځای لکه <code>C:\Accelent</code> یا <code>D:\Accelent</code> وټاکئ. <strong>له zip دننه یې مه چلوئ.</strong></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ایستل شوی <code>Accelent</code> فولډر خلاص کړئ. تاسو به <code>Accelent.exe</code>، <code>setup.bat</code> او څو مرستندویه فولډرونه وګورئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">پر <strong>Accelent.exe</strong> دوه ځله کلیک وکړئ. Windows ښايي د SmartScreen خبرداری وښيي — <strong>"More info"</strong> او بیا <strong>"Run anyway"</strong> کلیک کړئ. دا ځکه پېښېږي چې اپ لا ډیجیټل لاسلیک نه دی شوی.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">اپ خلاصېږي. په لومړي ځل دا ستاسو د ډیټابیس فایل په اوتومات ډول په <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span> کې جوړوي</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">د ورځني اسانه لاسرسي لپاره پر <code>Accelent.exe</code> ښي کلیک → <em>Send to → Desktop (create shortcut)</em>.</div></div>
+
+  <h3>د لومړي ځل فایروال جوړونه (د موبایل اپ لپاره)</h3>
+  <p>که تاسو د موبایل ملګري اپ کاروئ، دا یو ځل وچلوئ:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د <code>Accelent</code> په فولډر کې پر <strong>setup.bat</strong> دوه ځله کلیک وکړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Windows د مدیر اجازه غواړي — <strong>Yes</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">سکریپټ په Windows فایروال کې 8765 پورټ خلاصوي او ستاسو د PC IP پته ښیي. دا IP یادداشت کړئ — ښايي د تلیفون د لاسي نښلولو لپاره ورته اړتیا ولرئ.</div></div>
+
+  <div class="warn">⚠ که setup.bat پرېږدئ، د موبایل اپ نشي کولی له ډیسکټاپ سره ونښلي.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 4 -->
+<div class="chapter-banner">څپرکی 4 — د لومړي ځل لپاره د شرکت جوړول</div>
+<div class="section" id="ch4">
+  <h2>4. د لومړي ځل لپاره د شرکت جوړول</h2>
+  <p>کله چې لومړی ځل Accelent خلاصوئ، د هرې راکړې ورکړې له ثبتولو مخکې 10 دقیقې ونیسئ او د خپل شرکت جزئیات ډک کړئ.</p>
+
+  <h3>له پیل مخکې — خپل هېواد وټاکئ</h3>
+  <p>کله چې Accelent لومړی ځل پیلېږي (سمدستي وروسته له دې چې خپل پټنوم وټاکئ)، ستاسو <strong>هېواد</strong> پوښتي. هېواد ستاسو <strong>د مالیې قواعد</strong> او <strong>پیسې (اسعار)</strong> ټاکي — د هند لپاره GST، د نورو هېوادونو لپاره VAT — نو هر انوایس، راپور او د مالیې اظهارنامه له لومړۍ ورځې سمې کچې کاروي.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د <strong>Welcome — Set Up Your Country</strong> په کړکۍ کې خپل <strong>Country</strong> وټاکئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">که ستاسو د هېواد لپاره اضافي پوښتنه ښکاره شي، ځواب یې ورکړئ (لاندې جدول وګورئ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Language</strong> وګورئ. دا دمخه ستاسو د هېواد اصلي ژبې ته ټاکل شوې (لکه د هند لپاره Hindi) — English یا بلې غوره ژبې ته یې بدله کړئ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">خپل <strong>Business</strong> وټاکئ: <em>Shop, trading, services or manufacturing</em>، <em>Restaurant, café or dhaba</em> (<a href="#ch9b">څپرکی 9b</a> وګورئ) یا <em>Hotel, lodge or guest house</em> (<a href="#ch9c">څپرکی 9c</a> وګورئ). دا ټاکي چې مینو کومې پردې ښیي، او وروسته په <strong>Settings → 🏢 Company</strong> کې بدلېدی شي.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Confirm and Continue</strong> کلیک کړئ.</div></div>
+  <table>
+    <tr><th>هېواد</th><th>مالیه</th><th>اسعار</th><th>اضافي پوښتنه</th></tr>
+    <tr><td>هند</td><td>GST (CGST + SGST / IGST)</td><td>₹ INR</td><td>—</td></tr>
+    <tr><td>پاکستان</td><td>پر توکو فدرالي د پلور مالیه، پر خدماتو ولایتي مالیه</td><td>Rs. PKR</td><td><strong>Province</strong> — ستاسو د کاروبار خپل ولایت (ICT, Punjab, Sindh, KPK, Balochistan, AJ &amp; Kashmir, Gilgit-Baltistan)</td></tr>
+    <tr><td>سریلانکا</td><td>VAT 18%، په اړوندو ځایونو کې SSCL هم</td><td>Rs. LKR</td><td>که پر تاسو تطبیقېږي <strong>Financial Institution</strong> (پر مالي عرضو VAT 20.5%) او/یا <strong>SSCL-liable</strong> (کلنی پلور له LKR 120,000,000 څخه ډېر) نښه کړئ</td></tr>
+    <tr><td>نېپال</td><td>VAT 13%</td><td>Rs. NPR</td><td>—</td></tr>
+    <tr><td>بنګله دېش</td><td>VAT 15%</td><td>৳ BDT</td><td>—</td></tr>
+    <tr><td>بوتان</td><td>د پلور مالیه 7%</td><td>Nu. BTN</td><td>—</td></tr>
+    <tr><td>مالدیو</td><td>GST 8% (د ګرځندوی پلور لپاره 17%، په هر انوایس کې ټاکل کېږي)</td><td>Rf. MVR</td><td>—</td></tr>
+  </table>
+  <div class="err">🚨 <strong>په پاملرنه یې وټاکئ — هېواد وروسته نشي بدلېدی.</strong> هېواد همغه وخت قلفېږي چې تاسو خپل لومړی پلور، پېرود یا د ذخیرې توکی خوندي کړئ: د بدلولو په صورت کې به ستاسو خوندي شوې پیسې په زړو اسعارو او د مالیې قواعدو کې پاتې شي. د بیا ټاکلو یوازینۍ لاره <strong>Settings → App Settings → Reset Database</strong> ده، چې ټول معلومات پاکوي. خو ژبه هر وخت بدلېدی شي (څپرکی 6).</div>
+  <div class="tip">💡 ستاسو هېواد تل د کړکۍ په ښکته کیڼ اړخ کې، د حالت په پټه کې ښکاري — لکه <em>India · GST</em>. که ستاسو هېواد په لېست کې نه وي، له پیل مخکې له ملاتړ سره اړیکه ونیسئ.</div>
+
+  <h3>ګام 1 — د شرکت معلومات ډک کړئ</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings</strong> (په څنګ پټه کې ⚙️) ته لاړ شئ → د <strong>🏢 Company</strong> ټب کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د خپل شرکت نوم، پته، د تلیفون شمېره، برېښنالیک، د GST شمېره (GSTIN) او د PAN شمېره ډک کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د خپل شرکت لوګو پورته کړئ — دا به په ټولو چاپ شویو انوایسونو کې ښکاره شي. همدلته کولی شئ خپل <strong>لاسلیک او د دوکان مهر</strong> هم اضافه کړئ (<em>په WhatsApp کې د بلونو لېږل</em> وګورئ).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Save Company Settings</strong> کلیک کړئ.</div></div>
+
+  <h3>ګام 2 — پرانیستونکي بیلانسونه وټاکئ</h3>
+  <p>پرانیستونکي بیلانسونه سافټویر ته وايي چې په لومړۍ ورځ تاسو سره دمخه څه وو. دا یو ځل داخل کړئ او وروسته یې مه بدلوئ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د <strong>Settings → 📊 Balances</strong> ټب ته لاړ شئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Edit Cash Balance</strong> کلیک کړئ — د خپل پیل په نېټه لاس ته اصلي نغدې داخل کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Edit Bank Balances</strong> کلیک کړئ — د خپل وروستي بانکي صورت حساب څخه د هر بانکي حساب وروستی بیلانس داخل کړئ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Edit Party Balances</strong> کلیک کړئ — داخل کړئ چې د پیل په نېټه هر پېرودونکی تاسو ته څومره پوروړی دی، او تاسو هر عرضه کوونکي ته څومره پوروړي یاست.</div></div>
+
+  <h3>ګام 3 — خپله ذخیره اضافه کړئ</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د <strong>Inventory</strong> پینل ته لاړ شئ → <strong>+ Add Item</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د هر توکي لپاره: نوم، کټګوري، واحد (Pcs/Kg/Box او نور)، د پېرود بیه، د پلور بیه، په سټاک کې اوسنۍ اندازه او د سټاک لږترلږه کچه داخل کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د ټولو توکو لپاره همداسې وکړئ. هر وخت کولی شئ نور توکي اضافه کړئ.</div></div>
+
+  <div class="tip">💡 <strong>لارښوونه:</strong> د چټک پلورل کېدونکو توکو لپاره د سټاک لږترلږه کچه وټاکئ. کله چې سټاک له هغې کچې ښکته شي، Accelent یې 🟡 Low یا 🔴 Out نښه کوي.</div>
+
+  <h3>ګام 4 — ژبه وګورئ</h3>
+  <p>تاسو د هېواد سره یوه ژبه هم ټاکلې. د بدلولو لپاره <strong>Settings → ⚙️ App Settings</strong> → Language ته لاړ شئ. انټرفیس سمدستي بدلېږي — د ټولو 18 ژبو لپاره څپرکی 6 وګورئ.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 5 -->
+<div class="chapter-banner">څپرکی 5 — له بل سافټویر څخه لېږدېدل</div>
+<div class="section" id="ch5">
+  <h2>5. له بل د حساب ورکولو سافټویر څخه لېږدېدل</h2>
+  <p>که تاسو له Tally، Busy، Marg، Vyapar یا کوم بل سافټویر څخه راځئ، دا ګامونه تعقیب کړئ. اصلي خبره: <strong>له زاړه سافټویر څخه یوازې وروستي بیلانسونو ته اړتیا ده — نه هره راکړه ورکړه.</strong></p>
+
+  <div class="warn">⚠ د <strong>لېږد نېټه</strong> وټاکئ — معمولاً د میاشتې وروستۍ ورځ یا ستاسو د مالي کال وروستۍ ورځ. له زاړه سافټویر څخه د هغې نېټې ټول بیلانسونه ولیکئ. بیا له بلې ورځې په Accelent کې له سره پیل وکړئ.</div>
+
+  <h3>له زاړه سافټویر څخه څه راټول کړئ</h3>
+  <table>
+    <tr><th>څه ته اړتیا لرئ</th><th>چېرته یې موندلی شئ</th><th>په Accelent کې څه وکړئ</th></tr>
+    <tr><td>لاس ته نغدې (وروستی بیلانس)</td><td>د نغدو کتاب → وروستی بیلانس</td><td>Settings → Balances → Edit Cash</td></tr>
+    <tr><td>بانکي بیلانسونه (هر حساب)</td><td>بانکي کتاب یا بانکي صورت حساب</td><td>Settings → Balances → Edit Bank</td></tr>
+    <tr><td>له پېرودونکو د ترلاسه کولو پیسې</td><td>د Debtors / Sundry Debtors لېست</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>عرضه کوونکو ته د ورکولو پیسې</td><td>د Creditors / Sundry Creditors لېست</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>د ذخیرې توکي او سټاک</td><td>Stock summary / د توکو لېست</td><td>Inventory → 📥 Import / Export (لاندې "خپله ذخیره Accelent ته راوړل" وګورئ)</td></tr>
+    <tr><td>د کارکوونکو جزئیات</td><td>Employee master / HR برخه</td><td>د Employees پینل → هر کارکوونکی اضافه کړئ</td></tr>
+  </table>
+
+  <h3>د لېږد ګامونه</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>خپله د پرې کولو نېټه وټاکئ.</strong> بېلګه: "زه د 2026 کال د مارچ تر 31 لېږدېږم — زما Accelent د 2026 له اپرېل 1 پیلېږي."</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">له زاړه سافټویر څخه د پرې کولو تر نېټې پورې <strong>بیلانسونه چاپ یا صادر کړئ</strong>: د نغدو بیلانس، بانکي بیلانسونه، له پېرودونکو د ترلاسه کولو پیسې، عرضه کوونکو ته د ورکولو پیسې، او د اندازو سره د سټاک لېست.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Accelent جوړ کړئ</strong> — د شرکت معلومات (څپرکی 4).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>پرانیستونکي بیلانسونه داخل کړئ</strong> — د پرې کولو تر نېټې پورې د زاړه سافټویر نغدې، بانک او د اړخونو بیلانسونه (Settings → Balances).</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">د پرې کولو د نېټې د سټاک د اندازو سره <strong>خپل د ذخیرې توکي وارد کړئ</strong> — لاندې <strong>خپله ذخیره Accelent ته راوړل</strong> وګورئ.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">د پرې کولو له بلې ورځې په Accelent کې <strong>د نویو راکړو ورکړو ثبت پیل کړئ</strong>.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body"><strong>له یوې اونۍ وروسته یې وګورئ:</strong> Accounts ته لاړ شئ او وګورئ چې د نغدو او بانک بیلانسونه له هغه څه سره سمون لري چې تاسو سره په رښتیا دي. که توپیر وي، د ټولو بیلانسونو د تازه کولو لپاره Settings → Recalculate وکاروئ.</div></div>
+
+  <h3>خپله ذخیره Accelent ته راوړل</h3>
+  <p>اړتیا نشته چې توکي یو یو ولیکئ. له زاړه سافټویر څخه د توکو لېست یا د سټاک راپور صادر کړئ (یا خپله Excel پاڼه وکاروئ) او په یو ځل یې وارد کړئ. Accelent د Excel (<code>.xlsx</code>) او CSV فایلونه لولي.</p>
+
+  <h4>د Import / Export تڼۍ</h4>
+  <p>په <strong>Inventory</strong> کې، د <strong>📥 Import / Export</strong> تڼۍ درې انتخابونه خلاصوي، ځکه چې درې بېلابېل کارونه دي:</p>
+  <table>
+    <tr><th>انتخاب</th><th>د څه لپاره دی</th></tr>
+    <tr><td><strong>📥 Import items from Excel or CSV…</strong></td><td>هر هغه څه چې Accelent <strong>ته</strong> راځي — له هر سافټویر یا ستاسو له خپلې پاڼې.</td></tr>
+    <tr><td><strong>📋 Download import template</strong></td><td>د سمو سرلیکونو سره چمتو Excel پاڼه، د هغو لپاره چې لا فایل نه لري.</td></tr>
+    <tr><td><strong>💾 Export inventory to Excel</strong></td><td>ستاسو توکي له Accelent څخه <strong>بهر</strong> وړي — د بیک اپ یا ستاسو د محاسب لپاره.</td></tr>
+  </table>
+
+  <h4>یو وارد کول څنګه د هر سافټویر فایلونه لولي</h4>
+  <p>Tally، Marg، Vyapar، Busy او ورته سافټویرونه ټول خپل راپورونه د یو عادي <strong>Excel یا CSV فایل</strong> په توګه صادروي. توپیر یوازې په جوړښت کې دی — سرلیکونه چېرته دي او هر ستون څه نومېږي. وارد کول دا پخپله اداره کوي:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>سرلیکونه پیدا کوي.</strong> لومړي قطارونه ګوري، د شرکت نوم، د راپور سرلیک یا د نېټې کرښې پرېږدي، او هغه قطار اخلي چې د ستونونو سرلیکونه پکې دي. د Tally دوه قطاره سرلیکونه (<em>Particulars</em> د <em>Quantity / Rate / Value</em> پورته) سره یوځای کېږي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>هر ستون د نوم له مخې پېژني</strong>، په شمول د هغو نومونو چې نور سافټویرونه یې کاروي:</div></div>
+  <table>
+    <tr><th>ستاسو په فایل کې ستون</th><th>د څه په توګه کارول کېږي</th></tr>
+    <tr><td>Particulars (Tally), Product Name, Item, Description</td><td>Item Name</td></tr>
+    <tr><td>Quantity, Qty, Closing Stock, Closing Balance</td><td>Stock</td></tr>
+    <tr><td>Rate, Cost, Purchase Price</td><td>Purchase Rate</td></tr>
+    <tr><td>Sale Price, MRP, Selling Price</td><td>Selling Price</td></tr>
+    <tr><td>HSN, HSN/SAC, GST %, Category, Group, Supplier</td><td>اړوند ساحې</td></tr>
+    <tr><td>S.No, Value, Unit</td><td>پرېښودل کېږي</td></tr>
+  </table>
+  <p>هغه نومونه چې دقیق نه پېژندل کېږي د ورته والي له مخې سمون ورکول کېږي.</p>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>د هر څه له وارد کولو مخکې پایله ښیي.</strong> ستاسو هر ستون د دې سره لېست کېږي چې د څه لپاره به کارول کېږي: <strong>شین</strong> = پېژندل شوی، <strong>ژېړ</strong> = اټکل چې باید وکتل شي، <strong>خړ</strong> = پرېښودل شوی. که یو غلط وي، هغه ډراپ ډاون بدل کړئ، بیا <strong>Import Now</strong> کلیک کړئ.</div></div>
+  <div class="tip">💡 نو د TallyPrime Stock Summary، د Vyapar د توکو صادرات، د Marg د سټاک راپور او ستاسو خپله پاڼه ټول د همغه <strong>Import items from Excel or CSV…</strong> له لارې ځي. په زاړه سافټویر کې یوازینی کار <strong>Excel ته صادرول</strong> دي — لاندې ګام 1 یې ښیي.</div>
+
+  <h4>ګام 1 — له زاړه سافټویر څخه فایل ترلاسه کړئ</h4>
+  <p><strong>له TallyPrime څخه:</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Gateway of Tally → Stock Summary</strong> خلاص کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Alt+F2</strong> کېکاږئ او موده داسې وټاکئ چې د پرې کولو په نېټه پای ته ورسېږي، ترڅو وروستۍ اندازې د هماغې ورځې وي.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Alt+F5</strong> (Detailed) کېکاږئ ترڅو هر توکی لېست شي، نه یوازې د سټاک ډلې.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Alt+E</strong> (Export) کېکاږئ، <strong>Excel (Spreadsheet)</strong> بڼه وټاکئ او صادر یې کړئ. یادداشت کړئ چې فایل چېرته خوندي شو.</div></div>
+  <p><strong>له Marg، Vyapar، Busy یا هر بل سافټویر څخه:</strong> د توکو لېست یا د سټاک راپور خلاص کړئ او د هغه <strong>Export to Excel</strong> انتخاب وکاروئ. هغه راپور چې د توکي نوم، اندازه او نرخ ښیي بس دی.</p>
+  <p><strong>له خپلې Excel پاڼې:</strong> تاسو یوازې د توکو د نومونو یو ستون ته اړتیا لرئ. که ولرئ، Accelent دا ستونونه هم کاروي: د توکي کوډ، کټګوري، اندازه (سټاک)، د پېرود نرخ، د پلور بیه یا MRP، GST %، د HSN کوډ او عرضه کوونکی. له یوې پاکې پاڼې د پیل لپاره، <strong>Inventory → 📥 Import / Export → 📋 Download import template</strong> وکاروئ.</p>
+  <div class="tip">💡 د زړې بڼې Excel فایلونه (<code>.xls</code>) نشي لوستل کېدی: فایل په Excel کې خلاص کړئ او <strong>File → Save As → Excel Workbook (*.xlsx)</strong> وکاروئ. له وارد کولو مخکې فایل په Excel کې وتړئ.</div>
+
+  <h4>ګام 2 — یې وارد کړئ</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Inventory → 📥 Import / Export → 📥 Import items from Excel or CSV…</strong> ته لاړ شئ او خپل فایل وټاکئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent د ستونونو سرلیکونه پخپله پیدا کوي — حتی د شرکت د نوم یا د راپور د سرلیک لاندې — او ښیي چې ستاسو هر ستون به څنګه وکارول شي. شین قطارونه پېژندل شوي؛ ژېړ قطارونه اټکل دي، نو ویې ګورئ؛ خړ قطارونه پرېښودل کېږي (لکه سریال شمېرې یا د Tally <em>Value</em> ستون). هر غلط ډراپ ډاون بدل کړئ. د څو پاڼو لرونکي فایل لپاره، په سر کې سمه پاڼه وټاکئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Import Now</strong> کلیک کړئ. Accelent ښیي چې څو توکي به اضافه شي او څو دمخه شته او تازه به شي؛ تایید یې کړئ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">لنډیز ولولئ. هر هغه قطار چې وارد نه شو او ولې، پکې لېست شوی — لکه د <em>Total</em> کرښه یا د سټاک د ډلې سرلیک. د دې لېست ساتلو لپاره <strong>Save Skipped Rows…</strong> کلیک کړئ.</div></div>
+
+  <h4>د وارد کولو پر مهال څه پېښېږي</h4>
+  <ul>
+    <li><strong>د توکو کوډونه:</strong> هغه توکي چې کوډ نه لري په اوتومات ډول یو کوډ ترلاسه کوي، لکه څنګه چې تاسو توکی په لاس اضافه کوئ. که ستاسو فایل کوډونه ولري، ساتل کېږي.</li>
+    <li><strong>موجود توکي</strong> (ورته کوډ، یا که فایل کوډ ونه لري ورته نوم) تازه کېږي، نه تکرارېږي — نو تاسو کولی شئ فایل سم او بیا یې وارد کړئ.</li>
+    <li>د <code>1,250.00</code>، <code>₹450</code> یا <code>10 Nos</code> په څېر <strong>شمېرې</strong> سمې لوستل کېږي.</li>
+    <li><strong>پرانیستونکی سټاک:</strong> اندازې د پېرود په نرخ د یو <em>Opening Stock</em> ثبت په توګه ثبتېږي، نو راپورونه او ګټه له سم لګښت څخه پیلېږي.</li>
+    <li><strong>کټګورۍ:</strong> هغه توکي چې کټګوري نه لري د <em>Uncategorized</em> لاندې ساتل کېږي. له پیل څخه د توکو د ډلبندۍ لپاره خپل فایل ته Category ستون اضافه کړئ؛ تاسو کولی شئ کټګورۍ وروسته په Inventory کې هم بدلې کړئ.</li>
+  </ul>
+
+  <h4>ګام 3 — پایله وګورئ</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د Inventory لېست وګورئ: نومونه، اندازې او نرخونه.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">په <strong>Inventory Reports</strong> کې د سټاک ټول ارزښت د ورته نېټې لپاره ستاسو د زاړه سافټویر په راپور کې د وروستي سټاک ارزښت سره پرتله کړئ.</div></div>
+
+  <table>
+    <tr><th>که دا پېښ شي</th><th>دا وکړئ</th></tr>
+    <tr><td>"Can't read this file"</td><td>د <code>.xlsx</code> په توګه یې خوندي کړئ، په Excel کې یې وتړئ، که پټنوم لري لرې یې کړئ، بیا یې وارد کړئ.</td></tr>
+    <tr><td>یو ستون د غلط شي لپاره وکارول شو</td><td>د Import Now له کلیک کولو مخکې د وارد کولو په کړکۍ کې د هغه ستون ډراپ ډاون بدل کړئ.</td></tr>
+    <tr><td>اندازې یا نرخونه د 0 په توګه راغلل</td><td>وګورئ چې د اندازې ستون <em>Stock</em> او د نرخ ستون <em>Purchase Rate</em> ته ټاکل شوی، بیا یې وارد کړئ — موجود توکي تازه کېږي.</td></tr>
+    <tr><td>یو توکی غلط راغی</td><td><strong>Inventory</strong> → توکی وټاکئ → <strong>🗑️ Delete Selected</strong>. هغه توکی چې یوازې د وارد کولو له لارې راغلی (له هغه وروسته نه اخیستل شوی، نه پلورل شوی او نه بېرته شوی) پاکېدی شي؛ د وارد کولو له پرانیستونکي سټاک څخه هم لرې کېږي.</td></tr>
+    <tr><td>ټول وارد کول غلط وو</td><td>هر وارد کول د <strong>OPST-…</strong> په نوم د یو پرانیستونکي سټاک ثبت په توګه ثبتېږي (د وارد کولو لنډیز یې نوم ښیي). <strong>Purchases</strong> ته لاړ شئ، هغه OPST ثبت وټاکئ، <strong>❌ Delete Bill</strong> کلیک کړئ، بیا د هغه د توکو د پاکولو لپاره <strong>Yes</strong> ځواب ورکړئ. فایل سم کړئ او بیا یې وارد کړئ.</td></tr>
+    <tr><td>ډېر قطارونه پرېښودل شول</td><td>په لنډیز کې دلیلونه ولولئ (Save Skipped Rows…). د ډلو سرلیکونه او د ټولټال کرښې په قصدي ډول پرېښودل کېږي.</td></tr>
+  </table>
+
+  <h3>له Tally څخه بیلانسونه</h3>
+  <p>د هر اړخ لپاره: <strong>Gateway of Tally → Display More Reports → Account Books → Ledger</strong> ته لاړ شئ او وروستی بیلانس یادداشت کړئ. د نغدو او بانک لپاره: <strong>Display More Reports → Account Books → Cash/Bank Book(s)</strong>. د پرانیستونکو بیلانسونو په توګه یې داخل کړئ (څپرکی 4، ګامونه 2 او 3).</p>
+
+  <div class="tip">💡 له لېږد وروسته لږترلږه 2–3 میاشتې <strong>خپل زوړ سافټویر د لاسرسي وړ وساتئ</strong>. ښايي تاسو زړو راکړو ورکړو ته د حوالې لپاره اړتیا ولرئ. تاسو اړتیا نه لرئ چې هغه زړې راکړې ورکړې Accelent ته داخل کړئ.</div>
+
+  <div class="good">✅ <strong>ستاسو زاړه معلومات په زاړه سافټویر کې خوندي دي.</strong> Accelent یوازې بیلانسونو ته اړتیا لري — د پیل ټکی. ټولې راتلونکې راکړې ورکړې په Accelent کې کېږي.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 6 -->
+<div class="chapter-banner">څپرکی 6 — ژبه او بڼه</div>
+<div class="section" id="ch6">
+  <h2>6. ژبه او بڼه</h2>
+
+  <h3>د ژبې بدلول</h3>
+  <p>Accelent <strong>18 ژبې</strong> ملاتړ کوي: English، Hindi (हिंदी)، Urdu (اردو)، Spanish، French، German، Bengali (বাংলা)، Tamil (தமிழ்)، Telugu (తెలుగు)، Kannada (ಕನ್ನಡ)، Gujarati (ગુજરાતી)، Marathi (मराठी)، Punjabi (ਪੰਜਾਬੀ)، Nepali (नेपाली)، Sinhala (සිංහල)، Pashto (پښتو)، Dhivehi (ދިވެހި) او Dzongkha (རྫོང་ཁ).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings</strong> ته لاړ شئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د <strong>Language</strong> ډراپ ډاون ومومئ او خپله ژبه وټاکئ — هره ژبه په خپل لیک کې ښودل کېږي (لکه "پښتو"، "தமிழ்")، نو د خپلې ژبې د موندلو لپاره انګلیسي یا کوم کوډ پېژندلو ته اړتیا نشته.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">انټرفیس — ټولې لارښوونې، د ټبونو نومونه او د حرکت اشارې — سمدستي بدلېږي. بیا پیلولو ته اړتیا نشته.</div></div>
+  <div class="tip">💡 له English/Hindi/Urdu/Spanish/French/German وروسته اضافه شویو ژبو ژباړې د ماشین په مرسته شوې دي. که ستاسو په ژبه کې کومه لارښوونه عجیبه ولوستل شي، د Settings → Support له لارې موږ ته خبر راکړئ ترڅو یې سمه کړو.</div>
+
+  <h3>د بڼې بدلول</h3>
+  <p><strong>Settings → ⚙️ App Settings</strong> ته لاړ شئ → یوه رنګه بڼه وټاکئ (Light، Dark یا نور). بڼه په ټولو پینلونو کې سمدستي بدلېږي.</p>
+
+  <div class="tip">💡 ټاکل شوې ژبه او بڼه په اوتومات ډول خوندي کېږي. بل ځل چې اپ خلاصوئ، همداسې پاتې کېږي.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 7 -->
+<div class="chapter-banner">څپرکی 7 — ډشبورډ</div>
+<div class="section" id="ch7">
+  <h2>7. ډشبورډ</h2>
+  <p>ډشبورډ ستاسو کاروبار په یوه نظر ښیي. هر ځل چې ورته لاړ شئ، تازه کېږي.</p>
+
+  <figure class="shot"><a href="manual_images/dashboard.png" target="_blank"><img src="manual_images/dashboard.png" alt="Dashboard" loading="lazy"></a><figcaption>ډشبورډ — د چټکو کارونو تڼۍ، د دې میاشتې شمېرې، چارټونه، د سټاک خبرتیاوې او وروستي د پېرود امرونه.</figcaption></figure>
+
+  <table>
+    <tr><th>برخه</th><th>څه ښیي</th></tr>
+    <tr><td>چټکې تڼۍ</td><td>New Sale، New Purchase، Quick Order، Record Payment او Reports — تر ټولو عامو کارونو ته یو کلیک</td></tr>
+    <tr><td>Total Balance</td><td>ستاسو ټولې نغدې او د بانک پیسې یوځای</td></tr>
+    <tr><td>Income / Expenses (Month)</td><td>په دې میاشت کې تر اوسه ګټل شوې او لګول شوې پیسې</td></tr>
+    <tr><td>Overdue Payments · Pending Invoices</td><td>هغه پېرودونکي چې لا هم تاسو ته پوروړي دي</td></tr>
+    <tr><td>Monthly Purchases</td><td>هغه څه چې تاسو په دې میاشت کې اخیستي</td></tr>
+    <tr><td>Income vs Expenses · Account Distribution</td><td>وروستۍ 6 میاشتې د چارټ په توګه، او ستاسو پیسې چېرته دي (نغدې او هر بانک)</td></tr>
+    <tr><td>Stock Alerts</td><td>هغه توکي چې کم یا ختم دي، د Low Stock / Out of Stock / Suggested Orders د شمېر سره</td></tr>
+    <tr><td>Recent Purchase Orders</td><td>ستاسو وروستي امرونه او ایا ترلاسه او ورکړل شوي — <strong>View All Orders</strong> بشپړ لېست خلاصوي</td></tr>
+    <tr><td>Top Items by Inventory Value</td><td>هغه توکي چې ستاسو د سټاک ډېرې پیسې پکې دي</td></tr>
+  </table>
+
+  <div class="tip">💡 ډشبورډ په ژوندي ډول پخپله نه تازه کېږي — د تازه شمېرو لیدلو لپاره بل پینل کلیک کړئ او بېرته راشئ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8 -->
+<div class="chapter-banner">څپرکی 8 — ذخیره</div>
+<div class="section" id="ch8">
+  <h2>8. د ذخیرې پینل</h2>
+  <p>ذخیره هر هغه محصول څاري چې تاسو یې پلورئ — د سټاک کچې، بیې، کټګورۍ او د پای نېټې.</p>
+
+  <h3>نوی توکی اضافه کول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د توکو د لېست پورته <strong>➕ Add New Item</strong> کلیک کړئ، او په کیڼ اړخ کې د <strong>Add / Edit Item</strong> فورمه ډکه کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ډک کړئ: Item Name، Category، Vendor، Buy Rate (چې تاسو ورکړې)، Sell Price (چې تاسو یې اخلئ — Margin یې لاندې ښودل کېږي)، GST %، <strong>Unit</strong> (pcs، kg، litre، metre… — kg، litre او نور اندازه کېدونکي واحدونه د 0.25 په څېر برخې اندازې اجازه ورکوي)، Stock (اوس تاسو سره څومره دي) او د سټاک لږترلږه کچه (د خبرتیا حد). د توکي کوډ لپاره <strong>🔍 Generate Smart Code</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">که وغواړئ اضافه کړئ: Sub Category، Barcode، MRP (د بیې د حسابولو لپاره <strong>Calculate from MRP + Discount %</strong> وکاروئ)، HSN Code (د GST لپاره)، Expiry Date (د ژر خرابېدونکو توکو لپاره). په هند کې، د 4 یا ډېرو عددونو HSN کوډ داخلول د هغه کوډ GST % په اوتومات ډول ټاکي.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Save</strong> کلیک کړئ.</div></div>
+  <div class="tip">💡 <strong>د ګټې چټک بدلون:</strong> د Sell Price لاندې پر <strong>Margin: x%</strong> موږک کېږدئ او څرخ وګرځوئ — هر ګام ګټه 1% لوړوي یا ټیټوي (د 0.1% لپاره <strong>Ctrl</strong> ونیسئ) او Sell Price له Buy Rate څخه بیا حسابېږي. وارد شوي توکي له 20% څخه پیلېږي، نو د غوښتل شوې ګټې د ټاکلو دا تر ټولو چټکه لاره ده.</div>
+
+  <h3>د توکو پاکول</h3>
+  <p>یو توکی یوازې هغه وخت پاکېدی شي چې هیڅکله نه وي اخیستل شوی، پلورل شوی، بېرته شوی یا لېږدول شوی. هغه توکي چې تاریخچه لري په ذخیره کې پاتې کېږي ترڅو ستاسو بلونه، راپورونه او د سټاک ثبتونه بشپړ پاتې شي. هر پاک شوی توکی په <strong>Deletion Watcher</strong> کې ساتل کېږي او له هغه ځایه د خپل سټاک سره بېرته راګرځېدی شي.</p>
+  <p><strong>هغه توکی چې د ذخیرې د وارد کولو له لارې راغلی</strong> او په غلطۍ وارد شوی، مدیر یې پاکولی شي (یې وټاکئ → <strong>Delete Selected</strong> → د مدیر پټنوم). دا یې پرانیستونکی سټاک هم لرې کوي؛ تایید یې اندازه او ارزښت ښیي. دا یوازې هغه وخت اجازه لري چې د دې توکي لپاره هیڅ نه وي اخیستل شوي، پلورل شوي یا بېرته شوي، سټاک یې دقیقاً هغومره وي چې وارد کول راوړي، او د وارد کولو مالي کال نه وي تړل شوی.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د څو نه کارول شویو توکو د یوځای لرې کولو لپاره، <strong>🧹 Clean Up Unused Items</strong> کلیک کړئ (یوازې مدیر ته ښکاري). دا هر هغه توکی لېست کوي چې هیڅکله نه دی اخیستل شوی یا پلورل شوی.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د لرې کولو توکي نښه کړئ (د لټون بکس یا <strong>Select All shown</strong> وکاروئ)، <strong>🗑️ Delete Selected Items</strong> کلیک کړئ او د مدیر پټنوم سره یې تایید کړئ. لومړی ستاسو د معلوماتو بیک اپ خوندي کېږي.</div></div>
+
+  <h3>د سټاک رنګه نښې</h3>
+  <table>
+    <tr><th>رنګ</th><th>معنا</th></tr>
+    <tr><td>🟢 OK</td><td>سټاک ښه دی</td></tr>
+    <tr><td>🟡 Low</td><td>سټاک له لږترلږه کچې ښکته دی — د بیا امر کولو په اړه فکر وکړئ</td></tr>
+    <tr><td>🔴 Out</td><td>سټاک ختم دی — 0 اندازه پاتې ده</td></tr>
+  </table>
+  <figure class="shot"><a href="manual_images/inventory.png" target="_blank"><img src="manual_images/inventory.png" alt="Inventory Management" loading="lazy"></a><figcaption>Inventory Management — په کیڼ اړخ د Add / Edit Item فورمه، په ښي اړخ هر توکی د خپل Status سره.</figcaption></figure>
+
+  <h3>د ذخیرې راپورونه</h3>
+  <p>د <strong>Inventory Reports</strong> پینل (له اصلي Inventory څخه جلا) تاسو ته د سټاک د ارزونې راپورونه، د حرکت تاریخچه او د کټګورۍ له مخې لنډیزونه درکوي. د میاشتني سټاک پلټنې لپاره یې وکاروئ.</p>
+
+  <h3>Audit Trail</h3>
+  <p>د <strong>Audit Trail</strong> ټب (د Inventory Management دننه) د سټاک هر بدلون — پلور، پېرود، سمونونه، بېرته ورکړې او وارد کول — د <strong>Value</strong> ستون او د هغه څه چې تاسو فلټر کړي د روان <strong>Total value</strong> سره لېست کوي. د دې لپاره چې دقیقاً وګورئ یو لوی وارد کول کاروبار ته د څومره سټاک ارزښت راوړی، Reason = "import" فلټر کړئ. د اوسني فلټر شوي لېست د چاپ لپاره <strong>🖨️ Print Report</strong> وکاروئ. دا ټب یوازې د لوستلو لپاره دی — د یو توکي د سټاک سمولو یا پاکولو لپاره، د Inventory Management ټب ته لاړ شئ.</p>
+
+  <h3>د پای نېټې خبرتیاوې</h3>
+  <p>د <strong>Expiry Alerts</strong> پینل هغه توکي لېست کوي چې د پای نېټې ته نږدې کېږي. توکي په نارنجي (ژر پای ته رسېدونکي) یا سور (پای ته رسېدلي) کې روښانه کېږي. د <strong>Set Expiry</strong> یا <strong>Print Report</strong> لپاره پر هر قطار ښي کلیک وکړئ. د پلورلو مخکې د پای ته رسېدلي سټاک د لرې کولو لپاره یې وکاروئ.</p>
+
+  <div class="warn">⚠ کله چې پلور (سټاک کمېږي) یا پېرود (سټاک زیاتېږي) ثبت کړئ، د سټاک کچې په اوتومات ډول تازه کېږي. پرته له فزیکي سټاک پلټنې هیڅکله په لاس سټاک مه زیاتوئ یا مه کموئ.</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 8b -->
+<div class="chapter-banner">څپرکی 8b — د کمې ذخیرې څارنه</div>
+<div class="section" id="ch8b">
+  <h2>8b. د کمې ذخیرې څارنه</h2>
+  <p>Low Stock Monitor هر هغه توکی لېست کوي چې په خپله لږترلږه کچه یا له هغې ښکته وي او د بیا امر کولو دوه لارې درکوي: د یو بالکل نوي توکي او عرضه کوونکي د یوځای ثبتولو لپاره یو چټک لارښود، او د یو سم د پېرود امر جوړولو لپاره د "Order from Vendor" بشپړه پرده. د Purchase Panel د New Purchase برعکس، دلته جوړ شوي امرونه <strong>مسودې</strong> دي — تر هغه چې تاسو یې ونه لېږئ او د سامان رسېدل ثبت نه کړئ، نه سټاک ته لاس وروړي او نه د عرضه کوونکي بیلانس ته.</p>
+
+  <h3>📋 Show Low Stock Suggestions</h3>
+  <p>د هر هغه څه د یوځای بیا امر کولو تر ټولو چټکه لاره چې کمېږي.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Show Low Stock Suggestions</strong> کلیک کړئ. لېست هر هغه توکی ښیي چې له لږترلږه سټاک ښکته دی، د وړاندیز شوي Order Qty، Rate، GST % او Vendor سره.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د امر کولو توکي نښه کړئ (یا <strong>Select All</strong> / <strong>Invert</strong> وکاروئ) او هر Order Qty برابر کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د هر عرضه کوونکي لپاره د یو امر ترلاسه کولو لپاره <strong>Group by vendor and create separate orders</strong> نښه شوی پرېږدئ، بیا <strong>Create Orders for Ticked Items</strong> کلیک کړئ. نوي امرونه په شا لېست کې د مسودو په توګه ښکاري.</div></div>
+  <figure class="shot"><a href="manual_images/low-stock-suggestions.png" target="_blank"><img src="manual_images/low-stock-suggestions.png" alt="Low Stock Purchase Suggestions" loading="lazy"></a><figcaption>Low Stock Purchase Suggestions — توکي نښه کړئ، بیا د هر عرضه کوونکي لپاره یو امر جوړ کړئ.</figcaption></figure>
+
+  <h3>⚡ Quick New Order</h3>
+  <p>دا هغه وخت وکاروئ کله چې له یو رښتیني نوي عرضه کوونکي څخه یو رښتینی نوی محصول په یو ځل ثبتوئ — د توکي جزئیات او د عرضه کوونکي جزئیات څنګ په څنګ، چې د پېرود په یوه مسوده امر پای ته رسېږي.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚡ Quick New Order</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>1️⃣ Add / Edit Item</strong> — Vendor (د نوي عرضه کوونکي نوم ولیکئ)، Item Name، Category، بیا د Code لپاره <strong>🔍 Generate</strong> کلیک کړئ. Buy Rate، Sell Price، GST%، HSN، Stock، Min Stock ډک کړئ. د محصول بارکوډ د <strong>📱 Scan with Phone</strong> سره سکین کړئ، یا یې خالي پرېږدئ او وروسته یې اضافه کړئ. <strong>💾 Save Item to Inventory</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>2️⃣ Vendor Details & Link</strong> — د عرضه کوونکي تلیفون، پته، TIN/GSTIN او برېښنالیک ډک کړئ، بیا یې خوندي کړئ ترڅو ونښلي او د مسودې PO قطار جوړ شي.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">که اړتیا وي په مخکتنه قطار کې Order Qty برابر کړئ — ټولټال د GST سره بیا حسابېږي.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>📤 Send Purchase Order</strong> کلیک کړئ. PO د SENT نښه ترلاسه کوي او لاندې په <strong>Existing Purchase Orders</strong> کې ښکاري.</div></div>
+
+  <h3>Order from Vendor</h3>
+  <p>دا د هغه عرضه کوونکي څخه د عادي بیا امر لپاره وکاروئ چې تاسو دمخه ترې اخلئ — دا تقریباً د Purchase Panel د New Purchase پردې په څېر کار کوي (همغه لومړی-عرضه کوونکی اوتومات ډکول، سکین کړئ-اضافه کړئ، او د هر قطار د بارکوډ ✓/+📷/🗑 نښې — د بارکوډ د بشپړ لارښود لپاره څپرکی 10 وګورئ)، د یو اصلي توپیر سره: دلته خوندي کول یو <strong>د پېرود مسوده امر</strong> جوړوي، نه سمدستي پېرود. سټاک یا د عرضه کوونکي بیلانس ته هیڅ نه اضافه کېږي تر هغه چې امر ونه لېږل شي او وروسته ترلاسه نه شي.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">عرضه کوونکی وټاکئ — د هغوی معمول توکي د Order Items جدول ته په اوتومات ډول ډکېږي، چک باکس په ډیفالټ نښه شوی.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">هر هغه څه چې دا ځل یې نه غواړئ نښه یې لرې کړئ، اندازې برابرې کړئ، یا نوي توکي سکین/اضافه کړئ لکه څنګه چې په Purchase Panel کې.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د مسودې د خوندي کولو لپاره OK کلیک کړئ، بیا کله چې چمتو وئ له <strong>Existing Purchase Orders</strong> څخه یې ولېږئ.</div></div>
+
+  <h3>Existing Purchase Orders</h3>
+  <p>د هر هغه د پېرود امر لېست خلاصوي چې تاسو جوړ کړی (له پورته دواړو لارو)، د رنګه حالت نقطې سره: <strong>خړ</strong> = مسوده، <strong>نارنجي</strong> = لېږل شوی، <strong>شین آبي</strong> = ترلاسه شوی، <strong>شین</strong> = بشپړ (ترلاسه او بشپړ ورکړل شوی). له دې ځایه کولی شئ د مسودې امر ولېږئ، د لېږل شوي/ترلاسه شوي امر په وړاندې ورکړه ثبت کړئ، او سامان ترلاسه شوی نښه کړئ. د مسودې/لغوه شوي/بشپړ امر د <strong>🗑️ Delete</strong> کولو یا د دمخه لېږل شوي امر د <strong>❌ Cancel</strong> کولو لپاره پر قطار ښي کلیک وکړئ.</p>
+
+  <div class="good">✅ کله چې د سامان د ثبتولو لپاره چمتو یاست، Purchase Panel → <strong>📋 Load from PO</strong> ته لاړ شئ او امر وټاکئ — دا عرضه کوونکی او توکي یوې عادي New Purchase فورمې ته راوړي ترڅو د خوندي کولو مخکې یې وګورئ. همدا خوندي کول هغه ګام دی چې په پای کې سټاک او د عرضه کوونکي د ورکړې بیلانس تازه کوي، نو یو PO پخپله هیڅکله پرې اغېز نه کوي.</div>
+
+  <div class="tip">💡 Quick New Order یوازې د یو بالکل نوي توکي + بالکل نوي عرضه کوونکي لپاره یوځای وټاکئ. د هر بل څه لپاره — له موجود عرضه کوونکي څخه نوی توکی، له نوي عرضه کوونکي څخه موجود توکی، یا عادي بیا امر — د دې پر ځای Order from Vendor وکاروئ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8c -->
+<div class="chapter-banner" data-for="production">څپرکی 8c — تولید <span class="for-badge">د تولیدوونکو، رستورانتونو او هوټلونو لپاره</span></div>
+<div class="section" id="ch8c" data-for="production">
+  <h2>8c. تولید (خپل محصولات جوړول)</h2>
+  <div class="tip">💡 رستورانت یا هوټل تل <strong>🏭 Production</strong> لري (د هغوی ترکیبونه هلته وي). دوکان یا سوداګریز کاروبار یې هغه وخت ویني چې په <strong>Settings → 🏢 Company</strong> کې <strong>We make our own products</strong> نښه کړي، بیا Accelent وتړي او بیا یې خلاص کړي (چېرې چې ترکیبونه دمخه شته، پخپله ښکاري).</div>
+  <p>که تاسو هغه څه جوړوئ چې پلورئ یې — کېک، فرنیچر، جامې، مسالې، جوړ شوي توکي — Accelent کولی شي ستاسو لپاره سټاک او لګښت سم وساتي. تاسو یو ځل یو <strong>ترکیب</strong> لیکئ (یوه دسته څه کاروي)؛ هر ځل چې څه جوړوئ، Accelent اومه توکي له سټاک څخه باسي، جوړ شوي توکي اضافه کوي، او حسابوي چې هر یو څومره لګښت درلود. دا له <strong>Inventory → 🏭 Production</strong> څخه خلاص کړئ.</p>
+
+  <h3>له پیل مخکې: توکي او واحدونه</h3>
+  <p>هر څه د ذخیرې توکی دی: <strong>اومه توکي</strong> (د چاکلېټ کېک لپاره: بېسن، چاکلېټ، بوره، غوړي) او <strong>جوړ شوی محصول</strong> (کېک).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د Inventory په فورمه کې هر توکي ته خپل <strong>Unit</strong> ورکړئ: <em>pcs</em>، <em>box</em> او نور شمېرل کېدونکي واحدونه بشپړې شمېرې دي؛ <em>kg</em>، <em>g</em>، <em>litre</em>، <em>ml</em>، <em>metre</em> او نور اندازه کېدونکي واحدونه د 0.25 kg په څېر برخې اندازې اجازه ورکوي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اومه توکي د <strong>Purchases</strong> له لارې راوړئ، لکه څنګه چې یې معمولاً اخلئ. دا یې سټاک ته اچوي <em>او</em> Accelent ته وايي چې څومره لګښت یې درلود — ستاسو د محصول لګښت له همدې څخه حسابېږي.</div></div>
+
+  <h3>ترکیب لیکل</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Production → 🧾 Recipes</strong>، بیا په پورته ښي اړخ کې <strong>➕ New Recipe</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Finished item:</strong> محصول وټاکئ، یا یې نوم ولیکئ. که لا په Inventory کې نه وي، Accelent وړاندیز کوي چې د خوندي کولو پر مهال یې اضافه کړي (نوم، واحد، د پلور بیه او GST).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>One batch makes:</strong> یوه دسته څومره ورکوي، لکه 10 کېکونه.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Materials for one batch:</strong> د هر اومه توکي لپاره <strong>➕ Add Material</strong> کلیک کړئ، د هغې اندازې سره چې یوه دسته یې کاروي (لکه بېسن 1 kg، چاکلېټ 0.5 kg، بوره 0.8 kg، غوړي 1 litre) او، که څه ضایع کېږي، <strong>Wastage %</strong>. د لېست لاندې، Accelent د نن ورځې په اوسط لګښت د یوې دستې د اومه توکو لګښت او د هر توکي لګښت ښیي. د <strong>In stock</strong> ستون ښیي چې په ګودام کې د هر اومه توکي څومره شته، او کله چې یوه دسته له هغه ډېر ته اړتیا ولري 🔴 ښیي.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>💾 Save Recipe</strong> کلیک کړئ. تاسو یو ترکیب یو ځل لیکئ او هر ځل چې هغه محصول جوړوئ کاروئ یې.</div></div>
+
+  <p>ستاسو ترکیبونه په کیڼ اړخ کې د کارتونو په توګه لېست شوي. هر کارت ښیي چې یوه دسته څومره جوړوي، څو اومه توکي کاروي، او ایا <strong>🍳 Made to order</strong> دی یا <strong>🏭 Made in batches</strong>. د ترکیب د خلاصولو او بدلولو لپاره پر کارت کلیک وکړئ؛ خلاص شوی یې پنډه څنډه لري. د ترکیب د چټک موندلو لپاره، په <strong>Search recipes</strong> کې ولیکئ.</p>
+
+  <h3>جوړول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د <strong>🏭 Make</strong> ټب: توکی او د جوړولو <strong>اندازه</strong> وټاکئ. جدول هر اړین اومه توکی، په سټاک کې څه شته، او هر کموالی ښیي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">که وغواړئ د دې ځل لپاره <strong>Labour / other costs</strong> داخل کړئ (مزدوري، ګاز، برېښنا) — دا ستاسو د جوړو شویو شیانو لګښت ته اضافه کېږي.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🏭 Make</strong> کلیک کړئ او تایید یې کړئ. اومه توکي کمېږي، جوړ شوي توکي زیاتېږي، او دا ځل د <strong>PRD-0001</strong> په څېر شمېره ترلاسه کوي. دا د هر توکي په <strong>Item History</strong> کې د <em>Production</em> په توګه ښکاري.</div></div>
+  <div class="tip">💡 که کوم اومه توکی کم وي، <strong>Make</strong> بندېږي او کموالی ښودل کېږي — لومړی هغه اومه توکی واخلئ یا جوړ یې کړئ، یا لږ جوړ کړئ. که یو اومه توکی <em>No cost known</em> وښيي، هیڅکله د Purchases له لارې نه دی اخیستل شوی او Buy Rate نه لري: په Inventory کې یې Buy Rate وټاکئ، که نه د محصول له لګښت څخه به پاتې شي. کم اومه توکی په جدول کې 🔴 نښه کېږي.</div>
+
+  <h3>څومره لګښت لري</h3>
+  <p>د یو ځل لګښت کارول شوي اومه توکي (د هغوی په اوسط د پېرود لګښت) جمع مزدوري او نور لګښتونه دي. د جوړ شوي توکي <strong>Buy Rate</strong> د هغه اوسط تولیدي لګښت کېږي، نو ستاسو د سټاک ارزښت او د هر پلور ګټه له هغه څه حسابېږي چې په رښتیا د دې توکي جوړول تاسو ته تمام شوي. جوړ شوي توکي لکه د معمول په Sales کې وپلورئ.</p>
+
+  <h3>په امر جوړېدونکي خواړه (رستورانتونه)</h3>
+  <p>د رستورانت خواړه هغه وخت پخېږي کله چې امر وشي، مخکې نه جوړېږي. د هغه پر ترکیب <strong>Made to order</strong> نښه کړئ: بیا دا خواړه خپل سټاک نه لري، او هر ځل چې وپلورل شي اجزا یې له سټاک څخه وځي (سم شوی یا پاک شوی بل یې بېرته اچوي). خواړه یوازې هغه وخت پلورل کېدی شي چې په ګودام کې یې کافي اجزا وي. په امر جوړېدونکي خواړه د Make په ټب کې نه لېست کېږي، او د کم سټاک له لېستونو هم پاتې کېږي. <a href="#ch9b">څپرکی 9b — رستورانت</a> وګورئ. په امر جوړېدونکي خواړه هیڅکله نه اخیستل کېږي: هغه پېرود، د پېرود امر یا د تلیفون پېرود چې دا پکې وي رد کېږي، او پیغام ورکوي چې د دې پر ځای یې اجزا واخلئ.</p>
+
+  <h3>تاریخچه او Undo</h3>
+  <p>د <strong>📜 History</strong> ټب هر ځل د هغو اومه توکو او لګښت سره لېست کوي چې کارولي یې دي. که یو ځل غلطي وه، مدیر کولی شي یې وټاکي او <strong>↩ Undo Run</strong> کلیک کړي: اومه توکي سټاک ته بېرته ځي، هغه توکي چې جوړ کړي وو لرې کېږي، او د توکي لګښت بېرته پخواني حالت ته راځي. د یو توکي یوازې وروستی ځل بېرته کېدی شي، او یوازې هغه وخت چې هر هغه څه چې جوړ کړي لا هم په سټاک کې وي.</p>
+
+  <div class="tip">💡 کارکوونکو ته د Production د کارولو لپاره د <strong>Edit inventory</strong> اجازه اړینه ده. پرته له <strong>See purchase costs</strong> کولی شي شیان جوړ کړي خو هیڅ لګښت نه ویني.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9 -->
+<div class="chapter-banner" data-for="general">څپرکی 9 — پلور <span class="for-badge">د دوکانونو، سوداګرو او خدماتو لپاره</span></div>
+<div class="section" id="ch9" data-for="general">
+  <h2>9. د پلور پینل</h2>
+  <p>د پلور پینل هغه ځای دی چې تاسو پکې د پېرودونکو انوایسونه جوړوئ. هر پلور دلته ثبتېږي.</p>
+
+  <h3>نوی انوایس جوړول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د پلور پینل کیڼ اړخ <strong>Invoice Form</strong> دی. د پېرودونکي نوم داخل کړئ — که پېژندل شوی اړخ وي، بیلانس یې ښکاري.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>د ورکړې طریقه</strong> وټاکئ: Cash، Bank، UPI، یا Credit (پور).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د تلیفون په کمره د محصول د بارکوډ سکین کولو لپاره <strong>📱 Scan with Phone</strong> کلیک کړئ، یا ستاسو له ذخیرې د محصولاتو د لټولو او ټاکلو لپاره <strong>➕ Add Item</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">اندازې برابرې کړئ. ټولټال په اوتومات ډول تازه کېږي.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">که وغواړئ د تخفیف اندازه یا اضافي فیس (P&amp;F) داخل کړئ.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>💾 Save Invoice</strong> کلیک کړئ. انوایس خوندي کېږي، سټاک کمېږي، او د پېرودونکي بیلانس تازه کېږي.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">د انوایس د چاپ لپاره <strong>🖨 Print</strong> کلیک کړئ. پېرودونکي ته د WhatsApp له لارې د لېږلو لپاره، لاندې <em>په WhatsApp کې د بلونو لېږل</em> وګورئ.</div></div>
+
+  <figure class="shot"><a href="manual_images/sales-invoice.png" target="_blank"><img src="manual_images/sales-invoice.png" alt="Create Invoices" loading="lazy"></a><figcaption>د انوایس جوړول — په کیڼ اړخ د پېرودونکي جزئیات، په ښي اړخ توکي او ټولټال، لاندې خوندي شوي انوایسونه.</figcaption></figure>
+
+  <h3>په WhatsApp کې د بلونو لېږل</h3>
+  <p>Accelent پخپله بل لېږي: د اصلي انوایس PDF، دقیقاً لکه څنګه چې چاپېږي، د <em>Original for Recipient</em> نښې سره، او که تاسو اضافه کړي وي، ستاسو د لاسلیک او مهر سره.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د خوندي شویو انوایسونو په لېست کې، د انوایس <strong>W</strong> تڼۍ → <strong>📄 Send the bill (PDF)</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent PDF خوندي کوي، کاپي کوي یې، او د یو لنډ پیغام سره د پېرودونکي WhatsApp چټ خلاصوي.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">په چټ کې کلیک وکړئ، د بل د ضمیمه کولو لپاره <strong>Ctrl+V</strong> کېکاږئ، او <strong>Send</strong> کېکاږئ. که Ctrl+V یې ضمیمه نه کړي، <strong>📂 Show the PDF</strong> کلیک کړئ او فایل چټ ته کش کړئ.</div></div>
+  <div class="tip">💡 <strong>لاسلیک او مهر:</strong> یو ځل یې په <strong>Settings → 🏢 Company → Signature &amp; Stamp</strong> کې اضافه کړئ: پر سپینه کاغذ لاسلیک او مهر ولګوئ، عکس یې واخلئ یا سکین یې کړئ، او نږدې یې پرې کړئ. دا د WhatsApp له لارې لېږل شوي هر بل د <em>Authorised Signatory</em> په بکس کې ښکاري؛ د چاپ لپاره یې هم <strong>Also put them on printed bills</strong> نښه کړئ.</div>
+  <p>د <strong>W</strong> تڼۍ <strong>💬 Send a payment reminder (text)</strong> هم وړاندې کوي. د پېرود بلونه هم همداسې لېږل کېږي: پر بل ښي کلیک → <strong>📄 Send the bill (PDF) on WhatsApp</strong>.</p>
+  <div class="tip">💡 <strong>په براوزر کې WhatsApp (WhatsApp Web) کاروئ؟</strong> WhatsApp هر هغه چټ چې Accelent یې لېږي په یوه <strong>نوي براوزر ټب</strong> کې خلاصوي، او WhatsApp Web هلته بیا لوډېږي؛ WhatsApp همداسې کار کوي او Accelent یې نشي بدلولی. که بیا یو زوړ WhatsApp ټب ووايي <em>WhatsApp is open in another window</em>، دا عادي خبره ده: نوی ټب کاروئ او زاړه کله ناکله وتړئ. غواړئ په یو WhatsApp ټب کې پاتې شئ؟ نوی ټب وتړئ، خپل معمول WhatsApp ټب ته بېرته لاړ شئ (که وپوښتل شي <strong>Use here</strong> کلیک کړئ)، د پېرودونکي چټ خلاص کړئ او <strong>Ctrl+V</strong> کېکاږئ: بل لا هم کاپي دی.</div>
+  <p><strong>له تلیفون څخه:</strong> په Accelent اپ کې، انوایس یا د پېرود بل خلاص کړئ او په سر کې د <strong>📄</strong> نښې باندې ټک وکړئ. PC همغه PDF جوړوي او د تلیفون Share مینو خلاصېږي: WhatsApp وټاکئ، بیا پېرودونکی.</p>
+
+  <h3>زاړه انوایسونه لیدل</h3>
+  <p>د فورمې لاندې د <strong>Saved Sales Invoices</strong> لېست ټول خوندي شوي انوایسونه ښیي؛ د Source ستون ښیي چې هر یو په ډیسکټاپ یا تلیفون کې جوړ شوی. تاسو کولی شئ د پېرودونکي د نوم، د انوایس د شمېرې، یا د نېټې د حد له مخې ولټوئ. د هر انوایس قطار د View، Edit، Print، یا Delete تڼۍ لري.</p>
+
+  <h3>د پلور بېرته ورکړې</h3>
+  <p>که پېرودونکی سامان بېرته راوړي، <strong>Returns</strong> پینل → د <strong>Sales Returns</strong> ټب ته لاړ شئ. اصلي انوایس وټاکئ، بېرته راغلي توکي داخل کړئ، او خوندي یې کړئ. سټاک بېرته راځي او د کریډټ نوټ صادرېږي. که اصلي پلور Cash/Bank/UPI/Card و، بېرته ورکړه هغه Cash/Bank بیلانس په مستقیم ډول کموي؛ که د Credit پلور و، د دې پر ځای هغه پیسې کموي چې پېرودونکی یې تاسو ته پوروړی دی.</p>
+
+  <div class="tip">💡 <strong>پور پلور:</strong> کله چې د ورکړې په توګه "Credit" وټاکئ، انوایس د <em>Unpaid</em> نښه ترلاسه کوي او پیسې د پېرودونکي د ترلاسه کولو بیلانس ته اضافه کېږي. کله چې وروسته ورکړه وکړي، د Receipts په پینل کې یې د Receipt په توګه ثبت کړئ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9b -->
+<div class="chapter-banner" data-for="restaurant hotel">څپرکی 9b — رستورانت <span class="for-badge">د رستورانتونو او هوټلونو لپاره</span></div>
+<div class="section" id="ch9b" data-for="restaurant hotel">
+  <h2>9b. رستورانت (مېزونه، د پخلنځي ټکټونه او بلونه)</h2>
+  <p>د رستورانت، کافې، ډابې یا د هوټل د پخلنځي لپاره، Accelent یوه <strong>🍽 Restaurant</strong> پرده لري: پر مېز ټک وکړئ، پر خوړو ټک وکړئ، پخلنځي ته <strong>د پخلنځي ټکټ (KOT)</strong> ولېږئ، او کله چې مېلمانه ولاړ شي د مېز بل جوړ کړئ. هر بل د یو عادي پلور په توګه خوندي کېږي، نو Accounts، GST او راپورونه یې شاملوي، او هغه اجزا چې هر خواړه یې کاروي پخپله له سټاک څخه وځي.</p>
+
+  <h3>فعالول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (د مدیر پټنوم سره یې خلاص کړئ) → <strong>Business Type: Restaurant, café or hotel kitchen</strong> → <strong>Save</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent وتړئ او بیا یې خلاص کړئ. په کیڼ اړخ مینو کې اوس د FINANCE لاندې <strong>🍽 Restaurant</strong> شته. <strong>Sales</strong>، <strong>Returns</strong>، <strong>Aging Report</strong> او <strong>E-Invoice</strong> پټ شوي، ځکه چې رستورانت د Restaurant له پردې بل جوړوي. هیڅ نه پاکېږي: Business Type بېرته وټاکئ او بېرته راځي.</div></div>
+
+  <h3>خپل مینو جوړول</h3>
+  <div class="tip">💡 <strong>له یو نمونه مینو پیل وکړئ:</strong> کله چې مینو خالي وي، د Restaurant پرده <strong>📋 Start with a sample menu</strong> وړاندې کوي (په <strong>⚙ Restaurant Settings</strong> کې هم). دا د مینو په برخو کې (پیل، اصلي خواړه، وریجې، ډوډۍ، ناشته، خواږه، ګرم او سړه څښاک، جوسونه، موکټیلونه) 53 عام خواړه او څښاک، د خپلو واحدونو سره شاوخوا 100 اجزا، او د هر خوړو لپاره د <em>Made to order</em> ترکیب اضافه کوي؛ د هغه هوټل لپاره چې لا کوټې نه لري، کوټې 101–104 او 201–204 هم. هیڅ هغه څه چې تاسو یې لرئ نه بدلېږي: د ورته نوم توکی لکه څنګه چې دی ساتل کېږي. بیا: په Inventory کې خپلې بیې وټاکئ (د نمونې بیې یوازې وړاندیزونه دي)، هغه څه چې اخلئ یې په Purchases کې داخل کړئ (هر خواړه تر هغه خړ پاتې کېږي چې اجزا یې سټاک ته راشي)، په Production → Recipes کې د خپل آشپز سره د ترکیب اندازې وګورئ، او هغه خواړه پاک کړئ چې نه یې وړاندې کوئ.</div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">هر خواړه او څښاک په <strong>Inventory</strong> کې د <strong>Sell Price</strong> (له GST مخکې) سره اضافه کړئ. د هغه <strong>Category</strong> د مینو برخه کېږي: <em>Main Course</em>، <em>Starters</em>، <em>Drinks</em>… هر توکی چې Sell Price ولري په مینو کې ښکاري.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>اجزا</strong> هم د توکو په توګه اضافه کړئ (وریجې، چرګ، غوړي، د چای پاڼې)، د kg یا litre په څېر واحدونو سره، او لکه د معمول یې د <strong>Purchases</strong> له لارې واخلئ. اجزا Sell Price نه لري، نو په مینو کې نه ښکاري.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د هر هغه خوړو لپاره چې ستاسو په پخلنځي کې پخېږي، په <strong>Inventory → 🏭 Production → 🧾 Recipes</strong> کې یو <strong>ترکیب</strong> ولیکئ (<a href="#ch8c">څپرکی 8c</a> وګورئ) او <strong>Made to order</strong> نښه کړئ. بېلګه: یوه Chicken Biryani 0.25 kg وریجې او 0.2 kg چرګ کاروي. کله چې خواړه وپلورل شي، دا اجزا له سټاک څخه وځي.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">هغه توکي چې اخلئ او همداسې یې پلورئ (د بوتل اوبه، یخ څښاک) ترکیب ته اړتیا نه لري: د Purchases له لارې یې واخلئ، او د پلور پر مهال یې خپل سټاک کمېږي.</div></div>
+  <p>خواړه او اجزا ټول په <strong>Inventory</strong> کې توکي دي. په لېست کې یې په امر جوړېدونکي خواړه د سټاک لپاره <strong>—</strong> او د حالت په توګه <strong>🍳 Dish</strong> ښیي، ځکه چې خپل سټاک نه لري. په یو وخت کې د یو ډول لیدلو لپاره، د لېست پورته فلټر وکاروئ: <strong>Items for sale</strong> (ستاسو مینو: هر هغه څه چې Sell Price لري) یا <strong>Materials &amp; ingredients</strong> (هر هغه څه چې په ترکیب کې کارول کېږي).</p>
+  <h3>اجزا باید په ګودام کې وي</h3>
+  <p>خواړه یوازې هغه وخت په امر کې اخیستل کېږي چې په ګودام کې یې کافي اجزا وي. Accelent هغه څه هم شمېري چې په نورو مېزونو کې دمخه امر شوي خواړه یې کاروي، ځکه چې پخلنځی هغه پخوي. که څه کم وي، وايي چې څه کم دي، لکه <em>Chicken: needs 0.6 kg, 0.4 kg in the store</em>، او د هغه خوړو تڼۍ <strong>خړه</strong> کېږي. اجزا د <strong>Purchases</strong> له لارې واخلئ او خواړه بیا شتون لري. همدا کتنه هغه وخت هم کېږي چې خواړه د Sales له پردې یا له تلیفون څخه وپلورل شي. د هر خوړو تڼۍ دا هم ښیي چې ګودام نور څومره جوړولی شي، لکه <em>12 left</em>؛ په 5 یا لږ کې <strong>⚠</strong> ښیي، او تڼۍ ته اشاره کول د هغه جز نوم ښیي چې کمېږي.</p>
+  <div class="tip">💡 د مینو تڼۍ د هغه اخیستل شوي توکي لپاره هم خړه کېږي چې سټاک یې پاتې نه وي، یا د هغه خوړو لپاره چې نه سټاک لري او نه د <em>Made to order</em> ترکیب. که ستاسو پخلنځی ډېری وخت د پېرودونو له ثبتولو مخکې پخلی کوي، مدیر کولی شي په <strong>⚙ Restaurant Settings</strong> کې د <strong>Don't take an order for a dish when the store hasn't enough of its ingredients</strong> نښه لرې کړي: بیا خواړه تل اجازه لري، اجزا له صفر ښکته ځي، او Low Stock Monitor تاسو ته وايي چې نور واخلئ.</div>
+
+  <h3>مېزونه</h3>
+  <p>لومړی ځل شپږ مېزونه (Table 1 تر Table 6) جوړېږي. د مېزونو د اضافه کولو، نوم بدلولو یا لرې کولو او د هغوی د څوکیو د ټاکلو لپاره <strong>🪑 Tables…</strong> کلیک کړئ (لکه <em>Garden 1</em>، <em>Cabin A</em>). هر مېز یو کارت دی:</p>
+  <ul>
+    <li><strong>خالي</strong> مېز ساده وي او خپلې څوکۍ او <em>✓ Free</em> ښیي.</li>
+    <li>هغه مېز چې روان امر لري <strong>رنګه څنډه</strong> لري او خپل ټولټال او دا چې څومره وخت خلاص دی ښیي (<em>🕑 25 min</em>، <em>🕑 1h 05m</em>).</li>
+    <li>کله چې ګارسون یا پېرودونکی بل وغواړي، مېز <strong>کهربايي څنډه</strong> ترلاسه کوي او <em>🧾 Bill asked</em> ښیي.</li>
+    <li>هغه مېز چې تاسو خلاص کړی <strong>پنډه څنډه</strong> لري.</li>
+  </ul>
+  <p>د پردې په ښکته کې یوه کیلي څنډې تشریح کوي.</p>
+
+  <h3>امر اخیستل</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">پر <strong>مېز</strong> کلیک وکړئ، بیا د <strong>مینو برخه</strong>، بیا <strong>خواړه</strong>. هر ټک یو اضافه کوي؛ بیا ټک بل اضافه کوي. د خوړو د چټک موندلو لپاره، په <strong>Search the menu</strong> کې ولیکئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">په امر کې، یو قطار وټاکئ او د اندازې د بدلولو لپاره <strong>−</strong> / <strong>+</strong>، د پخلنځي لپاره <strong>📝 Note</strong> (<em>لږ تریخ</em>، <em>پیاز نه</em>)، یا <strong>✕ Remove</strong> وکاروئ. تاسو کولی شئ پر یو قطار د موږک څرخ هم وګرځوئ: پورته یو اضافه کوي، ښکته یو کموي (ښکته په 1 کې، او په هغه اندازه کې ودرېږي چې پخلنځي ته دمخه رسېدلې).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🧑‍🍳 Send to Kitchen (KOT)</strong> کلیک کړئ. د پخلنځي ټکټ د خپلې شمېرې (KOT #1، #2… هره ورځ له سره پیلېږي)، مېز او د پخلي شیانو سره چاپېږي.</div></div>
+  <p>د <strong>Kitchen</strong> ستون ښیي چې پخلنځي ته دمخه څه رسېدلي (<em>✓ sent</em>) او څه نوي دي. کله چې مېلمانه نور امر وکړي، اضافه یې کړئ او بیا یې ولېږئ: راتلونکی KOT <strong>یوازې نوي توکي</strong> لري. که یو خواړه له لېږلو وروسته کم شي، KOT یې د <strong>CANCEL</strong> په توګه چاپوي؛ له لېږلو وروسته بدل شوی یادښت د <strong>NOTE</strong> په توګه چاپېږي. د KOT پر تڼۍ یوه نقطه پدې معنا ده چې څه لا پخلنځي ته نه دي تللي؛ کله چې پخلنځي ته هر څه ورسېږي، تڼۍ خړه کېږي او <strong>✓ Kitchen has everything</strong> لولي.</p>
+
+  <h3>پخلنځی څومره بوخت دی؟</h3>
+  <p>د Restaurant د پردې پورته برخه د پخلنځي حالت ښیي، لکه <strong>🟢 Kitchen: Normal · ~12 min</strong>: <em>Normal، Busy، Very busy، Extra busy</em> یا <em>Overloaded</em>، او اوس امر شوي خواړه به شاوخوا څومره وخت ونیسي. دا یو <strong>اټکل</strong> دی: Accelent پوهېږي چې پخلنځي ته څه لېږل شوي او هر خواړه معمولاً څومره وخت نیسي، او د هر په دنده آشپز لپاره حسابوي چې لا څه پخول پاتې دي. د هغو امرونو د لیدلو لپاره یې کلیک کړئ چې لا په پخلنځي کې دي، تر ټولو زوړ لومړی، او کوم ځنډېدلي. کله چې پخلنځی Extra busy شي PC بیپ کوي.</p>
+  <ul>
+    <li><strong>په هغه کړکۍ کې</strong> د انتظار وخت له 30 دقیقو وروسته <strong>سور</strong> او له 15 دقیقو <strong>کهربايي</strong> وي. هر قطار <strong>👁 Items</strong> (د هغه د پخلنځي ټکټ خواړه) او <strong>🍽 Served</strong> لري.</li>
+    <li><strong>⏸ Pause QR orders for 20 min:</strong> هغو مېلمنو ته چې د مېز له QR څخه امر کوي ویل کېږي چې امر ودرول شوی؛ ګارسونان لا هم امر اخیستلی شي. دا له 20 دقیقو وروسته پخپله بیا پیلېږي، یا <strong>▶ Resume QR orders</strong> کلیک کړئ.</li>
+    <li><strong>⏰ خواړه ډېر انتظار باسي:</strong> کله چې د پخلنځي ټکټ له 30 دقیقو وروسته هم served نښه شوی نه وي، د Restaurant پرده بیپ کوي او یوه سره کرښه ښیي (لکه <em>⏰ Table 7: KOT #4 waiting 40 min</em>)، او همدا یادښت یو ځل د هر نښلول شوي ګارسون تلیفون ته، په Messages کې ځي. دقیقې په Kitchen Settings → <em>Alert the floor when food waits</em> کې بدلې کړئ، یا یې بند کړئ (0).</li>
+  </ul>
+  <ul>
+    <li><strong>🍽 Served:</strong> کله چې خواړه مېز ته ورسېږي، په PC کې امر خلاص کړئ او دا کلیک کړئ. دا اټکل سم ساتي. هغه امر چې بل یې جوړ شوی served حسابېږي.</li>
+    <li><strong>⏰ Late:</strong> هغه مېز چې خواړه یې د تر ټولو ورو خوړو له وخت څخه 5 دقیقې ډېر انتظار ایستلی، کهربايي څنډه او <em>Late … min</em> ترلاسه کوي؛ د امر سرلیک یې هم وايي.</li>
+    <li><strong>🕑 Timeline:</strong> امر کله خلاص شو، د پخلنځي هر ټکټ د خپلو خوړو سره، کله served شو، بل کله وغوښتل شو او کله یې بل جوړ شو.</li>
+  </ul>
+  <div class="tip">💡 <strong>⚙ Restaurant Settings → 🍳 Kitchen Settings</strong> (مدیر): په دنده آشپزان، د پخلي معمول وخت (12 دقیقې که یې بدل نه کړئ)، د هرې مینو برخې او توپیر لرونکو خوړو وخت (بریاني 25 دقیقې، چای 4…)، او دا چې هره کچه له کومه ځایه پیلېږي. کله چې پخلنځی بوخت وي څه پېښ شي ستاسو انتخاب دی: د QR امر پاڼه کې متوقع انتظار وښایئ، د Overloaded پر مهال QR امرونه ودروئ (ګارسونان لا هم امر اخیستلی شي)، او د Extra busy یا Overloaded پر مهال ورو خواړه ودروئ.</div>
+
+  <h3>ټیک اوې</h3>
+  <p><strong>🥡 New Takeaway</strong> کلیک کړئ، که وغواړئ د پېرودونکي نوم داخل کړئ، بیا لکه د مېز په څېر خواړه اضافه کړئ، KOT ولېږئ او بل جوړ کړئ. خلاص ټیک اوې د مېزونو لاندې د <strong>Takeaway orders</strong> لاندې لېست شوي (په هوټل کې، <strong>Takeaway &amp; room service</strong>)؛ د خلاصولو لپاره یو کلیک کړئ.</p>
+
+  <h3>بل جوړول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">مېز خلاص کړئ او <strong>💵 Bill</strong> کلیک کړئ. که ځینې توکي پخلنځي ته نه وي تللي، Accelent وړاندیز کوي چې لومړی یې ولېږي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">وټاکئ چې مېلمه څنګه ورکړه وکړه: <strong>Cash</strong>، <strong>UPI</strong>، <strong>Card</strong> یا <strong>Bank Transfer</strong> (او کوم بانک ته، که وغواړئ د حوالې سره). د پېرودونکي نوم او تلیفون اختیاري دي.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Save Bill</strong> کلیک کړئ. بل د پلور په توګه خوندي کېږي، پیسې Cash یا بانک ته ځي، د خوړو اجزا له سټاک وځي، مېز خالي کېږي، او بل د چاپ لپاره خلاصېږي (د پرېښودو لپاره <em>Print the bill</em> نښه لرې کړئ).</div></div>
+  <div class="tip">💡 <strong>د پېرودونکي په WhatsApp کې بل:</strong> کله چې د بل کړکۍ د پېرودونکي د موبایل شمېره ولري (د QR امر د پېرودونکي شمېره دمخه ډکه وي)، <strong>📄 Send the bill on WhatsApp</strong> نښه شوی وي. له خوندي کولو وروسته، بل په PDF بدلېږي او کاپي کېږي، او WhatsApp د یو لنډ مننې پیغام سره د پېرودونکي چټ خلاصوي: د بل د ضمیمه کولو لپاره <strong>Ctrl+V</strong> کېکاږئ، بیا <strong>Send</strong>. د وروسته لېږلو لپاره، په <strong>Today's Bills</strong> کې بل وټاکئ او <strong>📄 Send on WhatsApp</strong> کلیک کړئ.</div>
+
+  <h3>هوټلونه: د اوسېدونکو مېلمنو لپاره خواړه</h3>
+  <p>د <em>Hotel, lodge or guest house</em> Business Type سره، د Restaurant پرده <strong>🛏 Room Service</strong> او <strong>🛏 Charge to Room</strong> هم لري: خواړه د مېلمه د کوټې حساب ته ځي او د وتلو پر مهال ورکول کېږي. <a href="#ch9c">څپرکی 9c — کوټې</a> وګورئ.</p>
+
+  <h3>د امر لېږدول یا لغوه کول</h3>
+  <p><strong>⇄ Move to table</strong> روان امر یو خالي مېز ته لېږدوي (مېلمنو مېز بدل کړ، یا ټیک اوې دلته وخوړل شو). <strong>🗑 Cancel order</strong> هغه امر لرې کوي چې بل به یې نه جوړېږي؛ هیڅ د پلور په توګه نه خوندي کېږي او هیڅ سټاک نه کارول کېږي.</p>
+  <div class="tip">💡 هغه خواړه چې پخلنځي ته دمخه رسېدلي یوازې <strong>مدیر</strong> لغوه کولی شي (یا د − یا ✕ Remove سره خواړه لرې کولی شي): له کارکوونکو د مدیر پټنوم غوښتل کېږي. هر داسې لغوه کول په <strong>Settings → 🔍 Deletion Watcher</strong> کې د امر، خوړو او هغه چا سره ثبتېږي چې کړي یې دي، نو پاخه خواړه په چوپتیا نشي ورکېدی. هغه توکي چې لا پخلنځي ته نه دي لېږل شوي په ازاده توګه بدلېدی شي.</div>
+
+  <h3>د نن ورځې بلونه</h3>
+  <p>د <strong>🧾 Today's Bills</strong> ټب د ورځې د رستورانت بلونه د خپل ټولټال سره لېست کوي؛ د نېټې له بکس څخه بله ورځ وټاکئ. په هوټل کې دا هغه خواړه هم لېست کوي چې په هغه ورځ <strong>🛏 کوټو ته چارج</strong> شوي، د کوټې او مېلمه سره، د <em>on the room</em> یا <em>paid at check-out</em> نښې سره؛ د ټولټال کرښه دواړه جمع کوي، نو تاسو د رستورانت ټوله ورځ وینئ. هغه خواړه د مېلمه د وتلو په بل کې چاپېږي او سمېږي، نه دلته. د بیا چاپ لپاره بل وټاکئ او <strong>🖨 View / Print bill</strong> کلیک کړئ، یا د غلط بل د پاکولو لپاره <strong>🗑 Cancel bill</strong>: ورکړه بېرته کېږي، اجزا سټاک ته بېرته ځي، او یوه کاپي په Deletion Watcher کې ساتل کېږي.</p>
+
+  <h3>د پخلنځي پرنټر</h3>
+  <p>په <strong>⚙ Restaurant Settings</strong> کې، <strong>Kitchen printer</strong> وټاکئ، لکه په پخلنځي کې یو کوچنی حرارتي پرنټر. بیا هر KOT، له PC او د ګارسونانو له تلیفونونو، مستقیم هغه ته چاپېږي، پداسې حال کې چې بلونه ستاسو په عادي پرنټر چاپېږي. پرته له پخلنځي پرنټر، KOT د چاپ لپاره د مخکتنې په توګه خلاصېږي، یا که تاسو هغه انتخاب نښه کړی وي مستقیم د Windows ډیفالټ پرنټر ته ځي.</p>
+
+  <h3>د ګارسونانو تلیفونونه</h3>
+  <p>ګارسونان کولی شي د Accelent اپ سره په خپلو تلیفونونو د مېزونو سره امرونه واخلي (<a href="#ch19">څپرکی 19</a> وګورئ). کله چې د PC Business Type Restaurant یا Hotel وي، د اپ ډشبورډ <strong>🍽 Restaurant</strong> ښیي:</p>
+  <ul>
+    <li>پر <strong>مېز</strong> ټک وکړئ (بوخت مېزونه خپل ټولټال او دقیقې ښیي)، یا <strong>New Takeaway</strong>، یا په هوټل کې <strong>Room Service</strong> (یوازې کله چې مېلمه اوسېږي).</li>
+    <li><strong>Add Dishes</strong> د لټون سره د برخو له مخې مینو خلاصوي؛ د یو اضافه کولو لپاره پر خوړو ټک وکړئ. د <strong>− / +</strong> سره اندازې بدلې کړئ، او پخلنځي ته د یادښت ورکولو لپاره پر خوړو ټک وکړئ.</li>
+    <li><strong>Send to Kitchen</strong> په PC کې KOT چاپوي (د ګارسون د نوم سره). بیا تڼۍ تر هغه <strong>✓ Sent to kitchen</strong> ښیي چې څه نوي اضافه شي.</li>
+    <li><strong>Ask for Bill</strong> کاونټر ته خبر ورکوي: PC بیپ کوي، د مېز او ګارسون سره یو بنر ښیي، او مېز <strong>🧾 Bill asked</strong> نښه کوي. صندوقدار مېز خلاصوي او 💵 Bill کېکاږي، چې ورکړه اخلي.</li>
+    <li>په هوټل کې، <strong>Charge to Room</strong> امر د اوسېدونکي مېلمه حساب ته اچوي.</li>
+  </ul>
+  <p>همغه قواعد لکه په PC کې تطبیقېږي: خواړه په ګودام کې خپلو اجزاوو ته اړتیا لري، او هغه خواړه چې پخلنځي ته دمخه رسېدلي یوازې مدیر لرې یا لغوه کولی شي. ګارسونانو ته د <strong>Create sales</strong> اجازه او د تلیفون لاسرسی اړین دی (Settings → 👥 Users). یو جواز په یو وخت کې د تلیفون محدود حسابونو ته اجازه ورکوي؛ که د ګارسون تلیفون د همدې دلیل له امله رد شي، د نورو د اضافه کولو په اړه له موږ سره اړیکه ونیسئ.</p>
+
+  <h3>په مېز کې د QR له لارې امر</h3>
+  <p>پېرودونکي کولی شي د خپل مېز پر QR کوډ د سکین کولو سره له خپل تلیفون څخه مینو وګوري او امر وکړي. دا <strong>یوازې ستاسو د رستورانت پر Wi-Fi</strong> کار کوي: هیڅ شی انټرنیټ ته نه ځي، او پېرودونکی نه اپ ته اړتیا لري او نه حساب ته.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚙ Restaurant Settings → QR ordering</strong>: <em>Customers can see the menu and order…</em> نښه کړئ، <strong>This PC on the Wi-Fi</strong> وګورئ (پر هغه Wi-Fi د PC پته چې پېرودونکي به ورسره نښلي)، او <strong>د Wi-Fi نوم او پټنوم</strong> ډک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>🖨 Print table QR cards</strong> کلیک کړئ. هر مېز د دوو کوډونو سره یو کارت ترلاسه کوي: <strong>1. Join our Wi-Fi</strong> (تلیفون پرته له پټنوم لیکلو نښلي) او <strong>2. Scan to see the menu and order</strong>. هر کارت پر خپل مېز کېږدئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">پېرودونکی دواړه د تلیفون په کمره سکین کوي، خواړه ټاکي (د یادښتونو سره، لکه <em>لږ تریخ</em>)، خپل <strong>نوم او د موبایل شمېره</strong> داخلوي (اړین، او په هغه تلیفون کې د راتلونکي امر لپاره یادېږي) او، که یو چلوونکي یا لارښوونکي راوستی وي، د هغه شریک کوډ (لکه DRV001، <a href="#ch9d">څپرکی 9d</a> وګورئ)، پر <strong>Order</strong> ټک کوي، او کولی شي یې تعقیب کړي: <em>Received → Confirmed → Preparing (ready about …) → Served</em>، او پر <strong>Ask for Bill</strong> ټک وکړي.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">امر په PC کې د <strong>🔔 QR orders from tables</strong> په توګه (د بیپ سره) او د ګارسونانو په تلیفونونو کې ښکاري. دا د پېرودونکي نوم او د موبایل شمېره ښیي. <strong>وګورئ چې ایا په رښتیا څوک په هغه مېز کې دی</strong>، بیا <strong>Confirm</strong>: خواړه د مېز امر سره یوځای کېږي، او تاسو یې د Send to Kitchen سره لېږئ. یا یې د یو دلیل سره <strong>Reject</strong> کړئ چې پېرودونکی یې ویني.</div></div>
+  <ul>
+    <li>د پېرودونکي تلیفون یوازې مینو لیدلی، د <strong>خپل مېز</strong> لپاره امر کولی، خپل امر تعقیبولی او بل غوښتلی شي. دا په Accelent کې بل هیڅ نشي لیدلی.</li>
+    <li>د هر مېز کوډ پټ دی. که کارتونه کاپي یا یوړل شي، <strong>↻ New codes for all tables</strong> زاړه کوډونه له کاره غورځوي؛ نوي کارتونه چاپ کړئ.</li>
+    <li>حدونه ټوکې مخنیوی کوي: د یو خوړو تر ټولو ډېر 20، په یو مېز کې 3 انتظار کې امرونه، او له یو تلیفون څخه په 10 دقیقو کې 6 امرونه. د تړلو له وخت وروسته د QR امر نښه لرې کړئ.</li>
+  </ul>
+  <div class="tip">💡 د PC د Wi-Fi پته ثابته وساتئ: په خپل روټر کې PC ته یوه <em>reserved address</em> ورکړئ (ډېری وخت "DHCP reservation" بلل کېږي). که نه پته له بیا پیلولو وروسته بدلېدی شي، او چاپ شوي کارتونه کار پرېږدي. د پېرودونکي تلیفون ښايي ووايي <em>"Wi-Fi has no internet"</em>؛ امر کول لا هم کار کوي.</div>
+
+  <h3>د رستورانت پر بلونو GST (هند)</h3>
+  <p>د رستورانت بل یو د رستورانت خدمت دی، نو ټول بل یوه GST کچه لري. په <strong>⚙ Restaurant Settings</strong> کې یې وټاکئ (یوازې مدیر):</p>
+  <ul>
+    <li><strong>5% پرته له input tax credit</strong>: رستورانتونه، کافې، ډابې او ټیک اوې (عادي حالت، او ډیفالټ).</li>
+    <li><strong>18% د input tax credit سره</strong>: د هغه هوټل دننه رستورانت چې <em>specified premises</em> وي (هغه هوټل چې کوټې یې په تېر کال کې په ورځ له ₹7,500 څخه ډېر چارج شوې، یا یې ځان داسې اعلان کړی).</li>
+  </ul>
+  <p>هغه هوټل چې د Rooms پرده کاروي اړتیا نه لري چې وټاکي: Accelent رستورانت په هغه کال کې پخپله 18% ته اړوي چې ځای specified premises وي (<a href="#ch9c">څپرکی 9c</a> وګورئ).</p>
+  <div class="tip">💡 که ډاډه نه یاست چې کوم یو پر تاسو تطبیقېږي، له خپل محاسب څخه وپوښتئ.</div>
+
+  <div class="tip">💡 کارکوونکو ته د Restaurant د پردې د کارولو لپاره د <strong>Create sales</strong> اجازه اړینه ده. د بل لغوه کول <strong>Edit or delete bills</strong> ته اړتیا لري.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9c -->
+<div class="chapter-banner" data-for="hotel">څپرکی 9c — کوټې <span class="for-badge">د هوټلونو، مېلمستونونو او مېلمه خونو لپاره</span></div>
+<div class="section" id="ch9c" data-for="hotel">
+  <h2>9c. کوټې (هوټل، مېلمستون، مېلمه خونه)</h2>
+  <p>د هوټل، مېلمستون یا مېلمه خونې لپاره، د خپل رستورانت سره یا پرته له هغه. د هر مېلمه اوسېدل د هغه پر کوټه روان حساب دی: شپې پخپله جمع کېږي، اضافي فیسونه او ستاسو د رستورانت خواړه ورته اضافه کېږي، او د وتلو پر مهال مېلمه د هر څه لپاره <strong>یو GST بل</strong> ترلاسه کوي، د هر پیش پرداخت د کمولو سره.</p>
+
+  <h3>فعالول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (د مدیر پټنوم سره یې خلاص کړئ) → <strong>Business Type: Hotel, lodge or guest house</strong> → <strong>Save</strong>، بیا Accelent وتړئ او بیا یې خلاص کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">مینو اوس د FINANCE لاندې <strong>🛏 Rooms</strong> او <strong>🍽 Restaurant</strong> لري (د رستورانت لپاره <a href="#ch9b">څپرکی 9b</a> وګورئ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🛏 Rooms → 🚪 Rooms…</strong> → هره کوټه <strong>＋ Add</strong> کړئ: شمېره یې (101)، ډول (Standard، Deluxe، Suite…)، <strong>د شپې کرایه</strong> او څو کسان پکې ځایېږي.</div></div>
+
+  <h3>د کوټو بورډ</h3>
+  <p>هره کوټه یو کارت دی:</p>
+  <ul>
+    <li><strong>خالي</strong> کوټه ساده وي او خپل ډول، <em>✓ Vacant</em> او خپله کرایه ښیي.</li>
+    <li><strong>نیول شوې</strong> کوټه <strong>رنګه څنډه</strong> لري او د مېلمه نوم او تر اوسه شپې ښیي.</li>
+    <li>هغه کوټه چې له وتلو وروسته د پاکولو انتظار باسي <strong>کهربايي څنډه</strong> لري او <em>⚠ To be cleaned</em> ښیي.</li>
+  </ul>
+  <p>پر کوټه کلیک وکړئ: د مېلمه حساب په منځ کې او د کوټې تڼۍ په ښي اړخ کې ښکاري. اصلي کار شین دی (<strong>🛎 Check In</strong>، <strong>🧾 Check Out</strong>)؛ <strong>🗑 Cancel Check-in</strong> سور دی.</p>
+
+  <h3>ننوتل (Check-In)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">پر خالي کوټه کلیک وکړئ → <strong>🛎 Check In</strong>.</div></div>
+  <div class="tip">💡 د Check In د کړکۍ په سر کې <strong>📷 Scan ID card…</strong> د مېلمه د پېژندپاڼې له عکس یا سکین څخه جزئیات ډکوي، چې پر همدې PC لوستل کېږي (هیڅ شی چېرته نه لېږل کېږي). <strong>Aadhaar:</strong> هغه اړخ وکاروئ چې لوی QR کوډ لري؛ نوم، د زېږېدو نېټه، جنسیت او پته لوستل کېږي، او د شمېرې یوازې <strong>وروستي 4 عددونه</strong> ساتل کېږي (XXXX XXXX 1234). په لاس لیکل شوې Aadhaar شمېره هم همداسې ساتل کېږي، او د Aadhaar کارت کاپي هیڅکله نه ساتل کېږي: UIDAI هوټلونو ته د دې ساتلو اجازه نه ورکوي. <strong>Passport</strong> (له ښکته دوو کرښو)، <strong>PAN</strong>، <strong>driving licence</strong> او <strong>voter ID</strong> هم لوستل کېږي؛ د دې کاپي یوازې هغه وخت ساتل کېږي چې تاسو نښه کړئ چې مېلمه موافق دی، او له وتلو څو ټاکلو ورځو وروسته پاکېږي (<strong>⚙ Hotel Settings</strong>، 30 ورځې که یې بدل نه کړئ). له ننوتلو مخکې تل جزئیات له کارت سره وګورئ.</div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د مېلمنو د راجستر جزئیات ډک کړئ: نوم، تلیفون، پته، <strong>د پېژندنې سند</strong> (Aadhaar، passport، driving licence…) او شمېره یې، تابعیت، د کسانو شمېر، له کوم ځای راغلی او چېرته ځي، متوقع شپې او کرایه (د تخفیف لپاره یې بدله کړئ). د پېژندنې شمېره اړینه ده تر هغه چې تاسو یې په <strong>⚙ Hotel Settings</strong> کې بنده کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">که مېلمه <strong>پیش پرداخت</strong> ورکړي، د دې سره یې داخل کړئ چې څنګه ورکړل شو (نغدې، UPI، کارت یا بانک). دا سمدستي ستاسو نغدو یا بانک ته ځي، او د وتلو پر مهال کمېږي.</div></div>
+
+  <h3>د مېلمه حساب</h3>
+  <p>پر نیول شوې کوټه کلیک وکړئ ترڅو تر اوسه ټول چارج شوي شیان، GST او لا د ورکړې پیسې وګورئ:</p>
+  <ul>
+    <li><strong>د کوټې شپې</strong> د ننوتلو له نېټې پخپله شمېرل کېږي. <strong>₹ Night Rates</strong> د یوې ځانګړې شپې کرایه بدلوي (د اونۍ د پای کرایه، تخفیف).</li>
+    <li><strong>➕ Add Charge</strong>: د اضافي بستر یا وختي ننوتلو لپاره <em>Part of the room</em> وټاکئ (د هغې شپې د کوټې ارزښت ته اضافه کېږي)، یا د جامو مینځلو، ټرانسپورټ او ورته شیانو لپاره د خپل GST % سره <em>Another service</em>. <strong>✕ Remove Charge</strong> په غلطۍ اضافه شوی فیس لرې کوي.</li>
+    <li><strong>💵 Advance</strong> د اوسېدو پر مهال ترلاسه شوې نورې پیسې ثبتوي. د وتلو بل ترلاسه شوی پیش پرداخت او ورکړل شوی بیلانس ښیي؛ که پیش پرداخت له بل څخه ډېر و، هغه پیسې ښیي چې <strong>بېرته ورکړل شوې</strong>، چې مېلمه ته د بېرته ورکړې په توګه ثبتېږي.</li>
+    <li><strong>⇄ Move Room</strong> مېلمه یوې خالي کوټې ته لېږدوي؛ زړه کوټه پاکولو ته ځي.</li>
+    <li><strong>🗑 Cancel Check-in</strong> د هغه ننوتلو لپاره دی چې په غلطۍ شوی: کوټه خالي کېږي او هر پیش پرداخت د بېرته ورکړل شوي په توګه ثبتېږي.</li>
+  </ul>
+
+  <h3>د مېلمنو لپاره خواړه</h3>
+  <p>د <strong>🍽 Restaurant</strong> په پرده کې:</p>
+  <ul>
+    <li><strong>🛏 Room Service</strong>: د مېلمه کوټه وټاکئ او خواړه اضافه کړئ. <strong>Send to Kitchen</strong> KOT چاپوي <em>او</em> خواړه سمدستي د مېلمه د کوټې حساب ته اچوي، نو هېرېدی نشي.</li>
+    <li>اوسېدونکی مېلمه چې د ډوډۍ په تالار کې خوري: لکه د معمول د مېز امر واخلئ. کله چې <strong>💵 Bill</strong> کلیک کړئ، د بل کړکۍ پوښتي <strong>Guest staying in a room?</strong>: د مېلمه کوټه وټاکئ او د ورکړې اخیستلو پر ځای <strong>Charge to Room</strong> کلیک کړئ. (د <strong>🛏 Charge to Room</strong> تڼۍ هم همدا کوي.)</li>
+  </ul>
+  <p>خواړه د رستورانت په GST کچه د مېلمه حساب ته ځي، اجزا یې (یا خپل سټاک) سمدستي له ګودام وځي، او د وتلو پر مهال ورکول کېږي.</p>
+  <div class="tip">💡 هیڅ هغه څه چې مېلمه خوړلي د وتلو له بل څخه نه پاتې کېږي: د روم سروس هغه خواړه چې لا په امر کې انتظار باسي د مېلمه په حساب کې د <strong>⏳ not yet charged</strong> په توګه ښکاري، او د وتلو پر مهال هر هغه څه چې پخلنځي جوړ کړي پخپله بل ته اضافه کېږي. یوازې هغه امر چې توکي یې هیڅکله پخلنځي ته نه دي لېږل شوي، وتل تر هغه دروي چې ولېږل شي یا لغوه شي.</div>
+
+  <h3>وتل (Check-Out)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">پر کوټه کلیک وکړئ → <strong>🧾 Check Out</strong>. ټولټال، پیش پرداخت او د ورکړې پیسې ښودل کېږي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">که د اوسېدو د روم سروس خواړه served نښه شوي نه وي، Accelent لومړی پوښتي چې ایا ورسول شول: <strong>✓ Yes, delivered</strong> یې served نښه کوي او مخکې ځي؛ <strong>✕ Not delivered</strong> دروي ترڅو تاسو لومړی د Restaurant په پرده کې امر سم کړئ. وټاکئ چې مېلمه پاتې بیلانس څنګه ورکوي او <strong>Check Out</strong> کلیک کړئ. د ټول اوسېدو لپاره یو بل خوندي کېږي: د کوټې شپې، اضافې، نور خدمات او خواړه، هر یو په خپله GST کچه. ستاسو نغدو یا بانک ته یوازې بیلانس اضافه کېږي، ځکه چې پیش پرداخت د ترلاسه کولو پر مهال اضافه شوی و.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">بل د چاپ لپاره خلاصېږي. کوټه اوس کهربايي څنډه او <em>⚠ To be cleaned</em> ښیي: کله چې پاکه شي، پرې کلیک وکړئ او بیا <strong>✨ Room Is Ready</strong>.</div></div>
+  <div class="tip">💡 <strong>د مېلمه په WhatsApp کې بل:</strong> د وتلو کړکۍ د ننوتلو پر مهال ورکړل شوې د موبایل شمېرې سره <strong>📄 Send the bill on WhatsApp to</strong> لري (که مېلمه بله وغواړي بدله یې کړئ). کله چې شمېره وي نښه شوی وي. له وتلو وروسته، بل په PDF بدلېږي او کاپي کېږي، او WhatsApp د مېلمه چټ خلاصوي: د ضمیمه کولو لپاره <strong>Ctrl+V</strong> کېکاږئ، بیا <strong>Send</strong>.</div>
+
+  <h3>وتلي: د بل بیا چاپول یا سمول</h3>
+  <p>د <strong>🧾 Check-outs</strong> ټب د دوو نېټو ترمنځ هر وتل د خپل بل سره لېست کوي. یو وټاکئ او د بیا چاپ لپاره <strong>🖨 View / Print Bill</strong>، یا مېلمه ته د لېږلو لپاره <strong>📄 Send on WhatsApp</strong> کلیک کړئ. که بل په غلطۍ جوړ شوی وي (یو فیس هېر شو، غلطه ورکړه)، <strong>↩ Cancel Check-out Bill</strong> کلیک کړئ: بل او ورکړه یې لرې کېږي (یوه کاپي په Deletion Watcher کې ساتل کېږي) او د مېلمه اوسېدل د ټولو فیسونو سره بیا خلاصېږي. سم یې کړئ، بیا مېلمه بیا وباسئ. خواړه له سټاک بهر پاتې کېږي، ځکه چې خوړل شوي وو. د هوټل بل له بل هیڅ ځایه نشي پاکېدی.</p>
+
+  <h3>پر کوټو GST (هند)</h3>
+  <ul>
+    <li>د هرې کوټې په شپه تر <strong>₹7,500</strong> پورې: پرته له input tax credit <strong>5%</strong>. له ₹7,500 پورته: <strong>18%</strong>. د ارزانه کوټو لپاره معافیت نشته.</li>
+    <li>کچه <strong>د هرې کوټې او هرې شپې لپاره</strong> د هر تخفیف وروسته په رښتیا اخیستل شوې کرایه باندې ټاکل کېږي، د هغې شپې اضافي بستر یا نورو د کوټې اضافو سره. هغه مېلمه چې یوه شپه ₹6,500 او بله شپه ₹8,000 ورکوي په هغو شپو 5% او 18% چارج کېږي.</li>
+    <li><strong>Specified premises:</strong> که په <em>تېر</em> مالي کال کې کومه کوټه په شپه له ₹7,500 څخه ډېر بل شوې وي، یا تاسو ځای specified premises اعلان کړی وي (په <strong>⚙ Hotel Settings</strong> کې یې نښه کړئ)، ستاسو رستورانت باید د دې مالي کال لپاره <strong>18%</strong> واخلي. Accelent دا ستاسو له خپلو بلونو حسابوي او رستورانت پخپله 18% ته اړوي؛ د Rooms د پردې په سر کې کرښه وايي چې کوم یو تطبیقېږي.</li>
+  </ul>
+  <div class="tip">💡 که ډاډه نه یاست چې کومه کچه پر تاسو تطبیقېږي، له خپل محاسب څخه وپوښتئ.</div>
+
+  <h3>د QR کوډ له لارې روم سروس</h3>
+  <p>د QR امر په فعالېدو (🍽 Restaurant → ⚙ Restaurant Settings، <a href="#ch9b">څپرکی 9b</a> وګورئ)، د هرې کوټې لپاره یو کارت چاپ کړئ: <strong>⚙ Hotel Settings → 🖨 Print room QR cards</strong>. په کوټه کې اوسېدونکی مېلمه یې سکین کوي، مینو ګوري، خپل نوم او د موبایل شمېره داخلوي او امر کوي. امر PC او د ګارسونانو تلیفونونو ته د هغې کوټې د QR امر په توګه رسېږي؛ کله چې ګارسون یې تایید کړي او پخلنځي ته یې ولېږي، د کوټې بل ته ځي. هغه کوټه چې مېلمه پکې نه وي ننوتلی امر نشي کولی، او روم سروس د وتلو پر مهال ورکول کېږي. <strong>↻ New codes for all rooms</strong> د کوټو زاړه کارتونه له کاره غورځوي.</p>
+
+  <h3>د مېلمنو راجستر</h3>
+  <p>د <strong>📒 Guest Register</strong> ټب د دوو نېټو ترمنځ هر ننوتل د مېلمه د جزئیاتو، د پېژندنې سند او سفر سره لېست کوي، لکه څنګه چې د پولیسو لپاره ساتل کېږي. د چاپي کاپي لپاره <strong>🖨 Print Register</strong> کلیک کړئ. کله چې پولیس د یوه مېلمه په اړه پوښتنه وکړي، دلته (یا په <strong>🧾 Check-outs</strong> کې) مېلمه وټاکئ او <strong>👤 Guest Details</strong> کلیک کړئ: د هغه مېلمه په اړه ساتل شوي ټول معلومات په یوه پاڼه کې، د <strong>🖨 Print</strong> سره.</p>
+
+  <div class="tip">💡 کارکوونکو ته د Rooms د پردې د کارولو لپاره د <strong>Create sales</strong> اجازه اړینه ده.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9d -->
+<div class="chapter-banner" data-for="restaurant hotel">څپرکی 9d — شریکان <span class="for-badge">د رستورانتونو او هوټلونو لپاره</span></div>
+<div class="section" id="ch9d" data-for="restaurant hotel">
+  <h2>9d. شریکان (د سفر اجنټان، لارښوونکي، د ټکسي چلوونکي)</h2>
+  <p>د سفر اجنټان، د بکینګ ویب پاڼې، سیمه ییز لارښوونکي، د ټکسي چلوونکي او شریک هوټلونه تاسو ته مېلمانه راوړي او کمیشن ګټي. د <strong>🤝 Partners</strong> په پرده کې (د FINANCE لاندې، د رستورانت یا هوټل لپاره) تاسو هر یو ساتئ، Accelent د بل سره د هغوی کمیشن حسابوي، او تاسو یې له هماغه ځایه ورکوئ. کمیشن هیڅکله د مېلمه پر بل نه ښودل کېږي.</p>
+
+  <h3>شریک اضافه کول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🤝 Partners → ➕ New Partner</strong>: نوم، کوم ډول شریک (د سفر اجنټ، د بکینګ ویب پاڼه، لارښوونکی، د ټکسي چلوونکی، شریک هوټل) او د تلیفون شمېره.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>پر کوټو کمیشن:</strong> <em>د کوټې د کرایې %</em>، <em>په شپه ₹</em> یا <em>په اوسېدو ₹</em>. <strong>د رستورانت پر بلونو:</strong> د هغو مېلمنو د خوړو بل % چې دوی یې راوړي (که نه وي 0).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">که وغواړئ د هغوی <strong>PAN</strong> (د TDS لپاره) او <strong>GSTIN</strong>. <strong>Save</strong> کلیک کړئ. هر شریک د <strong>DRV001</strong> (چلوونکي)، <strong>GDE001</strong> (لارښوونکي) یا <strong>AGT001</strong> (اجنټان) په څېر کوډ ترلاسه کوي.</div></div>
+
+  <h3>کله چې مېلمانه راوړي</h3>
+  <ul>
+    <li><strong>کوټې:</strong> د <strong>Check In</strong> په کړکۍ کې <strong>Booked through</strong> وټاکئ. د هغوی معمول کمیشن ښکاري؛ که د دې اوسېدو لپاره مو بل څه سره موافقه کړې وي بدل یې کړئ. د وتلو پر مهال کمیشن د شپو د کوټې پر کرایه (د اضافي بستر او د کوټې اضافو سره، له GST مخکې؛ د جامو مینځل او نور خدمات نه شمېرل کېږي) حسابېږي، جمع د کوټې پر بل د هر خوړو باندې د هغوی د رستورانت %.</li>
+    <li><strong>رستورانت:</strong> د <strong>Bill</strong> په کړکۍ کې <strong>Brought by</strong> وټاکئ. کمیشن له GST مخکې د خوړو د هغوی د رستورانت % دی.</li>
+    <li><strong>QR امر:</strong> مېلمانه کولی شي د امر په پاڼه کې د چلوونکي یا لارښوونکي کوډ (لکه DRV001) ولیکي. کله چې ګارسون امر تایید کړي، شریک د مېز پر امر پخپله ټاکل کېږي.</li>
+  </ul>
+  <p>د هغه وتلو یا بل وروسته چې کمیشن یې ګټلی، Accelent پوښتي چې ایا <strong>💵 Pay now</strong> (چلوونکو او لارښوونکو ته ډېری وخت سمدستي نغدې ورکول کېږي) یا وروسته.</p>
+
+  <h3>د کمیشن ورکول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د Partners په پرده کې شریک وټاکئ. صورت حساب هر اوسېدل او بل د خپل کمیشن، هغه څه چې تاسو ورکړي، او پاتې پور سره ښیي. په هره کرښه کې کوټه او شپې، یا مېز، مېلمه او بل لیکل شوي وي. د دې لپاره چې وګورئ کمیشن په کوم اوسېدو یا بل جوړ شوی، په کرښه دوه ځله کلیک وکړئ (یا <strong>🔍 Details</strong> کلیک کړئ)؛ <strong>🖨 Print Statement</strong> یې د شریک لپاره چاپوي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>💵 Pay Commission</strong>: اندازه (پور ډک شوی وي)، او تاسو څنګه ورکړه وکړه: نغدې، UPI، بانکي لېږد یا چک.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ورکړه ستاسو له نغدو یا بانک څخه د <strong>Commission</strong> لاندې <strong>Expenses</strong> ته ځي، نو Day Book، د حساب صورتونه او Profit &amp; Loss یې شاملوي.</div></div>
+  <div class="tip">💡 که وتل یا د رستورانت بل لغوه شي، کمیشن یې پخپله شمېرل بندېږي. که تاسو دمخه ورکړی وي، د شریک بیلانس ښیي چې هغوی تاسو ته څه بېرته پوروړي دي.</div>
+
+  <h3>د شریکانو تنظیمات (مدیر)</h3>
+  <ul>
+    <li><strong>پر یو اوسېدو یا بل تر ټولو ډېر کمیشن:</strong> یو خوندي حد، ترڅو د لیکلو غلطي (د 5% پر ځای 50%) نشي کولی ډېرې پیسې ورکړي.</li>
+    <li><strong>پر کمیشن TDS</strong> (تر هغه بند چې تاسو یې فعال کړئ): کچه (2%، یا پرته له PAN 20%) او هغه کلنۍ اندازه چې شریک یې د TDS له تطبیق مخکې ګټلی شي (₹20,000). شرکت یا فرم باید پر کمیشن TDS کم کړي؛ یو فرد یا HUF یوازې هغه وخت چې د تېر کال د کاروبار ټول پلور له ₹1 کروړ ډېر و (د مسلک لپاره ₹50 لاکه). له خپل محاسب څخه وپوښتئ چې ایا تاسو باید دا وکړئ. ساتل شوی TDS د <em>TDS on commission (payable)</em> په حساب کې د پور په توګه ښودل کېږي تر هغه چې دولت ته یې ورکړئ.</li>
+  </ul>
+
+  <h3>د شریک له مخې کاروبار</h3>
+  <p>د <strong>📊 Business by Partner</strong> ټب، د هرې نېټې لپاره، ښیي چې هر شریک څو بلونه راوړي، کاروبار (د کوټې کرایه او خواړه) او د هغوی کمیشن، هغه څه چې تاسو ورکړي او لا پور دي، تر ټولو لوی لومړی.</p>
+
+  <div class="tip">💡 کارکوونکو ته د Partners د پردې د کارولو لپاره د <strong>Expenses</strong> اجازه اړینه ده. د ننوتلو پر مهال یا پر بل د شریک ټاکل یوازې د Rooms یا Restaurant پردې ته اړتیا لري.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9e -->
+<div class="chapter-banner" data-for="hotel">څپرکی 9e — د کور پاکوالی <span class="for-badge">د هوټلونو، مېلمستونونو او مېلمه خونو لپاره</span></div>
+<div class="section" id="ch9e" data-for="hotel">
+  <h2>9e. د کور پاکوالی (د کوټو پاکول او جامې مینځل)</h2>
+  <p>د <strong>🧹 Housekeeping</strong> پرده (د FINANCE لاندې، د هوټل لپاره) ستاسو د کارکوونکو لپاره د پاکولو او جامو مینځلو کارونه لېست کوي. ډېری کارونه پخپله ښکاري:</p>
+  <ul>
+    <li><strong>وتل</strong> د <em>Clean the room</em> کار جوړوي. کله چې ترسره شي، کوټه پخپله د راتلونکي مېلمه لپاره <strong>Ready</strong> کېږي (د Rooms په پرده کې د <strong>✨ Room Is Ready</strong> کېکاږل یې هم پای ته رسوي).</li>
+    <li><strong>هر سهار</strong> په هغه وخت چې تاسو یې ټاکئ، د هرې نیول شوې کوټې لپاره د <em>Daily cleaning</em> کار جوړېږي.</li>
+    <li><strong>مېلمانه</strong> کولی شي د کوټې پر QR کارت <strong>🧹 Clean my room</strong> یا <strong>👕 Laundry pickup</strong> ټک کړي (کله چې QR امر فعال وي). PC بیپ کوي او غوښتنه په سر کې ښیي. که ورځنی پاکول انتظار کې و، د مېلمه غوښتنه یې ځای نیسي.</li>
+    <li>مخکینی مېز کولی شي د <strong>➕ New Task</strong> سره هر کار اضافه کړي.</li>
+  </ul>
+
+  <h3>څوک یې کوي</h3>
+  <p>په <strong>⚙ Housekeeping Settings</strong> (مدیر) کې، په دنده کارکوونکي نښه کړئ (لومړی یې په 👥 Employees کې اضافه کړئ). هر نوی کار هغه چا ته ځي چې تر ټولو لږ خلاص کارونه لري؛ <strong>👤 Give to…</strong> یې بدلوي. د Rooms پرده ښیي چې څوک هغه کوټه پاکوي چې د پاکولو انتظار باسي.</p>
+
+  <h3>کار ترسره کول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">کار وټاکئ او <strong>▶ Start</strong> (اختیاري)، بیا کله چې بشپړ شي <strong>✓ Done</strong> کلیک کړئ. <strong>✕ Cancel task</strong> هغه کار لرې کوي چې اړتیا ورته نشته.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>جامې مینځل:</strong> کله چې جامې له کوټې واخیستل شي <strong>👕 Collected</strong> کلیک کړئ. کله چې بېرته راشي، <strong>✓ Laundry returned…</strong> کلیک کړئ او د هر ډول څو ټوټې داخل کړئ. ټولټال د جامو مینځلو د GST سره (18% که یې بدل نه کړئ) د مېلمه د کوټې بل ته ځي.</div></div>
+  <div class="tip">💡 د جامو مینځلو د بیو لېست (کمیس، پتلون، ساړي…)، پر جامو مینځلو GST او د ورځني پاکولو وخت په <strong>⚙ Housekeeping Settings</strong> کې دي. د <strong>✓ Done today</strong> ټب نن بشپړ شوي کارونه، د چا له خوا، او چارج شوې جامې مینځل لېست کوي.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 10 -->
+<div class="chapter-banner">څپرکی 10 — پېرودونه</div>
+<div class="section" id="ch10">
+  <h2>10. د پېرود پینل</h2>
+  <p>له عرضه کوونکو هر د پېرود بل دلته ثبت کړئ. سټاک زیاتېږي او عرضه کوونکي ته د ورکړې بیلانس پخپله څارل کېږي.</p>
+
+  <h3>د پېرود ثبتول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>+ New Purchase</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">لومړی <strong>Vendor Name</strong> وټاکئ یا ولیکئ — د هغه لاندې هر څه همدې ته ځواب ورکوي. د موجود عرضه کوونکي لپاره، پته/تلیفون/GSTIN پخپله ډکېږي او د هغوی معمول توکي مستقیم د Order Items جدول ته راځي، هر یو دمخه نښه شوی او چمتو.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د هر هغه قطار (☑) نښه لرې کړئ چې نه غواړئ په دې بل کې شامل وي. د اړتیا سره سم د هر قطار Qty/Rate/GST% برابر کړئ — Amount او په ښکته کې Subtotal/GST/Grand Total په ژوندي ډول تازه کېږي.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">هر هغه څه چې لا په جدول کې نه وي د سکین کولو سره اضافه کړئ (د Order Items په سر کې د <strong>📷</strong> ساحه + <strong>📱 Scan with Phone</strong>)، یا د جدول لاندې د <strong>➕ Add Item to Same Vendor</strong> له لارې یو بالکل نوی محصول ثبت کړئ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">په Bill Details کې Bill Number، Bill Date او Payment Method (Cash / Bank Transfer / Cheque / Card / UPI / Credit to Vendor) ډک کړئ.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>💾 Save Purchase</strong> کلیک کړئ. سټاک او د عرضه کوونکي بیلانس سمدستي تازه کېږي. که د ورته توکو او ټولټال سره یو بل په 60 ورځو کې (د هر عرضه کوونکي لاندې) دمخه خوندي شوی وي، Accelent د دوهم ځل له خوندي کولو مخکې پوښتي.</div></div>
+  <div class="tip">💡 <strong>د بل سمول یا پاکول:</strong> په بلونو لېست کې یې وټاکئ او <strong>✏️ Edit Bill</strong> یا <strong>❌ Delete Bill</strong> کلیک کړئ. سمون سټاک او د عرضه کوونکي حساب د سم شوي بل سره برابروي. هغه بل چې د غلط عرضه کوونکي لاندې خوندي شوی غوره دا ده چې پاک او د سم عرضه کوونکي لاندې بیا داخل شي — پاکول یې سټاک، د حساب ثبت او GST بېرته اړوي، او یوه کاپي په Deletion Watcher کې ساتي. له پاکولو وروسته، Accelent وړاندیز کوي چې د بل هغه توکي چې اوس بل چېرته نه کارول کېږي په همدې ګام کې پاک کړي. هغه بل چې سامان یې دمخه پلورل شوی نشي پاکېدی؛ د Edit Bill سره یې سم کړئ، یا بېرته لېږل شوی سامان د Returns → Purchase Returns لاندې ثبت کړئ.</div>
+
+  <h3>د عرضه کوونکي او توکي ترکیبونه</h3>
+  <p>د Order Items جدول او د <strong>➕ Add Item to Same Vendor</strong> پینل د څلورو حالتونو سره سمون خوري، د دې پر بنسټ چې هغه عرضه کوونکی او توکی چې تاسو یې اخلئ دمخه په Accelent کې شته که نه. د <strong>Vendor Name</strong> ساحه تل هغه څه ټاکي چې تاسو یې لاندې وینئ، نو لومړی عرضه کوونکی وټاکئ یا ولیکئ.</p>
+
+  <h4>1. موجود عرضه کوونکی + موجود توکی</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">په <strong>Vendor Name</strong> کې د عرضه کوونکي نوم لیکل پیل کړئ او له ډراپ ډاون څخه یې وټاکئ. پته، تلیفون او GSTIN یې پخپله ډکېږي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د Order Items جدول د هر هغه څه سره پخپله ډکېږي چې تاسو مخکې له دې عرضه کوونکي اخیستي، هر قطار دمخه نښه شوی. هر هغه څه چې دا ځل یې نه اخلئ نښه یې لرې کړئ — په قصدي ډول د پاکولو تڼۍ نشته، نو په جدول کې هیڅ شی په ناڅاپي ډول له ذخیرې نشي لرې کېدی.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د هر هغه څه Qty تازه کړئ چې اخلئ یې، بیا یې خوندي کړئ.</div></div>
+
+  <h4>2. موجود عرضه کوونکی + نوی توکی</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">لکه پورته موجود عرضه کوونکی وټاکئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">په <strong>➕ Add Item to Same Vendor</strong> کې Name، Category، Buy Rate، GST%، Sell Price او Qty ډک کړئ. د اوتومات توکي کوډ لپاره د Code تر څنګ <strong>🔍 Generate</strong> کلیک کړئ، یا خپل ولیکئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>✅ Add Item to Purchase</strong> کلیک کړئ. توکی جوړېږي، له دې عرضه کوونکي سره نښلي، او د Order Items جدول ته اضافه کېږي.</div></div>
+
+  <h4>3. نوی عرضه کوونکی + نوی توکی</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د عرضه کوونکي هغه نوم ولیکئ چې لا شتون نه لري. پته/تلیفون/GSTIN به خالي وي — که یې لرئ ډک یې کړئ (اختیاري).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ځکه چې د دې عرضه کوونکي لپاره لا تاریخچه نشته، د Order Items جدول خالي پیلېږي — دا تمه کېدونکې ده، تېروتنه نه ده.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>➕ Add Item to Same Vendor</strong> دقیقاً لکه په 2 حالت کې وکاروئ. Accelent نوی عرضه کوونکی او نوی توکی دواړه په هغه شېبه کې جوړوي چې تاسو پېرود خوندي کړئ.</div></div>
+
+  <h4>4. نوی عرضه کوونکی + موجود توکی</h4>
+  <p>دا د هغه محصول اخیستل دي چې تاسو یې دمخه ساتئ له هغه عرضه کوونکي څخه چې مخکې مو ترې نه دی اخیستی — لکه ستاسو معمول عرضه کوونکی سټاک نه لري او تاسو د ورته توکي لپاره څوک نوی ازمویئ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د نوي عرضه کوونکي نوم ولیکئ (د Order Items جدول خالي پاتې کېږي — د لومړي پېرود لپاره عادي ده).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د توکي بارکوډ سکین کړئ، یا یې دقیق بارکوډ/د توکي کوډ د سکین په ساحه کې ولیکئ او Enter کېکاږئ. د دې ځانګړي حالت لپاره اوس د نوم له مخې لټون نشته — موجود توکی دلته یوازې د خپل کوډ/بارکوډ له لارې راوړل کېدی شي.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">پېرود خوندي کړئ. د توکي خپل جزئیات نه بدلېږي — Accelent یوازې ثبتوي چې تاسو یې له دې عرضه کوونکي څخه، په دې نرخ هم اخیستلی شئ.</div></div>
+
+  <div class="good">✅ د ورته توکي اخیستل له دوهم یا درېیم عرضه کوونکي څخه هیڅکله د هغه موجود جزئیات نه بدلوي یا نه خرابوي. Accelent د هر توکي لپاره د هر عرضه کوونکي جلا د بیې/نېټې ثبت ساتي، نو د یو پېرود لپاره د نوي عرضه کوونکي ازمویل هیڅکله ستاسو پر نورو اړیکو اغېز نه کوي.</div>
+
+  <h3>د بارکوډ سکین او حالت</h3>
+  <p>د توکي د مستقیم پېرود ته اضافه کولو لپاره د Order Items په سر کې د <strong>📱 Scan with Phone</strong> سره سکین کړئ (یا د بارکوډ په ساحه کې ولیکئ او Enter کېکاږئ).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">که بارکوډ د هغه توکي سره سمون ولري چې دمخه په ذخیره کې دی، جدول ته اضافه کېږي — یا، که دمخه په دې بل کې وي، Qty یې د تایید پیغام سره 1 زیاتېږي ترڅو تاسو تل پوه شئ چې څه وشول.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">که له هیڅ شي سره سمون ونه لري، Accelent همدا وايي او تاسو لاندې <strong>➕ Add Item to Same Vendor</strong> ته لارښوونه کوي ترڅو یې د نوي محصول په توګه ثبت کړئ.</div></div>
+
+  <p>د Order Items په جدول کې هر قطار په <strong>🔖</strong> ستون کې خپل د بارکوډ حالت هم ښیي:</p>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><strong>✓ Barcode</strong> (شین) — دا توکی دمخه خوندي شوی بارکوډ لري. د هغه بارکوډ د لرې کولو لپاره پرې کلیک وکړئ، لکه که سکین غلط کوډ نښلولی وي.</div></div>
+  <div class="step"><div class="step-num">+</div><div class="step-body"><strong>+📷</strong> (آبي) — لا بارکوډ نشته. د خپل تلیفون سره د سکین او نښلولو لپاره پرې کلیک وکړئ.</div></div>
+  <div class="step"><div class="step-num">🗑</div><div class="step-body"><strong>🗑 Clear Barcode</strong> — د هغه بارکوډ لپاره ځانګړې بیا ټاکلو تڼۍ چې نښلول شوی خو سم نه دی نیولی شوی، ترڅو یې له سره سکین کړئ. یوازې هغه وخت فعالېږي چې توکی د لرې کولو لپاره بارکوډ ولري.</div></div>
+
+  <div class="tip">💡 <strong>➕ Add Item to Same Vendor</strong> تل نوی توکی له هغه عرضه کوونکي سره نښلوي چې اوس په <strong>Vendor Name</strong> کې دی — نوی یا موجود — نو د نوي توکي له ثبتولو مخکې د عرضه کوونکي ساحه دوه ځله وګورئ، په ځانګړي ډول کله چې د یوې رسونې څو محصولات پرله پسې سکین کوئ.</div>
+
+  <h3>📷 Scan Vendor Bill — ټول کاغذي بل پخپله لوستل</h3>
+  <p>د عرضه کوونکي د بل د هرې کرښې د لاسي لیکلو پر ځای، عکس یې واخلئ او Accelent ته اجازه ورکړئ چې د توکو کرښې، HSN کوډونه او GST مستقیم له عکس څخه ولولي. دا بشپړ ستاسو په خپل کمپیوټر چلېږي — انټرنیټ نه کارول کېږي، او عکس هیڅکله چېرته نه لېږل کېږي.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">لومړی <strong>Vendor Name</strong> وټاکئ یا ولیکئ، بیا <strong>📷 Scan Vendor Bill</strong> کلیک کړئ. د بل عکس وټاکئ — روښانه، ښه رڼا لرونکی عکس تر ټولو ښه کار کوي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د سکین له پیل مخکې، که اړتیا وي د <strong>Rotate Left / Rotate Right</strong> سره عکس سم کړئ — سم عکس په څو ثانیو کې سکین کېږي، یو اړخیز عکس ډېر وخت نیسي ځکه چې خپل لوری پخپله پیدا کوي. کله چې سم ښکاري <strong>▶ Start Scan</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د بیاکتنې پرده په یو اړخ کې د بل عکس او په بل اړخ کې د موندل شویو شیانو د سمون وړ جدول سره خلاصېږي. په سر کې د <strong>Reconciliation Status</strong> بنر وګورئ — تاسو ته وايي چې ایا د توکو کرښې د بل له خپل چاپ شوي ټولټال سره برابرې دي.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">پر هر قطار کلیک وکړئ ترڅو مستقیم د بل پر عکس هغه ځای ته لاړ شئ چې له کوم ځایه راغلی. هر هغه څه چې غلط لوستل کېږي سم کړئ — Description، Category، HSN/SAC، Qty، Unit، Rate او GST% ټول د سمون وړ دي. هغه قطار چې Accelent یې په ډاډ نشي لوستلی <strong>⚠️</strong> ښیي؛ نشت ولیکئ او <strong>✅</strong> ته تازه کېږي. د هر هغه قطار نښه لرې کړئ چې نه یې غواړئ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">هغه قطار چې تشریح یې د Inventory له موجود توکي سره سمون لري — له هر عرضه کوونکي اخیستل شوی — د Category په ستون کې د خپل کوډ سره <strong>✓ existing item</strong> ښیي؛ اندازه یې هغه توکي ته اضافه کېږي. هر بل قطار نوی توکی کېږي او <strong>Category</strong> ته اړتیا لري، ځکه چې کټګوري د توکي کوډ ټاکي. Apply دروي او هر هغه نوي قطار ته اشاره کوي چې کټګوري نه لري.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">د <strong>Bulk Actions</strong> څخه کار واخلئ ترڅو څو قطارونه په یو ځل ستاسو له موجود لېست سره پخپله برابر کړئ، یا یې کټګورۍ ته ورکړئ — هر هغه څه چې منځنی ډاډ لري د تایید پاپ اپ خلاصوي ترڅو هیڅ شی په چوپتیا له غلط محصول سره برابر نه شي.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">وټاکئ چې څنګه پای ته ورسوئ:<br>• <strong>💾 Last Page — Save Now</strong> — پېرود سمدستي خوندي کوي (پر یو پاڼي بل، یا په وروستۍ پاڼه کې یې وکاروئ). د تایید بکس دقیق Vendor، Goods Amount، GST او Grand Total ښیي — وګورئ چې له بل سره برابر دی، بیا یې تایید کړئ.<br>• <strong>📷 More Pages? Scan Next</strong> — د هغه بل لپاره چې پر څو پاڼو چاپ شوی: د دې پاڼې توکي اضافه کوي او د راتلونکې پاڼې لپاره د عکس ټاکونکی خلاصوي. په وروستۍ پاڼه کې <em>Last Page — Save Now</em> وکاروئ؛ ټولې پاڼې د یو پېرود په توګه یوځای خوندي کېږي.<br>• <strong>✅ Apply (Save Later)</strong> — پرته له خوندي کولو توکي د New Purchase فورمې ته اضافه کوي، ترڅو تاسو یې هلته وګورئ او <strong>Save Purchase</strong> پخپله کلیک کړئ.</div></div>
+  <figure class="shot"><a href="manual_images/bill-scan-review.png" target="_blank"><img src="manual_images/bill-scan-review.png" alt="Bill Scan Review screen" loading="lazy"></a><figcaption>Bill Scan Review — په کیڼ اړخ د بل عکس، په ښي اړخ موندل شوي توکي، او په سر کې Reconciliation Status.</figcaption></figure>
+
+  <div class="good">✅ په جدول کې مو تېروتنه وکړه؟ Ctrl+Z وروستی سمون، اضافه، لرې کول یا bulk action بېرته اړوي — دلته هیڅ شی دایمي نه دی تر هغه چې په رښتیا یې خوندي نه کړئ. او که په منځ کې ګډوډي راشي (اپ وتړل شي، کمپیوټر خوب ته لاړ شي)، د ورته عکس بیا ټاکل وړاندیز کوي چې دقیقاً له هماغه ځایه پیل کړئ چېرته چې مو پرېښی و.</div>
+  <div class="tip">💡 دا د هغه بالکل نوي عرضه کوونکي لپاره هم کار کوي چې د پېرود تاریخچه نه لري — هغه کرښې چې له موجودو توکو سره سمون لري هغوی ته اضافه کېږي، او پاتې نوي توکي کېږي، لکه څنګه چې یو په لاس اضافه کېږي. Scan Vendor Bill سیمه ییزو AI برخو ته اړتیا لري چې په هر نصب کې نه وي؛ که ووايي چې شتون نه لري، د Accelent پر نورو برخو اغېز نه کوي.</div>
+  <div class="tip">💡 <strong>سرعت:</strong> د 8 GB RAM لرونکي PC په سکین ژر پای ته رسېږي؛ د 4 GB سره لا هم کار کوي خو ډېر وخت نیسي — پرېږدئ چې وچلېږي. <strong>وړیا آزموینه:</strong> 15 بل سکینونه شامل دي؛ له هغه وروسته، سکین فعال جواز ته اړتیا لري (نور هر څه د آزموینې تر پایه کار کوي). د ګډون سره، سکین بې حده دی.</div>
+
+  <h3>د پېرود بېرته ورکړې</h3>
+  <p>عرضه کوونکي ته د بېرته ورکړل شوي سامان د ثبتولو لپاره <strong>Returns</strong> پینل → د <strong>Purchase Returns</strong> ټب ته لاړ شئ. د ډیبټ نوټ جوړېږي او سټاک کمېږي. د بېرته ورکړې اندازه هم ستاسو د Purchases له شمېرې څخه د Profit &amp; Loss، Trading Account او Balance Sheet په راپورونو کې کمېږي.</p>
+
+  <div class="tip">💡 د پېرود د ثبتولو پر مهال تل <strong>د عرضه کوونکي د بل شمېره</strong> داخل کړئ — دا د ځانګړو پېرودونو موندل اسانه کوي او د GST د برابرولو لپاره اړینه ده.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 11 -->
+<div class="chapter-banner">څپرکی 11 — لګښتونه او رسیدونه</div>
+<div class="section" id="ch11">
+  <h2>11. لګښتونه او رسیدونه</h2>
+
+  <h3>د لګښتونو پینل</h3>
+  <p>د کاروبار ټول لګښتونه دلته ثبت کړئ: کرایه، برېښنا، د معاش پیش پرداخت، ټرانسپورټ، د دفتر لوازم او نور.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>+ Add Expense</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Category (Rent / Electricity / Salary / Transport / Other) وټاکئ، اندازه، د ورکړې طریقه (Cash یا Bank) او لنډ تشریح داخل کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Save</strong> کلیک کړئ. د نغدو یا بانک بیلانس په همدې اندازه کمېږي.</div></div>
+
+  <h3>تکرارېدونکي لګښتونه</h3>
+  <p>د هغو لګښتونو لپاره چې د یو مهالوېش سره تکرارېږي (میاشتنۍ کرایه، د برېښنا او اوبو بلونه)، د <strong>Recurring Expenses</strong> پینل وکاروئ:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Recurring Expenses</strong> ته لاړ شئ → <strong>+ New Template</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د لګښت نوم، اندازه، کټګوري او د تکرار مهالوېش (میاشتنی، اونیز او نور) وټاکئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">کله چې وخت یې راشي Accelent تاسو ته یادونه کوي او لګښت پخپله ثبتولی شي.</div></div>
+
+  <h3>د رسیدونو پینل</h3>
+  <p>د Receipts پینل د ټولو ترلاسه شویو او ورکړل شویو پیسو کتاب دی — راټولې شوې نغدې، عرضه کوونکو ته ورکړې، بانکي لېږدونې، او د معاشونو ورکړې. دا له پلور، پېرود او لګښتونو څخه پخپله ډکېږي. تاسو کولی شئ دلته یو جلا رسید هم ثبت کړئ (لکه کله چې یو پور پېرودونکی خپل پاتې بیلانس ورکړي).</p>
+
+  <div class="tip">💡 کله چې یو پور پېرودونکی تاسو ته ورکړه وکړي، <strong>Receipts → + New Receipt</strong> ته لاړ شئ، پېرودونکی وټاکئ، او ترلاسه شوې اندازه داخل کړئ. د هغه پاتې بیلانس پخپله کمېږي.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 12 -->
+<div class="chapter-banner">څپرکی 12 — حسابونه او لېږدونې</div>
+<div class="section" id="ch12">
+  <h2>12. حسابونه او لېږدونې</h2>
+
+  <h3>د حسابونو پینل</h3>
+  <p>ستاسو د پیسو ټول حسابونه ښیي — نغدې، او هر بانکي حساب. د هر حساب لپاره تاسو لیدلی شئ:</p>
+  <ul>
+    <li>اوسنی بیلانس (تل ژوندی)</li>
+    <li>د نېټو او تشریحاتو سره د راکړو ورکړو بشپړه تاریخچه</li>
+    <li>د ډیبټ (راتلونکې پیسې) او کریډټ (وتونکې پیسې) ستونونه</li>
+  </ul>
+
+  <h3>د پېرودونکي د پور صورت حساب</h3>
+  <p><strong>Accounts → Credit Manager → Customer Statement</strong> ته لاړ شئ، د پېرودونکي د نوم هره برخه ولیکئ (د لیکلو پر مهال وړاندیزونه ښکاري) او <strong>Show Statement</strong> یا Enter کېکاږئ. صورت حساب ټول پور، ورکړل شوې اندازه او لا پاتې، هر د پور انوایس، په هر انوایس کې <strong>په پور اخیستل شوي توکي</strong>، او هره ترلاسه شوې ورکړه ښیي. <strong>Print</strong> پېرودونکي ته همغه صورت حساب په A4 ورکوي.</p>
+
+  <h3>بانکي حساب اضافه کول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Accounts</strong> ته لاړ شئ → د Bank Accounts لاندې، <strong>➕ Add New Bank</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د بانک نوم، د حساب شمېره، او پرانیستونکی بیلانس (ستاسو د پیل په نېټه له بانکي صورت حساب) داخل کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save کلیک کړئ. بانکي حساب اوس د ورکړې په ټولو ډراپ ډاونونو کې ښکاري (Sales، Purchases، Expenses).</div></div>
+
+  <h3>د لېږدونو پینل</h3>
+  <p>کله چې د خپلو حسابونو ترمنځ پیسې لېږدوئ د Transfers پینل وکاروئ — لکه نغدې په خپل بانکي حساب کې جمع کول، یا د دوو بانکي حسابونو ترمنځ لېږد.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Transfers</strong> ته لاړ شئ. په <strong>Inter-Accounts Transfer</strong> کې، <strong>Paid From</strong> (لکه Cash in Hand) او <strong>Received In</strong> (لکه HDFC Bank) وټاکئ — د هر یو شته بیلانس یې څنګ ته ښودل کېږي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Amount او Date داخل کړئ، او که وغواړئ Reference او Description.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Add Transfer</strong> کلیک کړئ. نغدې کمېږي، بانک زیاتېږي — دواړه بیلانسونه تازه کېږي. دا د Recent Transfers لاندې ښکاري.</div></div>
+  <figure class="shot"><a href="manual_images/transfers.png" target="_blank"><img src="manual_images/transfers.png" alt="Transfers" loading="lazy"></a><figcaption>Transfers — په کیڼ اړخ د لېږد فورمه، په ښي اړخ Transfer History Search.</figcaption></figure>
+  <p>د نېټې او حساب له مخې د زړو لېږدونو د موندلو لپاره په ښي اړخ کې <strong>Transfer History Search</strong>، او د چاپ لپاره <strong>Print Report</strong> وکاروئ.</p>
+
+  <div class="warn">⚠ هیڅکله بانکي جمع د "عاید" یا "رسید" په توګه مه ثبتوئ — تل د Transfers پینل وکاروئ. په بل ځای کې یې ثبتول به ستاسو د عاید شمېرې ډېرې وښيي.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 13 -->
+<div class="chapter-banner">څپرکی 13 — راپورونه او د پور موده</div>
+<div class="section" id="ch13">
+  <h2>13. راپورونه، د معلوماتو پرتله او د پور د مودې راپور</h2>
+
+  <h3>د معلوماتو پرتلې (راپورونو) پینل</h3>
+  <p>مالي لنډیزونه او پرتلې جوړوي:</p>
+  <ul>
+    <li><strong>میاشتنی پلور د پېرود په پرتله</strong> — د هرې میاشتې ټولټال ښودونکی بار چارټ او جدول</li>
+    <li><strong>خالصه ګټه</strong> — پلور منفي پېرود او لګښتونه</li>
+    <li><strong>د اړخ صورت حساب</strong> — ستاسو او د هر اړخ ترمنځ د راکړو ورکړو بشپړه تاریخچه</li>
+    <li><strong>د حساب صورت حساب</strong> — د یو ځانګړي نغدو یا بانکي حساب ټولې راکړې ورکړې</li>
+  </ul>
+  <p>د راپور د فایل په توګه د خوندي کولو لپاره د <strong>Export (Ctrl+E)</strong> تڼۍ، یا د مستقیم چاپ لپاره <strong>Print (Ctrl+P)</strong> وکاروئ.</p>
+
+  <h3>د پور د مودې د راپور پینل</h3>
+  <p>Aging Report ښیي چې ستاسو د پېرودونکو پاتې انوایسونه څومره وخت نه دي ورکړل شوي، او ستاسو د عرضه کوونکو بلونه څومره وخت د ورکړې دي.</p>
+  <table>
+    <tr><th>د مودې ډله</th><th>معنا</th></tr>
+    <tr><td>0–30 ورځې</td><td>وروستی — د پور عادي موده</td></tr>
+    <tr><td>31–60 ورځې</td><td>زړېږي — تعقیب وړاندیز کېږي</td></tr>
+    <tr><td>61–90 ورځې</td><td>موده تېره — له اړخ سره اړیکه ونیسئ</td></tr>
+    <tr><td>90+ ورځې</td><td>ډېره موده تېره — کلک یې کړئ یا یې له حسابه وباسئ</td></tr>
+  </table>
+  <p>دا راپور وکاروئ ترڅو وپېژنئ چې کوم پېرودونکي د تعقیب تلیفون ته اړتیا لري او د کومو عرضه کوونکو بلونه بیړنۍ ورکړې ته اړتیا لري.</p>
+
+  <h3>د Finalization پینل</h3>
+  <p>د مالي کال په پای کې، د خپل <strong>Profit &amp; Loss Statement</strong> او <strong>Balance Sheet</strong> د جوړولو لپاره <strong>Finalization</strong> ته لاړ شئ. دا راپورونه ستاسو د محاسب یا پلټونکي لپاره چاپ یا صادرېدی شي.</p>
+  <p>Finalization مالي کال هم تړي. د تېر کال د لیدلو لپاره، د کړکۍ په ښکته کې د حالت له پټې څخه مالي کال بدل کړئ.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 14 -->
+<div class="chapter-banner">څپرکی 14 — کارکوونکي او معاشونه</div>
+<div class="section" id="ch14">
+  <h2>14. کارکوونکي او معاشونه</h2>
+  <p>Accelent ستاسو د کارکوونکو ثبتونه ساتي، د حاضرۍ، اضافه کارۍ او پیش پرداختونو څخه د هرې میاشتې معاش حسابوي، له نغدو یا بانکي حساب څخه یې ورکوي، او هر کارکوونکي ته د معاش پاڼه ورکوي — چاپ شوې یا په WhatsApp کې. لاندې ګامونه یوه میاشت له پیل څخه تر پایه تعقیبوي.</p>
+
+  <h3>Accelent څنګه معاش حسابوي</h3>
+  <p>هر کارکوونکی یو <strong>د معاش ډول</strong> لري. هغه <strong>Amount</strong> چې تاسو یې داخلوئ د هر یو لپاره بېله معنا لري:</p>
+  <table>
+    <tr><th>د معاش ډول</th><th>Amount معنا لري</th><th>د میاشتې معاش</th></tr>
+    <tr><td><strong>Fixed</strong></td><td>په میاشت کې</td><td>میاشتنی معاش ÷ د کار ورځې × کار شوې ورځې</td></tr>
+    <tr><td><strong>Daily</strong></td><td>په ورځ کې</td><td>ورځنی مزد × کار شوې ورځې</td></tr>
+    <tr><td><strong>Hourly</strong></td><td>په ساعت کې</td><td>د ساعت مزد × په ورځ د کار ساعتونه × کار شوې ورځې</td></tr>
+    <tr><td><strong>Piece</strong></td><td>په ټوټه (یا ستاسو واحد)</td><td>تولید شوي واحدونه × د واحد نرخ</td></tr>
+  </table>
+  <p><strong>کار شوې ورځې</strong> = حاضري − رخصتۍ. <strong>اضافه کاري</strong> (Fixed، Daily، Hourly) = د ساعت نرخ × د اضافه کارۍ ساعتونه × د اضافه کارۍ ضرب (لکه 1.5). <strong>خالص معاش</strong> = بنسټیز معاش + اضافه کاري − راټول شوي پیش پرداختونه. هغه میاشت چې کارکوونکی پکې شامل شوی د شاملېدو له نېټې حسابېږي.</p>
+
+  <h3>کارکوونکی اضافه کول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Employees</strong> ته لاړ شئ → <strong>➕ Add Employee</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">نوم، دنده، <strong>د موبایل شمېره</strong> (د معاش پاڼې په WhatsApp کې ورته ځي)، پته او <strong>د شاملېدو نېټه</strong> داخل کړئ. په نېټو کې ورځ لومړی راځي: <code>01/08/2026</code> د 2026 د اګست 1 ده؛ تاسو یې له جنتري هم ټاکلی شئ. که وغواړئ د پېژندنې سند او ضامن اضافه کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Salary Type</strong> وټاکئ او <strong>Amount</strong> داخل کړئ — بکس <em>/ month</em>، <em>/ day</em>، <em>/ hour</em> یا <em>/ unit</em> ښیي ترڅو وګورئ چې څه معنا لري. د ټوټې کار لپاره، د واحد نوم هم داخل کړئ (لکه <em>pieces</em>).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">په میاشت کې د کار ورځې، په ورځ د کار ساعتونه او د اضافه کارۍ ضرب وټاکئ، بیا <strong>Save Employee</strong> کلیک کړئ.</div></div>
+
+  <h3>د معاش پاڼه</h3>
+  <p>یو کارکوونکی وټاکئ او <strong>📊 Salary Spreadsheet</strong> کلیک کړئ. دا د کارکوونکي له شاملېدو را په دې خوا هره <strong>بشپړه شوې میاشت</strong> لېست کوي — اوسنۍ میاشت هغه وخت ښکاري چې پای ته ورسېږي. د هرې میاشتې لپاره تاسو کولی شئ <strong>Attendance</strong>، <strong>Leaves</strong>، <strong>OT Hours</strong>، <strong>Advances</strong> او، د ټوټې کارګرانو لپاره، <strong>Units</strong> بدل کړئ؛ د لیکلو پر مهال Base Pay، OT Pay، Gross او Net Payable تازه کېږي. د <strong>Status</strong> ستون ⏳ Pending، 📝 Saved, not paid، یا ✅ Paid ښیي.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>💾 Save (not paid yet)</strong> پرته له کومې ورکړې هغه څه ساتي چې تاسو داخل کړي. د میاشتې پر مهال یې وکاروئ؛ بل ځل پاڼه ستاسو ثبتونه ښیي. که پاڼه د نه خوندي شویو بدلونونو سره وتړئ، Accelent لومړی پوښتي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>له ورکړې مخکې وګورئ:</strong> میاشت وټاکئ او <strong>🖨 Payslip</strong> کلیک کړئ. د هغې میاشتې لپاره چې لا نه ده ورکړل شوې تاسو یوه خړه <strong>DRAFT</strong> د معاش پاڼه ترلاسه کوئ (د <em>Not paid yet</em> نښې سره، پرته له لاسلیک یا مهر) ترڅو د کارکوونکي سره پر شمېرو موافقه وکړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>💰 Pay Salary</strong> هره هغه میاشت ورکوي چې لا نه ده ورکړل شوې: نغدې یا بانکي حساب وټاکئ، او هره میاشت په حسابونو کې ثبتېږي او ✅ Paid نښه کېږي. هغه میاشت چې معاش نه لري (لکه د ټوټې کار چې واحدونه یې نه دي داخل شوي) یوازې هغه وخت ورکول کېږي چې تاسو ووایاست؛ که نه pending پاتې کېږي.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">سمدستي له ورکړې وروسته، Accelent د وروستۍ میاشتې د معاش پاڼه وړاندې کوي: <strong>📄 Send on WhatsApp</strong>، <strong>🖨 View / Print</strong> یا <strong>Later</strong>.</div></div>
+
+  <h3>د معاش پاڼې</h3>
+  <p>د معاش پاڼه ستاسو د شرکت سرلیک او لوګو، د کارکوونکي جزئیات، کار شوې ورځې، رخصتۍ او اضافه کاري، د ورکړې نېټه او هغه حساب چې ترې ورکړل شوي، عاید او کسرونه، <strong>په ټکو کې خالص معاش</strong>، او ستاسو لاسلیک او مهر ښیي (په Settings → 🏢 Company کې <em>Signature &amp; Stamp</em> وګورئ).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د معاش په پاڼه کې، یوه ورکړل شوې میاشت وټاکئ او د لیدلو، چاپ یا د PDF په توګه د خوندي کولو لپاره <strong>🖨 Payslip</strong>، یا <strong>📄 Send Payslip on WhatsApp</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">WhatsApp د یو لنډ پیغام او کاپي شوې د معاش پاڼې PDF سره د کارکوونکي چټ خلاصوي: د ضمیمه کولو لپاره <strong>Ctrl+V</strong> کېکاږئ، بیا <strong>Send</strong> (لکه د بلونو لپاره — <em>په WhatsApp کې د بلونو لېږل</em> وګورئ).</div></div>
+  <div class="tip">💡 د ټولو کارکوونکو ټولې ورکړل شوې میاشتې د <strong>Payroll History</strong> په ټب کې هم دي: میاشت او کال وټاکئ، قطار وټاکئ، او همغه <strong>🖨 Payslip</strong> او <strong>📄 Send Payslip on WhatsApp</strong> تڼۍ وکاروئ (پر قطار دوه ځله کلیک هم د معاش پاڼه خلاصوي).</div>
+
+  <h3>پیش پرداختونه</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">کارکوونکی وټاکئ → <strong>💰 Add Advance</strong> (یا کارکوونکی خلاص کړئ او د <strong>Advances</strong> ټب وکاروئ). نېټه، اندازه، دلیل او هغه نغدې یا بانکي حساب داخل کړئ چې ترې ورکول کېږي. وتونکې پیسې د <em>Employee Advance</em> لګښت په توګه ثبتېږي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Normal</strong> پیش پرداخت کولی شي د یوې میاشتې د معاش تر 40% پورې وي او له هغه څه نه ډېر وي چې کارکوونکي په دې میاشت کې تر اوسه ګټلي. له دې لوی یو <strong>Forced</strong> پیش پرداخت دی او د تاییدوونکي نوم ته اړتیا لري. د ټوټې کارګرانو لپاره د میاشتې معاش د هغوی وروستۍ ورکړل شوې میاشت ده.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">پاتې پیش پرداختونه د راتلونکې نه ورکړل شوې میاشتې د <strong>Advances</strong> په ستون کې ښکاري او له هغه معاش څخه کمېږي. د یوازې یوې برخې د راټولولو لپاره، هلته کوچنۍ اندازه ولیکئ: پاتې د راتلونکې میاشتې لپاره پاتې کېږي.</div></div>
+  <div class="tip">💡 د کارکوونکي د <strong>Advances</strong> په ټب کې، <strong>Extend</strong> د پیش پرداخت اندازه بدلوي — Accelent یوازې توپیر د ورکړل شوي یا بېرته ورکړل شوي په توګه ثبتوي. <strong>Close / Settle</strong> پیش پرداخت بشپړ شوی نښه کوي؛ که کارکوونکي دا په نغدو بېرته ورکړی، هغه پیسې د <strong>Receipts</strong> لاندې ثبت کړئ.</div>
+
+  <h3>په غلطۍ شوې ورکړه سمول</h3>
+  <p>ورکړل شوې میاشت قلفېږي ترڅو په ناڅاپي ډول بدله نه شي. که په غلطه شمېره ورکړل شوې وي: د معاش په پاڼه کې، میاشت وټاکئ → <strong>↩ Undo Payment</strong> → د مدیر پټنوم سره یې تایید کړئ. ورکړه او د هغې د نغدو/بانک ثبت لرې کېږي، هر هغه پیش پرداخت چې راټول کړی و بیا پاتې کېږي، او میاشت د ورته شمېرو سره <em>Saved, not paid</em> ته بېرته ځي — سمې یې کړئ او <strong>💰 Pay Salary</strong> کلیک کړئ. بېرته اړول په <strong>Deletion Watcher</strong> کې ثبتېږي. د تړل شوي مالي کال میاشت نشي بېرته اړول کېدی.</p>
+
+  <h3>څوک څه کولی شي</h3>
+  <p>مدیر معاشونه ویني او کولی شي ورکړه وکړي، ورکړې بېرته واړوي او د معاش پاڼې ولېږي. د کارکوونکي حساب د دې پر ځای <strong>📋 Attendance Sheet</strong> ویني — یوازې حاضري، رخصتۍ، اضافه کاري او واحدونه، د پیسو شمېرې نه — او کولی شي د <strong>💾 Save (not paid yet)</strong> سره ثبتونه خوندي کړي ترڅو مدیر یې ورکړي.</p>
+
+  <h3>کله چې څوک ووځي</h3>
+  <p>کارکوونکی وټاکئ → <strong>🚫 Terminate</strong>. هغه له فعال لېست څخه وځي خو د معاش تاریخچه یې پاتې کېږي؛ <strong>Show Terminated</strong> یې بیا لېست کوي.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 15 -->
+<div class="chapter-banner">څپرکی 15 — د GST راپورونه او برېښنايي انوایس</div>
+<div class="section" id="ch15">
+  <h2>15. د GST راپورونه او برېښنايي انوایس (IRN)</h2>
+
+  <h3>د GST راپورونو پینل</h3>
+  <p>دا پینل تاسو سره مرسته کوي چې د GST د جزئیاتو سره د خپل پلور او پېرود د معلوماتو په لنډولو خپل میاشتني GST راپورونه (GSTR-1، GSTR-3B) چمتو کړئ.</p>
+  <ul>
+    <li><strong>GSTR-1</strong> — بهرنۍ عرضې (ستاسو پلور) — د راتلونکې میاشتې تر 11 پورې سپارل کېږي</li>
+    <li><strong>GSTR-3B</strong> — د ورکړې وړ مالیې سره د پلور او پېرود لنډ راپور — تر 20 پورې سپارل کېږي</li>
+    <li><strong>د GSTR-2B برابرول</strong> — ستاسو د پېرود بلونه ستاسو د عرضه کوونکو له GSTR-2B سره پرتله کوي، ترڅو تاسو یوازې هغه input tax credit وغواړئ چې هغوی راپور کړی</li>
+  </ul>
+  <figure class="shot"><a href="manual_images/gst-dashboard.png" target="_blank"><img src="manual_images/gst-dashboard.png" alt="GST Management" loading="lazy"></a><figcaption>GST Management — په سر کې د دې مودې د مالیې مسؤلیت او input tax credit، او د کتاب، راپورونو، GSTR-2B برابرولو، E-Way Bill او نورو ټبونه.</figcaption></figure>
+  <p>Accelent CGST، SGST او IGST د هغو HSN کوډونو څخه حسابوي چې ستاسو د ذخیرې توکو ته ورکړل شوي. ډاډ ترلاسه کړئ چې په Inventory پینل کې ټولو توکو ته سم HSN کوډ او GST کچه ورکړل شوې.</p>
+  <ul>
+    <li><strong>د تلیفون ثبتونه شامل دي:</strong> په تلیفون کې شوي پلور او پېرودونه لکه د ډیسکټاپ د ثبتونو په څېر د output tax، input tax credit او GST لنډیز کې شمېرل کېږي. د تلیفون ثبتونه ستاسو د خپل ایالت دننه (CGST + SGST) ګڼل کېږي.</li>
+    <li><strong>HSN کوډونه:</strong> د GSTR-1 HSN لنډیز پلور د هر توکي د اصلي HSN کوډ له مخې ډلبندي کوي. د GSTR-1 له صادرولو مخکې، Accelent هغه پلورل شوي توکي لېست کوي چې HSN کوډ نه لري — لومړی یې په Inventory کې اضافه کړئ، بیا یې بیا صادر کړئ.</li>
+    <li><strong>پاک شوي یا سم شوي بلونه:</strong> د بل پاکول یې مالیه له GST Returns څخه لرې کوي، او د پلور سمول یې د مالیې ثبت ځای پر ځای کوي نه دا چې دوهم اضافه کړي.</li>
+  </ul>
+
+  <h3>د برېښنايي انوایس / IRN پینل</h3>
+  <p>هغه کاروبارونه چې کلنی پلور یې د حکومت له حد څخه ډېر وي باید د NIC e-Invoice پورټل له لارې د هر B2B انوایس لپاره یو <strong>IRN (Invoice Reference Number)</strong> جوړ کړي.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>E-Invoice</strong> پینل ته لاړ شئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">له لېست څخه یو انوایس وټاکئ او <strong>Generate IRN</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Accelent د NIC سره سم JSON فایل جوړوي. د IRN او QR کوډ د ترلاسه کولو لپاره یې e-Invoice پورټل ته وسپارئ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">IRN د انوایس سره خوندي کېږي او د انوایس پر کاپي چاپېږي.</div></div>
+
+  <div class="warn">⚠ د خپل برېښنايي انوایس د تطبیق حد او نېټو د تایید لپاره له خپل محاسب یا د مالیې سلاکار سره مشوره وکړئ. قواعد وخت په وخت بدلېږي.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 16 -->
+<div class="chapter-banner">څپرکی 16 — تنظیمات او اداره</div>
+<div class="section" id="ch16">
+  <h2>16. تنظیمات او اداره</h2>
+
+  <p>د Settings پینل شپږ ټبونه لري. هر یو څه کوي:</p>
+
+  <table>
+    <tr><th>ټب</th><th>تاسو څه کولی شئ</th></tr>
+    <tr><td>🔍 Deletion Watcher</td><td>په اپ کې د هر پاک شوي ثبت د پلټنې لار. تاسو کولی شئ جزئیات وګورئ، پاک شوي ثبتونه بېرته راوګرځوئ، یا د لاګ ثبتونه د تل لپاره لرې کړئ. <strong>قلف شوی — د لاسرسي لپاره د مدیر PIN ته اړتیا ده.</strong></td></tr>
+    <tr><td>⚙️ App Settings</td><td>له راکړو ورکړو ټول بیلانسونه بیا حسابول، د ډیټابیس بیک اپ، له بیک اپ څخه بېرته راګرځول، کوډ شوی Cloud Backup جوړول، ډیټابیس بیا ټاکل (خطرناک!)، د ژبې او بڼې بدلول.</td></tr>
+    <tr><td>🏢 Company</td><td>د شرکت نوم، پته، اړیکه، GST/TIN، لوګو، او په انوایسونو او راپورونو کې کارول شوی لاسلیک او د دوکان مهر سمول. <strong>Business Type</strong> په مینو کې پردې ټاکي: <em>Restaurant</em> د Sales، Returns، Aging Report او E-Invoice پر ځای د 🍽 Restaurant پرده ترلاسه کوي (<a href="#ch9b">څپرکی 9b</a> وګورئ)، او <em>Hotel, lodge or guest house</em> 🛏 Rooms هم ترلاسه کوي (<a href="#ch9c">څپرکی 9c</a> وګورئ)؛ بدلون د Accelent له بیا خلاصولو وروسته ښکاري.</td></tr>
+    <tr><td>👥 Users</td><td>د کارکوونکو حسابونه جوړول، ټاکل چې هر یو څه ویني او کوي (🔐 Permissions)، او پرېکړه کول چې څوک د تلیفون اپ کارولی شي. د مدیر حساب اصلي دی — پټنوم یې خوندي وساتئ.</td></tr>
+    <tr><td>🔑 License</td><td>خپل ګډون فعالول یا نوي کول، یا د آزموینې حالت کتل.</td></tr>
+    <tr><td>📊 Balances</td><td>د نغدو، بانکي حسابونو، اړخونو، پېرودونکو او کارکوونکو پرانیستونکي بیلانسونه سمول.</td></tr>
+  </table>
+
+  <h3>🔒 ولې Deletion Watcher قلف دی؟</h3>
+  <p>د Deletion Watcher ټب د یو ډېر مهم دلیل لپاره د <strong>PIN / د مدیر تصدیق</strong> سره خوندي دی: دا د <strong>هر پاک شوي ثبت د بېرته راګرځولو</strong> ځواک لري — انوایسونه، پېرودونه، لګښتونه، د ذخیرې توکي، او نور.</p>
+  <p>که دا ټولو کارکوونکو ته خلاص وای، هر چلوونکی کولی شو:</p>
+  <ul>
+    <li>یو پاک شوی انوایس بېرته راوګرځوي ترڅو پټ کړي چې لرې شوی و</li>
+    <li>د پلټنې بشپړه لار وګوري او پوه شي چې څارل کېږي</li>
+    <li>د لاګ ثبتونه د تل لپاره پاک کړي ترڅو د لاسوهنې شواهد له منځه یوسي</li>
+  </ul>
+  <p>قلف ډاډ ورکوي چې <strong>یوازې د کاروبار مالک یا مدیر</strong> دې حساسې برخې ته لاسرسی لري. هغه کارکوونکي چې د چلوونکو په توګه ننوځي هیڅکله دا ټب نه ویني.</p>
+
+  <h4>Deletion Watcher څنګه خلاص کړو</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🔍 Deletion Watcher</strong> ته لاړ شئ. تاسو به د 🔒 قلف نښه وګورئ — جدول او تڼۍ بندې دي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د <strong>Authenticate</strong> تڼۍ کلیک کړئ او د مدیر پټنوم داخل کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">نښه 🔓 Active ته بدلېږي او د پلټنې بشپړه لار ښکاري.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">کله چې Settings وتړئ یا پینل بدل کړئ پینل پخپله بیا قلفېږي — حتی که تاسو لرې لاړ شئ خوندي یې ساتي.</div></div>
+  <p>هر قطار څلور تڼۍ لري: <strong>V</strong> جزئیات وګورئ، <strong>M</strong> کتل شوی نښه کړئ، <strong>R</strong> بېرته یې راوګرځوئ، <strong>D</strong> ثبت پاک کړئ. په یو ځل پر ډېرو قطارونو د عمل لپاره، یې وټاکئ (کلیک، Shift+کلیک، Ctrl+کلیک یا Ctrl+A)، ښي کلیک وکړئ او <strong>Restore selected</strong>، <strong>Mark selected as reviewed</strong> یا <strong>Delete selected entries permanently</strong> وټاکئ.</p>
+
+  <div class="warn">⚠ <strong>هیڅکله د مدیر پټنوم له کارکوونکو سره مه شریکوئ.</strong> Deletion Watcher ستاسو تر ټولو قوي د بېرته راګرځولو او پلټنې وسیله ده — یوازې د کاروبار مالک باید ورته لاسرسی ولري.</div>
+
+  <h3>د بیلانسونو بیا حسابول</h3>
+  <p>که کله مو ولیدل چې یو بیلانس غلط ښکاري، <strong>Settings → App Settings → 🔄 Recalculate All Balances</strong> ته لاړ شئ. دا د راکړو ورکړو له بشپړې تاریخچې څخه د هر حساب بیلانس بیا حسابوي او هر توپیر سموي.</p>
+
+  <h3>د کارونکو مدیریت</h3>
+  <p>تاسو کولی شئ د کارکوونکو لپاره (صندوقداران، د معلوماتو داخلوونکي، د ګودام ساتونکي) جلا د کارونکي حسابونه جوړ کړئ. هر کارکوونکی د خپل پټنوم سره ننوځي. د مدیر حساب تل هر څه ته بشپړ لاسرسی لري.</p>
+
+  <h3>🔐 د کارکوونکو اجازې — هر کارکوونکی څه لیدلی او کولی شي</h3>
+  <p>د هر کارکوونکي د حساب لپاره تاسو دقیقاً ټاکئ چې څه لیدلی او کولی شي. هغه پردې چې اجازه ورته نه وي په ساده ډول یې له مینو څخه ورکېږي، او همدا قواعد د تلیفون پر اپ هم تطبیقېږي.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 👥 Users</strong> ته لاړ شئ او د مدیر پټنوم سره Settings خلاص کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د یو کارکوونکي تر څنګ، د <strong>🔐</strong> تڼۍ کلیک کړئ (دا د هغوی اوسنی ټمپلېټ ښیي، لکه <em>🔐 Billing Staff</em>).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د پیل لپاره یو <strong>ټمپلېټ</strong> وټاکئ، بیا د 12 اجازو هره یوه نښه کړئ یا یې نښه لرې کړئ. <strong>Save</strong> کلیک کړئ.</div></div>
+  <figure class="shot"><a href="manual_images/staff-permissions.png" target="_blank"><img src="manual_images/staff-permissions.png" alt="Staff Permissions window" loading="lazy" style="max-width:420px;width:100%"></a><figcaption>د Permissions کړکۍ — په سر کې د پیل ټمپلېټ، بیا په ډلو کې 12 اجازې.</figcaption></figure>
+  <table>
+    <tr><th>ټمپلېټ</th><th>عادي کارونه</th><th>څه کولی شي</th></tr>
+    <tr><td>Billing Staff</td><td>کاونټر / صندوقدار</td><td>یوازې پلور جوړول — د پیسو شمېرې نه، د پېرود لګښتونه نه</td></tr>
+    <tr><td>Store Keeper</td><td>سټاک او پېرود</td><td>پېرودونه، د ذخیرې بدلونونه، بېرته ورکړې، د پېرود لګښتونه</td></tr>
+    <tr><td>Accountant</td><td>کتابونه او GST</td><td>هر څه پرته له معاشونو او د زړو بلونو سمولو یا پاکولو</td></tr>
+    <tr><td>Manager</td><td>باوري لوړ رتبه کارکوونکي</td><td>هر څه (د تلیفون لاسرسی جلا ټاکل کېږي)</td></tr>
+  </table>
+  <div class="tip">💡 د کارکوونکو نوي حسابونه د <strong>Billing Staff</strong> په توګه پیلېږي. د 🔐 تڼۍ سره هر کس ته هغه څه ورکړئ چې اړتیا ورته لري. بدلونونه په ډیسکټاپ کې د هغوی په راتلونکي ننوتلو کې، او د هغوی پر تلیفون سمدستي تطبیقېږي.</div>
+  <div class="warn">⚠ اجازې ستاسو معلومات له کارکوونکو ساتي — د مدیر حساب نه ساتي. هر څوک چې د مدیر پټنوم پېژني بشپړ لاسرسی لري، نو پټ یې وساتئ.</div>
+
+  <h3>🔑 ستاسو ګډون</h3>
+  <ul>
+    <li><strong>وړیا آزموینه:</strong> د ټولو ځانګړتیاوو سره 45 ورځې، په شمول د عرضه کوونکي د 15 بل سکینونو.</li>
+    <li><strong>ګډون:</strong> له فعالولو وروسته، ستاسو جواز یو کال چلېږي. د حالت پټه <em>"Licensed until …"</em> ښیي.</li>
+    <li><strong>نوي کول:</strong> یادونې د پای له نېټې 30 ورځې مخکې پیلېږي، او تاسو کولی شئ د خپلې نوي کولو کیلي سره له Settings → 🔑 License څخه یې نوی کړئ. وختي نوي کول کال د پاتې ورځو پر سر اضافه کوي.</li>
+    <li><strong>که ګډون پای ته ورسېږي:</strong> د بل سکین سمدستي درېږي، خو د بلونو خوندي کول په حالت پټه کې د شمېرنې سره <strong>7 نورې ورځې</strong> کار کوي. له هغه وروسته، خوندي کول تر هغه درېږي چې نوی یې کړئ. ستاسو معلومات تل د لیدو وړ پاتې کېږي.</li>
+    <li><strong>په یو جواز یو PC:</strong> جواز هغه PC پورې تړلی دی چې پرې فعال شوی. نوي PC ته د لېږدولو لپاره، له ملاتړ سره اړیکه ونیسئ.</li>
+  </ul>
+
+  <div class="err">🚨 <strong>هیڅکله د مدیر پټنوم مه شریکوئ.</strong> که یو چلوونکی ووځي، Settings → Users → هغه کارونکی وټاکئ → <em>Disable</em> کلیک کړئ. د هغوی د معلوماتو د داخلولو تاریخچه ساتل کېږي خو نور نشي ننوتلی.</div>
+
+  <h3>🔑 ستاسو د حساب Recovery Key</h3>
+  <p>لومړی ځل چې تاسو خپل پټنوم ټاکئ — یا سمدستي له نصبولو وروسته (د لنډمهاله ډیفالټ پټنوم ځای پر ځای کول) یا وروسته هر وخت — Accelent ستاسو د حساب لپاره یوه ځانګړې <strong>Recovery Key</strong> جوړوي او تاسو ته یې <strong>دقیقاً یو ځل</strong> ښیي، په یو بکس کې چې باید د تړلو مخکې تایید کړئ چې خوندي کړې مو ده.</p>
+  <div class="tip">💡 دا کیلي د توري/شمېرې د ډلو یو لړ ښکاري چې په ډش جلا شوي، لکه <code>3F7A9C21-8B4E0D6F-...</code>. د پټنوم مدیر ته یې کاپي کړئ، پر کاغذ یې ولیکئ او په خوندي ځای کې یې وساتئ، یا په قلف شوي یادښت کې یې وساتئ — هر ځای پرته له هغه فایل چې پر همدې PC کې ښکاره نوم ولري.</div>
+  <p>دا کیلي د یو هدف لپاره ده: که کله مو د مدیر پټنوم هېر شو، یا ستاسو حساب له ډېرو غلطو هڅو وروسته قلف شو، Recovery Key تاسو ته اجازه درکوي چې له یوې دقیقې لږ وخت کې، د ننوتلو له پردې څخه، پخپله یو بالکل نوی پټنوم وټاکئ — <strong>پرته له دې چې د کاروبار کوم معلومات له لاسه ورکړئ</strong> او پرته له دې چې له ملاتړ سره اړیکه ونیسئ.</p>
+  <div class="warn">⚠ Accelent هیڅکله ستاسو Recovery Key د لوستلو وړ بڼه نه ساتي — یوازې یې خوندي hash، لکه څنګه چې پټنومونه ساتل کېږي. که کیلي ورکه کړئ، هیڅوک (ستاسو د سافټویر وړاندې کوونکي په ګډون) نشي کولی ستاسو لپاره یې بېرته راوګرځوي. تاسو به اړ یاست چې له نورو لارو نوی پټنوم وټاکئ او نوې کیلي جوړه کړئ.</div>
+
+  <h4>نوې Recovery Key ترلاسه کول</h4>
+  <p>تاسو یوه ورکړل شوې Recovery Key یوازې یو ځل وینئ. که مو ورکه کړې وي، یا په ساده ډول نوې غواړئ، هر وخت چې د مدیر په توګه ننوتي یاست کولی شئ بدیل جوړ کړئ — پخوانۍ کیلي سمدستي کار پرېږدي کله چې نوې صادره شي.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 👥 Users</strong> (د مدیر حساب) ته لاړ شئ او د نوې Recovery Key د جوړولو انتخاب وکاروئ، یا په ساده ډول خپل د مدیر پټنوم بدل کړئ — هر کله چې تاسو دمخه یوه نه لرئ نوې کیلي پخپله وړاندې کېږي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">نوی کوډ دقیقاً لکه پورته خوندي کړئ. د بکس د تړلو لپاره <strong>"I have saved this recovery code somewhere safe"</strong> نښه کړئ — بیا به نه ښودل کېږي.</div></div>
+
+  <h3>🔓 پټنوم مو هېر شو؟ ځان خدمت بېرته ترلاسه کول</h3>
+  <p>که کله مو د مدیر پټنوم هېر شو — یا حساب له بیا بیا غلطو هڅو وروسته پخپله قلف شو — تاسو اړتیا نه لرئ چې د ملاتړ انتظار وباسئ. د ننوتلو په پرده کې، د پټنوم د ساحې لاندې کوچنی <strong>"Forgot password?"</strong> لینک کلیک کړئ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د ننوتلو په پرده کې <strong>Forgot password?</strong> کلیک کړئ. د <strong>Account Recovery</strong> کړکۍ خلاصېږي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">خپل <strong>د کارونکي نوم</strong> او هغه <strong>Recovery Key</strong> داخل کړئ چې مخکې مو خوندي کړې وه (پورته وګورئ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">یو <strong>نوی پټنوم</strong> داخل او تایید کړئ (لږترلږه 8 توري).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Reset Password</strong> کلیک کړئ. دا هر د حساب قلف هم پخپله پاکوي. سمدستي د خپل نوي پټنوم سره ننوځئ.</div></div>
+  <div class="good">✅ دا یوازې ستاسو د ننوتلو پټنوم بیا ټاکي — ستاسو هیڅ انوایس، ذخیره، بیلانسونه، یا د کاروبار نور معلومات په هیڅ ډول نه لمسېږي.</div>
+  <div class="err">🚨 که تاسو هیڅکله Recovery Key نه وي خوندي کړې او قلف شوي یاست، ځان خدمت بېرته ترلاسه کول ممکن نه دي — د مرستې لپاره له خپل سافټویر وړاندې کوونکي سره اړیکه ونیسئ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 17 -->
+<div class="chapter-banner">څپرکی 17 — ستاسو معلومات</div>
+<div class="section" id="ch17">
+  <h2>17. ستاسو معلومات — ځای، بیک اپ او بېرته راګرځول</h2>
+
+  <h3>ستاسو معلومات چېرته دي؟</h3>
+  <p>ستاسو ټول معلومات ستاسو پر Windows PC په یوه SQLite ډیټابیس فایل کې ساتل کېږي:</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\inventory.db</span>
+  </div>
+  <p>د اوتومات بیک اپ یو فولډر هم شته:</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\backups\</span>
+  </div>
+  <p>Accelent هر ځل چې پیلېږي اوتومات بیک اپ جوړوي. تر 10 پورې وروستي بیک اپونه پخپله ساتل کېږي.</p>
+
+  <div class="tip">💡 د AppData د چټک خلاصولو لپاره، <strong>Windows+R</strong> کېکاږئ، <code>%APPDATA%\BrandAccShay</code> ولیکئ او Enter کېکاږئ.</div>
+
+  <h3>په لاس بیک اپ اخیستل</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → 💾 Backup Data</strong> ته لاړ شئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">وټاکئ چې د بیک اپ فایل چېرته خوندي کړئ (USB ډرایو، د Google Drive فولډر، یا بهرنۍ هارډ ډیسک).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save کلیک کړئ. بیک اپ یو واحد <code>.db</code> فایل دی چې ستاسو ټول معلومات لري.</div></div>
+
+  <div class="good">✅ <strong>د بیک اپ وړاندیز شوې کړنلاره:</strong><br>
+  • ورځنی: پرېږدئ چې Accelent پخپله بیک اپ واخلي (د پیل پر مهال پخپله کېږي)<br>
+  • اونیز: USB ډرایو یا Google Drive ته په لاس بیک اپ<br>
+  • میاشتنی: ټول AppData\BrandAccShay فولډر بهرنۍ هارډ ډیسک ته کاپي کړئ</div>
+
+  <h3>له بیک اپ څخه بېرته راګرځول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → 📂 Restore Data</strong> ته لاړ شئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">خپل د بیک اپ <code>.db</code> فایل ته لاړ شئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Open کلیک کړئ. Accelent اوسنی ډیټابیس د بیک اپ سره ځای پر ځای کوي. <strong>اپ به پخپله بیا پیل شي.</strong></div></div>
+
+  <div class="warn">⚠ د بیک اپ بېرته راګرځول ټول اوسني معلومات د بیک اپ د معلوماتو سره ځای پر ځای کوي. د بیک اپ له نېټې وروسته داخل شوې هره راکړه ورکړه به ورکه شي. یوازې هغه وخت یې بېرته راوګرځوئ چې له یوې جدي تېروتنې څخه د رغېدو اړتیا ولرئ.</div>
+
+  <h3>☁️ Cloud Backup — اوتومات کوډ شوی بهرنی بیک اپ</h3>
+  <p>پورته په لاس بیک اپونه په سیمه ییز ډول خوندي کېږي — که ستاسو PC ورک، غلا یا خراب شي، یوازې سیمه ییز بیک اپ ښايي ورسره لاړ شي. <strong>Cloud Backup</strong> دا ستونزه حل کوي: ستاسو پر خپل PC د ډیټابیس یوه کاپي کوډ کوي او په هغه فولډر کې یې خوندي کوي چې ستاسو <strong>خپل</strong> کلاوډ ذخیرې (OneDrive، Google Drive، Dropbox او نور) سره همغږي کېږي. ستاسو د سافټویر وړاندې کوونکی هیڅکله ستاسو معلومات نه ویني — فایل مخکې له دې چې ستاسو له کمپیوټر څخه ووځي کوډ کېږي.</p>
+
+  <h4>د Cloud Backup جوړول</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup</strong> ته لاړ شئ او <strong>Set Up Cloud Backup</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Browse...</strong> کلیک کړئ او هغه فولډر وټاکئ چې ستاسو د کلاوډ ذخیرې اپ یې همغږي کوي (لکه ستاسو <code>OneDrive</code> یا <code>Google Drive</code> فولډر).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">یو <strong>Backup Password</strong> (لږترلږه 8 توري) وټاکئ او تایید یې کړئ. دا پټنوم هر بیک اپ کوډ کوي — یې په یاد ولرئ، او د خپل مدیر د ننوتلو له پټنوم څخه یې جلا وساتئ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Continue</strong> کلیک کړئ. Accelent لومړی بیک اپ چلوي او بیا یو ځل یو <strong>Recovery Code</strong> په یو بکس کې ښیي چې باید د تړلو مخکې تایید کړئ چې خوندي کړی مو دی.</div></div>
+
+  <div class="warn">⚠ <strong>د Cloud Backup پټنوم او د Cloud Backup د بېرته راګرځولو کوډ ستاسو د ننوتلو له Recovery Key څخه جلا دي</strong> (څپرکی 16). په روښانه نښو یې جلا وساتئ ترڅو ګډ نه شي:
+    <ul style="margin-top:6px;">
+      <li><strong>د ننوتلو Recovery Key</strong> — ستاسو د اپ پټنوم پخپله، د ننوتلو په پرده کې، پرته له ملاتړ بیا ټاکي.</li>
+      <li><strong>د Cloud Backup پټنوم</strong> — ستاسو د کلاوډ بیک اپ فایلونه خلاصوي؛ هر ځل چې بېرته راګرځوئ اړین دی.</li>
+      <li><strong>د Cloud Backup د بېرته راګرځولو کوډ</strong> — یوازې د ملاتړ له release code سره ګټور دی، که د Cloud Backup پټنوم مو هېر شي.</li>
+    </ul>
+  </div>
+
+  <h4>ورځنۍ کارونه</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">هر وخت چې غواړئ سمدستي کوډ شوی بیک اپ ستاسو کلاوډ فولډر ته پورته شي <strong>⬆️ Backup Now</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Automatic daily backup</strong> نښه کړئ ترڅو Accelent ستاسو معلومات په خپل مهالوېش بیک اپ کړي پرته له دې چې تاسو یې په یاد ولرئ.</div></div>
+
+  <h4>له Cloud Backup څخه بېرته راګرځول</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup → ⬇️ Restore from Cloud Backup</strong> ته لاړ شئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">له لېست څخه غوښتل شوی بیک اپ وټاکئ (تر ټولو نوی لومړی ښودل کېږي) او خپل <strong>Backup Password</strong> داخل کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">د بېرته راګرځولو خبرداری تایید کړئ. <strong>اوسني معلومات به ځای پر ځای شي</strong> — وروسته اپ بیا پیل کړئ.</div></div>
+
+  <div class="tip">💡 <strong>د Cloud Backup پټنوم مو هېر شو؟</strong> د بېرته راګرځولو په کړکۍ کې <strong>"Forgot password? Use recovery code instead"</strong> کلیک کړئ. دا لار د جوړولو پر مهال خوندي شوي د بېرته راګرځولو کوډ <strong>او</strong> ستاسو د سافټویر وړاندې کوونکي له ملاتړ څخه release code دواړو ته اړتیا لري — ترڅو هیڅ یوه ټوټه یوازې ستاسو بیک اپ خلاص نه کړي.</div>
+
+  <div class="good">✅ Cloud Backup اختیاري دی او له هغو اوتومات سیمه ییزو بیک اپونو جلا دی چې Accelent یې دمخه په هر پیل کې جوړوي — د تر ټولو قوي ساتنې لپاره دواړه وکاروئ: په همغه PC کې د چټک رغېدو لپاره سیمه ییز بیک اپونه، او که PC پخپله ورک یا خراب شي د ساتنې لپاره Cloud Backup.</div>
+
+  <h3>اپ نوي PC ته لېږدول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">په زاړه PC کې، په لاس بیک اپ واخلئ (Settings → Backup Data).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د بیک اپ <code>.db</code> فایل USB ډرایو ته کاپي کړئ یا یې د Google Drive / WhatsApp له لارې ولېږئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">په نوي PC کې Accelent نصب کړئ (څپرکی 3).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">په لومړي پیل کې، Settings → Restore Data ته لاړ شئ → له USB ډرایو څخه د بیک اپ فایل وټاکئ. ستاسو ټول معلومات اوس په نوي PC کې دي.</div></div>
+
+  <div class="warn">⚠ ستاسو جواز هغه PC پورې تړلی دی چې پرې فعال شوی. له لېږدولو مخکې، له ملاتړ سره اړیکه ونیسئ ترڅو ستاسو جواز نوي PC ته ولېږدول شي؛ بیا یې له Settings → 🔑 License څخه فعال کړئ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 18 -->
+<div class="chapter-banner">څپرکی 18 — نوې نسخې ته لوړول</div>
+<div class="section" id="ch18">
+  <h2>18. نوې نسخې ته لوړول</h2>
+  <p>کله چې د Accelent نوې نسخه خپره شي، دا ګامونه تعقیب کړئ. <strong>ستاسو معلومات د لوړولو پر مهال تل خوندي دي</strong> ځکه چې ډیټابیس د پروګرام له فایلونو جلا اوسېږي.</p>
+
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>لومړی بیک اپ واخلئ</strong> — Settings → Backup Data ته لاړ شئ او USB ډرایو یا کلاوډ ته یې خوندي کړئ. دا یو احتیاط دی، معمولاً اړین نه دی، خو تل ښه عادت دی.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Accelent وتړئ</strong> — ډاډ ترلاسه کړئ چې اپ نه چلېږي.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>نوې نسخه ښکته کړئ</strong> — له <strong>accelentapp.com</strong> څخه وروستی <code>Accelent_Setup_v….exe</code> واخلئ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>نصبوونکی وچلوئ</strong> ستاسو د موجود نصب پر سر. (د دې پر ځای د لېږد وړ zip کاروئ؟ هماغه فولډر ته یې وباسئ لکه مخکې او کله چې د فایلونو د ځای پر ځای کولو پوښتنه وشي <strong>Yes to All</strong> کلیک کړئ.)</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Accelent خلاص کړئ.</strong> دا پخپله ستاسو موجود ډیټابیس په <code>%APPDATA%\BrandAccShay\inventory.db</code> کې پیدا کوي. ستاسو ټول معلومات هلته دي، او په نوې نسخه کې شامل هر سمون په همدې لومړي پیل کې تطبیقېږي.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Settings → Recalculate All Balances ته لاړ شئ</strong> — دا ډاډ ورکوي چې په نوې نسخه کې د ډیټابیس د جوړښت هر بدلون سم تطبیق شوی.</div></div>
+
+  <div class="good">✅ <strong>تاسو هیڅکله د لوړولو پر مهال معلومات له لاسه نه ورکوئ.</strong> د پروګرام فایلونه په یو فولډر کې دي؛ ستاسو معلومات په AppData کې دي. د پروګرام د فایلونو ځای پر ځای کول ستاسو معلوماتو ته لاس نه وروړي.</div>
+
+  <div class="tip">💡 د لېږد وړ zip او د تلیفون اپ کاروئ؟ له لوړولو وروسته یو ځل <code>setup.bat</code> بیا وچلوئ (نصبوونکی دا پخپله کوي). که تلیفون ونه نښلي، د 📱 Mobile Connect په کړکۍ کې <strong>❓ Phone can't connect?</strong> وکاروئ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 19 -->
+<div class="chapter-banner">څپرکی 19 — د موبایل اپ</div>
+<div class="section" id="ch19">
+  <h2>19. د موبایل اپ جوړول او کارول</h2>
+
+  <h3>د اپ نصبول</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">په تلیفون کې له <strong>accelentapp.com</strong> څخه <code>Accelent_v1.7.3.apk</code> ښکته کړئ، یا یې د USB کېبل، WhatsApp، یا Google Drive له لارې ولېږدوئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">په تلیفون کې، فایل د خپل Downloads یا Files اپ څخه خلاص کړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">که د <em>unknown sources</em> په اړه وپوښتل شي، پر <strong>Settings</strong> ټک وکړئ، د خپل فایل مدیر لپاره <em>Install unknown apps</em> فعال کړئ، بیا بېرته لاړ شئ او نصب یې کړئ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">پر <strong>Install</strong> → <strong>Open</strong> ټک وکړئ.</div></div>
+
+  <h3>له ډیسکټاپ سره نښلول</h3>
+  <p><strong>طریقه A — QR کوډ (وړاندیز شوې)</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ډاډ ترلاسه کړئ چې ستاسو پر PC د ډیسکټاپ اپ چلېږي.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د <strong>📱 Mobile Connect</strong> تڼۍ کلیک کړئ (د ډیسکټاپ ښکته ښي اړخ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">یو QR کوډ ښکاري. کړکۍ خلاصه وساتئ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">په تلیفون کې، Accelent خلاص کړئ → د ⚙️ نښې پر ټک وکړئ → <strong>Scan QR Code</strong> → کمره د ډیسکټاپ پردې ته ونیسئ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">یو شین "Connected!" بنر نښلول تاییدوي.</div></div>
+
+  <p><strong>طریقه B — په لاس IP</strong></p>
+  <p>که د QR سکین ناکام شي، په تلیفون کې Settings ته لاړ شئ → د <em>Desktop IP Address</em> په ساحه کې د ډیسکټاپ IP پته ولیکئ → پر <strong>Test Connection</strong> → <strong>Save</strong> ټک وکړئ.</p>
+  <div class="tip">💡 د Mobile Connect کړکۍ وايي چې ایا پته یوازې د دوکان پر WiFi کار کوي یا له هر ځایه. که تلیفون ونه نښلي، په هغه کړکۍ کې <strong>❓ Phone can't connect?</strong> کلیک کړئ: دا همدا PC ګوري (د Accelent د تلیفون خدمت، Windows Firewall، شبکه) او لېست کوي چې په تلیفون کې څه هڅه وکړئ.</div>
+
+  <h3>له دوکان بهر کارول (Tailscale)</h3>
+  <p>کله چې له دوکان لرې یاست (موبایل ډېټا یا بل WiFi)، پر ډیسکټاپ او تلیفون دواړو <strong>Tailscale</strong> (وړیا) نصب کړئ او د ورته حساب سره ننوځئ. بیا د <strong>📱 Mobile Connect</strong> له کړکۍ څخه د Tailscale QR کوډ سکین کړئ. اوس تاسو کولی شئ د نړۍ له هر ځایه خپل کاروبار وګورئ او اداره یې کړئ. د ګامونو، د دې PC لپاره د ښکته کولو لینک، او د یو QR کوډ لپاره چې د تلیفون په Play Store کې Tailscale خلاصوي، د Mobile Connect په کړکۍ کې <strong>🌐 Connect from anywhere…</strong> کلیک کړئ.</p>
+
+  <h3>د موبایل اپ پینلونه</h3>
+  <div class="panel-grid">
+    <div class="panel-card"><h4>📊 ډشبورډ</h4><p>د نن پلور، لګښتونه، د نغدو او بانک بیلانسونه، او وروستۍ راکړې ورکړې. د تازه کولو لپاره ښکته یې کش کړئ.</p></div>
+    <div class="panel-card"><h4>🧾 پلور</h4><p>ټول انوایسونه وګورئ. Paid/Unpaid فلټر کړئ. له خپل تلیفون د نوي انوایس د جوړولو لپاره پر + ټک وکړئ. د بل د PDF په توګه د شریکولو لپاره انوایس خلاص کړئ او پر 📄 ټک وکړئ.</p></div>
+    <div class="panel-card"><h4>🛒 پېرودونه</h4><p>د پېرود امرونه وګورئ. د نوي پېرود د ثبتولو لپاره پر + ټک وکړئ. په ډیسکټاپ کې سټاک سمدستي تازه کېږي.</p></div>
+    <div class="panel-card"><h4>📦 ذخیره</h4><p>د سټاک ټول توکي ولټوئ او فلټر کړئ. سور = سټاک ختم. نارنجي = کم سټاک.</p></div>
+    <div class="panel-card"><h4>👥 اړخونه</h4><p>د ژوندیو بیلانسونو سره ټول پېرودونکي او عرضه کوونکي. شین = هغوی تاسو ته پوروړي دي. سور = تاسو هغوی ته پوروړي یاست.</p></div>
+    <div class="panel-card"><h4>🏦 حسابونه</h4><p>د راکړو ورکړو د بشپړې تاریخچې سره ژوندي نغدې او بانکي بیلانسونه.</p></div>
+  </div>
+
+  <h3>په تلیفون کې پور پېرودونه او پلور</h3>
+  <p>کله چې په نوي پېرود کې <strong>Pending</strong>، یا په نوي پلور کې <strong>Unpaid</strong> وټاکئ، تلیفون د Cash / Bank / UPI تڼۍ پټوي — لا هیڅ نه دي ورکړل شوي. ډیسکټاپ یې د پور په توګه ثبتوي: د پېرود لپاره <em>Credit to Vendor</em>، د پلور لپاره <em>Credit to Party</em> (د پېرودونکي د پور حد کتل کېږي). دا په Accounts کې د هغه عرضه کوونکي یا پېرودونکي لاندې ښکاري، دقیقاً لکه په ډیسکټاپ کې شوی د پور ثبت.</p>
+
+  <h3>څوک د تلیفون اپ کارولی شي</h3>
+  <ul>
+    <li>مدیر تل نښلېدی شي. کارکوونکو ته اړتیا ده چې مدیر په Settings → 👥 Users کې د هغوی د <strong>📱 Mobile</strong> تنظیم فعال کړي.</li>
+    <li>د هر کارکوونکي حساب د تلیفون یوه څوکۍ کاروي. د همغه کس پر تلیفون د اپ بیا نصبول یوازې د هغوی څوکۍ لېږدوي — بله نه کاروي.</li>
+    <li>تلیفون یوازې هغه څه ښیي چې د کارکوونکي اجازې یې اجازه ورکوي؛ لکه، پرته له "See money figures" ډشبورډ د پلور او ګټې د شمېرو پر ځای یو یادښت ښیي.</li>
+  </ul>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 19b -->
+<div class="chapter-banner">څپرکی 19b — د ډیسکټاپ–موبایل پیغامونه</div>
+<div class="section" id="ch19b">
+  <h2>19b. 💬 د ډیسکټاپ–موبایل پیغامونه</h2>
+  <p>Accelent یو دننه جوړ شوی د پیغام سیسټم لري چې د ډیسکټاپ مالک او د موبایل اپ کارونکي ته اجازه ورکوي چې په ژوندي ډول یو بل ته یادښتونه ولېږي — WhatsApp یا بهرني اپ ته اړتیا نشته. پیغامونه ستاسو په سیمه ییز ډیټابیس کې خوندي ساتل کېږي.</p>
+
+  <h3>د Messages تڼۍ چېرته ده؟</h3>
+  <p>د ډیسکټاپ د کړکۍ په ښکته کې، د حالت په پټه کې، تاسو به د <strong>💬 Messages</strong> تڼۍ وګورئ. د چټ د کړکۍ د خلاصولو لپاره یې کلیک کړئ. کله چې نوي پیغامونه راشي تڼۍ د نه لوستل شویو شمېر ښیي:</p>
+  <table>
+    <tr><th>د تڼۍ بڼه</th><th>معنا</th></tr>
+    <tr><td><code>💬 Messages</code></td><td>نوي پیغامونه نشته</td></tr>
+    <tr><td><code>💬 Messages (3)</code> — په شین روښانه</td><td>د موبایل اپ څخه 3 نه لوستل شوي پیغامونه</td></tr>
+  </table>
+
+  <h3>له ډیسکټاپ څخه د پیغام لېږل</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">د پردې په ښکته کې د حالت په پټه کې <strong>💬 Messages</strong> کلیک کړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">د چټ کړکۍ خلاصېږي. پخواني پیغامونه له تاریخچې څخه لوډېږي.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">په ښکته کې د متن په بکس کې خپل پیغام ولیکئ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Enter</strong> کېکاږئ یا <strong>Send</strong> کلیک کړئ. ستاسو پیغام په ښي اړخ (آبي بلبله) کې ښکاري.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">د موبایل کارونکی به ستاسو پیغام په 5 ثانیو کې پر خپل تلیفون وګوري.</div></div>
+
+  <h3>له موبایل اپ څخه د پیغام لېږل</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">په تلیفون کې، له ډشبورډ یا د حرکت له مینو څخه د <strong>💬 Chat</strong> پر نښه ټک وکړئ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">خپل پیغام ولیکئ او پر <strong>Send</strong> ټک وکړئ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ډیسکټاپ به پیغام په 5 ثانیو کې ترلاسه کړي او د 💬 Messages پر تڼۍ شمېر ښيي.</div></div>
+
+  <h3>د ډیسکټاپ خبرتیاوې (System Tray)</h3>
+  <p>کله چې د چټ کړکۍ <strong>تړل شوې یا کوچنۍ شوې</strong> وي او له موبایل اپ څخه نوی پیغام راشي، د Windows system tray کې (د پردې ښکته ښي کونج) یوه <strong>پاپ اپ خبرتیا</strong> ښکاري چې وايي:</p>
+  <p style="text-align:center; font-style:italic; color:#555;">"📱 You have a new message from the mobile app"</p>
+  <p>د لوستلو لپاره خبرتیا کلیک کړئ یا په اپ کې <strong>💬 Messages</strong> کلیک کړئ.</p>
+
+  <h3>پیغامونه څنګه ساتل کېږي</h3>
+  <p>ټول پیغامونه ستاسو په سیمه ییز ډیټابیس (<code>inventory.db</code>) کې خوندي کېږي — همغه فایل چې ستاسو د کاروبار ټول معلومات لري. په هر بیک اپ کې شامل دي. هیڅ بهرنی سرور پکې نشته — پیغامونه یوازې ستاسو د خپلې شبکې له لارې ستاسو د ډیسکټاپ او تلیفون ترمنځ ځي راځي.</p>
+
+  <div class="tip">💡 <strong>د پیغامونو عام کارونه:</strong>
+    <ul style="margin-top:6px;">
+      <li>مالک لرې دی — د موبایل کارونکی پوښتي: "پېرودونکي د X 10 بکسونه غواړي، سټاک شته؟" — مالک له ډیسکټاپ څخه ځواب ورکوي</li>
+      <li>د ډیسکټاپ چلوونکی د موبایل کارونکي ته خبر ورکوي: "له ABC Traders څخه نوې ورکړه ترلاسه شوه"</li>
+      <li>د شخصي تلیفون شمېرو پرته د دوکان د کارکوونکو ترمنځ چټک یادښتونه</li>
+    </ul>
+  </div>
+
+  <div class="warn">⚠ د پیغامونو د رسېدو لپاره <strong>د موبایل اپ باید له ډیسکټاپ سره نښلول شوی وي</strong>. که تلیفون "Not Connected" وښيي، پیغامونه په کتار کې پاتې کېږي او کله چې نښلول بېرته راشي رسېږي.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 20 -->
+<div class="chapter-banner">څپرکی 20 — د ستونزو حل</div>
+<div class="section" id="ch20">
+  <h2>20. د ستونزو حل</h2>
+
+  <table>
+    <tr><th>ستونزه</th><th>لامل</th><th>حل</th></tr>
+    <tr><td>اپ نه خلاصېږي / د SmartScreen خبرداری</td><td>اپ ډیجیټل لاسلیک نه دی شوی</td><td>"More info" → "Run anyway" کلیک کړئ. دا یوازې یو ځل پوښتل کېږي.</td></tr>
+    <tr><td>بیلانسونه غلط ښکاري</td><td>د معلوماتو د همغږۍ ستونزه</td><td>Settings → App Settings → 🔄 Recalculate All Balances.</td></tr>
+    <tr><td>له پلور وروسته سټاک نه تازه کېږي</td><td>توکی له ذخیرې سره نه دی نښلول شوی</td><td>ډاډ ترلاسه کړئ چې د ذخیرې توکي له پاپ اپ څخه ټاکل شوي، نه په لاس لیکل شوي.</td></tr>
+    <tr><td>د انوایس پینل "Feature Under Development" ښیي</td><td>په لومړي لوډ کې د اپ تېروتنه</td><td>اپ بشپړ وتړئ او بیا یې خلاص کړئ. دا کم پېښېږي.</td></tr>
+    <tr><td>د GST شمېرې پر انوایس نه ښکاري</td><td>د شرکت GSTIN نه دی داخل شوی</td><td>Settings → Company → خپل GSTIN داخل کړئ → Save.</td></tr>
+    <tr><td>د موبایل اپ خالي یا "Could not load" ښیي</td><td>د ډیسکټاپ اپ نه چلېږي</td><td>ډاډ ترلاسه کړئ چې Accelent پر ډیسکټاپ PC خلاص دی.</td></tr>
+    <tr><td>د QR سکین کار نه کوي</td><td>د کمرې اجازه رد شوې</td><td>د تلیفون Settings → Apps → Accelent → Permissions → Camera فعال کړئ.</td></tr>
+    <tr><td>پر WiFi کار کوي، پر موبایل ډېټا نه</td><td>سیمه ییز IP له لرې نشي رسېدلی</td><td>پر ډیسکټاپ او تلیفون Tailscale نصب کړئ. د Tailscale QR کوډ وکاروئ.</td></tr>
+    <tr><td>APK پر تلیفون نه نصبېږي</td><td>Unknown sources بند دي</td><td>Android Settings → Apps → ستاسو فایل مدیر → Install unknown apps → فعال کړئ.</td></tr>
+    <tr><td>په لومړي پیل کې غلط هېواد وټاکل شو</td><td>هېواد له لومړي پلور، پېرود یا توکي وروسته قلفېږي</td><td>د هر معلوماتو له داخلولو مخکې: Settings → App Settings → Reset Database، بیا هېواد بیا وټاکئ. له معلوماتو وروسته، له ملاتړ سره اړیکه ونیسئ.</td></tr>
+    <tr><td>د ډیټابیس فایل ورک دی / اپ د بیا ټاکلو غوښتنه کوي</td><td>د AppData فولډر ستونزه</td><td>له بیک اپ څخه بېرته راوګرځوئ: Settings → Restore Data. که بیک اپ نه وي، له ملاتړ سره اړیکه ونیسئ.</td></tr>
+    <tr><td>د مدیر پټنوم هېر شو / حساب قلف شو</td><td>پټنوم ورک یا ډېرې ناکامې د ننوتلو هڅې</td><td>د ننوتلو په پرده کې <strong>"Forgot password?"</strong> کلیک کړئ او خپله خوندي شوې Recovery Key وکاروئ ترڅو پخپله نوی پټنوم وټاکئ (څپرکی 16). Recovery Key مو نه ده خوندي کړې؟ له خپل سافټویر وړاندې کوونکي سره اړیکه ونیسئ.</td></tr>
+    <tr><td>د Cloud Backup پټنوم هېر شو</td><td>د بیک اپ پټنوم ورک شو</td><td>د Restore په کړکۍ کې "Forgot password? Use recovery code instead" کلیک کړئ — ستاسو خوندي شوي د Cloud Backup د بېرته راګرځولو کوډ او د ملاتړ release code ته اړتیا لري (څپرکی 17).</td></tr>
+    <tr><td>په لومړي پیل کې اپ ډېر ورو دی</td><td>د Python لومړنی پیل</td><td>عادي ده — لومړی پیل 5–10 ثانیې نیسي. وروسته پیلونه چټک دي.</td></tr>
+    <tr><td>"Computer Date Is Wrong" پیغام</td><td>د PC ساعت وروسته دی (ډېری وخت کمزوری د مدر بورډ/CMOS بیټري)</td><td>په Windows کې سمه نېټه او وخت وټاکئ، یا یو ځل انټرنیټ سره ونښلئ او Accelent بیا پیل کړئ. که بیا بیا پېښېږي CMOS بیټري بدله کړئ.</td></tr>
+    <tr><td>پر تلیفون "Phone limit reached"</td><td>د تلیفون ټولې څوکۍ کارول کېږي</td><td>پیغام د هغه چا نوم اخلي چې نښلول شوی. په Mobile Connect کې زوړ تلیفون لرې کړئ، یا خپل پلان لوړ کړئ.</td></tr>
+    <tr><td>یو کارکوونکی پرده یا تڼۍ نشي لیدلی</td><td>د هغوی په اجازو کې نه ده شامله</td><td>مدیر: Settings → 👥 Users → د هغوی د نوم تر څنګ 🔐 → اجازه نښه کړئ → Save. په راتلونکي ننوتلو کې یې ویني.</td></tr>
+    <tr><td>د بل سکین وايي چې د آزموینې سکینونه کارول شوي</td><td>وړیا آزموینه 15 بل سکینونه لري</td><td>د بې حده سکین لپاره جواز فعال کړئ. نور هر څه د آزموینې تر پایه کار کوي.</td></tr>
+    <tr><td>په حالت پټه کې "Subscription expired"</td><td>کلنی ګډون پای ته رسېدلی</td><td>له Settings → 🔑 License څخه یې نوی کړئ. د بل جوړول له پای نېټې 7 ورځې وروسته کار کوي؛ ستاسو معلومات تل د لیدو وړ پاتې کېږي.</td></tr>
+    <tr><td>د GSTR-1 صادرول پرته له HSN توکي لېست کوي</td><td>هغه توکي په Inventory کې HSN کوډ نه لري</td><td>په Inventory کې یې HSN کوډونه اضافه کړئ، بیا یې بیا صادر کړئ.</td></tr>
+  </table>
+
+  <div class="tip">💡 <strong>تل لومړی هڅه وکړئ:</strong> Accelent بشپړ وتړئ، 5 ثانیې انتظار وکړئ، بیا یې خلاص کړئ. دا د ناڅاپي ستونزو 70% حلوي.</div>
+
+  <div class="good">✅ <strong>د هرې بلې ستونزې لپاره:</strong> د تېروتنې د پیغام سکرین شاټ واخلئ او د سکرین شاټ او د دې تشریح سره چې د تېروتنې پر مهال څه کوئ، له خپل سافټویر وړاندې کوونکي سره اړیکه ونیسئ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ QUICK REF -->
+<div class="section">
+  <h2>چټک لارښود — ورځنی کار</h2>
+  <table>
+    <tr><th>کار</th><th>پینل</th><th>ګامونه</th></tr>
+    <tr><td>پلور ثبتول</td><td>Sales</td><td>فورمه ډکه کړئ → توکي اضافه کړئ → ورکړه وټاکئ → Save Invoice</td></tr>
+    <tr><td>پېرود ثبتول</td><td>Purchases</td><td>+ New Purchase → عرضه کوونکی → توکي → ورکړه → Save</td></tr>
+    <tr><td>لګښت ثبتول</td><td>Expenses</td><td>+ Add Expense → Category → اندازه → Cash/Bank → Save</td></tr>
+    <tr><td>د نغدو بیلانس کتل</td><td>Accounts</td><td>Accounts کلیک کړئ → د Cash ټایل اوسنی بیلانس ښیي</td></tr>
+    <tr><td>کتل چې پېرودونکی څومره پوروړی دی</td><td>Accounts → Parties</td><td>د اړخ نوم ولټوئ — بیلانس په شین (ترلاسه کېدونکی) ښودل کېږي</td></tr>
+    <tr><td>له پېرودونکي ورکړه ترلاسه کول</td><td>Receipts</td><td>+ New Receipt → پېرودونکی وټاکئ → اندازه → Save</td></tr>
+    <tr><td>عرضه کوونکي ته ورکړه</td><td>Receipts</td><td>+ New Payment → عرضه کوونکی وټاکئ → اندازه → Save</td></tr>
+    <tr><td>کم سټاک کتل</td><td>Inventory</td><td>په نارنجي/سور ښودل شوي توکي بیا امر ته اړتیا لري</td></tr>
+    <tr><td>له عرضه کوونکي بیا امر</td><td>Low Stock Monitor</td><td>Order from Vendor → عرضه کوونکی وټاکئ → توکي وګورئ → Save (د PO مسوده جوړوي)</td></tr>
+    <tr><td>انوایس چاپول</td><td>Sales</td><td>په لېست کې انوایس ومومئ → د 🖨 Print تڼۍ کلیک کړئ</td></tr>
+    <tr><td>بیک اپ اخیستل</td><td>Settings</td><td>App Settings → 💾 Backup Data → ځای وټاکئ → Save</td></tr>
+  </table>
+</div>
+
+<footer>Accelent — د کارونکي لارښود (پښتو)<br>د ډیسکټاپ او موبایل د حساب ورکولو سیسټم &nbsp;·&nbsp; 2026<br><br><em>د مرستې لپاره، د هرې تېروتنې د پیغام د سکرین شاټ سره خپل سافټویر وړاندې کوونکي ته اړیکه ونیسئ.</em></footer>
+
+<script>
+/* Opened from Accelent: ?type=general|restaurant|hotel (&production=1) shows only that business's chapters. */
+(function () {
+  var q = new URLSearchParams(location.search), t = q.get("type");
+  var names = {"general": "د دوکان، سوداګرۍ، خدماتو یا تولید د کاروبار", "restaurant": "د رستورانت", "hotel": "د هوټل"};
+  if (!names[t]) return;
+  var prod = q.get("production") === "1" || t !== "general";
+  function shows(f) { return f.split(" ").some(function (x) { return x === t || (x === "production" && prod); }); }
+  var hidden = [];
+  document.querySelectorAll(".section[data-for]").forEach(function (s) {
+    if (shows(s.getAttribute("data-for"))) return;
+    hidden.push(s.id); s.style.display = "none";
+    var b = s.previousElementSibling;
+    if (b && b.classList.contains("chapter-banner")) b.style.display = "none";
+  });
+  hidden.forEach(function (id) {
+    document.querySelectorAll('.toc-grid a[href="#' + id + '"]').forEach(function (a) {
+      a.style.display = "none";
+      var br = a.nextElementSibling; if (br && br.tagName === "BR") br.style.display = "none";
+    });
+  });
+  var n = document.getElementById("guideFilter");
+  if (n) n.innerHTML = "" + names[t] + " څپرکي ښودل کېږي. <a href=\"" + location.pathname + "\">ټول څپرکي وښایئ</a>";
+})();
+</script>
+</body>
+</html>
+

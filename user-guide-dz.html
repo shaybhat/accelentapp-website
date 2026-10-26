@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="dz" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accelent — ལག་ལེན་པའི་ལམ་སྟོན། (རྫོང་ཁ)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DzTibetan', 'Segoe UI', 'DDC Uchen', 'Jomolhari', 'Noto Serif Tibetan', Arial, sans-serif; font-size: 14px; color: #2c3e50; background: #f0f4f8; }
+
+  /* Cover */
+  .cover { background: linear-gradient(135deg, #1abc9c 0%, #16a085 50%, #0e6655 100%);
+           color: white; padding: 70px 40px 50px; text-align: center; }
+  .cover h1 { font-size: 42px; letter-spacing: 1px; }
+  .cover .sub { font-size: 18px; opacity: .85; margin-top: 8px; }
+  .cover .ver { font-size: 13px; opacity: .65; margin-top: 16px; letter-spacing: 2px; text-transform: uppercase; }
+  .cover-badges { margin-top: 28px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .badge { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+           padding: 6px 16px; border-radius: 20px; font-size: 13px; }
+
+  /* Layout */
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+  .section { background: white; max-width: 900px; margin: 28px auto; padding: 36px 44px;
+             border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+
+  /* TOC */
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 14px; }
+  .toc-grid a { color: #2980b9; text-decoration: none; line-height: 2; font-size: 13.5px; }
+  .toc-grid a:hover { text-decoration: underline; }
+  .toc-num { color: #1abc9c; font-weight: bold; margin-right: 5px; }
+
+  /* Headings */
+  h2 { font-size: 22px; color: #16a085; border-bottom: 2px solid #e8f8f5;
+       padding-bottom: 10px; margin-bottom: 20px; }
+  h3 { font-size: 16px; color: #2c3e50; margin: 22px 0 9px; }
+  h4 { font-size: 14px; color: #16a085; margin: 14px 0 6px; }
+  p  { line-height: 1.85; margin-bottom: 11px; color: #444; }
+  ul, ol { padding-left: 22px; line-height: 2.1; color: #444; margin-bottom: 10px; }
+
+  /* Steps */
+  .step { display: flex; gap: 14px; align-items: flex-start; margin: 10px 0; }
+  .step-num { background: #1abc9c; color: white; min-width: 28px; height: 28px;
+              border-radius: 50%; display: flex; align-items: center; justify-content: center;
+              font-weight: bold; font-size: 13px; margin-top: 1px; }
+  .step-body { flex: 1; line-height: 1.8; color: #444; }
+
+  /* Callout boxes */
+  .tip  { background: #eaf6fb; border-left: 4px solid #3498db; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .warn { background: #fef9e7; border-left: 4px solid #f39c12; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .good { background: #eafaf1; border-left: 4px solid #2ecc71; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .err  { background: #fdedec; border-left: 4px solid #e74c3c; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+  th { background: #16a085; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 9px 14px; border-bottom: 1px solid #ecf0f1; vertical-align: top; }
+  tr:hover td { background: #f0fdf9; }
+
+  /* Panel cards */
+  .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .panel-card { border: 1px solid #d5f5ee; border-radius: 8px; padding: 14px 16px;
+                background: #f9fffe; }
+  .panel-card h4 { color: #16a085; margin-bottom: 6px; font-size: 14.5px; }
+  .panel-card p  { font-size: 13px; margin: 0; color: #555; line-height: 1.7; }
+
+  /* Concept boxes */
+  .concept { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;
+             padding: 16px 20px; margin: 12px 0; }
+  .concept h4 { color: #2c3e50; margin-bottom: 6px; }
+
+  /* Code */
+  code { background: #ecf0f1; padding: 2px 7px; border-radius: 3px;
+         font-family: Consolas, monospace; font-size: 13px; }
+  .path { background: #2c3e50; color: #1abc9c; padding: 8px 14px; border-radius: 5px;
+          font-family: Consolas, monospace; font-size: 13px; display: inline-block; margin: 6px 0; }
+
+  /* Chapter header */
+  .chapter-banner { background: linear-gradient(90deg, #1abc9c, #16a085);
+                    color: white; padding: 14px 44px; max-width: 900px; margin: 28px auto 0;
+                    border-radius: 10px 10px 0 0; font-size: 13px; letter-spacing: 1px;
+                    text-transform: uppercase; font-weight: bold; }
+  .chapter-banner + .section { margin-top: 0; border-radius: 0 0 10px 10px; }
+
+  .shot { margin: 18px 0; text-align: center; }
+  .shot img { max-width: 100%; height: auto; border: 1px solid #dee2e6; border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .shot figcaption { font-size: 12.5px; color: #777; margin-top: 6px; }
+
+  footer { text-align: center; padding: 36px; color: #aaa; font-size: 12px; }
+
+  @media(max-width:640px) {
+    .section { padding: 24px 20px; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .panel-grid { grid-template-columns: 1fr; }
+  }
+  .for-badge { display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 999px;
+               background: rgba(255,255,255,.25); font-size: 11px; letter-spacing: .3px; text-transform: none; }
+  .guide-filter { max-width: 900px; margin: 18px auto 0; padding: 10px 16px; border-radius: 8px;
+                  background: #e8f8f5; color: #2c3e50; font-size: 13.5px; line-height: 1.6; }
+  .guide-filter a { color: #16a085; font-weight: bold; }
+  .lang-bar { text-align: center; padding: 8px; font-size: 15px; background: #ffffff; }
+  .lang-bar a { color: #16a085; text-decoration: none; }
+
+  .lang-bar { text-align: center; padding: 8px; font-size: 15px; background: #ffffff; }
+  .lang-bar a { color: #16a085; text-decoration: none; }
+  .mt-note { max-width: 960px; margin: 12px auto; }
+  /* :dir() follows the nearest dir=, so a chapter still in English (wrapped in dir="ltr") keeps the English layout */
+  ul:dir(rtl), ol:dir(rtl) { padding-left: 0; padding-right: 22px; }
+  .tip:dir(rtl), .warn:dir(rtl), .good:dir(rtl), .err:dir(rtl) {
+      border-left: none; border-right-width: 4px; border-right-style: solid; }
+  .tip:dir(rtl) { border-right-color: #3498db; }
+  .warn:dir(rtl) { border-right-color: #f39c12; }
+  .good:dir(rtl) { border-right-color: #2ecc71; }
+  .err:dir(rtl) { border-right-color: #e74c3c; }
+  th:dir(rtl) { text-align: right; }
+  .toc-num:dir(rtl) { margin-right: 0; margin-left: 5px; }
+  .for-badge:dir(rtl) { margin-left: 0; margin-right: 10px; }
+  /* an English button name inside Urdu text keeps its own direction */
+  strong:dir(rtl), em:dir(rtl), code:dir(rtl) { unicode-bidi: plaintext; }
+  /* English chapters keep the English font and spacing */
+  [lang="en"] { font-family: Segoe UI, Arial, sans-serif; font-size: 14px; line-height: 1.6; }
+  .mt-note { font-family: 'DzTibetan', 'Segoe UI', 'DDC Uchen', 'Jomolhari', 'Noto Serif Tibetan', Arial, sans-serif; line-height: 2; }
+
+  @font-face { font-family: 'DzTibetan'; src: local('Microsoft Himalaya'), local('DDC Uchen'), local('Jomolhari'); unicode-range: U+0F00-0FFF; size-adjust: 170%; }
+  body { line-height: 1.9; }
+</style>
+</head>
+<body>
+<!-- lang-bar -->
+<div class="lang-bar">🌐 <a class="lang-link" href="user-guide.html">English</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-hi.html">हिन्दी</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ur.html">اردو</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-bn.html">বাংলা</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-mr.html">मराठी</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-gu.html">ગુજરાતી</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-pa.html">ਪੰਜਾਬੀ</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ta.html">தமிழ்</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-te.html">తెలుగు</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-kn.html">ಕನ್ನಡ</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ne.html">नेपाली</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-si.html">සිංහල</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ps.html">پښتو</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-dv.html">ދިވެހި</a> &nbsp;·&nbsp; <strong>རྫོང་ཁ</strong></div>
+<script>document.querySelectorAll('a.lang-link').forEach(function (a) { a.href += location.search; });</script>
+<!-- /lang-bar -->
+<div class="tip mt-note">🌐 ལམ་སྟོན་འདི་ ཨིང་ལིཤ་གི་ལམ་སྟོན་ལས་ སྐད་བསྒྱུར་འབད་ཡོདཔ་ཨིན། ཨེབ་རྟགས་ཀྱི་མིང་ཚུ་ གསལ་གཞི་ནང་ མཐོང་དོ་བཟུམ་སྦེ་ ཨིང་ལིཤ་ཁ་ལུ་བཞག་ཡོད། ག་ཅི་རང་ གསལ་ཏོག་ཏོ་མེད་པ་ཅིན་ གུ་ཏོག་གི་ <strong>English</strong> ལུ་ཨེབ་སྟེ་ ཨིང་ལིཤ་གི་ལམ་སྟོན་བལྟ་གནང་།</div>
+
+<!-- ═══════════════════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div dir="ltr" style="text-align:left;max-width:900px;margin:-50px auto 30px;"><a href="index.html" style="color:white;opacity:.85;text-decoration:none;font-size:13px;">← Back to accelentapp.com</a></div>
+  <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
+  <h1>Accelent</h1>
+  <div class="sub">ལམ་སྟོན་ཆ་ཚང་། — རྩིས་ཐོ་དང་ ཅ་ཆས་མཛོད་ཀྱི་འཛིན་སྐྱོང་།</div>
+  <div class="ver">ཐོན་རིམ 2.4.9 &nbsp;·&nbsp; ཌེཀསི་ཊོཔ་ + མོ་བཱའིལ། &nbsp;·&nbsp; 2026</div>
+  <div class="cover-badges">
+    <span class="badge">🖥️ Windows ཌེཀསི་ཊོཔ།</span>
+    <span class="badge">📱 Android མོ་བཱའིལ།</span>
+    <span class="badge">🌐 སྐད་ཡིག 18</span>
+    <span class="badge">📊 GST གི་དོན་ལུ་གྲ་སྒྲིག</span>
+    <span class="badge">☁️ ཐག་རིང་ལས་ལག་ལེན།</span>
+    <span class="badge">🔐 ལཱ་གཡོག་པའི་གནང་བ།</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ TOC -->
+<div class="section">
+  <h2>དཀར་ཆག</h2>
+  <div class="toc-grid">
+    <div>
+      <a href="#ch1"><span class="toc-num">1.</span>Accelent ག་ཅི་སྨོ?</a><br>
+      <a href="#ch2"><span class="toc-num">2.</span>ལག་ལེན་པ་གསརཔ་ཚུ་གི་དོན་ལུ་ རྩིས་ཐོའི་གཞི་རྩ།</a><br>
+      <a href="#ch3"><span class="toc-num">3.</span>ཌེཀསི་ཊོཔ་ཨེབ་གཞི་བཙུགས་ནི།</a><br>
+      <a href="#ch4"><span class="toc-num">4.</span>ཐེངས་དང་པ་ ཀམ་པ་ནི་གྲ་སྒྲིག</a><br>
+      <a href="#ch5"><span class="toc-num">5.</span>མཉེན་ཆས་གཞན་ལས་ སྤོ་ནི།</a><br>
+      <a href="#ch6"><span class="toc-num">6.</span>སྐད་ཡིག་དང་ བཀོད་རིས།</a><br>
+      <a href="#ch7"><span class="toc-num">7.</span>ཌེཤ་བོཌ།</a><br>
+      <a href="#ch8"><span class="toc-num">8.</span>ཅ་ཆས་མཛོད་ཀྱི་པེ་ནཱལ།</a><br>
+      <a href="#ch8b"><span class="toc-num">8b.</span>ཅ་ཆས་ཉུང་མི་ལྟ་རྟོག</a><br>
+      <a href="#ch8c"><span class="toc-num">8c.</span>བཟོ་སྐྲུན།</a><br>
+      <a href="#ch9"><span class="toc-num">9.</span>ཚོང་གི་པེ་ནཱལ།</a><br>
+      <a href="#ch9b"><span class="toc-num">9b.</span>ཟ་ཁང་།</a><br>
+      <a href="#ch9c"><span class="toc-num">9c.</span>ཁང་མིག (མགྲོན་ཁང་།)</a><br>
+      <a href="#ch9d"><span class="toc-num">9d.</span>མཉམ་འབྲེལ་པ། (ལས་ཚབ། ལམ་སྟོན་པ། ཁ་ལོ་པ།)</a><br>
+      <a href="#ch9e"><span class="toc-num">9e.</span>ཁང་མིག་གཙང་སྦྲ། (མགྲོན་ཁང་།)</a><br>
+    </div>
+    <div>
+      <a href="#ch10"><span class="toc-num">10.</span>ཉོ་ནིའི་པེ་ནཱལ།</a><br>
+      <a href="#ch11"><span class="toc-num">11.</span>འགྲོ་སོང་དང་ འབྱོར་ཐོ།</a><br>
+      <a href="#ch12"><span class="toc-num">12.</span>རྩིས་ཐོ་དང་ སྤོ་སོར།</a><br>
+      <a href="#ch13"><span class="toc-num">13.</span>སྙན་ཞུ་དང་ བུན་གྱི་དུས་ཡུན། (Aging)</a><br>
+      <a href="#ch14"><span class="toc-num">14.</span>ལཱ་གཡོག་པ་དང་ གླ་ཆ།</a><br>
+      <a href="#ch15"><span class="toc-num">15.</span>GST སྙན་ཞུ་དང་ གློག་རིག་བིལ།</a><br>
+      <a href="#ch16"><span class="toc-num">16.</span>སྒྲིག་སྟངས་དང་ འཛིན་སྐྱོང་།</a><br>
+      <a href="#ch17"><span class="toc-num">17.</span>ཁྱོད་ཀྱི་གནས་སྡུད། — ས་གནས། ཉེན་སྲུང་འདྲ་བཤུས་དང་ སླར་གསོ།</a><br>
+      <a href="#ch18"><span class="toc-num">18.</span>ཐོན་རིམ་གསརཔ་ལུ་ ཡར་སྤོ།</a><br>
+      <a href="#ch19"><span class="toc-num">19.</span>མོ་བཱའིལ་ཨེབ་ གྲ་སྒྲིག་དང་ ལག་ལེན།</a><br>
+      <a href="#ch19b"><span class="toc-num">19b.</span>💬 ཌེཀསི་ཊོཔ་–མོ་བཱའིལ་བརྡ་འཕྲིན།</a><br>
+      <a href="#ch20"><span class="toc-num">20.</span>དཀའ་ངལ་སེལ་ཐབས།</a><br>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 1 -->
+<div class="guide-filter" id="guideFilter">Accelent གིས་ ཁྱོད་ཀྱི་ཚོང་ལཱ་གི་དབྱེ་བ་ལུ་ དགོཔ་ཨིན་པའི་ གསལ་གཞི་ཚུ་རྐྱངམ་གཅིག་སྟོནམ་ཨིན། (ཐེངས་དང་པ་ འགོ་བཙུགས་པའི་སྐབས་ གདམ་ཁ་རྐྱབ་མི་ ཡང་ན་ <strong>Settings → 🏢 Company</strong> ནང་།) <em>ཟ་ཁང་དང་ མགྲོན་ཁང་གི་དོན་ལུ།</em> <em>མགྲོན་ཁང་གི་དོན་ལུ།</em> ཡང་ན་ <em>ཚོང་ཁང་། ཚོང་པ་དང་ ཞབས་ཏོག་གི་དོན་ལུ།</em> ཟེར་ རྟགས་བཀལ་མི་ལེའུ་ཚུ་ ཁོང་ཚོ་གི་དོན་ལུ་རྐྱངམ་ཅིག་ཨིན། ལྷག་ལུས་ཚུ་ ག་ར་གི་དོན་ལུ་ཨིན། Accelent ལས་ཁ་ཕྱེ་བའི་སྐབས་ (F1 ཡང་ན་ 📖 User Guide) ལམ་སྟོན་འདི་གིས་ ཁྱོད་ཀྱི་ཚོང་ལཱ་གི་ལེའུ་ཚུ་རྐྱངམ་ཅིག་སྟོནམ་ཨིན།</div>
+<div class="chapter-banner">ལེའུ 1 — ངོ་སྤྲོད།</div>
+<div class="section" id="ch1">
+  <h2>1. Accelent ག་ཅི་སྨོ?</h2>
+  <div class="tip">💡 ལམ་སྟོན་འདི་ Accelent གི་མར་ཁར་ཡོད་པའི་ <strong>📖 User Guide</strong> ཨེབ་རྟགས་ལས་ ནམ་རང་ཨིན་རུང་ ཁ་ཕྱེ་ ཡང་ན་ <strong>F1</strong> ཨེབ་གནང་།</div>
+  <p>Accelent འདི་ ཚོང་ལཱ་ཆུང་ཀུ་དང་ འབྲིང་མ་ — ཚོང་ཁང་། བཀྲམ་སྤེལ་པ། ཚོང་ཆེན་པ་དང་ ཞབས་ཏོག་བྱིན་མི་ — ཚུ་གི་དོན་ལུ་ བཟོ་ཡོད་པའི་ རྩིས་ཐོ་དང་ ཅ་ཆས་མཛོད་འཛིན་སྐྱོང་གི་ རིམ་ལུགས་ཆ་ཚང་ཅིག་ཨིན། འདི་ Windows PC གུ་ལཱ་འབདཝ་ཨིནམ་དང་ Android མོ་བཱའིལ་ཨེབ་དང་ མཐུད་དེ་ཡོདཔ་ལས་ ཁྱོད་ཀྱིས་ ཁྱོད་ཀྱི་ཚོང་ལཱ་ས་གནས་ག་ཏེ་ལས་རང་ བལྟ་ཚུགས།</p>
+
+  <div class="panel-grid">
+    <div class="panel-card">
+      <h4>🖥️ ཌེཀསི་ཊོཔ་ཨེབ།</h4>
+      <p>རྩིས་ཐོ་ཆ་ཚང་། བིལ། ཅ་ཆས་མཛོད། GST སྙན་ཞུ། གླ་ཆ་དང་ སྙན་ཞུ། ག་ར་ ཁྱོད་ཀྱི་ Windows PC གུ་ལཱ་འབདཝ་ཨིན། ཉིན་བསྟར་གྱི་ལཱ་ལུ་ ཨིན་ཊར་ནེཊ་མ་དགོ།</p>
+    </div>
+    <div class="panel-card">
+      <h4>📱 མོ་བཱའིལ་ཨེབ།</h4>
+      <p>ཚོང་། ཅ་ཆས་མཛོད་དང་ ལྷག་ལུས་ཚུ་ ཁྱོད་ཀྱི་ཁ་པར་ལས་ ཐད་ཀར་བལྟ། ཐག་རིང་ལས་ བིལ་དང་ ཉོ་ཚོང་ཚུ་བཟོ། ཁྱོད་ཀྱི་ས་གནས་ཀྱི་ WiFi བརྒྱུད་དེ་ ཡང་ན་ Tailscale བརྒྱུད་དེ་ ས་གནས་ག་ཏེ་ལས་རང་ ཌེཀསི་ཊོཔ་དང་མཐུདཔ་ཨིན།</p>
+    </div>
+    <div class="panel-card">
+      <h4>📊 འཛིན་སྐྱོང་འབད་མི།</h4>
+      <p>ཚོང་གི་བིལ། · ཉོ་ནིའི་བིལ། · ཅ་ཆས་མཛོད། · ཕྱོགས་ (ཉོ་མཁན་དང་ ཅ་ཆས་བྱིན་མི།) · དངུལ་ཁང་དང་ ལག་དངུལ་གྱི་རྩིས་ཐོ། · ལཱ་གཡོག་པ་དང་ གླ་ཆ། · GST དང་ གློག་རིག་བིལ། (རྒྱ་གར།) དེ་ལས་ པ་ཀི་སི་ཏཱན། ཤྲི་ལང་ཀ་དང་ Simple VAT རྒྱལ་ཁབ་ཚུ་གི་ཁྲལ།</p>
+    </div>
+    <div class="panel-card">
+      <h4>🔒 ཁྱོད་ཀྱི་གནས་སྡུད་ ཁྱོད་རའི་ཨིན།</h4>
+      <p>གནས་སྡུད་ག་ར་ ཁྱོད་ཀྱི་ PC གུ་ ཡིག་སྣོད་གཅིག་ནང་ བཞགཔ་ཨིན། ག་ནི་ཡང་ ཀ་ལའུཌ་སར་བར་ལུ་ མི་གཏང་། འདི་ ཆ་ཚང་ ཁྱོད་རའི་ཨིན།</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 2 -->
+<div class="chapter-banner">ལེའུ 2 — རྩིས་ཐོའི་གཞི་རྩ།</div>
+<div class="section" id="ch2">
+  <h2>2. ལག་ལེན་པ་གསརཔ་ཚུ་གི་དོན་ལུ་ རྩིས་ཐོའི་གཞི་རྩ།</h2>
+  <p>རྩིས་ཐོའི་མཉེན་ཆས་ ཁྱོད་ཀྱི་དོན་ལུ་ གསརཔ་ཨིན་པ་ཅིན་ དང་པ་ ཡན་ལག་འདི་ལྷག་གནང་། རྩིས་ཐོའི་ཤེས་ཚད་ལག་ཁྱེར་མ་དགོ — གནད་དོན་གཙོ་བོ་ ལ་ལོ་ཅིག་ ཧ་གོ་བ་ཅིན་ ལང་ཚུགས།</p>
+
+  <div class="concept">
+    <h4>💰 ལག་དངུལ་དང་ དངུལ་ཁང་།</h4>
+    <p>ཁྱོད་ཀྱི་ཚོང་ལཱ་གི་དངུལ་ ས་གནས་གཉིས་ནང་ཡོདཔ་ཨིན། <strong>ལག་དངུལ།</strong> (ཁྱོད་ཀྱི་སྒམ་ཆུང་ནང་གི་ དངུལ་ལོར།) དང་ <strong>དངུལ་ཁང་གི་རྩིས་ཐོ།</strong> (དངུལ་ཁང་ནང་ཡོད་པའི་དངུལ།) ཨིན། Accelent གིས་ གཉིས་ཆ་ར་ སོ་སོ་སྦེ་རྩིས་རྐྱབ་ཨིན། ལག་དངུལ་ཐོབ་པའི་སྐབས་ ལག་དངུལ་གྱི་ལྷག་ལུས་ ཡར་འཕར་འགྱོཝ་ཨིན། དངུལ་ཁང་ནང་ བཙུགས་པའི་སྐབས་ ལག་དངུལ་མར་ཕབ་སྟེ་ དངུལ་ཁང་ ཡར་འཕར་འགྱོཝ་ཨིན།</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧾 བིལ། (ཚོང་གི་བིལ།)</h4>
+    <p>བིལ་ཟེར་མི་འདི་ ཉོ་མཁན་ཅིག་གིས་ ཁྱོད་ལས་ཉོ་བའི་སྐབས་ ཁོ་ལུ་སྤྲོད་པའི་ཡིག་ཆ་ཨིན། དེ་ནང་ ཅ་ཆས། གྱངས་ཁ། གོང་ཚད་དང་ བསྡོམས་ཡོདཔ་ཨིན། Accelent ནང་ བིལ་རེ་རེ་ ཐོ་བཀོད་འབད་དེ་ ཉོ་མཁན་གྱི་རྩིས་ཐོ་དང་ རང་བཞིན་གྱིས་ མཐུདཔ་ཨིན།</p>
+  </div>
+
+  <div class="concept">
+    <h4>🛒 ཉོ་ནིའི་བིལ།</h4>
+    <p>ཉོ་ནིའི་བིལ་འདི་ ཁྱོད་ཀྱིས་ ཅ་ཆས་ཉོ་བའི་སྐབས་ ཅ་ཆས་བྱིན་མི་ལས་ཐོབ་པའི་བིལ་ཨིན། འདི་ Accelent ནང་ཐོ་བཀོད་འབད་བ་ཅིན་ ཁྱོད་ཀྱི་ཅ་ཆས་མཛོད་ རང་བཞིན་གྱིས་ ཡར་འཕར་འགྱོཝ་ཨིནམ་དང་ ཅ་ཆས་བྱིན་མི་དེ་ལུ་ སྤྲོད་དགོ་པའི་དངུལ་ཡང་ ཐོ་བཀོད་འབདཝ་ཨིན།</p>
+  </div>
+
+  <div class="concept">
+    <h4>👥 ཕྱོགས། (ཉོ་མཁན་དང་ ཅ་ཆས་བྱིན་མི།)</h4>
+    <p><strong>ཕྱོགས། (Party)</strong> ཟེར་མི་འདི་ ཁྱོད་ཀྱིས་ རྒྱུན་དུ་ ཚོང་འབྲེལ་འཐབ་མི་ ག་ཅི་རང་ཨིན། ཉོ་མཁན་ཚུ་གིས་ ཁྱོད་ལུ་ དངུལ་སྤྲོད་དགོ། (ཐོབ་དགོ་མི — ལྗང་ཁུ་ཁར་སྟོན།) ཁྱོད་ཀྱིས་ ཅ་ཆས་བྱིན་མི་ཚུ་ལུ་ དངུལ་སྤྲོད་དགོ། (སྤྲོད་དགོ་མི — དམརཔོ་ཁར་སྟོན།) Accelent གིས་ ཚོང་འབྲེལ་ག་ར་ལས་ ཕྱོགས་རེ་རེའི་ལྷག་ལུས་ རང་བཞིན་གྱིས་རྩིས་རྐྱབ་ཨིན།</p>
+  </div>
+
+  <div class="concept">
+    <h4>📦 ཅ་ཆས་མཛོད།</h4>
+    <p>ཅ་ཆས་མཛོད་ཟེར་མི་འདི་ ཁྱོད་ཀྱིས་ བཙོང་མི་ཅ་ཆས་ཀྱི་ཐོ་ཡིག་ཨིན། ཅ་ཆས་རེ་རེའི་དོན་ལུ་ Accelent གིས་ <strong>མཛོད་ནང་ཡོད་པའི་གྱངས་ཁ།</strong> <strong>བཙོང་གོང་།</strong> <strong>ཉོ་གོང་།</strong> དང་ <strong>ཅ་ཆས་ཀྱི་ཉུང་མཐའི་གནས་ཚད།</strong> (ལོག་ཉོ་ནིའི་ ཉེན་བརྡ་ ནམ་བྱིན་ནི་ཨིན་ན།) ལྟ་རྟོག་འབདཝ་ཨིན།</p>
+  </div>
+
+  <div class="concept">
+    <h4>⚖️ འགོ་བཙུགས་ཀྱི་ལྷག་ལུས།</h4>
+    <p>ཁྱོད་ཀྱིས་ ཐེངས་དང་པ་ Accelent ལག་ལེན་འཐབ་ནི་འགོ་བཙུགས་པའི་སྐབས་ ཁྱོད་ལུ་ཧེ་མ་ལས་ཡོད་མི་ཚུ་ མཉེན་ཆས་ལུ་སླབ་དགོ — ལག་དངུལ་ག་དེ་ཡོདཔ། དངུལ་ཁང་གི་རྩིས་ཐོ་རེ་རེ་ནང་ ག་དེ་ཡོདཔ། ཉོ་མཁན་རེ་རེ་གིས་ ཁྱོད་ལུ་ ག་དེ་སྤྲོད་དགོཔ་དང་ ཁྱོད་ཀྱིས་ ཅ་ཆས་བྱིན་མི་རེ་རེ་ལུ་ ག་དེ་སྤྲོད་དགོཔ། འདི་ལུ་ <strong>འགོ་བཙུགས་ཀྱི་ལྷག་ལུས། (Opening Balances)</strong> ཟེརཝ་ཨིནམ་དང་ འགོ་བཙུགས་ཀྱི་གྲ་སྒྲིག་སྐབས་ ཐེངས་གཅིག་རྐྱངམ་ཅིག་ བཙུགསཔ་ཨིན།</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧮 ཌེ་བིཊ་ / ཀེ་ཌིཊ། (འཇམ་ཏོང་ཏོ་སྦེ།)</h4>
+    <p>Accelent ནང་ ཌེ་བིཊ་/ཀེ་ཌིཊ་གི་ཐོ་བཀོད་ལུ་ སེམས་ཁར་མ་བཞག — མཉེན་ཆས་ཀྱིས་ འདི་འཛིན་སྐྱོང་འབདཝ་ཨིན། ཚོང་ཐོ་བཀོད་འབད་བ་ཅིན་ ཁྱོད་ཀྱི་ཡོང་འབབ་དང་ ཉོ་མཁན་གྱི་ལྷག་ལུས་ནང་ ཁ་སྐོང་འབདཝ་ཨིན། ཉོ་ཚོང་ཐོ་བཀོད་འབད་བ་ཅིན་ ཁྱོད་ཀྱི་ཅ་ཆས་མཛོད་དང་ ཅ་ཆས་བྱིན་མིའི་ལྷག་ལུས་ནང་ ཁ་སྐོང་འབདཝ་ཨིན། <strong>འབྱུང་མི་ཚུ་ ཐོ་བཀོད་འབད་བ་ཅིན་ ལངམ་ཨིན — རྩིས་ཐོ་ Accelent གིས་འཛིན་སྐྱོང་འབདཝ་ཨིན།</strong></p>
+  </div>
+
+  <div class="concept">
+    <h4>📅 དངུལ་འབྲེལ་ལོ།</h4>
+    <p>རྒྱ་གར་ནང་ དངུལ་འབྲེལ་ལོ་འདི་ <strong>ཟླ་ཕྱི་ཨེ་པྲིལ་ 1 ལས་ ལོ་ཤུལ་མམ་གྱི་ མཱཅ་ 31 ཚུན།</strong> ཨིན། GST སྙན་ཞུ། ལྷག་ལུས་ཤོག་ཁྲམ་དང་ ཁེ་ཕན་དང་གྱོང་རྒུད་ཚུ་ དུས་ཡུན་འདི་ནང་ རྩིས་རྐྱབ་ཨིན། Accelent གི་ Finalization པེ་ནཱལ་གྱིས་ དངུལ་འབྲེལ་ལོ་ གཙང་ཏོག་ཏོ་སྦེ་ ཁ་བསྡམས་ནིའི་ རོགས་རམ་འབདཝ་ཨིན།</p>
+  </div>
+
+  <div class="tip">💡 <strong>གསེར་གྱི་སྒྲིག་གཞི།</strong> ཚོང་རེ་རེ། ཉོ་ཚོང་རེ་རེ་དང་ འགྲོ་སོང་རེ་རེ་ ཉིན་མ་དེ་རང་ ཐོ་བཀོད་འབད། ཁྱོད་ རྒྱུན་ཆད་མེད་པར་འབད་ཚད་ ཁྱོད་ཀྱི་སྙན་ཞུ་དང་ ལྷག་ལུས་ཚུ་ ཁུངས་ལྡན་སྦེ་ཡོདཔ་ཨིན།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 3 -->
+<div class="chapter-banner">ལེའུ 3 — གཞི་བཙུགས།</div>
+<div class="section" id="ch3">
+  <h2>3. ཌེཀསི་ཊོཔ་ཨེབ་གཞི་བཙུགས་ནི།</h2>
+
+  <h3>ཁྱོད་ལུ་དགོ་མི།</h3>
+  <ul>
+    <li>Windows 10 ཡང་ན་ Windows 11 (64-bit)</li>
+    <li><strong>RAM:</strong> བིལ་ མགྱོགས་དྲགས་སྦེ་ སྐེན་འབད་ནིའི་དོན་ལུ་ 8 GB འོས་འབབ་ཨིན། ཉུང་མཐའ་ 4 GB — ག་ར་ལཱ་འབདཝ་ཨིན་རུང་ བིལ་སྐེན་ལུ་ ཡུན་ཚད་རིངམོ་འགོརཝ་ཨིན།</li>
+    <li>ཌིཀསི་གི་ས་སྟོང་ 1 GB དེ་ཅིག</li>
+    <li>གཞི་བཙུགས་མི། <code>Accelent_Setup_v2.4.9.exe</code>, <strong>accelentapp.com</strong> ལས་ ཕབ་ལེན་འབད་མི།</li>
+  </ul>
+
+  <h3>གཞི་བཙུགས་མི་བརྒྱུད་དེ་ གཞི་བཙུགས། (འོས་འབབ།)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>accelentapp.com</strong> → Download for Windows ལས་ <code>Accelent_Setup_v2.4.9.exe</code> ཕབ་ལེན་འབད།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">དེ་ལུ་ ལན་གཉིས་ཨེབ། Windows SmartScreen གིས་ ཉེན་བརྡ་སྟོན་པ་ཅིན་ <strong>"More info"</strong> དང་ དེ་ལས་ <strong>"Run anyway"</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">རིམ་པ་ཚུ་ལུ་ བརྟེན་ཏེ་ <strong>Install</strong> ལུ་ཨེབ། བིལ་སྐེན་ལུ་ དགོ་པའི་ Windows གི་ཆ་ཤས་ཚུ་ཡང་ གཞི་བཙུགས་མི་གིས་ རང་བཞིན་གྱིས་ གྲ་སྒྲིག་འབདཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Start གི་ཐོ་ཡིག་ ཡང་ན་ ཌེཀསི་ཊོཔ་གུ་ཡོད་པའི་ ཐད་ཀར་འགྲོ་ལམ་ལས་ Accelent ཁ་ཕྱེ།</div></div>
+
+  <h3>ནང་བསྐྱོད་དང་པ།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ལག་ལེན་པའི་མིང་ <strong>admin</strong> དང་ ཆོག་ཡིག་ <strong>Admin@1234</strong> གིས་ ནང་བསྐྱོད་འབད — A ཆེན་པོ། དེ་ལས་ <code>dmin</code>, <strong>@</strong> རྟགས། དེ་ལས་ <code>1234</code>. ཁྱོད་རའི་ཆོག་ཡིག་ གཞི་བཙུགས་མ་འབད་ཚུན་ ནང་བསྐྱོད་ཀྱི་གསལ་གཞི་གིས་ འདི་ཚུ་སྟོནམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">དེ་ལས་ Accelent གིས་ ཁྱོད་རའི་ཆོག་ཡིག་གདམ་ཁ་རྐྱབ་ཟེར་ཞུ་སྟེ་ ཁྱོད་ཀྱི་ <strong>Recovery Key</strong> སྟོནམ་ཨིན — དེ་ ཉེན་སྲུང་ཅན་གྱི་ས་གནས་ནང་བཞག ("ཁྱོད་ཀྱི་རྩིས་ཐོའི་ Recovery Key" ལུ་བལྟ།)</div></div>
+  <div class="tip">💡 ཆོག་ཡིག་ལོག་ ཐེངས་ 5 གི་ཤུལ་ལས་ རྩིས་ཐོ་ སྐར་མ་ 15 གི་རིང་ ལྡེ་མིག་རྐྱབ་ཨིན། ད་རུང་ ཐེངས་ག་དེ་ཡོདཔ་དང་ ལོག་སྟེ་ ནམ་འབད་ཚུགས་ག་ ནང་བསྐྱོད་ཀྱི་གསལ་གཞི་གིས་སླབ་ཨིན། གློག་རིག་འདི་ནང་ ཧེ་མ་ Accelent གཞི་བཙུགས་འབད་དེ་ཡོད་པ་ཅིན་ ཁྱོད་ཀྱི་ཆོག་ཡིག་རྙིངམ་ ལཱ་འབདཝ་ཨིན — ཕྱིར་བཏོན་འབད་རུང་ ཁྱོད་ཀྱི་གནས་སྡུད་ ནམ་ཡང་ མི་བཏོན།</div>
+
+  <h3>Windows SmartScreen དང་ ནད་ཕྲ་བཀག་སྡོམ།</h3>
+  <p>Accelent ལུ་ ད་ཚུན་ ཌི་ཇི་ཊཱལ་མཚན་རྟགས་མ་བཀོད་པས་ Windows གིས་ དཔར་བསྐྲུན་པ་ ངོས་མ་འཛིན། དེ་འབདཝ་ལས་ ཁྱོད་ཀྱིས་ ཐེངས་དང་པ་ གཞི་བཙུགས་མི་ ཡང་ན་ ཨེབ་འདི་ གཡོག་བཀོལ་བའི་སྐབས་ Windows གིས་ <strong>"Windows protected your PC"</strong> སྟོན་སྲིད། འདི་ ཐེངས་གཅིག་རྐྱངམ་ཅིག་ འབྱུངམ་ཨིན།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Accelent <strong>accelentapp.com</strong> ལས་རྐྱངམ་ཅིག་ ཕབ་ལེན་འབད། ས་གནས་གཞན་ལས་ཐོབ་པའི་ཡིག་སྣོད་ཚུ་ ངོ་མ་མེན་སྲིད།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">SmartScreen ནང་ <strong>More info</strong> ལུ་ཨེབ་ཞིནམ་ལས་ ཡིག་སྣོད་ཀྱི་མིང་ <code>Accelent_Setup_…exe</code> ཡང་ན་ <code>Accelent.exe</code> ཨིན་ན་ བལྟ་སྟེ་ <strong>Run anyway</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཁྱོད་ཀྱི་ ནད་ཕྲ་བཀག་སྡོམ་གྱིས་ Accelent བཀག་ཆ་ ཡང་ན་ quarantine འབད་བ་ཅིན་ quarantine ལས་ ལོག་སྟེ་བཏོན་ཞིནམ་ལས་ Accelent གི་ཡིག་སྣོད་ (གཞི་བཙུགས་འབད་ཡོད་པའི་ འདྲ་བཤུས་ཀྱི་དོན་ལུ། <span class="path">C:\Accelent</span>) ནད་ཕྲ་བཀག་སྡོམ་གྱི་ <strong>exclusions / allowed apps</strong> ནང་ ཁ་སྐོང་འབད། ནད་ཕྲ་བཀག་སྡོམ་ལ་ལོ་གིས་ Python གི་ཐུམ་སྒྲིལ་ལག་ཆས་ཀྱིས་བཟོ་མི་ ལས་རིམ་གསརཔ་ཚུ་ ནོར་བ་སྦེ་ རྟགས་བཀལཝ་ཨིན། འདི་ ཉེན་བརྡ་ནོར་བ་ཅིག་ཨིན།</div></div>
+  <div class="tip">💡 Accelent འདི་ ལས་རིམ་ཡིག་སྣོད་ སྤྱིར་བཏང་ཅིག་སྦེ་ གཞི་བཙུགས་འབདཝ་ཨིནམ་དང་ ཨིན་ཊར་ནེཊ་མེད་རུང་ ལཱ་འབདཝ་ཨིན། ཁྱོད་ཀྱི་ ཆོག་ཐམ་ཞིབ་དཔྱད་འབད་ནི་ (དང་ ཁྱོད་ཀྱིས་ ཁ་ཕྱེ་བ་ཅིན་ ཁྱོད་ཀྱི་ གསང་སྡོམ་ཉེན་སྲུང་ལྡེ་མིག་གི་ཆ་ཤས་ཅིག་ བཞག་ནི་) གི་དོན་ལུ་རྐྱངམ་ཅིག་ ཨིན་ཊར་ནེཊ་དང་མཐུདཔ་ཨིན། ཁྱོད་ཀྱི་ཚོང་ལཱ་གི་གནས་སྡུད་ ཁྱོད་ཀྱི་ PC ལས་ ནམ་ཡང་ ཕྱི་ཁར་མི་འགྱོ། ཉེན་བརྡ་གིས་ ད་ལྟོ་ཡང་ སེམས་ཁར་ཕོག་པ་ཅིན་ <strong>support@accelentapp.com</strong> ལུ་ འབྲི་གནང་།</div>
+
+  <h3>འབག་ཚུགས་པའི་ Zip (གདམ་ཁ།)</h3>
+  <p>གཞི་བཙུགས་འབད་ནི་མ་དགོ་པ་ཅིན་ དེའི་ཚབ་ལུ་ <code>Accelent_Desktop_v2.4.9.zip</code> ཕབ་ལེན་འབད་དེ་ རིམ་པ་འདི་ཚུ་ལུ་ བརྟེན།</p>
+
+  <h3>གཞི་བཙུགས་ཀྱི་རིམ་པ།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><code>Accelent_Desktop_v2.4.9.zip</code> གུ་ གཡས་ཨེབ → <strong>Extract All</strong>. <code>C:\Accelent</code> ཡང་ན་ <code>D:\Accelent</code> བཟུམ་གྱི་ ས་གནས་བརྟན་པོ་ཅིག་གདམ། <strong>zip གི་ནང་ལས་ མ་གཡོག་བཀོལ།</strong></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཕྱིར་བཏོན་འབད་མི་ <code>Accelent</code> ཡིག་སྣོད་ཁ་ཕྱེ། དེ་ནང་ <code>Accelent.exe</code>, <code>setup.bat</code> དང་ རྒྱབ་སྐྱོར་ཡིག་སྣོད་ ལ་ལོ་ཅིག་ མཐོང་འོང་།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Accelent.exe</strong> ལུ་ ལན་གཉིས་ཨེབ། Windows གིས་ SmartScreen གི་ཉེན་བརྡ་ སྟོན་སྲིད — <strong>"More info"</strong> དང་ དེ་ལས་ <strong>"Run anyway"</strong> ལུ་ཨེབ། ཨེབ་འདི་ལུ་ ད་ཚུན་ ཌི་ཇི་ཊཱལ་མཚན་རྟགས་མ་བཀོད་པས་ འདི་བཟུམ་འབྱུངམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ཨེབ་ཁ་ཕྱེཝ་ཨིན། ཐེངས་དང་པ་ གཡོག་བཀོལ་བའི་སྐབས་ ཁྱོད་ཀྱི་གནས་སྡུད་ཡིག་སྣོད་ <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span> ནང་ རང་བཞིན་གྱིས་བཟོཝ་ཨིན</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">ཉིན་བསྟར་ འཇམ་ཏོང་ཏོ་སྦེ་ ཁ་ཕྱེ་ནིའི་དོན་ལུ་ <code>Accelent.exe</code> གུ་ གཡས་ཨེབ → <em>Send to → Desktop (create shortcut)</em>.</div></div>
+
+  <h3>ཐེངས་དང་པའི་ མེ་འགོག་གྲ་སྒྲིག (མོ་བཱའིལ་ཨེབ་ཀྱི་དོན་ལུ།)</h3>
+  <p>མོ་བཱའིལ་གྱི་ རོགས་རམ་ཨེབ་ ལག་ལེན་འཐབ་ནི་ཨིན་པ་ཅིན་ འདི་ ཐེངས་གཅིག་ གཡོག་བཀོལ།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><code>Accelent</code> ཡིག་སྣོད་ནང་ <strong>setup.bat</strong> ལུ་ ལན་གཉིས་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Windows གིས་ འཛིན་སྐྱོང་པའི་གནང་བ་ ཞུཝ་ཨིན — <strong>Yes</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཡིག་ཚུགས་ཀྱིས་ Windows གི་ མེ་འགོག་ནང་ 8765 འཛུལ་སྒོ་ཁ་ཕྱེ་སྟེ་ ཁྱོད་ཀྱི་ PC གི་ IP ཁ་བྱང་སྟོནམ་ཨིན། IP དེ་ ཟིན་བྲིས་འབད — ཁ་པར་ ལག་ཐོག་ལས་ མཐུད་ནི་ལུ་ དགོ་སྲིད།</div></div>
+
+  <div class="warn">⚠ setup.bat བཞག་བཞག་པ་ཅིན་ མོ་བཱའིལ་ཨེབ་ ཌེཀསི་ཊོཔ་དང་ མཐུད་མི་ཚུགས།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 4 -->
+<div class="chapter-banner">ལེའུ 4 — ཐེངས་དང་པ་ ཀམ་པ་ནི་གྲ་སྒྲིག</div>
+<div class="section" id="ch4">
+  <h2>4. ཐེངས་དང་པ་ ཀམ་པ་ནི་གྲ་སྒྲིག</h2>
+  <p>ཁྱོད་ཀྱིས་ ཐེངས་དང་པ་ Accelent ཁ་ཕྱེ་བའི་སྐབས་ ཚོང་འབྲེལ་ག་ཅི་རང་ ཐོ་བཀོད་མ་འབད་བའི་ཧེ་མ་ སྐར་མ་ 10 བཏང་སྟེ་ ཁྱོད་ཀྱི་ཀམ་པ་ནིའི་ ཁ་གསལ་ཚུ་ བཀང་།</p>
+
+  <h3>འགོ་མ་བཙུགས་པའི་ཧེ་མ — ཁྱོད་ཀྱི་རྒྱལ་ཁབ་གདམ།</h3>
+  <p>Accelent ཐེངས་དང་པ་ འགོ་བཙུགས་པའི་སྐབས་ (ཁྱོད་རའི་ཆོག་ཡིག་ གཞི་བཙུགས་འབད་ཚར་བའི་ཤུལ་ལས་ ཐད་ཀར།) ཁྱོད་ཀྱི་ <strong>རྒྱལ་ཁབ།</strong> འདྲི་ཨིན། རྒྱལ་ཁབ་ཀྱིས་ ཁྱོད་ཀྱི་ <strong>ཁྲལ་གྱི་སྒྲིག་གཞི།</strong> དང་ <strong>དངུལ་ལོར།</strong> གཏན་འཁེལ་འབདཝ་ཨིན — རྒྱ་གར་ལུ་ GST, རྒྱལ་ཁབ་གཞན་ཚུ་ལུ་ VAT — དེ་འབདཝ་ལས་ བིལ་རེ་རེ། སྙན་ཞུ་རེ་རེ་དང་ ཁྲལ་གྱི་སྙན་ཞུ་རེ་རེ་གིས་ ཉིན་དང་པ་ལས་ ཚད་གཞི་ངོ་མ་ ལག་ལེན་འཐབ་ཨིན།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Welcome — Set Up Your Country</strong> སྒོ་སྒྲིག་ནང་ ཁྱོད་ཀྱི་ <strong>Country</strong> གདམ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཁྱོད་ཀྱི་རྒྱལ་ཁབ་ཀྱི་དོན་ལུ་ དྲི་བ་ཁ་སྐོང་ཅིག་ མཐོང་པ་ཅིན་ ལན་སློག (འོག་གི་ཐིག་ཁྲམ་ལུ་བལྟ།)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Language</strong> ཞིབ་དཔྱད་འབད། དེ་ནང་ ཁྱོད་ཀྱི་རྒྱལ་ཁབ་ཀྱི་ སྐད་ཡིག་གཙོ་བོ་ ཧེ་མ་ལས་ གདམ་ཁ་རྐྱབ་ཡོད། (དཔེར་ན་ རྒྱ་གར་ལུ་ Hindi) — English ཡང་ན་ ཁྱོད་ཀྱིས་ དགའ་མི་སྐད་ཡིག་གཞན་ཅིག་ལུ་ སོར།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ཁྱོད་ཀྱི་ <strong>Business</strong> གདམ། <em>Shop, trading, services or manufacturing</em>, <em>Restaurant, café or dhaba</em> (<a href="#ch9b">ལེའུ 9b</a> ལུ་བལྟ།) ཡང་ན་ <em>Hotel, lodge or guest house</em> (<a href="#ch9c">ལེའུ 9c</a> ལུ་བལྟ།). ཐོ་ཡིག་གིས་ གསལ་གཞི་ག་ཅི་ཚུ་སྟོནམ་ཨིན་ན་ འདི་གིས་ གཏན་འཁེལ་འབདཝ་ཨིནམ་དང་ ཤུལ་ལས་ <strong>Settings → 🏢 Company</strong> ནང་ སོར་ཚུགས།</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Confirm and Continue</strong> ལུ་ཨེབ།</div></div>
+  <table>
+    <tr><th>རྒྱལ་ཁབ།</th><th>ཁྲལ།</th><th>དངུལ་ལོར།</th><th>དྲི་བ་ཁ་སྐོང་།</th></tr>
+    <tr><td>རྒྱ་གར།</td><td>GST (CGST + SGST / IGST)</td><td>₹ INR</td><td>—</td></tr>
+    <tr><td>པ་ཀི་སི་ཏཱན།</td><td>ཅ་ཆས་ལུ་ ཕེ་ཌ་རལ་ཚོང་ཁྲལ། ཞབས་ཏོག་ལུ་ ས་ཁོངས་ཁྲལ།</td><td>Rs. PKR</td><td><strong>Province</strong> — ཁྱོད་ཀྱི་ཚོང་ལཱ་གི་ ས་ཁོངས། (ICT, Punjab, Sindh, KPK, Balochistan, AJ &amp; Kashmir, Gilgit-Baltistan)</td></tr>
+    <tr><td>ཤྲི་ལང་ཀ།</td><td>VAT 18%, འབྲེལ་བ་ཡོད་སར་ SSCL ཡང་།</td><td>Rs. LKR</td><td>ཁྱོད་ལུ་འབྲེལ་བ་ཡོད་པ་ཅིན་ <strong>Financial Institution</strong> (དངུལ་འབྲེལ་ཞབས་ཏོག་ལུ་ VAT 20.5%) དང་/ཡང་ན་ <strong>SSCL-liable</strong> (ལོ་བསྟར་ཚོང་འབབ་ LKR 120,000,000 ལས་ལྷག) ལུ་ རྟགས་བཀལ།</td></tr>
+    <tr><td>བལ་ཡུལ།</td><td>VAT 13%</td><td>Rs. NPR</td><td>—</td></tr>
+    <tr><td>བང་གྷ་ལ་དེཤ།</td><td>VAT 15%</td><td>৳ BDT</td><td>—</td></tr>
+    <tr><td>འབྲུག</td><td>ཚོང་ཁྲལ་ 7%</td><td>Nu. BTN</td><td>—</td></tr>
+    <tr><td>མཱལ་དིབས།</td><td>GST 8% (ཕྱི་མགྲོན་ཚོང་ལུ་ 17%, བིལ་རེ་རེ་ནང་ གདམ་ཁ་རྐྱབ།)</td><td>Rf. MVR</td><td>—</td></tr>
+  </table>
+  <div class="err">🚨 <strong>དོགས་སྐྱེད་ཀྱིས་གདམ — རྒྱལ་ཁབ་ ཤུལ་ལས་ སོར་མི་ཚུགས།</strong> ཁྱོད་ཀྱིས་ ཚོང་དང་པ། ཉོ་ཚོང་དང་པ་ ཡང་ན་ ཅ་ཆས་དང་པ་ སྲུང་བཞག་འབད་བའི་སྐབས་ རྒྱལ་ཁབ་ ལྡེ་མིག་རྐྱབ་ཨིན། སོར་བ་ཅིན་ ཁྱོད་ཀྱིས་ སྲུང་བཞག་འབད་མི་ གྱངས་ཁ་ཚུ་ དངུལ་ལོར་དང་ ཁྲལ་གྱི་སྒྲིག་གཞི་རྙིངམ་ནང་ ལུསཔ་ཨིན། ལོག་སྟེ་གདམ་ནིའི་ ཐབས་ལམ་གཅིག་རྐྱངམ་ <strong>Settings → App Settings → Reset Database</strong> ཨིནམ་དང་ འདི་གིས་ གནས་སྡུད་ག་ར་ བཏོན་གཏངམ་ཨིན། ཨིན་རུང་ སྐད་ཡིག་ ནམ་རང་ཨིན་རུང་ སོར་ཚུགས། (ལེའུ 6)</div>
+  <div class="tip">💡 ཁྱོད་ཀྱི་རྒྱལ་ཁབ་ རྟག་བུ་ར་ སྒོ་སྒྲིག་གི་ མར་ཁ་གཡོན་ཕྱོགས། གནས་སྟངས་ཕྲ་རིང་ནང་ མཐོངམ་ཨིན — དཔེར་ན་ <em>India · GST</em>. ཁྱོད་ཀྱི་རྒྱལ་ཁབ་ ཐོ་ཡིག་ནང་ མེད་པ་ཅིན་ འགོ་མ་བཙུགས་པའི་ཧེ་མ་ རྒྱབ་སྐྱོར་ལུ་ འབྲེལ་བ་འཐབ།</div>
+
+  <h3>རིམ་པ 1 — ཀམ་པ་ནིའི་བརྡ་དོན་བཀང་།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings</strong> (ཟུར་ཕྲ་ནང་ ⚙️) ལུ་འགྱོ → <strong>🏢 Company</strong> ཤོག་བྱང་ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཁྱོད་ཀྱི་ཀམ་པ་ནིའི་མིང་། ཁ་བྱང་། ཁ་པར་ཨང་། གློག་འཕྲིན། GST ཨང་ (GSTIN) དང་ PAN ཨང་ ཚུ་བཀང་།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཁྱོད་ཀྱི་ཀམ་པ་ནིའི་ ལས་རྟགས་ སྐྱེལ་བཙུགས་འབད — དེ་ པར་བསྐྲུན་འབད་མི་ བིལ་ག་ར་ནང་ མཐོངམ་ཨིན། ས་གནས་འདི་ལས་ ཁྱོད་ཀྱི་ <strong>མཚན་རྟགས་དང་ ཚོང་ཁང་གི་ཐམ་ག</strong> ཡང་ ཁ་སྐོང་འབད་ཚུགས། (<em>WhatsApp ནང་ བིལ་གཏང་ནི།</em> ལུ་བལྟ།)</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Save Company Settings</strong> ལུ་ཨེབ།</div></div>
+
+  <h3>རིམ་པ 2 — འགོ་བཙུགས་ཀྱི་ལྷག་ལུས་གཞི་བཙུགས།</h3>
+  <p>ཉིན་དང་པ་ ཁྱོད་ལུ་ ཧེ་མ་ལས་ཡོད་མི་ཚུ་ འགོ་བཙུགས་ཀྱི་ལྷག་ལུས་ཀྱིས་ མཉེན་ཆས་ལུ་སླབ་ཨིན། འདི་ཚུ་ ཐེངས་གཅིག་བཙུགས་ཞིནམ་ལས་ ཤུལ་ལས་ མ་སོར།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 📊 Balances</strong> ཤོག་བྱང་ལུ་འགྱོ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Edit Cash Balance</strong> ལུ་ཨེབ — ཁྱོད་ཀྱི་འགོ་བཙུགས་ཚེས་གྲངས་ལུ་ ལག་ཁར་ཡོད་པའི་ ལག་དངུལ་ངོ་མ་བཙུགས།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Edit Bank Balances</strong> ལུ་ཨེབ — ཁྱོད་ཀྱི་ དངུལ་ཁང་གི་གསལ་ཐོ་ མཇུག་མ་ལས་ དངུལ་ཁང་རྩིས་ཐོ་རེ་རེའི་ ལྷག་ལུས་མཇུག་མ་ བཙུགས།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Edit Party Balances</strong> ལུ་ཨེབ — ཁྱོད་ཀྱི་འགོ་བཙུགས་ཚེས་གྲངས་ལུ་ ཉོ་མཁན་རེ་རེ་གིས་ ཁྱོད་ལུ་ ག་དེ་སྤྲོད་དགོཔ་ཨིན་ན་དང་ ཁྱོད་ཀྱིས་ ཅ་ཆས་བྱིན་མི་རེ་རེ་ལུ་ ག་དེ་སྤྲོད་དགོཔ་ཨིན་ན་ བཙུགས།</div></div>
+
+  <h3>རིམ་པ 3 — ཁྱོད་ཀྱི་ཅ་ཆས་ ཁ་སྐོང་འབད།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Inventory</strong> པེ་ནཱལ་ལུ་འགྱོ → <strong>+ Add Item</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཅ་ཆས་རེ་རེའི་དོན་ལུ། མིང་། དབྱེ་རིམ། ཚད་གཞི་ (Pcs/Kg/Box ལ་སོགས་པ།) ཉོ་གོང་། བཙོང་གོང་། ད་ལྟོ་མཛོད་ནང་ཡོད་པའི་གྱངས་ཁ་དང་ ཅ་ཆས་ཀྱི་ཉུང་མཐའི་གནས་ཚད་ བཙུགས།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཅ་ཆས་ག་ར་གི་དོན་ལུ་ འདི་བཟུམ་འབད། ནམ་རང་ཨིན་རུང་ ཅ་ཆས་ཁ་སྐོང་ ཁ་སྐོང་འབད་ཚུགས།</div></div>
+
+  <div class="tip">💡 <strong>ལམ་སྟོན།</strong> མགྱོགས་དྲགས་སྦེ་ བཙོང་འགྱོ་མི་ ཅ་ཆས་ཚུ་གི་དོན་ལུ་ ཉུང་མཐའི་གནས་ཚད་ཅིག་ གཞི་བཙུགས་འབད། ཅ་ཆས་ གནས་ཚད་དེ་ལས་ མར་ཕབ་པའི་སྐབས་ Accelent གིས་ 🟡 Low ཡང་ན་ 🔴 Out སྦེ་ རྟགས་བཀལཝ་ཨིན།</div>
+
+  <h3>རིམ་པ 4 — སྐད་ཡིག་ཞིབ་དཔྱད།</h3>
+  <p>ཁྱོད་ཀྱིས་ རྒྱལ་ཁབ་དང་གཅིག་ཁར་ སྐད་ཡིག་ཅིག་ གདམ་ཁ་རྐྱབ་ཅི། སོར་ནིའི་དོན་ལུ་ <strong>Settings → ⚙️ App Settings</strong> → Language ལུ་འགྱོ། ངོས་འཛིན་བར་ཐག་ ཐད་ཀར་སོརཝ་ཨིན — སྐད་ཡིག་ 18 ག་ར་གི་དོན་ལུ་ ལེའུ 6 ལུ་བལྟ།</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 5 -->
+<div class="chapter-banner">ལེའུ 5 — མཉེན་ཆས་གཞན་ལས་ སྤོ་ནི།</div>
+<div class="section" id="ch5">
+  <h2>5. རྩིས་ཐོའི་མཉེན་ཆས་གཞན་ལས་ སྤོ་ནི།</h2>
+  <p>ཁྱོད་ Tally, Busy, Marg, Vyapar ཡང་ན་ མཉེན་ཆས་གཞན་ཅིག་ལས་ སྤོ་སྟེ་འོང་པ་ཅིན་ རིམ་པ་འདི་ཚུ་ལུ་ བརྟེན། གནད་དོན་གཙོ་བོ། <strong>མཉེན་ཆས་རྙིངམ་ལས་ ལྷག་ལུས་མཇུག་མ་ཚུ་རྐྱངམ་ཅིག་དགོ — ཚོང་འབྲེལ་རེ་རེ་ མ་དགོ།</strong></p>
+
+  <div class="warn">⚠ <strong>སྤོ་ནིའི་ཚེས་གྲངས་</strong> ཅིག་གདམ — སྤྱིར་བཏང་ ཟླཝ་གི་ ཉིན་མཇུག་མ་ ཡང་ན་ དངུལ་འབྲེལ་ལོའི་ ཉིན་མཇུག་མ། ཚེས་གྲངས་དེ་ལུ་ མཉེན་ཆས་རྙིངམ་ནང་ཡོད་པའི་ ལྷག་ལུས་ག་ར་ འབྲི། དེ་ལས་ ཉིན་ཤུལ་མམ་ལས་ Accelent ནང་ གསརཔ་སྦེ་ འགོ་བཙུགས།</div>
+
+  <h3>མཉེན་ཆས་རྙིངམ་ལས་ བསྡུ་དགོ་མི།</h3>
+  <table>
+    <tr><th>ཁྱོད་ལུ་དགོ་མི།</th><th>ག་ཏེ་ལས་ཐོབ་ནི།</th><th>Accelent ནང་ ག་ཅི་འབད་ནི།</th></tr>
+    <tr><td>ལག་དངུལ། (ལྷག་ལུས་མཇུག་མ།)</td><td>ལག་དངུལ་གྱི་ཐོ་ → ལྷག་ལུས་མཇུག་མ།</td><td>Settings → Balances → Edit Cash</td></tr>
+    <tr><td>དངུལ་ཁང་གི་ལྷག་ལུས། (རྩིས་ཐོ་རེ་རེ།)</td><td>དངུལ་ཁང་གི་ཐོ་ ཡང་ན་ དངུལ་ཁང་གི་གསལ་ཐོ།</td><td>Settings → Balances → Edit Bank</td></tr>
+    <tr><td>ཉོ་མཁན་ལས་ ཐོབ་དགོ་པའི་དངུལ།</td><td>Debtors / Sundry Debtors ཐོ་ཡིག</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>ཅ་ཆས་བྱིན་མི་ལུ་ སྤྲོད་དགོ་པའི་དངུལ།</td><td>Creditors / Sundry Creditors ཐོ་ཡིག</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>ཅ་ཆས་དང་ མཛོད།</td><td>Stock summary / ཅ་ཆས་ཀྱི་ཐོ་ཡིག</td><td>Inventory → 📥 Import / Export (འོག་གི་ "ཁྱོད་ཀྱི་ཅ་ཆས་ Accelent ནང་ འབག་འོང་ནི།" ལུ་བལྟ།)</td></tr>
+    <tr><td>ལཱ་གཡོག་པའི་ཁ་གསལ།</td><td>Employee master / HR ཆ་ཤས།</td><td>Employees པེ་ནཱལ → ལཱ་གཡོག་པ་རེ་རེ་ ཁ་སྐོང་འབད།</td></tr>
+  </table>
+
+  <h3>སྤོ་ནིའི་རིམ་པ།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>ཁྱོད་ཀྱི་ མཚམས་ཀྱི་ཚེས་གྲངས་གདམ།</strong> དཔེར་ན། "ང་ 2026 ཟླ་ཕྱི་མཱཅ་ 31 ཚུན་ སྤོ་འོང་ — ངེ་གི་ Accelent 2026 ཨེ་པྲིལ་ 1 ལས་ འགོ་བཙུགསཔ་ཨིན།"</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">མཚམས་ཀྱི་ཚེས་གྲངས་ལུ་ མཉེན་ཆས་རྙིངམ་ལས་ <strong>ལྷག་ལུས་ཚུ་ པར་བསྐྲུན་ ཡང་ན་ ཕྱིར་འདྲེན་འབད</strong>: ལག་དངུལ་གྱི་ལྷག་ལུས། དངུལ་ཁང་གི་ལྷག་ལུས། ཉོ་མཁན་ལས་ཐོབ་དགོ་མི། ཅ་ཆས་བྱིན་མི་ལུ་སྤྲོད་དགོ་མི་དང་ གྱངས་ཁ་དང་བཅས་པའི་ ཅ་ཆས་ཀྱི་ཐོ་ཡིག</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Accelent གྲ་སྒྲིག་འབད</strong> — ཀམ་པ་ནིའི་བརྡ་དོན། (ལེའུ 4)</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>འགོ་བཙུགས་ཀྱི་ལྷག་ལུས་བཙུགས</strong> — མཚམས་ཀྱི་ཚེས་གྲངས་ལུ་ མཉེན་ཆས་རྙིངམ་གྱི་ ལག་དངུལ། དངུལ་ཁང་དང་ ཕྱོགས་ཀྱི་ལྷག་ལུས། (Settings → Balances)</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">མཚམས་ཀྱི་ཚེས་གྲངས་ཀྱི་ གྱངས་ཁ་དང་གཅིག་ཁར་ <strong>ཁྱོད་ཀྱི་ཅ་ཆས་ནང་འདྲེན་འབད</strong> — འོག་གི་ <strong>ཁྱོད་ཀྱི་ཅ་ཆས་ Accelent ནང་ འབག་འོང་ནི།</strong> ལུ་བལྟ།</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">མཚམས་ཀྱི་ཉིན་ཤུལ་མམ་ལས་ Accelent ནང་ <strong>ཚོང་འབྲེལ་གསརཔ་ཐོ་བཀོད་ འགོ་བཙུགས</strong>.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body"><strong>བདུན་ཕྲག་གཅིག་གི་ཤུལ་ལས་ ཞིབ་དཔྱད་འབད:</strong> Accounts ལུ་འགྱོ་སྟེ་ ལག་དངུལ་དང་ དངུལ་ཁང་གི་ལྷག་ལུས་ ཁྱོད་ལུ་ དངོས་སུ་ཡོད་མི་དང་ མཐུན་ག་ བལྟ། མི་མཐུན་པ་ཅིན་ ལྷག་ལུས་ག་ར་ གསརཔ་བཟོ་ནིའི་དོན་ལུ་ Settings → Recalculate ལག་ལེན་འཐབ།</div></div>
+
+  <h3>ཁྱོད་ཀྱི་ཅ་ཆས་ Accelent ནང་ འབག་འོང་ནི།</h3>
+  <p>ཁྱོད་ཀྱི་ཅ་ཆས་ཚུ་ རེ་རེ་བཞིན་དུ་ ཡིག་དཔར་རྐྱབ་མི་དགོ། མཉེན་ཆས་རྙིངམ་ལས་ ཅ་ཆས་ཀྱི་ཐོ་ཡིག་ ཡང་ན་ མཛོད་ཀྱི་སྙན་ཞུ་ ཕྱིར་འདྲེན་འབད་ (ཡང་ན་ ཁྱོད་རའི་ Excel ཤོག་ལེབ་ ལག་ལེན་འཐབ) ཐེངས་གཅིག་ལུ་ ནང་འདྲེན་འབད། Accelent གིས་ Excel (<code>.xlsx</code>) དང་ CSV ཡིག་སྣོད་ཚུ་ ལྷགཔ་ཨིན།</p>
+
+  <h4>Import / Export ཨེབ་རྟགས།</h4>
+  <p><strong>Inventory</strong> ནང་ <strong>📥 Import / Export</strong> ཨེབ་རྟགས་ཀྱིས་ གདམ་ཁ་གསུམ་ ཁ་ཕྱེཝ་ཨིན། ག་ཅི་སྨོ་ཟེར་བ་ཅིན་ ལཱ་ མི་འདྲཝ་གསུམ་ཡོདཔ་ལས།</p>
+  <table>
+    <tr><th>གདམ་ཁ།</th><th>དགོས་དོན།</th></tr>
+    <tr><td><strong>📥 Import items from Excel or CSV…</strong></td><td>Accelent <strong>ནང་</strong> འོང་མི་ག་ར — མཉེན་ཆས་ག་ཅི་ལས་ཨིན་རུང་ ཡང་ན་ ཁྱོད་རའི་ཤོག་ལེབ་ལས།</td></tr>
+    <tr><td><strong>📋 Download import template</strong></td><td>མགོ་མིང་ངོ་མ་དང་བཅས་པའི་ གྲ་སྒྲིག་ཅན་གྱི་ Excel ཤོག་ལེབ། ཡིག་སྣོད་ ད་ཚུན་མེད་མི་ཚུ་གི་དོན་ལུ།</td></tr>
+    <tr><td><strong>💾 Export inventory to Excel</strong></td><td>ཁྱོད་ཀྱི་ཅ་ཆས་ Accelent ལས་ <strong>ཕྱི་ཁར</strong> འབགཔ་ཨིན — ཉེན་སྲུང་འདྲ་བཤུས་ ཡང་ན་ ཁྱོད་ཀྱི་རྩིས་པ་གི་དོན་ལུ།</td></tr>
+  </table>
+
+  <h4>ནང་འདྲེན་གཅིག་གིས་ མཉེན་ཆས་ག་ཅིའི་ཡིག་སྣོད་ཨིན་རུང་ ལྷག་ཐངས།</h4>
+  <p>Tally, Marg, Vyapar, Busy དང་ དེ་བཟུམ་གྱི་ མཉེན་ཆས་ཚུ་ ག་ར་གིས་ ཁོང་རའི་སྙན་ཞུ་ཚུ་ སྤྱིར་བཏང་གི་ <strong>Excel ཡང་ན་ CSV ཡིག་སྣོད།</strong> སྦེ་ ཕྱིར་འདྲེན་འབདཝ་ཨིན། ཁྱད་པར་འདི་ བཀོད་སྒྲིག་རྐྱངམ་ཅིག་ཨིན — མགོ་མིང་ཚུ་ ག་ཏེ་ཡོདཔ་དང་ ཀེར་ཐིག་རེ་རེ་ལུ་ ག་ཅི་ཟེརཝ་ཨིན་ན། ནང་འདྲེན་གྱིས་ འདི་ རང་བཞིན་གྱིས་ འཛིན་སྐྱོང་འབདཝ་ཨིན།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>མགོ་མིང་ཚུ་ འཚོལཝ་ཨིན།</strong> གྲལ་ཐིག་དང་པ་ཚུ་ ལྟ་ཞིབ་འབད་དེ་ ཀམ་པ་ནིའི་མིང་། སྙན་ཞུའི་མགོ་མིང་ ཡང་ན་ ཚེས་གྲངས་ཀྱི་ གྲལ་ཐིག་ཚུ་ བཞག་སྟེ་ ཀེར་ཐིག་གི་མགོ་མིང་ཡོད་པའི་ གྲལ་ཐིག་ལེནམ་ཨིན། Tally གི་ གྲལ་ཐིག་གཉིས་ཀྱི་མགོ་མིང་ (<em>Quantity / Rate / Value</em> གི་གུ་ཏོག་ལུ་ <em>Particulars</em>) མཉམ་སྡེབ་འབདཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ཀེར་ཐིག་རེ་རེ་ མིང་ལས་ ངོས་འཛིན་འབདཝ་ཨིན།</strong> མཉེན་ཆས་གཞན་གྱིས་ ལག་ལེན་འཐབ་མི་མིང་ཚུ་ཡང་ ཚུད་དེ།</div></div>
+  <table>
+    <tr><th>ཁྱོད་ཀྱི་ཡིག་སྣོད་ནང་གི་ ཀེར་ཐིག</th><th>ལག་ལེན་འཐབ་ཐངས།</th></tr>
+    <tr><td>Particulars (Tally), Product Name, Item, Description</td><td>Item Name</td></tr>
+    <tr><td>Quantity, Qty, Closing Stock, Closing Balance</td><td>Stock</td></tr>
+    <tr><td>Rate, Cost, Purchase Price</td><td>Purchase Rate</td></tr>
+    <tr><td>Sale Price, MRP, Selling Price</td><td>Selling Price</td></tr>
+    <tr><td>HSN, HSN/SAC, GST %, Category, Group, Supplier</td><td>མཐུན་པའི་ས་སྒོ་ཚུ།</td></tr>
+    <tr><td>S.No, Value, Unit</td><td>བཞག་བཞགཔ་ཨིན།</td></tr>
+  </table>
+  <p>ཐད་ཀར་ ངོས་མ་འཛིན་པའི་མིང་ཚུ་ འདྲ་མཚུངས་ལུ་བརྟེན་ཏེ་ མཐུན་སྒྲིག་འབདཝ་ཨིན།</p>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>ག་ཅི་ཡང་ ནང་འདྲེན་མ་འབད་བའི་ཧེ་མ་ གྲུབ་འབྲས་སྟོནམ་ཨིན།</strong> ཁྱོད་ཀྱི་ ཀེར་ཐིག་རེ་རེ་ ག་ཅིའི་དོན་ལུ་ ལག་ལེན་འཐབ་ནི་ཨིན་ན་ དང་གཅིག་ཁར་ ཐོ་བཀོད་འབདཝ་ཨིན། <strong>ལྗང་ཁུ</strong> = ངོས་འཛིན་འབད་ཡོདཔ། <strong>སེརཔོ</strong> = ཞིབ་དཔྱད་འབད་དགོ་པའི་ཚོད་དཔག <strong>ཐལ་མདོག</strong> = བཞག་བཞགཔ། ཅིག་ནོར་བ་ཅིན་ ཐོ་ཡིག་ཕབ་མི་དེ་ སོར་ཞིནམ་ལས་ <strong>Import Now</strong> ལུ་ཨེབ།</div></div>
+  <div class="tip">💡 དེ་འབདཝ་ལས་ TallyPrime Stock Summary, Vyapar གི་ཅ་ཆས་ཕྱིར་འདྲེན། Marg གི་མཛོད་ཀྱི་སྙན་ཞུ་དང་ ཁྱོད་རའི་ཤོག་ལེབ་ ག་ར་ <strong>Import items from Excel or CSV…</strong> གཅིག་བརྒྱུད་དེ་ འགྱོཝ་ཨིན། མཉེན་ཆས་རྙིངམ་ནང་ འབད་དགོ་མི་ ལཱ་གཅིག་རྐྱངམ་ <strong>Excel ལུ་ཕྱིར་འདྲེན</strong> ཨིན — འོག་གི་ རིམ་པ 1 གིས་ ཐབས་ལམ་སྟོནམ་ཨིན།</div>
+
+  <h4>རིམ་པ 1 — མཉེན་ཆས་རྙིངམ་ལས་ ཡིག་སྣོད་ལེན།</h4>
+  <p><strong>TallyPrime ལས།</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Gateway of Tally → Stock Summary</strong> ཁ་ཕྱེ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Alt+F2</strong> ཨེབ་སྟེ་ དུས་ཡུན་འདི་ ཁྱོད་ཀྱི་མཚམས་ཀྱི་ཚེས་གྲངས་ལུ་ མཇུག་བསྡུ་ནི་སྦེ་ གཞི་སྒྲིག་འབད། དེ་ལས་ གྱངས་ཁ་མཇུག་མ་ཚུ་ ཉིནམ་དེ་གི་ ཨིན་འོང་།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Alt+F5</strong> (Detailed) ཨེབ་སྟེ་ མཛོད་ཀྱི་སྡེ་ཚན་རྐྱངམ་ཅིག་མེན་པར་ ཅ་ཆས་རེ་རེ་ ཐོ་བཀོད་འབད།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Alt+E</strong> (Export) ཨེབ་སྟེ་ <strong>Excel (Spreadsheet)</strong> རྣམ་གཞག་གདམ་ཞིནམ་ལས་ ཕྱིར་འདྲེན་འབད། ཡིག་སྣོད་ ག་ཏེ་ སྲུང་བཞག་འབད་ཡི་ག་ ཟིན་བྲིས་འབད།</div></div>
+  <p><strong>Marg, Vyapar, Busy ཡང་ན་ མཉེན་ཆས་གཞན་ལས།</strong> ཅ་ཆས་ཀྱི་ཐོ་ཡིག་ ཡང་ན་ མཛོད་ཀྱི་སྙན་ཞུ་ ཁ་ཕྱེ་སྟེ་ དེའི་ <strong>Export to Excel</strong> གདམ་ཁ་ ལག་ལེན་འཐབ། ཅ་ཆས་ཀྱི་མིང་། གྱངས་ཁ་དང་ གོང་ཚད་སྟོན་མི་ སྙན་ཞུ་ཅིག་ ལངམ་ཨིན།</p>
+  <p><strong>ཁྱོད་རའི་ Excel ཤོག་ལེབ་ལས།</strong> ཅ་ཆས་ཀྱི་མིང་གི་ ཀེར་ཐིག་ཅིག་རྐྱངམ་ཅིག་དགོ། ཁྱོད་ལུ་ཡོད་པ་ཅིན་ Accelent གིས་ ཀེར་ཐིག་འདི་ཚུ་ཡང་ ལག་ལེན་འཐབ་ཨིན། ཅ་ཆས་ཀྱི་ཨང་རྟགས། དབྱེ་རིམ། གྱངས་ཁ། (མཛོད།) ཉོ་གོང་། བཙོང་གོང་ ཡང་ན་ MRP, GST %, HSN ཨང་རྟགས་དང་ ཅ་ཆས་བྱིན་མི། ཤོག་ལེབ་གཙང་མ་ཅིག་ལས་ འགོ་བཙུགས་ནིའི་དོན་ལུ་ <strong>Inventory → 📥 Import / Export → 📋 Download import template</strong> ལག་ལེན་འཐབ།</p>
+  <div class="tip">💡 རྣམ་གཞག་རྙིངམ་གྱི་ Excel ཡིག་སྣོད་ (<code>.xls</code>) ལྷག་མི་ཚུགས། ཡིག་སྣོད་ Excel ནང་ ཁ་ཕྱེ་སྟེ་ <strong>File → Save As → Excel Workbook (*.xlsx)</strong> ལག་ལེན་འཐབ། ནང་འདྲེན་མ་འབད་བའི་ཧེ་མ་ Excel ནང་ ཡིག་སྣོད་ ཁ་བསྡམས།</div>
+
+  <h4>རིམ་པ 2 — ནང་འདྲེན་འབད།</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Inventory → 📥 Import / Export → 📥 Import items from Excel or CSV…</strong> ལུ་འགྱོ་སྟེ་ ཁྱོད་ཀྱི་ཡིག་སྣོད་གདམ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent གིས་ ཀེར་ཐིག་གི་མགོ་མིང་ རང་བཞིན་གྱིས་ འཚོལཝ་ཨིན — ཀམ་པ་ནིའི་མིང་ ཡང་ན་ སྙན་ཞུའི་མགོ་མིང་གི་ འོག་ལུ་ཡོད་རུང་ — དེ་ལས་ ཁྱོད་ཀྱི་ ཀེར་ཐིག་རེ་རེ་ ག་དེ་སྦེ་ ལག་ལེན་འཐབ་ནི་ཨིན་ན་ སྟོནམ་ཨིན། ལྗང་ཁུའི་གྲལ་ཐིག་ ངོས་འཛིན་འབད་ཡོདཔ། སེརཔོའི་གྲལ་ཐིག་ ཚོད་དཔག་ཨིནམ་ལས་ ཞིབ་དཔྱད་འབད། ཐལ་མདོག་གྲལ་ཐིག་ བཞག་བཞགཔ་ཨིན། (དཔེར་ན་ རིམ་ཨང་ ཡང་ན་ Tally གི་ <em>Value</em> ཀེར་ཐིག) ནོར་བའི་ཐོ་ཡིག་ཕབ་མི་ སོར། ཤོག་ལེབ་ལེ་ཤ་ཡོད་པའི་ ལཱ་དེབ་ཀྱི་དོན་ལུ་ གུ་ཏོག་ལས་ ཤོག་ལེབ་ངོ་མ་གདམ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Import Now</strong> ལུ་ཨེབ། ཅ་ཆས་ག་དེ་ ཁ་སྐོང་འབད་ནི་ཨིན་ན་དང་ ག་དེ་ ཧེ་མ་ལས་ཡོད་དེ་ དུས་མཐུན་བཟོ་ནི་ཨིན་ན་ Accelent གིས་སྟོནམ་ཨིན། ངེས་གཏན་བཟོ།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">བཅུད་དོན་ལྷག ནང་འདྲེན་མ་འབད་བའི་ གྲལ་ཐིག་རེ་རེ་དང་ རྒྱུ་མཚན་ཚུ་ དེ་ནང་ཡོདཔ་ཨིན — དཔེར་ན་ <em>Total</em> གྲལ་ཐིག་ ཡང་ན་ མཛོད་ཀྱི་སྡེ་ཚན་གྱི་མགོ་མིང་། ཐོ་ཡིག་འདི་ བཞག་ནིའི་དོན་ལུ་ <strong>Save Skipped Rows…</strong> ལུ་ཨེབ།</div></div>
+
+  <h4>ནང་འདྲེན་སྐབས་ འབྱུང་མི།</h4>
+  <ul>
+    <li><strong>ཅ་ཆས་ཀྱི་ཨང་རྟགས།</strong> ཨང་རྟགས་མེད་པའི་ཅ་ཆས་ལུ་ རང་བཞིན་གྱིས་ ཨང་རྟགས་ཅིག་ཐོབ་ཨིན། ལག་ཐོག་ལས་ ཅ་ཆས་ཁ་སྐོང་འབད་དོ་བཟུམ། ཁྱོད་ཀྱི་ཡིག་སྣོད་ནང་ ཨང་རྟགས་ཡོད་པ་ཅིན་ བཞགཔ་ཨིན།</li>
+    <li><strong>ཧེ་མ་ལས་ཡོད་པའི་ཅ་ཆས།</strong> (ཨང་རྟགས་ཅོག་འཐདཔ་ ཡང་ན་ ཡིག་སྣོད་ནང་ ཨང་རྟགས་མེད་པ་ཅིན་ མིང་ཅོག་འཐདཔ།) དུས་མཐུན་བཟོཝ་ཨིན། ཟུང་མི་བཟོ — དེ་འབདཝ་ལས་ ཁྱོད་ཀྱིས་ ཡིག་སྣོད་ནོར་བཅོས་འབད་དེ་ ལོག་སྟེ་ ནང་འདྲེན་འབད་ཚུགས།</li>
+    <li><code>1,250.00</code>, <code>₹450</code> ཡང་ན་ <code>10 Nos</code> བཟུམ་གྱི་ <strong>ཨང་གྲངས།</strong> ཚུ་ ངོ་མ་སྦེ་ ལྷགཔ་ཨིན།</li>
+    <li><strong>འགོ་བཙུགས་ཀྱི་ཅ་ཆས།</strong> གྱངས་ཁ་ཚུ་ ཉོ་གོང་གུ་ <em>Opening Stock</em> ཐོ་བཀོད་གཅིག་སྦེ་ ཐོ་བཀོད་འབདཝ་ཨིན། དེ་འབདཝ་ལས་ སྙན་ཞུ་དང་ ཁེ་ཕན་ཚུ་ གོང་ཚད་ངོ་མ་ལས་ འགོ་བཙུགསཔ་ཨིན།</li>
+    <li><strong>དབྱེ་རིམ།</strong> དབྱེ་རིམ་མེད་པའི་ཅ་ཆས་ཚུ་ <em>Uncategorized</em> འོག་ལུ་བཞགཔ་ཨིན། འགོ་ལས་རང་ ཅ་ཆས་ཚུ་ སྡེ་ཚན་བཟོ་ནིའི་དོན་ལུ་ ཁྱོད་ཀྱི་ཡིག་སྣོད་ནང་ Category ཀེར་ཐིག་ཅིག་ ཁ་སྐོང་འབད། ཤུལ་ལས་ Inventory ནང་ཡང་ དབྱེ་རིམ་ སོར་ཚུགས།</li>
+  </ul>
+
+  <h4>རིམ་པ 3 — གྲུབ་འབྲས་ཞིབ་དཔྱད།</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Inventory ཐོ་ཡིག་ལུ་བལྟ། མིང་། གྱངས་ཁ་དང་ གོང་ཚད།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Inventory Reports</strong> ནང་གི་ ཅ་ཆས་ཀྱི་བསྡོམས་གོང་ཚད་འདི་ ཚེས་གྲངས་ཅོག་འཐདཔ་ལུ་ ཁྱོད་ཀྱི་ མཉེན་ཆས་རྙིངམ་གྱི་སྙན་ཞུ་ནང་ཡོད་པའི་ ཅ་ཆས་མཇུག་མའི་གོང་ཚད་དང་ ག་བསྡུར་འབད།</div></div>
+
+  <table>
+    <tr><th>འདི་འབྱུང་པ་ཅིན།</th><th>འདི་འབད།</th></tr>
+    <tr><td>"Can't read this file"</td><td>དེ་ <code>.xlsx</code> སྦེ་ སྲུང་བཞག་འབད། Excel ནང་ ཁ་བསྡམས། ཆོག་ཡིག་ཡོད་པ་ཅིན་ བཏོན་ཞིནམ་ལས་ ལོག་སྟེ་ ནང་འདྲེན་འབད།</td></tr>
+    <tr><td>ཀེར་ཐིག་ཅིག་ དོན་ནོར་བ་ཅིག་ལུ་ ལག་ལེན་འཐབ་ཡི།</td><td>Import Now ལུ་ མ་ཨེབ་པའི་ཧེ་མ་ ནང་འདྲེན་གྱི་སྒོ་སྒྲིག་ནང་ ཀེར་ཐིག་དེའི་ ཐོ་ཡིག་ཕབ་མི་ སོར།</td></tr>
+    <tr><td>གྱངས་ཁ་ ཡང་ན་ གོང་ཚད་ 0 སྦེ་ འོང་ཡི།</td><td>གྱངས་ཁའི་ཀེར་ཐིག་ <em>Stock</em> དང་ གོང་ཚད་ཀྱི་ཀེར་ཐིག་ <em>Purchase Rate</em> ལུ་ གཞི་སྒྲིག་འབད་ཡོད་ག་ ཞིབ་དཔྱད་འབད་དེ་ ལོག་སྟེ་ ནང་འདྲེན་འབད — ཧེ་མ་ལས་ཡོད་པའི་ཅ་ཆས་ དུས་མཐུན་བཟོཝ་ཨིན།</td></tr>
+    <tr><td>ཅ་ཆས་ཅིག་ ནོར་སྟེ་འོང་ཡི།</td><td><strong>Inventory</strong> → ཅ་ཆས་གདམ → <strong>🗑️ Delete Selected</strong>. ནང་འདྲེན་བརྒྱུད་དེ་རྐྱངམ་ཅིག་ འོང་མི་ (དེ་ལས་ཕར་ ཉོ་ནི། བཙོང་ནི་ ཡང་ན་ ལོག་སྤྲོད་མ་འབད་བའི་) ཅ་ཆས་ཅིག་ བཏོན་གཏང་ཚུགས། ནང་འདྲེན་གྱི་ འགོ་བཙུགས་ཅ་ཆས་ལས་ཡང་ བཏོནམ་ཨིན།</td></tr>
+    <tr><td>ནང་འདྲེན་ཧྲིལ་བུམ་ ནོར་ཡི།</td><td>ནང་འདྲེན་རེ་རེ་ <strong>OPST-…</strong> ཟེར་བའི་ འགོ་བཙུགས་ཅ་ཆས་ཀྱི་ ཐོ་བཀོད་གཅིག་སྦེ་ ཐོ་བཀོད་འབདཝ་ཨིན། (ནང་འདྲེན་གྱི་བཅུད་དོན་གྱིས་ དེའི་མིང་སྟོནམ་ཨིན།) <strong>Purchases</strong> ལུ་འགྱོ་སྟེ་ OPST ཐོ་བཀོད་དེ་ གདམ་ཞིནམ་ལས་ <strong>❌ Delete Bill</strong> ལུ་ཨེབ་སྟེ་ དེའི་ཅ་ཆས་ཚུ་ཡང་ བཏོན་གཏང་ནིའི་དོན་ལུ་ <strong>Yes</strong> ཟེར་ ལན་སློག ཡིག་སྣོད་ ནོར་བཅོས་འབད་དེ་ ལོག་སྟེ་ ནང་འདྲེན་འབད།</td></tr>
+    <tr><td>གྲལ་ཐིག་ལེ་ཤ་ བཞག་བཞགཔ།</td><td>བཅུད་དོན་ནང་ རྒྱུ་མཚན་ཚུ་ ལྷག (Save Skipped Rows…) སྡེ་ཚན་གྱི་མགོ་མིང་དང་ བསྡོམས་ཀྱི་གྲལ་ཐིག་ཚུ་ ཆེད་དམིགས་ཀྱིས་ བཞག་བཞགཔ་ཨིན།</td></tr>
+  </table>
+
+  <h3>Tally ལས་ ལྷག་ལུས།</h3>
+  <p>ཕྱོགས་རེ་རེའི་དོན་ལུ། <strong>Gateway of Tally → Display More Reports → Account Books → Ledger</strong> ལུ་འགྱོ་སྟེ་ ལྷག་ལུས་མཇུག་མ་ ཟིན་བྲིས་འབད། ལག་དངུལ་དང་ དངུལ་ཁང་གི་དོན་ལུ། <strong>Display More Reports → Account Books → Cash/Bank Book(s)</strong>. དེ་ཚུ་ འགོ་བཙུགས་ཀྱི་ལྷག་ལུས་སྦེ་ བཙུགས། (ལེའུ 4, རིམ་པ 2 དང་ 3)</p>
+
+  <div class="tip">💡 སྤོ་ཚར་བའི་ཤུལ་ལས་ ཉུང་མཐའ་ ཟླཝ་ 2–3 གི་རིང་ <strong>ཁྱོད་ཀྱི་མཉེན་ཆས་རྙིངམ་ ལག་ལེན་འཐབ་ཚུགས་པའི་ གནས་སྟངས་ནང་བཞག</strong>. ཚོང་འབྲེལ་རྙིངམ་ཚུ་ ལྟ་དགོཔ་འོང་སྲིད། ཚོང་འབྲེལ་རྙིངམ་ཚུ་ Accelent ནང་ བཙུགས་མི་དགོ།</div>
+
+  <div class="good">✅ <strong>ཁྱོད་ཀྱི་གནས་སྡུད་རྙིངམ་ མཉེན་ཆས་རྙིངམ་ནང་ ཉེན་སྲུང་ཅན་སྦེ་ཡོདཔ་ཨིན།</strong> Accelent ལུ་ ལྷག་ལུས་ཚུ་རྐྱངམ་ཅིག་དགོ — འགོ་བཙུགས་ཀྱི་ས་ཚིགས། མ་འོངས་པའི་ཚོང་འབྲེལ་ག་ར་ Accelent ནང་ འབྱུངམ་ཨིན།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 6 -->
+<div class="chapter-banner">ལེའུ 6 — སྐད་ཡིག་དང་ བཀོད་རིས།</div>
+<div class="section" id="ch6">
+  <h2>6. སྐད་ཡིག་དང་ བཀོད་རིས།</h2>
+
+  <h3>སྐད་ཡིག་སོར་ནི།</h3>
+  <p>Accelent ནང་ <strong>སྐད་ཡིག་ 18</strong> ཡོདཔ་ཨིན། English, Hindi (हिंदी), Urdu (اردو), Spanish, French, German, Bengali (বাংলা), Tamil (தமிழ்), Telugu (తెలుగు), Kannada (ಕನ್ನಡ), Gujarati (ગુજરાતી), Marathi (मराठी), Punjabi (ਪੰਜਾਬੀ), Nepali (नेपाली), Sinhala (සිංහල), Pashto (پښتو), Dhivehi (ދިވެހި) དང་ Dzongkha (རྫོང་ཁ).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings</strong> ལུ་འགྱོ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Language</strong> ཐོ་ཡིག་ཕབ་མི་ འཚོལ་ཏེ་ ཁྱོད་ཀྱི་སྐད་ཡིག་གདམ — སྐད་ཡིག་རེ་རེ་ རང་སོའི་ཡིག་གཟུགས་ནང་ སྟོནམ་ཨིན། (དཔེར་ན་ "རྫོང་ཁ", "தமிழ்") དེ་འབདཝ་ལས་ ཁྱོད་ཀྱི་སྐད་ཡིག་ འཚོལ་ནིའི་དོན་ལུ་ ཨིང་ལིཤ་ ཡང་ན་ ཨང་རྟགས་ཤེས་མ་དགོ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ངོས་འཛིན་བར་ཐག — ལམ་སྟོན་ཐུང་ཀུ། ཤོག་བྱང་གི་མིང་དང་ ལམ་སྟོན་བརྡ་རྟགས་ཚུ་ — ཐད་ཀར་ དུས་མཐུན་བཟོཝ་ཨིན། ལོག་སྟེ་ འགོ་བཙུགས་མི་དགོ།</div></div>
+  <div class="tip">💡 English/Hindi/Urdu/Spanish/French/German གི་ཤུལ་ལས་ ཁ་སྐོང་འབད་མི་ སྐད་ཡིག་ཚུ་གི་ སྐད་བསྒྱུར་འདི་ འཕྲུལ་ཆས་ཀྱི་རོགས་རམ་ལུ་ བརྟེན་ཏེ་ འབད་ཡོདཔ་ཨིན། ཁྱོད་ཀྱི་སྐད་ཡིག་ནང་ ལམ་སྟོན་ཐུང་ཀུ་ཅིག་ ཡ་མཚན་ཏོག་ཏོ་སྦེ་ ལྷག་པ་ཅིན་ ང་བཅས་ཀྱིས་ ནོར་བཅོས་འབད་ཚུགསཔ་སྦེ་ Settings → Support བརྒྱུད་དེ་ ང་བཅས་ལུ་སླབ།</div>
+
+  <h3>བཀོད་རིས་སོར་ནི།</h3>
+  <p><strong>Settings → ⚙️ App Settings</strong> ལུ་འགྱོ → ཚོས་གཞིའི་བཀོད་རིས་ཅིག་གདམ (Light, Dark ཡང་ན་ གཞན།) བཀོད་རིས་ པེ་ནཱལ་ག་ར་ནང་ ཐད་ཀར་སོརཝ་ཨིན།</p>
+
+  <div class="tip">💡 གདམ་ཁ་རྐྱབ་མི་ སྐད་ཡིག་དང་ བཀོད་རིས་ རང་བཞིན་གྱིས་ སྲུང་བཞག་འབདཝ་ཨིན། ཤུལ་མམ་ ཨེབ་ཁ་ཕྱེ་བའི་སྐབས་ཡང་ དེ་བཟུམ་སྦེ་ལུསཔ་ཨིན།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 7 -->
+<div class="chapter-banner">ལེའུ 7 — ཌེཤ་བོཌ།</div>
+<div class="section" id="ch7">
+  <h2>7. ཌེཤ་བོཌ།</h2>
+  <p>ཌེཤ་བོཌ་འདི་གིས་ ཁྱོད་ཀྱི་ཚོང་ལཱ་ མིག་ཏོ་གཅིག་ནང་ སྟོནམ་ཨིན། ཁྱོད་ དེ་ལུ་ འགྱོ་ཚར་རེ་ གསརཔ་བཟོཝ་ཨིན།</p>
+
+  <figure class="shot"><a href="manual_images/dashboard.png" target="_blank"><img src="manual_images/dashboard.png" alt="Dashboard" loading="lazy"></a><figcaption>ཌེཤ་བོཌ — མགྱོགས་ལཱ་གི་ཨེབ་རྟགས། ཟླཝ་འདི་གི་ གྱངས་ཁ། རི་མོ། ཅ་ཆས་ཀྱི་ཉེན་བརྡ་དང་ ཉེ་ཆར་གྱི་ ཉོ་ནིའི་བཀའ་རྒྱ།</figcaption></figure>
+
+  <table>
+    <tr><th>ཡན་ལག</th><th>སྟོན་མི།</th></tr>
+    <tr><td>མགྱོགས་ཨེབ་རྟགས།</td><td>New Sale, New Purchase, Quick Order, Record Payment དང་ Reports — རྒྱུན་ལྡན་གྱི་ལཱ་ཚུ་ལུ་ ཨེབ་ཐེངས་གཅིག</td></tr>
+    <tr><td>Total Balance</td><td>ཁྱོད་ཀྱི་ ལག་དངུལ་དང་ དངུལ་ཁང་གི་དངུལ་ག་ར་ མཉམ་སྡེབ།</td></tr>
+    <tr><td>Income / Expenses (Month)</td><td>ཟླཝ་འདི་ ད་ཚུན་ འཐོབ་མི་དང་ བཏང་མི་དངུལ།</td></tr>
+    <tr><td>Overdue Payments · Pending Invoices</td><td>ད་ལྟོ་ཡང་ ཁྱོད་ལུ་ སྤྲོད་དགོ་པའི་ ཉོ་མཁན་ཚུ།</td></tr>
+    <tr><td>Monthly Purchases</td><td>ཁྱོད་ཀྱིས་ ཟླཝ་འདི་ ཉོ་མི།</td></tr>
+    <tr><td>Income vs Expenses · Account Distribution</td><td>ཟླཝ་ 6 མཇུག་མ་ རི་མོ་སྦེ་དང་ ཁྱོད་ཀྱི་དངུལ་ ག་ཏེ་ཡོདཔ་ཨིན་ན། (ལག་དངུལ་དང་ དངུལ་ཁང་རེ་རེ།)</td></tr>
+    <tr><td>Stock Alerts</td><td>ཉུང་མི་ ཡང་ན་ ཚར་མི་ཅ་ཆས་ཚུ། Low Stock / Out of Stock / Suggested Orders གི་ གྱངས་ཁ་དང་བཅས།</td></tr>
+    <tr><td>Recent Purchase Orders</td><td>ཁྱོད་ཀྱི་ བཀའ་རྒྱ་མཇུག་མ་ཚུ་དང་ དེ་ཚུ་ ཐོབ་སྟེ་ དངུལ་སྤྲོད་ཡོད་ག — <strong>View All Orders</strong> གིས་ ཐོ་ཡིག་ཆ་ཚང་ ཁ་ཕྱེཝ་ཨིན།</td></tr>
+    <tr><td>Top Items by Inventory Value</td><td>ཁྱོད་ཀྱི་ ཅ་ཆས་མཛོད་ཀྱི་དངུལ་ མང་ཤོས་ཡོད་པའི་ ཅ་ཆས།</td></tr>
+  </table>
+
+  <div class="tip">💡 ཌེཤ་བོཌ་ ཐད་ཀར་དུ་ རང་བཞིན་གྱིས་ གསརཔ་མི་བཟོ — གྱངས་ཁ་གསརཔ་ བལྟ་ནིའི་དོན་ལུ་ པེ་ནཱལ་གཞན་ཅིག་ལུ་ཨེབ་སྟེ་ ལོག་འོང་།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8 -->
+<div class="chapter-banner">ལེའུ 8 — ཅ་ཆས་མཛོད།</div>
+<div class="section" id="ch8">
+  <h2>8. ཅ་ཆས་མཛོད་ཀྱི་པེ་ནཱལ།</h2>
+  <p>ཅ་ཆས་མཛོད་ཀྱིས་ ཁྱོད་ཀྱིས་བཙོང་མི་ ཅ་ཆས་རེ་རེ་ ལྟ་རྟོག་འབདཝ་ཨིན — མཛོད་ཀྱི་གནས་ཚད། གོང་ཚད། དབྱེ་རིམ་དང་ དུས་ཚོད་རྫོགས་པའི་ཚེས་གྲངས།</p>
+
+  <h3>ཅ་ཆས་གསརཔ་ཁ་སྐོང་འབད་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཅ་ཆས་ཀྱི་ཐོ་ཡིག་གི་ གུ་ཏོག་ལུ་ <strong>➕ Add New Item</strong> ལུ་ཨེབ་སྟེ་ གཡོན་ཕྱོགས་ཀྱི་ <strong>Add / Edit Item</strong> འབྲི་ཤོག་བཀང་།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">བཀང་། Item Name, Category, Vendor, Buy Rate (ཁྱོད་ཀྱིས་ སྤྲོད་མི།) Sell Price (ཁྱོད་ཀྱིས་ ལེན་མི — དེའི་འོག་ལུ་ Margin སྟོནམ་ཨིན།) GST %, <strong>Unit</strong> (pcs, kg, litre, metre… — kg, litre དང་ ཚད་འཇལ་ཚད་གཞི་གཞན་ཚུ་ནང་ 0.25 བཟུམ་གྱི་ ཆ་ཤས་གྱངས་ཁ་ ཆོགཔ་ཨིན།) Stock (ད་ལྟོ་ ཁྱོད་ལུ་ག་དེ་ཡོདཔ།) དང་ ཉུང་མཐའི་གནས་ཚད། (ཉེན་བརྡའི་ཚད།) ཅ་ཆས་ཀྱི་ཨང་རྟགས་ཀྱི་དོན་ལུ་ <strong>🔍 Generate Smart Code</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">དགོ་པ་ཅིན་ ཁ་སྐོང་འབད། Sub Category, Barcode, MRP (གོང་ཚད་རྩིས་རྐྱབ་ནིའི་དོན་ལུ་ <strong>Calculate from MRP + Discount %</strong> ལག་ལེན་འཐབ།) HSN Code (GST གི་དོན་ལུ།) Expiry Date (མགྱོགས་དྲགས་སྦེ་ ཉམས་འགྱོ་མི་ཅ་ཆས་ཀྱི་དོན་ལུ།) རྒྱ་གར་ནང་ ཨང་ 4 ཡང་ན་ དེ་ལས་ལྷག་པའི་ HSN ཨང་རྟགས་ཅིག་བཙུགས་པ་ཅིན་ ཨང་རྟགས་དེའི་ GST % རང་བཞིན་གྱིས་ གཞི་སྒྲིག་འབདཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Save</strong> ལུ་ཨེབ།</div></div>
+  <div class="tip">💡 <strong>ཁེ་ཕན་ མགྱོགས་དྲགས་སྦེ་ སོར་ནི།</strong> Sell Price གི་འོག་ལུ་ <strong>Margin: x%</strong> གུ་ བྱི་ཙི་བཞག་སྟེ་ འཁོར་ལོ་བསྒྱིར — རིམ་པ་རེ་རེ་གིས་ ཁེ་ཕན་ 1% ཡར་ ཡང་ན་ མར་བཏངམ་ཨིན། (0.1% གི་དོན་ལུ་ <strong>Ctrl</strong> བཟུང་།) དེ་ལས་ Sell Price འདི་ Buy Rate ལས་ ལོག་སྟེ་ རྩིས་རྐྱབ་ཨིན། ནང་འདྲེན་འབད་མི་ཅ་ཆས་ 20% ལས་ འགོ་བཙུགསཔ་ཨིན། དེ་འབདཝ་ལས་ ཁྱོད་ཀྱིས་ དགོ་མི་ཁེ་ཕན་ གཞི་སྒྲིག་འབད་ནིའི་ ཐབས་ལམ་ མགྱོགས་ཤོས་འདི་ཨིན།</div>
+
+  <h3>ཅ་ཆས་བཏོན་གཏང་ནི།</h3>
+  <p>ཅ་ཆས་ཅིག་ ནམ་ཡང་ ཉོ་ནི། བཙོང་ནི། ལོག་སྤྲོད་ ཡང་ན་ སྤོ་སོར་ མ་འབད་བ་ཅིན་རྐྱངམ་ཅིག་ བཏོན་གཏང་ཚུགས། ལོ་རྒྱུས་ཡོད་པའི་ཅ་ཆས་ཚུ་ མཛོད་ནང་ལུསཔ་ཨིན། དེ་འབདཝ་ལས་ ཁྱོད་ཀྱི་བིལ། སྙན་ཞུ་དང་ མཛོད་ཀྱི་ཐོ་ཚུ་ ཆ་ཚང་སྦེ་ལུསཔ་ཨིན། བཏོན་གཏང་མི་ ཅ་ཆས་རེ་རེ་ <strong>Deletion Watcher</strong> ནང་བཞགཔ་ཨིནམ་དང་ དེ་ལས་ དེའི་མཛོད་དང་གཅིག་ཁར་ སླར་གསོ་འབད་ཚུགས།</p>
+  <p><strong>ཅ་ཆས་ནང་འདྲེན་བརྒྱུད་དེ་ འོང་མི</strong> དང་ ནོར་ཏེ་ ནང་འདྲེན་འབད་མི་ ཅ་ཆས་ཅིག་ འཛིན་སྐྱོང་པ་གིས་ བཏོན་གཏང་ཚུགས། (གདམ → <strong>Delete Selected</strong> → འཛིན་སྐྱོང་པའི་ཆོག་ཡིག) འདི་གིས་ དེའི་འགོ་བཙུགས་ཅ་ཆས་ཡང་ བཏོནམ་ཨིན། ངེས་གཏན་གྱིས་ གྱངས་ཁ་དང་ གོང་ཚད་སྟོནམ་ཨིན། ཅ་ཆས་དེ་གི་དོན་ལུ་ ག་ནི་ཡང་ ཉོ་བཙོང་དང་ ལོག་སྤྲོད་ མ་འབད་བ། དེའི་མཛོད་ ནང་འདྲེན་གྱིས་ འབག་འོང་མི་ ཅོག་འཐདཔ་སྦེ་ཡོདཔ་དང་ ནང་འདྲེན་གྱི་ དངུལ་འབྲེལ་ལོ་ ཁ་མ་བསྡམས་པ་ཅིན་རྐྱངམ་ཅིག་ ཆོགཔ་ཨིན།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ལག་ལེན་མ་འཐབ་པའི་ཅ་ཆས་ ལེ་ཤ་ ཐེངས་གཅིག་ལུ་ བཏོན་ནིའི་དོན་ལུ་ <strong>🧹 Clean Up Unused Items</strong> ལུ་ཨེབ། (འཛིན་སྐྱོང་པ་ལུ་རྐྱངམ་ཅིག་ མཐོང་།) ནམ་ཡང་ ཉོ་བཙོང་མ་འབད་བའི་ ཅ་ཆས་རེ་རེ་ ཐོ་བཀོད་འབདཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">བཏོན་དགོ་པའི་ཅ་ཆས་ལུ་ རྟགས་བཀལ། (འཚོལ་ཞིབ་སྒྲོམ་ ཡང་ན་ <strong>Select All shown</strong> ལག་ལེན་འཐབ།) <strong>🗑️ Delete Selected Items</strong> ལུ་ཨེབ་སྟེ་ འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་གིས་ ངེས་གཏན་བཟོ། དང་པ་ ཁྱོད་ཀྱི་གནས་སྡུད་ཀྱི་ ཉེན་སྲུང་འདྲ་བཤུས་ སྲུང་བཞག་འབདཝ་ཨིན།</div></div>
+
+  <h3>ཅ་ཆས་ཀྱི་ཚོས་གཞིའི་བརྡ་རྟགས།</h3>
+  <table>
+    <tr><th>ཚོས་གཞི།</th><th>དོན་དག</th></tr>
+    <tr><td>🟢 OK</td><td>ཅ་ཆས་ ལེགས་ཤོམ་ཡོདཔ།</td></tr>
+    <tr><td>🟡 Low</td><td>ཅ་ཆས་ ཉུང་མཐའི་གནས་ཚད་ལས་ མར་ཕབ་ཡོདཔ — ལོག་ཉོ་ནི་ བསམ་ཞིབ་འབད།</td></tr>
+    <tr><td>🔴 Out</td><td>ཅ་ཆས་ཚར་ཡོདཔ — གྱངས་ཁ་ 0 ལུསཔ།</td></tr>
+  </table>
+  <figure class="shot"><a href="manual_images/inventory.png" target="_blank"><img src="manual_images/inventory.png" alt="Inventory Management" loading="lazy"></a><figcaption>Inventory Management — གཡོན་ཕྱོགས་ལུ་ Add / Edit Item འབྲི་ཤོག གཡས་ཕྱོགས་ལུ་ ཅ་ཆས་རེ་རེ་ དེའི་ Status དང་བཅས།</figcaption></figure>
+
+  <h3>ཅ་ཆས་མཛོད་ཀྱི་སྙན་ཞུ།</h3>
+  <p><strong>Inventory Reports</strong> པེ་ནཱལ་ (Inventory གཙོ་བོ་ལས་ སོ་སོ།) གིས་ མཛོད་ཀྱི་རིན་བཅད་སྙན་ཞུ། སྤོ་སོར་གྱི་ལོ་རྒྱུས་དང་ དབྱེ་རིམ་ལྟར་གྱི་ བཅུད་དོན་ཚུ་བྱིནམ་ཨིན། ཟླ་བསྟར་གྱི་ མཛོད་ཞིབ་ལུ་ ལག་ལེན་འཐབ།</p>
+
+  <h3>Audit Trail</h3>
+  <p><strong>Audit Trail</strong> ཤོག་བྱང་ (Inventory Management ནང་།) གིས་ མཛོད་ཀྱི་བསྒྱུར་བཅོས་རེ་རེ་ — ཚོང་། ཉོ་ཚོང་། ལེགས་སྒྲིག ལོག་སྤྲོད་དང་ ནང་འདྲེན་ — <strong>Value</strong> ཀེར་ཐིག་དང་ ཁྱོད་ཀྱིས་ ཚགས་མ་བཏང་མི་ ག་ཅི་རང་གི་ <strong>Total value</strong> དང་གཅིག་ཁར་ ཐོ་བཀོད་འབདཝ་ཨིན། ནང་འདྲེན་ཆེན་པོ་ཅིག་གིས་ ཚོང་ལཱ་ནང་ མཛོད་ཀྱི་གོང་ཚད་ ག་དེ་ འབག་འོང་ཡི་ག་ ཅོག་འཐདཔ་སྦེ་ བལྟ་ནིའི་དོན་ལུ་ Reason = "import" ཚགས་མ་བཏང་། ད་ལྟོའི་ ཚགས་མ་བཏང་མི་ཐོ་ཡིག་ པར་བསྐྲུན་འབད་ནིའི་དོན་ལུ་ <strong>🖨️ Print Report</strong> ལག་ལེན་འཐབ། ཤོག་བྱང་འདི་ ལྷག་ནི་རྐྱངམ་ཅིག་ཨིན — ཅ་ཆས་ཅིག་གི་མཛོད་ ནོར་བཅོས་ ཡང་ན་ བཏོན་གཏང་ནིའི་དོན་ལུ་ Inventory Management ཤོག་བྱང་ལུ་འགྱོ།</p>
+
+  <h3>དུས་ཚོད་རྫོགས་པའི་ཉེན་བརྡ།</h3>
+  <p><strong>Expiry Alerts</strong> པེ་ནཱལ་གྱིས་ དུས་ཚོད་རྫོགས་ནི་ལུ་ ཉེ་བའི་ཅ་ཆས་ཚུ་ ཐོ་བཀོད་འབདཝ་ཨིན། ཅ་ཆས་ཚུ་ ལི་ཝང་ (ཉེ་ཆར་རྫོགས་ནི།) ཡང་ན་ དམརཔོ། (རྫོགས་ཚར་ཡོདཔ།) ཁར་ གསལ་སྟོན་འབདཝ་ཨིན། <strong>Set Expiry</strong> ཡང་ན་ <strong>Print Report</strong> གི་དོན་ལུ་ གྲལ་ཐིག་ག་ཅི་རང་གུ་ གཡས་ཨེབ། མ་བཙོང་བའི་ཧེ་མ་ དུས་ཚོད་རྫོགས་པའི་ཅ་ཆས་ བཏོན་ནིའི་དོན་ལུ་ ལག་ལེན་འཐབ།</p>
+
+  <div class="warn">⚠ ཚོང་ (ཅ་ཆས་མར་ཕབ།) ཡང་ན་ ཉོ་ཚོང་ (ཅ་ཆས་ཡར་འཕར།) ཐོ་བཀོད་འབད་བའི་སྐབས་ མཛོད་ཀྱི་གནས་ཚད་ རང་བཞིན་གྱིས་ དུས་མཐུན་བཟོཝ་ཨིན། དངོས་ཡོད་མཛོད་ཞིབ་མ་གཏོགས་ ནམ་ཡང་ ལག་ཐོག་ལས་ ཅ་ཆས་ ཁ་སྐོང་ ཡང་ན་ ཕབ་ནི་ མ་འབད།</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 8b -->
+<div class="chapter-banner">ལེའུ 8b — ཅ་ཆས་ཉུང་མི་ལྟ་རྟོག</div>
+<div class="section" id="ch8b">
+  <h2>8b. ཅ་ཆས་ཉུང་མི་ལྟ་རྟོག</h2>
+  <p>Low Stock Monitor གིས་ ཉུང་མཐའི་གནས་ཚད་ལུ་ ཡང་ན་ དེ་ལས་ མར་ཡོད་པའི་ ཅ་ཆས་རེ་རེ་ ཐོ་བཀོད་འབད་དེ་ ལོག་ཉོ་ནིའི་ཐབས་ལམ་གཉིས་བྱིནམ་ཨིན། ཅ་ཆས་གསརཔ་དང་ ཅ་ཆས་བྱིན་མི་གསརཔ་ མཉམ་དུ་ཐོ་བཀོད་འབད་ནིའི་ ལམ་སྟོན་མགྱོགས་དྲགས་ཅིག་དང་ ཉོ་ནིའི་བཀའ་རྒྱ་ ཆ་ཚང་ཅིག་ བཟོ་ནིའི་ "Order from Vendor" གསལ་གཞི་ཆ་ཚང་ཅིག Purchase Panel གི་ New Purchase དང་ མི་འདྲཝ་སྦེ་ ནཱ་ལུ་བཟོ་མི་བཀའ་རྒྱ་ཚུ་ <strong>ཟིན་བྲིས་ཟིན་སྟོན</strong> ཨིན — ཁྱོད་ཀྱིས་ བཏང་སྟེ་ ཅ་ཆས་ཐོབ་པའི་ཐོ་ མ་བཀོད་ཚུན་ མཛོད་ ཡང་ན་ ཅ་ཆས་བྱིན་མིའི་ལྷག་ལུས་ལུ་ མི་ཐུགས།</p>
+
+  <h3>📋 Show Low Stock Suggestions</h3>
+  <p>ཉུང་སོང་མི་ ག་ར་ ཐེངས་གཅིག་ལུ་ ལོག་ཉོ་ནིའི་ ཐབས་ལམ་མགྱོགས་ཤོས།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Show Low Stock Suggestions</strong> ལུ་ཨེབ། ཐོ་ཡིག་གིས་ ཉུང་མཐའི་གནས་ཚད་ལས་མར་ཡོད་པའི་ ཅ་ཆས་རེ་རེ་ བསམ་འཆར་ཡོད་པའི་ Order Qty, Rate, GST % དང་ Vendor དང་བཅས་ སྟོནམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཉོ་དགོ་པའི་ཅ་ཆས་ལུ་ རྟགས་བཀལ་ (ཡང་ན་ <strong>Select All</strong> / <strong>Invert</strong> ལག་ལེན་འཐབ།) Order Qty ག་ཅི་རང་ ལེགས་སྒྲིག་འབད།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཅ་ཆས་བྱིན་མི་རེ་རེ་ལུ་ བཀའ་རྒྱ་གཅིག་ཐོབ་ནིའི་དོན་ལུ་ <strong>Group by vendor and create separate orders</strong> རྟགས་བཀལ་སྟེ་བཞག་ཞིནམ་ལས་ <strong>Create Orders for Ticked Items</strong> ལུ་ཨེབ། བཀའ་རྒྱ་གསརཔ་ཚུ་ རྒྱབ་ཀྱི་ཐོ་ཡིག་ནང་ ཟིན་བྲིས་ཟིན་སྟོན་སྦེ་ མཐོངམ་ཨིན།</div></div>
+  <figure class="shot"><a href="manual_images/low-stock-suggestions.png" target="_blank"><img src="manual_images/low-stock-suggestions.png" alt="Low Stock Purchase Suggestions" loading="lazy"></a><figcaption>Low Stock Purchase Suggestions — ཅ་ཆས་ལུ་ རྟགས་བཀལ་སྟེ་ ཅ་ཆས་བྱིན་མི་རེ་རེ་ལུ་ བཀའ་རྒྱ་གཅིག་བཟོ།</figcaption></figure>
+
+  <h3>⚡ Quick New Order</h3>
+  <p>ཅ་ཆས་བྱིན་མི་ ངོ་མ་གསརཔ་ཅིག་ལས་ ཅ་ཆས་ ངོ་མ་གསརཔ་ཅིག་ ཐེངས་གཅིག་ལུ་ ཐོ་བཀོད་འབད་བའི་སྐབས་ འདི་ལག་ལེན་འཐབ — ཅ་ཆས་ཀྱི་ཁ་གསལ་དང་ ཅ་ཆས་བྱིན་མིའི་ཁ་གསལ་ ཟུར་སྦྲགས་སྦེ་ ཉོ་ནིའི་བཀའ་རྒྱ་ ཟིན་བྲིས་ཟིན་སྟོན་ཅིག་ནང་ མཇུག་བསྡུཝ་ཨིན།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚡ Quick New Order</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>1️⃣ Add / Edit Item</strong> — Vendor (ཅ་ཆས་བྱིན་མི་གསརཔ་གི་མིང་ ཡིག་དཔར་རྐྱབ།) Item Name, Category, དེ་ལས་ Code གི་དོན་ལུ་ <strong>🔍 Generate</strong> ལུ་ཨེབ། Buy Rate, Sell Price, GST%, HSN, Stock, Min Stock བཀང་། ཅ་ཆས་ཀྱི་ བར་ཀོཌི་ <strong>📱 Scan with Phone</strong> གིས་ སྐེན་འབད། ཡང་ན་ སྟོངམ་བཞག་སྟེ་ ཤུལ་ལས་ ཁ་སྐོང་འབད། <strong>💾 Save Item to Inventory</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>2️⃣ Vendor Details & Link</strong> — ཅ་ཆས་བྱིན་མིའི་ ཁ་པར། ཁ་བྱང་། TIN/GSTIN དང་ གློག་འཕྲིན་ བཀང་སྟེ་ མཐུད་ཞིནམ་ལས་ ཟིན་བྲིས་ཟིན་སྟོན་ PO གྲལ་ཐིག་ཅིག་ བཟོ་ནིའི་དོན་ལུ་ སྲུང་བཞག་འབད།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">དགོ་པ་ཅིན་ སྔོན་ལྟའི་གྲལ་ཐིག་ནང་ Order Qty ལེགས་སྒྲིག་འབད — བསྡོམས་འདི་ GST དང་གཅིག་ཁར་ ལོག་སྟེ་རྩིས་རྐྱབ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>📤 Send Purchase Order</strong> ལུ་ཨེབ། PO ལུ་ SENT རྟགས་བཀལ་སྟེ་ འོག་གི་ <strong>Existing Purchase Orders</strong> ནང་ མཐོངམ་ཨིན།</div></div>
+
+  <h3>Order from Vendor</h3>
+  <p>ཁྱོད་ཀྱིས་ ཧེ་མ་ལས་ ཉོ་བའི་ ཅ་ཆས་བྱིན་མི་ཅིག་ལས་ སྤྱིར་བཏང་གི་ ལོག་ཉོ་ནིའི་དོན་ལུ་ འདི་ལག་ལེན་འཐབ — འདི་ Purchase Panel གི་ New Purchase གསལ་གཞི་དང་ ཕལ་ཆེར་ཅོག་འཐདཔ་སྦེ་ ལཱ་འབདཝ་ཨིན། (ཅ་ཆས་བྱིན་མི་དང་པ་ རང་བཞིན་བཀང་ནི། སྐེན་འབད་དེ་ ཁ་སྐོང་ནི་དང་ གྲལ་ཐིག་རེ་རེའི་ བར་ཀོཌི་ ✓/+📷/🗑 བརྡ་རྟགས་ — བར་ཀོཌི་གི་ ཁ་གསལ་ཆ་ཚང་གི་དོན་ལུ་ ལེའུ 10 ལུ་བལྟ།) ཁྱད་པར་གཙོ་བོ་གཅིག་དང་བཅས། ནཱ་ལུ་ སྲུང་བཞག་འབད་བ་ཅིན་ ཐད་ཀར་ཉོ་ཚོང་མེན་པར་ <strong>ཉོ་ནིའི་བཀའ་རྒྱ་ ཟིན་བྲིས་ཟིན་སྟོན</strong> ཅིག་བཟོཝ་ཨིན། བཀའ་རྒྱ་ བཏང་སྟེ་ ཤུལ་ལས་ མ་ཐོབ་ཚུན་ མཛོད་ ཡང་ན་ ཅ་ཆས་བྱིན་མིའི་ལྷག་ལུས་ལུ་ ག་ནི་ཡང་ ཁ་སྐོང་མི་འབད།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཅ་ཆས་བྱིན་མི་གདམ — ཁོ་རའི་ སྤྱིར་བཏང་ཅ་ཆས་ཚུ་ Order Items ཐིག་ཁྲམ་ནང་ རང་བཞིན་གྱིས་ བཀང་ཡོདཔ་ཨིནམ་དང་ རྟགས་བཀལ་སྒྲོམ་ ཧེ་མ་ལས་ རྟགས་བཀལ་ཡོདཔ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཐེངས་འདི་ ཉོ་ནི་མ་དགོ་མི་ ག་ཅི་རང་གི་ རྟགས་བཏོན། གྱངས་ཁ་ ལེགས་སྒྲིག་འབད། ཡང་ན་ Purchase Panel ནང་བཟུམ་ ཅ་ཆས་གསརཔ་ སྐེན་/ཁ་སྐོང་འབད།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཟིན་བྲིས་ཟིན་སྟོན་ སྲུང་བཞག་འབད་ནིའི་དོན་ལུ་ OK ལུ་ཨེབ་སྟེ་ གྲ་སྒྲིག་ཡོད་པའི་སྐབས་ <strong>Existing Purchase Orders</strong> ལས་ བཏང་།</div></div>
+
+  <h3>Existing Purchase Orders</h3>
+  <p>ཁྱོད་ཀྱིས་བཟོ་མི་ (གོང་གི་ཐབས་ལམ་གཉིས་ཆ་ར་ལས།) ཉོ་ནིའི་བཀའ་རྒྱ་རེ་རེའི་ ཐོ་ཡིག་ ཚོས་གཞིའི་གནས་སྟངས་ཐིག་ཁྲ་དང་གཅིག་ཁར་ ཁ་ཕྱེཝ་ཨིན། <strong>ཐལ་མདོག</strong> = ཟིན་བྲིས་ཟིན་སྟོན། <strong>ལི་ཝང</strong> = བཏང་ཡོདཔ། <strong>སྔོནམ</strong> = ཐོབ་ཡོདཔ། <strong>ལྗང་ཁུ</strong> = ཡོངས་རྫོགས། (ཐོབ་སྟེ་ དངུལ་ཆ་ཚང་སྤྲོད་ཡོདཔ།) ནཱ་ལས་ ཁྱོད་ཀྱིས་ ཟིན་བྲིས་ཟིན་སྟོན་བཀའ་རྒྱ་ཅིག་ གཏང་ཚུགས། བཏང་ཡོད་/ཐོབ་ཡོད་པའི་ བཀའ་རྒྱ་ཅིག་ལུ་ དངུལ་སྤྲོད་མི་ ཐོ་བཀོད་འབད་ཚུགས་དང་ ཅ་ཆས་ཐོབ་ཡོདཔ་སྦེ་ རྟགས་བཀལ་ཚུགས། ཟིན་བྲིས་ཟིན་སྟོན་/ཆ་མེད་/ཡོངས་རྫོགས་ བཀའ་རྒྱ་ཅིག་ <strong>🗑️ Delete</strong> འབད་ནི་ ཡང་ན་ ཧེ་མ་ལས་ བཏང་ཡོད་མི་ཅིག་ <strong>❌ Cancel</strong> འབད་ནིའི་དོན་ལུ་ གྲལ་ཐིག་གུ་ གཡས་ཨེབ།</p>
+
+  <div class="good">✅ ཅ་ཆས་ཐོ་བཀོད་འབད་ནི་ལུ་ གྲ་སྒྲིག་ཡོད་པའི་སྐབས་ Purchase Panel → <strong>📋 Load from PO</strong> ལུ་འགྱོ་སྟེ་ བཀའ་རྒྱ་གདམ — དེ་གིས་ ཅ་ཆས་བྱིན་མི་དང་ ཅ་ཆས་ཚུ་ New Purchase འབྲི་ཤོག་ སྤྱིར་བཏང་ཅིག་ནང་ བཙུགས་ཏེ་ སྲུང་བཞག་མ་འབད་བའི་ཧེ་མ་ ཁྱོད་ཀྱིས་ བསྐྱར་ཞིབ་འབད་ཚུགས། སྲུང་བཞག་འདི་ མཇུག་ལུ་ མཛོད་དང་ ཅ་ཆས་བྱིན་མི་ལུ་ སྤྲོད་དགོ་པའི་ལྷག་ལུས་ དུས་མཐུན་བཟོ་མི་ རིམ་པ་ཨིན། དེ་འབདཝ་ལས་ PO རྐྱངམ་གཅིག་གིས་ ནམ་ཡང་ ཕན་གནོད་མི་འབད།</div>
+
+  <div class="tip">💡 Quick New Order འདི་ ཅ་ཆས་གསརཔ་ + ཅ་ཆས་བྱིན་མི་གསརཔ་ མཉམ་དུ་ཡོད་པའི་སྐབས་རྐྱངམ་ཅིག་ གདམ། གཞན་ག་ཅི་རང་གི་དོན་ལུ — ཅ་ཆས་བྱིན་མི་རྙིངམ་ལས་ ཅ་ཆས་གསརཔ། ཅ་ཆས་བྱིན་མི་གསརཔ་ལས་ ཅ་ཆས་རྙིངམ་ ཡང་ན་ ལོག་ཉོ་ནི་སྤྱིར་བཏང་ — དེའི་ཚབ་ལུ་ Order from Vendor ལག་ལེན་འཐབ།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8c -->
+<div class="chapter-banner" data-for="production">ལེའུ 8c — བཟོ་སྐྲུན། <span class="for-badge">བཟོ་སྐྲུན་པ། ཟ་ཁང་དང་ མགྲོན་ཁང་གི་དོན་ལུ།</span></div>
+<div class="section" id="ch8c" data-for="production">
+  <h2>8c. བཟོ་སྐྲུན། (ཁྱོད་རའི་ཐོན་སྐྱེད་བཟོ་ནི།)</h2>
+  <div class="tip">💡 ཟ་ཁང་ ཡང་ན་ མགྲོན་ཁང་ནང་ <strong>🏭 Production</strong> རྟག་བུ་ར་ཡོདཔ་ཨིན། (དེ་གི་ཟས་བཟོ་ཐབས་ཚུ་ ནཱ་ལུ་ཡོད།) ཚོང་ཁང་ ཡང་ན་ ཚོང་ལཱ་ཅིག་གིས་ <strong>Settings → 🏢 Company</strong> ནང་ <strong>We make our own products</strong> ལུ་ རྟགས་བཀལ་ཞིནམ་ལས་ Accelent ཁ་བསྡམས་ཏེ་ ལོག་ཁ་ཕྱེ་བ་ཅིན་ མཐོངམ་ཨིན། (ཟས་བཟོ་ཐབས་ ཧེ་མ་ལས་ཡོད་སར་ རང་བཞིན་གྱིས་ མཐོང་།)</div>
+  <p>ཁྱོད་ཀྱིས་ བཙོང་མི་ ཁྱོད་ར་གིས་བཟོ་བ་ཅིན་ — ཀེཀ། ཤིང་ཆས། གྱོན་ཆས། ཚོད་རྒྱུ། སྒྲིག་སྦྱོར་ཅ་ཆས — Accelent གིས་ ཁྱོད་ཀྱི་དོན་ལུ་ མཛོད་དང་ གོང་ཚད་ ངོ་མ་སྦེ་བཞག་ཚུགས། ཁྱོད་ཀྱིས་ <strong>ཟས་བཟོ་ཐབས</strong> ཅིག་ ཐེངས་གཅིག་འབྲི། (ཁྱོ་ཚན་གཅིག་ལུ་ ག་ཅི་དགོཔ།) ཁྱོད་ཀྱིས་ ཅ་ཆས་ཅིག་ བཟོ་ཚར་རེ་ Accelent གིས་ རྒྱུ་ཆ་ཚུ་ མཛོད་ལས་བཏོན་ཏེ་ ཐོན་སྐྱེད་ཚུ་ ཁ་སྐོང་འབད་ཞིནམ་ལས་ རེ་རེའི་གོང་ཚད་ རྩིས་རྐྱབ་ཨིན། <strong>Inventory → 🏭 Production</strong> ལས་ ཁ་ཕྱེ།</p>
+
+  <h3>འགོ་མ་བཙུགས་པའི་ཧེ་མ། ཅ་ཆས་དང་ ཚད་གཞི།</h3>
+  <p>ག་ར་ ཅ་ཆས་མཛོད་ཀྱི་ ཅ་ཆས་ཨིན། <strong>རྒྱུ་ཆ།</strong> (ཅོ་ཀོ་ལེཊ་ཀེཀ་གི་དོན་ལུ། སྲན་ཕྱེ། ཅོ་ཀོ་ལེཊ། ཀ་ར། མར།) དང་ <strong>ཐོན་སྐྱེད་མཇུག་བསྡུ་མི།</strong> (ཀེཀ།)</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Inventory འབྲི་ཤོག་ནང་ ཅ་ཆས་རེ་རེ་ལུ་ དེའི་ <strong>Unit</strong> བྱིན། <em>pcs</em>, <em>box</em> དང་ གྱངས་ཁ་རྩིས་པའི་ ཚད་གཞི་གཞན་ཚུ་ ཨང་གྲངས་ཆ་ཚང་ཨིན། <em>kg</em>, <em>g</em>, <em>litre</em>, <em>ml</em>, <em>metre</em> དང་ ཚད་འཇལ་ཚད་གཞི་གཞན་ཚུ་ནང་ 0.25 kg བཟུམ་གྱི་ ཆ་ཤས་གྱངས་ཁ་ ཆོགཔ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">རྒྱུ་ཆ་ཚུ་ ཁྱོད་ཀྱིས་ སྤྱིར་བཏང་ཉོ་བཟུམ་སྦེ་ <strong>Purchases</strong> བརྒྱུད་དེ་ འབག་འོང་། འདི་གིས་ དེ་ཚུ་ མཛོད་ནང་བཙུགསཔ་ཨིནམ་ <em>དང་</em> དེ་ཚུ་གི་གོང་ཚད་ Accelent ལུ་སླབ་ཨིན — ཁྱོད་ཀྱི་ཐོན་སྐྱེད་ཀྱི་ གོང་ཚད་ འདི་ལས་ རྩིས་རྐྱབ་ཨིན།</div></div>
+
+  <h3>ཟས་བཟོ་ཐབས་འབྲི་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Production → 🧾 Recipes</strong>, དེ་ལས་ གུ་ཏོག་གཡས་ཕྱོགས་ལུ་ <strong>➕ New Recipe</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Finished item:</strong> ཐོན་སྐྱེད་གདམ ཡང་ན་ དེའི་མིང་ ཡིག་དཔར་རྐྱབ། Inventory ནང་ ད་ཚུན་མེད་པ་ཅིན་ སྲུང་བཞག་འབད་བའི་སྐབས་ Accelent གིས་ ཁ་སྐོང་འབད་ནི་ གྲོས་འཆར་བཀོདཔ་ཨིན། (མིང་། ཚད་གཞི། བཙོང་གོང་དང་ GST)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>One batch makes:</strong> ཁྱོ་ཚན་གཅིག་ལས་ ག་དེ་ཐོབ་ནི་ཨིན་ན། དཔེར་ན་ ཀེཀ་ 10.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Materials for one batch:</strong> རྒྱུ་ཆ་རེ་རེའི་དོན་ལུ་ <strong>➕ Add Material</strong> ལུ་ཨེབ་སྟེ་ ཁྱོ་ཚན་གཅིག་གིས་ ལག་ལེན་འཐབ་པའི་ གྱངས་ཁ་ (དཔེར་ན་ སྲན་ཕྱེ་ 1 kg, ཅོ་ཀོ་ལེཊ་ 0.5 kg, ཀ་ར་ 0.8 kg, མར་ 1 litre) དང་ ལ་ལོ་ཅིག་ ཆུད་ཟད་འགྱོ་བ་ཅིན་ <strong>Wastage %</strong>. ཐོ་ཡིག་གི་འོག་ལུ་ Accelent གིས་ ད་རིས་ཀྱི་ བར་ཚད་གོང་ཚད་གུ་ ཁྱོ་ཚན་གཅིག་གི་ རྒྱུ་ཆའི་གོང་ཚད་དང་ ཅ་ཆས་རེ་རེའི་གོང་ཚད་ སྟོནམ་ཨིན། <strong>In stock</strong> ཀེར་ཐིག་གིས་ མཛོད་ནང་ རྒྱུ་ཆ་རེ་རེ་ ག་དེ་ཡོདཔ་ཨིན་ན་ སྟོནམ་ཨིནམ་དང་ ཁྱོ་ཚན་གཅིག་ལུ་ དེ་ལས་ལྷག་དགོ་པའི་སྐབས་ 🔴 སྟོནམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>💾 Save Recipe</strong> ལུ་ཨེབ། ཟས་བཟོ་ཐབས་ ཐེངས་གཅིག་འབྲི་སྟེ་ ཐོན་སྐྱེད་དེ་ བཟོ་ཚར་རེ་ ལག་ལེན་འཐབ།</div></div>
+
+  <p>ཁྱོད་ཀྱི་ ཟས་བཟོ་ཐབས་ཚུ་ གཡོན་ཕྱོགས་ལུ་ ཤོག་བྱང་སྦེ་ ཐོ་བཀོད་འབད་ཡོདཔ་ཨིན། ཤོག་བྱང་རེ་རེ་གིས་ ཁྱོ་ཚན་གཅིག་ལས་ ག་དེ་བཟོཝ་ཨིན་ན། རྒྱུ་ཆ་ ག་དེ་ལག་ལེན་འཐབ་ཨིན་ན་དང་ དེ་ <strong>🍳 Made to order</strong> ཨིན་ན་ <strong>🏭 Made in batches</strong> ཨིན་ན་ སྟོནམ་ཨིན། ཟས་བཟོ་ཐབས་ ཁ་ཕྱེ་སྟེ་ སོར་ནིའི་དོན་ལུ་ ཤོག་བྱང་ལུ་ཨེབ། ཁ་ཕྱེ་ཡོད་མི་ལུ་ མཐའ་མཚམས་སྟུག་པོ་ཡོདཔ་ཨིན། ཟས་བཟོ་ཐབས་ མགྱོགས་དྲགས་སྦེ་ འཚོལ་ནིའི་དོན་ལུ་ <strong>Search recipes</strong> ནང་ ཡིག་དཔར་རྐྱབ།</p>
+
+  <h3>བཟོ་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Make</strong> ཤོག་བྱང་། ཅ་ཆས་དང་ བཟོ་དགོ་པའི་ <strong>གྱངས་ཁ</strong> གདམ། ཐིག་ཁྲམ་གྱིས་ དགོ་པའི་རྒྱུ་ཆ་རེ་རེ། མཛོད་ནང་ཡོད་མི་དང་ མ་ལང་མི་ ག་ཅི་རང་ སྟོནམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">དགོ་པ་ཅིན་ ཐེངས་འདིའི་དོན་ལུ་ <strong>Labour / other costs</strong> བཙུགས། (གླ་ཆ། གཱས། གློག་མེ།) — དེ་ཚུ་ ཁྱོད་ཀྱིས་ བཟོ་མིའི་གོང་ཚད་ནང་ ཁ་སྐོང་འབདཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🏭 Make</strong> ལུ་ཨེབ་སྟེ་ ངེས་གཏན་བཟོ། རྒྱུ་ཆ་ མར་ཕབ། ཐོན་སྐྱེད་ ཡར་འཕར་ དེ་ལས་ ཐེངས་དེ་ལུ་ <strong>PRD-0001</strong> བཟུམ་གྱི་ ཨང་ཅིག་ཐོབ་ཨིན། དེ་ ཅ་ཆས་རེ་རེའི་ <strong>Item History</strong> ནང་ <em>Production</em> སྦེ་ མཐོངམ་ཨིན།</div></div>
+  <div class="tip">💡 རྒྱུ་ཆ་ག་ཅི་རང་ མ་ལང་པ་ཅིན་ <strong>Make</strong> སྒོ་བསྡམས་ཏེ་ མ་ལང་མི་ སྟོནམ་ཨིན — དང་པ་ རྒྱུ་ཆ་དེ་ ཉོ་ ཡང་ན་ བཟོ། ཡང་ན་ ཉུང་སུ་ཅིག་བཟོ། རྒྱུ་ཆ་ཅིག་ནང་ <em>No cost known</em> མཐོང་པ་ཅིན་ དེ་ ནམ་ཡང་ Purchases བརྒྱུད་དེ་ མ་ཉོ་བར་ Buy Rate མེདཔ་ཨིན། Inventory ནང་ དེའི་ Buy Rate གཞི་སྒྲིག་འབད། མེན་པ་ཅིན་ ཐོན་སྐྱེད་ཀྱི་གོང་ཚད་ལས་ ལུས་འོང་། མ་ལང་པའི་རྒྱུ་ཆ་ ཐིག་ཁྲམ་ནང་ 🔴 སྦེ་ རྟགས་བཀལཝ་ཨིན།</div>
+
+  <h3>གོང་ཚད་ ག་དེ་སོང་ནི།</h3>
+  <p>ཐེངས་ཅིག་གི་གོང་ཚད་ཟེར་མི་འདི་ ལག་ལེན་འཐབ་པའི་རྒྱུ་ཆ་ (དེ་ཚུ་གི་ ཉོ་གོང་བར་ཚད་ཐོག) དང་ གླ་ཆ་དང་ འགྲོ་སོང་གཞན་ཚུ་ཨིན། ཐོན་སྐྱེད་ཀྱི་ <strong>Buy Rate</strong> འདི་ དེའི་ བཟོ་སྐྲུན་གོང་ཚད་བར་ཚད་ལུ་ འགྱུརཝ་ཨིན། དེ་འབདཝ་ལས་ ཁྱོད་ཀྱི་མཛོད་ཀྱི་གོང་ཚད་དང་ ཚོང་རེ་རེའི་ཁེ་ཕན་ ཅ་ཆས་དེ་ བཟོ་ནི་ལུ་ དངོས་སུ་ ག་དེ་སོང་ཡི་ག་ ལས་ རྩིས་རྐྱབ་ཨིན། ཐོན་སྐྱེད་ཚུ་ སྤྱིར་བཏང་སྦེ་ Sales ནང་ བཙོང་།</p>
+
+  <h3>བཀའ་རྒྱ་ལུ་བཟོ་མི་ཟས། (ཟ་ཁང་།)</h3>
+  <p>ཟ་ཁང་གི་ཟས་ཅིག་ བཀའ་རྒྱ་ཐོབ་ཞིནམ་ལས་ བཙོཝ་ཨིན། ཧེ་མ་ལས་ མི་བཟོ། དེའི་ཟས་བཟོ་ཐབས་གུ་ <strong>Made to order</strong> རྟགས་བཀལ། དེ་ལས་ ཟས་དེ་ལུ་ རང་སོའི་མཛོད་མེདཔ་ཨིནམ་དང་ བཙོང་ཚར་རེ་ དེའི་ཟས་རྒྱུ་ཚུ་ མཛོད་ལས་ བཏོནམ་ཨིན། (བིལ་ཅིག་ སོར་ ཡང་ན་ བཏོན་གཏང་བ་ཅིན་ ལོག་སྟེ་བཙུགསཔ་ཨིན།) ཟས་ཅིག་ མཛོད་ནང་ དེའི་ཟས་རྒྱུ་ ལངམ་ཡོད་པ་ཅིན་རྐྱངམ་ཅིག་ བཙོང་ཚུགས། བཀའ་རྒྱ་ལུ་བཟོ་མི་ཟས་ཚུ་ Make ཤོག་བྱང་ནང་ ཐོ་བཀོད་མི་འབད་ནི་དང་ ཅ་ཆས་ཉུང་མིའི་ཐོ་ཡིག་ལས་ཡང་ བཞག་བཞགཔ་ཨིན། <a href="#ch9b">ལེའུ 9b — ཟ་ཁང་།</a> ལུ་བལྟ། བཀའ་རྒྱ་ལུ་བཟོ་མི་ཟས་ཅིག་ ནམ་ཡང་ མི་ཉོ། དེ་ཚུད་པའི་ ཉོ་ཚོང་། ཉོ་ནིའི་བཀའ་རྒྱ་ ཡང་ན་ ཁ་པར་ལས་ཉོ་ཚོང་ ཕྱིར་བཀག་འབདཝ་ཨིནམ་དང་ དེའི་ཚབ་ལུ་ དེའི་ཟས་རྒྱུ་ཚུ་ ཉོ་ཟེར་ བརྡ་འཕྲིན་བྱིནམ་ཨིན།</p>
+
+  <h3>ལོ་རྒྱུས་དང་ Undo</h3>
+  <p><strong>📜 History</strong> ཤོག་བྱང་གིས་ ཐེངས་རེ་རེ་ དེ་གིས་ ལག་ལེན་འཐབ་པའི་རྒྱུ་ཆ་དང་ གོང་ཚད་དང་གཅིག་ཁར་ ཐོ་བཀོད་འབདཝ་ཨིན། ཐེངས་ཅིག་ ནོར་བ་ཅིན་ འཛིན་སྐྱོང་པ་གིས་ དེ་གདམ་སྟེ་ <strong>↩ Undo Run</strong> ལུ་ཨེབ་ཚུགས། རྒྱུ་ཆ་ མཛོད་ནང་ ལོག་འགྱོཝ་ཨིན། དེ་གིས་བཟོ་མི་ཅ་ཆས་ཚུ་ བཏོནམ་ཨིནམ་དང་ ཅ་ཆས་ཀྱི་གོང་ཚད་ ཧེ་མ་བཟུམ་སྦེ་ ལོག་འགྱོཝ་ཨིན། ཅ་ཆས་ཅིག་གི་ ཐེངས་མཇུག་མ་རྐྱངམ་ཅིག་ ལོག་བཏང་ཚུགས་ནི་དང་ དེ་གིས་བཟོ་མི་ ག་ར་ ད་ལྟོ་ཡང་ མཛོད་ནང་ཡོད་པ་ཅིན་རྐྱངམ་ཅིག་ཨིན།</p>
+
+  <div class="tip">💡 Production ལག་ལེན་འཐབ་ནིའི་དོན་ལུ་ ལཱ་གཡོག་པ་ལུ་ <strong>Edit inventory</strong> གནང་བ་དགོ། <strong>See purchase costs</strong> མེད་པ་ཅིན་ ཅ་ཆས་ བཟོ་ཚུགས་རུང་ གོང་ཚད་ག་ཅི་ཡང་ མི་མཐོང་།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9 -->
+<div class="chapter-banner" data-for="general">ལེའུ 9 — ཚོང་། <span class="for-badge">ཚོང་ཁང་། ཚོང་པ་དང་ ཞབས་ཏོག་གི་དོན་ལུ།</span></div>
+<div class="section" id="ch9" data-for="general">
+  <h2>9. ཚོང་གི་པེ་ནཱལ།</h2>
+  <p>ཚོང་གི་པེ་ནཱལ་འདི་ ཁྱོད་ཀྱིས་ ཉོ་མཁན་གྱི་བིལ་བཟོ་སའི་ས་གནས་ཨིན། ཚོང་རེ་རེ་ ནཱ་ལུ་ ཐོ་བཀོད་འབདཝ་ཨིན།</p>
+
+  <h3>བིལ་གསརཔ་བཟོ་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཚོང་གི་པེ་ནཱལ་གྱི་ གཡོན་ཕྱོགས་འདི་ <strong>Invoice Form</strong> ཨིན། ཉོ་མཁན་གྱི་མིང་བཙུགས — ངོ་ཤེས་པའི་ཕྱོགས་ཅིག་ཨིན་པ་ཅིན་ ཁོ་གི་ལྷག་ལུས་ མཐོངམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>དངུལ་སྤྲོད་ཐངས</strong> གདམ། Cash, Bank, UPI, ཡང་ན་ Credit (བུན།)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཁ་པར་གྱི་ པར་ཆས་ཀྱིས་ ཅ་ཆས་ཀྱི་ བར་ཀོཌི་ སྐེན་འབད་ནིའི་དོན་ལུ་ <strong>📱 Scan with Phone</strong> ལུ་ཨེབ། ཡང་ན་ ཁྱོད་ཀྱི་མཛོད་ལས་ ཅ་ཆས་འཚོལ་ཏེ་ གདམ་ནིའི་དོན་ལུ་ <strong>➕ Add Item</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">གྱངས་ཁ་ལེགས་སྒྲིག་འབད། བསྡོམས་ རང་བཞིན་གྱིས་ དུས་མཐུན་བཟོཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">དགོ་པ་ཅིན་ ཕབ་ཆའི་དངུལ་ ཡང་ན་ འཐུས་ཁ་སྐོང་ (P&amp;F) བཙུགས།</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>💾 Save Invoice</strong> ལུ་ཨེབ། བིལ་ སྲུང་བཞག་འབད། མཛོད་ མར་ཕབ་དང་ ཉོ་མཁན་གྱི་ལྷག་ལུས་ དུས་མཐུན་བཟོཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">བིལ་ པར་བསྐྲུན་འབད་ནིའི་དོན་ལུ་ <strong>🖨 Print</strong> ལུ་ཨེབ། ཉོ་མཁན་ལུ་ WhatsApp ནང་ གཏང་ནིའི་དོན་ལུ་ འོག་གི་ <em>WhatsApp ནང་ བིལ་གཏང་ནི།</em> ལུ་བལྟ།</div></div>
+
+  <figure class="shot"><a href="manual_images/sales-invoice.png" target="_blank"><img src="manual_images/sales-invoice.png" alt="Create Invoices" loading="lazy"></a><figcaption>བིལ་བཟོ་དོ — གཡོན་ཕྱོགས་ལུ་ ཉོ་མཁན་གྱི་ཁ་གསལ། གཡས་ཕྱོགས་ལུ་ ཅ་ཆས་དང་ བསྡོམས། འོག་ལུ་ སྲུང་བཞག་འབད་ཡོད་པའི་བིལ།</figcaption></figure>
+
+  <h3>WhatsApp ནང་ བིལ་གཏང་ནི།</h3>
+  <p>Accelent གིས་ བིལ་ཁོ་ར་ གཏངམ་ཨིན། བིལ་ངོ་མའི་ PDF, པར་བསྐྲུན་འབད་དོ་བཟུམ་སྦེ་ <em>Original for Recipient</em> རྟགས་དང་ ཁྱོད་ཀྱིས་ ཁ་སྐོང་འབད་ཡོད་པ་ཅིན་ ཁྱོད་ཀྱི་མཚན་རྟགས་དང་ ཐམ་ག་དང་བཅས།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">སྲུང་བཞག་འབད་ཡོད་པའི་ བིལ་གྱི་ཐོ་ཡིག་ནང་ བིལ་གྱི་ <strong>W</strong> ཨེབ་རྟགས → <strong>📄 Send the bill (PDF)</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent གིས་ PDF སྲུང་བཞག་འབད། འདྲ་བཤུས་རྐྱབ་སྟེ་ བརྡ་འཕྲིན་ཐུང་ཀུ་དང་གཅིག་ཁར་ ཉོ་མཁན་གྱི་ WhatsApp གླེང་མོལ་ ཁ་ཕྱེཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">གླེང་མོལ་ནང་ཨེབ་སྟེ་ བིལ་མཉམ་སྦྲགས་འབད་ནིའི་དོན་ལུ་ <strong>Ctrl+V</strong> ཨེབ་ཞིནམ་ལས་ <strong>Send</strong> ཨེབ། Ctrl+V གིས་ མཉམ་སྦྲགས་མ་འབད་བ་ཅིན་ <strong>📂 Show the PDF</strong> ལུ་ཨེབ་སྟེ་ ཡིག་སྣོད་ གླེང་མོལ་ནང་ འདྲུད།</div></div>
+  <div class="tip">💡 <strong>མཚན་རྟགས་དང་ ཐམ་ག།</strong> དེ་ཚུ་ ཐེངས་གཅིག་ <strong>Settings → 🏢 Company → Signature &amp; Stamp</strong> ནང་ ཁ་སྐོང་འབད། ཤོག་བུ་དཀརཔོ་ཅིག་གུ་ མཚན་རྟགས་བཀོད་དེ་ ཐམ་ག་བཀལ། པར་བཏབ་ ཡང་ན་ སྐེན་འབད་དེ་ ཉེ་བར་ དྲས། དེ་ཚུ་ WhatsApp ནང་གཏང་མི་ བིལ་རེ་རེའི་ <em>Authorised Signatory</em> སྒྲོམ་ནང་ མཐོངམ་ཨིན། པར་བསྐྲུན་བིལ་ནང་ཡང་ བཙུགས་ནིའི་དོན་ལུ་ <strong>Also put them on printed bills</strong> ལུ་ རྟགས་བཀལ།</div>
+  <p><strong>W</strong> ཨེབ་རྟགས་ཀྱིས་ <strong>💬 Send a payment reminder (text)</strong> ཡང་ བྱིནམ་ཨིན། ཉོ་ནིའི་བིལ་ཚུ་ཡང་ དེ་བཟུམ་སྦེ་ གཏངམ་ཨིན། བིལ་གུ་ གཡས་ཨེབ → <strong>📄 Send the bill (PDF) on WhatsApp</strong>.</p>
+  <div class="tip">💡 <strong>བརའུ་ཟར་ནང་ WhatsApp (WhatsApp Web) ལག་ལེན་འཐབ་དོ་ག?</strong> Accelent གིས་ གཏང་མི་ གླེང་མོལ་རེ་རེ་ WhatsApp གིས་ <strong>བརའུ་ཟར་ཤོག་བྱང་གསརཔ</strong> ཅིག་ནང་ ཁ་ཕྱེཝ་ཨིནམ་དང་ WhatsApp Web ནཱ་ལུ་ ལོག་སྟེ་ མངོན་གསལ་འབདཝ་ཨིན། WhatsApp ལཱ་འབད་ཐངས་ འདི་ཨིནམ་ལས་ Accelent གིས་ སོར་མི་ཚུགས། དེ་ལས་ WhatsApp ཤོག་བྱང་རྙིངམ་ཅིག་ནང་ <em>WhatsApp is open in another window</em> ཟེར་ མཐོང་པ་ཅིན་ སྤྱིར་བཏང་ཨིན། ཤོག་བྱང་གསརཔ་ ལག་ལེན་འཐབ་སྟེ་ རྙིངམ་ཚུ་ སྐབས་རེ་ ཁ་བསྡམས། WhatsApp ཤོག་བྱང་གཅིག་ནང་ སྡོད་ནི་ཨིན་ན? ཤོག་བྱང་གསརཔ་ ཁ་བསྡམས་ཏེ་ ཁྱོད་ཀྱི་ སྤྱིར་བཏང་གི་ WhatsApp ཤོག་བྱང་ལུ་ ལོག་འགྱོ (འདྲི་བ་ཅིན་ <strong>Use here</strong> ལུ་ཨེབ།) ཉོ་མཁན་གྱི་གླེང་མོལ་ ཁ་ཕྱེ་སྟེ་ <strong>Ctrl+V</strong> ཨེབ། བིལ་ ད་ལྟོ་ཡང་ འདྲ་བཤུས་རྐྱབ་ཡོདཔ་ཨིན།</div>
+  <p><strong>ཁ་པར་ལས།</strong> Accelent ཨེབ་ནང་ བིལ་ ཡང་ན་ ཉོ་ནིའི་བིལ་ ཁ་ཕྱེ་སྟེ་ གུ་ཏོག་གི་ <strong>📄</strong> བརྡ་རྟགས་ལུ་ཨེབ། PC གིས་ PDF ཅོག་འཐདཔ་བཟོཝ་ཨིནམ་དང་ ཁ་པར་གྱི་ Share ཐོ་ཡིག་ ཁ་ཕྱེཝ་ཨིན། WhatsApp གདམ་སྟེ་ དེ་ལས་ ཉོ་མཁན་གདམ།</p>
+
+  <h3>བིལ་རྙིངམ་ཚུ་བལྟ་ནི།</h3>
+  <p>འབྲི་ཤོག་གི་འོག་ལུ་ཡོད་པའི་ <strong>Saved Sales Invoices</strong> ཐོ་ཡིག་གིས་ སྲུང་བཞག་འབད་ཡོད་པའི་བིལ་ག་ར་ སྟོནམ་ཨིན། Source ཀེར་ཐིག་གིས་ རེ་རེ་ ཌེཀསི་ཊོཔ་ ཡང་ན་ ཁ་པར་ལས་ བཟོ་ཡོད་ག་ སྟོནམ་ཨིན། ཉོ་མཁན་གྱི་མིང་། བིལ་ཨང་ ཡང་ན་ ཚེས་གྲངས་ཀྱི་ཁྱབ་ཚད་ལས་ འཚོལ་ཚུགས། བིལ་གྱི་གྲལ་ཐིག་རེ་རེ་ནང་ View, Edit, Print, ཡང་ན་ Delete གི་ ཨེབ་རྟགས་ཡོདཔ་ཨིན།</p>
+
+  <h3>ཚོང་ལོག་སྤྲོད།</h3>
+  <p>ཉོ་མཁན་ཅིག་གིས་ ཅ་ཆས་ ལོག་སྤྲོད་པ་ཅིན་ <strong>Returns</strong> པེ་ནཱལ → <strong>Sales Returns</strong> ཤོག་བྱང་ལུ་འགྱོ། བིལ་ངོ་མ་གདམ་སྟེ་ ལོག་སྤྲོད་པའི་ཅ་ཆས་བཙུགས་ཞིནམ་ལས་ སྲུང་བཞག་འབད། མཛོད་ ལོག་སྟེ་ བཙུགསཔ་ཨིནམ་དང་ ཀེ་ཌིཊ་ཟིན་བྲིས་ཅིག་ སྤྲོདཔ་ཨིན། ཚོང་ངོ་མ་ Cash/Bank/UPI/Card ཨིན་པ་ཅིན་ ལོག་སྤྲོད་དངུལ་གྱིས་ Cash/Bank གི་ལྷག་ལུས་ ཐད་ཀར་ མར་ཕབ་ཨིན། Credit ཚོང་ཨིན་པ་ཅིན་ དེའི་ཚབ་ལུ་ ཉོ་མཁན་གྱིས་ ཁྱོད་ལུ་ སྤྲོད་དགོ་མི་ མར་ཕབ་ཨིན།</p>
+
+  <div class="tip">💡 <strong>བུན་ཚོང་།</strong> དངུལ་སྤྲོད་ཐངས་སྦེ་ "Credit" གདམ་པའི་སྐབས་ བིལ་ལུ་ <em>Unpaid</em> རྟགས་བཀལ་སྟེ་ དངུལ་འདི་ ཉོ་མཁན་གྱི་ ཐོབ་དགོ་པའི་ལྷག་ལུས་ནང་ ཁ་སྐོང་འབདཝ་ཨིན། ཁོ་གིས་ ཤུལ་ལས་ སྤྲོད་པའི་སྐབས་ Receipts པེ་ནཱལ་ནང་ Receipt ཅིག་སྦེ་ ཐོ་བཀོད་འབད།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9b -->
+<div class="chapter-banner" data-for="restaurant hotel">ལེའུ 9b — ཟ་ཁང་། <span class="for-badge">ཟ་ཁང་དང་ མགྲོན་ཁང་གི་དོན་ལུ།</span></div>
+<div class="section" id="ch9b" data-for="restaurant hotel">
+  <h2>9b. ཟ་ཁང་། (ཅོག་ཙེ། ཐབ་ཚང་གི་ཤོག་བྱང་དང་ བིལ།)</h2>
+  <p>ཟ་ཁང་། ཀེ་ཕེ། ཌ་བ་ ཡང་ན་ མགྲོན་ཁང་གི་ཐབ་ཚང་གི་དོན་ལུ་ Accelent ནང་ <strong>🍽 Restaurant</strong> གསལ་གཞི་ཅིག་ཡོད། ཅོག་ཙེ་ལུ་ཨེབ། ཟས་ལུ་ཨེབ། ཐབ་ཚང་ལུ་ <strong>ཐབ་ཚང་གི་ཤོག་བྱང་ (KOT)</strong> གཏང་ཞིནམ་ལས་ མགྲོན་པོ་ཚུ་ འགྱོ་བའི་སྐབས་ ཅོག་ཙེའི་བིལ་བཟོ། བིལ་རེ་རེ་ ཚོང་སྤྱིར་བཏང་ཅིག་སྦེ་ སྲུང་བཞག་འབདཝ་ཨིནམ་ལས་ Accounts, GST དང་ སྙན་ཞུ་ཚུ་ནང་ ཚུདཔ་ཨིནམ་དང་ ཟས་རེ་རེ་གིས་ ལག་ལེན་འཐབ་པའི་ཟས་རྒྱུ་ཚུ་ རང་བཞིན་གྱིས་ མཛོད་ལས་ བཏོནམ་ཨིན།</p>
+
+  <h3>ཁ་ཕྱེ་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་གིས་ ཁ་ཕྱེ།) → <strong>Business Type: Restaurant, café or hotel kitchen</strong> → <strong>Save</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent ཁ་བསྡམས་ཏེ་ ལོག་ཁ་ཕྱེ། གཡོན་ཕྱོགས་ཀྱི་ ཐོ་ཡིག་ནང་ ད་ FINANCE གི་འོག་ལུ་ <strong>🍽 Restaurant</strong> ཡོདཔ་ཨིན། <strong>Sales</strong>, <strong>Returns</strong>, <strong>Aging Report</strong> དང་ <strong>E-Invoice</strong> ཚུ་ སྦ་བཞགཔ་ཨིན། ག་ཅི་སྨོ་ཟེར་བ་ཅིན་ ཟ་ཁང་ཅིག་གིས་ Restaurant གསལ་གཞི་ལས་ བིལ་བཟོཝ་ཨིན། ག་ནི་ཡང་ མི་བཏོན — Business Type ལོག་སྟེ་ སོར་བ་ཅིན་ དེ་ཚུ་ ལོག་འོང་།</div></div>
+
+  <h3>ཁྱོད་ཀྱི་ཟས་ཐོ་གྲ་སྒྲིག་འབད་ནི།</h3>
+  <div class="tip">💡 <strong>དཔེ་ཚད་ཟས་ཐོ་ཅིག་ལས་ འགོ་བཙུགས།</strong> ཟས་ཐོ་ སྟོངམ་ཡོད་པའི་སྐབས་ Restaurant གསལ་གཞི་གིས་ <strong>📋 Start with a sample menu</strong> བྱིནམ་ཨིན། (<strong>⚙ Restaurant Settings</strong> ནང་ཡང་།) དེ་གིས་ ཟས་ཐོའི་ཡན་ལག་ (འགོ་ཟས། ཟས་གཙོ། ཚོད་བསྐོལ། བག་ལེབ། ཞོགས་ཟས། མངར་ཟས། འཐུང་ཅ་དྲོན་ཏོ་དང་ གྲང་ཏོ། ཁུ་བ། མོཀ་ཊེལ།) ནང་ སྤྱིར་བཏང་གི་ཟས་དང་ འཐུང་ཅ་ 53, ཚད་གཞི་དང་བཅས་པའི་ ཟས་རྒྱུ་ 100 དེ་ཅིག་དང་ ཟས་རེ་རེའི་དོན་ལུ་ <em>Made to order</em> ཟས་བཟོ་ཐབས་ཅིག་ ཁ་སྐོང་འབདཝ་ཨིན། ད་ཚུན་ ཁང་མིག་མེད་པའི་ མགྲོན་ཁང་གི་དོན་ལུ་ ཁང་མིག་ 101–104 དང་ 201–204 ཡང་། ཁྱོད་ལུ་ ཧེ་མ་ལས་ཡོད་མི་ ག་ནི་ཡང་ མི་སོར — མིང་ཅོག་འཐདཔ་ཡོད་པའི་ ཅ་ཆས་ཅིག་ དེ་བཟུམ་སྦེ་ བཞགཔ་ཨིན། དེ་ལས། Inventory ནང་ ཁྱོད་རའི་གོང་ཚད་གཞི་སྒྲིག་འབད། (དཔེ་ཚད་ཀྱི་གོང་ཚད་ བསམ་འཆར་རྐྱངམ་ཅིག་ཨིན།) ཁྱོད་ཀྱིས་ཉོ་མི་ Purchases ནང་བཙུགས། (ཟས་རྒྱུ་ མཛོད་ནང་ མ་འོང་ཚུན་ ཟས་རེ་རེ་ ཐལ་མདོག་སྦེ་ ལུསཔ་ཨིན།) Production → Recipes ནང་ ཁྱོད་ཀྱི་ ཐབ་མ་དང་གཅིག་ཁར་ ཟས་བཟོ་ཐབས་ཀྱི་ གྱངས་ཁ་ཞིབ་དཔྱད་འབད། ཁྱོད་ཀྱིས་ མི་སྤྲོད་པའི་ཟས་ཚུ་ བཏོན་གཏང་།</div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཟས་དང་ འཐུང་ཅ་རེ་རེ་ <strong>Inventory</strong> ནང་ <strong>Sell Price</strong> (GST གི་ཧེ་མ།) དང་གཅིག་ཁར་ ཁ་སྐོང་འབད། དེའི་ <strong>Category</strong> འདི་ ཟས་ཐོའི་ཡན་ལག་ལུ་ འགྱུརཝ་ཨིན། <em>Main Course</em>, <em>Starters</em>, <em>Drinks</em>… Sell Price ཡོད་པའི་ ཅ་ཆས་རེ་རེ་ ཟས་ཐོ་ནང་ མཐོངམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ཟས་རྒྱུ</strong> ཚུ་ཡང་ ཅ་ཆས་སྦེ་ ཁ་སྐོང་འབད། (འབྲས། བྱ་ཤ། སྣུམ། ཇ་ལོ།) kg ཡང་ན་ litre བཟུམ་གྱི་ ཚད་གཞི་དང་བཅས་ དེ་ལས་ སྤྱིར་བཏང་སྦེ་ <strong>Purchases</strong> བརྒྱུད་དེ་ ཉོ། ཟས་རྒྱུ་ལུ་ Sell Price མེདཔ་ལས་ ཟས་ཐོ་ནང་ མི་མཐོང་།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཁྱོད་ཀྱི་ཐབ་ཚང་ནང་ བཙོ་མི་ ཟས་རེ་རེའི་དོན་ལུ་ <strong>Inventory → 🏭 Production → 🧾 Recipes</strong> ནང་ <strong>ཟས་བཟོ་ཐབས</strong> ཅིག་འབྲི་སྟེ་ (<a href="#ch8c">ལེའུ 8c</a> ལུ་བལྟ།) <strong>Made to order</strong> ལུ་ རྟགས་བཀལ། དཔེར་ན། Chicken Biryani གཅིག་ལུ་ འབྲས་ 0.25 kg དང་ བྱ་ཤ་ 0.2 kg ལག་ལེན་འཐབ་ཨིན། ཟས་བཙོང་པའི་སྐབས་ ཟས་རྒྱུ་དེ་ཚུ་ མཛོད་ལས་ བཏོནམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ཉོ་སྟེ་ དེ་བཟུམ་སྦེ་བཙོང་མི་ ཅ་ཆས་ཚུ་ (ཆུ་ཤེལ་དམ། འཐུང་ཅ་གྲང་ཏོ།) ལུ་ ཟས་བཟོ་ཐབས་མ་དགོ། Purchases བརྒྱུད་དེ་ ཉོ། བཙོང་པའི་སྐབས་ དེ་ཚུ་གི་ རང་སོའི་མཛོད་ མར་ཕབ་ཨིན།</div></div>
+  <p>ཟས་དང་ ཟས་རྒྱུ་ ག་ར་ <strong>Inventory</strong> ནང་གི་ ཅ་ཆས་ཨིན། དེའི་ཐོ་ཡིག་ནང་ བཀའ་རྒྱ་ལུ་བཟོ་མི་ཟས་ཅིག་གིས་ མཛོད་ཀྱི་དོན་ལུ་ <strong>—</strong> དང་ གནས་སྟངས་ལུ་ <strong>🍳 Dish</strong> སྟོནམ་ཨིན། ག་ཅི་སྨོ་ཟེར་བ་ཅིན་ དེ་ལུ་ རང་སོའི་མཛོད་མེདཔ་ལས། ཐེངས་ཅིག་ལུ་ དབྱེ་བ་གཅིག་བལྟ་ནིའི་དོན་ལུ་ ཐོ་ཡིག་གི་ གུ་ཏོག་གི་ ཚགས་མ་ ལག་ལེན་འཐབ། <strong>Items for sale</strong> (ཁྱོད་ཀྱི་ཟས་ཐོ། Sell Price ཡོད་མི་ག་ར།) ཡང་ན་ <strong>Materials &amp; ingredients</strong> (ཟས་བཟོ་ཐབས་ནང་ ལག་ལེན་འཐབ་མི་ག་ར།)</p>
+  <h3>ཟས་རྒྱུ་ མཛོད་ནང་ ཡོད་དགོ།</h3>
+  <p>ཟས་ཅིག་ མཛོད་ནང་ དེའི་ཟས་རྒྱུ་ ལངམ་ཡོད་པ་ཅིན་རྐྱངམ་ཅིག་ བཀའ་རྒྱ་ནང་ ལེནམ་ཨིན། ཅོག་ཙེ་གཞན་ཚུ་ནང་ ཧེ་མ་ལས་ བཀའ་རྒྱ་བཀོད་པའི་ཟས་ཚུ་གིས་ ལག་ལེན་འཐབ་ནི་ཡང་ Accelent གིས་ རྩིས་ཨིན། ག་ཅི་སྨོ་ཟེར་བ་ཅིན་ ཐབ་ཚང་གིས་ དེ་ཚུ་ བཙོ་དོ་ཡོདཔ་ལས། ག་ཅི་རང་ མ་ལང་པ་ཅིན་ ག་ཅི་མ་ལང་ག་ སླབ་ཨིན། དཔེར་ན་ <em>Chicken: needs 0.6 kg, 0.4 kg in the store</em>, དེ་ལས་ ཟས་དེའི་ཨེབ་རྟགས་ <strong>ཐལ་མདོག</strong> ལུ་འགྱུརཝ་ཨིན། <strong>Purchases</strong> བརྒྱུད་དེ་ ཟས་རྒྱུ་ཉོ་བ་ཅིན་ ཟས་ ལོག་སྟེ་ཐོབ་ཨིན། Sales གསལ་གཞི་ ཡང་ན་ ཁ་པར་ལས་ ཟས་བཙོང་བའི་སྐབས་ཡང་ ཞིབ་དཔྱད་འདི་ འབྱུངམ་ཨིན། ཟས་རེ་རེའི་ཨེབ་རྟགས་གིས་ མཛོད་ཀྱིས་ ད་རུང་ ག་དེ་བཟོ་ཚུགས་ག་ཡང་ སྟོནམ་ཨིན། དཔེར་ན་ <em>12 left</em>; 5 ཡང་ན་ ཉུང་བའི་སྐབས་ <strong>⚠</strong> སྟོནམ་ཨིནམ་དང་ ཨེབ་རྟགས་གུ་ བྱི་ཙི་བཞག་པ་ཅིན་ ཉུང་སོང་མི་ཟས་རྒྱུའི་མིང་ མཐོངམ་ཨིན།</p>
+  <div class="tip">💡 མཛོད་ མ་ལུས་པའི་ ཉོ་མི་ཅ་ཆས་ ཡང་ན་ མཛོད་དང་ <em>Made to order</em> ཟས་བཟོ་ཐབས་ གཉིས་ཆ་ར་མེད་པའི་ ཟས་ཀྱི་ ཟས་ཐོའི་ཨེབ་རྟགས་ཡང་ ཐལ་མདོག་ལུ་ འགྱུརཝ་ཨིན། ཁྱོད་ཀྱི་ཐབ་ཚང་གིས་ ཉོ་ཚོང་ མ་བཙུགས་པའི་ཧེ་མ་ རྒྱུན་དུ་ བཙོཝ་ཨིན་པ་ཅིན་ འཛིན་སྐྱོང་པ་གིས་ <strong>⚙ Restaurant Settings</strong> ནང་ <strong>Don't take an order for a dish when the store hasn't enough of its ingredients</strong> གི་རྟགས་ བཏོན་ཚུགས། དེ་ལས་ ཟས་ རྟག་བུ་ར་ཆོགཔ་ཨིནམ་དང་ ཟས་རྒྱུ་ ཀླད་ཀོར་ལས་ མར་འགྱོཝ་ཨིན། Low Stock Monitor གིས་ ཁ་སྐོང་ཉོ་ཟེར་ སླབ་ཨིན།</div>
+
+  <h3>ཅོག་ཙེ།</h3>
+  <p>ཐེངས་དང་པ་ ཅོག་ཙེ་ དྲུག་ (Table 1 ལས་ Table 6) གྲ་སྒྲིག་འབདཝ་ཨིན། ཅོག་ཙེ་ ཁ་སྐོང་། མིང་སོར་ ཡང་ན་ བཏོན་ནི་དང་ དེ་ཚུ་གི་ ཁྲི་གཞི་བཙུགས་ནིའི་དོན་ལུ་ <strong>🪑 Tables…</strong> ལུ་ཨེབ། (དཔེར་ན་ <em>Garden 1</em>, <em>Cabin A</em>) ཅོག་ཙེ་རེ་རེ་ ཤོག་བྱང་ཅིག་ཨིན།</p>
+  <ul>
+    <li><strong>སྟོངམ</strong> ཅོག་ཙེ་ཅིག་ སྤྱིར་བཏང་ཨིནམ་དང་ དེའི་ཁྲི་དང་ <em>✓ Free</em> སྟོནམ་ཨིན།</li>
+    <li>བཀའ་རྒྱ་འཕྲོ་མཐུད་དེ་ཡོད་པའི་ ཅོག་ཙེ་ལུ་ <strong>ཚོས་གཞིའི་མཐའ་མཚམས</strong> ཡོདཔ་ཨིནམ་དང་ དེའི་བསྡོམས་དང་ ཡུན་ཚད་ག་དེ་ ཁ་ཕྱེ་ཡོད་ག་ སྟོནམ་ཨིན། (<em>🕑 25 min</em>, <em>🕑 1h 05m</em>)</li>
+    <li>ཞབས་ཏོག་པ་ ཡང་ན་ ཉོ་མཁན་ཅིག་གིས་ བིལ་ཞུ་བའི་སྐབས་ ཅོག་ཙེ་ལུ་ <strong>སེར་ཞུན་མཐའ་མཚམས</strong> ཐོབ་སྟེ་ <em>🧾 Bill asked</em> སྟོནམ་ཨིན།</li>
+    <li>ཁྱོད་ཀྱིས་ ཁ་ཕྱེ་ཡོད་པའི་ ཅོག་ཙེ་ལུ་ <strong>མཐའ་མཚམས་སྟུག་པོ</strong> ཡོདཔ་ཨིན།</li>
+  </ul>
+  <p>གསལ་གཞིའི་ མར་ཁར་ ལྡེ་མིག་ཅིག་གིས་ མཐའ་མཚམས་ཚུ་གི་ དོན་དག་ གསལ་བཤད་འབདཝ་ཨིན།</p>
+
+  <h3>བཀའ་རྒྱ་ལེན་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>ཅོག་ཙེ</strong> ལུ་ཨེབ། དེ་ལས་ <strong>ཟས་ཐོའི་ཡན་ལག</strong> དེ་ལས་ <strong>ཟས</strong>. ཨེབ་ཐེངས་རེ་རེ་གིས་ གཅིག་ཁ་སྐོང་འབདཝ་ཨིན། ལོག་སྟེ་ཨེབ་པ་ཅིན་ གཅིག་ཁ་སྐོང་འབདཝ་ཨིན། ཟས་ཅིག་ མགྱོགས་དྲགས་སྦེ་འཚོལ་ནིའི་དོན་ལུ་ <strong>Search the menu</strong> ནང་ ཡིག་དཔར་རྐྱབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">བཀའ་རྒྱ་ནང་ གྲལ་ཐིག་ཅིག་གདམ་སྟེ་ གྱངས་ཁ་སོར་ནིའི་དོན་ལུ་ <strong>−</strong> / <strong>+</strong>, ཐབ་ཚང་གི་དོན་ལུ་ <strong>📝 Note</strong> (<em>ཁ་ཚ་ཉུང་ཉུང་</em>, <em>སྒོག་ཀྱ་མེདཔ་</em>) ཡང་ན་ <strong>✕ Remove</strong> ལག་ལེན་འཐབ། གྲལ་ཐིག་ཅིག་གུ་ བྱི་ཙིའི་འཁོར་ལོ་ཡང་ བསྒྱིར་ཚུགས། ཡར་ལུ་ གཅིག་ཁ་སྐོང་འབདཝ་ཨིན། མར་ལུ་ གཅིག་བཏོནམ་ཨིན། (མར་ལུ་ 1 ལུ་དང་ ཐབ་ཚང་ལུ་ ཧེ་མ་ལས་ ཡོད་མི་ལུ་ བཀག་ཆ་འབདཝ་ཨིན།)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🧑‍🍳 Send to Kitchen (KOT)</strong> ལུ་ཨེབ། ཐབ་ཚང་གི་ཤོག་བྱང་ཅིག་ དེའི་ཨང་ (KOT #1, #2… ཉིན་རེ་ལོག་སྟེ་ འགོ་བཙུགས།) ཅོག་ཙེ་དང་ བཙོ་དགོ་མི་དང་བཅས་ པར་བསྐྲུན་འབདཝ་ཨིན།</div></div>
+  <p><strong>Kitchen</strong> ཀེར་ཐིག་གིས་ ཐབ་ཚང་ལུ་ ཧེ་མ་ལས་ ཡོད་མི་ (<em>✓ sent</em>) དང་ གསརཔ་ ག་ཅི་ཨིན་ན་ སྟོནམ་ཨིན། མགྲོན་པོ་ཚུ་གིས་ ཁ་སྐོང་ བཀའ་རྒྱ་བཀོད་པའི་སྐབས་ ཁ་སྐོང་འབད་དེ་ ལོག་སྟེ་ གཏང་། KOT ཤུལ་མམ་ནང་ <strong>ཅ་ཆས་གསརཔ་རྐྱངམ་ཅིག</strong> ཡོདཔ་ཨིན། བཏང་ཞིནམ་ལས་ ཟས་ཅིག་ ཕབ་པ་ཅིན་ KOT གིས་ དེ་ <strong>CANCEL</strong> སྦེ་ པར་བསྐྲུན་འབདཝ་ཨིན། བཏང་ཞིནམ་ལས་ སོར་བའི་ཟིན་བྲིས་ <strong>NOTE</strong> སྦེ་ པར་བསྐྲུན་འབདཝ་ཨིན། KOT ཨེབ་རྟགས་གུ་ཡོད་པའི་ ཐིག་ཁྲ་ཅིག་གིས་ ག་ཅི་རང་ ད་ཚུན་ ཐབ་ཚང་ལུ་ མ་འགྱོ་བ་ སྟོནམ་ཨིན། ཐབ་ཚང་ལུ་ ག་ར་ཐོབ་ཚར་བའི་ཤུལ་ལས་ ཨེབ་རྟགས་ ཐལ་མདོག་ལུ་ འགྱུར་ཏེ་ <strong>✓ Kitchen has everything</strong> སྟོནམ་ཨིན།</p>
+
+  <h3>ཐབ་ཚང་ ག་དེ་སྦེ་ ལཱ་ཁག་ཡོད་ག?</h3>
+  <p>Restaurant གསལ་གཞིའི་ གུ་ཏོག་གིས་ ཐབ་ཚང་གི་གནས་སྟངས་ སྟོནམ་ཨིན། དཔེར་ན་ <strong>🟢 Kitchen: Normal · ~12 min</strong>: <em>Normal, Busy, Very busy, Extra busy</em> ཡང་ན་ <em>Overloaded</em>, དེ་ལས་ ད་ལྟོ་ བཀའ་རྒྱ་བཀོད་པའི་ཟས་ཅིག་ལུ་ ཡུན་ཚད་ ག་དེ་སྦེ་ འགོར་ནི་ཨིན་ན། འདི་ <strong>ཚོད་དཔག</strong> ཅིག་ཨིན། ཐབ་ཚང་ལུ་ ག་ཅི་བཏང་ཡི་ག་དང་ ཟས་རེ་རེ་ལུ་ སྤྱིར་བཏང་ ཡུན་ཚད་ག་དེ་ འགོརཝ་ཨིན་ན་ Accelent གིས་ ཤེསཔ་ཨིནམ་དང་ ལཱ་ཁར་ཡོད་པའི་ ཐབ་མ་རེ་རེའི་དོན་ལུ་ ད་རུང་ བཙོ་དགོ་མི་ རྩིས་རྐྱབ་ཨིན། ཐབ་ཚང་ནང་ ད་ལྟོ་ཡང་ཡོད་པའི་ བཀའ་རྒྱ་ཚུ་ (རྙིངམ་ཤོས་ དང་པ།) དང་ ག་ཅི་ཚུ་ ཕྱི་འགྱང་ཡོད་ག་ བལྟ་ནིའི་དོན་ལུ་ འདི་ལུ་ཨེབ། ཐབ་ཚང་ Extra busy ལུ་ འགྱུར་བའི་སྐབས་ PC གིས་ སྒྲ་བཏོནམ་ཨིན།</p>
+  <ul>
+    <li><strong>སྒོ་སྒྲིག་དེ་ནང་</strong> སྒུག་པའི་ཡུན་ཚད་ སྐར་མ་ 30 གི་ཤུལ་ལས་ <strong>དམརཔོ</strong> དང་ སྐར་མ་ 15 ལས་ <strong>སེར་ཞུན</strong> ལུ་ འགྱུརཝ་ཨིན། གྲལ་ཐིག་རེ་རེ་ནང་ <strong>👁 Items</strong> (ཐབ་ཚང་ཤོག་བྱང་དེའི་ཟས།) དང་ <strong>🍽 Served</strong> ཡོདཔ་ཨིན།</li>
+    <li><strong>⏸ Pause QR orders for 20 min:</strong> ཅོག་ཙེའི་ QR ལས་ བཀའ་རྒྱ་བཀོད་མི་ མགྲོན་པོ་ཚུ་ལུ་ བཀའ་རྒྱ་ བཀག་ཆ་འབད་ཡོད་ཟེར་ སླབ་ཨིན། ཞབས་ཏོག་པ་ཚུ་གིས་ ད་ལྟོ་ཡང་ བཀའ་རྒྱ་ལེན་ཚུགས། སྐར་མ་ 20 གི་ཤུལ་ལས་ རང་བཞིན་གྱིས་ ལོག་སྟེ་ འགོ་བཙུགསཔ་ཨིན། ཡང་ན་ <strong>▶ Resume QR orders</strong> ལུ་ཨེབ།</li>
+    <li><strong>⏰ ཟས་ ཡུན་རིངམོ་ སྒུག་སྡོད་དོ:</strong> ཐབ་ཚང་གི་ཤོག་བྱང་ཅིག་ སྐར་མ་ 30 གི་ཤུལ་ལས་ཡང་ served རྟགས་ མ་བཀལ་བ་ཅིན་ Restaurant གསལ་གཞི་གིས་ སྒྲ་བཏོན་ཏེ་ དམརཔོའི་གྲལ་ཐིག་ཅིག་ སྟོནམ་ཨིན། (དཔེར་ན་ <em>⏰ Table 7: KOT #4 waiting 40 min</em>) དེ་ལས་ ཟིན་བྲིས་དེ་ མཐུད་ཡོད་པའི་ ཞབས་ཏོག་པ་རེ་རེའི་ ཁ་པར་ལུ་ ཐེངས་གཅིག་ Messages ནང་ འགྱོཝ་ཨིན། Kitchen Settings → <em>Alert the floor when food waits</em> ནང་ སྐར་མ་ སོར། ཡང་ན་ ཁ་བསྡམས། (0)</li>
+  </ul>
+  <ul>
+    <li><strong>🍽 Served:</strong> ཟས་ ཅོག་ཙེ་ལུ་ ལྷོད་པའི་སྐབས་ PC གུ་ བཀའ་རྒྱ་ཁ་ཕྱེ་སྟེ་ འདི་ལུ་ཨེབ། འདི་གིས་ ཚོད་དཔག་ ངོ་མ་སྦེ་བཞགཔ་ཨིན། བིལ་བཟོ་ཡོད་པའི་ བཀའ་རྒྱ་ served སྦེ་ རྩིསཔ་ཨིན།</li>
+    <li><strong>⏰ Late:</strong> དེའི་ ཟས་ ལྷོད་ཤོས་ལུ་ འགོར་བའི་ཡུན་ཚད་ལས་ སྐར་མ་ 5 ལྷག་སྟེ་ ཟས་སྒུག་སྡོད་པའི་ ཅོག་ཙེ་ལུ་ སེར་ཞུན་མཐའ་མཚམས་དང་ <em>Late … min</em> ཐོབ་ཨིན། བཀའ་རྒྱའི་མགོ་མིང་གིས་ཡང་ སླབ་ཨིན།</li>
+    <li><strong>🕑 Timeline:</strong> བཀའ་རྒྱ་ ནམ་ཁ་ཕྱེ་ཡི་ག ཐབ་ཚང་ཤོག་བྱང་རེ་རེ་ དེའི་ཟས་དང་བཅས། ནམ་ served འབད་ཡི་ག བིལ་ ནམ་ཞུ་ཡི་ག་དང་ ནམ་ བིལ་བཟོ་ཡི་ག</li>
+  </ul>
+  <div class="tip">💡 <strong>⚙ Restaurant Settings → 🍳 Kitchen Settings</strong> (འཛིན་སྐྱོང་པ།) ལཱ་ཁར་ཡོད་པའི་ ཐབ་མ། སྤྱིར་བཏང་གི་ བཙོ་ནིའི་ཡུན་ཚད་ (ཁྱོད་ཀྱིས་ མ་སོར་བ་ཅིན་ སྐར་མ་ 12) ཟས་ཐོའི་ཡན་ལག་རེ་རེ་དང་ མི་འདྲཝ་སྦེ་ཡོད་པའི་ཟས་ཚུ་གི་ ཡུན་ཚད་ (བིར་ཡ་ནི་ སྐར་མ་ 25, ཇ་ 4…) དང་ གནས་ཚད་རེ་རེ་ ག་ཏེ་ལས་ འགོ་བཙུགསཔ་ཨིན་ན། ཐབ་ཚང་ ལཱ་ཁག་པའི་སྐབས་ ག་ཅི་འབད་ནི་ཨིན་ན་ ཁྱོད་ཀྱི་གདམ་ཁ་ཨིན། QR བཀའ་རྒྱའི་ཤོག་ལེབ་ནང་ རེ་བ་བསྐྱེད་པའི་ སྒུག་ཡུན་སྟོན་ནི། Overloaded སྐབས་ QR བཀའ་རྒྱ་བཀག་ཆ་འབད་ནི་ (ཞབས་ཏོག་པ་ཚུ་གིས་ ད་ལྟོ་ཡང་ བཀའ་རྒྱ་ལེན་ཚུགས།) དང་ Extra busy ཡང་ན་ Overloaded སྐབས་ ཟས་ལྷོད་མི་ཚུ་ བཀག་ཆ་འབད་ནི།</div>
+
+  <h3>འབག་འགྱོ་ནི། (Takeaway)</h3>
+  <p><strong>🥡 New Takeaway</strong> ལུ་ཨེབ་སྟེ་ དགོ་པ་ཅིན་ ཉོ་མཁན་གྱི་མིང་བཙུགས་ཞིནམ་ལས་ ཅོག་ཙེ་ཅིག་གི་དོན་ལུ་བཟུམ་ ཟས་ཁ་སྐོང་འབད། KOT གཏང་སྟེ་ བིལ་བཟོ། ཁ་ཕྱེ་ཡོད་པའི་ takeaway ཚུ་ ཅོག་ཙེ་ཚུ་གི་འོག་ལུ་ <strong>Takeaway orders</strong> ནང་ ཐོ་བཀོད་འབདཝ་ཨིན། (མགྲོན་ཁང་ནང་ <strong>Takeaway &amp; room service</strong>) ཁ་ཕྱེ་ནིའི་དོན་ལུ་ གཅིག་ལུ་ཨེབ།</p>
+
+  <h3>བིལ་བཟོ་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཅོག་ཙེ་ཁ་ཕྱེ་སྟེ་ <strong>💵 Bill</strong> ལུ་ཨེབ། ཅ་ཆས་ལ་ལོ་ ཐབ་ཚང་ལུ་ མ་འགྱོ་བ་ཅིན་ Accelent གིས་ དང་པ་ དེ་ཚུ་གཏང་ནི་ གྲོས་འཆར་བཀོདཔ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">མགྲོན་པོ་གིས་ ག་དེ་སྦེ་ སྤྲོད་ཡི་ག་ གདམ། <strong>Cash</strong>, <strong>UPI</strong>, <strong>Card</strong> ཡང་ན་ <strong>Bank Transfer</strong> (དང་ དངུལ་ཁང་ག་ཅི་ལུ་ དགོ་པ་ཅིན་ གཞི་གནས་ཨང་དང་བཅས།) ཉོ་མཁན་གྱི་མིང་དང་ ཁ་པར་ གདམ་ཁ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Save Bill</strong> ལུ་ཨེབ། བིལ་ ཚོང་ཅིག་སྦེ་ སྲུང་བཞག་འབད། དངུལ་ Cash ཡང་ན་ དངུལ་ཁང་ལུ་འགྱོ། ཟས་ཀྱི་ཟས་རྒྱུ་ མཛོད་ལས་བཏོན། ཅོག་ཙེ་ སྟོངམ་ལུ་འགྱུར་ཞིནམ་ལས་ བིལ་ པར་བསྐྲུན་གྱི་དོན་ལུ་ ཁ་ཕྱེཝ་ཨིན། (དེ་བཞག་ནིའི་དོན་ལུ་ <em>Print the bill</em> གི་རྟགས་བཏོན།)</div></div>
+  <div class="tip">💡 <strong>ཉོ་མཁན་གྱི་ WhatsApp ནང་ བིལ།</strong> བིལ་གྱི་སྒོ་སྒྲིག་ནང་ ཉོ་མཁན་གྱི་ མོ་བཱའིལ་ཨང་ ཡོད་པའི་སྐབས་ (QR བཀའ་རྒྱ་བཀོད་མི་ ཉོ་མཁན་གྱི་ཨང་ ཧེ་མ་ལས་ བཀང་ཡོདཔ་ཨིན།) <strong>📄 Send the bill on WhatsApp</strong> ལུ་ རྟགས་བཀལ་ཡོདཔ་ཨིན། སྲུང་བཞག་འབད་བའི་ཤུལ་ལས་ བིལ་ PDF ཅིག་ལུ་ བཟོ་སྟེ་ འདྲ་བཤུས་རྐྱབ་ཞིནམ་ལས་ WhatsApp གིས་ བཀྲིན་ཆེ་ཟེར་བའི་ བརྡ་འཕྲིན་ཐུང་ཀུ་དང་གཅིག་ཁར་ ཉོ་མཁན་གྱི་གླེང་མོལ་ ཁ་ཕྱེཝ་ཨིན། བིལ་ མཉམ་སྦྲགས་འབད་ནིའི་དོན་ལུ་ <strong>Ctrl+V</strong> ཨེབ་ཞིནམ་ལས་ <strong>Send</strong>. ཤུལ་ལས་ གཏང་ནིའི་དོན་ལུ་ <strong>Today's Bills</strong> ནང་ བིལ་གདམ་སྟེ་ <strong>📄 Send on WhatsApp</strong> ལུ་ཨེབ།</div>
+
+  <h3>མགྲོན་ཁང། སྡོད་མི་མགྲོན་པོའི་དོན་ལུ་ ཟས།</h3>
+  <p>Business Type <em>Hotel, lodge or guest house</em> ཨིན་པའི་སྐབས་ Restaurant གསལ་གཞི་ནང་ <strong>🛏 Room Service</strong> དང་ <strong>🛏 Charge to Room</strong> ཡང་ཡོདཔ་ཨིན། ཟས་ མགྲོན་པོའི་ ཁང་མིག་གི་རྩིས་ཐོ་ལུ་འགྱོཝ་ཨིནམ་དང་ ཕྱིར་འཐོན་སྐབས་ སྤྲོདཔ་ཨིན། <a href="#ch9c">ལེའུ 9c — ཁང་མིག</a> ལུ་བལྟ།</p>
+
+  <h3>བཀའ་རྒྱ་སྤོ་ནི་ ཡང་ན་ ཆ་མེད་གཏང་ནི།</h3>
+  <p><strong>⇄ Move to table</strong> གིས་ འཕྲོ་མཐུད་ཡོད་པའི་ བཀའ་རྒྱ་ཅིག་ ཅོག་ཙེ་སྟོངམ་ཅིག་ལུ་ སྤོཝ་ཨིན། (མགྲོན་པོ་ཚུ་གིས་ ཅོག་ཙེ་སོར་ཡི། ཡང་ན་ takeaway ཅིག་ ནཱ་ལུ་ ཟ་ཡི།) <strong>🗑 Cancel order</strong> གིས་ བིལ་མི་བཟོ་བའི་ བཀའ་རྒྱ་ཅིག་ བཏོནམ་ཨིན། ག་ནི་ཡང་ ཚོང་སྦེ་ སྲུང་བཞག་མི་འབད་ནི་དང་ མཛོད་ ག་ནི་ཡང་ ལག་ལེན་མི་འཐབ།</p>
+  <div class="tip">💡 ཐབ་ཚང་ལུ་ ཧེ་མ་ལས་ ཡོད་པའི་ཟས་ <strong>འཛིན་སྐྱོང་པ</strong> གིས་རྐྱངམ་ཅིག་ ཆ་མེད་གཏང་ཚུགས། (ཡང་ན་ − ཡང་ན་ ✕ Remove གིས་ ཟས་ཅིག་ བཏོན་ཚུགས།) ལཱ་གཡོག་པ་ཚུ་ལུ་ འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་ འདྲི་ཨིན། ཆ་མེད་གཏང་ནི་དེ་བཟུམ་ རེ་རེ་ བཀའ་རྒྱ། ཟས་དང་ ག་གིས་འབད་ཡི་ག་ དང་གཅིག་ཁར་ <strong>Settings → 🔍 Deletion Watcher</strong> ནང་ ཐོ་བཀོད་འབདཝ་ཨིན། དེ་འབདཝ་ལས་ བཙོས་ཚར་བའི་ཟས་ སྒྲ་མེད་ཅིག་ ཡལ་འགྱོ་མི་ཚུགས། ཐབ་ཚང་ལུ་ ད་ཚུན་ མ་བཏང་བའི་ ཅ་ཆས་ཚུ་ རང་དབང་སྦེ་ སོར་ཚུགས།</div>
+
+  <h3>ད་རིས་ཀྱི་བིལ།</h3>
+  <p><strong>🧾 Today's Bills</strong> ཤོག་བྱང་གིས་ ཉིནམ་གྱི་ ཟ་ཁང་གི་བིལ་ཚུ་ བསྡོམས་དང་བཅས་ ཐོ་བཀོད་འབདཝ་ཨིན། ཚེས་གྲངས་ཀྱི་སྒྲོམ་ལས་ ཉིན་གཞན་ཅིག་གདམ། མགྲོན་ཁང་ནང་ ཉིནམ་དེ་ <strong>🛏 ཁང་མིག་ལུ་ བཀལ་བའི</strong> ཟས་ཚུ་ཡང་ ཁང་མིག་དང་ མགྲོན་པོ་དང་གཅིག་ཁར་ <em>on the room</em> ཡང་ན་ <em>paid at check-out</em> སྦེ་ རྟགས་བཀལ་ཏེ་ ཐོ་བཀོད་འབདཝ་ཨིན། བསྡོམས་ཀྱི་གྲལ་ཐིག་གིས་ གཉིས་ཆ་ར་ མཉམ་སྡེབ་འབདཝ་ལས་ ཁྱོད་ཀྱིས་ ཟ་ཁང་གི་ ཉིནམ་ཧྲིལ་བུམ་ མཐོངམ་ཨིན། ཟས་དེ་ཚུ་ ནཱ་ལུ་མེན་པར་ མགྲོན་པོའི་ ཕྱིར་འཐོན་བིལ་ནང་ པར་བསྐྲུན་དང་ ནོར་བཅོས་འབདཝ་ཨིན། ལོག་སྟེ་ པར་བསྐྲུན་འབད་ནིའི་དོན་ལུ་ བིལ་ཅིག་གདམ་སྟེ་ <strong>🖨 View / Print bill</strong> ལུ་ཨེབ། ཡང་ན་ བིལ་ནོར་བ་ཅིག་ བཏོན་གཏང་ནིའི་དོན་ལུ་ <strong>🗑 Cancel bill</strong>: དངུལ་སྤྲོད་ ལོག་སྟེ་ ཕྱིར་སློག་འབདཝ་ཨིན། ཟས་རྒྱུ་ མཛོད་ནང་ ལོག་འགྱོཝ་ཨིནམ་དང་ འདྲ་བཤུས་ཅིག་ Deletion Watcher ནང་ བཞགཔ་ཨིན།</p>
+
+  <h3>ཐབ་ཚང་གི་ པར་བསྐྲུན་འཕྲུལ་ཆས།</h3>
+  <p><strong>⚙ Restaurant Settings</strong> ནང་ <strong>Kitchen printer</strong> གདམ། དཔེར་ན་ ཐབ་ཚང་ནང་གི་ དྲོད་ཚད་པར་བསྐྲུན་འཕྲུལ་ཆས་ ཆུང་ཀུ་ཅིག PC དང་ ཞབས་ཏོག་པའི་ཁ་པར་ལས་ འོང་མི་ KOT རེ་རེ་ དེ་ལུ་ ཐད་ཀར་ པར་བསྐྲུན་འབདཝ་ཨིནམ་དང་ བིལ་ཚུ་ ཁྱོད་ཀྱི་ པར་བསྐྲུན་འཕྲུལ་ཆས་ སྤྱིར་བཏང་ནང་ པར་བསྐྲུན་འབདཝ་ཨིན། ཐབ་ཚང་གི་ པར་བསྐྲུན་འཕྲུལ་ཆས་ མེད་པ་ཅིན་ KOT ཅིག་ པར་བསྐྲུན་གྱི་དོན་ལུ་ སྔོན་ལྟ་སྦེ་ ཁ་ཕྱེཝ་ཨིན། ཡང་ན་ ཁྱོད་ཀྱིས་ གདམ་ཁ་དེ་ལུ་ རྟགས་བཀལ་ཡོད་པ་ཅིན་ Windows གི་ སྔོན་སྒྲིག་ པར་བསྐྲུན་འཕྲུལ་ཆས་ལུ་ ཐད་ཀར་ འགྱོཝ་ཨིན།</p>
+
+  <h3>ཞབས་ཏོག་པའི་ཁ་པར།</h3>
+  <p>ཞབས་ཏོག་པ་ཚུ་གིས་ Accelent ཨེབ་དང་གཅིག་ཁར་ ཁོང་རའི་ཁ་པར་གུ་ ཅོག་ཙེ་ཁར་ བཀའ་རྒྱ་ལེན་ཚུགས། (<a href="#ch19">ལེའུ 19</a> ལུ་བལྟ།) PC གི་ Business Type Restaurant ཡང་ན་ Hotel ཨིན་པའི་སྐབས་ ཨེབ་ཀྱི་ ཌེཤ་བོཌ་ནང་ <strong>🍽 Restaurant</strong> སྟོནམ་ཨིན།</p>
+  <ul>
+    <li><strong>ཅོག་ཙེ</strong> ཅིག་ལུ་ཨེབ། (ལཱ་ཁག་མི་ཚུ་གིས་ བསྡོམས་དང་ སྐར་མ་སྟོནམ་ཨིན།) ཡང་ན་ <strong>New Takeaway</strong>, ཡང་ན་ མགྲོན་ཁང་ནང་ <strong>Room Service</strong> (མགྲོན་པོ་ སྡོད་དེ་ཡོད་པའི་སྐབས་རྐྱངམ་ཅིག)</li>
+    <li><strong>Add Dishes</strong> གིས་ འཚོལ་ཞིབ་དང་བཅས་ ཡན་ལག་ལྟར་ ཟས་ཐོ་ ཁ་ཕྱེཝ་ཨིན། གཅིག་ ཁ་སྐོང་འབད་ནིའི་དོན་ལུ་ ཟས་ཅིག་ལུ་ཨེབ། <strong>− / +</strong> གིས་ གྱངས་ཁ་སོར་ཞིནམ་ལས་ ཐབ་ཚང་ལུ་ ཟིན་བྲིས་བྱིན་ནིའི་དོན་ལུ་ ཟས་ཅིག་ལུ་ཨེབ།</li>
+    <li><strong>Send to Kitchen</strong> གིས་ PC གུ་ KOT པར་བསྐྲུན་འབདཝ་ཨིན། (ཞབས་ཏོག་པའི་མིང་དང་བཅས།) དེ་ལས་ གསརཔ་ ཁ་སྐོང་ མ་འབད་ཚུན་ ཨེབ་རྟགས་ཀྱིས་ <strong>✓ Sent to kitchen</strong> སྟོནམ་ཨིན།</li>
+    <li><strong>Ask for Bill</strong> གིས་ ཀའུན་ཊར་ལུ་ སླབ་ཨིན། PC གིས་ སྒྲ་བཏོན་ཏེ་ ཅོག་ཙེ་དང་ ཞབས་ཏོག་པ་དང་བཅས་པའི་ དར་ཆ་ཅིག་ སྟོན་ཞིནམ་ལས་ ཅོག་ཙེ་ལུ་ <strong>🧾 Bill asked</strong> རྟགས་བཀལཝ་ཨིན། དངུལ་བསྡུ་མི་གིས་ ཅོག་ཙེ་ཁ་ཕྱེ་སྟེ་ 💵 Bill ཨེབ་ཨིན། དེ་གིས་ དངུལ་ལེནམ་ཨིན།</li>
+    <li>མགྲོན་ཁང་ནང་ <strong>Charge to Room</strong> གིས་ བཀའ་རྒྱ་ སྡོད་མི་མགྲོན་པོ་ཅིག་གི་ རྩིས་ཐོ་ལུ་ བཀལཝ་ཨིན།</li>
+  </ul>
+  <p>PC གུ་བཟུམ་ སྒྲིག་གཞི་ཅོག་འཐདཔ་ཚུ་ འཇུགཔ་ཨིན། ཟས་ཅིག་ལུ་ དེའི་ཟས་རྒྱུ་ མཛོད་ནང་ཡོད་དགོཔ་དང་ ཐབ་ཚང་ལུ་ ཧེ་མ་ལས་ ཡོད་པའི་ཟས་ འཛིན་སྐྱོང་པ་གིས་རྐྱངམ་ཅིག་ བཏོན་ ཡང་ན་ ཆ་མེད་གཏང་ཚུགས། ཞབས་ཏོག་པ་ཚུ་ལུ་ <strong>Create sales</strong> གནང་བ་དང་ ཁ་པར་གྱི་འཛུལ་སྤྱོད་དགོ། (Settings → 👥 Users) ཆོག་ཐམ་ཅིག་གིས་ ཐེངས་ཅིག་ལུ་ ཁ་པར་རྩིས་ཐོ་ གྱངས་ཁ་ཚད་ཡོད་ཅིག་ ཆོགཔ་ཨིན། རྒྱུ་མཚན་དེ་ལས་ ཞབས་ཏོག་པ་ཅིག་གི་ ཁ་པར་ ཕྱིར་བཀག་འབད་བ་ཅིན་ ཁ་སྐོང་འབད་ནིའི་སྐོར་ལས་ ང་བཅས་ལུ་ འབྲེལ་བ་འཐབ།</p>
+
+  <h3>ཅོག་ཙེ་ཁར་ QR བཀའ་རྒྱ།</h3>
+  <p>ཉོ་མཁན་ཚུ་གིས་ ཁོང་རའི་ཅོག་ཙེ་གུ་ཡོད་པའི་ QR ཨང་རྟགས་ཅིག་ སྐེན་འབད་དེ་ ཁོང་རའི་ཁ་པར་ལས་ ཟས་ཐོ་བལྟ་སྟེ་ བཀའ་རྒྱ་བཀོད་ཚུགས། འདི་ <strong>ཁྱོད་ཀྱི་ཟ་ཁང་གི་ Wi-Fi གུ་རྐྱངམ་ཅིག</strong> ལཱ་འབདཝ་ཨིན། ག་ནི་ཡང་ ཨིན་ཊར་ནེཊ་ལུ་ མི་འགྱོ་ནི་དང་ ཉོ་མཁན་ལུ་ ཨེབ་ ཡང་ན་ རྩིས་ཐོ་ མ་དགོ།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚙ Restaurant Settings → QR ordering</strong>: <em>Customers can see the menu and order…</em> ལུ་ རྟགས་བཀལ། <strong>This PC on the Wi-Fi</strong> ཞིབ་དཔྱད་འབད (ཉོ་མཁན་ཚུ་ མཐུད་ནི་ཨིན་པའི་ Wi-Fi གུ་ PC གི་ཁ་བྱང་།) དེ་ལས་ <strong>Wi-Fi གི་མིང་དང་ ཆོག་ཡིག</strong> བཀང་།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>🖨 Print table QR cards</strong> ལུ་ཨེབ། ཅོག་ཙེ་རེ་རེ་ལུ་ ཨང་རྟགས་གཉིས་ཡོད་པའི་ ཤོག་བྱང་ཅིག་ཐོབ་ཨིན། <strong>1. Join our Wi-Fi</strong> (ཆོག་ཡིག་ ཡིག་དཔར་མ་རྐྱབ་པར་ ཁ་པར་མཐུདཔ་ཨིན།) དང་ <strong>2. Scan to see the menu and order</strong>. ཤོག་བྱང་རེ་རེ་ དེའི་ཅོག་ཙེ་གུ་བཞག</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཉོ་མཁན་གྱིས་ ཁ་པར་གྱི་ པར་ཆས་ཀྱིས་ གཉིས་ཆ་ར་ སྐེན་འབད། ཟས་གདམ་ (ཟིན་བྲིས་དང་བཅས། དཔེར་ན་ <em>ཁ་ཚ་ཉུང་ཉུང་</em>) ཁོ་རའི་ <strong>མིང་དང་ མོ་བཱའིལ་ཨང</strong> བཙུགས་ (དགོས་ངེས་ཨིནམ་དང་ ཤུལ་མམ་གྱི་བཀའ་རྒྱའི་དོན་ལུ་ ཁ་པར་དེ་ནང་ དྲན་ཐོ་བཞགཔ་ཨིན།) ཁ་ལོ་པ་ ཡང་ན་ ལམ་སྟོན་པ་ཅིག་གིས་ འབག་འོང་ཡོད་པ་ཅིན་ མཉམ་འབྲེལ་པ་དེའི་ ཨང་རྟགས་ (དཔེར་ན་ DRV001, <a href="#ch9d">ལེའུ 9d</a> ལུ་བལྟ།) <strong>Order</strong> ལུ་ཨེབ་སྟེ་ རྗེས་འདེད་འབད་ཚུགས། <em>Received → Confirmed → Preparing (ready about …) → Served</em>, དེ་ལས་ <strong>Ask for Bill</strong> ལུ་ཨེབ་ཚུགས།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">བཀའ་རྒྱ་ PC གུ་ <strong>🔔 QR orders from tables</strong> སྦེ་ (སྒྲ་དང་བཅས།) དང་ ཞབས་ཏོག་པའི་ཁ་པར་གུ་ མཐོངམ་ཨིན། དེ་གིས་ ཉོ་མཁན་གྱི་མིང་དང་ མོ་བཱའིལ་ཨང་ སྟོནམ་ཨིན། <strong>ཅོག་ཙེ་དེ་ཁར་ མི་ངོ་མ་སྡོད་དེ་ཡོད་ག་ ཞིབ་དཔྱད་འབད</strong>, དེ་ལས་ <strong>Confirm</strong>: ཟས་ཚུ་ ཅོག་ཙེའི་བཀའ་རྒྱ་ནང་ ཚུདཔ་ཨིནམ་དང་ ཁྱོད་ཀྱིས་ Send to Kitchen གིས་ གཏངམ་ཨིན། ཡང་ན་ ཉོ་མཁན་གྱིས་ མཐོང་པའི་ རྒྱུ་མཚན་ཅིག་དང་གཅིག་ཁར་ <strong>Reject</strong> འབད།</div></div>
+  <ul>
+    <li>ཉོ་མཁན་གྱི་ཁ་པར་གྱིས་ ཟས་ཐོ་བལྟ་ནི། <strong>རང་སོའི་ཅོག་ཙེ</strong> གི་དོན་ལུ་ བཀའ་རྒྱ་བཀོད་ནི། བཀའ་རྒྱ་རྗེས་འདེད་འབད་ནི་དང་ བིལ་ཞུ་ནི་ རྐྱངམ་ཅིག་ འབད་ཚུགས། Accelent ནང་ གཞན་ག་ནི་ཡང་ མི་མཐོང་།</li>
+    <li>ཅོག་ཙེ་རེ་རེའི་ཨང་རྟགས་ གསང་བ་ཨིན། ཤོག་བྱང་ཚུ་ འདྲ་བཤུས་རྐྱབ་ ཡང་ན་ འབག་འགྱོ་བ་ཅིན་ <strong>↻ New codes for all tables</strong> གིས་ རྙིངམ་ཚུ་ ལཱ་མི་འབད་བར་བཟོཝ་ཨིན། ཤོག་བྱང་གསརཔ་ པར་བསྐྲུན་འབད།</li>
+    <li>ཚད་གཞི་ཚུ་གིས་ རྩེད་མོ་བཀག་ཆ་འབདཝ་ཨིན། ཟས་ཅིག་ལུ་ མང་མཐའ་ 20, ཅོག་ཙེ་ཅིག་ནང་ སྒུག་སྡོད་པའི་བཀའ་རྒྱ་ 3 དང་ ཁ་པར་གཅིག་ལས་ སྐར་མ་ 10 ནང་ བཀའ་རྒྱ་ 6. ཁ་བསྡམས་པའི་ཤུལ་ལས་ QR བཀའ་རྒྱའི་རྟགས་བཏོན།</li>
+  </ul>
+  <div class="tip">💡 PC གི་ Wi-Fi ཁ་བྱང་ བརྟན་པོ་སྦེ་བཞག ཁྱོད་ཀྱི་ རའུ་ཊར་ནང་ PC ལུ་ <em>reserved address</em> ཅིག་བྱིན། (རྒྱུན་དུ་ "DHCP reservation" ཟེརཝ་ཨིན།) མེན་པ་ཅིན་ ལོག་འགོ་བཙུགས་པའི་ཤུལ་ལས་ ཁ་བྱང་སོར་སྲིད་ནི་དང་ པར་བསྐྲུན་ཤོག་བྱང་ཚུ་ ལཱ་མི་འབད། ཉོ་མཁན་གྱི་ཁ་པར་གྱིས་ <em>"Wi-Fi has no internet"</em> ཟེར་ སླབ་སྲིད། བཀའ་རྒྱ་ ད་ལྟོ་ཡང་ ལཱ་འབདཝ་ཨིན།</div>
+
+  <h3>ཟ་ཁང་གི་བིལ་གུ་ GST (རྒྱ་གར།)</h3>
+  <p>ཟ་ཁང་གི་བིལ་ཅིག་ ཟ་ཁང་གི་ཞབས་ཏོག་གཅིག་ཨིནམ་ལས་ བིལ་ཧྲིལ་བུམ་ལུ་ GST ཚད་གཅིག་ཡོདཔ་ཨིན། དེ་ <strong>⚙ Restaurant Settings</strong> ནང་ གདམ། (འཛིན་སྐྱོང་པ་རྐྱངམ་ཅིག)</p>
+  <ul>
+    <li><strong>ནང་འབབ་ཁྲལ་གྱི་ ཀེ་ཌིཊ་མེད་པའི 5%</strong>: ཟ་ཁང་། ཀེ་ཕེ། ཌ་བ་དང་ takeaway (སྤྱིར་བཏང་གི་གནས་སྟངས་དང་ སྔོན་སྒྲིག)</li>
+    <li><strong>ནང་འབབ་ཁྲལ་གྱི་ ཀེ་ཌིཊ་དང་བཅས་པའི 18%</strong>: <em>specified premises</em> ཨིན་པའི་ མགྲོན་ཁང་ནང་ཡོད་པའི་ ཟ་ཁང་། (ལོ་ཧེ་མམ་ ཁང་མིག་ཚུ་ ཉིན་ཅིག་ལུ་ ₹7,500 ལས་ལྷག་སྦེ་ བཀལ་མི་ ཡང་ན་ ཁོ་ར་ དེ་བཟུམ་སྦེ་ གསལ་བསྒྲགས་འབད་མི་ མགྲོན་ཁང་།)</li>
+  </ul>
+  <p>Rooms གསལ་གཞི་ ལག་ལེན་འཐབ་མི་ མགྲོན་ཁང་ཅིག་གིས་ གདམ་མི་དགོ། ས་ཁོངས་ specified premises ཨིན་པའི་ལོ་ནང་ Accelent གིས་ ཟ་ཁང་ རང་བཞིན་གྱིས་ 18% ལུ་ སོརཝ་ཨིན། (<a href="#ch9c">ལེའུ 9c</a> ལུ་བལྟ།)</p>
+  <div class="tip">💡 ཁྱོད་ལུ་ ག་ཅི་འཇུགཔ་ཨིན་ན་ ངེས་གཏན་མེད་པ་ཅིན་ ཁྱོད་ཀྱི་ རྩིས་པ་ལུ་ འདྲི།</div>
+
+  <div class="tip">💡 Restaurant གསལ་གཞི་ ལག་ལེན་འཐབ་ནིའི་དོན་ལུ་ ལཱ་གཡོག་པ་ལུ་ <strong>Create sales</strong> གནང་བ་དགོ། བིལ་ཆ་མེད་གཏང་ནི་ལུ་ <strong>Edit or delete bills</strong> དགོ།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9c -->
+<div class="chapter-banner" data-for="hotel">ལེའུ 9c — ཁང་མིག <span class="for-badge">མགྲོན་ཁང་། ལོཇ་དང་ མགྲོན་ཁྱིམ་གྱི་དོན་ལུ།</span></div>
+<div class="section" id="ch9c" data-for="hotel">
+  <h2>9c. ཁང་མིག (མགྲོན་ཁང་། ལོཇ། མགྲོན་ཁྱིམ།)</h2>
+  <p>རང་སོའི་ཟ་ཁང་དང་བཅས་ ཡང་ན་ མེད་པའི་ མགྲོན་ཁང་། ལོཇ་ ཡང་ན་ མགྲོན་ཁྱིམ་ཅིག་གི་དོན་ལུ། མགྲོན་པོ་རེ་རེའི་སྡོད་ཡུན་འདི་ ཁོ་གི་ཁང་མིག་གུ་ འཕྲོ་མཐུད་ཡོད་པའི་ རྩིས་ཐོ་ཅིག་ཨིན། ནུབ་མོ་ཚུ་ རང་བཞིན་གྱིས་ བསྡོམས་ཏེ་ འཐུས་ཁ་སྐོང་དང་ ཁྱོད་ཀྱི་ཟ་ཁང་གི་ཟས་ཚུ་ དེ་ནང་ ཁ་སྐོང་འབདཝ་ཨིནམ་དང་ ཕྱིར་འཐོན་སྐབས་ མགྲོན་པོ་ལུ་ ག་ར་གི་དོན་ལུ་ <strong>GST བིལ་གཅིག</strong> ཐོབ་ཨིན། ཧེ་མ་ལས་སྤྲོད་མི་ ག་ཅི་རང་ ཕབ་སྟེ།</p>
+
+  <h3>ཁ་ཕྱེ་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་གིས་ ཁ་ཕྱེ།) → <strong>Business Type: Hotel, lodge or guest house</strong> → <strong>Save</strong>, དེ་ལས་ Accelent ཁ་བསྡམས་ཏེ་ ལོག་ཁ་ཕྱེ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཐོ་ཡིག་ནང་ ད་ FINANCE གི་འོག་ལུ་ <strong>🛏 Rooms</strong> དང་ <strong>🍽 Restaurant</strong> ཡོདཔ་ཨིན། (ཟ་ཁང་གི་དོན་ལུ་ <a href="#ch9b">ལེའུ 9b</a> ལུ་བལྟ།)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🛏 Rooms → 🚪 Rooms…</strong> → ཁང་མིག་རེ་རེ་ <strong>＋ Add</strong> འབད། དེའི་ཨང་ (101) དབྱེ་བ་ (Standard, Deluxe, Suite…) <strong>ནུབ་གཅིག་གི་གླ་ཆ</strong> དང་ མི་ག་དེ་ཤོངམ་ཨིན་ན།</div></div>
+
+  <h3>ཁང་མིག་གི་པང་ལེབ།</h3>
+  <p>ཁང་མིག་རེ་རེ་ ཤོག་བྱང་ཅིག་ཨིན།</p>
+  <ul>
+    <li><strong>སྟོངམ</strong> ཁང་མིག་ སྤྱིར་བཏང་ཨིནམ་དང་ དེའི་དབྱེ་བ། <em>✓ Vacant</em> དང་ གླ་ཆ་སྟོནམ་ཨིན།</li>
+    <li><strong>མི་སྡོད་ཡོད་པའི</strong> ཁང་མིག་ལུ་ <strong>ཚོས་གཞིའི་མཐའ་མཚམས</strong> ཡོདཔ་ཨིནམ་དང་ མགྲོན་པོའི་མིང་དང་ ད་ཚུན་གྱི་ནུབ་མོ་སྟོནམ་ཨིན།</li>
+    <li>ཕྱིར་འཐོན་གྱི་ཤུལ་ལས་ གཙང་སྦྲ་བཟོ་ནི་ལུ་ སྒུག་སྡོད་པའི་ ཁང་མིག་ལུ་ <strong>སེར་ཞུན་མཐའ་མཚམས</strong> ཡོདཔ་ཨིནམ་དང་ <em>⚠ To be cleaned</em> སྟོནམ་ཨིན།</li>
+  </ul>
+  <p>ཁང་མིག་ཅིག་ལུ་ཨེབ། མགྲོན་པོའི་རྩིས་ཐོ་ བར་ན་དང་ ཁང་མིག་གི་ཨེབ་རྟགས་ཚུ་ གཡས་ཕྱོགས་ལུ་ མཐོངམ་ཨིན། ལཱ་གཙོ་བོ་ ལྗང་ཁུ་ཨིན། (<strong>🛎 Check In</strong>, <strong>🧾 Check Out</strong>) <strong>🗑 Cancel Check-in</strong> དམརཔོ་ཨིན།</p>
+
+  <h3>ནང་འཛུལ། (Check-In)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཁང་མིག་སྟོངམ་ཅིག་ལུ་ཨེབ → <strong>🛎 Check In</strong>.</div></div>
+  <div class="tip">💡 Check In སྒོ་སྒྲིག་གི་ གུ་ཏོག་ལུ་ཡོད་པའི་ <strong>📷 Scan ID card…</strong> གིས་ མགྲོན་པོའི་ ངོ་སྤྲོད་ལག་ཁྱེར་གྱི་ པར་ ཡང་ན་ སྐེན་ལས་ ཁ་གསལ་ཚུ་ བཀངམ་ཨིན། PC འདི་གུ་ ལྷག་སྟེ། (ག་ནི་ཡང་ ག་ཏེ་ཡང་ མི་གཏང་།) <strong>Aadhaar:</strong> QR ཨང་རྟགས་ཆེན་པོ་ཡོད་པའི་ཕྱོགས་ ལག་ལེན་འཐབ། མིང་། སྐྱེས་ཚེས། ཕོ་མོ་དང་ ཁ་བྱང་ ལྷགཔ་ཨིནམ་དང་ ཨང་གི་ <strong>མཇུག་གི་ཨང་ 4</strong> རྐྱངམ་ཅིག་ བཞགཔ་ཨིན། (XXXX XXXX 1234) ལག་ཐོག་ལས་ ཡིག་དཔར་རྐྱབ་པའི་ Aadhaar ཨང་ཡང་ དེ་བཟུམ་སྦེ་ བཞགཔ་ཨིནམ་དང་ Aadhaar ལག་ཁྱེར་གྱི་ འདྲ་བཤུས་ ནམ་ཡང་ མི་བཞག UIDAI གིས་ མགྲོན་ཁང་ཚུ་ལུ་ བཞག་ནིའི་ གནང་བ་མི་བྱིན། <strong>Passport</strong> (མར་གྱི་གྲལ་ཐིག་གཉིས་ལས།) <strong>PAN</strong>, <strong>driving licence</strong> དང་ <strong>voter ID</strong> ཡང་ ལྷགཔ་ཨིན། མགྲོན་པོས་ ཁས་བླངས་ཡོདཔ་སྦེ་ ཁྱོད་ཀྱིས་ རྟགས་བཀལ་བ་ཅིན་རྐྱངམ་ཅིག་ དེ་ཚུ་གི་འདྲ་བཤུས་ བཞགཔ་ཨིནམ་དང་ ཕྱིར་འཐོན་གྱི་ཤུལ་ལས་ ཉིན་གྲངས་ངེས་ཅན་ཅིག་ནང་ བཏོན་གཏངམ་ཨིན། (<strong>⚙ Hotel Settings</strong>, ཁྱོད་ཀྱིས་ མ་སོར་བ་ཅིན་ ཉིན་ 30) ནང་འཛུལ་མ་འབད་བའི་ཧེ་མ་ རྟག་བུ་ར་ ཁ་གསལ་ཚུ་ ལག་ཁྱེར་དང་ ག་བསྡུར་འབད།</div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">མགྲོན་པོའི་ཐོ་དེབ་ཀྱི་ཁ་གསལ་ བཀང་། མིང་། ཁ་པར། ཁ་བྱང་། <strong>ངོ་སྤྲོད་ཀྱི་ཁུངས་སྐྱེལ</strong> (Aadhaar, passport, driving licence…) དང་ དེའི་ཨང་། རྒྱལ་ཁབ། མི་གྱངས། ག་ཏེ་ལས་འོངམ་དང་ ག་ཏེ་ལུ་འགྱོཝ། རེ་བ་བསྐྱེད་པའི་ནུབ་མོ་དང་ གླ་ཆ། (ཕབ་ཆའི་དོན་ལུ་ སོར།) <strong>⚙ Hotel Settings</strong> ནང་ ཁ་བསྡམས་མ་བཏང་ཚུན་ ངོ་སྤྲོད་ཨང་ དགོས་ངེས་ཨིན།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">མགྲོན་པོ་གིས་ <strong>སྔ་གོང་</strong> སྤྲོད་པ་ཅིན་ ག་དེ་སྦེ་ སྤྲོད་ཡི་ག་ (ལག་དངུལ། UPI, ལག་ཁྱེར་ ཡང་ན་ དངུལ་ཁང་།) དང་གཅིག་ཁར་ བཙུགས། དེ་ ཐད་ཀར་ ཁྱོད་ཀྱི་ ལག་དངུལ་ ཡང་ན་ དངུལ་ཁང་ལུ་ འགྱོཝ་ཨིནམ་དང་ ཕྱིར་འཐོན་སྐབས་ ཕབ་ཨིན།</div></div>
+
+  <h3>མགྲོན་པོའི་རྩིས་ཐོ།</h3>
+  <p>ད་ཚུན་ བཀལ་བའི་ ག་ར། GST དང་ ད་ལྟོ་ཡང་ སྤྲོད་དགོ་པའི་དངུལ་ བལྟ་ནིའི་དོན་ལུ་ མི་སྡོད་ཡོད་པའི་ཁང་མིག་ཅིག་ལུ་ཨེབ།</p>
+  <ul>
+    <li><strong>ཁང་མིག་གི་ནུབ་མོ</strong> ཚུ་ ནང་འཛུལ་གྱི་ཚེས་གྲངས་ལས་ རང་བཞིན་གྱིས་ རྩིསཔ་ཨིན། <strong>₹ Night Rates</strong> གིས་ ནུབ་མོ་ངེས་ཅན་ཅིག་གི་གླ་ཆ་ སོརཝ་ཨིན། (གཟའ་མཇུག་གི་གླ་ཆ། ཕབ་ཆ།)</li>
+    <li><strong>➕ Add Charge</strong>: ཉལ་ཁྲི་ཁ་སྐོང་ ཡང་ན་ ནང་འཛུལ་ ཧེ་མ་འབད་ནིའི་དོན་ལུ་ <em>Part of the room</em> གདམ (ནུབ་མོ་དེའི་ ཁང་མིག་གི་གོང་ཚད་ནང་ ཁ་སྐོང་འབདཝ་ཨིན།) ཡང་ན་ གྱོན་ཆས་ཁྲུ་ནི། སྐྱེལ་འདྲེན་བཟུམ་གྱི་དོན་ལུ་ རང་སོའི་ GST % དང་བཅས་ <em>Another service</em>. <strong>✕ Remove Charge</strong> གིས་ ནོར་ཏེ་ ཁ་སྐོང་འབད་མི་ འཐུས་ཅིག་ བཏོནམ་ཨིན།</li>
+    <li><strong>💵 Advance</strong> གིས་ སྡོད་ཡུན་ནང་ ཐོབ་མི་ དངུལ་ཁ་སྐོང་ ཐོ་བཀོད་འབདཝ་ཨིན། ཕྱིར་འཐོན་བིལ་གྱིས་ ཐོབ་མི་སྔ་གོང་དང་ སྤྲོད་མི་ལྷག་ལུས་ སྟོནམ་ཨིན། སྔ་གོང་ བིལ་ལས་ལྷག་པ་ཅིན་ <strong>ལོག་སྤྲོད་མི</strong> དངུལ་ སྟོནམ་ཨིནམ་དང་ དེ་ མགྲོན་པོ་ལུ་ ལོག་སྤྲོད་ཡོདཔ་སྦེ་ ཐོ་བཀོད་འབདཝ་ཨིན།</li>
+    <li><strong>⇄ Move Room</strong> གིས་ མགྲོན་པོ་ ཁང་མིག་སྟོངམ་ཅིག་ལུ་ སྤོཝ་ཨིན། ཁང་མིག་རྙིངམ་ གཙང་སྦྲ་ལུ་ འགྱོཝ་ཨིན།</li>
+    <li><strong>🗑 Cancel Check-in</strong> ནོར་ཏེ་ འབད་མི་ ནང་འཛུལ་གྱི་དོན་ལུ་ཨིན། ཁང་མིག་ སྟོངམ་ལུ་ འགྱུར་ཏེ་ སྔ་གོང་ག་ཅི་རང་ ལོག་སྤྲོད་ཡོདཔ་སྦེ་ ཐོ་བཀོད་འབདཝ་ཨིན།</li>
+  </ul>
+
+  <h3>མགྲོན་པོའི་དོན་ལུ་ ཟས།</h3>
+  <p><strong>🍽 Restaurant</strong> གསལ་གཞི་ནང་།</p>
+  <ul>
+    <li><strong>🛏 Room Service</strong>: མགྲོན་པོའི་ཁང་མིག་གདམ་སྟེ་ ཟས་ཁ་སྐོང་འབད། <strong>Send to Kitchen</strong> གིས་ KOT པར་བསྐྲུན་འབདཝ་ཨིནམ་ <em>དང་</em> ཟས་ ཐད་ཀར་ མགྲོན་པོའི་ ཁང་མིག་རྩིས་ཐོ་ལུ་ བཀལཝ་ཨིན། དེ་འབདཝ་ལས་ བརྗེད་མི་ཚུགས།</li>
+    <li>སྡོད་མི་མགྲོན་པོ་ཅིག་ ཟ་ཁང་ནང་ ཟ་བ་ཅིན། སྤྱིར་བཏང་བཟུམ་སྦེ་ ཅོག་ཙེའི་བཀའ་རྒྱ་ལེན། <strong>💵 Bill</strong> ལུ་ཨེབ་པའི་སྐབས་ བིལ་གྱི་སྒོ་སྒྲིག་གིས་ <strong>Guest staying in a room?</strong> འདྲི་ཨིན། མགྲོན་པོའི་ཁང་མིག་གདམ་སྟེ་ དངུལ་ལེན་ནིའི་ཚབ་ལུ་ <strong>Charge to Room</strong> ལུ་ཨེབ། (<strong>🛏 Charge to Room</strong> ཨེབ་རྟགས་ཀྱིས་ཡང་ དེ་རང་འབདཝ་ཨིན།)</li>
+  </ul>
+  <p>ཟས་ ཟ་ཁང་གི་ GST ཚད་ཐོག་ མགྲོན་པོའི་རྩིས་ཐོ་ལུ་ འགྱོཝ་ཨིན། དེའི་ཟས་རྒྱུ་ (ཡང་ན་ རང་སོའི་མཛོད་) ཐད་ཀར་ མཛོད་ལས་བཏོནམ་ཨིནམ་དང་ ཕྱིར་འཐོན་སྐབས་ སྤྲོདཔ་ཨིན།</p>
+  <div class="tip">💡 མགྲོན་པོ་གིས་ ཟ་མི་ ག་ནི་ཡང་ ཕྱིར་འཐོན་བིལ་ལས་ མི་ལུས། བཀའ་རྒྱ་ནང་ ད་ལྟོ་ཡང་ སྒུག་སྡོད་པའི་ room service ཟས་ མགྲོན་པོའི་རྩིས་ཐོ་ནང་ <strong>⏳ not yet charged</strong> སྦེ་ མཐོངམ་ཨིནམ་དང་ ཕྱིར་འཐོན་སྐབས་ ཐབ་ཚང་གིས་ བཟོ་མི་ ག་ར་ རང་བཞིན་གྱིས་ བིལ་ནང་ ཁ་སྐོང་འབདཝ་ཨིན། ཐབ་ཚང་ལུ་ ནམ་ཡང་ མ་བཏང་བའི་ ཅ་ཆས་ཡོད་པའི་ བཀའ་རྒྱ་གིས་རྐྱངམ་ཅིག་ དེ་ མ་བཏང་ ཡང་ན་ ཆ་མེད་ མ་བཏང་ཚུན་ ཕྱིར་འཐོན་ བཀག་ཆ་འབདཝ་ཨིན།</div>
+
+  <h3>ཕྱིར་འཐོན། (Check-Out)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཁང་མིག་ལུ་ཨེབ → <strong>🧾 Check Out</strong>. བསྡོམས། སྔ་གོང་དང་ སྤྲོད་དགོ་པའི་དངུལ་ སྟོནམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">སྡོད་ཡུན་གྱི་ room service ཟས་ལུ་ served རྟགས་ མ་བཀལ་བ་ཅིན་ Accelent གིས་ དང་པ་ སྤྲོད་ཡི་ག་ འདྲི་ཨིན། <strong>✓ Yes, delivered</strong> གིས་ served རྟགས་བཀལ་ཏེ་ ཕྱི་ཁར་འགྱོཝ་ཨིན། <strong>✕ Not delivered</strong> གིས་ བཀག་ཆ་འབད་དེ་ ཁྱོད་ཀྱིས་ དང་པ་ Restaurant གསལ་གཞི་ནང་ བཀའ་རྒྱ་ ཐག་བཅད་ཚུགས། མགྲོན་པོ་གིས་ ལྷག་ལུས་ ག་དེ་སྦེ་ སྤྲོདཔ་ཨིན་ན་ གདམ་སྟེ་ <strong>Check Out</strong> ལུ་ཨེབ། སྡོད་ཡུན་ཧྲིལ་བུམ་གྱི་དོན་ལུ་ བིལ་གཅིག་ སྲུང་བཞག་འབདཝ་ཨིན། ཁང་མིག་གི་ནུབ་མོ། ཁ་སྐོང་། ཞབས་ཏོག་གཞན་དང་ ཟས། རེ་རེ་ རང་སོའི་ GST ཚད་ཐོག ལྷག་ལུས་རྐྱངམ་ཅིག་ ཁྱོད་ཀྱི་ ལག་དངུལ་ ཡང་ན་ དངུལ་ཁང་ནང་ ཁ་སྐོང་འབདཝ་ཨིན། ག་ཅི་སྨོ་ཟེར་བ་ཅིན་ སྔ་གོང་ ཐོབ་པའི་སྐབས་ ཁ་སྐོང་འབད་ཚར་ཡོདཔ་ལས།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">བིལ་ པར་བསྐྲུན་གྱི་དོན་ལུ་ ཁ་ཕྱེཝ་ཨིན། ཁང་མིག་གིས་ ད་ སེར་ཞུན་མཐའ་མཚམས་དང་ <em>⚠ To be cleaned</em> སྟོནམ་ཨིན། གཙང་སྦྲ་བཟོ་ཚར་བའི་ཤུལ་ལས་ དེ་ལུ་ཨེབ་སྟེ་ <strong>✨ Room Is Ready</strong> ལུ་ཨེབ།</div></div>
+  <div class="tip">💡 <strong>མགྲོན་པོའི་ WhatsApp ནང་ བིལ།</strong> ཕྱིར་འཐོན་སྒོ་སྒྲིག་ནང་ ནང་འཛུལ་སྐབས་ བྱིན་མི་ མོ་བཱའིལ་ཨང་དང་བཅས་ <strong>📄 Send the bill on WhatsApp to</strong> ཡོདཔ་ཨིན། (མགྲོན་པོ་ལུ་ གཞན་ཅིག་དགོ་པ་ཅིན་ སོར།) ཨང་ཡོད་པའི་སྐབས་ རྟགས་བཀལ་ཡོདཔ་ཨིན། ཕྱིར་འཐོན་གྱི་ཤུལ་ལས་ བིལ་ PDF ཅིག་ལུ་ བཟོ་སྟེ་ འདྲ་བཤུས་རྐྱབ་ཞིནམ་ལས་ WhatsApp གིས་ མགྲོན་པོའི་གླེང་མོལ་ ཁ་ཕྱེཝ་ཨིན། མཉམ་སྦྲགས་འབད་ནིའི་དོན་ལུ་ <strong>Ctrl+V</strong> ཨེབ་ཞིནམ་ལས་ <strong>Send</strong>.</div>
+
+  <h3>ཕྱིར་འཐོན་ཚུ། བིལ་ ལོག་པར་བསྐྲུན་ ཡང་ན་ ནོར་བཅོས།</h3>
+  <p><strong>🧾 Check-outs</strong> ཤོག་བྱང་གིས་ ཚེས་གྲངས་གཉིས་ཀྱི་བར་ན་ ཕྱིར་འཐོན་རེ་རེ་ དེའི་བིལ་དང་བཅས་ ཐོ་བཀོད་འབདཝ་ཨིན། གཅིག་གདམ་སྟེ་ ལོག་པར་བསྐྲུན་འབད་ནིའི་དོན་ལུ་ <strong>🖨 View / Print Bill</strong> ཡང་ན་ མགྲོན་པོ་ལུ་ གཏང་ནིའི་དོན་ལུ་ <strong>📄 Send on WhatsApp</strong> ལུ་ཨེབ། བིལ་ཅིག་ ནོར་ཏེ་བཟོ་ཡོད་པ་ཅིན་ (འཐུས་ཅིག་ བརྗེད་ཡི། དངུལ་སྤྲོད་ ནོར་ཡི།) <strong>↩ Cancel Check-out Bill</strong> ལུ་ཨེབ། བིལ་དང་ དེའི་དངུལ་སྤྲོད་ བཏོནམ་ཨིན། (འདྲ་བཤུས་ཅིག་ Deletion Watcher ནང་བཞགཔ་ཨིན།) དེ་ལས་ མགྲོན་པོའི་སྡོད་ཡུན་ འཐུས་ག་ར་དང་བཅས་ ལོག་སྟེ་ ཁ་ཕྱེཝ་ཨིན། ནོར་བཅོས་འབད་དེ་ མགྲོན་པོ་ ལོག་སྟེ་ ཕྱིར་འཐོན་འབད། ཟས་ མཛོད་ཀྱི་ཕྱི་ཁར་ ལུསཔ་ཨིན། ག་ཅི་སྨོ་ཟེར་བ་ཅིན་ ཟ་ཚར་ཡོདཔ་ལས། མགྲོན་ཁང་གི་བིལ་ ས་གནས་གཞན་ག་ཏེ་ལས་ཡང་ བཏོན་མི་ཚུགས།</p>
+
+  <h3>ཁང་མིག་གུ་ GST (རྒྱ་གར།)</h3>
+  <ul>
+    <li>ཁང་མིག་རེ་ལུ་ ནུབ་རེ་ <strong>₹7,500</strong> ཚུན། ནང་འབབ་ཁྲལ་གྱི་ ཀེ་ཌིཊ་མེད་པའི་ <strong>5%</strong>. ₹7,500 ལས་ལྷག <strong>18%</strong>. ཁང་མིག་གོང་ཆུང་ཚུ་ལུ་ དམིགས་བསལ་མེད།</li>
+    <li>ཚད་འདི་ <strong>ཁང་མིག་རེ་རེ་དང་ ནུབ་རེ་རེའི་དོན་ལུ</strong> ཕབ་ཆ་གི་ཤུལ་ལས་ དངོས་སུ་བཀལ་མི་ གླ་ཆ་གུ་ ནུབ་མོ་དེའི་ ཉལ་ཁ�ྲི་ཁ་སྐོང་ ཡང་ན་ ཁང་མིག་ཁ་སྐོང་གཞན་ཚུ་ ཚུད་དེ་ གཏན་འཁེལ་འབདཝ་ཨིན། ནུབ་ཅིག་ ₹6,500 དང་ ནུབ་ཤུལ་མམ་ ₹8,000 སྤྲོད་མི་ མགྲོན་པོ་ཅིག་ལུ་ ནུབ་མོ་དེ་ཚུ་ནང་ 5% དང་ 18% བཀལཝ་ཨིན།</li>
+    <li><strong>Specified premises:</strong> <em>ཧེ་མམ</em> དངུལ་འབྲེལ་ལོ་ནང་ ཁང་མིག་ག་ཅི་རང་ ནུབ་ཅིག་ལུ་ ₹7,500 ལས་ལྷག་སྦེ་ བིལ་བཟོ་ཡོད་པ་ཅིན་ ཡང་ན་ ཁྱོད་ཀྱིས་ ས་ཁོངས་འདི་ specified premises སྦེ་ གསལ་བསྒྲགས་འབད་ཡོད་པ་ཅིན་ (<strong>⚙ Hotel Settings</strong> ནང་ རྟགས་བཀལ།) ཁྱོད་ཀྱི་ཟ་ཁང་གིས་ དངུལ་འབྲེལ་ལོ་འདིའི་དོན་ལུ་ <strong>18%</strong> བཀལ་དགོ། Accelent གིས་ ཁྱོད་རའི་བིལ་ལས་ འདི་རྩིས་རྐྱབ་སྟེ་ ཟ་ཁང་ རང་བཞིན་གྱིས་ 18% ལུ་ སོརཝ་ཨིན། Rooms གསལ་གཞིའི་ གུ་ཏོག་གི་གྲལ་ཐིག་གིས་ ག་ཅི་འཇུགཔ་ཨིན་ན་ སླབ་ཨིན།</li>
+  </ul>
+  <div class="tip">💡 ཁྱོད་ལུ་ ཚད་ག་ཅི་འཇུགཔ་ཨིན་ན་ ངེས་གཏན་མེད་པ་ཅིན་ ཁྱོད་ཀྱི་ རྩིས་པ་ལུ་ འདྲི།</div>
+
+  <h3>QR ཨང་རྟགས་ཀྱིས་ Room Service</h3>
+  <p>QR བཀའ་རྒྱ་ ཁ་ཕྱེ་ཡོད་པའི་སྐབས་ (🍽 Restaurant → ⚙ Restaurant Settings, <a href="#ch9b">ལེའུ 9b</a> ལུ་བལྟ།) ཁང་མིག་རེ་རེའི་དོན་ལུ་ ཤོག་བྱང་ཅིག་ པར་བསྐྲུན་འབད། <strong>⚙ Hotel Settings → 🖨 Print room QR cards</strong>. ཁང་མིག་ནང་སྡོད་མི་ མགྲོན་པོ་ཅིག་གིས་ དེ་སྐེན་འབད་དེ་ ཟས་ཐོ་བལྟ། ཁོ་རའི་མིང་དང་ མོ་བཱའིལ་ཨང་བཙུགས་ཏེ་ བཀའ་རྒྱ་བཀོདཔ་ཨིན། བཀའ་རྒྱ་ PC དང་ ཞབས་ཏོག་པའི་ཁ་པར་ལུ་ ཁང་མིག་དེའི་ QR བཀའ་རྒྱ་སྦེ་ ལྷོདཔ་ཨིན། ཞབས་ཏོག་པ་ཅིག་གིས་ ངེས་གཏན་བཟོ་སྟེ་ ཐབ་ཚང་ལུ་ བཏང་ཞིནམ་ལས་ ཁང་མིག་གི་བིལ་ལུ་ འགྱོཝ་ཨིན། མགྲོན་པོ་ ནང་འཛུལ་མ་འབད་བའི་ ཁང་མིག་ཅིག་ལས་ བཀའ་རྒྱ་བཀོད་མི་ཚུགས་ནི་དང་ room service ཕྱིར་འཐོན་སྐབས་ སྤྲོདཔ་ཨིན། <strong>↻ New codes for all rooms</strong> གིས་ ཁང་མིག་ཤོག་བྱང་རྙིངམ་ཚུ་ ལཱ་མི་འབད་བར་བཟོཝ་ཨིན།</p>
+
+  <h3>མགྲོན་པོའི་ཐོ་དེབ།</h3>
+  <p><strong>📒 Guest Register</strong> ཤོག་བྱང་གིས་ ཚེས་གྲངས་གཉིས་ཀྱི་བར་ན་ ནང་འཛུལ་རེ་རེ་ མགྲོན་པོའི་ཁ་གསལ། ངོ་སྤྲོད་ཁུངས་སྐྱེལ་དང་ འགྲུལ་བཞུད་དང་བཅས་ ཉེན་སྲུང་པའི་དོན་ལུ་བཞག་དོ་བཟུམ་སྦེ་ ཐོ་བཀོད་འབདཝ་ཨིན། པར་བསྐྲུན་འདྲ་བཤུས་ཀྱི་དོན་ལུ་ <strong>🖨 Print Register</strong> ལུ་ཨེབ། ཉེན་སྲུང་པ་གིས་ མགྲོན་པོ་གཅིག་གི་སྐོར་ལས་ འདྲི་བ་ཅིན་ ནཱ་ལས་ (ཡང་ན་ <strong>🧾 Check-outs</strong> ནང་ལས་) མགྲོན་པོ་གདམ་སྟེ་ <strong>👤 Guest Details</strong> ལུ་ཨེབ། མགྲོན་པོ་དེའི་སྐོར་ལས་ བཞག་ཡོད་པའི་ ཁ་གསལ་ག་ར་ ཤོག་ལེབ་གཅིག་ནང་ <strong>🖨 Print</strong> དང་བཅས་ སྟོནམ་ཨིན།</p>
+
+  <div class="tip">💡 Rooms གསལ་གཞི་ ལག་ལེན་འཐབ་ནིའི་དོན་ལུ་ ལཱ་གཡོག་པ་ལུ་ <strong>Create sales</strong> གནང་བ་དགོ།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9d -->
+<div class="chapter-banner" data-for="restaurant hotel">ལེའུ 9d — མཉམ་འབྲེལ་པ། <span class="for-badge">ཟ་ཁང་དང་ མགྲོན་ཁང་གི་དོན་ལུ།</span></div>
+<div class="section" id="ch9d" data-for="restaurant hotel">
+  <h2>9d. མཉམ་འབྲེལ་པ། (འགྲུལ་སྐྱོད་ལས་ཚབ། ལམ་སྟོན་པ། ཊེཀ་སི་ཁ་ལོ་པ།)</h2>
+  <p>འགྲུལ་སྐྱོད་ལས་ཚབ། ས་གནས་མངའ་འཛིན་ཡོངས་འབྲེལ་ས་ཁོངས། ས་གནས་ཀྱི་ལམ་སྟོན་པ། ཊེཀ་སི་ཁ་ལོ་པ་དང་ མཉམ་འབྲེལ་མགྲོན་ཁང་ཚུ་གིས་ ཁྱོད་ལུ་ མགྲོན་པོ་འབག་འོང་སྟེ་ ཁེ་ཕན་བགོ་བཤའ་ (ཀོ་མི་ཤཱན།) འཐོབ་ཨིན། <strong>🤝 Partners</strong> གསལ་གཞི་ནང་ (FINANCE གི་འོག་ ཟ་ཁང་ ཡང་ན་ མགྲོན་ཁང་གི་དོན་ལུ།) ཁྱོད་ཀྱིས་ རེ་རེ་ བཞགཔ་ཨིན། Accelent གིས་ བིལ་དང་གཅིག་ཁར་ ཁོང་གི་ ཀོ་མི་ཤཱན་ རྩིས་རྐྱབ་ཨིནམ་དང་ ཁྱོད་ཀྱིས་ ནཱ་ལས་ སྤྲོདཔ་ཨིན། ཀོ་མི་ཤཱན་ ནམ་ཡང་ མགྲོན་པོའི་བིལ་གུ་ མི་སྟོན།</p>
+
+  <h3>མཉམ་འབྲེལ་པ་ཁ་སྐོང་འབད་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🤝 Partners → ➕ New Partner</strong>: མིང་། མཉམ་འབྲེལ་པའི་དབྱེ་བ་ (འགྲུལ་སྐྱོད་ལས་ཚབ། ཐོ་བཀོད་ཡོངས་འབྲེལ་ས་ཁོངས། ལམ་སྟོན་པ། ཊེཀ་སི་ཁ་ལོ་པ། མཉམ་འབྲེལ་མགྲོན་ཁང་།) དང་ ཁ་པར་ཨང་།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ཁང་མིག་གུ་ ཀོ་མི་ཤཱན།</strong> <em>ཁང་མིག་གླ་ཆའི་ %</em>, <em>ནུབ་རེ་ ₹</em> ཡང་ན་ <em>སྡོད་ཡུན་རེ་ ₹</em>. <strong>ཟ་ཁང་གི་བིལ་གུ།</strong> ཁོང་གིས་ འབག་འོང་མི་ མགྲོན་པོའི་ ཟས་བིལ་གྱི་ % (མེད་པ་ཅིན་ 0)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">དགོ་པ་ཅིན་ ཁོང་གི་ <strong>PAN</strong> (TDS གི་དོན་ལུ།) དང་ <strong>GSTIN</strong>. <strong>Save</strong> ལུ་ཨེབ། མཉམ་འབྲེལ་པ་རེ་རེ་ལུ་ <strong>DRV001</strong> (ཁ་ལོ་པ།) <strong>GDE001</strong> (ལམ་སྟོན་པ།) ཡང་ན་ <strong>AGT001</strong> (ལས་ཚབ།) བཟུམ་གྱི་ ཨང་རྟགས་ཅིག་ཐོབ་ཨིན།</div></div>
+
+  <h3>ཁོང་གིས་ མགྲོན་པོ་འབག་འོང་བའི་སྐབས།</h3>
+  <ul>
+    <li><strong>ཁང་མིག</strong> <strong>Check In</strong> སྒོ་སྒྲིག་ནང་ <strong>Booked through</strong> གདམ། ཁོང་གི་ སྤྱིར་བཏང་ཀོ་མི་ཤཱན་ མཐོངམ་ཨིན། སྡོད་ཡུན་འདིའི་དོན་ལུ་ གཞན་ཅིག་ལུ་ གྲོས་ཐག་བཅད་ཡོད་པ་ཅིན་ སོར། ཕྱིར་འཐོན་སྐབས་ ཀོ་མི་ཤཱན་འདི་ ནུབ་མོ་ཚུ་གི་ ཁང་མིག་གླ་ཆ་གུ་ (ཉལ་ཁྲི་ཁ་སྐོང་དང་ ཁང་མིག་ཁ་སྐོང་ཚུད་དེ། GST གི་ཧེ་མ། གྱོན་ཆས་ཁྲུ་ནི་དང་ ཞབས་ཏོག་གཞན་ཚུ་ མ་ཚུད།) རྩིས་རྐྱབ་ཨིནམ་དང་ ཁང་མིག་བིལ་གུ་ཡོད་པའི་ ཟས་ག་ཅི་རང་གུ་ ཁོང་གི་ ཟ་ཁང་ % ཡང་།</li>
+    <li><strong>ཟ་ཁང་།</strong> <strong>Bill</strong> སྒོ་སྒྲིག་ནང་ <strong>Brought by</strong> གདམ། ཀོ་མི་ཤཱན་འདི་ GST གི་ཧེ་མ་ ཟས་ཀྱི་ ཁོང་གི་ ཟ་ཁང་ % ཨིན།</li>
+    <li><strong>QR བཀའ་རྒྱ།</strong> མགྲོན་པོ་ཚུ་གིས་ བཀའ་རྒྱའི་ཤོག་ལེབ་ནང་ ཁ་ལོ་པ་ ཡང་ན་ ལམ་སྟོན་པའི་ ཨང་རྟགས་ (དཔེར་ན་ DRV001) ཡིག་དཔར་རྐྱབ་ཚུགས། ཞབས་ཏོག་པ་གིས་ བཀའ་རྒྱ་ངེས་གཏན་བཟོ་བའི་སྐབས་ མཉམ་འབྲེལ་པ་ ཅོག་ཙེའི་བཀའ་རྒྱ་གུ་ རང་བཞིན་གྱིས་ གདམ་ཁ་རྐྱབ་ཨིན།</li>
+  </ul>
+  <p>ཀོ་མི་ཤཱན་ཐོབ་པའི་ ཕྱིར་འཐོན་ ཡང་ན་ བིལ་ཅིག་གི་ཤུལ་ལས་ Accelent གིས་ <strong>💵 Pay now</strong> (ཁ་ལོ་པ་དང་ ལམ་སྟོན་པ་ཚུ་ལུ་ རྒྱུན་དུ་ ས་ཐོག་ལུ་ ལག་དངུལ་སྤྲོདཔ་ཨིན།) ཡང་ན་ ཤུལ་ལས་ སྤྲོད་ནི་ཨིན་ན་ འདྲི་ཨིན།</p>
+
+  <h3>ཀོ་མི་ཤཱན་སྤྲོད་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Partners གསལ་གཞི་ནང་ མཉམ་འབྲེལ་པ་གདམ། གསལ་ཐོ་གིས་ སྡོད་ཡུན་དང་ བིལ་རེ་རེ་ དེའི་ཀོ་མི་ཤཱན། ཁྱོད་ཀྱིས་ སྤྲོད་མི་དང་ ལྷག་ལུས་བུན་ སྟོནམ་ཨིན། གྲལ་ཐིག་རེ་རེ་ནང་ ཁང་མིག་དང་ ནུབ་གྲངས། ཡང་ན་ ཅོག་ཙེ། མགྲོན་པོ་དང་ བིལ་ འབྲི་སྟེ་ཡོདཔ་ཨིན། ཀོ་མི་ཤཱན་ སྡོད་ཡུན་ ཡང་ན་ བིལ་ ག་ཅི་ལས་ཐོབ་ཅི་ག་ བལྟ་ནིའི་དོན་ལུ་ གྲལ་ཐིག་ཅིག་ལུ་ ཐེངས་གཉིས་ཨེབ། (ཡང་ན་ <strong>🔍 Details</strong> ལུ་ཨེབ།) <strong>🖨 Print Statement</strong> གིས་ དེ་ མཉམ་འབྲེལ་པའི་དོན་ལུ་ པར་བསྐྲུན་འབདཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>💵 Pay Commission</strong>: དངུལ་ (བུན་ བཀང་ཡོདཔ་ཨིན།) དང་ ཁྱོད་ཀྱིས་ ག་དེ་སྦེ་ སྤྲོད་ཡི་ག ལག་དངུལ། UPI, དངུལ་ཁང་སྤོ་སོར་ ཡང་ན་ ཅེག</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">དངུལ་སྤྲོད་ ཁྱོད་ཀྱི་ ལག་དངུལ་ ཡང་ན་ དངུལ་ཁང་ལས་ <strong>Commission</strong> གི་འོག་ལུ་ <strong>Expenses</strong> ནང་ འགྱོཝ་ཨིན། དེ་འབདཝ་ལས་ Day Book, རྩིས་ཐོའི་གསལ་ཐོ་དང་ Profit &amp; Loss ནང་ ཚུདཔ་ཨིན།</div></div>
+  <div class="tip">💡 ཕྱིར་འཐོན་ ཡང་ན་ ཟ་ཁང་གི་བིལ་ཅིག་ ཆ་མེད་བཏང་པ་ཅིན་ དེའི་ཀོ་མི་ཤཱན་ རང་བཞིན་གྱིས་ རྩིས་ནི་ བཀག་ཆ་འབདཝ་ཨིན། ཁྱོད་ཀྱིས་ ཧེ་མ་ལས་ སྤྲོད་ཡོད་པ་ཅིན་ མཉམ་འབྲེལ་པའི་ལྷག་ལུས་ཀྱིས་ ཁོང་གིས་ ཁྱོད་ལུ་ ལོག་སྤྲོད་དགོ་མི་ སྟོནམ་ཨིན།</div>
+
+  <h3>མཉམ་འབྲེལ་པའི་སྒྲིག་སྟངས། (འཛིན་སྐྱོང་པ།)</h3>
+  <ul>
+    <li><strong>སྡོད་ཡུན་ ཡང་ན་ བིལ་གཅིག་གུ་ ཀོ་མི་ཤཱན་མང་མཐའ།</strong> ཉེན་སྲུང་ཚད་གཞི་ཅིག ཡིག་དཔར་གྱི་འཛོལ་བ་ (5% གི་ཚབ་ལུ་ 50%) གིས་ དངུལ་མང་དྲགས་ སྤྲོད་མི་ཚུགས་ནིའི་དོན་ལུ།</li>
+    <li><strong>ཀོ་མི་ཤཱན་གུ་ TDS</strong> (ཁྱོད་ཀྱིས་ ཁ་མ་ཕྱེ་ཚུན་ ཁ་བསྡམས་ཡོདཔ།) ཚད་ (2%, ཡང་ན་ PAN མེད་པ་ཅིན་ 20%) དང་ TDS མ་འཇུག་པའི་ཧེ་མ་ མཉམ་འབྲེལ་པ་ཅིག་གིས་ ལོ་ཅིག་ལུ་ འཐོབ་ཚུགས་པའི་ དངུལ་ (₹20,000)། ཀམ་པ་ནི་ ཡང་ན་ ཚོང་སྡེ་ཅིག་གིས་ ཀོ་མི་ཤཱན་གུ་ TDS ཕབ་དགོ། མི་སྒེར་ ཡང་ན་ HUF ཅིག་གིས་ ལོ་ཧེ་མམ་གྱི་ ཚོང་འབབ་ ₹1 ཀོར་ལས་ལྷག་ (ལཱ་རིགས་ཀྱི་དོན་ལུ་ ₹50 ལཱ་ཁ།) ཡོད་པ་ཅིན་རྐྱངམ་ཅིག ཁྱོད་ཀྱིས་ འབད་དགོ་ག་ ཁྱོད་ཀྱི་ རྩིས་པ་ལུ་ འདྲི། བཀག་བཞག་མི་ TDS གཞུང་ལུ་ མ་སྤྲོད་ཚུན་ <em>TDS on commission (payable)</em> རྩིས་ཐོ་ནང་ བུན་སྦེ་ སྟོནམ་ཨིན།</li>
+  </ul>
+
+  <h3>མཉམ་འབྲེལ་པ་ལྟར་ ཚོང་ལཱ།</h3>
+  <p><strong>📊 Business by Partner</strong> ཤོག་བྱང་གིས་ ཚེས་གྲངས་ག་ཅི་རང་གི་དོན་ལུ་ མཉམ་འབྲེལ་པ་རེ་རེ་གིས་ བིལ་ག་དེ་ འབག་འོང་ཡི་ག ཚོང་ལཱ་ (ཁང་མིག་གླ་ཆ་དང་ ཟས།) དང་ ཁོང་གི་ཀོ་མི་ཤཱན། ཁྱོད་ཀྱིས་ སྤྲོད་མི་དང་ ད་ལྟོ་ཡང་ བུན་ཡོད་མི། ཆེ་ཤོས་ དང་པ་ སྟོནམ་ཨིན།</p>
+
+  <div class="tip">💡 Partners གསལ་གཞི་ ལག་ལེན་འཐབ་ནིའི་དོན་ལུ་ ལཱ་གཡོག་པ་ལུ་ <strong>Expenses</strong> གནང་བ་དགོ། ནང་འཛུལ་ ཡང་ན་ བིལ་ཅིག་གུ་ མཉམ་འབྲེལ་པ་ཅིག་ གདམ་ནི་ལུ་ Rooms ཡང་ན་ Restaurant གསལ་གཞི་རྐྱངམ་ཅིག་ དགོ།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9e -->
+<div class="chapter-banner" data-for="hotel">ལེའུ 9e — ཁང་མིག་གཙང་སྦྲ། <span class="for-badge">མགྲོན་ཁང་། ལོཇ་དང་ མགྲོན་ཁྱིམ་གྱི་དོན་ལུ།</span></div>
+<div class="section" id="ch9e" data-for="hotel">
+  <h2>9e. ཁང་མིག་གཙང་སྦྲ། (ཁང་མིག་གཙང་སྦྲ་དང་ གྱོན་ཆས་ཁྲུ་ནི།)</h2>
+  <p><strong>🧹 Housekeeping</strong> གསལ་གཞི་ (FINANCE གི་འོག་ མགྲོན་ཁང་གི་དོན་ལུ།) གིས་ ཁྱོད་ཀྱི་ལཱ་གཡོག་པའི་དོན་ལུ་ གཙང་སྦྲ་དང་ གྱོན་ཆས་ཁྲུ་ནིའི་ ལཱ་ཚུ་ ཐོ་བཀོད་འབདཝ་ཨིན། ལཱ་མང་ཤོས་ རང་བཞིན་གྱིས་ མཐོངམ་ཨིན།</p>
+  <ul>
+    <li><strong>ཕྱིར་འཐོན</strong> ཅིག་གིས་ <em>Clean the room</em> ལཱ་ཅིག་བཟོཝ་ཨིན། ལཱ་ཚར་བའི་སྐབས་ ཁང་མིག་ མགྲོན་པོ་ཤུལ་མམ་གྱི་དོན་ལུ་ རང་བཞིན་གྱིས་ <strong>Ready</strong> ལུ་འགྱུརཝ་ཨིན། (Rooms གསལ་གཞི་ནང་ <strong>✨ Room Is Ready</strong> ཨེབ་པ་ཅིན་ཡང་ མཇུག་བསྡུཝ་ཨིན།)</li>
+    <li><strong>ཞོགས་པ་རེ་རེ</strong> ཁྱོད་ཀྱིས་ གཞི་སྒྲིག་འབད་མི་ དུས་ཚོད་ལུ་ མི་སྡོད་ཡོད་པའི་ ཁང་མིག་རེ་རེའི་དོན་ལུ་ <em>Daily cleaning</em> ལཱ་ཅིག་ བཟོཝ་ཨིན།</li>
+    <li><strong>མགྲོན་པོ</strong> ཚུ་གིས་ ཁང་མིག་གི་ QR ཤོག་བྱང་གུ་ <strong>🧹 Clean my room</strong> ཡང་ན་ <strong>👕 Laundry pickup</strong> ལུ་ཨེབ་ཚུགས། (QR བཀའ་རྒྱ་ ཁ་ཕྱེ་ཡོད་པའི་སྐབས།) PC གིས་ སྒྲ་བཏོན་ཏེ་ ཞུ་བ་ གུ་ཏོག་ལུ་ སྟོནམ་ཨིན། ཉིན་བསྟར་གྱི་གཙང་སྦྲ་ཅིག་ སྒུག་སྡོད་ཡོད་པ་ཅིན་ མགྲོན་པོའི་ཞུ་བ་གིས་ དེའི་ས་ཚབ་ ལེནམ་ཨིན།</li>
+    <li>མདུན་ཅོག་གིས་ <strong>➕ New Task</strong> ལས་ ལཱ་ག་ཅི་རང་ ཁ་སྐོང་འབད་ཚུགས།</li>
+  </ul>
+
+  <h3>ག་གིས་འབདཝ་ཨིན་ན།</h3>
+  <p><strong>⚙ Housekeeping Settings</strong> (འཛིན་སྐྱོང་པ།) ནང་ ལཱ་ཁར་ཡོད་པའི་ ལཱ་གཡོག་པ་ཚུ་ལུ་ རྟགས་བཀལ། (དང་པ་ 👥 Employees ནང་ ཁ་སྐོང་འབད།) ལཱ་གསརཔ་རེ་རེ་ ཁ་ཕྱེ་ཡོད་པའི་ལཱ་ ཉུང་ཤོས་ཡོད་མི་ལུ་ འགྱོཝ་ཨིན། <strong>👤 Give to…</strong> གིས་ སོརཝ་ཨིན། གཙང་སྦྲ་ལུ་ སྒུག་སྡོད་པའི་ ཁང་མིག་ཅིག་ ག་གིས་ གཙང་སྦྲ་བཟོ་དོ་ཡོདཔ་ཨིན་ན་ Rooms གསལ་གཞི་གིས་ སྟོནམ་ཨིན།</p>
+
+  <h3>ལཱ་འབད་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ལཱ་གདམ་སྟེ་ <strong>▶ Start</strong> (གདམ་ཁ།) དེ་ལས་ ཚར་བའི་སྐབས་ <strong>✓ Done</strong> ལུ་ཨེབ། <strong>✕ Cancel task</strong> གིས་ མ་དགོ་པའི་ལཱ་ཅིག་ བཏོནམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>གྱོན་ཆས་ཁྲུ་ནི།</strong> ཁང་མིག་ལས་ གྱོན་ཆས་ ལེན་པའི་སྐབས་ <strong>👕 Collected</strong> ལུ་ཨེབ། ལོག་འོང་བའི་སྐབས་ <strong>✓ Laundry returned…</strong> ལུ་ཨེབ་སྟེ་ དབྱེ་བ་རེ་རེ་ལས་ ཆ་ཤས་ག་དེ་ཡོད་ག་ བཙུགས། བསྡོམས་ གྱོན་ཆས་ཁྲུ་ནིའི་ GST (ཁྱོད་ཀྱིས་ མ་སོར་བ་ཅིན་ 18%) དང་གཅིག་ཁར་ མགྲོན་པོའི་ ཁང་མིག་བིལ་ལུ་ འགྱོཝ་ཨིན།</div></div>
+  <div class="tip">💡 གྱོན་ཆས་ཁྲུ་ནིའི་ གོང་ཚད་ཐོ་ཡིག་ (ཧོན་ཇུ། དོར་མ། ས་རི།…) གྱོན་ཆས་ཁྲུ་ནིའི་ GST དང་ ཉིན་བསྟར་གཙང་སྦྲའི་ དུས་ཚོད་ <strong>⚙ Housekeeping Settings</strong> ནང་ཡོདཔ་ཨིན། <strong>✓ Done today</strong> ཤོག་བྱང་གིས་ ད་རིས་ ཚར་མི་ལཱ། ག་གིས་འབད་ཡི་ག་དང་ བཀལ་བའི་ གྱོན་ཆས་ཁྲུ་ནི་ ཐོ་བཀོད་འབདཝ་ཨིན།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 10 -->
+<div class="chapter-banner">ལེའུ 10 — ཉོ་ཚོང་།</div>
+<div class="section" id="ch10">
+  <h2>10. ཉོ་ནིའི་པེ་ནཱལ།</h2>
+  <p>ཅ་ཆས་བྱིན་མི་ཚུ་ལས་ཐོབ་པའི་ ཉོ་ནིའི་བིལ་རེ་རེ་ ནཱ་ལུ་ ཐོ་བཀོད་འབད། མཛོད་ ཡར་འཕར་འགྱོཝ་ཨིནམ་དང་ ཅ་ཆས་བྱིན་མི་ལུ་ སྤྲོད་དགོ་པའི་ལྷག་ལུས་ རང་བཞིན་གྱིས་ ལྟ་རྟོག་འབདཝ་ཨིན།</p>
+
+  <h3>ཉོ་ཚོང་ཅིག་ ཐོ་བཀོད་འབད་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>+ New Purchase</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">དང་པ་ <strong>Vendor Name</strong> གདམ་ ཡང་ན་ ཡིག་དཔར་རྐྱབ — དེའི་འོག་གི་ ག་ར་ འདི་ལུ་ བརྟེན་ཏེ་ སོརཝ་ཨིན། ཅ་ཆས་བྱིན་མི་རྙིངམ་ཅིག་ཨིན་པ་ཅིན་ ཁ་བྱང་/ཁ་པར་/GSTIN རང་བཞིན་གྱིས་ བཀངམ་ཨིནམ་དང་ ཁོ་གི་ སྤྱིར་བཏང་ཅ་ཆས་ཚུ་ Order Items ཐིག་ཁྲམ་ནང་ ཐད་ཀར་ བཙུགསཔ་ཨིན། རེ་རེ་ ཧེ་མ་ལས་ རྟགས་བཀལ་ཏེ་ གྲ་སྒྲིག་ཡོདཔ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">བིལ་འདི་ནང་ མ་ཚུད་དགོ་པའི་ གྲལ་ཐིག་ (☑) ག་ཅི་རང་གི་ རྟགས་བཏོན། དགོས་མཁོ་ལྟར་ གྲལ་ཐིག་རེ་རེའི་ Qty/Rate/GST% ལེགས་སྒྲིག་འབད — Amount དང་ མར་ཁར་གྱི་ Subtotal/GST/Grand Total ཐད་ཀར་ དུས་མཐུན་བཟོཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ཐིག་ཁྲམ་ནང་ མེད་མི་ ག་ཅི་རང་ སྐེན་འབད་དེ་ ཁ་སྐོང་འབད (Order Items གི་ གུ་ཏོག་ལུ་ <strong>📷</strong> ས་སྒོ་ + <strong>📱 Scan with Phone</strong>) ཡང་ན་ ཐིག་ཁྲམ་གྱི་འོག་ལུ་ <strong>➕ Add Item to Same Vendor</strong> བརྒྱུད་དེ་ ཅ་ཆས་གསརཔ་ཅིག་ ཐོ་བཀོད་འབད།</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Bill Details ནང་ Bill Number, Bill Date དང་ Payment Method (Cash / Bank Transfer / Cheque / Card / UPI / Credit to Vendor) བཀང་།</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>💾 Save Purchase</strong> ལུ་ཨེབ། མཛོད་དང་ ཅ་ཆས་བྱིན་མིའི་ལྷག་ལུས་ ཐད་ཀར་ དུས་མཐུན་བཟོཝ་ཨིན། ཅ་ཆས་དང་ བསྡོམས་ཅོག་འཐདཔ་ཡོད་པའི་ བིལ་ཅིག་ ཉིན་ 60 ནང་ (ཅ་ཆས་བྱིན་མི་ག་ཅི་གི་འོག་ལུ་ཨིན་རུང་།) ཧེ་མ་ལས་ སྲུང་བཞག་འབད་ཡོད་པ་ཅིན་ ཐེངས་གཉིས་པ་ སྲུང་བཞག་མ་འབད་བའི་ཧེ་མ་ Accelent གིས་ འདྲི་ཨིན།</div></div>
+  <div class="tip">💡 <strong>བིལ་ཅིག་ སོར་ནི་ ཡང་ན་ བཏོན་གཏང་ནི།</strong> བིལ་གྱི་ཐོ་ཡིག་ནང་ གདམ་སྟེ་ <strong>✏️ Edit Bill</strong> ཡང་ན་ <strong>❌ Delete Bill</strong> ལུ་ཨེབ། སོར་བ་ཅིན་ མཛོད་དང་ ཅ་ཆས་བྱིན་མིའི་རྩིས་ཐོ་ ནོར་བཅོས་འབད་མི་བིལ་དང་ མཐུན་སྒྲིག་བཟོཝ་ཨིན། ཅ་ཆས་བྱིན་མི་ནོར་བ་ཅིག་གི་འོག་ལུ་ སྲུང་བཞག་འབད་མི་བིལ་ཅིག་ བཏོན་གཏང་སྟེ་ ཅ་ཆས་བྱིན་མི་ངོ་མའི་འོག་ལུ་ ལོག་བཙུགས་ནི་ ལེགས་ཤོས་ཨིན — བཏོན་གཏང་བ་ཅིན་ དེའི་མཛོད། རྩིས་ཐོའི་ཐོ་བཀོད་དང་ GST ཕྱིར་སློག་འབད་དེ་ འདྲ་བཤུས་ཅིག་ Deletion Watcher ནང་ བཞགཔ་ཨིན། བཏོན་གཏང་ཞིནམ་ལས་ ས་གནས་གཞན་ག་ཏེ་ཡང་ ལག་ལེན་མ་འཐབ་པའི་ བིལ་གྱི་ཅ་ཆས་ཚུ་ རིམ་པ་དེ་ནང་རང་ བཏོན་གཏང་ནི་ Accelent གིས་ གྲོས་འཆར་བཀོདཔ་ཨིན། ཅ་ཆས་ ཧེ་མ་ལས་ བཙོང་ཡོད་པའི་བིལ་ཅིག་ བཏོན་མི་ཚུགས། Edit Bill གིས་ ནོར་བཅོས་འབད། ཡང་ན་ ལོག་བཏང་མི་ཅ་ཆས་ Returns → Purchase Returns གི་འོག་ལུ་ ཐོ་བཀོད་འབད།</div>
+
+  <h3>ཅ་ཆས་བྱིན་མི་དང་ ཅ་ཆས་ཀྱི་ མཉམ་སྡེབ།</h3>
+  <p>ཁྱོད་ཀྱིས་ ཉོ་མི་ ཅ་ཆས་བྱིན་མི་དང་ ཅ་ཆས་ Accelent ནང་ ཧེ་མ་ལས་ ཡོད་མེད་ལུ་ བརྟེན་ཏེ་ Order Items ཐིག་ཁྲམ་དང་ <strong>➕ Add Item to Same Vendor</strong> པེ་ནཱལ་ གནས་སྟངས་བཞི་ལུ་ མཐུན་སྒྲིག་འབདཝ་ཨིན། <strong>Vendor Name</strong> ས་སྒོ་གིས་ རྟག་བུ་ར་ དེའི་འོག་ལུ་ མཐོང་མི་ གཏན་འཁེལ་འབདཝ་ཨིནམ་ལས་ དང་པ་ ཅ་ཆས་བྱིན་མི་གདམ་ ཡང་ན་ ཡིག་དཔར་རྐྱབ།</p>
+
+  <h4>1. ཅ་ཆས་བྱིན་མི་རྙིངམ + ཅ་ཆས་རྙིངམ།</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Vendor Name</strong> ནང་ ཅ་ཆས་བྱིན་མིའི་མིང་ ཡིག་དཔར་རྐྱབ་ནི་ འགོ་བཙུགས་ཏེ་ ཐོ་ཡིག་ཕབ་མི་ལས་ གདམ། ཁོ་གི་ཁ་བྱང་། ཁ་པར་དང་ GSTIN རང་བཞིན་གྱིས་ བཀངམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Order Items ཐིག་ཁྲམ་ ཁྱོད་ཀྱིས་ ཅ་ཆས་བྱིན་མི་འདི་ལས་ ཧེ་མ་ ཉོ་མི་ ག་ར་གིས་ རང་བཞིན་གྱིས་ བཀངམ་ཨིན། གྲལ་ཐིག་རེ་རེ་ ཧེ་མ་ལས་ རྟགས་བཀལ་ཡོདཔ། ཐེངས་འདི་ མ་ཉོ་མི་ ག་ཅི་རང་གི་ རྟགས་བཏོན — ཆེད་དམིགས་ཀྱིས་ བཏོན་གཏང་ནིའི་ཨེབ་རྟགས་མེདཔ་ལས་ ཐིག་ཁྲམ་ནང་གི་ ག་ནི་ཡང་ འཛོལ་ཏེ་ མཛོད་ལས་ བཏོན་མི་ཚུགས།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཁྱོད་ཀྱིས་ ཉོ་མི་ ག་ཅི་རང་གི་ Qty དུས་མཐུན་བཟོ་སྟེ་ སྲུང་བཞག་འབད།</div></div>
+
+  <h4>2. ཅ་ཆས་བྱིན་མི་རྙིངམ + ཅ་ཆས་གསརཔ།</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">གོང་ལུ་བཟུམ་ ཅ་ཆས་བྱིན་མི་རྙིངམ་གདམ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>➕ Add Item to Same Vendor</strong> ནང་ Name, Category, Buy Rate, GST%, Sell Price, དང་ Qty བཀང་། རང་བཞིན་གྱི་ ཅ་ཆས་ཨང་རྟགས་ཀྱི་དོན་ལུ་ Code གི་ཕྱོགས་ལུ་ <strong>🔍 Generate</strong> ལུ་ཨེབ། ཡང་ན་ ཁྱོད་རའི་ ཡིག་དཔར་རྐྱབ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>✅ Add Item to Purchase</strong> ལུ་ཨེབ། ཅ་ཆས་བཟོ་སྟེ་ ཅ་ཆས་བྱིན་མི་འདི་དང་ མཐུད་ཞིནམ་ལས་ Order Items ཐིག་ཁྲམ་ནང་ ཁ་སྐོང་འབདཝ་ཨིན།</div></div>
+
+  <h4>3. ཅ་ཆས་བྱིན་མི་གསརཔ + ཅ་ཆས་གསརཔ།</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཧེ་མ་ལས་ མེད་པའི་ ཅ་ཆས་བྱིན་མིའི་མིང་ཅིག་ ཡིག་དཔར་རྐྱབ། ཁ་བྱང་/ཁ་པར་/GSTIN སྟོངམ་ཨིན — ཁྱོད་ལུ་ཡོད་པ་ཅིན་ བཀང་། (གདམ་ཁ།)</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཅ་ཆས་བྱིན་མི་འདི་གི་དོན་ལུ་ ད་ཚུན་ ལོ་རྒྱུས་མེདཔ་ལས་ Order Items ཐིག་ཁྲམ་ སྟོངམ་སྦེ་ འགོ་བཙུགསཔ་ཨིན — འདི་ རེ་བ་བསྐྱེད་མི་ཨིན། འཛོལ་བ་མེན།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>➕ Add Item to Same Vendor</strong> གནས་སྟངས་ 2 ནང་བཟུམ་སྦེ་ ལག་ལེན་འཐབ། ཁྱོད་ཀྱིས་ ཉོ་ཚོང་ སྲུང་བཞག་འབད་བའི་སྐབས་ Accelent གིས་ ཅ་ཆས་བྱིན་མི་གསརཔ་དང་ ཅ་ཆས་གསརཔ་ གཉིས་ཆ་ར་ བཟོཝ་ཨིན།</div></div>
+
+  <h4>4. ཅ་ཆས་བྱིན་མི་གསརཔ + ཅ་ཆས་རྙིངམ།</h4>
+  <p>འདི་ ཁྱོད་ཀྱིས་ ཧེ་མ་ལས་ བཞག་མི་ཅ་ཆས་ཅིག་ ཧེ་མ་ མ་ཉོ་བའི་ ཅ་ཆས་བྱིན་མི་ཅིག་ལས་ ཉོ་ནི་ཨིན — དཔེར་ན་ ཁྱོད་ཀྱི་ སྤྱིར་བཏང་ཅ་ཆས་བྱིན་མི་ལུ་ མཛོད་མེད་པར་ ཅ་ཆས་ཅོག་འཐདཔ་གི་དོན་ལུ་ མི་གསརཔ་ཅིག་ བརྟག་ཞིབ་འབད་དོ་ཡོདཔ།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཅ་ཆས་བྱིན་མི་གསརཔ་གི་མིང་ ཡིག་དཔར་རྐྱབ། (Order Items ཐིག་ཁྲམ་ སྟོངམ་སྦེ་ ལུསཔ་ཨིན — ཉོ་ཚོང་དང་པའི་དོན་ལུ་ སྤྱིར་བཏང་།)</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཅ་ཆས་ཀྱི་ བར་ཀོཌི་ སྐེན་འབད། ཡང་ན་ སྐེན་ས་སྒོ་ནང་ དེའི་ བར་ཀོཌི་/ཅ་ཆས་ཨང་རྟགས་ ངོ་མ་ ཡིག་དཔར་རྐྱབ་སྟེ་ Enter ཨེབ། གནས་སྟངས་འདི་གི་དོན་ལུ་ ད་ལྟོ་ མིང་ལས་ འཚོལ་ནི་མེད — ཅ་ཆས་རྙིངམ་ཅིག་ ནཱ་ལུ་ དེའི་ཨང་རྟགས་/བར་ཀོཌི་ ལས་རྐྱངམ་ཅིག་ འབག་འོང་ཚུགས།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཉོ་ཚོང་ སྲུང་བཞག་འབད། ཅ་ཆས་ཀྱི་ རང་སོའི་ཁ་གསལ་ མི་སོར — Accelent གིས་ ཁྱོད་ཀྱིས་ ཅ་ཆས་དེ་ ཅ་ཆས་བྱིན་མི་འདི་ལས་ གོང་ཚད་འདི་ཐོག་ཡང་ ཉོ་ཚུགས་ཟེར་ ཐོ་བཀོད་རྐྱངམ་ཅིག་ འབདཝ་ཨིན།</div></div>
+
+  <div class="good">✅ ཅ་ཆས་ཅོག་འཐདཔ་ ཅ་ཆས་བྱིན་མི་ གཉིས་པ་ ཡང་ན་ གསུམ་པ་ལས་ ཉོ་བ་ཅིན་ ནམ་ཡང་ དེའི་ཁ་གསལ་རྙིངམ་ ཚབ་མི་བཙུགས་ ཡང་ན་ མི་ཆག Accelent གིས་ ཅ་ཆས་རེ་རེའི་དོན་ལུ་ ཅ་ཆས་བྱིན་མི་རེ་རེའི་ གོང་ཚད་/ཚེས་གྲངས་ཀྱི་ཐོ་ སོ་སོ་བཞགཔ་ཨིན། དེ་འབདཝ་ལས་ ཉོ་ཚོང་གཅིག་གི་དོན་ལུ་ ཅ་ཆས་བྱིན་མི་གསརཔ་ཅིག་ བརྟག་ཞིབ་འབད་བ་ཅིན་ ཁྱོད་ཀྱི་ ཅ་ཆས་བྱིན་མི་གཞན་ཚུ་དང་གི་འབྲེལ་བ་ལུ་ ནམ་ཡང་ ཕན་གནོད་མི་འབད།</div>
+
+  <h3>བར་ཀོཌི་སྐེན་དང་ གནས་སྟངས།</h3>
+  <p>ཅ་ཆས་ཅིག་ ཉོ་ཚོང་ནང་ ཐད་ཀར་ ཁ་སྐོང་འབད་ནིའི་དོན་ལུ་ Order Items གི་ གུ་ཏོག་ལུ་ <strong>📱 Scan with Phone</strong> གིས་ སྐེན་འབད། (ཡང་ན་ བར་ཀོཌི་ས་སྒོ་ནང་ ཡིག་དཔར་རྐྱབ་སྟེ་ Enter ཨེབ།)</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">བར་ཀོཌི་ མཛོད་ནང་ ཧེ་མ་ལས་ཡོད་པའི་ ཅ་ཆས་ཅིག་དང་ མཐུན་པ་ཅིན་ ཐིག་ཁྲམ་ནང་ ཁ་སྐོང་འབདཝ་ཨིན — ཡང་ན་ བིལ་འདི་ནང་ ཧེ་མ་ལས་ཡོད་པ་ཅིན་ ངེས་གཏན་བརྡ་འཕྲིན་དང་གཅིག་ཁར་ དེའི་ Qty 1 ཡར་འཕར་འགྱོཝ་ཨིན། དེ་འབདཝ་ལས་ ག་ཅི་འབྱུང་ཡི་ག་ རྟག་བུ་ར་ ཤེསཔ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ག་ཅི་དང་ཡང་ མ་མཐུན་པ་ཅིན་ Accelent གིས་ དེ་སྦེ་ སླབ་སྟེ་ ཅ་ཆས་གསརཔ་ཅིག་སྦེ་ ཐོ་བཀོད་འབད་ནིའི་དོན་ལུ་ འོག་གི་ <strong>➕ Add Item to Same Vendor</strong> ལུ་ ལམ་སྟོན་འབདཝ་ཨིན།</div></div>
+
+  <p>Order Items ཐིག་ཁྲམ་གྱི་ གྲལ་ཐིག་རེ་རེ་གིས་ <strong>🔖</strong> ཀེར་ཐིག་ནང་ རང་སོའི་ བར་ཀོཌི་གནས་སྟངས་ཡང་ སྟོནམ་ཨིན།</p>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><strong>✓ Barcode</strong> (ལྗང་ཁུ།) — ཅ་ཆས་འདི་ལུ་ བར་ཀོཌི་ཅིག་ ཧེ་མ་ལས་ སྲུང་བཞག་འབད་ཡོད། བར་ཀོཌི་དེ་ བཏོན་ནིའི་དོན་ལུ་ དེ་ལུ་ཨེབ། དཔེར་ན་ སྐེན་ཅིག་གིས་ ཨང་རྟགས་ནོར་བ་ཅིག་ མཐུད་ཡོད་པ་ཅིན།</div></div>
+  <div class="step"><div class="step-num">+</div><div class="step-body"><strong>+📷</strong> (སྔོནམ།) — ད་ཚུན་ བར་ཀོཌི་མེད། ཁྱོད་ཀྱི་ཁ་པར་གྱིས་ སྐེན་འབད་དེ་ མཐུད་ནིའི་དོན་ལུ་ དེ་ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">🗑</div><div class="step-body"><strong>🗑 Clear Barcode</strong> — མཐུད་ཡོད་རུང་ ལེགས་ཤོམ་སྦེ་ མ་འཛིན་པའི་ བར་ཀོཌི་ཅིག་གི་དོན་ལུ་ སླར་སྒྲིག་ཨེབ་རྟགས་ སོ་སོ་ཅིག ལོག་སྟེ་ སྐེན་འབད་ཚུགསཔ་སྦེ། ཅ་ཆས་ལུ་ བཏོན་ནིའི་ བར་ཀོཌི་ཡོད་པའི་སྐབས་རྐྱངམ་ཅིག་ ཁ་ཕྱེཝ་ཨིན།</div></div>
+
+  <div class="tip">💡 <strong>➕ Add Item to Same Vendor</strong> གིས་ ཅ་ཆས་གསརཔ་ རྟག་བུ་ར་ ད་ལྟོ་ <strong>Vendor Name</strong> ནང་ཡོད་པའི་ ཅ་ཆས་བྱིན་མི་ (གསརཔ་ ཡང་ན་ རྙིངམ།) དང་ མཐུདཔ་ཨིན། དེ་འབདཝ་ལས་ ཅ་ཆས་གསརཔ་ཅིག་ ཐོ་བཀོད་མ་འབད་བའི་ཧེ་མ་ ཅ་ཆས་བྱིན་མིའི་ས་སྒོ་ ལན་གཉིས་ ཞིབ་དཔྱད་འབད། དམིགས་བསལ་གྱིས་ སྐྱེལ་འདྲེན་གཅིག་གི་ ཅ་ཆས་ལེ་ཤ་ རིམ་བཞིན་ སྐེན་འབད་བའི་སྐབས།</div>
+
+  <h3>📷 Scan Vendor Bill — ཤོག་བུའི་བིལ་ཧྲིལ་བུམ་ རང་བཞིན་གྱིས་ ལྷག་ནི།</h3>
+  <p>ཅ་ཆས་བྱིན་མིའི་བིལ་གྱི་ གྲལ་ཐིག་རེ་རེ་ ལག་ཐོག་ལས་ ཡིག་དཔར་རྐྱབ་ནིའི་ཚབ་ལུ་ དེའི་པར་བཏབ་སྟེ་ Accelent གིས་ པར་ལས་ ཐད་ཀར་ ཅ་ཆས་ཀྱི་གྲལ་ཐིག HSN ཨང་རྟགས་དང་ GST ལྷག་བཅུག འདི་ ཆ་ཚང་ ཁྱོད་རའི་ གློག་རིག་གུ་ ལཱ་འབདཝ་ཨིན — ཨིན་ཊར་ནེཊ་ ལག་ལེན་མི་འཐབ་ནི་དང་ པར་ ནམ་ཡང་ ག་ཏེ་ཡང་ མི་གཏང་།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">དང་པ་ <strong>Vendor Name</strong> གདམ་ ཡང་ན་ ཡིག་དཔར་རྐྱབ་སྟེ་ དེ་ལས་ <strong>📷 Scan Vendor Bill</strong> ལུ་ཨེབ། བིལ་གྱི་པར་གདམ — གསལ་ཏོག་ཏོ་ དང་ འོད་ལེགས་ཤོམ་ཡོད་པའི་ པར་ཅིག་ ལེགས་ཤོས་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">སྐེན་ འགོ་མ་བཙུགས་པའི་ཧེ་མ་ དགོ་པ་ཅིན་ <strong>Rotate Left / Rotate Right</strong> གིས་ པར་ དྲང་ཏོག་ཏོ་བཟོ — དྲང་ཏོག་ཏོ་ཡོད་པའི་ པར་ སྐར་ཆ་ ལ་ལོ་ཅིག་ནང་ སྐེན་འབདཝ་ཨིན། ཕྱོགས་ལུ་ཡོད་མི་ཅིག་ དེའི་ཁ་ཕྱོགས་ ཁོ་ར་གིས་ འཚོལ་བའི་སྐབས་ ཡུན་ཚད་རིངམོ་འགོརཝ་ཨིན། ལེགས་ཤོམ་ མཐོང་པའི་སྐབས་ <strong>▶ Start Scan</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">བསྐྱར་ཞིབ་གསལ་གཞི་ ཕྱོགས་གཅིག་ལུ་ བིལ་གྱི་པར་དང་ ཕྱོགས་གཞན་ལུ་ འཚོལ་ཐོབ་མི་ ག་ར་གི་ སོར་ཚུགས་པའི་ ཐིག་ཁྲམ་དང་གཅིག་ཁར་ ཁ་ཕྱེཝ་ཨིན། གུ་ཏོག་གི་ <strong>Reconciliation Status</strong> དར་ཆ་ ཞིབ་དཔྱད་འབད — ཅ་ཆས་ཀྱི་གྲལ་ཐིག་ཚུ་ བིལ་རའི་ པར་བསྐྲུན་བསྡོམས་དང་ མཐུན་ག་ ཁྱོད་ལུ་ སླབ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">བིལ་གྱི་པར་གུ་ དེ་ ག་ཏེ་ལས་ འོང་ཡི་ག་ ཐད་ཀར་ འགྱོ་ནིའི་དོན་ལུ་ གྲལ་ཐིག་ག་ཅི་རང་ལུ་ཨེབ། ནོར་སྟེ་ ལྷགཔ་ ག་ཅི་རང་ ནོར་བཅོས་འབད — Description, Category, HSN/SAC, Qty, Unit, Rate, དང་ GST% ག་ར་ སོར་ཚུགས། Accelent གིས་ ངེས་གཏན་སྦེ་ ལྷག་མ་ཚུགས་པའི་ གྲལ་ཐིག་ཅིག་ནང་ <strong>⚠️</strong> མཐོངམ་ཨིན། མ་ལང་མི་ ཡིག་དཔར་རྐྱབ་པ་ཅིན་ <strong>✅</strong> ལུ་ འགྱུརཝ་ཨིན། ཚུད་ནི་མ་དགོ་པའི་ གྲལ་ཐིག་ ག་ཅི་རང་གི་ རྟགས་བཏོན།</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">འགྲེལ་བཤད་ Inventory ནང་ ཧེ་མ་ལས་ཡོད་པའི་ ཅ་ཆས་ཅིག་དང་ མཐུན་པའི་ གྲལ་ཐིག་ཅིག་གིས་ — ཅ་ཆས་བྱིན་མི་ག་ཅི་ལས་ ཉོ་རུང་ — Category ཀེར་ཐིག་ནང་ དེའི་ཨང་རྟགས་དང་གཅིག་ཁར་ <strong>✓ existing item</strong> སྟོནམ་ཨིན། དེའི་གྱངས་ཁ་ ཅ་ཆས་དེ་ལུ་ ཁ་སྐོང་འབདཝ་ཨིན། གྲལ་ཐིག་གཞན་རེ་རེ་ ཅ་ཆས་གསརཔ་ལུ་ འགྱུར་ཏེ་ <strong>Category</strong> ཅིག་དགོ། ག་ཅི་སྨོ་ཟེར་བ་ཅིན་ དབྱེ་རིམ་གྱིས་ ཅ་ཆས་ཀྱི་ཨང་རྟགས་ གཏན་འཁེལ་འབདཝ་ཨིན། དབྱེ་རིམ་མེད་པའི་ གྲལ་ཐིག་གསརཔ་ཅིག་ཡོད་པ་ཅིན་ Apply བཀག་ཆ་འབད་དེ་ དེ་ལུ་ སྟོནམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">གྲལ་ཐིག་ལེ་ཤ་ ཐེངས་གཅིག་ལུ་ ཁྱོད་ཀྱི་ ཐོ་ཡིག་རྙིངམ་དང་ རང་བཞིན་གྱིས་ མཐུན་སྒྲིག་འབད་ནི་ ཡང་ན་ དབྱེ་རིམ་ཅིག་ལུ་ བཀོད་ནིའི་དོན་ལུ་ <strong>Bulk Actions</strong> ལག་ལེན་འཐབ — ངེས་གཏན་ བར་མ་རྐྱངམ་ཅིག་ཡོད་མི་ ག་ཅི་རང་གིས་ ངེས་གཏན་གྱི་ སྒོ་སྒྲིག་ཅིག་ ཁ་ཕྱེཝ་ཨིན། དེ་འབདཝ་ལས་ ག་ནི་ཡང་ སྒྲ་མེད་ཅིག་ ཐོན་སྐྱེད་ནོར་བ་ཅིག་དང་ མི་མཐུན།</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">མཇུག་བསྡུ་ཐངས་གདམ།<br>• <strong>💾 Last Page — Save Now</strong> — ཉོ་ཚོང་ ཐད་ཀར་ སྲུང་བཞག་འབདཝ་ཨིན། (ཤོག་ལེབ་གཅིག་གི་བིལ་ ཡང་ན་ ཤོག་ལེབ་མཇུག་མ་ནང་ ལག་ལེན་འཐབ།) ངེས་གཏན་གྱི་སྒྲོམ་ཅིག་གིས་ Vendor, Goods Amount, GST, དང་ Grand Total ངོ་མ་ སྟོནམ་ཨིན — བིལ་དང་ མཐུན་ག་ ཞིབ་དཔྱད་འབད་དེ་ ངེས་གཏན་བཟོ།<br>• <strong>📷 More Pages? Scan Next</strong> — ཤོག་ལེབ་ལེ་ཤ་ནང་ པར་བསྐྲུན་འབད་ཡོད་པའི་ བིལ་གྱི་དོན་ལུ། ཤོག་ལེབ་འདིའི་ ཅ་ཆས་ ཁ་སྐོང་འབད་དེ་ ཤོག་ལེབ་ཤུལ་མམ་གྱི་དོན་ལུ་ པར་གདམ་མི་ ཁ་ཕྱེཝ་ཨིན། ཤོག་ལེབ་མཇུག་མ་ནང་ <em>Last Page — Save Now</em> ལག་ལེན་འཐབ། ཤོག་ལེབ་ག་ར་ ཉོ་ཚོང་གཅིག་སྦེ་ མཉམ་དུ་ སྲུང་བཞག་འབདཝ་ཨིན།<br>• <strong>✅ Apply (Save Later)</strong> — སྲུང་བཞག་མ་འབད་བར་ ཅ་ཆས་ཚུ་ New Purchase འབྲི་ཤོག་ནང་ ཁ་སྐོང་འབདཝ་ཨིན། ཁྱོད་ཀྱིས་ ནཱ་ལུ་ བསྐྱར་ཞིབ་འབད་དེ་ <strong>Save Purchase</strong> ཁྱོད་ར་གིས་ ཨེབ་ཚུགས།</div></div>
+  <figure class="shot"><a href="manual_images/bill-scan-review.png" target="_blank"><img src="manual_images/bill-scan-review.png" alt="Bill Scan Review screen" loading="lazy"></a><figcaption>Bill Scan Review — གཡོན་ཕྱོགས་ལུ་ བིལ་གྱི་པར། གཡས་ཕྱོགས་ལུ་ འཚོལ་ཐོབ་མི་ཅ་ཆས་དང་ གུ་ཏོག་ལུ་ Reconciliation Status.</figcaption></figure>
+
+  <div class="good">✅ ཐིག་ཁྲམ་ནང་ འཛོལ་བ་ཅིག་ འབད་ཡི་ག? Ctrl+Z གིས་ མཇུག་མའི་བསྒྱུར་བཅོས། ཁ་སྐོང་། བཏོན་ནི་ ཡང་ན་ bulk action ཕྱིར་སློག་འབདཝ་ཨིན — ཁྱོད་ཀྱིས་ དངོས་སུ་ སྲུང་བཞག་མ་འབད་ཚུན་ ནཱ་ལུ་ འབད་མི་ ག་ནི་ཡང་ བརྟན་པོ་མེན། བར་ན་ བར་ཆད་འབྱུང་པ་ཅིན་ (ཨེབ་ ཁ་བསྡམས་ཡི། གློག་རིག་ ཉལ་ཡི།) པར་ཅོག་འཐདཔ་ ལོག་སྟེ་ གདམ་པ་ཅིན་ ལོག་སྟེ་ འགོ་བཙུགས་ནིའི་ཚབ་ལུ་ ཁྱོད་ ག་ཏེ་ བཞག་ཡི་ག་ ནཱ་ལས་ འཕྲོ་མཐུད་ནི་ གྲོས་འཆར་བཀོདཔ་ཨིན།</div>
+  <div class="tip">💡 ཉོ་ཚོང་གི་ལོ་རྒྱུས་མེད་པའི་ ཅ་ཆས་བྱིན་མི་གསརཔ་ཅིག་གི་དོན་ལུ་ཡང་ ལཱ་འབདཝ་ཨིན — Inventory ནང་ ཧེ་མ་ལས་ཡོད་པའི་ ཅ་ཆས་དང་ མཐུན་པའི་ གྲལ་ཐིག་ཚུ་ དེ་ཚུ་ལུ་ ཁ་སྐོང་འབདཝ་ཨིནམ་དང་ ལྷག་ལུས་ཚུ་ ཅ་ཆས་གསརཔ་ལུ་ འགྱུར་ཏེ་ ལག་ཐོག་ལས་ ཁ་སྐོང་འབད་དོ་བཟུམ་སྦེ་ བཟོཝ་ཨིན། Scan Vendor Bill ལུ་ གཞི་བཙུགས་རེ་རེ་ནང་ མ་ཚུད་པའི་ ས་གནས་ཀྱི་ AI ཆ་ཤས་དགོ། མེདཔ་ཨིན་ཟེར་ སྙན་ཞུ་འབད་བ་ཅིན་ Accelent གི་ གཞན་ག་ར་ལུ་ ཕན་གནོད་མེད།</div>
+  <div class="tip">💡 <strong>མགྱོགས་ཚད།</strong> 8 GB RAM ཡོད་པའི་ PC ཅིག་གུ་ སྐེན་ མགྱོགས་དྲགས་སྦེ་ མཇུག་བསྡུཝ་ཨིན། 4 GB གིས་ ད་ལྟོ་ཡང་ ལཱ་འབདཝ་ཨིན་རུང་ ཡུན་ཚད་རིངམོ་འགོརཝ་ཨིན — ལཱ་འབད་བཅུག <strong>རིན་མེད་བརྟག་ཞིབ།</strong> བིལ་སྐེན་ 15 ཚུདཔ་ཨིན། དེའི་ཤུལ་ལས་ སྐེན་འབད་ནི་ལུ་ ཆོག་ཐམ་ཤུགས་ལྡན་ཅིག་དགོ། (བརྟག་ཞིབ་ཀྱི་ ལྷག་ལུས་ཡུན་ཚད་ནང་ གཞན་ག་ར་ ལཱ་འབདཝ་ཨིན།) ཞུགས་ཐོ་དང་བཅས་ སྐེན་ ཚད་མེད་ཨིན།</div>
+
+  <h3>ཉོ་ཚོང་ལོག་སྤྲོད།</h3>
+  <p>ཅ་ཆས་བྱིན་མི་ཅིག་ལུ་ ལོག་སྤྲོད་མི་ཅ་ཆས་ ཐོ་བཀོད་འབད་ནིའི་དོན་ལུ་ <strong>Returns</strong> པེ་ནཱལ → <strong>Purchase Returns</strong> ཤོག་བྱང་ལུ་འགྱོ། ཌེ་བིཊ་ཟིན་བྲིས་ཅིག་བཟོ་སྟེ་ མཛོད་ མར་ཕབ་ཨིན། ལོག་སྤྲོད་ཀྱི་དངུལ་ Profit &amp; Loss, Trading Account, དང་ Balance Sheet སྙན་ཞུ་ཚུ་ནང་ ཁྱོད་ཀྱི་ Purchases གྱངས་ཁ་ལས་ཡང་ ཕབ་ཨིན།</p>
+
+  <div class="tip">💡 ཉོ་ཚོང་ཅིག་ ཐོ་བཀོད་འབད་བའི་སྐབས་ རྟག་བུ་ར་ <strong>ཅ་ཆས་བྱིན་མིའི་བིལ་ཨང</strong> བཙུགས — འདི་གིས་ ཉོ་ཚོང་ངེས་ཅན་ཚུ་ འཚོལ་ནི་ འཇམ་ཏོང་ཏོ་བཟོཝ་ཨིནམ་དང་ GST མཐུན་སྒྲིག་གི་དོན་ལུ་ དགོས་ངེས་ཨིན།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 11 -->
+<div class="chapter-banner">ལེའུ 11 — འགྲོ་སོང་དང་ འབྱོར་ཐོ།</div>
+<div class="section" id="ch11">
+  <h2>11. འགྲོ་སོང་དང་ འབྱོར་ཐོ།</h2>
+
+  <h3>འགྲོ་སོང་གི་པེ་ནཱལ།</h3>
+  <p>ཚོང་ལཱ་གི་ འགྲོ་སོང་ག་ར་ ནཱ་ལུ་ ཐོ་བཀོད་འབད། ཁྱིམ་གླ། གློག་མེ། གླ་ཆའི་ སྔ་གོང་། སྐྱེལ་འདྲེན། ལས་ཁུངས་ཀྱི་ ཅ་ཆས་ ལ་སོགས་པ།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>+ Add Expense</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Category (Rent / Electricity / Salary / Transport / Other) གདམ་སྟེ་ དངུལ། དངུལ་སྤྲོད་ཐངས་ (Cash ཡང་ན་ Bank) དང་ འགྲེལ་བཤད་ཐུང་ཀུ་ཅིག་ བཙུགས།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Save</strong> ལུ་ཨེབ། ལག་དངུལ་ ཡང་ན་ དངུལ་ཁང་གི་ལྷག་ལུས་ དེ་ལྟར་ མར་ཕབ་ཨིན།</div></div>
+
+  <h3>བསྐྱར་ཟློག་འགྲོ་སོང་།</h3>
+  <p>དུས་ཚོད་ཐོ་ཡིག་ལྟར་ བསྐྱར་ཟློག་འབྱུང་མི་ འགྲོ་སོང་ (ཟླ་བསྟར་ཁྱིམ་གླ། གློག་མེ་དང་ ཆུའི་བིལ།) གི་དོན་ལུ་ <strong>Recurring Expenses</strong> པེ་ནཱལ་ ལག་ལེན་འཐབ།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Recurring Expenses</strong> ལུ་འགྱོ → <strong>+ New Template</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">འགྲོ་སོང་གི་མིང་། དངུལ། དབྱེ་རིམ་དང་ བསྐྱར་ཟློག་གི་དུས་ཚོད་ཐོ་ཡིག་ (ཟླ་བསྟར། བདུན་བསྟར་ ལ་སོགས་པ།) གཞི་སྒྲིག་འབད།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">དུས་ཚོད་ལྷོད་པའི་སྐབས་ Accelent གིས་ ཁྱོད་ལུ་ དྲན་སྐུལ་འབདཝ་ཨིནམ་དང་ འགྲོ་སོང་ རང་བཞིན་གྱིས་ ཐོ་བཀོད་འབད་ཚུགས།</div></div>
+
+  <h3>འབྱོར་ཐོའི་པེ་ནཱལ།</h3>
+  <p>Receipts པེ་ནཱལ་འདི་ ཐོབ་མི་དང་ སྤྲོད་མི་ དངུལ་ག་རའི་ ཐོ་དེབ་ཨིན — བསྡུ་མི་ལག་དངུལ། ཅ་ཆས་བྱིན་མི་ལུ་ སྤྲོད་མི། དངུལ་ཁང་སྤོ་སོར་དང་ གླ་ཆ་སྤྲོད་མི། འདི་ ཚོང་། ཉོ་ཚོང་དང་ འགྲོ་སོང་ལས་ རང་བཞིན་གྱིས་ བཀངམ་ཨིན། ཁྱོད་ཀྱིས་ ནཱ་ལུ་ འབྱོར་ཐོ་སོ་སོ་ཅིག་ཡང་ ཐོ་བཀོད་འབད་ཚུགས། (དཔེར་ན་ བུན་ཉོ་མཁན་ཅིག་གིས་ ཁོ་གི་ ལྷག་ལུས་ སྤྲོད་པའི་སྐབས།)</p>
+
+  <div class="tip">💡 བུན་ཉོ་མཁན་ཅིག་གིས་ ཁྱོད་ལུ་ སྤྲོད་པའི་སྐབས་ <strong>Receipts → + New Receipt</strong> ལུ་འགྱོ་སྟེ་ ཉོ་མཁན་གདམ་ཞིནམ་ལས་ ཐོབ་པའི་དངུལ་ བཙུགས། ཁོ་གི་ ལྷག་ལུས་ རང་བཞིན་གྱིས་ མར་ཕབ་ཨིན།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 12 -->
+<div class="chapter-banner">ལེའུ 12 — རྩིས་ཐོ་དང་ སྤོ་སོར།</div>
+<div class="section" id="ch12">
+  <h2>12. རྩིས་ཐོ་དང་ སྤོ་སོར།</h2>
+
+  <h3>རྩིས་ཐོའི་པེ་ནཱལ།</h3>
+  <p>ཁྱོད་ཀྱི་ དངུལ་གྱི་རྩིས་ཐོ་ག་ར་ སྟོནམ་ཨིན — ལག་དངུལ་དང་ དངུལ་ཁང་གི་རྩིས་ཐོ་རེ་རེ། རྩིས་ཐོ་རེ་རེའི་དོན་ལུ་ ཁྱོད་ཀྱིས་ མཐོང་ཚུགས།</p>
+  <ul>
+    <li>ད་ལྟོའི་ལྷག་ལུས། (རྟག་བུ་ར་ ཐད་ཀར།)</li>
+    <li>ཚེས་གྲངས་དང་ འགྲེལ་བཤད་དང་བཅས་པའི་ ཚོང་འབྲེལ་གྱི་ལོ་རྒྱུས་ཆ་ཚང་།</li>
+    <li>ཌེ་བིཊ་ (ནང་འོང་དངུལ།) དང་ ཀེ་ཌིཊ་ (ཕྱི་འགྱོ་དངུལ།) ཀེར་ཐིག</li>
+  </ul>
+
+  <h3>ཉོ་མཁན་གྱི་ བུན་གྱི་གསལ་ཐོ།</h3>
+  <p><strong>Accounts → Credit Manager → Customer Statement</strong> ལུ་འགྱོ་སྟེ་ ཉོ་མཁན་གྱི་མིང་གི་ ཆ་ཤས་ག་ཅི་རང་ ཡིག་དཔར་རྐྱབ་ (ཡིག་དཔར་རྐྱབ་པའི་སྐབས་ བསམ་འཆར་ཚུ་ མཐོངམ་ཨིན།) <strong>Show Statement</strong> ཡང་ན་ Enter ཨེབ། གསལ་ཐོ་གིས་ བུན་བསྡོམས། སྤྲོད་མི་དངུལ་དང་ ད་ལྟོ་ཡང་ སྤྲོད་དགོ་མི། བུན་བིལ་རེ་རེ། བིལ་རེ་རེ་ནང་ <strong>བུན་ལུ་ ལེན་མི་ཅ་ཆས</strong> དང་ ཐོབ་མི་ དངུལ་སྤྲོད་རེ་རེ་ སྟོནམ་ཨིན། <strong>Print</strong> གིས་ ཉོ་མཁན་གྱི་དོན་ལུ་ གསལ་ཐོ་ཅོག་འཐདཔ་ A4 གུ་ བྱིནམ་ཨིན།</p>
+
+  <h3>དངུལ་ཁང་གི་རྩིས་ཐོ་ཅིག་ ཁ་སྐོང་འབད་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Accounts</strong> ལུ་འགྱོ → Bank Accounts གི་འོག་ལུ་ <strong>➕ Add New Bank</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">དངུལ་ཁང་གི་མིང་། རྩིས་ཐོ་ཨང་དང་ འགོ་བཙུགས་ཀྱི་ལྷག་ལུས་ (ཁྱོད་ཀྱི་ འགོ་བཙུགས་ཚེས་གྲངས་ཀྱི་ དངུལ་ཁང་གསལ་ཐོ་ལས།) བཙུགས།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save ལུ་ཨེབ། དངུལ་ཁང་གི་རྩིས་ཐོ་ ད་ དངུལ་སྤྲོད་ཀྱི་ ཐོ་ཡིག་ཕབ་མི་ག་ར་ནང་ (Sales, Purchases, Expenses) མཐོངམ་ཨིན།</div></div>
+
+  <h3>སྤོ་སོར་གྱི་པེ་ནཱལ།</h3>
+  <p>ཁྱོད་རའི་ རྩིས་ཐོ་ཚུ་གི་བར་ན་ དངུལ་སྤོ་བའི་སྐབས་ Transfers པེ་ནཱལ་ ལག་ལེན་འཐབ — དཔེར་ན་ ལག་དངུལ་ ཁྱོད་ཀྱི་ དངུལ་ཁང་རྩིས་ཐོ་ནང་ བཙུགས་ནི་ ཡང་ན་ དངུལ་ཁང་རྩིས་ཐོ་གཉིས་ཀྱི་བར་ན་ སྤོ་ནི།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Transfers</strong> ལུ་འགྱོ། <strong>Inter-Accounts Transfer</strong> ནང་ <strong>Paid From</strong> (དཔེར་ན་ Cash in Hand) དང་ <strong>Received In</strong> (དཔེར་ན་ HDFC Bank) གདམ — རེ་རེའི་ ཡོད་པའི་ལྷག་ལུས་ དེའི་ཕྱོགས་ལུ་ མཐོངམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Amount དང་ Date བཙུགས་ཞིནམ་ལས་ དགོ་པ་ཅིན་ Reference དང་ Description.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Add Transfer</strong> ལུ་ཨེབ། ལག་དངུལ་ མར་ཕབ། དངུལ་ཁང་ ཡར་འཕར — ལྷག་ལུས་གཉིས་ཆ་ར་ དུས་མཐུན་བཟོཝ་ཨིན། དེ་ Recent Transfers གི་འོག་ལུ་ མཐོངམ་ཨིན།</div></div>
+  <figure class="shot"><a href="manual_images/transfers.png" target="_blank"><img src="manual_images/transfers.png" alt="Transfers" loading="lazy"></a><figcaption>Transfers — གཡོན་ཕྱོགས་ལུ་ སྤོ་སོར་འབྲི་ཤོག གཡས་ཕྱོགས་ལུ་ Transfer History Search.</figcaption></figure>
+  <p>ཚེས་གྲངས་དང་ རྩིས་ཐོ་ལྟར་ སྤོ་སོར་རྙིངམ་ཚུ་ འཚོལ་ནིའི་དོན་ལུ་ གཡས་ཕྱོགས་ཀྱི་ <strong>Transfer History Search</strong> དང་ པར་བསྐྲུན་གྱི་དོན་ལུ་ <strong>Print Report</strong> ལག་ལེན་འཐབ།</p>
+
+  <div class="warn">⚠ དངུལ་ཁང་ནང་ བཙུགས་མི་ཅིག་ ནམ་ཡང་ "ཡོང་འབབ" ཡང་ན་ "འབྱོར་ཐོ" སྦེ་ ཐོ་བཀོད་མ་འབད — རྟག་བུ་ར་ Transfers པེ་ནཱལ་ ལག་ལེན་འཐབ། ས་གནས་གཞན་ནང་ ཐོ་བཀོད་འབད་བ་ཅིན་ ཁྱོད་ཀྱི་ ཡོང་འབབ་ཀྱི་གྱངས་ཁ་ ལྷག་སྟེ་ མཐོངམ་ཨིན།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 13 -->
+<div class="chapter-banner">ལེའུ 13 — སྙན་ཞུ་དང་ བུན་གྱི་དུས་ཡུན།</div>
+<div class="section" id="ch13">
+  <h2>13. སྙན་ཞུ། གནས་སྡུད་ག་བསྡུར་དང་ བུན་གྱི་དུས་ཡུན་སྙན་ཞུ།</h2>
+
+  <h3>གནས་སྡུད་ག་བསྡུར་ (སྙན་ཞུ།) གི་པེ་ནཱལ།</h3>
+  <p>དངུལ་འབྲེལ་གྱི་ བཅུད་དོན་དང་ ག་བསྡུར་ཚུ་ བཟོཝ་ཨིན།</p>
+  <ul>
+    <li><strong>ཟླ་བསྟར་ཚོང་དང་ ཉོ་ཚོང་ ག་བསྡུར</strong> — ཟླཝ་རེ་རེའི་བསྡོམས་སྟོན་མི་ ཀེར་རིས་དང་ ཐིག་ཁྲམ།</li>
+    <li><strong>ཁེ་ཕན་ངོ་མ</strong> — ཚོང་ལས་ ཉོ་ཚོང་དང་ འགྲོ་སོང་ ཕབ་མི།</li>
+    <li><strong>ཕྱོགས་ཀྱི་གསལ་ཐོ</strong> — ཁྱོད་དང་ ཕྱོགས་ག་ཅི་རང་གི་བར་ན་ ཚོང་འབྲེལ་གྱི་ལོ་རྒྱུས་ཆ་ཚང་།</li>
+    <li><strong>རྩིས་ཐོའི་གསལ་ཐོ</strong> — ལག་དངུལ་ ཡང་ན་ དངུལ་ཁང་རྩིས་ཐོ་ངེས་ཅན་ཅིག་གི་ ཚོང་འབྲེལ་ག་ར།</li>
+  </ul>
+  <p>སྙན་ཞུ་ ཡིག་སྣོད་ཅིག་སྦེ་ སྲུང་བཞག་འབད་ནིའི་དོན་ལུ་ <strong>Export (Ctrl+E)</strong> ཨེབ་རྟགས་ ཡང་ན་ ཐད་ཀར་ པར་བསྐྲུན་འབད་ནིའི་དོན་ལུ་ <strong>Print (Ctrl+P)</strong> ལག་ལེན་འཐབ།</p>
+
+  <h3>བུན་གྱི་དུས་ཡུན་སྙན་ཞུའི་པེ་ནཱལ།</h3>
+  <p>Aging Report གིས་ ཁྱོད་ཀྱི་ ཉོ་མཁན་ཚུ་གི་ མ་སྤྲོད་པའི་བིལ་ཚུ་ ཡུན་ཚད་ག་དེ་ཅིག་ མ་སྤྲོད་པར་ཡོད་ག་དང་ ཁྱོད་ཀྱི་ ཅ་ཆས་བྱིན་མིའི་བིལ་ཚུ་ ཡུན་ཚད་ག་དེ་ཅིག་ སྤྲོད་དགོཔ་སྦེ་ཡོད་ག་ སྟོནམ་ཨིན།</p>
+  <table>
+    <tr><th>དུས་ཡུན་གྱི་སྡེ་ཚན།</th><th>དོན་དག</th></tr>
+    <tr><td>ཉིན་ 0–30</td><td>ཉེ་ཆར — བུན་གྱི་དུས་ཡུན་སྤྱིར་བཏང་།</td></tr>
+    <tr><td>ཉིན་ 31–60</td><td>རྙིངམ་ལུ་འགྱུར་དོ — རྗེས་འདེད་འབད་ནི་ འོས་འབབ།</td></tr>
+    <tr><td>ཉིན་ 61–90</td><td>དུས་ཡུན་ཡོལ་ཡོདཔ — ཕྱོགས་ལུ་ འབྲེལ་བ་འཐབ།</td></tr>
+    <tr><td>ཉིན་ 90+</td><td>དུས་ཡུན་ ལེ་ཤ་ཡོལ་ཡོདཔ — དྲག་ཤུལ་ཅན་སྦེ་ རྗེས་འདེད་འབད་ ཡང་ན་ ཕྱིར་བཏོན།</td></tr>
+  </table>
+  <p>ཉོ་མཁན་ག་ཅི་ཚུ་ལུ་ རྗེས་འདེད་ཁ་པར་དགོཔ་དང་ ཅ་ཆས་བྱིན་མིའི་བིལ་ག་ཅི་ཚུ་ མགྱོགས་དྲགས་སྦེ་ སྤྲོད་དགོཔ་ཨིན་ན་ ངོས་འཛིན་འབད་ནིའི་དོན་ལུ་ སྙན་ཞུ་འདི་ ལག་ལེན་འཐབ།</p>
+
+  <h3>Finalization པེ་ནཱལ།</h3>
+  <p>དངུལ་འབྲེལ་ལོའི་མཇུག་ལུ་ ཁྱོད་ཀྱི་ <strong>Profit &amp; Loss Statement</strong> དང་ <strong>Balance Sheet</strong> བཟོ་ནིའི་དོན་ལུ་ <strong>Finalization</strong> ལུ་འགྱོ། སྙན་ཞུ་འདི་ཚུ་ ཁྱོད་ཀྱི་ རྩིས་པ་ ཡང་ན་ རྩིས་ཞིབ་པའི་དོན་ལུ་ པར་བསྐྲུན་ ཡང་ན་ ཕྱིར་འདྲེན་འབད་ཚུགས།</p>
+  <p>Finalization གིས་ དངུལ་འབྲེལ་ལོ་ཡང་ ཁ་བསྡམས་ཨིན། ལོ་ཧེ་མམ་ཅིག་ བལྟ་ནིའི་དོན་ལུ་ སྒོ་སྒྲིག་གི་ མར་ཁར་ཡོད་པའི་ གནས་སྟངས་ཕྲ་རིང་ལས་ དངུལ་འབྲེལ་ལོ་ སོར།</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 14 -->
+<div class="chapter-banner">ལེའུ 14 — ལཱ་གཡོག་པ་དང་ གླ་ཆ།</div>
+<div class="section" id="ch14">
+  <h2>14. ལཱ་གཡོག་པ་དང་ གླ་ཆ།</h2>
+  <p>Accelent གིས་ ཁྱོད་ཀྱི་ ལཱ་གཡོག་པའི་ཐོ་ཚུ་ བཞགཔ་ཨིན། ཡོང་ཐོ། དུས་ཚོད་ཁ་སྐོང་དང་ སྔ་གོང་ལས་ ཟླཝ་རེ་རེའི་གླ་ཆ་ རྩིས་རྐྱབ་ཨིན། ལག་དངུལ་ ཡང་ན་ དངུལ་ཁང་རྩིས་ཐོ་ལས་ སྤྲོདཔ་ཨིནམ་དང་ ལཱ་གཡོག་པ་རེ་རེ་ལུ་ གླ་ཆའི་ཤོག་བྱང་ཅིག་ བྱིནམ་ཨིན — པར་བསྐྲུན་ ཡང་ན་ WhatsApp ནང་། འོག་གི་རིམ་པ་ཚུ་གིས་ ཟླཝ་གཅིག་ འགོ་ལས་ མཇུག་ཚུན་ རྗེས་འདེད་འབདཝ་ཨིན།</p>
+
+  <h3>Accelent གིས་ གླ་ཆ་ རྩིས་རྐྱབ་ཐངས།</h3>
+  <p>ལཱ་གཡོག་པ་རེ་རེ་ལུ་ <strong>གླ་ཆའི་དབྱེ་བ</strong> ཅིག་ཡོདཔ་ཨིན། ཁྱོད་ཀྱིས་ བཙུགས་མི་ <strong>Amount</strong> གི་དོན་དག་ རེ་རེ་ལུ་ མི་འདྲཝ་ཨིན།</p>
+  <table>
+    <tr><th>གླ་ཆའི་དབྱེ་བ།</th><th>Amount གི་དོན་དག</th><th>ཟླཝ་གི་གླ་ཆ།</th></tr>
+    <tr><td><strong>Fixed</strong></td><td>ཟླཝ་རེ།</td><td>ཟླ་བསྟར་གླ་ཆ ÷ ལཱ་འབད་ཉིན་ × ལཱ་འབད་མི་ཉིན།</td></tr>
+    <tr><td><strong>Daily</strong></td><td>ཉིན་རེ།</td><td>ཉིན་གླ × ལཱ་འབད་མི་ཉིན།</td></tr>
+    <tr><td><strong>Hourly</strong></td><td>ཆུ་ཚོད་རེ།</td><td>ཆུ་ཚོད་གླ་ཆ × ཉིན་རེའི་ལཱ་འབད་ཆུ་ཚོད × ལཱ་འབད་མི་ཉིན།</td></tr>
+    <tr><td><strong>Piece</strong></td><td>ཆ་ཤས་རེ། (ཡང་ན་ ཁྱོད་ཀྱི་ཚད་གཞི།)</td><td>བཟོ་མི་ཚད་གཞི × ཚད་གཞི་རེའི་གོང་ཚད།</td></tr>
+  </table>
+  <p><strong>ལཱ་འབད་མི་ཉིན</strong> = ཡོང་ཐོ − གུང་ལོ། <strong>དུས་ཚོད་ཁ་སྐོང</strong> (Fixed, Daily, Hourly) = ཆུ་ཚོད་གླ་ཆ × དུས་ཚོད་ཁ་སྐོང་གི་ཆུ་ཚོད × དུས་ཚོད་ཁ་སྐོང་གི་ལྡབ་གྲངས། (དཔེར་ན་ 1.5) <strong>གླ་ཆ་ངོ་མ</strong> = གཞི་རྩའི་གླ་ཆ + དུས་ཚོད་ཁ་སྐོང − ལོག་ལེན་མི་སྔ་གོང་། ལཱ་གཡོག་པ་ ལཱ་ཁར་ཞུགས་པའི་ཟླཝ་འདི་ ཞུགས་པའི་ཚེས་གྲངས་ལས་ རྩིསཔ་ཨིན།</p>
+
+  <h3>ལཱ་གཡོག་པ་ཅིག་ ཁ་སྐོང་འབད་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Employees</strong> ལུ་འགྱོ → <strong>➕ Add Employee</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">མིང་། གོ་གནས། <strong>མོ་བཱའིལ་ཨང</strong> (གླ་ཆའི་ཤོག་བྱང་ WhatsApp ནང་ དེ་ལུ་འགྱོཝ་ཨིན།) ཁ་བྱང་དང་ <strong>ཞུགས་པའི་ཚེས་གྲངས</strong> བཙུགས། ཚེས་གྲངས་ནང་ ཚེས་ དང་པ་ འོངམ་ཨིན། <code>01/08/2026</code> ཟེར་མི་འདི་ 2026 ཟླ་ཕྱི་ཨོ་གཱསཊ་ 1 ཨིན། ལོ་ཐོ་ལས་ཡང་ གདམ་ཚུགས། དགོ་པ་ཅིན་ ངོ་སྤྲོད་ཁུངས་སྐྱེལ་དང་ འགན་ལེན་པ་ཅིག་ ཁ་སྐོང་འབད།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Salary Type</strong> གདམ་སྟེ་ <strong>Amount</strong> བཙུགས — སྒྲོམ་གྱིས་ <em>/ month</em>, <em>/ day</em>, <em>/ hour</em> ཡང་ན་ <em>/ unit</em> སྟོནམ་ཨིནམ་ལས་ དོན་དག་ མཐོངམ་ཨིན། Piece ལཱ་གི་དོན་ལུ་ ཚད་གཞིའི་མིང་ཡང་ བཙུགས། (དཔེར་ན་ <em>pieces</em>)</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ཟླཝ་རེའི་ ལཱ་འབད་ཉིན། ཉིན་རེའི་ ལཱ་འབད་ཆུ་ཚོད་དང་ དུས་ཚོད་ཁ་སྐོང་གི་ལྡབ་གྲངས་ གཞི་སྒྲིག་འབད་དེ་ <strong>Save Employee</strong> ལུ་ཨེབ།</div></div>
+
+  <h3>གླ་ཆའི་ཤོག་ལེབ།</h3>
+  <p>ལཱ་གཡོག་པ་ཅིག་གདམ་སྟེ་ <strong>📊 Salary Spreadsheet</strong> ལུ་ཨེབ། ལཱ་གཡོག་པ་ ཞུགས་ཞིནམ་ལས་ <strong>མཇུག་བསྡུ་མི་ཟླཝ</strong> རེ་རེ་ ཐོ་བཀོད་འབདཝ་ཨིན — ད་ལྟོའི་ཟླཝ་ མཇུག་བསྡུ་ཞིནམ་ལས་ མཐོངམ་ཨིན། ཟླཝ་རེ་རེའི་དོན་ལུ་ <strong>Attendance</strong>, <strong>Leaves</strong>, <strong>OT Hours</strong>, <strong>Advances</strong> དང་ ཆ་ཤས་ལཱ་གཡོག་པའི་དོན་ལུ་ <strong>Units</strong> སོར་ཚུགས། ཡིག་དཔར་རྐྱབ་པའི་སྐབས་ Base Pay, OT Pay, Gross དང་ Net Payable དུས་མཐུན་བཟོཝ་ཨིན། <strong>Status</strong> ཀེར་ཐིག་གིས་ ⏳ Pending, 📝 Saved, not paid, ཡང་ན་ ✅ Paid སྟོནམ་ཨིན།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>💾 Save (not paid yet)</strong> གིས་ ག་ཅི་ཡང་ མ་སྤྲོད་པར་ ཁྱོད་ཀྱིས་ བཙུགས་མི་ བཞགཔ་ཨིན། ཟླཝ་ནང་ ལག་ལེན་འཐབ། ཤུལ་མམ་ ཤོག་ལེབ་ཀྱིས་ ཁྱོད་ཀྱི་ཐོ་བཀོད་ཚུ་ སྟོནམ་ཨིན། སྲུང་བཞག་མ་འབད་བའི་ བསྒྱུར་བཅོས་དང་བཅས་ ཤོག་ལེབ་ ཁ་བསྡམས་པ་ཅིན་ Accelent གིས་ དང་པ་ འདྲི་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>མ་སྤྲོད་པའི་ཧེ་མ་ ཞིབ་དཔྱད་འབད།</strong> ཟླཝ་གདམ་སྟེ་ <strong>🖨 Payslip</strong> ལུ་ཨེབ། ད་ཚུན་ མ་སྤྲོད་པའི་ ཟླཝ་ཅིག་གི་དོན་ལུ་ ལཱ་གཡོག་པ་དང་ གྱངས་ཁ་ཚུ་ མཐུན་སྒྲིག་འབད་ནིའི་དོན་ལུ་ ཐལ་མདོག་གི་ <strong>DRAFT</strong> གླ་ཆའི་ཤོག་བྱང་ (<em>Not paid yet</em> རྟགས་དང་ མཚན་རྟགས་ ཡང་ན་ ཐམ་ག་མེད་པར།) ཐོབ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>💰 Pay Salary</strong> གིས་ ད་ཚུན་ མ་སྤྲོད་པའི་ ཟླཝ་རེ་རེ་ སྤྲོདཔ་ཨིན། ལག་དངུལ་ ཡང་ན་ དངུལ་ཁང་རྩིས་ཐོ་གདམ། ཟླཝ་རེ་རེ་ རྩིས་ཐོ་ནང་ ཐོ་བཀོད་འབད་དེ་ ✅ Paid རྟགས་བཀལཝ་ཨིན། གླ་ཆ་མེད་པའི་ ཟླཝ་ཅིག་ (དཔེར་ན་ ཚད་གཞི་མ་བཙུགས་པའི་ ཆ་ཤས་ལཱ།) ཁྱོད་ཀྱིས་ སླབ་པ་ཅིན་རྐྱངམ་ཅིག་ སྤྲོདཔ་ཨིན། མེན་པ་ཅིན་ pending སྦེ་ ལུསཔ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">སྤྲོད་ཚར་བའི་ཤུལ་ལས་ ཐད་ཀར་ Accelent གིས་ ཟླཝ་མཇུག་མའི་ གླ་ཆའི་ཤོག་བྱང་ བྱིནམ་ཨིན། <strong>📄 Send on WhatsApp</strong>, <strong>🖨 View / Print</strong> ཡང་ན་ <strong>Later</strong>.</div></div>
+
+  <h3>གླ་ཆའི་ཤོག་བྱང་།</h3>
+  <p>གླ་ཆའི་ཤོག་བྱང་ཅིག་གིས་ ཁྱོད་ཀྱི་ ཀམ་པ་ནིའི་མགོ་མིང་དང་ ལས་རྟགས། ལཱ་གཡོག་པའི་ཁ་གསལ། ལཱ་འབད་མི་ཉིན། གུང་ལོ་དང་ དུས་ཚོད་ཁ་སྐོང་། སྤྲོད་པའི་ཚེས་གྲངས་དང་ སྤྲོད་མི་རྩིས་ཐོ། ཡོང་འབབ་དང་ ཕབ་ཆ། <strong>ཡི་གེ་ཐོག་ལུ་ གླ་ཆ་ངོ་མ</strong> དང་ ཁྱོད་ཀྱི་ མཚན་རྟགས་དང་ ཐམ་ག་ སྟོནམ་ཨིན། (Settings → 🏢 Company ནང་ <em>Signature &amp; Stamp</em> ལུ་བལྟ།)</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">གླ་ཆའི་ཤོག་ལེབ་ནང་ སྤྲོད་ཚར་བའི་ཟླཝ་ཅིག་ གདམ་སྟེ་ བལྟ་ནི། པར་བསྐྲུན་ ཡང་ན་ PDF སྦེ་ སྲུང་བཞག་འབད་ནིའི་དོན་ལུ་ <strong>🖨 Payslip</strong>, ཡང་ན་ <strong>📄 Send Payslip on WhatsApp</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">WhatsApp གིས་ བརྡ་འཕྲིན་ཐུང་ཀུ་དང་ འདྲ་བཤུས་རྐྱབ་ཡོད་པའི་ གླ་ཆའི་ཤོག་བྱང་ PDF དང་གཅིག་ཁར་ ལཱ་གཡོག་པའི་གླེང་མོལ་ ཁ་ཕྱེཝ་ཨིན། མཉམ་སྦྲགས་འབད་ནིའི་དོན་ལུ་ <strong>Ctrl+V</strong> ཨེབ་ཞིནམ་ལས་ <strong>Send</strong> (བིལ་གྱི་དོན་ལུ་བཟུམ — <em>WhatsApp ནང་ བིལ་གཏང་ནི།</em> ལུ་བལྟ།)</div></div>
+  <div class="tip">💡 ལཱ་གཡོག་པ་ག་རའི་ སྤྲོད་ཚར་བའི་ཟླཝ་ག་ར་ <strong>Payroll History</strong> ཤོག་བྱང་ནང་ཡང་ཡོདཔ་ཨིན། ཟླཝ་དང་ ལོ་གདམ་སྟེ་ གྲལ་ཐིག་ཅིག་གདམ་ཞིནམ་ལས་ <strong>🖨 Payslip</strong> དང་ <strong>📄 Send Payslip on WhatsApp</strong> ཨེབ་རྟགས་ཅོག་འཐདཔ་ ལག་ལེན་འཐབ། (གྲལ་ཐིག་ཅིག་ལུ་ ལན་གཉིས་ཨེབ་པ་ཅིན་ཡང་ གླ་ཆའི་ཤོག་བྱང་ ཁ་ཕྱེཝ་ཨིན།)</div>
+
+  <h3>སྔ་གོང་།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ལཱ་གཡོག་པ་གདམ → <strong>💰 Add Advance</strong> (ཡང་ན་ ལཱ་གཡོག་པ་ཁ་ཕྱེ་སྟེ་ <strong>Advances</strong> ཤོག་བྱང་ ལག་ལེན་འཐབ།) ཚེས་གྲངས། དངུལ། རྒྱུ་མཚན་དང་ སྤྲོད་མི་ ལག་དངུལ་ ཡང་ན་ དངུལ་ཁང་རྩིས་ཐོ་ བཙུགས། ཕྱི་ཁར་ འགྱོ་མི་དངུལ་ <em>Employee Advance</em> འགྲོ་སོང་ཅིག་སྦེ་ ཐོ་བཀོད་འབདཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Normal</strong> སྔ་གོང་ཅིག་ ཟླཝ་གཅིག་གི་གླ་ཆའི་ 40% ཚུན་ ཨིན་ཆོག་ནི་དང་ ལཱ་གཡོག་པ་གིས་ ཟླཝ་འདི་ ད་ཚུན་ འཐོབ་མི་ལས་ མི་ལྷག དེ་ལས་ཆེ་བ་ཅིག་ <strong>Forced</strong> སྔ་གོང་ཨིནམ་དང་ ཆོག་ཐམ་བྱིན་མི་ཅིག་གི་མིང་དགོ། ཆ་ཤས་ལཱ་གཡོག་པའི་དོན་ལུ་ ཟླཝ་གི་གླ་ཆ་འདི་ ཁོང་གི་ སྤྲོད་ཚར་བའི་ ཟླཝ་མཇུག་མ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ལྷག་ལུས་སྔ་གོང་ཚུ་ མ་སྤྲོད་པའི་ ཟླཝ་ཤུལ་མམ་གྱི་ <strong>Advances</strong> ཀེར་ཐིག་ནང་ མཐོང་ཞིནམ་ལས་ གླ་ཆ་དེ་ལས་ ཕབ་ཨིན། ཆ་ཤས་རྐྱངམ་ཅིག་ ལོག་ལེན་ནིའི་དོན་ལུ་ ནཱ་ལུ་ དངུལ་ཆུང་ཀུ་ ཡིག་དཔར་རྐྱབ། ལྷག་ལུས་ ཟླཝ་ཤུལ་མམ་གྱི་དོན་ལུ་ ལུསཔ་ཨིན།</div></div>
+  <div class="tip">💡 ལཱ་གཡོག་པའི་ <strong>Advances</strong> ཤོག་བྱང་ནང་ <strong>Extend</strong> གིས་ སྔ་གོང་ཅིག་གི་དངུལ་ སོརཝ་ཨིན — Accelent གིས་ ཁྱད་པར་རྐྱངམ་ཅིག་ སྤྲོད་མི་ ཡང་ན་ ལོག་སྤྲོད་མི་སྦེ་ ཐོ་བཀོད་འབདཝ་ཨིན། <strong>Close / Settle</strong> གིས་ སྔ་གོང་ཅིག་ མཇུག་བསྡུ་ཡོདཔ་སྦེ་ རྟགས་བཀལཝ་ཨིན། ལཱ་གཡོག་པ་གིས་ ལག་དངུལ་ལུ་ ལོག་སྤྲོད་ཡོད་པ་ཅིན་ དངུལ་དེ་ <strong>Receipts</strong> གི་འོག་ལུ་ ཐོ་བཀོད་འབད།</div>
+
+  <h3>ནོར་ཏེ་སྤྲོད་མི་ ནོར་བཅོས་འབད་ནི།</h3>
+  <p>སྤྲོད་ཚར་བའི་ཟླཝ་ཅིག་ འཛོལ་ཏེ་ མ་སོར་ནིའི་དོན་ལུ་ ལྡེ་མིག་རྐྱབ་ཨིན། གྱངས་ཁ་ནོར་བ་ཅིག་ཐོག་ སྤྲོད་ཡོད་པ་ཅིན། གླ་ཆའི་ཤོག་ལེབ་ནང་ ཟླཝ་གདམ → <strong>↩ Undo Payment</strong> → འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་གིས་ ངེས་གཏན་བཟོ། དངུལ་སྤྲོད་དང་ དེའི་ལག་དངུལ་/དངུལ་ཁང་གི་ཐོ་བཀོད་ བཏོནམ་ཨིན། དེ་གིས་ ལོག་ལེན་མི་ སྔ་གོང་ཚུ་ ལོག་སྟེ་ ལྷག་ལུས་སྦེ་ ལུསཔ་ཨིནམ་དང་ ཟླཝ་འདི་ གྱངས་ཁ་ཅོག་འཐདཔ་དང་བཅས་ <em>Saved, not paid</em> ལུ་ ལོག་འགྱོཝ་ཨིན — དེ་ཚུ་ ནོར་བཅོས་འབད་དེ་ <strong>💰 Pay Salary</strong> ལུ་ཨེབ། ཕྱིར་སློག་འདི་ <strong>Deletion Watcher</strong> ནང་ ཐོ་བཀོད་འབདཝ་ཨིན། ཁ་བསྡམས་ཡོད་པའི་ དངུལ་འབྲེལ་ལོའི་ ཟླཝ་ཅིག་ ཕྱིར་སློག་མི་ཚུགས།</p>
+
+  <h3>ག་གིས་ ག་ཅི་འབད་ཚུགས་ག</h3>
+  <p>འཛིན་སྐྱོང་པ་གིས་ གླ་ཆ་མཐོངམ་ཨིནམ་དང་ སྤྲོད་ནི། དངུལ་སྤྲོད་ཕྱིར་སློག་དང་ གླ་ཆའི་ཤོག་བྱང་ གཏང་ཚུགས། ལཱ་གཡོག་པའི་རྩིས་ཐོ་ཅིག་གིས་ དེའི་ཚབ་ལུ་ <strong>📋 Attendance Sheet</strong> མཐོངམ་ཨིན — ཡོང་ཐོ། གུང་ལོ། དུས་ཚོད་ཁ་སྐོང་དང་ ཚད་གཞི་རྐྱངམ་ཅིག དངུལ་གྱི་གྱངས་ཁ་ མེད — འཛིན་སྐྱོང་པ་གིས་ སྤྲོད་ནིའི་དོན་ལུ་ <strong>💾 Save (not paid yet)</strong> གིས་ ཐོ་བཀོད་ཚུ་ སྲུང་བཞག་འབད་ཚུགས།</p>
+
+  <h3>ག་ཅི་ཅིག་ ལཱ་ལས་ ཕྱིར་འགྱོ་བའི་སྐབས།</h3>
+  <p>ལཱ་གཡོག་པ་གདམ → <strong>🚫 Terminate</strong>. ཁོ་ ལཱ་འབད་མི་ཐོ་ཡིག་ལས་ ཕྱིར་འགྱོཝ་ཨིན་རུང་ གླ་ཆའི་ལོ་རྒྱུས་ ལུསཔ་ཨིན། <strong>Show Terminated</strong> གིས་ ཁོང་ ལོག་སྟེ་ ཐོ་བཀོད་འབདཝ་ཨིན།</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 15 -->
+<div class="chapter-banner">ལེའུ 15 — GST སྙན་ཞུ་དང་ གློག་རིག་བིལ།</div>
+<div class="section" id="ch15">
+  <h2>15. GST སྙན་ཞུ་དང་ གློག་རིག་བིལ། (IRN)</h2>
+
+  <h3>GST སྙན་ཞུའི་པེ་ནཱལ།</h3>
+  <p>པེ་ནཱལ་འདི་གིས་ ཁྱོད་ཀྱི་ ཚོང་དང་ ཉོ་ཚོང་གི་གནས་སྡུད་ GST ཁ་གསལ་དང་བཅས་ བཅུད་དོན་བཟོ་སྟེ་ ཟླ་བསྟར་ GST སྙན་ཞུ་ (GSTR-1, GSTR-3B) གྲ་སྒྲིག་འབད་ནི་ལུ་ རོགས་རམ་འབདཝ་ཨིན།</p>
+  <ul>
+    <li><strong>GSTR-1</strong> — ཕྱི་འགྱོ་མཁོ་སྤྲོད་ (ཁྱོད་ཀྱི་ཚོང་།) — ཟླཝ་ཤུལ་མམ་གྱི་ ཚེས་ 11 ཧེ་མ་ ཕུལ་དགོ།</li>
+    <li><strong>GSTR-3B</strong> — སྤྲོད་དགོ་པའི་ཁྲལ་དང་བཅས་ ཚོང་དང་ ཉོ་ཚོང་གི་ བཅུད་དོན་སྙན་ཞུ — ཚེས་ 20 ཧེ་མ་ ཕུལ་དགོ།</li>
+    <li><strong>GSTR-2B མཐུན་སྒྲིག</strong> — ཁྱོད་ཀྱི་ ཉོ་ནིའི་བིལ་ཚུ་ ཁྱོད་ཀྱི་ ཅ་ཆས་བྱིན་མིའི་ GSTR-2B དང་ ག་བསྡུར་འབདཝ་ཨིན། དེ་འབདཝ་ལས་ ཁྱོད་ཀྱིས་ ཁོང་གིས་ སྙན་ཞུ་འབད་མི་ ནང་འབབ་ཁྲལ་གྱི་ ཀེ་ཌིཊ་རྐྱངམ་ཅིག་ ཞུཝ་ཨིན།</li>
+  </ul>
+  <figure class="shot"><a href="manual_images/gst-dashboard.png" target="_blank"><img src="manual_images/gst-dashboard.png" alt="GST Management" loading="lazy"></a><figcaption>GST Management — གུ་ཏོག་ལུ་ དུས་ཡུན་འདིའི་ ཁྲལ་གྱི་འགན་དང་ ནང་འབབ་ཁྲལ་གྱི་ ཀེ་ཌིཊ། དེ་ལས་ ཐོ་དེབ། སྙན་ཞུ། GSTR-2B མཐུན་སྒྲིག E-Way Bill དང་ གཞན་ཚུ་གི་ ཤོག་བྱང་།</figcaption></figure>
+  <p>Accelent གིས་ ཁྱོད་ཀྱི་ མཛོད་ཀྱི་ཅ་ཆས་ལུ་ བཀོད་ཡོད་པའི་ HSN ཨང་རྟགས་ལས་ CGST, SGST, དང་ IGST རྩིས་རྐྱབ་ཨིན། Inventory པེ་ནཱལ་ནང་ ཅ་ཆས་ག་ར་ལུ་ HSN ཨང་རྟགས་དང་ GST ཚད་ ངོ་མ་ བཀོད་ཡོདཔ་ ངེས་གཏན་བཟོ།</p>
+  <ul>
+    <li><strong>ཁ་པར་གྱི་ཐོ་བཀོད་ཚུདཔ་ཨིན།</strong> ཁ་པར་ལས་འབད་མི་ ཚོང་དང་ ཉོ་ཚོང་ ཌེཀསི་ཊོཔ་ཐོ་བཀོད་བཟུམ་སྦེ་ ཕྱི་འབབ་ཁྲལ། ནང་འབབ་ཁྲལ་གྱི་ ཀེ་ཌིཊ་དང་ GST བཅུད་དོན་ནང་ རྩིསཔ་ཨིན། ཁ་པར་གྱི་ཐོ་བཀོད་ཚུ་ ཁྱོད་རའི་ མངའ་སྡེའི་ནང་ (CGST + SGST) སྦེ་ བརྩི་ཨིན།</li>
+    <li><strong>HSN ཨང་རྟགས།</strong> GSTR-1 HSN བཅུད་དོན་གྱིས་ ཚོང་ ཅ་ཆས་རེ་རེའི་ HSN ཨང་རྟགས་ངོ་མ་ལྟར་ སྡེ་ཚན་བཟོཝ་ཨིན། GSTR-1 ཕྱིར་འདྲེན་མ་འབད་བའི་ཧེ་མ་ Accelent གིས་ HSN ཨང་རྟགས་མེད་པའི་ བཙོང་ཚར་བའི་ཅ་ཆས་ཚུ་ ཐོ་བཀོད་འབདཝ་ཨིན — དང་པ་ Inventory ནང་ ཁ་སྐོང་འབད་དེ་ ལོག་སྟེ་ ཕྱིར་འདྲེན་འབད།</li>
+    <li><strong>བཏོན་གཏང་ ཡང་ན་ སོར་མི་བིལ།</strong> བིལ་ཅིག་ བཏོན་གཏང་བ་ཅིན་ དེའི་ཁྲལ་ GST Returns ལས་ བཏོནམ་ཨིནམ་དང་ ཚོང་ཅིག་ སོར་བ་ཅིན་ ཁྲལ་གྱི་ཐོ་བཀོད་ གཉིས་པ་ཅིག་ ཁ་སྐོང་མ་འབད་བར་ དེའི་ཁྲལ་གྱི་ཐོ་བཀོད་ ཚབ་བཙུགསཔ་ཨིན།</li>
+  </ul>
+
+  <h3>གློག་རིག་བིལ་ / IRN པེ་ནཱལ།</h3>
+  <p>གཞུང་གི་ ཚད་གཞི་ལས་ལྷག་པའི་ ལོ་བསྟར་ཚོང་འབབ་ཡོད་པའི་ ཚོང་ལཱ་ཚུ་གིས་ NIC e-Invoice དྲ་སྒོ་བརྒྱུད་དེ་ B2B བིལ་རེ་རེའི་དོན་ལུ་ <strong>IRN (Invoice Reference Number)</strong> ཅིག་ བཟོ་དགོ།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>E-Invoice</strong> པེ་ནཱལ་ལུ་འགྱོ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཐོ་ཡིག་ལས་ བིལ་ཅིག་གདམ་སྟེ་ <strong>Generate IRN</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Accelent གིས་ NIC དང་མཐུན་པའི་ JSON ཡིག་སྣོད་ བཟོཝ་ཨིན། IRN དང་ QR ཨང་རྟགས་ ཐོབ་ནིའི་དོན་ལུ་ དེ་ e-Invoice དྲ་སྒོ་ལུ་ ཕུལ།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">IRN བིལ་དང་གཅིག་ཁར་ སྲུང་བཞག་འབད་དེ་ བིལ་གྱི་འདྲ་བཤུས་གུ་ པར་བསྐྲུན་འབདཝ་ཨིན།</div></div>
+
+  <div class="warn">⚠ ཁྱོད་ལུ་ གློག་རིག་བིལ་ འཇུག་པའི་ ཚད་གཞི་དང་ དུས་ཚོད་ ངེས་གཏན་བཟོ་ནིའི་དོན་ལུ་ ཁྱོད་ཀྱི་ CA ཡང་ན་ ཁྲལ་གྱི་ བསླབ་སྟོན་པ་ལུ་ གྲོས་བསྟུན་འབད། སྒྲིག་གཞི་ཚུ་ དུས་དང་དུས་ སོརཝ་ཨིན།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 16 -->
+<div class="chapter-banner">ལེའུ 16 — སྒྲིག་སྟངས་དང་ འཛིན་སྐྱོང་།</div>
+<div class="section" id="ch16">
+  <h2>16. སྒྲིག་སྟངས་དང་ འཛིན་སྐྱོང་།</h2>
+
+  <p>Settings པེ་ནཱལ་ནང་ ཤོག་བྱང་ དྲུག་ཡོདཔ་ཨིན། རེ་རེ་གིས་ འབད་མི་ འདི་ཨིན།</p>
+
+  <table>
+    <tr><th>ཤོག་བྱང་།</th><th>ཁྱོད་ཀྱིས་ འབད་ཚུགས་མི།</th></tr>
+    <tr><td>🔍 Deletion Watcher</td><td>ཨེབ་ནང་ བཏོན་གཏང་མི་ ཐོ་རེ་རེའི་ རྩིས་ཞིབ་ཀྱི་ལམ། ཁ་གསལ་བལྟ་ནི། བཏོན་གཏང་མི་ཐོ་ཚུ་ སླར་གསོ་འབད་ནི་ ཡང་ན་ ཐོ་བཀོད་ཚུ་ ཡུན་བརྟན་སྦེ་ བཏོན་ནི་ འབད་ཚུགས། <strong>ལྡེ་མིག་རྐྱབ་ཡོདཔ — འཛུལ་ནིའི་དོན་ལུ་ འཛིན་སྐྱོང་པའི་ PIN དགོ།</strong></td></tr>
+    <tr><td>⚙️ App Settings</td><td>ཚོང་འབྲེལ་ལས་ ལྷག་ལུས་ག་ར་ ལོག་རྩིས་རྐྱབ་ནི། གནས་སྡུད་མཛོད་ ཉེན་སྲུང་འདྲ་བཤུས་རྐྱབ་ནི། ཉེན་སྲུང་འདྲ་བཤུས་ལས་ སླར་གསོ་འབད་ནི། གསང་སྡོམ་ Cloud Backup གྲ་སྒྲིག་འབད་ནི། གནས་སྡུད་མཛོད་ སླར་སྒྲིག་འབད་ནི་ (ཉེན་ཁ!) སྐད་ཡིག་དང་ བཀོད་རིས་ སོར་ནི།</td></tr>
+    <tr><td>🏢 Company</td><td>ཀམ་པ་ནིའི་མིང་། ཁ་བྱང་། འབྲེལ་བ། GST/TIN, ལས་རྟགས་དང་ བིལ་དང་ སྙན་ཞུ་ནང་ ལག་ལེན་འཐབ་མི་ མཚན་རྟགས་དང་ ཚོང་ཁང་གི་ཐམ་ག་ སོར་ནི། <strong>Business Type</strong> གིས་ ཐོ་ཡིག་ནང་གི་ གསལ་གཞི་ཚུ་ གདམ་ཨིན། <em>Restaurant</em> ཅིག་ལུ་ Sales, Returns, Aging Report དང་ E-Invoice གི་ཚབ་ལུ་ 🍽 Restaurant གསལ་གཞི་ཐོབ་ཨིན། (<a href="#ch9b">ལེའུ 9b</a> ལུ་བལྟ།) <em>Hotel, lodge or guest house</em> ཅིག་ལུ་ 🛏 Rooms ཡང་ཐོབ་ཨིན། (<a href="#ch9c">ལེའུ 9c</a> ལུ་བལྟ།) བསྒྱུར་བཅོས་ Accelent ལོག་ཁ་ཕྱེ་ཞིནམ་ལས་ མཐོངམ་ཨིན།</td></tr>
+    <tr><td>👥 Users</td><td>ལཱ་གཡོག་པའི་རྩིས་ཐོ་བཟོ་ནི། རེ་རེ་གིས་ ག་ཅི་མཐོང་ཚུགས་ག་དང་ འབད་ཚུགས་ག་ གདམ་ནི་ (🔐 Permissions) དང་ ཁ་པར་ཨེབ་ ག་གིས་ ལག་ལེན་འཐབ་ཚུགས་ག་ གྲོས་ཐག་གཅད་ནི། འཛིན་སྐྱོང་པའི་རྩིས་ཐོ་འདི་ གཙོ་བོ་ཨིན — དེའི་ཆོག་ཡིག་ ཉེན་སྲུང་ཅན་སྦེ་བཞག</td></tr>
+    <tr><td>🔑 License</td><td>ཁྱོད་ཀྱི་ ཞུགས་ཐོ་ ཤུགས་ལྡན་བཟོ་ནི་ ཡང་ན་ གསར་བཟོ་འབད་ནི། ཡང་ན་ བརྟག་ཞིབ་ཀྱི་གནས་སྟངས་ ཞིབ་དཔྱད་འབད་ནི།</td></tr>
+    <tr><td>📊 Balances</td><td>ལག་དངུལ། དངུལ་ཁང་རྩིས་ཐོ། ཕྱོགས། ཉོ་མཁན་དང་ ལཱ་གཡོག་པའི་ འགོ་བཙུགས་ཀྱི་ལྷག་ལུས་ སོར་ནི།</td></tr>
+  </table>
+
+  <h3>🔒 Deletion Watcher ག་ཅི་སྦེ་ ལྡེ་མིག་རྐྱབ་ཡོདཔ་ཨིན་ན?</h3>
+  <p>Deletion Watcher ཤོག་བྱང་འདི་ རྒྱུ་མཚན་གལ་ཅན་ཅིག་ལུ་བརྟེན་ཏེ་ <strong>PIN / འཛིན་སྐྱོང་པའི་ བདེན་དཔྱད</strong> གིས་ ཉེན་སྲུང་འབད་ཡོདཔ་ཨིན། དེ་ནང་ <strong>བཏོན་གཏང་མི་ཐོ་ག་ཅི་རང་ སླར་གསོ་འབད་ནིའི</strong> ནུས་ཤུགས་ཡོདཔ་ཨིན — བིལ། ཉོ་ཚོང་། འགྲོ་སོང་། མཛོད་ཀྱི་ཅ་ཆས་ ལ་སོགས་པ།</p>
+  <p>འདི་ ལཱ་གཡོག་པ་ག་ར་ལུ་ ཁ་ཕྱེ་སྟེ་ཡོད་པ་ཅིན་ བཀོལ་སྤྱོད་པ་ག་ཅི་རང་གིས།</p>
+  <ul>
+    <li>བཏོན་གཏང་མི་བིལ་ཅིག་ སླར་གསོ་འབད་དེ་ བཏོན་ཡོདཔ་ སྦ་ཚུགས།</li>
+    <li>རྩིས་ཞིབ་ཀྱི་ལམ་ཆ་ཚང་ བལྟ་སྟེ་ ཁོ་ ལྟ་རྟོག་འབད་དོ་ཡོདཔ་ ཤེས་ཚུགས།</li>
+    <li>ཐོ་བཀོད་ཚུ་ ཡུན་བརྟན་སྦེ་ བཏོན་གཏང་སྟེ་ ལོག་སྤྱོད་ཀྱི་ སྒྲུབ་བྱེད་ མེད་པར་བཟོ་ཚུགས།</li>
+  </ul>
+  <p>ལྡེ་མིག་གིས་ <strong>ཚོང་ལཱ་གི་ བདག་པོ་ ཡང་ན་ འཛིན་སྐྱོང་པ་རྐྱངམ་ཅིག</strong> ས་ཁོངས་ཚོར་ཅན་འདི་ནང་ འཛུལ་ཚུགསཔ་ ངེས་གཏན་བཟོཝ་ཨིན། བཀོལ་སྤྱོད་པ་སྦེ་ ནང་བསྐྱོད་འབད་མི་ ལཱ་གཡོག་པ་ཚུ་གིས་ ཤོག་བྱང་འདི་ ནམ་ཡང་ མི་མཐོང་།</p>
+
+  <h4>Deletion Watcher ཁ་ཕྱེ་ཐངས།</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🔍 Deletion Watcher</strong> ལུ་འགྱོ། 🔒 ལྡེ་མིག་གི་བརྡ་རྟགས་ཅིག་ མཐོངམ་ཨིན — ཐིག་ཁྲམ་དང་ ཨེབ་རྟགས་ཚུ་ ལཱ་མི་འབད།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Authenticate</strong> ཨེབ་རྟགས་ལུ་ཨེབ་སྟེ་ ཁྱོད་ཀྱི་ འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་ བཙུགས།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">བརྡ་རྟགས་ 🔓 Active ལུ་ འགྱུར་ཏེ་ རྩིས་ཞིབ་ཀྱི་ལམ་ཆ་ཚང་ མཐོངམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Settings ཁ་བསྡམས་ ཡང་ན་ པེ་ནཱལ་སོར་བའི་སྐབས་ པེ་ནཱལ་ རང་བཞིན་གྱིས་ ལོག་སྟེ་ ལྡེ་མིག་རྐྱབ་ཨིན — ཁྱོད་ ཕར་འགྱོ་རུང་ ཉེན་སྲུང་ཅན་སྦེ་བཞགཔ་ཨིན།</div></div>
+  <p>གྲལ་ཐིག་རེ་རེ་ནང་ ཨེབ་རྟགས་ བཞི་ཡོདཔ་ཨིན། <strong>V</strong> ཁ་གསལ་བལྟ། <strong>M</strong> བསྐྱར་ཞིབ་འབད་ཚར་ཡོདཔ་སྦེ་ རྟགས་བཀལ། <strong>R</strong> སླར་གསོ། <strong>D</strong> ཐོ་བཀོད་བཏོན་གཏང་། གྲལ་ཐིག་ལེ་ཤ་ ཐེངས་གཅིག་ལུ་ ལཱ་འབད་ནིའི་དོན་ལུ་ དེ་ཚུ་གདམ་ (ཨེབ། Shift+ཨེབ། Ctrl+ཨེབ་ ཡང་ན་ Ctrl+A) གཡས་ཨེབ་སྟེ་ <strong>Restore selected</strong>, <strong>Mark selected as reviewed</strong> ཡང་ན་ <strong>Delete selected entries permanently</strong> གདམ།</p>
+
+  <div class="warn">⚠ <strong>ཁྱོད་ཀྱི་ འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་ ནམ་ཡང་ ལཱ་གཡོག་པ་དང་ མ་བརྗེ་སོར་འབད།</strong> Deletion Watcher འདི་ ཁྱོད་ཀྱི་ སླར་གསོ་དང་ རྩིས་ཞིབ་ཀྱི་ ལག་ཆས་ ནུས་ཤུགས་ཅན་ཤོས་ཨིན — དེ་ནང་ ཚོང་ལཱ་གི་ བདག་པོ་རྐྱངམ་ཅིག་ འཛུལ་དགོ།</div>
+
+  <h3>ལྷག་ལུས་ ལོག་རྩིས་རྐྱབ་ནི།</h3>
+  <p>ལྷག་ལུས་ཅིག་ ནོར་སྟེ་ མཐོང་པ་ཅིན་ <strong>Settings → App Settings → 🔄 Recalculate All Balances</strong> ལུ་འགྱོ། འདི་གིས་ ཚོང་འབྲེལ་གྱི་ ལོ་རྒྱུས་ཆ་ཚང་ལས་ རྩིས་ཐོ་རེ་རེའི་ལྷག་ལུས་ ལོག་རྩིས་རྐྱབ་སྟེ་ ཁྱད་པར་ག་ཅི་རང་ ནོར་བཅོས་འབདཝ་ཨིན།</p>
+
+  <h3>ལག་ལེན་པའི་འཛིན་སྐྱོང་།</h3>
+  <p>ཁྱོད་ཀྱིས་ ལཱ་གཡོག་པ་ (དངུལ་བསྡུ་མི། གནས་སྡུད་བཙུགས་མི། མཛོད་ཁང་འགན་འཛིན།) ཚུ་གི་དོན་ལུ་ ལག་ལེན་པའི་རྩིས་ཐོ་ སོ་སོ་ བཟོ་ཚུགས། ལཱ་གཡོག་པ་རེ་རེ་ རང་སོའི་ཆོག་ཡིག་གིས་ ནང་བསྐྱོད་འབདཝ་ཨིན། འཛིན་སྐྱོང་པའི་རྩིས་ཐོ་ལུ་ རྟག་བུ་ར་ ག་ར་ལུ་ འཛུལ་སྤྱོད་ཆ་ཚང་ཡོདཔ་ཨིན།</p>
+
+  <h3>🔐 ལཱ་གཡོག་པའི་གནང་བ — ལཱ་གཡོག་པ་རེ་རེ་གིས་ མཐོང་ཚུགས་མི་དང་ འབད་ཚུགས་མི།</h3>
+  <p>ལཱ་གཡོག་པའི་རྩིས་ཐོ་རེ་རེའི་དོན་ལུ་ ཁོང་གིས་ ག་ཅི་མཐོང་ཚུགས་ག་དང་ འབད་ཚུགས་ག་ ཁྱོད་ཀྱིས་ ཅོག་འཐདཔ་སྦེ་ གཏན་འཁེལ་འབདཝ་ཨིན། གནང་བ་མེད་པའི་གསལ་གཞི་ཚུ་ ཁོང་གི་ཐོ་ཡིག་ལས་ ཡལ་འགྱོཝ་ཨིནམ་དང་ ཁ་པར་ཨེབ་གུ་ཡང་ སྒྲིག་གཞི་ཅོག་འཐདཔ་ཚུ་ འཇུགཔ་ཨིན།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 👥 Users</strong> ལུ་འགྱོ་སྟེ་ འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་གིས་ Settings ཁ་ཕྱེ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ལཱ་གཡོག་པ་ཅིག་གི་ཕྱོགས་ལུ་ <strong>🔐</strong> ཨེབ་རྟགས་ལུ་ཨེབ། (དེ་གིས་ ཁོང་གི་ ད་ལྟོའི་ དཔེ་ཚད་སྟོནམ་ཨིན། དཔེར་ན་ <em>🔐 Billing Staff</em>)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">འགོ་བཙུགས་ནིའི་དོན་ལུ་ <strong>དཔེ་ཚད</strong> ཅིག་གདམ་སྟེ་ དེ་ལས་ གནང་བ་ 12 ལས་ ག་ཅི་རང་ལུ་ རྟགས་བཀལ་ ཡང་ན་ རྟགས་བཏོན། <strong>Save</strong> ལུ་ཨེབ།</div></div>
+  <figure class="shot"><a href="manual_images/staff-permissions.png" target="_blank"><img src="manual_images/staff-permissions.png" alt="Staff Permissions window" loading="lazy" style="max-width:420px;width:100%"></a><figcaption>Permissions སྒོ་སྒྲིག — གུ་ཏོག་ལུ་ འགོ་བཙུགས་ཀྱི་དཔེ་ཚད། དེ་ལས་ སྡེ་ཚན་ནང་ གནང་བ་ 12.</figcaption></figure>
+  <table>
+    <tr><th>དཔེ་ཚད།</th><th>སྤྱིར་བཏང་ལག་ལེན།</th><th>འབད་ཚུགས་མི།</th></tr>
+    <tr><td>Billing Staff</td><td>ཀའུན་ཊར / དངུལ་བསྡུ་མི།</td><td>ཚོང་བཟོ་ནི་རྐྱངམ་ཅིག — དངུལ་གྱི་གྱངས་ཁ་མེད། ཉོ་གོང་མེད།</td></tr>
+    <tr><td>Store Keeper</td><td>མཛོད་དང་ ཉོ་ཚོང་།</td><td>ཉོ་ཚོང་། མཛོད་ཀྱི་བསྒྱུར་བཅོས། ལོག་སྤྲོད། ཉོ་གོང་།</td></tr>
+    <tr><td>Accountant</td><td>དེབ་དང་ GST</td><td>གླ་ཆ་དང་ བིལ་རྙིངམ་ སོར་ནི་ ཡང་ན་ བཏོན་གཏང་ནི་ མ་གཏོགས་ ག་ར།</td></tr>
+    <tr><td>Manager</td><td>ཡིད་ཆེས་ཅན་གྱི་ ལཱ་གཡོག་པ་ རྒན་ཤོས།</td><td>ག་ར། (ཁ་པར་གྱི་འཛུལ་སྤྱོད་ སོ་སོ་སྦེ་ གཞི་སྒྲིག་འབདཝ་ཨིན།)</td></tr>
+  </table>
+  <div class="tip">💡 ལཱ་གཡོག་པའི་རྩིས་ཐོ་གསརཔ་ཚུ་ <strong>Billing Staff</strong> སྦེ་ འགོ་བཙུགསཔ་ཨིན། 🔐 ཨེབ་རྟགས་ཀྱིས་ མི་རེ་རེ་ལུ་ དགོ་མི་ བྱིན། བསྒྱུར་བཅོས་ཚུ་ ཌེཀསི་ཊོཔ་ནང་ ཁོང་གིས་ ཤུལ་མམ་ ནང་བསྐྱོད་འབད་བའི་སྐབས་དང་ ཁོང་གི་ཁ་པར་གུ་ ཐད་ཀར་ འཇུགཔ་ཨིན།</div>
+  <div class="warn">⚠ གནང་བ་ཚུ་གིས་ ཁྱོད་ཀྱི་གནས་སྡུད་ ལཱ་གཡོག་པ་ལས་ ཉེན་སྲུང་འབདཝ་ཨིན — འཛིན་སྐྱོང་པའི་རྩིས་ཐོ་ ཉེན་སྲུང་མི་འབད། འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་ ཤེས་མི་ ག་ཅི་རང་ལུ་ འཛུལ་སྤྱོད་ཆ་ཚང་ཡོདཔ་ལས་ གསང་བ་སྦེ་བཞག</div>
+
+  <h3>🔑 ཁྱོད་ཀྱི་ཞུགས་ཐོ།</h3>
+  <ul>
+    <li><strong>རིན་མེད་བརྟག་ཞིབ།</strong> ཁྱད་རྣམ་ག་ར་དང་བཅས་ ཉིན་ 45, ཅ་ཆས་བྱིན་མིའི་བིལ་སྐེན་ 15 ཚུད་དེ།</li>
+    <li><strong>ཞུགས་ཐོ།</strong> ཤུགས་ལྡན་བཟོ་ཚར་བའི་ཤུལ་ལས་ ཁྱོད་ཀྱི་ཆོག་ཐམ་ ལོ་གཅིག་ ལཱ་འབདཝ་ཨིན། གནས་སྟངས་ཕྲ་རིང་གིས་ <em>"Licensed until …"</em> སྟོནམ་ཨིན།</li>
+    <li><strong>གསར་བཟོ།</strong> མཇུག་གི་ཚེས་གྲངས་ཀྱི་ ཉིན་ 30 ཧེ་མ་ལས་ དྲན་སྐུལ་ འགོ་བཙུགསཔ་ཨིནམ་དང་ ཁྱོད་ཀྱི་ གསར་བཟོའི་ལྡེ་མིག་གིས་ Settings → 🔑 License ལས་ གསར་བཟོ་འབད་ཚུགས། ཧེ་མ་ གསར་བཟོ་འབད་བ་ཅིན་ ཁྱོད་ལུ་ ལྷག་ལུས་ཉིན་གྲངས་གུ་ ལོ་ཅིག་ ཁ་སྐོང་འབདཝ་ཨིན།</li>
+    <li><strong>ཞུགས་ཐོ་ མཇུག་བསྡུ་བ་ཅིན།</strong> བིལ་སྐེན་ ཐད་ཀར་ བཀག་ཆ་འབདཝ་ཨིན་རུང་ གནས་སྟངས་ཕྲ་རིང་ནང་ ཉིན་གྲངས་རྩིས་ནི་དང་བཅས་ བིལ་སྲུང་བཞག་ <strong>ཉིན་ 7 ཁ་སྐོང</strong> ལཱ་འབདཝ་ཨིན། དེའི་ཤུལ་ལས་ ཁྱོད་ཀྱིས་ གསར་བཟོ་མ་འབད་ཚུན་ སྲུང་བཞག་ བཀག་ཆ་འབདཝ་ཨིན། ཁྱོད་ཀྱི་གནས་སྡུད་ རྟག་བུ་ར་ བལྟ་ཚུགས།</li>
+    <li><strong>ཆོག་ཐམ་གཅིག་ལུ་ PC གཅིག</strong> ཆོག་ཐམ་ཅིག་ དེ་ ཤུགས་ལྡན་བཟོ་མི་ PC དང་ མཐུད་དེ་ཡོདཔ་ཨིན། PC གསརཔ་ཅིག་ལུ་ སྤོ་ནིའི་དོན་ལུ་ རྒྱབ་སྐྱོར་ལུ་ འབྲེལ་བ་འཐབ།</li>
+  </ul>
+
+  <div class="err">🚨 <strong>ཁྱོད་ཀྱི་ འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་ ནམ་ཡང་ མ་བརྗེ་སོར་འབད།</strong> བཀོལ་སྤྱོད་པ་ཅིག་ ཕྱིར་འགྱོ་བ་ཅིན་ Settings → Users → ལག་ལེན་པ་དེ་གདམ → <em>Disable</em> ལུ་ཨེབ། ཁོ་གི་ གནས་སྡུད་བཙུགས་པའི་ལོ་རྒྱུས་ ཉེན་སྲུང་འབདཝ་ཨིན་རུང་ ཁོ་ ད་ལས་ཕར་ ནང་བསྐྱོད་འབད་མི་ཚུགས།</div>
+
+  <h3>🔑 ཁྱོད་ཀྱི་རྩིས་ཐོའི་ Recovery Key</h3>
+  <p>ཁྱོད་ཀྱིས་ ཐེངས་དང་པ་ ཁྱོད་རའི་ཆོག་ཡིག་ གཞི་སྒྲིག་འབད་བའི་སྐབས་ — གཞི་བཙུགས་ཚར་བའི་ཤུལ་ལས་ ཐད་ཀར་ (གནས་སྐབས་ཀྱི་ སྔོན་སྒྲིག་ཆོག་ཡིག་ ཚབ་བཙུགས་ཏེ།) ཡང་ན་ ཤུལ་ལས་ ནམ་རང་ཨིན་རུང་ — Accelent གིས་ ཁྱོད་ཀྱི་རྩིས་ཐོའི་དོན་ལུ་ <strong>Recovery Key</strong> ཐུན་མོང་མ་ཡིན་པ་ཅིག་ བཟོ་སྟེ་ ཁྱོད་ལུ་ <strong>ཐེངས་གཅིག་རྐྱངམ་ཅིག</strong> སྟོནམ་ཨིན། ཁ་མ་བསྡམས་པའི་ཧེ་མ་ ཁྱོད་ཀྱིས་ སྲུང་བཞག་འབད་ཡོདཔ་ ངེས་གཏན་བཟོ་དགོ་པའི་ སྒྲོམ་ཅིག་ནང་།</p>
+  <div class="tip">💡 ལྡེ་མིག་འདི་ ཐིག་ཐུང་གིས་ སོ་སོ་འབད་ཡོད་པའི་ ཡིག་འབྲུ/ཨང་གྲངས་ཀྱི་སྡེ་ཚན་ཚུ་ བཟུམ་སྦེ་ མཐོངམ་ཨིན། དཔེར་ན་ <code>3F7A9C21-8B4E0D6F-...</code>. དེ་ ཆོག་ཡིག་འཛིན་སྐྱོང་པ་ཅིག་ནང་ འདྲ་བཤུས་རྐྱབ། ཤོག་བུ་གུ་ འབྲི་སྟེ་ ས་གནས་ཉེན་སྲུང་ཅན་ནང་བཞག ཡང་ན་ ལྡེ་མིག་རྐྱབ་ཡོད་པའི་ ཟིན་བྲིས་ཅིག་ནང་བཞག — PC ཅོག་འཐདཔ་གུ་ མིང་གསལ་ཏོག་ཏོ་ཡོད་པའི་ ཡིག་སྣོད་ཅིག་ མ་གཏོགས་ ས་གནས་ག་ཏེ་ཨིན་རུང་།</div>
+  <p>ལྡེ་མིག་འདི་ དམིགས་ཡུལ་གཅིག་གི་དོན་ལུ་ཨིན། ཁྱོད་ཀྱིས་ ནམ་ཅིག་ འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་ བརྗེད་པ་ཅིན་ ཡང་ན་ ཉེན་བརྡ་ལེ་ཤའི་ཤུལ་ལས་ ཁྱོད་ཀྱི་རྩིས་ཐོ་ ལྡེ་མིག་རྐྱབ་པ་ཅིན་ Recovery Key གིས་ ནང་བསྐྱོད་ཀྱི་གསལ་གཞི་ལས་ སྐར་མ་གཅིག་ནང་ ཁྱོད་ར་གིས་ ཆོག་ཡིག་གསརཔ་ཅིག་ གཞི་སྒྲིག་འབད་བཅུགཔ་ཨིན — <strong>ཚོང་ལཱ་གི་གནས་སྡུད་ ག་ནི་ཡང་ མ་བརླག་པར</strong> དང་ རྒྱབ་སྐྱོར་ལུ་ འབྲེལ་བ་མ་འཐབ་པར།</p>
+  <div class="warn">⚠ Accelent གིས་ ཁྱོད་ཀྱི་ Recovery Key ལྷག་ཚུགས་པའི་ རྣམ་པ་ནང་ ནམ་ཡང་ མི་བཞག — དེའི་ ཉེན་སྲུང་ hash རྐྱངམ་ཅིག ཆོག་ཡིག་ ཉེན་སྲུང་འབད་ཐངས་དང་ཅོག་འཐདཔ། ལྡེ་མིག་ བརླག་པ་ཅིན་ ག་གིས་ཡང་ (ཁྱོད་ཀྱི་ མཉེན་ཆས་བྱིན་མི་ཚུད་དེ།) ཁྱོད་ཀྱི་དོན་ལུ་ སླར་གསོ་འབད་མི་ཚུགས། ཐབས་ལམ་གཞན་བརྒྱུད་དེ་ ཆོག་ཡིག་གསརཔ་ གཞི་སྒྲིག་འབད་དེ་ ལྡེ་མིག་གསརཔ་ བཟོ་དགོ།</div>
+
+  <h4>Recovery Key གསརཔ་ཐོབ་ནི།</h4>
+  <p>Recovery Key ཅིག་ ཐེངས་གཅིག་རྐྱངམ་ཅིག་ མཐོངམ་ཨིན། བརླག་པ་ཅིན་ ཡང་ན་ གསརཔ་ཅིག་དགོ་པ་ཅིན་ འཛིན་སྐྱོང་པ་སྦེ་ ནང་བསྐྱོད་འབད་དེ་ཡོད་པའི་ ནམ་རང་ཨིན་རུང་ ཚབ་ཅིག་ བཟོ་ཚུགས — གསརཔ་ ཕྱིར་བཏོན་འབད་ཚར་བའི་ཤུལ་ལས་ ལྡེ་མིག་རྙིངམ་ ཐད་ཀར་ ལཱ་མི་འབད།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 👥 Users</strong> (འཛིན་སྐྱོང་པའི་རྩིས་ཐོ།) ལུ་འགྱོ་སྟེ་ Recovery Key གསརཔ་ བཟོ་ནིའི་ གདམ་ཁ་ ལག་ལེན་འཐབ། ཡང་ན་ ཁྱོད་ཀྱི་ འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་ སོར — ཁྱོད་ལུ་ ཧེ་མ་ལས་ མེད་པའི་སྐབས་ ལྡེ་མིག་གསརཔ་ཅིག་ རང་བཞིན་གྱིས་ བྱིནམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཨང་རྟགས་གསརཔ་ གོང་ལུ་ བཤད་དོ་བཟུམ་སྦེ་ སྲུང་བཞག་འབད། སྒྲོམ་ ཁ་བསྡམས་ནིའི་དོན་ལུ་ <strong>"I have saved this recovery code somewhere safe"</strong> ལུ་ རྟགས་བཀལ — དེ་ ལོག་སྟེ་ མི་སྟོན།</div></div>
+
+  <h3>🔓 ཆོག་ཡིག་ བརྗེད་ཡི་ག? རང་སོས་ སླར་གསོ།</h3>
+  <p>ཁྱོད་ཀྱིས་ ནམ་ཅིག་ འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་ བརྗེད་པ་ཅིན་ — ཡང་ན་ བསྐྱར་ཟློག་ནོར་བའི་ཤུལ་ལས་ རྩིས་ཐོ་ རང་བཞིན་གྱིས་ ལྡེ་མིག་རྐྱབ་པ་ཅིན་ — རྒྱབ་སྐྱོར་ལུ་ སྒུག་མི་དགོ། ནང་བསྐྱོད་ཀྱི་ གསལ་གཞི་ནང་ ཆོག་ཡིག་ས་སྒོའི་འོག་ལུ་ཡོད་པའི་ <strong>"Forgot password?"</strong> འབྲེལ་མཐུད་ཆུང་ཀུ་ལུ་ཨེབ།</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ནང་བསྐྱོད་ཀྱི་ གསལ་གཞི་ནང་ <strong>Forgot password?</strong> ལུ་ཨེབ། <strong>Account Recovery</strong> སྒོ་སྒྲིག་ ཁ་ཕྱེཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཁྱོད་ཀྱི་ <strong>ལག་ལེན་པའི་མིང</strong> དང་ ཧེ་མ་ སྲུང་བཞག་འབད་མི་ <strong>Recovery Key</strong> བཙུགས། (གོང་ལུ་བལྟ།)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>ཆོག་ཡིག་གསརཔ</strong> ཅིག་ བཙུགས་ཏེ་ ངེས་གཏན་བཟོ། (ཉུང་མཐའ་ ཡིག་འབྲུ་ 8)</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Reset Password</strong> ལུ་ཨེབ། འདི་གིས་ རྩིས་ཐོའི་ལྡེ་མིག་ཡང་ རང་བཞིན་གྱིས་ བཏོནམ་ཨིན། ཆོག་ཡིག་གསརཔ་གིས་ ཐད་ཀར་ ནང་བསྐྱོད་འབད།</div></div>
+  <div class="good">✅ འདི་གིས་ ཁྱོད་ཀྱི་ ནང་བསྐྱོད་ཆོག་ཡིག་རྐྱངམ་ཅིག་ སླར་སྒྲིག་འབདཝ་ཨིན — ཁྱོད་ཀྱི་བིལ། མཛོད། ལྷག་ལུས་ ཡང་ན་ ཚོང་ལཱ་གི་ གནས་སྡུད་གཞན་ ག་ནི་ཡང་ ཐུག་མི་ཐུག</div>
+  <div class="err">🚨 ཁྱོད་ཀྱིས་ ནམ་ཡང་ Recovery Key སྲུང་བཞག་མ་འབད་བར་ ལྡེ་མིག་རྐྱབ་ཡོད་པ་ཅིན་ རང་སོས་ སླར་གསོ་འབད་མི་ཚུགས — རོགས་རམ་གྱི་དོན་ལུ་ ཁྱོད་ཀྱི་ མཉེན་ཆས་བྱིན་མི་ལུ་ འབྲེལ་བ་འཐབ།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 17 -->
+<div class="chapter-banner">ལེའུ 17 — ཁྱོད་ཀྱི་གནས་སྡུད།</div>
+<div class="section" id="ch17">
+  <h2>17. ཁྱོད་ཀྱི་གནས་སྡུད། — ས་གནས། ཉེན་སྲུང་འདྲ་བཤུས་དང་ སླར་གསོ།</h2>
+
+  <h3>ཁྱོད་ཀྱི་གནས་སྡུད་ ག་ཏེ་ཡོད?</h3>
+  <p>ཁྱོད་ཀྱི་གནས་སྡུད་ག་ར་ ཁྱོད་ཀྱི་ Windows PC གུ་ SQLite གནས་སྡུད་མཛོད་ཀྱི་ ཡིག་སྣོད་གཅིག་ནང་ བཞགཔ་ཨིན།</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\inventory.db</span>
+  </div>
+  <p>རང་བཞིན་ཉེན་སྲུང་འདྲ་བཤུས་ཀྱི་ ཡིག་སྣོད་ཅིག་ཡང་ཡོད།</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\backups\</span>
+  </div>
+  <p>Accelent འགོ་བཙུགས་ཚར་རེ་ རང་བཞིན་ཉེན་སྲུང་འདྲ་བཤུས་ཅིག་ བཟོཝ་ཨིན། ཉེ་ཆར་གྱི་ ཉེན་སྲུང་འདྲ་བཤུས་ 10 ཚུན་ རང་བཞིན་གྱིས་ བཞགཔ་ཨིན།</p>
+
+  <div class="tip">💡 AppData མགྱོགས་དྲགས་སྦེ་ ཁ་ཕྱེ་ནིའི་དོན་ལུ་ <strong>Windows+R</strong> ཨེབ་སྟེ་ <code>%APPDATA%\BrandAccShay</code> ཡིག་དཔར་རྐྱབ་ཞིནམ་ལས་ Enter ཨེབ།</div>
+
+  <h3>ལག་ཐོག་ལས་ ཉེན་སྲུང་འདྲ་བཤུས་རྐྱབ་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → 💾 Backup Data</strong> ལུ་འགྱོ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཉེན་སྲུང་འདྲ་བཤུས་ཀྱི་ཡིག་སྣོད་ ག་ཏེ་ སྲུང་བཞག་འབད་ནི་ཨིན་ན་ གདམ། (USB, Google Drive ཡིག་སྣོད་ ཡང་ན་ ཕྱི་ཁའི་ ཌིཀསི་སྲ་པོ།)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save ལུ་ཨེབ། ཉེན་སྲུང་འདྲ་བཤུས་འདི་ ཁྱོད་ཀྱི་གནས་སྡུད་ག་ར་ཡོད་པའི་ <code>.db</code> ཡིག་སྣོད་གཅིག་ཨིན།</div></div>
+
+  <div class="good">✅ <strong>འོས་འབབ་ཅན་གྱི་ ཉེན་སྲུང་འདྲ་བཤུས་ལམ་ལུགས།</strong><br>
+  • ཉིན་བསྟར། Accelent ལུ་ རང་བཞིན་གྱིས་ ཉེན་སྲུང་འདྲ་བཤུས་རྐྱབ་བཅུག (འགོ་བཙུགས་པའི་སྐབས་ རང་བཞིན་གྱིས་ འབྱུངམ་ཨིན།)<br>
+  • བདུན་བསྟར། USB ཡང་ན་ Google Drive ནང་ ལག་ཐོག་ལས་ ཉེན་སྲུང་འདྲ་བཤུས།<br>
+  • ཟླ་བསྟར། AppData\BrandAccShay ཡིག་སྣོད་ཧྲིལ་བུམ་ ཕྱི་ཁའི་ ཌིཀསི་སྲ་པོ་ཅིག་ནང་ འདྲ་བཤུས་རྐྱབ།</div>
+
+  <h3>ཉེན་སྲུང་འདྲ་བཤུས་ལས་ སླར་གསོ།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → 📂 Restore Data</strong> ལུ་འགྱོ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཁྱོད་ཀྱི་ ཉེན་སྲུང་འདྲ་བཤུས་ <code>.db</code> ཡིག་སྣོད་ལུ་ བརྡ་འཚོལ་འབད།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Open ལུ་ཨེབ། Accelent གིས་ ད་ལྟོའི་གནས་སྡུད་མཛོད་ ཉེན་སྲུང་འདྲ་བཤུས་ཀྱིས་ ཚབ་བཙུགསཔ་ཨིན། <strong>ཨེབ་ རང་བཞིན་གྱིས་ ལོག་སྟེ་ འགོ་བཙུགསཔ་ཨིན།</strong></div></div>
+
+  <div class="warn">⚠ ཉེན་སྲུང་འདྲ་བཤུས་ཅིག་ སླར་གསོ་འབད་བ་ཅིན་ ད་ལྟོའི་ གནས་སྡུད་ག་ར་ ཉེན་སྲུང་འདྲ་བཤུས་ཀྱི་ གནས་སྡུད་ཀྱིས་ ཚབ་བཙུགསཔ་ཨིན། ཉེན་སྲུང་འདྲ་བཤུས་ཀྱི་ ཚེས་གྲངས་ཤུལ་ལས་ བཙུགས་མི་ ཚོང་འབྲེལ་ག་ཅི་རང་ བརླགཔ་ཨིན། འཛོལ་བ་ཚབ་ཆེན་ཅིག་ལས་ སླར་གསོ་འབད་དགོ་པའི་སྐབས་རྐྱངམ་ཅིག་ སླར་གསོ་འབད།</div>
+
+  <h3>☁️ Cloud Backup — རང་བཞིན་ གསང་སྡོམ་ ཕྱི་ཁའི་ ཉེན་སྲུང་འདྲ་བཤུས།</h3>
+  <p>གོང་གི་ ལག་ཐོག་ཉེན་སྲུང་འདྲ་བཤུས་ཚུ་ ས་གནས་ནང་ སྲུང་བཞག་འབདཝ་ཨིན — ཁྱོད་ཀྱི་ PC བརླག། རྐུ་ཤོར་ ཡང་ན་ ཉམས་ཆག་འགྱོ་བ་ཅིན་ ས་གནས་ནང་རྐྱངམ་ཅིག་ཡོད་པའི་ ཉེན་སྲུང་འདྲ་བཤུས་ཡང་ མཉམ་དུ་ འགྱོ་སྲིད། <strong>Cloud Backup</strong> གིས་ འདི་ ཐག་བཅདཔ་ཨིན། ཁྱོད་རའི་ PC གུ་ ཁྱོད་ཀྱི་ གནས་སྡུད་མཛོད་ཀྱི་ འདྲ་བཤུས་ གསང་སྡོམ་འབད་དེ་ <strong>ཁྱོད་རའི</strong> ཀ་ལའུཌ་གསོག་འཇོག་ (OneDrive, Google Drive, Dropbox ལ་སོགས་པ།) དང་ མཉམ་འབྲེལ་འབད་མི་ ཡིག་སྣོད་ཅིག་ནང་ སྲུང་བཞག་འབདཝ་ཨིན། ཁྱོད་ཀྱི་ མཉེན་ཆས་བྱིན་མི་གིས་ ཁྱོད་ཀྱི་གནས་སྡུད་ ནམ་ཡང་ མི་མཐོང་ — ཡིག་སྣོད་ ཁྱོད་ཀྱི་ གློག་རིག་ལས་ མ་འཐོན་པའི་ཧེ་མ་ གསང་སྡོམ་འབདཝ་ཨིན།</p>
+
+  <h4>Cloud Backup གྲ་སྒྲིག</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup</strong> ལུ་འགྱོ་སྟེ་ <strong>Set Up Cloud Backup</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Browse...</strong> ལུ་ཨེབ་སྟེ་ ཁྱོད་ཀྱི་ ཀ་ལའུཌ་གསོག་འཇོག་ཨེབ་ཀྱིས་ མཉམ་འབྲེལ་འབད་མི་ ཡིག་སྣོད་ཅིག་ གདམ། (དཔེར་ན་ ཁྱོད་ཀྱི་ <code>OneDrive</code> ཡང་ན་ <code>Google Drive</code> ཡིག་སྣོད།)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Backup Password</strong> ཅིག་ (ཉུང་མཐའ་ ཡིག་འབྲུ་ 8) གདམ་སྟེ་ ངེས་གཏན་བཟོ། ཆོག་ཡིག་འདི་གིས་ ཉེན་སྲུང་འདྲ་བཤུས་རེ་རེ་ གསང་སྡོམ་འབདཝ་ཨིན — དེ་ དྲན་བཞག་ཞིནམ་ལས་ ཁྱོད་ཀྱི་ འཛིན་སྐྱོང་པའི་ ནང་བསྐྱོད་ཆོག་ཡིག་ལས་ སོ་སོ་སྦེ་བཞག</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Continue</strong> ལུ་ཨེབ། Accelent གིས་ ཉེན་སྲུང་འདྲ་བཤུས་དང་པ་ གཡོག་བཀོལ་ཞིནམ་ལས་ ཐེངས་གཅིག་རྐྱངམ་ཅིག་ <strong>Recovery Code</strong> ཅིག་ སྒྲོམ་ནང་ སྟོནམ་ཨིན། ཁ་མ་བསྡམས་པའི་ཧེ་མ་ ཁྱོད་ཀྱིས་ སྲུང་བཞག་འབད་ཡོདཔ་ ངེས་གཏན་བཟོ་དགོ།</div></div>
+
+  <div class="warn">⚠ <strong>Cloud Backup ཆོག་ཡིག་དང་ Cloud Backup སླར་གསོ་ཨང་རྟགས་འདི་ ཁྱོད་ཀྱི་ ནང་བསྐྱོད་ Recovery Key ལས་ སོ་སོ་ཨིན།</strong> (ལེའུ 16) དེ་ཚུ་ མ་འཛོལ་ནིའི་དོན་ལུ་ གསལ་ཏོག་ཏོ་སྦེ་ ཁ་ཡིག་བཀལ་ཏེ་ སོ་སོ་སྦེ་བཞག
+    <ul style="margin-top:6px;">
+      <li><strong>ནང་བསྐྱོད་ Recovery Key</strong> — ནང་བསྐྱོད་གསལ་གཞི་ནང་ རྒྱབ་སྐྱོར་མེད་པར་ ཁྱོད་ཀྱི་ ཨེབ་ཆོག་ཡིག་ ཁྱོད་ར་གིས་ སླར་སྒྲིག་འབདཝ་ཨིན།</li>
+      <li><strong>Cloud Backup ཆོག་ཡིག</strong> — ཁྱོད་ཀྱི་ ཀ་ལའུཌ་ཉེན་སྲུང་འདྲ་བཤུས་ཀྱི་ཡིག་སྣོད་ཚུ་ ཁ་ཕྱེཝ་ཨིན། སླར་གསོ་འབད་ཚར་རེ་ དགོ།</li>
+      <li><strong>Cloud Backup སླར་གསོ་ཨང་རྟགས</strong> — Cloud Backup ཆོག་ཡིག་ བརྗེད་པ་ཅིན་ རྒྱབ་སྐྱོར་ལས་ཐོབ་པའི་ ཕྱིར་གཏོང་ཨང་རྟགས་དང་ མཉམ་དུ་རྐྱངམ་ཅིག་ ཕན་ཐོགས།</li>
+    </ul>
+  </div>
+
+  <h4>ཉིན་བསྟར་ལག་ལེན།</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཁྱོད་ཀྱི་ ཀ་ལའུཌ་ཡིག་སྣོད་ནང་ ཐད་ཀར་ གསང་སྡོམ་ཉེན་སྲུང་འདྲ་བཤུས་ཅིག་ སྐྱེལ་བཙུགས་འབད་དགོ་པའི་ ནམ་རང་ཨིན་རུང་ <strong>⬆️ Backup Now</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཁྱོད་ཀྱིས་ དྲན་དགོ་པ་མེད་པར་ Accelent གིས་ རང་སོའི་ དུས་ཚོད་ཐོ་ཡིག་ལྟར་ ཉེན་སྲུང་འདྲ་བཤུས་རྐྱབ་བཅུག་ནིའི་དོན་ལུ་ <strong>Automatic daily backup</strong> ལུ་ རྟགས་བཀལ།</div></div>
+
+  <h4>Cloud Backup ལས་ སླར་གསོ།</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup → ⬇️ Restore from Cloud Backup</strong> ལུ་འགྱོ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཐོ་ཡིག་ལས་ དགོ་པའི་ ཉེན་སྲུང་འདྲ་བཤུས་གདམ་སྟེ་ (གསརཔ་ཤོས་ དང་པ་ མཐོང་།) ཁྱོད་ཀྱི་ <strong>Backup Password</strong> བཙུགས།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">སླར་གསོའི་ཉེན་བརྡ་ ངེས་གཏན་བཟོ། <strong>ད་ལྟོའི་གནས་སྡུད་ ཚབ་བཙུགསཔ་ཨིན</strong> — དེའི་ཤུལ་ལས་ ཨེབ་ ལོག་སྟེ་ འགོ་བཙུགས།</div></div>
+
+  <div class="tip">💡 <strong>ཁྱོད་ཀྱི་ Cloud Backup ཆོག་ཡིག་ བརྗེད་ཡི་ག?</strong> སླར་གསོའི་སྒོ་སྒྲིག་ནང་ <strong>"Forgot password? Use recovery code instead"</strong> ལུ་ཨེབ། ལམ་འདི་ལུ་ གྲ་སྒྲིག་སྐབས་ ཁྱོད་ཀྱིས་ སྲུང་བཞག་འབད་མི་ སླར་གསོ་ཨང་རྟགས་ <strong>དང་</strong> ཁྱོད་ཀྱི་ མཉེན་ཆས་བྱིན་མིའི་ རྒྱབ་སྐྱོར་ལས་ ཕྱིར་གཏོང་ཨང་རྟགས་ གཉིས་ཆ་ར་དགོ — ཆ་ཤས་གཅིག་རྐྱངམ་གྱིས་ ཁྱོད་ཀྱི་ ཉེན་སྲུང་འདྲ་བཤུས་ ཁ་ཕྱེ་མི་ཚུགསཔ་སྦེ།</div>
+
+  <div class="good">✅ Cloud Backup གདམ་ཁ་ཨིནམ་དང་ Accelent གིས་ འགོ་བཙུགས་ཚར་རེ་ ཧེ་མ་ལས་ བཟོ་མི་ ས་གནས་ཀྱི་ རང་བཞིན་ཉེན་སྲུང་འདྲ་བཤུས་ལས་ སོ་སོ་ཨིན — ཉེན་སྲུང་ཤུགས་ཅན་ཤོས་ཀྱི་དོན་ལུ་ གཉིས་ཆ་ར་ ལག་ལེན་འཐབ། PC ཅོག་འཐདཔ་གུ་ མགྱོགས་དྲགས་སླར་གསོའི་དོན་ལུ་ ས་གནས་ཀྱི་ ཉེན་སྲུང་འདྲ་བཤུས་དང་ PC ཁོ་ར་ བརླག་ ཡང་ན་ ཉམས་ཆག་འགྱོ་བ་ཅིན་ ཉེན་སྲུང་གི་དོན་ལུ་ Cloud Backup.</div>
+
+  <h3>ཨེབ་ PC གསརཔ་ཅིག་ལུ་ སྤོ་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">PC རྙིངམ་གུ་ ལག་ཐོག་ལས་ ཉེན་སྲུང་འདྲ་བཤུས་ཅིག་རྐྱབ། (Settings → Backup Data)</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཉེན་སྲུང་འདྲ་བཤུས་ <code>.db</code> ཡིག་སྣོད་ USB ནང་ འདྲ་བཤུས་རྐྱབ་ ཡང་ན་ Google Drive / WhatsApp བརྒྱུད་དེ་ གཏང་།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">PC གསརཔ་གུ་ Accelent གཞི་བཙུགས་འབད། (ལེའུ 3)</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">འགོ་བཙུགས་དང་པའི་སྐབས་ Settings → Restore Data ལུ་འགྱོ་སྟེ་ → USB ལས་ ཉེན་སྲུང་འདྲ་བཤུས་ཀྱི་ཡིག་སྣོད་ གདམ། ཁྱོད་ཀྱི་ གནས་སྡུད་ག་ར་ ད་ PC གསརཔ་གུ་ཡོདཔ་ཨིན།</div></div>
+
+  <div class="warn">⚠ ཁྱོད་ཀྱི་ཆོག་ཐམ་ དེ་ ཤུགས་ལྡན་བཟོ་མི་ PC དང་ མཐུད་དེ་ཡོདཔ་ཨིན། མ་སྤོ་བའི་ཧེ་མ་ ཁྱོད་ཀྱི་ཆོག་ཐམ་ PC གསརཔ་ལུ་ སྤོ་ཚུགསཔ་སྦེ་ རྒྱབ་སྐྱོར་ལུ་ འབྲེལ་བ་འཐབ། དེ་ལས་ Settings → 🔑 License ལས་ ཤུགས་ལྡན་བཟོ།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 18 -->
+<div class="chapter-banner">ལེའུ 18 — ཐོན་རིམ་གསརཔ་ལུ་ ཡར་སྤོ།</div>
+<div class="section" id="ch18">
+  <h2>18. ཐོན་རིམ་གསརཔ་ལུ་ ཡར་སྤོ།</h2>
+  <p>Accelent གི་ ཐོན་རིམ་གསརཔ་ཅིག་ ཕྱིར་བཏོན་འབད་བའི་སྐབས་ རིམ་པ་འདི་ཚུ་ལུ་ བརྟེན། <strong>ཡར་སྤོའི་སྐབས་ ཁྱོད་ཀྱི་གནས་སྡུད་ རྟག་བུ་ར་ ཉེན་སྲུང་ཅན་ཨིན།</strong> ག་ཅི་སྨོ་ཟེར་བ་ཅིན་ གནས་སྡུད་མཛོད་ ལས་རིམ་གྱི་ཡིག་སྣོད་ཚུ་ལས་ སོ་སོ་སྦེ་ ཡོདཔ་ལས།</p>
+
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>དང་པ་ ཉེན་སྲུང་འདྲ་བཤུས་ཅིག་རྐྱབ</strong> — Settings → Backup Data ལུ་འགྱོ་སྟེ་ USB ཡང་ན་ ཀ་ལའུཌ་ནང་ སྲུང་བཞག་འབད། འདི་ སྔོན་འགོག་ཅིག་ཨིན། སྤྱིར་བཏང་ མི་དགོ་རུང་ རྟག་བུ་ར་ གོམས་གཤིས་ལེགས་ཤོམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Accelent ཁ་བསྡམས</strong> — ཨེབ་ གཡོག་བཀོལ་མེདཔ་ ངེས་གཏན་བཟོ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>ཐོན་རིམ་གསརཔ་ ཕབ་ལེན་འབད</strong> — <strong>accelentapp.com</strong> ལས་ གསརཔ་ཤོས་ <code>Accelent_Setup_v….exe</code> ལེན།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>གཞི་བཙུགས་མི་ གཡོག་བཀོལ</strong> ཁྱོད་ཀྱི་ གཞི་བཙུགས་རྙིངམ་གྱི་གུ་ལུ། (དེའི་ཚབ་ལུ་ འབག་ཚུགས་པའི་ zip ལག་ལེན་འཐབ་དོ་ག? ཧེ་མ་བཟུམ་ ཡིག་སྣོད་ཅོག་འཐདཔ་ནང་ ཕྱིར་བཏོན་འབད་དེ་ ཡིག་སྣོད་ཚབ་བཙུགས་ནི་ འདྲི་བའི་སྐབས་ <strong>Yes to All</strong> ལུ་ཨེབ།)</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Accelent ཁ་ཕྱེ།</strong> དེ་གིས་ <code>%APPDATA%\BrandAccShay\inventory.db</code> ནང་ ཁྱོད་ཀྱི་ གནས་སྡུད་མཛོད་རྙིངམ་ རང་བཞིན་གྱིས་ འཚོལཝ་ཨིན། ཁྱོད་ཀྱི་གནས་སྡུད་ག་ར་ ནཱ་ལུ་ཡོདཔ་ཨིནམ་དང་ ཐོན་རིམ་གསརཔ་ནང་ ཚུད་པའི་ ནོར་བཅོས་ག་ཅི་རང་ འགོ་བཙུགས་དང་པ་འདི་ནང་ འཇུགཔ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Settings → Recalculate All Balances ལུ་འགྱོ</strong> — འདི་གིས་ ཐོན་རིམ་གསརཔ་གི་ གནས་སྡུད་མཛོད་ཀྱི་ བཀོད་པ་བསྒྱུར་བཅོས་ག་ཅི་རང་ ལེགས་ཤོམ་སྦེ་ འཇུགཔ་ ངེས་གཏན་བཟོཝ་ཨིན།</div></div>
+
+  <div class="good">✅ <strong>ཡར་སྤོའི་སྐབས་ ཁྱོད་ཀྱིས་ གནས་སྡུད་ ནམ་ཡང་ མི་བརླག</strong> ལས་རིམ་གྱི་ཡིག་སྣོད་ཚུ་ ཡིག་སྣོད་གཅིག་ནང་ཡོདཔ་ཨིན། ཁྱོད་ཀྱི་གནས་སྡུད་ AppData ནང་ཡོདཔ་ཨིན། ལས་རིམ་གྱི་ཡིག་སྣོད་ ཚབ་བཙུགས་པ་ཅིན་ ཁྱོད་ཀྱི་གནས་སྡུད་ལུ་ མི་ཐུག</div>
+
+  <div class="tip">💡 འབག་ཚུགས་པའི་ zip དང་ ཁ་པར་ཨེབ་ ལག་ལེན་འཐབ་དོ་ག? ཡར་སྤོ་ཚར་བའི་ཤུལ་ལས་ ཐེངས་གཅིག་ <code>setup.bat</code> ལོག་སྟེ་ གཡོག་བཀོལ། (གཞི་བཙུགས་མི་གིས་ འདི་ ཁོ་ར་ འབདཝ་ཨིན།) ཁ་པར་ མཐུད་མ་ཚུགས་པ་ཅིན་ 📱 Mobile Connect སྒོ་སྒྲིག་ནང་ <strong>❓ Phone can't connect?</strong> ལག་ལེན་འཐབ།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 19 -->
+<div class="chapter-banner">ལེའུ 19 — མོ་བཱའིལ་ཨེབ།</div>
+<div class="section" id="ch19">
+  <h2>19. མོ་བཱའིལ་ཨེབ་ གྲ་སྒྲིག་དང་ ལག་ལེན།</h2>
+
+  <h3>ཨེབ་ གཞི་བཙུགས།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཁ་པར་གུ་ <strong>accelentapp.com</strong> ལས་ <code>Accelent_v1.7.3.apk</code> ཕབ་ལེན་འབད། ཡང་ན་ USB སྐུད་པ། WhatsApp ཡང་ན་ Google Drive བརྒྱུད་དེ་ སྤོ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཁ་པར་གུ་ ཁྱོད་ཀྱི་ Downloads ཡང་ན་ Files ཨེབ་ལས་ ཡིག་སྣོད་ ཁ་ཕྱེ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><em>unknown sources</em> གི་སྐོར་ལས་ འདྲི་བ་ཅིན་ <strong>Settings</strong> ལུ་ཨེབ་སྟེ་ ཁྱོད་ཀྱི་ ཡིག་སྣོད་འཛིན་སྐྱོང་པའི་དོན་ལུ་ <em>Install unknown apps</em> ཁ་ཕྱེ་ཞིནམ་ལས་ ལོག་འགྱོ་སྟེ་ གཞི་བཙུགས་འབད།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Install</strong> → <strong>Open</strong> ལུ་ཨེབ།</div></div>
+
+  <h3>ཌེཀསི་ཊོཔ་དང་ མཐུད་ནི།</h3>
+  <p><strong>ཐབས་ལམ A — QR ཨང་རྟགས། (འོས་འབབ།)</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཁྱོད་ཀྱི་ PC གུ་ ཌེཀསི་ཊོཔ་ཨེབ་ གཡོག་བཀོལ་དོ་ཡོདཔ་ ངེས་གཏན་བཟོ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>📱 Mobile Connect</strong> ཨེབ་རྟགས་ལུ་ཨེབ། (ཌེཀསི་ཊོཔ་གི་ མར་ཁ་གཡས་ཕྱོགས།)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">QR ཨང་རྟགས་ཅིག་ མཐོངམ་ཨིན། སྒོ་སྒྲིག་ ཁ་ཕྱེ་སྟེ་བཞག</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ཁ་པར་གུ་ Accelent ཁ་ཕྱེ → ⚙️ བརྡ་རྟགས་ལུ་ཨེབ → <strong>Scan QR Code</strong> → པར་ཆས་ ཌེཀསི་ཊོཔ་གསལ་གཞི་ལུ་ ཁ་ཕྱོགས།</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">ལྗང་ཁུའི་ "Connected!" དར་ཆ་ཅིག་གིས་ མཐུད་ཡོདཔ་ ངེས་གཏན་བཟོཝ་ཨིན།</div></div>
+
+  <p><strong>ཐབས་ལམ B — ལག་ཐོག་ལས་ IP</strong></p>
+  <p>QR སྐེན་ མ་ཚུགས་པ་ཅིན་ ཁ་པར་གུ་ Settings ལུ་འགྱོ → <em>Desktop IP Address</em> ས་སྒོ་ནང་ ཌེཀསི་ཊོཔ་གི་ IP ཁ་བྱང་ ཡིག་དཔར་རྐྱབ → <strong>Test Connection</strong> → <strong>Save</strong> ལུ་ཨེབ།</p>
+  <div class="tip">💡 ཁ་བྱང་འདི་ ཚོང་ཁང་གི་ WiFi གུ་རྐྱངམ་ཅིག་ ལཱ་འབདཝ་ཨིན་ན་ ས་གནས་ག་ཏེ་ལས་ཡང་ ལཱ་འབདཝ་ཨིན་ན་ Mobile Connect སྒོ་སྒྲིག་གིས་ སླབ་ཨིན། ཁ་པར་ མཐུད་མ་ཚུགས་པ་ཅིན་ སྒོ་སྒྲིག་དེ་ནང་ <strong>❓ Phone can't connect?</strong> ལུ་ཨེབ། དེ་གིས་ PC འདི་ (Accelent གི་ ཁ་པར་ཞབས་ཏོག Windows Firewall, ཡོངས་འབྲེལ།) ཞིབ་དཔྱད་འབད་དེ་ ཁ་པར་གུ་ བརྟག་ཞིབ་འབད་དགོ་མི་ཚུ་ ཐོ་བཀོད་འབདཝ་ཨིན།</div>
+
+  <h3>ཚོང་ཁང་གི་ཕྱི་ཁ་ལས་ ལག་ལེན། (Tailscale)</h3>
+  <p>ཁྱོད་ ཚོང་ཁང་ལས་ ཐག་རིང་ཡོད་པའི་སྐབས་ (མོ་བཱའིལ་གནས་སྡུད་ ཡང་ན་ WiFi གཞན།) ཌེཀསི་ཊོཔ་དང་ ཁ་པར་ གཉིས་ཆ་ར་གུ་ <strong>Tailscale</strong> (རིན་མེད།) གཞི་བཙུགས་འབད་དེ་ རྩིས་ཐོ་ཅོག་འཐདཔ་གིས་ ནང་བསྐྱོད་འབད། དེ་ལས་ <strong>📱 Mobile Connect</strong> སྒོ་སྒྲིག་ལས་ Tailscale QR ཨང་རྟགས་ སྐེན་འབད། ད་ ཁྱོད་ཀྱིས་ འཛམ་གླིང་གི་ ས་གནས་ག་ཏེ་ལས་རང་ ཁྱོད་ཀྱི་ཚོང་ལཱ་ བལྟ་སྟེ་ འཛིན་སྐྱོང་འབད་ཚུགས། རིམ་པ། PC འདིའི་དོན་ལུ་ ཕབ་ལེན་འབྲེལ་མཐུད་དང་ ཁ་པར་གྱི་ Play Store ནང་ Tailscale ཁ་ཕྱེ་མི་ QR ཨང་རྟགས་ཀྱི་དོན་ལུ་ Mobile Connect སྒོ་སྒྲིག་ནང་ <strong>🌐 Connect from anywhere…</strong> ལུ་ཨེབ།</p>
+
+  <h3>མོ་བཱའིལ་ཨེབ་ཀྱི་ པེ་ནཱལ།</h3>
+  <div class="panel-grid">
+    <div class="panel-card"><h4>📊 ཌེཤ་བོཌ།</h4><p>ད་རིས་ཀྱི་ཚོང་། འགྲོ་སོང་། ལག་དངུལ་དང་ དངུལ་ཁང་གི་ལྷག་ལུས་དང་ ཉེ་ཆར་གྱི་ ཚོང་འབྲེལ། གསརཔ་བཟོ་ནིའི་དོན་ལུ་ མར་འདྲུད།</p></div>
+    <div class="panel-card"><h4>🧾 ཚོང་།</h4><p>བིལ་ག་ར་བལྟ། Paid/Unpaid ཚགས་མ་བཏང་། ཁྱོད་ཀྱི་ཁ་པར་ལས་ བིལ་གསརཔ་ཅིག་བཟོ་ནིའི་དོན་ལུ་ + ལུ་ཨེབ། བིལ་ PDF སྦེ་ བརྗེ་སོར་འབད་ནིའི་དོན་ལུ་ བིལ་ཅིག་ཁ་ཕྱེ་སྟེ་ 📄 ལུ་ཨེབ།</p></div>
+    <div class="panel-card"><h4>🛒 ཉོ་ཚོང་།</h4><p>ཉོ་ནིའི་བཀའ་རྒྱ་བལྟ། ཉོ་ཚོང་གསརཔ་ཅིག་ ཐོ་བཀོད་འབད་ནིའི་དོན་ལུ་ + ལུ་ཨེབ། ཌེཀསི་ཊོཔ་གུ་ མཛོད་ ཐད་ཀར་ དུས་མཐུན་བཟོཝ་ཨིན།</p></div>
+    <div class="panel-card"><h4>📦 ཅ་ཆས་མཛོད།</h4><p>ཅ་ཆས་ག་ར་ འཚོལ་ཞིབ་དང་ ཚགས་མ་བཏང་། དམརཔོ = ཅ་ཆས་ཚར་ཡོདཔ། ལི་ཝང = ཅ་ཆས་ཉུང་།</p></div>
+    <div class="panel-card"><h4>👥 ཕྱོགས།</h4><p>ཐད་ཀར་གྱི་ལྷག་ལུས་དང་བཅས་པའི་ ཉོ་མཁན་དང་ ཅ་ཆས་བྱིན་མི་ག་ར། ལྗང་ཁུ = ཁོང་གིས་ ཁྱོད་ལུ་ སྤྲོད་དགོ། དམརཔོ = ཁྱོད་ཀྱིས་ ཁོང་ལུ་ སྤྲོད་དགོ།</p></div>
+    <div class="panel-card"><h4>🏦 རྩིས་ཐོ།</h4><p>ཚོང་འབྲེལ་གྱི་ལོ་རྒྱུས་ཆ་ཚང་དང་བཅས་པའི་ ཐད་ཀར་གྱི་ ལག་དངུལ་དང་ དངུལ་ཁང་གི་ལྷག་ལུས།</p></div>
+  </div>
+
+  <h3>ཁ་པར་གུ་ བུན་གྱི་ཉོ་ཚོང་དང་ ཚོང་།</h3>
+  <p>ཉོ་ཚོང་གསརཔ་ཅིག་ནང་ <strong>Pending</strong> ཡང་ན་ ཚོང་གསརཔ་ཅིག་ནང་ <strong>Unpaid</strong> གདམ་པའི་སྐབས་ ཁ་པར་གྱིས་ Cash / Bank / UPI ཨེབ་རྟགས་ཚུ་ སྦ་བཞགཔ་ཨིན — ད་ཚུན་ ག་ནི་ཡང་ མ་སྤྲོད། ཌེཀསི་ཊོཔ་གིས་ དེ་ བུན་སྦེ་ ཐོ་བཀོད་འབདཝ་ཨིན། ཉོ་ཚོང་གི་དོན་ལུ་ <em>Credit to Vendor</em>, ཚོང་གི་དོན་ལུ་ <em>Credit to Party</em> (ཉོ་མཁན་གྱི་ བུན་གྱི་ཚད་གཞི་ ཞིབ་དཔྱད་འབད་དེ།) དེ་ Accounts ནང་ ཅ་ཆས་བྱིན་མི་ ཡང་ན་ ཉོ་མཁན་དེའི་འོག་ལུ་ མཐོངམ་ཨིན། ཌེཀསི་ཊོཔ་གུ་ འབད་མི་ བུན་གྱི་ཐོ་བཀོད་བཟུམ་སྦེ།</p>
+
+  <h3>ཁ་པར་ཨེབ་ ག་གིས་ ལག་ལེན་འཐབ་ཚུགས་ག</h3>
+  <ul>
+    <li>འཛིན་སྐྱོང་པ་ རྟག་བུ་ར་ མཐུད་ཚུགས། ལཱ་གཡོག་པ་ཚུ་གི་དོན་ལུ་ འཛིན་སྐྱོང་པ་གིས་ Settings → 👥 Users ནང་ ཁོང་གི་ <strong>📱 Mobile</strong> སྒྲིག་སྟངས་ ཁ་ཕྱེ་དགོ།</li>
+    <li>ལཱ་གཡོག་པའི་རྩིས་ཐོ་རེ་རེ་གིས་ ཁ་པར་གྱི་ས་ཁོངས་གཅིག་ ལག་ལེན་འཐབ་ཨིན། མི་ཅོག་འཐདཔ་གི་ ཁ་པར་གུ་ ཨེབ་ ལོག་གཞི་བཙུགས་འབད་བ་ཅིན་ ཁོ་གི་ས་ཁོངས་རྐྱངམ་ཅིག་ སྤོཝ་ཨིན — གཞན་ཅིག་ ལག་ལེན་མི་འཐབ།</li>
+    <li>ཁ་པར་གྱིས་ ལཱ་གཡོག་པའི་ གནང་བ་གིས་ ཆོག་མི་རྐྱངམ་ཅིག་ སྟོནམ་ཨིན། དཔེར་ན་ "See money figures" མེད་པ་ཅིན་ ཌེཤ་བོཌ་གིས་ ཚོང་དང་ ཁེ་ཕན་གྱི་གྱངས་ཁའི་ཚབ་ལུ་ ཟིན་བྲིས་ཅིག་ སྟོནམ་ཨིན།</li>
+  </ul>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 19b -->
+<div class="chapter-banner">ལེའུ 19b — ཌེཀསི་ཊོཔ་–མོ་བཱའིལ་བརྡ་འཕྲིན།</div>
+<div class="section" id="ch19b">
+  <h2>19b. 💬 ཌེཀསི་ཊོཔ་–མོ་བཱའིལ་བརྡ་འཕྲིན།</h2>
+  <p>Accelent ནང་ ཌེཀསི་ཊོཔ་གི་ བདག་པོ་དང་ མོ་བཱའིལ་ཨེབ་ ལག་ལེན་པ་གཉིས་ཀྱིས་ ཐད་ཀར་དུ་ ཕན་ཚུན་ ཟིན་བྲིས་གཏང་ཚུགས་པའི་ ནང་སྒྲིག་བརྡ་འཕྲིན་རིམ་ལུགས་ཅིག་ཡོདཔ་ཨིན — WhatsApp ཡང་ན་ ཨེབ་གཞན་ མ་དགོ། བརྡ་འཕྲིན་ཚུ་ ཁྱོད་ཀྱི་ ས་གནས་ཀྱི་ གནས་སྡུད་མཛོད་ནང་ ཉེན་སྲུང་ཅན་སྦེ་ བཞགཔ་ཨིན།</p>
+
+  <h3>Messages ཨེབ་རྟགས་ ག་ཏེ་ཡོད?</h3>
+  <p>ཌེཀསི་ཊོཔ་སྒོ་སྒྲིག་གི་ མར་ཁ་ཤོས་ལུ་ གནས་སྟངས་ཕྲ་རིང་ནང་ <strong>💬 Messages</strong> ཨེབ་རྟགས་ཅིག་ མཐོངམ་ཨིན། གླེང་མོལ་སྒོ་སྒྲིག་ ཁ་ཕྱེ་ནིའི་དོན་ལུ་ དེ་ལུ་ཨེབ། བརྡ་འཕྲིན་གསརཔ་ འོང་པའི་སྐབས་ ཨེབ་རྟགས་ཀྱིས་ མ་ལྷག་པའི་ གྱངས་ཁ་སྟོནམ་ཨིན།</p>
+  <table>
+    <tr><th>ཨེབ་རྟགས་ཀྱི་ རྣམ་པ།</th><th>དོན་དག</th></tr>
+    <tr><td><code>💬 Messages</code></td><td>བརྡ་འཕྲིན་གསརཔ་མེད།</td></tr>
+    <tr><td><code>💬 Messages (3)</code> — ལྗང་ཁུ་ཁར་ གསལ་སྟོན།</td><td>མོ་བཱའིལ་ཨེབ་ལས་ མ་ལྷག་པའི་ བརྡ་འཕྲིན་ 3</td></tr>
+  </table>
+
+  <h3>ཌེཀསི་ཊོཔ་ལས་ བརྡ་འཕྲིན་གཏང་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">གསལ་གཞིའི་ མར་ཁའི་ གནས་སྟངས་ཕྲ་རིང་ནང་ <strong>💬 Messages</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">གླེང་མོལ་སྒོ་སྒྲིག་ ཁ་ཕྱེཝ་ཨིན། ཧེ་མའི་བརྡ་འཕྲིན་ཚུ་ ལོ་རྒྱུས་ལས་ མངོན་གསལ་འབདཝ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">མར་ཁར་ཡོད་པའི་ ཚིག་ཡིག་སྒྲོམ་ནང་ ཁྱོད་ཀྱི་ བརྡ་འཕྲིན་ ཡིག་དཔར་རྐྱབ།</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Enter</strong> ཨེབ་ ཡང་ན་ <strong>Send</strong> ལུ་ཨེབ། ཁྱོད་ཀྱི་ བརྡ་འཕྲིན་ གཡས་ཕྱོགས་ལུ་ (ལྦུ་བ་སྔོནམ།) མཐོངམ་ཨིན།</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">མོ་བཱའིལ་ལག་ལེན་པ་གིས་ སྐར་ཆ་ 5 ནང་ ཁོ་གི་ཁ་པར་གུ་ ཁྱོད་ཀྱི་ བརྡ་འཕྲིན་ མཐོངམ་ཨིན།</div></div>
+
+  <h3>མོ་བཱའིལ་ཨེབ་ལས་ བརྡ་འཕྲིན་གཏང་ནི།</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ཁ་པར་གུ་ ཌེཤ་བོཌ་ ཡང་ན་ ལམ་སྟོན་ཐོ་ཡིག་ལས་ <strong>💬 Chat</strong> བརྡ་རྟགས་ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ཁྱོད་ཀྱི་ བརྡ་འཕྲིན་ ཡིག་དཔར་རྐྱབ་སྟེ་ <strong>Send</strong> ལུ་ཨེབ།</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ཌེཀསི་ཊོཔ་ལུ་ སྐར་ཆ་ 5 ནང་ བརྡ་འཕྲིན་ཐོབ་སྟེ་ 💬 Messages ཨེབ་རྟགས་གུ་ གྱངས་ཁ་ སྟོནམ་ཨིན།</div></div>
+
+  <h3>ཌེཀསི་ཊོཔ་གི་ བརྡ་བསྐུལ། (System Tray)</h3>
+  <p>གླེང་མོལ་སྒོ་སྒྲིག་ <strong>ཁ་བསྡམས་ ཡང་ན་ ཆུང་ཀུ་བཟོ་</strong> ཡོད་པའི་སྐབས་ མོ་བཱའིལ་ཨེབ་ལས་ བརྡ་འཕྲིན་གསརཔ་ཅིག་ འོང་པ་ཅིན་ Windows system tray (གསལ་གཞིའི་ མར་ཁ་གཡས་ཟུར།) ནང་ འདི་སྦེ་སླབ་པའི་ <strong>ཡར་ཐོན་བརྡ་བསྐུལ</strong> ཅིག་ མཐོངམ་ཨིན།</p>
+  <p style="text-align:center; font-style:italic; color:#555;">"📱 You have a new message from the mobile app"</p>
+  <p>ལྷག་ནིའི་དོན་ལུ་ བརྡ་བསྐུལ་ལུ་ཨེབ་ ཡང་ན་ ཨེབ་ནང་ <strong>💬 Messages</strong> ལུ་ཨེབ།</p>
+
+  <h3>བརྡ་འཕྲིན་ བཞག་ཐངས།</h3>
+  <p>བརྡ་འཕྲིན་ག་ར་ ཁྱོད་ཀྱི་ ས་གནས་ཀྱི་ གནས་སྡུད་མཛོད་ (<code>inventory.db</code>) ནང་ སྲུང་བཞག་འབདཝ་ཨིན — ཁྱོད་ཀྱི་ ཚོང་ལཱ་གི་ གནས་སྡུད་ག་ར་ཡོད་པའི་ ཡིག་སྣོད་ཅོག་འཐདཔ། དེ་ཚུ་ ཉེན་སྲུང་འདྲ་བཤུས་རེ་རེ་ནང་ ཚུདཔ་ཨིན། ཕྱི་ཁའི་ སར་བར་ མེད — བརྡ་འཕྲིན་ཚུ་ ཁྱོད་རའི་ ཡོངས་འབྲེལ་བརྒྱུད་དེ་ ཁྱོད་ཀྱི་ ཌེཀསི་ཊོཔ་དང་ ཁ་པར་གྱི་བར་ན་རྐྱངམ་ཅིག་ འགྱོཝ་ཨིན།</p>
+
+  <div class="tip">💡 <strong>བརྡ་འཕྲིན་གྱི་ ལག་ལེན་སྤྱིར་བཏང་།</strong>
+    <ul style="margin-top:6px;">
+      <li>བདག་པོ་ ཐག་རིང་ཡོདཔ — མོ་བཱའིལ་ལག་ལེན་པ་གིས་ འདྲི་ཨིན། "ཉོ་མཁན་ལུ་ X སྒམ་ 10 དགོ། མཛོད་ཡོད་ག?" — བདག་པོ་གིས་ ཌེཀསི་ཊོཔ་ལས་ ལན་སློགཔ་ཨིན།</li>
+      <li>ཌེཀསི་ཊོཔ་བཀོལ་སྤྱོད་པ་གིས་ མོ་བཱའིལ་ལག་ལེན་པ་ལུ་ སླབ་ཨིན། "ABC Traders ལས་ དངུལ་སྤྲོད་གསརཔ་ཅིག་ ཐོབ་ཅི།"</li>
+      <li>སྒེར་གྱི་ ཁ་པར་ཨང་ མ་དགོ་པར་ ཚོང་ཁང་གི་ ལཱ་གཡོག་པ་ཚུ་གི་བར་ན་ ཟིན་བྲིས་མགྱོགས་དྲགས།</li>
+    </ul>
+  </div>
+
+  <div class="warn">⚠ བརྡ་འཕྲིན་ལྷོད་ནིའི་དོན་ལུ་ <strong>མོ་བཱའིལ་ཨེབ་ ཌེཀསི་ཊོཔ་དང་ མཐུད་དེ་ཡོད་དགོ</strong>. ཁ་པར་གྱིས་ "Not Connected" སྟོན་པ་ཅིན་ བརྡ་འཕྲིན་ཚུ་ གྲལ་ཐིག་ནང་ སྒུག་སྡོད་དེ་ མཐུད་ལམ་ སླར་གསོ་འབད་ཞིནམ་ལས་ ལྷོདཔ་ཨིན།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 20 -->
+<div class="chapter-banner">ལེའུ 20 — དཀའ་ངལ་སེལ་ཐབས།</div>
+<div class="section" id="ch20">
+  <h2>20. དཀའ་ངལ་སེལ་ཐབས།</h2>
+
+  <table>
+    <tr><th>དཀའ་ངལ།</th><th>རྒྱུ་རྐྱེན།</th><th>སེལ་ཐབས།</th></tr>
+    <tr><td>ཨེབ་ ཁ་མི་ཕྱེ / SmartScreen ཉེན་བརྡ།</td><td>ཨེབ་ལུ་ ཌི་ཇི་ཊཱལ་མཚན་རྟགས་མེད།</td><td>"More info" → "Run anyway" ལུ་ཨེབ། འདི་ ཐེངས་གཅིག་རྐྱངམ་ཅིག་ འདྲི་ཨིན།</td></tr>
+    <tr><td>ལྷག་ལུས་ ནོར་སྟེ་ མཐོངམ།</td><td>གནས་སྡུད་མཉམ་འབྲེལ་གྱི་ དཀའ་ངལ།</td><td>Settings → App Settings → 🔄 Recalculate All Balances.</td></tr>
+    <tr><td>ཚོང་གི་ཤུལ་ལས་ མཛོད་ དུས་མཐུན་མ་བཟོ།</td><td>ཅ་ཆས་ མཛོད་དང་ མ་མཐུད།</td><td>མཛོད་ཀྱི་ཅ་ཆས་ ལག་ཐོག་ལས་ ཡིག་དཔར་མ་རྐྱབ་པར་ ཡར་ཐོན་ཐོ་ཡིག་ལས་ གདམ་ཡོདཔ་ ངེས་གཏན་བཟོ།</td></tr>
+    <tr><td>བིལ་པེ་ནཱལ་གྱིས་ "Feature Under Development" སྟོན།</td><td>མངོན་གསལ་དང་པའི་སྐབས་ ཨེབ་ཀྱི་འཛོལ་བ།</td><td>ཨེབ་ ཆ་ཚང་ ཁ་བསྡམས་ཏེ་ ལོག་ཁ་ཕྱེ། འདི་ དཀོན་པོ་ཅིག་ འབྱུངམ་ཨིན།</td></tr>
+    <tr><td>བིལ་གུ་ GST ཨང་ མི་མཐོང་།</td><td>ཀམ་པ་ནིའི་ GSTIN མ་བཙུགས།</td><td>Settings → Company → ཁྱོད་ཀྱི་ GSTIN བཙུགས → Save.</td></tr>
+    <tr><td>མོ་བཱའིལ་ཨེབ་ སྟོངམ་ ཡང་ན་ "Could not load" སྟོན།</td><td>ཌེཀསི་ཊོཔ་ཨེབ་ གཡོག་མ་བཀོལ།</td><td>ཌེཀསི་ཊོཔ་ PC གུ་ Accelent ཁ་ཕྱེ་ཡོདཔ་ ངེས་གཏན་བཟོ།</td></tr>
+    <tr><td>QR སྐེན་ ལཱ་མི་འབད།</td><td>པར་ཆས་ཀྱི་གནང་བ་ ཕྱིར་བཀག</td><td>ཁ་པར་གྱི་ Settings → Apps → Accelent → Permissions → Camera ཁ་ཕྱེ།</td></tr>
+    <tr><td>WiFi གུ་ ལཱ་འབདཝ་ཨིན། མོ་བཱའིལ་གནས་སྡུད་གུ་ མི་འབད།</td><td>ས་གནས་ཀྱི་ IP ཐག་རིང་ལས་ ལྷོད་མི་ཚུགས།</td><td>ཌེཀསི་ཊོཔ་དང་ ཁ་པར་གུ་ Tailscale གཞི་བཙུགས་འབད། Tailscale QR ཨང་རྟགས་ ལག་ལེན་འཐབ།</td></tr>
+    <tr><td>APK ཁ་པར་གུ་ གཞི་བཙུགས་མི་འབད།</td><td>Unknown sources བཀག་ཆ་འབད་ཡོདཔ།</td><td>Android Settings → Apps → ཁྱོད་ཀྱི་ ཡིག་སྣོད་འཛིན་སྐྱོང་པ → Install unknown apps → ཁ་ཕྱེ།</td></tr>
+    <tr><td>འགོ་བཙུགས་དང་པའི་སྐབས་ རྒྱལ་ཁབ་ནོར་བ་ཅིག་ གདམ་ཡི།</td><td>ཚོང་དང་པ། ཉོ་ཚོང་དང་པ་ ཡང་ན་ ཅ་ཆས་དང་པའི་ཤུལ་ལས་ རྒྱལ་ཁབ་ ལྡེ་མིག་རྐྱབ་ཨིན།</td><td>གནས་སྡུད་ག་ཅི་ཡང་ མ་བཙུགས་པའི་ཧེ་མ། Settings → App Settings → Reset Database, དེ་ལས་ རྒྱལ་ཁབ་ ལོག་སྟེ་གདམ། གནས་སྡུད་ཡོད་ཚར་བའི་ཤུལ་ལས་ རྒྱབ་སྐྱོར་ལུ་ འབྲེལ་བ་འཐབ།</td></tr>
+    <tr><td>གནས་སྡུད་མཛོད་ཀྱི་ཡིག་སྣོད་ མེད / ཨེབ་ཀྱིས་ སླར་སྒྲིག་འབད་ཟེར་ ཞུ།</td><td>AppData ཡིག་སྣོད་ཀྱི་ དཀའ་ངལ།</td><td>ཉེན་སྲུང་འདྲ་བཤུས་ལས་ སླར་གསོ་འབད། Settings → Restore Data. ཉེན་སྲུང་འདྲ་བཤུས་མེད་པ་ཅིན་ རྒྱབ་སྐྱོར་ལུ་ འབྲེལ་བ་འཐབ།</td></tr>
+    <tr><td>འཛིན་སྐྱོང་པའི་ཆོག་ཡིག་ བརྗེད / རྩིས་ཐོ་ ལྡེ་མིག་རྐྱབ་ཡོདཔ།</td><td>ཆོག་ཡིག་ བརླག་ ཡང་ན་ ནང་བསྐྱོད་ ཐེངས་ལེ་ཤ་ མ་ཚུགས།</td><td>ནང་བསྐྱོད་ཀྱི་གསལ་གཞི་ནང་ <strong>"Forgot password?"</strong> ལུ་ཨེབ་སྟེ་ ཁྱོད་ཀྱིས་ སྲུང་བཞག་འབད་མི་ Recovery Key གིས་ ཁྱོད་ར་གིས་ ཆོག་ཡིག་གསརཔ་ གཞི་སྒྲིག་འབད། (ལེའུ 16) Recovery Key སྲུང་བཞག་མ་འབད་ག? ཁྱོད་ཀྱི་ མཉེན་ཆས་བྱིན་མི་ལུ་ འབྲེལ་བ་འཐབ།</td></tr>
+    <tr><td>Cloud Backup ཆོག་ཡིག་ བརྗེད།</td><td>ཉེན་སྲུང་འདྲ་བཤུས་ཀྱི་ཆོག་ཡིག་ བརླག</td><td>Restore སྒོ་སྒྲིག་ནང་ "Forgot password? Use recovery code instead" ལུ་ཨེབ — ཁྱོད་ཀྱིས་ སྲུང་བཞག་འབད་མི་ Cloud Backup སླར་གསོ་ཨང་རྟགས་དང་ རྒྱབ་སྐྱོར་ལས་ ཕྱིར་གཏོང་ཨང་རྟགས་ དགོ། (ལེའུ 17)</td></tr>
+    <tr><td>འགོ་བཙུགས་དང་པའི་སྐབས་ ཨེབ་ ལྷོད་དྲགས་པ།</td><td>Python འགོ་བཙུགས་དང་པ།</td><td>སྤྱིར་བཏང་ཨིན — འགོ་བཙུགས་དང་པ་ལུ་ སྐར་ཆ་ 5–10 འགོརཝ་ཨིན། ཤུལ་མམ་གྱི་ འགོ་བཙུགས་ཚུ་ མགྱོགས་དྲགས་ཨིན།</td></tr>
+    <tr><td>"Computer Date Is Wrong" བརྡ་འཕྲིན།</td><td>PC གི་ཆུ་ཚོད་ རྒྱབ་ཁར་ཡོདཔ། (རྒྱུན་དུ་ ཕ་བྱང་/CMOS གློག་རྫས་ ཉམས་ཡོདཔ།)</td><td>Windows ནང་ ཚེས་གྲངས་དང་ ཆུ་ཚོད་ ངོ་མ་ གཞི་སྒྲིག་འབད། ཡང་ན་ ཐེངས་གཅིག་ ཨིན་ཊར་ནེཊ་དང་ མཐུད་དེ་ Accelent ལོག་སྟེ་ འགོ་བཙུགས། བསྐྱར་ཟློག་འབྱུང་པ་ཅིན་ CMOS གློག་རྫས་ ཚབ་བཙུགས།</td></tr>
+    <tr><td>ཁ་པར་གུ་ "Phone limit reached"</td><td>ཁ་པར་གྱི་ས་ཁོངས་ག་ར་ ལག་ལེན་འཐབ་ཡོདཔ།</td><td>བརྡ་འཕྲིན་གྱིས་ ག་ མཐུད་དེ་ཡོད་ག་ སླབ་ཨིན། Mobile Connect ནང་ ཁ་པར་རྙིངམ་ཅིག་ བཏོན་ ཡང་ན་ ཁྱོད་ཀྱི་འཆར་གཞི་ ཡར་སྤོ།</td></tr>
+    <tr><td>ལཱ་གཡོག་པ་ཅིག་གིས་ གསལ་གཞི་ ཡང་ན་ ཨེབ་རྟགས་ཅིག་ མི་མཐོང་།</td><td>ཁོ་གི་གནང་བ་ནང་ མ་ཚུད།</td><td>འཛིན་སྐྱོང་པ། Settings → 👥 Users → ཁོ་གི་མིང་གི་ཕྱོགས་ལུ་ 🔐 → གནང་བ་ལུ་ རྟགས་བཀལ → Save. ཁོ་གིས་ ནང་བསྐྱོད་ཤུལ་མམ་ལུ་ མཐོངམ་ཨིན།</td></tr>
+    <tr><td>བིལ་སྐེན་གྱིས་ བརྟག་ཞིབ་སྐེན་ ཚར་ཡི་ཟེར་ སླབ།</td><td>རིན་མེད་བརྟག་ཞིབ་ནང་ བིལ་སྐེན་ 15 ཚུདཔ་ཨིན།</td><td>ཚད་མེད་སྐེན་གྱི་དོན་ལུ་ ཆོག་ཐམ་ ཤུགས་ལྡན་བཟོ། བརྟག་ཞིབ་ མཇུག་མ་བསྡུ་ཚུན་ གཞན་ག་ར་ ལཱ་འབདཝ་ཨིན།</td></tr>
+    <tr><td>གནས་སྟངས་ཕྲ་རིང་ནང་ "Subscription expired"</td><td>ལོ་བསྟར་ཞུགས་ཐོ་ མཇུག་བསྡུ་ཡོདཔ།</td><td>Settings → 🔑 License ལས་ གསར་བཟོ་འབད། མཇུག་གི་ཚེས་གྲངས་ཤུལ་ལས་ ཉིན་ 7 བིལ་བཟོ་ནི་ ལཱ་འབདཝ་ཨིན། ཁྱོད་ཀྱི་གནས་སྡུད་ རྟག་བུ་ར་ བལྟ་ཚུགས།</td></tr>
+    <tr><td>GSTR-1 ཕྱིར་འདྲེན་གྱིས་ HSN མེད་པའི་ཅ་ཆས་ ཐོ་བཀོད་འབད།</td><td>ཅ་ཆས་དེ་ཚུ་ལུ་ Inventory ནང་ HSN ཨང་རྟགས་མེད།</td><td>Inventory ནང་ དེ་ཚུ་གི་ HSN ཨང་རྟགས་ ཁ་སྐོང་འབད་དེ་ ལོག་སྟེ་ ཕྱིར་འདྲེན་འབད།</td></tr>
+  </table>
+
+  <div class="tip">💡 <strong>རྟག་བུ་ར་ དང་པ་ བརྟག་ཞིབ་འབད།</strong> Accelent ཆ་ཚང་ ཁ་བསྡམས་ཏེ་ སྐར་ཆ་ 5 སྒུག་ཞིནམ་ལས་ ལོག་ཁ་ཕྱེ། འདི་གིས་ རེ་བ་མེད་པའི་ དཀའ་ངལ་ 70% སེལཝ་ཨིན།</div>
+
+  <div class="good">✅ <strong>དཀའ་ངལ་གཞན་ག་ཅི་རང་གི་དོན་ལུ།</strong> འཛོལ་བའི་བརྡ་འཕྲིན་གྱི་ གསལ་གཞིའི་པར་ཅིག་ བཏབ་སྟེ་ པར་དེ་དང་ འཛོལ་བ་འབྱུང་པའི་སྐབས་ ཁྱོད་ཀྱིས་ ག་ཅི་འབད་དོ་ཡོད་ག་ གི་ འགྲེལ་བཤད་དང་གཅིག་ཁར་ ཁྱོད་ཀྱི་ མཉེན་ཆས་བྱིན་མི་ལུ་ འབྲེལ་བ་འཐབ།</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ QUICK REF -->
+<div class="section">
+  <h2>མགྱོགས་དྲགས་གཞི་གནས — ཉིན་བསྟར་གྱི་ལཱ།</h2>
+  <table>
+    <tr><th>ལཱ།</th><th>པེ་ནཱལ།</th><th>རིམ་པ།</th></tr>
+    <tr><td>ཚོང་ཐོ་བཀོད།</td><td>Sales</td><td>འབྲི་ཤོག་བཀང → ཅ་ཆས་ཁ་སྐོང་ → དངུལ་སྤྲོད་གདམ → Save Invoice</td></tr>
+    <tr><td>ཉོ་ཚོང་ཐོ་བཀོད།</td><td>Purchases</td><td>+ New Purchase → ཅ་ཆས་བྱིན་མི → ཅ་ཆས → དངུལ་སྤྲོད → Save</td></tr>
+    <tr><td>འགྲོ་སོང་ཐོ་བཀོད།</td><td>Expenses</td><td>+ Add Expense → Category → དངུལ → Cash/Bank → Save</td></tr>
+    <tr><td>ལག་དངུལ་གྱི་ལྷག་ལུས་ཞིབ་དཔྱད།</td><td>Accounts</td><td>Accounts ལུ་ཨེབ → Cash ཤོག་བྱང་གིས་ ད་ལྟོའི་ལྷག་ལུས་སྟོན།</td></tr>
+    <tr><td>ཉོ་མཁན་ཅིག་གིས་ སྤྲོད་དགོ་མི་ཞིབ་དཔྱད།</td><td>Accounts → Parties</td><td>ཕྱོགས་ཀྱི་མིང་འཚོལ — ལྷག་ལུས་ ལྗང་ཁུ་ཁར་ (ཐོབ་དགོ་མི།) སྟོན།</td></tr>
+    <tr><td>ཉོ་མཁན་ལས་ དངུལ་ལེན།</td><td>Receipts</td><td>+ New Receipt → ཉོ་མཁན་གདམ → དངུལ → Save</td></tr>
+    <tr><td>ཅ་ཆས་བྱིན་མི་ལུ་ སྤྲོད།</td><td>Receipts</td><td>+ New Payment → ཅ་ཆས་བྱིན་མི་གདམ → དངུལ → Save</td></tr>
+    <tr><td>ཅ་ཆས་ཉུང་མི་ཞིབ་དཔྱད།</td><td>Inventory</td><td>ལི་ཝང་/དམརཔོ་ཁར་ སྟོན་མི་ཅ་ཆས་ ལོག་ཉོ་དགོ།</td></tr>
+    <tr><td>ཅ་ཆས་བྱིན་མི་ལས་ ལོག་ཉོ།</td><td>Low Stock Monitor</td><td>Order from Vendor → ཅ་ཆས་བྱིན་མི་གདམ → ཅ་ཆས་བསྐྱར་ཞིབ → Save (ཟིན་བྲིས་ཟིན་སྟོན་ PO བཟོ།)</td></tr>
+    <tr><td>བིལ་ཅིག་ པར་བསྐྲུན།</td><td>Sales</td><td>ཐོ་ཡིག་ནང་ བིལ་འཚོལ → 🖨 Print ཨེབ་རྟགས་ལུ་ཨེབ།</td></tr>
+    <tr><td>ཉེན་སྲུང་འདྲ་བཤུས་རྐྱབ།</td><td>Settings</td><td>App Settings → 💾 Backup Data → ས་གནས་གདམ → Save</td></tr>
+  </table>
+</div>
+
+<footer>Accelent — ལག་ལེན་པའི་ལམ་སྟོན། (རྫོང་ཁ)<br>ཌེཀསི་ཊོཔ་དང་ མོ་བཱའིལ་གྱི་ རྩིས་ཐོ་རིམ་ལུགས། &nbsp;·&nbsp; 2026<br><br><em>རོགས་རམ་གྱི་དོན་ལུ་ འཛོལ་བའི་བརྡ་འཕྲིན་གྱི་ གསལ་གཞིའི་པར་དང་གཅིག་ཁར་ ཁྱོད་ཀྱི་ མཉེན་ཆས་བྱིན་མི་ལུ་ འབྲེལ་བ་འཐབ་གནང་།</em></footer>
+
+<script>
+/* Opened from Accelent: ?type=general|restaurant|hotel (&production=1) shows only that business's chapters. */
+(function () {
+  var q = new URLSearchParams(location.search), t = q.get("type");
+  var names = {"general": "ཚོང་ཁང་། ཚོང་ལཱ། ཞབས་ཏོག་ ཡང་ན་ བཟོ་སྐྲུན་ཚོང་ལཱ་གི་", "restaurant": "ཟ་ཁང་གི་", "hotel": "མགྲོན་ཁང་གི་"};
+  if (!names[t]) return;
+  var prod = q.get("production") === "1" || t !== "general";
+  function shows(f) { return f.split(" ").some(function (x) { return x === t || (x === "production" && prod); }); }
+  var hidden = [];
+  document.querySelectorAll(".section[data-for]").forEach(function (s) {
+    if (shows(s.getAttribute("data-for"))) return;
+    hidden.push(s.id); s.style.display = "none";
+    var b = s.previousElementSibling;
+    if (b && b.classList.contains("chapter-banner")) b.style.display = "none";
+  });
+  hidden.forEach(function (id) {
+    document.querySelectorAll('.toc-grid a[href="#' + id + '"]').forEach(function (a) {
+      a.style.display = "none";
+      var br = a.nextElementSibling; if (br && br.tagName === "BR") br.style.display = "none";
+    });
+  });
+  var n = document.getElementById("guideFilter");
+  if (n) n.innerHTML = "" + names[t] + " ལེའུ་ཚུ་ སྟོན་དོ་ཡོདཔ་ཨིན། <a href=\"" + location.pathname + "\">ལེའུ་ག་ར་སྟོན།</a>";
+})();
+</script>
+</body>
+</html>
+

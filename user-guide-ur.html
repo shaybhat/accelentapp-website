@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accelent — استعمال کی گائیڈ (اردو)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, Arial, sans-serif; font-size: 14px; color: #2c3e50; background: #f0f4f8; }
+
+  /* Cover */
+  .cover { background: linear-gradient(135deg, #1abc9c 0%, #16a085 50%, #0e6655 100%);
+           color: white; padding: 70px 40px 50px; text-align: center; }
+  .cover h1 { font-size: 42px; letter-spacing: 1px; }
+  .cover .sub { font-size: 18px; opacity: .85; margin-top: 8px; }
+  .cover .ver { font-size: 13px; opacity: .65; margin-top: 16px; letter-spacing: 2px; text-transform: uppercase; }
+  .cover-badges { margin-top: 28px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .badge { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+           padding: 6px 16px; border-radius: 20px; font-size: 13px; }
+
+  /* Layout */
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+  .section { background: white; max-width: 900px; margin: 28px auto; padding: 36px 44px;
+             border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+
+  /* TOC */
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 14px; }
+  .toc-grid a { color: #2980b9; text-decoration: none; line-height: 2; font-size: 13.5px; }
+  .toc-grid a:hover { text-decoration: underline; }
+  .toc-num { color: #1abc9c; font-weight: bold; margin-right: 5px; }
+
+  /* Headings */
+  h2 { font-size: 22px; color: #16a085; border-bottom: 2px solid #e8f8f5;
+       padding-bottom: 10px; margin-bottom: 20px; }
+  h3 { font-size: 16px; color: #2c3e50; margin: 22px 0 9px; }
+  h4 { font-size: 14px; color: #16a085; margin: 14px 0 6px; }
+  p  { line-height: 1.85; margin-bottom: 11px; color: #444; }
+  ul, ol { padding-left: 22px; line-height: 2.1; color: #444; margin-bottom: 10px; }
+
+  /* Steps */
+  .step { display: flex; gap: 14px; align-items: flex-start; margin: 10px 0; }
+  .step-num { background: #1abc9c; color: white; min-width: 28px; height: 28px;
+              border-radius: 50%; display: flex; align-items: center; justify-content: center;
+              font-weight: bold; font-size: 13px; margin-top: 1px; }
+  .step-body { flex: 1; line-height: 1.8; color: #444; }
+
+  /* Callout boxes */
+  .tip  { background: #eaf6fb; border-left: 4px solid #3498db; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .warn { background: #fef9e7; border-left: 4px solid #f39c12; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .good { background: #eafaf1; border-left: 4px solid #2ecc71; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .err  { background: #fdedec; border-left: 4px solid #e74c3c; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+  th { background: #16a085; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 9px 14px; border-bottom: 1px solid #ecf0f1; vertical-align: top; }
+  tr:hover td { background: #f0fdf9; }
+
+  /* Panel cards */
+  .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .panel-card { border: 1px solid #d5f5ee; border-radius: 8px; padding: 14px 16px;
+                background: #f9fffe; }
+  .panel-card h4 { color: #16a085; margin-bottom: 6px; font-size: 14.5px; }
+  .panel-card p  { font-size: 13px; margin: 0; color: #555; line-height: 1.7; }
+
+  /* Concept boxes */
+  .concept { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;
+             padding: 16px 20px; margin: 12px 0; }
+  .concept h4 { color: #2c3e50; margin-bottom: 6px; }
+
+  /* Code */
+  code { background: #ecf0f1; padding: 2px 7px; border-radius: 3px;
+         font-family: Consolas, monospace; font-size: 13px; }
+  .path { background: #2c3e50; color: #1abc9c; padding: 8px 14px; border-radius: 5px;
+          font-family: Consolas, monospace; font-size: 13px; display: inline-block; margin: 6px 0; }
+
+  /* Chapter header */
+  .chapter-banner { background: linear-gradient(90deg, #1abc9c, #16a085);
+                    color: white; padding: 14px 44px; max-width: 900px; margin: 28px auto 0;
+                    border-radius: 10px 10px 0 0; font-size: 13px; letter-spacing: 1px;
+                    text-transform: uppercase; font-weight: bold; }
+  .chapter-banner + .section { margin-top: 0; border-radius: 0 0 10px 10px; }
+
+  .shot { margin: 18px 0; text-align: center; }
+  .shot img { max-width: 100%; height: auto; border: 1px solid #dee2e6; border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .shot figcaption { font-size: 12.5px; color: #777; margin-top: 6px; }
+
+  footer { text-align: center; padding: 36px; color: #aaa; font-size: 12px; }
+
+  @media(max-width:640px) {
+    .section { padding: 24px 20px; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .panel-grid { grid-template-columns: 1fr; }
+  }
+  .for-badge { display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 999px;
+               background: rgba(255,255,255,.25); font-size: 11px; letter-spacing: .3px; text-transform: none; }
+  .guide-filter { max-width: 900px; margin: 18px auto 0; padding: 10px 16px; border-radius: 8px;
+                  background: #e8f8f5; color: #2c3e50; font-size: 13.5px; line-height: 1.6; }
+  .guide-filter a { color: #16a085; font-weight: bold; }
+  .lang-bar { text-align: center; padding: 8px; font-size: 15px; background: #ffffff; }
+  .lang-bar a { color: #16a085; text-decoration: none; }
+
+  .lang-bar { text-align: center; padding: 8px; font-size: 15px; background: #ffffff; }
+  .lang-bar a { color: #16a085; text-decoration: none; }
+  .mt-note { max-width: 960px; margin: 12px auto; }
+  /* :dir() follows the nearest dir=, so a chapter still in English (wrapped in dir="ltr") keeps the English layout */
+  ul:dir(rtl), ol:dir(rtl) { padding-left: 0; padding-right: 22px; }
+  .tip:dir(rtl), .warn:dir(rtl), .good:dir(rtl), .err:dir(rtl) {
+      border-left: none; border-right-width: 4px; border-right-style: solid; }
+  .tip:dir(rtl) { border-right-color: #3498db; }
+  .warn:dir(rtl) { border-right-color: #f39c12; }
+  .good:dir(rtl) { border-right-color: #2ecc71; }
+  .err:dir(rtl) { border-right-color: #e74c3c; }
+  th:dir(rtl) { text-align: right; }
+  .toc-num:dir(rtl) { margin-right: 0; margin-left: 5px; }
+  .for-badge:dir(rtl) { margin-left: 0; margin-right: 10px; }
+  /* an English button name inside Urdu text keeps its own direction */
+  strong:dir(rtl), em:dir(rtl), code:dir(rtl) { unicode-bidi: plaintext; }
+  /* English chapters keep the English font and spacing */
+  [lang="en"] { font-family: Segoe UI, Arial, sans-serif; font-size: 14px; line-height: 1.6; }
+  .mt-note { font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, Arial, sans-serif; line-height: 2; }
+
+  body { font-size: 15px; line-height: 2.3; }
+  h1, h2, h3 { line-height: 1.9; }
+  ul, ol { line-height: 2.4; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<!-- lang-bar -->
+<div class="lang-bar">🌐 <a class="lang-link" href="user-guide.html">English</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-hi.html">हिन्दी</a> &nbsp;·&nbsp; <strong>اردو</strong> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-bn.html">বাংলা</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-mr.html">मराठी</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-gu.html">ગુજરાતી</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-pa.html">ਪੰਜਾਬੀ</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ta.html">தமிழ்</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-te.html">తెలుగు</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-kn.html">ಕನ್ನಡ</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ne.html">नेपाली</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-si.html">සිංහල</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ps.html">پښتو</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-dv.html">ދިވެހި</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-dz.html">རྫོང་ཁ</a></div>
+<script>document.querySelectorAll('a.lang-link').forEach(function (a) { a.href += location.search; });</script>
+<!-- /lang-bar -->
+<div class="tip mt-note">🌐 یہ گائیڈ انگریزی گائیڈ سے ترجمہ کی گئی ہے۔ بٹنوں کے نام انگریزی ہی میں رکھے گئے ہیں، جیسے وہ اسکرین پر نظر آتے ہیں۔ اگر کوئی بات واضح نہ ہو تو اوپر <strong>English</strong> پر کلک کر کے انگریزی گائیڈ دیکھیں۔</div>
+
+<!-- ═══════════════════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div dir="ltr" style="text-align:left;max-width:900px;margin:-50px auto 30px;"><a href="index.html" style="color:white;opacity:.85;text-decoration:none;font-size:13px;">← Back to accelentapp.com</a></div>
+  <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
+  <h1>Accelent</h1>
+  <div class="sub">مکمل استعمال کی گائیڈ — اکاؤنٹنگ اور انوینٹری (اسٹاک) کا انتظام</div>
+  <div class="ver">ورژن 2.4.9 &nbsp;·&nbsp; ڈیسک ٹاپ + موبائل &nbsp;·&nbsp; 2026</div>
+  <div class="cover-badges">
+    <span class="badge">🖥️ Windows ڈیسک ٹاپ</span>
+    <span class="badge">📱 Android موبائل</span>
+    <span class="badge">🌐 18 زبانیں</span>
+    <span class="badge">📊 GST کے لیے تیار</span>
+    <span class="badge">☁️ دور سے رسائی</span>
+    <span class="badge">🔐 عملے کی اجازتیں</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ TOC -->
+<div class="section">
+  <h2>فہرستِ مضامین</h2>
+  <div class="toc-grid">
+    <div>
+      <a href="#ch1"><span class="toc-num">1.</span>Accelent کیا ہے؟</a><br>
+      <a href="#ch2"><span class="toc-num">2.</span>نئے صارفین کے لیے حساب کتاب کی بنیادی باتیں</a><br>
+      <a href="#ch3"><span class="toc-num">3.</span>ڈیسک ٹاپ ایپ انسٹال کرنا</a><br>
+      <a href="#ch4"><span class="toc-num">4.</span>پہلی بار کمپنی سیٹ اپ</a><br>
+      <a href="#ch5"><span class="toc-num">5.</span>دوسرے سافٹ ویئر سے منتقل ہونا</a><br>
+      <a href="#ch6"><span class="toc-num">6.</span>زبان اور تھیم</a><br>
+      <a href="#ch7"><span class="toc-num">7.</span>ڈیش بورڈ</a><br>
+      <a href="#ch8"><span class="toc-num">8.</span>انوینٹری پینل</a><br>
+      <a href="#ch8b"><span class="toc-num">8b.</span>کم اسٹاک کی نگرانی</a><br>
+      <a href="#ch8c"><span class="toc-num">8c.</span>پروڈکشن (تیاری)</a><br>
+      <a href="#ch9"><span class="toc-num">9.</span>سیلز (فروخت) پینل</a><br>
+      <a href="#ch9b"><span class="toc-num">9b.</span>ریسٹورنٹ</a><br>
+      <a href="#ch9c"><span class="toc-num">9c.</span>کمرے (ہوٹل، لاج)</a><br>
+      <a href="#ch9d"><span class="toc-num">9d.</span>پارٹنر (ایجنٹ، گائیڈ، ڈرائیور)</a><br>
+      <a href="#ch9e"><span class="toc-num">9e.</span>ہاؤس کیپنگ (ہوٹل)</a><br>
+    </div>
+    <div>
+      <a href="#ch10"><span class="toc-num">10.</span>پرچیز (خریداری) پینل</a><br>
+      <a href="#ch11"><span class="toc-num">11.</span>اخراجات اور رسیدیں</a><br>
+      <a href="#ch12"><span class="toc-num">12.</span>کھاتے اور ٹرانسفر</a><br>
+      <a href="#ch13"><span class="toc-num">13.</span>رپورٹیں اور بقایا (Aging)</a><br>
+      <a href="#ch14"><span class="toc-num">14.</span>ملازمین اور تنخواہ</a><br>
+      <a href="#ch15"><span class="toc-num">15.</span>GST ریٹرن اور ای-انوائس</a><br>
+      <a href="#ch16"><span class="toc-num">16.</span>سیٹنگز اور ایڈمن</a><br>
+      <a href="#ch17"><span class="toc-num">17.</span>آپ کا ڈیٹا — مقام، بیک اپ اور ریسٹور</a><br>
+      <a href="#ch18"><span class="toc-num">18.</span>نئے ورژن پر اپ گریڈ کرنا</a><br>
+      <a href="#ch19"><span class="toc-num">19.</span>موبائل ایپ سیٹ اپ اور استعمال</a><br>
+      <a href="#ch19b"><span class="toc-num">19b.</span>💬 ڈیسک ٹاپ–موبائل پیغامات</a><br>
+      <a href="#ch20"><span class="toc-num">20.</span>مسائل اور ان کا حل</a><br>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 1 -->
+<div class="guide-filter" id="guideFilter">Accelent صرف وہی اسکرینیں دکھاتا ہے جو آپ کی طرح کے کاروبار میں کام آتی ہیں (پہلی بار کھولتے وقت چنا گیا، یا <strong>Settings → 🏢 Company</strong> میں)۔ جن ابواب پر <em>ریسٹورنٹ اور ہوٹل کے لیے</em>، <em>ہوٹل کے لیے</em> یا <em>دکان، تاجر اور سروس کے لیے</em> لکھا ہے، وہ صرف انہی کے لیے ہیں؛ باقی سب کے لیے ہیں۔ Accelent سے کھولنے پر (F1 یا 📖 User Guide)، یہ گائیڈ صرف آپ کے کاروبار کے ابواب دکھاتی ہے۔</div>
+<div class="chapter-banner">باب 1 — تعارف</div>
+<div class="section" id="ch1">
+  <h2>1. Accelent کیا ہے؟</h2>
+  <div class="tip">💡 یہ گائیڈ کبھی بھی Accelent کے نیچے والے <strong>📖 User Guide</strong> بٹن سے کھولیں، یا <strong>F1</strong> دبائیں۔</div>
+  <p>Accelent چھوٹے اور درمیانے کاروباروں کے لیے بنا ایک مکمل اکاؤنٹنگ اور انوینٹری (اسٹاک) کا نظام ہے — دکانیں، ڈسٹری بیوٹر، تھوک فروش اور سروس دینے والے۔ یہ Windows PC پر چلتا ہے اور ایک Android موبائل ایپ سے جڑتا ہے، تاکہ آپ اپنا کاروبار کہیں سے بھی دیکھ سکیں۔</p>
+
+  <div class="panel-grid">
+    <div class="panel-card">
+      <h4>🖥️ ڈیسک ٹاپ ایپ</h4>
+      <p>مکمل اکاؤنٹنگ، بل بنانا، انوینٹری، GST ریٹرن، تنخواہ اور رپورٹیں۔ سب کچھ آپ کے Windows PC پر چلتا ہے۔ روزمرہ کام کے لیے انٹرنیٹ کی ضرورت نہیں۔</p>
+    </div>
+    <div class="panel-card">
+      <h4>📱 موبائل ایپ</h4>
+      <p>اپنے فون پر تازہ فروخت، اسٹاک اور بیلنس دیکھیں۔ دور سے بل اور خریداری درج کریں۔ ڈیسک ٹاپ سے آپ کی دکان/دفتر کے WiFi پر، یا Tailscale سے کہیں سے بھی جڑتا ہے۔</p>
+    </div>
+    <div class="panel-card">
+      <h4>📊 یہ کیا کیا سنبھالتا ہے</h4>
+      <p>فروخت کے بل · خریداری کے بل · انوینٹری اور اسٹاک · پارٹیاں (گاہک اور سپلائر) · بینک اور نقد کھاتے · ملازمین اور تنخواہ · GST اور ای-انوائس (بھارت)، ساتھ میں پاکستان، سری لنکا اور سادہ VAT والے ممالک کا ٹیکس</p>
+    </div>
+    <div class="panel-card">
+      <h4>🔒 آپ کا ڈیٹا آپ ہی کا رہتا ہے</h4>
+      <p>سارا ڈیٹا آپ کے PC پر ایک ہی ڈیٹابیس فائل میں رہتا ہے۔ کچھ بھی کسی کلاؤڈ سرور پر نہیں بھیجا جاتا۔ وہ پوری طرح آپ کا ہے۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 2 -->
+<div class="chapter-banner">باب 2 — حساب کتاب کی بنیادی باتیں</div>
+<div class="section" id="ch2">
+  <h2>2. نئے صارفین کے لیے حساب کتاب کی بنیادی باتیں</h2>
+  <p>اگر آپ اکاؤنٹنگ سافٹ ویئر پہلی بار استعمال کر رہے ہیں، تو پہلے یہ حصہ پڑھیں۔ اس کے لیے اکاؤنٹنگ کی ڈگری کی ضرورت نہیں — بس چند اہم باتیں سمجھنی ہیں۔</p>
+
+  <div class="concept">
+    <h4>💰 نقد (کیش) اور بینک</h4>
+    <p>آپ کے کاروبار کا پیسہ دو جگہ ہوتا ہے: <strong>ہاتھ میں نقد</strong> (گلّے میں رکھے نوٹ) اور <strong>بینک کھاتے</strong> (بینک میں جمع پیسہ)۔ Accelent دونوں کا الگ الگ حساب رکھتا ہے۔ نقد ملنے پر نقد بیلنس بڑھتا ہے۔ بینک میں جمع کرنے پر نقد گھٹتا ہے اور بینک بڑھتا ہے۔</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧾 انوائس (فروخت کا بل)</h4>
+    <p>انوائس وہ بل ہے جو آپ گاہک کو خریداری پر دیتے ہیں۔ اس میں سامان، مقدار، قیمت اور کل رقم لکھی ہوتی ہے۔ Accelent میں ہر انوائس درج ہوتا ہے اور خود بخود گاہک کے کھاتے سے جڑ جاتا ہے۔</p>
+  </div>
+
+  <div class="concept">
+    <h4>🛒 خریداری کا بل</h4>
+    <p>خریداری کا بل وہ بل ہے جو مال خریدنے پر سپلائر سے ملتا ہے۔ اسے Accelent میں درج کرنے سے آپ کا اسٹاک خود بخود بڑھتا ہے اور اس سپلائر کو دینے والی رقم درج ہو جاتی ہے۔</p>
+  </div>
+
+  <div class="concept">
+    <h4>👥 پارٹیاں (گاہک اور سپلائر)</h4>
+    <p><strong>پارٹی</strong> کوئی بھی ہے جس کے ساتھ آپ باقاعدہ لین دین کرتے ہیں۔ گاہکوں سے آپ کو پیسہ لینا ہے (لینا — سبز رنگ میں)۔ سپلائر وہ ہیں جنہیں آپ کو پیسہ دینا ہے (دینا — سرخ رنگ میں)۔ Accelent ہر پارٹی کا بیلنس تمام لین دین سے خود بخود نکالتا ہے۔</p>
+  </div>
+
+  <div class="concept">
+    <h4>📦 انوینٹری / اسٹاک</h4>
+    <p>انوینٹری ان چیزوں/سامان کی فہرست ہے جو آپ بیچتے ہیں۔ ہر چیز کے لیے Accelent <strong>اسٹاک میں مقدار</strong>، <strong>بیچنے کی قیمت</strong>، <strong>خریداری کی قیمت</strong> اور <strong>کم سے کم اسٹاک</strong> (جب آپ کو دوبارہ منگوانے کی یاد دلانی ہو) کا حساب رکھتا ہے۔</p>
+  </div>
+
+  <div class="concept">
+    <h4>⚖️ ابتدائی بیلنس (Opening Balance)</h4>
+    <p>جب آپ Accelent پہلی بار استعمال کرتے ہیں، تو سسٹم کو بتانا ہوتا ہے کہ آپ کے پاس پہلے سے کیا ہے — کتنا نقد، ہر بینک کھاتے میں کتنا، اور ہر گاہک پر آپ کا کتنا باقی ہے یا آپ پر ہر سپلائر کا کتنا۔ انہیں <strong>ابتدائی بیلنس (Opening Balances)</strong> کہتے ہیں اور یہ شروع کے سیٹ اپ میں ایک بار ڈالے جاتے ہیں۔</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧮 ڈیبٹ / کریڈٹ (آسان زبان میں)</h4>
+    <p>Accelent میں آپ کو ڈیبٹ/کریڈٹ اندراج کی فکر نہیں کرنی — سافٹ ویئر یہ خود کرتا ہے۔ فروخت درج کرنے پر یہ آپ کی آمدنی اور گاہک کے بیلنس میں جڑتی ہے۔ خریداری درج کرنے پر یہ آپ کے اسٹاک اور سپلائر کے بیلنس میں جڑتی ہے۔ <strong>بس جو ہوا وہ درج کریں — حساب Accelent سنبھالتا ہے۔</strong></p>
+  </div>
+
+  <div class="concept">
+    <h4>📅 مالی سال</h4>
+    <p>بھارت میں مالی سال <strong>1 اپریل سے اگلے سال 31 مارچ</strong> تک چلتا ہے۔ GST ریٹرن، بیلنس شیٹ اور نفع نقصان اسی مدت میں گنے جاتے ہیں۔ Accelent کا Finalization پینل مالی سال کو ٹھیک سے بند کرنے میں مدد کرتا ہے۔</p>
+  </div>
+
+  <div class="tip">💡 <strong>سنہری اصول:</strong> ہر فروخت، ہر خریداری اور ہر خرچ اسی دن درج کریں جس دن وہ ہوا۔ آپ جتنے باقاعدہ رہیں گے، آپ کی رپورٹیں اور بیلنس اتنے ہی درست ہوں گے۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 3 -->
+<div class="chapter-banner">باب 3 — انسٹال کرنا</div>
+<div class="section" id="ch3">
+  <h2>3. ڈیسک ٹاپ ایپ انسٹال کرنا</h2>
+
+  <h3>کیا چاہیے</h3>
+  <ul>
+    <li>Windows 10 یا Windows 11 (64-bit)</li>
+    <li><strong>RAM:</strong> بل جلدی اسکین کرنے کے لیے 8 GB بہتر ہے۔ کم از کم 4 GB چاہیے — سب کچھ چلتا ہے، بس بل اسکین میں زیادہ وقت لگتا ہے۔</li>
+    <li>ڈسک میں تقریباً 1 GB خالی جگہ</li>
+    <li>انسٹالر: <code>Accelent_Setup_v2.4.9.exe</code>، <strong>accelentapp.com</strong> سے ڈاؤن لوڈ کیا ہوا</li>
+  </ul>
+
+  <h3>انسٹالر سے انسٹال کرنا (تجویز کردہ طریقہ)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>accelentapp.com</strong> ← Download for Windows سے <code>Accelent_Setup_v2.4.9.exe</code> ڈاؤن لوڈ کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اس پر ڈبل کلک کریں۔ اگر Windows اسمارٹ اسکرین (SmartScreen) کی تنبیہ دکھائے، تو <strong>"More info"</strong> اور پھر <strong>"Run anyway"</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">مراحل کے ساتھ چلیں اور <strong>Install</strong> پر کلک کریں۔ انسٹالر وہ Windows حصے بھی لگا دیتا ہے جو بل اسکین کے لیے ضروری ہیں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Start مینو یا ڈیسک ٹاپ شارٹ کٹ سے Accelent کھولیں۔</div></div>
+
+  <h3>پہلی بار لاگ اِن</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">یوزر نیم <strong>admin</strong> اور پاس ورڈ <strong>Admin@1234</strong> سے لاگ اِن کریں — بڑا A، پھر <code>dmin</code>، پھر <strong>@</strong> کا نشان، پھر <code>1234</code>۔ جب تک آپ اپنا پاس ورڈ نہیں رکھتے، لاگ اِن اسکرین یہی دکھاتی ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">پھر Accelent آپ سے اپنا پاس ورڈ چننے کو کہتا ہے، اور آپ کی <strong>Recovery Key</strong> دکھاتا ہے — اسے کسی محفوظ جگہ رکھیں (دیکھیں "Your Account Recovery Key")۔</div></div>
+  <div class="tip">💡 5 بار غلط پاس ورڈ ڈالنے پر کھاتہ 15 منٹ کے لیے بند ہو جاتا ہے؛ لاگ اِن اسکرین بتاتی ہے کہ کتنی کوششیں باقی ہیں اور کب دوبارہ کوشش کر سکتے ہیں۔ اگر اس کمپیوٹر پر Accelent پہلے بھی انسٹال تھا، تو آپ کا پرانا پاس ورڈ ہی چلے گا — اَن انسٹال کرنے سے آپ کا ڈیٹا کبھی نہیں مٹتا۔</div>
+
+  <h3>Windows SmartScreen اور اینٹی وائرس</h3>
+  <p>Accelent پر ابھی ڈیجیٹل دستخط (signature) نہیں ہے، اس لیے Windows اس کے ناشر کو نہیں پہچانتا۔ اسی وجہ سے انسٹالر یا ایپ پہلی بار چلانے پر Windows <strong>"Windows protected your PC"</strong> دکھا سکتا ہے۔ یہ صرف ایک بار آتا ہے۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Accelent صرف <strong>accelentapp.com</strong> سے ڈاؤن لوڈ کریں۔ کہیں اور سے ملی فائلیں اصلی نہ ہوں، ایسا ہو سکتا ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">SmartScreen پیغام پر <strong>More info</strong> پر کلک کریں، دیکھ لیں کہ فائل کا نام <code>Accelent_Setup_…exe</code> یا <code>Accelent.exe</code> ہے، پھر <strong>Run anyway</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">اگر آپ کا اینٹی وائرس Accelent کو روکتا یا قرنطینہ (quarantine) میں ڈالتا ہے، تو اسے اینٹی وائرس کے قرنطینہ سے واپس لائیں اور Accelent فولڈر (انسٹال شدہ کاپی کے لیے: <span class="path">C:\Accelent</span>) کو اینٹی وائرس کی <strong>exclusions / allowed apps</strong> میں شامل کریں۔ کچھ اینٹی وائرس Python پیکیجنگ ٹول سے بنے نئے پروگراموں کو غلطی سے خطرناک بتا دیتے ہیں؛ یہ جھوٹی تنبیہ ہے۔</div></div>
+  <div class="tip">💡 Accelent ایک عام پروگرام فولڈر کی طرح انسٹال ہوتا ہے اور بغیر انٹرنیٹ کے چلتا ہے۔ یہ انٹرنیٹ سے صرف آپ کا لائسنس جانچنے کے لیے جڑتا ہے (اور، اگر آپ چالو کریں، تو آپ کی خفیہ (encrypted) بیک اپ کلید کا ایک حصہ رکھنے کے لیے)۔ آپ کے کاروبار کا ڈیٹا کبھی آپ کے PC سے باہر نہیں جاتا۔ اگر کوئی تنبیہ پھر بھی پریشان کرے، تو <strong>support@accelentapp.com</strong> پر لکھیں۔</div>
+
+  <h3>پورٹیبل زِپ (دوسرا طریقہ)</h3>
+  <p>اگر آپ انسٹال نہیں کرنا چاہتے، تو اس کی جگہ <code>Accelent_Desktop_v2.4.9.zip</code> ڈاؤن لوڈ کریں اور یہ مراحل اپنائیں:</p>
+
+  <h3>انسٹال کرنے کے مراحل</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><code>Accelent_Desktop_v2.4.9.zip</code> پر رائٹ کلک کریں ← <strong>Extract All</strong>۔ کوئی مستقل جگہ چنیں، جیسے <code>C:\Accelent</code> یا <code>D:\Accelent</code>۔ <strong>زِپ کے اندر سے نہ چلائیں۔</strong></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">نکالا ہوا <code>Accelent</code> فولڈر کھولیں۔ اس میں <code>Accelent.exe</code>، <code>setup.bat</code> اور کچھ مددگار فولڈر نظر آئیں گے۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Accelent.exe</strong> پر ڈبل کلک کریں۔ Windows اسمارٹ اسکرین کی تنبیہ دکھا سکتا ہے — <strong>"More info"</strong> اور پھر <strong>"Run anyway"</strong> پر کلک کریں۔ ایسا اس لیے ہوتا ہے کہ ایپ پر ابھی ڈیجیٹل دستخط نہیں ہے۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ایپ کھل جاتی ہے۔ پہلی بار کھلنے پر یہ آپ کی ڈیٹابیس فائل خود بخود یہاں بناتی ہے: <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span></div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">روز آسانی سے کھولنے کے لیے <code>Accelent.exe</code> پر رائٹ کلک کریں ← <em>Send to → Desktop (create shortcut)</em>۔</div></div>
+
+  <h3>پہلی بار فائر وال سیٹ اپ (موبائل ایپ کے لیے)</h3>
+  <p>اگر آپ موبائل ایپ استعمال کریں گے، تو اسے ایک بار چلائیں:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><code>Accelent</code> فولڈر میں <strong>setup.bat</strong> پر ڈبل کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Windows ایڈمنسٹریٹر کی اجازت مانگتا ہے — <strong>Yes</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">یہ اسکرپٹ Windows Firewall میں پورٹ 8765 کھولتا ہے اور آپ کے PC کا IP پتہ دکھاتا ہے۔ IP لکھ لیں — فون کو ہاتھ سے جوڑنے کے لیے اس کی ضرورت پڑ سکتی ہے۔</div></div>
+
+  <div class="warn">⚠ اگر آپ setup.bat نہیں چلاتے، تو موبائل ایپ ڈیسک ٹاپ سے نہیں جڑ پائے گی۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 4 -->
+<div class="chapter-banner">باب 4 — پہلی بار کمپنی سیٹ اپ</div>
+<div class="section" id="ch4">
+  <h2>4. پہلی بار کمپنی سیٹ اپ</h2>
+  <p>Accelent پہلی بار کھولنے پر، کوئی بھی لین دین درج کرنے سے پہلے 10 منٹ لگا کر اپنی کمپنی کی معلومات بھریں۔</p>
+
+  <h3>شروع کرنے سے پہلے — اپنا ملک چنیں</h3>
+  <p>Accelent پہلی بار شروع ہوتے ہی (آپ کے اپنا پاس ورڈ رکھنے کے فوراً بعد)، آپ کا <strong>ملک</strong> پوچھتا ہے۔ ملک سے آپ کے <strong>ٹیکس کے اصول</strong> اور <strong>کرنسی</strong> طے ہوتے ہیں — بھارت کے لیے GST، دوسرے ممالک کے لیے VAT — تاکہ ہر بل، رپورٹ اور ٹیکس ریٹرن پہلے دن سے درست شرحیں استعمال کرے۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Welcome — Set Up Your Country</strong> ونڈو میں اپنا <strong>Country</strong> چنیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اگر آپ کے ملک کے لیے کوئی اور سوال آئے، تو اس کا جواب دیں (نیچے کا جدول دیکھیں)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Language</strong> دیکھ لیں۔ اس میں آپ کے ملک کی اہم زبان پہلے سے بھری ہوتی ہے (جیسے بھارت کے لیے ہندی) — چاہیں تو اسے انگریزی، اردو یا کوئی اور زبان کر دیں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">اپنا <strong>Business</strong> چنیں: <em>Shop, trading, services or manufacturing</em>، <em>Restaurant, café or dhaba</em> (دیکھیں <a href="#ch9b">باب 9b</a>) یا <em>Hotel, lodge or guest house</em> (دیکھیں <a href="#ch9c">باب 9c</a>)۔ اس سے طے ہوتا ہے کہ مینو میں کون سی اسکرینیں نظر آئیں گی، اور اسے بعد میں <strong>Settings → 🏢 Company</strong> میں بدلا جا سکتا ہے۔</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Confirm and Continue</strong> پر کلک کریں۔</div></div>
+  <table>
+    <tr><th>ملک</th><th>ٹیکس</th><th>کرنسی</th><th>اضافی سوال</th></tr>
+    <tr><td>بھارت</td><td>GST (CGST + SGST / IGST)</td><td>₹ INR</td><td>—</td></tr>
+    <tr><td>پاکستان</td><td>سامان پر وفاقی سیلز ٹیکس، خدمات پر صوبائی ٹیکس</td><td>Rs. PKR</td><td><strong>Province</strong> — آپ کے کاروبار کا اپنا صوبہ (ICT, Punjab, Sindh, KPK, Balochistan, AJ &amp; Kashmir, Gilgit-Baltistan)</td></tr>
+    <tr><td>سری لنکا</td><td>VAT 18%، اور جہاں لاگو ہو وہاں SSCL</td><td>Rs. LKR</td><td>اگر آپ پر لاگو ہوں، تو <strong>Financial Institution</strong> (مالیاتی اشیا پر VAT 20.5%) اور/یا <strong>SSCL-liable</strong> (سالانہ کاروبار LKR 120,000,000 سے زیادہ) پر ٹک کریں</td></tr>
+    <tr><td>نیپال</td><td>VAT 13%</td><td>Rs. NPR</td><td>—</td></tr>
+    <tr><td>بنگلہ دیش</td><td>VAT 15%</td><td>৳ BDT</td><td>—</td></tr>
+    <tr><td>بھوٹان</td><td>سیلز ٹیکس 7%</td><td>Nu. BTN</td><td>—</td></tr>
+    <tr><td>مالدیپ</td><td>GST 8% (سیاحت کی فروخت پر 17%، ہر بل پر چنا جاتا ہے)</td><td>Rf. MVR</td><td>—</td></tr>
+  </table>
+  <div class="err">🚨 <strong>سوچ سمجھ کر چنیں — ملک بعد میں نہیں بدلا جا سکتا۔</strong> پہلی فروخت، خریداری یا انوینٹری آئٹم محفوظ کرتے ہی ملک پکا ہو جاتا ہے: اسے بدلنے سے آپ کی محفوظ رقمیں پرانی کرنسی اور ٹیکس اصولوں میں رہ جائیں گی۔ دوبارہ چننے کا ایک ہی طریقہ ہے <strong>Settings → App Settings → Reset Database</strong>، جو سارا ڈیٹا مٹا دیتا ہے۔ زبان، دوسری طرف، کبھی بھی بدلی جا سکتی ہے (باب 6)۔</div>
+  <div class="tip">💡 آپ کا ملک ہمیشہ ونڈو کے نیچے بائیں طرف، اسٹیٹس بار میں نظر آتا ہے — جیسے <em>India · GST</em>۔ اگر آپ کا ملک فہرست میں نہیں ہے، تو شروع کرنے سے پہلے سپورٹ سے رابطہ کریں۔</div>
+
+  <h3>مرحلہ 1 — کمپنی کی معلومات بھریں</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings</strong> (سائیڈ بار میں ⚙️) پر جائیں ← <strong>🏢 Company</strong> ٹیب پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اپنی کمپنی کا نام، پتہ، فون نمبر، ای میل، GST نمبر (GSTIN) اور PAN نمبر بھریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">اپنی کمپنی کا لوگو لگائیں — یہ تمام چھپے ہوئے بلوں پر آتا ہے۔ یہاں آپ اپنے <strong>دستخط اور دکان کی مہر</strong> بھی شامل کر سکتے ہیں (دیکھیں <em>Sending Bills on WhatsApp</em>)۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Save Company Settings</strong> پر کلک کریں۔</div></div>
+
+  <h3>مرحلہ 2 — ابتدائی بیلنس ڈالیں</h3>
+  <p>ابتدائی بیلنس سافٹ ویئر کو بتاتے ہیں کہ پہلے دن آپ کے پاس پہلے سے کیا تھا۔ انہیں ایک بار ڈالیں اور بعد میں نہ بدلیں۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 📊 Balances</strong> ٹیب پر جائیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Edit Cash Balance</strong> پر کلک کریں — شروع کی تاریخ پر آپ کے ہاتھ میں جتنا نقد ہے، وہ ڈالیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Edit Bank Balances</strong> پر کلک کریں — پچھلے بینک اسٹیٹمنٹ سے ہر بینک کھاتے کا آخری بیلنس ڈالیں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Edit Party Balances</strong> پر کلک کریں — شروع کی تاریخ پر ہر گاہک پر آپ کا کتنا باقی ہے اور آپ پر ہر سپلائر کا کتنا، وہ ڈالیں۔</div></div>
+
+  <h3>مرحلہ 3 — اپنی انوینٹری شامل کریں</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Inventory</strong> پینل پر جائیں ← <strong>+ Add Item</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ہر سامان کے لیے: نام، زمرہ (category)، اکائی (Pcs/Kg/Box وغیرہ)، خریداری کی قیمت، بیچنے کی قیمت، موجودہ اسٹاک اور کم سے کم اسٹاک ڈالیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">تمام سامان کے لیے دہرائیں۔ آپ کبھی بھی مزید آئٹم شامل کر سکتے ہیں۔</div></div>
+
+  <div class="tip">💡 <strong>مشورہ:</strong> جلدی بکنے والی چیزوں کا کم سے کم اسٹاک رکھیں۔ اسٹاک اس سے نیچے جانے پر Accelent ان پر 🟡 Low یا 🔴 Out کا نشان لگاتا ہے۔</div>
+
+  <h3>مرحلہ 4 — زبان دیکھ لیں</h3>
+  <p>آپ نے ملک کے ساتھ ایک زبان چنی تھی۔ اسے بدلنے کے لیے <strong>Settings → ⚙️ App Settings</strong> ← Language پر جائیں۔ اسکرین فوراً بدل جاتی ہے — تمام 18 زبانوں کے لیے باب 6 دیکھیں۔</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 5 -->
+<div class="chapter-banner">باب 5 — دوسرے سافٹ ویئر سے منتقل ہونا</div>
+<div class="section" id="ch5">
+  <h2>5. دوسرے اکاؤنٹنگ سافٹ ویئر سے منتقل ہونا</h2>
+  <p>اگر آپ Tally، Busy، Marg، Vyapar یا کسی دوسرے سافٹ ویئر سے آ رہے ہیں، تو یہ مراحل اپنائیں۔ اہم بات: <strong>پرانے سافٹ ویئر سے صرف آخری بیلنس چاہیے — ایک ایک لین دین نہیں۔</strong></p>
+
+  <div class="warn">⚠ ایک <strong>منتقلی کی تاریخ</strong> چنیں — عام طور پر کسی مہینے کا یا آپ کے مالی سال کا آخری دن۔ اس تاریخ کے تمام بیلنس پرانے سافٹ ویئر سے لکھ لیں۔ پھر اگلے دن سے Accelent میں نئے سرے سے شروع کریں۔</div>
+
+  <h3>پرانے سافٹ ویئر سے کیا لینا ہے</h3>
+  <table>
+    <tr><th>کیا چاہیے</th><th>کہاں ملے گا</th><th>Accelent میں کیا کریں</th></tr>
+    <tr><td>ہاتھ میں نقد (آخری بیلنس)</td><td>Cash ledger → closing balance</td><td>Settings → Balances → Edit Cash</td></tr>
+    <tr><td>بینک بیلنس (ہر کھاتہ)</td><td>Bank ledger یا بینک اسٹیٹمنٹ</td><td>Settings → Balances → Edit Bank</td></tr>
+    <tr><td>گاہکوں پر باقی رقم</td><td>Debtors / Sundry Debtors فہرست</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>سپلائروں کی باقی رقم</td><td>Creditors / Sundry Creditors فہرست</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>انوینٹری آئٹم اور اسٹاک</td><td>Stock summary / آئٹم فہرست</td><td>Inventory → 📥 Import / Export (نیچے "اسٹاک کو Accelent میں لانا" دیکھیں)</td></tr>
+    <tr><td>ملازمین کی معلومات</td><td>Employee master / HR ماڈیول</td><td>Employees پینل ← ہر ملازم شامل کریں</td></tr>
+  </table>
+
+  <h3>منتقلی کے مراحل</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>اپنی منتقلی کی تاریخ چنیں۔</strong> مثال: "میں 31 مارچ 2026 تک کا حساب لاؤں گا — میرا Accelent 1 اپریل 2026 سے شروع ہوگا۔"</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">منتقلی کی تاریخ کے <strong>بیلنس پرنٹ یا ایکسپورٹ کریں</strong>: نقد بیلنس، بینک بیلنس، گاہکوں پر باقی، سپلائروں کی باقی، اور مقدار کے ساتھ اسٹاک کی فہرست۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Accelent سیٹ کریں</strong> — کمپنی کی معلومات (باب 4)۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>ابتدائی بیلنس ڈالیں</strong> — منتقلی کی تاریخ کے نقد، بینک اور پارٹی بیلنس پرانے سافٹ ویئر سے (Settings → Balances)۔</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">منتقلی کی تاریخ کی اسٹاک مقدار کے ساتھ <strong>اپنے انوینٹری آئٹم امپورٹ کریں</strong> — نیچے <strong>اسٹاک کو Accelent میں لانا</strong> دیکھیں۔</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">منتقلی کی تاریخ کے اگلے دن سے <strong>نئے لین دین Accelent میں درج کریں</strong>۔</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body"><strong>ایک ہفتے بعد جانچیں:</strong> Accounts میں جا کر دیکھیں کہ نقد اور بینک بیلنس آپ کے اصل پیسے سے ملتے ہیں۔ اگر نہ ملیں، تو تمام بیلنس تازہ کرنے کے لیے Settings → Recalculate استعمال کریں۔</div></div>
+
+  <h3>اسٹاک کو Accelent میں لانا</h3>
+  <p>آئٹم ایک ایک کر کے ٹائپ کرنے کی ضرورت نہیں۔ پرانے سافٹ ویئر سے اپنی آئٹم فہرست یا اسٹاک رپورٹ ایکسپورٹ کریں (یا اپنی Excel شیٹ استعمال کریں) اور ایک بار میں امپورٹ کریں۔ Accelent Excel (<code>.xlsx</code>) اور CSV فائلیں پڑھتا ہے۔</p>
+
+  <h4>Import / Export بٹن</h4>
+  <p><strong>Inventory</strong> میں <strong>📥 Import / Export</strong> بٹن تین آپشن کھولتا ہے، کیونکہ تین الگ کام ہیں:</p>
+  <table>
+    <tr><th>آپشن</th><th>کس کام کے لیے</th></tr>
+    <tr><td><strong>📥 Import items from Excel or CSV…</strong></td><td>Accelent <strong>میں</strong> آنے والی ہر چیز — کسی بھی سافٹ ویئر سے یا آپ کی اپنی شیٹ سے۔</td></tr>
+    <tr><td><strong>📋 Download import template</strong></td><td>درست عنوانات والی تیار Excel شیٹ، ان کے لیے جن کے پاس ابھی کوئی فائل نہیں۔</td></tr>
+    <tr><td><strong>💾 Export inventory to Excel</strong></td><td>آپ کے آئٹم Accelent سے <strong>باہر</strong> نکالتا ہے — بیک اپ کے لیے یا آپ کے اکاؤنٹنٹ کے لیے۔</td></tr>
+  </table>
+
+  <h4>ایک ہی امپورٹ ہر سافٹ ویئر کی فائل کیسے پڑھتا ہے</h4>
+  <p>Tally، Marg، Vyapar، Busy اور ایسے سافٹ ویئر اپنی رپورٹیں عام <strong>Excel یا CSV فائل</strong> میں ایکسپورٹ کرتے ہیں۔ فرق صرف بناوٹ کا ہوتا ہے — عنوان کہاں ہیں اور ہر کالم کا نام کیا ہے۔ امپورٹ یہ خود سنبھالتا ہے:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>یہ عنوان ڈھونڈتا ہے۔</strong> یہ پہلی قطاریں دیکھتا ہے، کمپنی کا نام، رپورٹ کا عنوان یا تاریخ والی لائنیں چھوڑتا ہے، اور وہ قطار لیتا ہے جس میں کالموں کے عنوان ہیں۔ Tally کے دو قطاروں والے عنوان (<em>Quantity / Rate / Value</em> کے اوپر <em>Particulars</em>) جوڑ دیے جاتے ہیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>یہ ہر کالم کو اس کے نام سے پہچانتا ہے</strong>، دوسرے سافٹ ویئر کے ناموں سمیت:</div></div>
+  <table>
+    <tr><th>آپ کی فائل کا کالم</th><th>کس طرح لیا جاتا ہے</th></tr>
+    <tr><td>Particulars (Tally), Product Name, Item, Description</td><td>Item Name (آئٹم کا نام)</td></tr>
+    <tr><td>Quantity, Qty, Closing Stock, Closing Balance</td><td>Stock (اسٹاک)</td></tr>
+    <tr><td>Rate, Cost, Purchase Price</td><td>Purchase Rate (خریداری کی شرح)</td></tr>
+    <tr><td>Sale Price, MRP, Selling Price</td><td>Selling Price (فروخت کی قیمت)</td></tr>
+    <tr><td>HSN, HSN/SAC, GST %, Category, Group, Supplier</td><td>ان سے ملتے خانے</td></tr>
+    <tr><td>S.No, Value, Unit</td><td>چھوڑ دیے جاتے ہیں</td></tr>
+  </table>
+  <p>جن ناموں کو یہ ٹھیک ٹھیک نہیں جانتا، انہیں ملتے جلتے نام سے جوڑتا ہے۔</p>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>کچھ بھی امپورٹ کرنے سے پہلے یہ آپ کو نتیجہ دکھاتا ہے۔</strong> آپ کا ہر کالم دکھتا ہے کہ وہ کس کام آئے گا: <strong>سبز</strong> = پہچانا گیا، <strong>زرد</strong> = اندازہ، جانچ لیں، <strong>سرمئی</strong> = چھوڑا گیا۔ اگر کوئی غلط ہے، تو اس کا ڈراپ ڈاؤن بدلیں، پھر <strong>Import Now</strong> پر کلک کریں۔</div></div>
+  <div class="tip">💡 یعنی TallyPrime کی Stock Summary، Vyapar کا آئٹم ایکسپورٹ، Marg کی اسٹاک رپورٹ اور آپ کی اپنی شیٹ — سب ایک ہی <strong>Import items from Excel or CSV…</strong> سے جاتے ہیں۔ پرانے سافٹ ویئر میں بس <strong>Excel میں ایکسپورٹ</strong> کرنا ہے — نیچے مرحلہ 1 بتاتا ہے کیسے۔</div>
+
+  <h4>مرحلہ 1 — پرانے سافٹ ویئر سے فائل نکالیں</h4>
+  <p><strong>TallyPrime سے:</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Gateway of Tally → Stock Summary</strong> کھولیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Alt+F2</strong> دبائیں اور مدت آپ کی منتقلی کی تاریخ پر ختم کریں، تاکہ آخری مقدار اسی دن کی ہو۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Alt+F5</strong> (Detailed) دبائیں تاکہ ہر آئٹم نظر آئے، صرف اسٹاک گروپ نہیں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Alt+E</strong> (Export) دبائیں، <strong>Excel (Spreadsheet)</strong> فارمیٹ چنیں اور ایکسپورٹ کریں۔ فائل کہاں محفوظ ہوئی، لکھ لیں۔</div></div>
+  <p><strong>Marg، Vyapar، Busy یا کسی دوسرے سافٹ ویئر سے:</strong> آئٹم فہرست یا اسٹاک رپورٹ کھولیں اور اس کا <strong>Export to Excel</strong> آپشن استعمال کریں۔ آئٹم کا نام، مقدار اور شرح دکھانے والی رپورٹ کافی ہے۔</p>
+  <p><strong>اپنی Excel شیٹ سے:</strong> صرف آئٹم کے ناموں کا ایک کالم چاہیے۔ اگر آپ کے پاس یہ کالم بھی ہوں، تو Accelent انہیں بھی استعمال کرتا ہے: آئٹم کوڈ، زمرہ، مقدار (اسٹاک)، خریداری کی شرح، فروخت کی قیمت یا MRP، GST %، HSN کوڈ اور سپلائر۔ صاف شیٹ سے شروع کرنے کے لیے <strong>Inventory → 📥 Import / Export → 📋 Download import template</strong> استعمال کریں۔</p>
+  <div class="tip">💡 پرانے فارمیٹ کی Excel فائلیں (<code>.xls</code>) نہیں پڑھی جاتیں: فائل Excel میں کھولیں اور <strong>File → Save As → Excel Workbook (*.xlsx)</strong> کریں۔ امپورٹ سے پہلے فائل Excel میں بند کر دیں۔</div>
+
+  <h4>مرحلہ 2 — اسے امپورٹ کریں</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Inventory → 📥 Import / Export → 📥 Import items from Excel or CSV…</strong> پر جائیں اور اپنی فائل چنیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent کالموں کے عنوان خود ڈھونڈتا ہے — کمپنی کے نام یا رپورٹ کے عنوان کے نیچے بھی — اور دکھاتا ہے کہ آپ کا ہر کالم کیسے استعمال ہوگا۔ سبز قطاریں پہچانی گئی ہیں؛ زرد اندازہ ہیں، اس لیے جانچ لیں؛ سرمئی چھوڑی گئی ہیں (جیسے سیریل نمبر یا Tally کا <em>Value</em> کالم)۔ جو ڈراپ ڈاؤن غلط ہو، اسے بدلیں۔ کئی شیٹوں والی فائل میں اوپر سے درست شیٹ چنیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Import Now</strong> پر کلک کریں۔ Accelent بتاتا ہے کہ کتنے آئٹم شامل ہوں گے اور کتنے پہلے سے ہیں اور بدلے جائیں گے؛ تصدیق کریں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">خلاصہ پڑھیں۔ اس میں ہر وہ قطار ہے جو امپورٹ نہیں ہوئی اور کیوں — جیسے <em>Total</em> والی لائن یا اسٹاک گروپ کا عنوان۔ وہ فہرست رکھنے کے لیے <strong>Save Skipped Rows…</strong> پر کلک کریں۔</div></div>
+
+  <h4>امپورٹ میں کیا ہوتا ہے</h4>
+  <ul>
+    <li><strong>آئٹم کوڈ:</strong> بغیر کوڈ والے آئٹم کو خود بخود کوڈ ملتا ہے، بالکل ویسے ہی جیسے ہاتھ سے آئٹم شامل کرنے پر۔ اگر آپ کی فائل میں کوڈ ہیں، تو وہی رہتے ہیں۔</li>
+    <li><strong>پہلے سے موجود آئٹم</strong> (وہی کوڈ، یا فائل میں کوڈ نہ ہوں تو وہی نام) بدلے جاتے ہیں، دہرائے نہیں جاتے — اس لیے آپ فائل درست کر کے دوبارہ امپورٹ کر سکتے ہیں۔</li>
+    <li><strong>اعداد</strong> جیسے <code>1,250.00</code>، <code>₹450</code> یا <code>10 Nos</code> درست پڑھے جاتے ہیں۔</li>
+    <li><strong>ابتدائی اسٹاک:</strong> مقداریں خریداری کی شرح پر ایک <em>Opening Stock</em> اندراج کے طور پر درج ہوتی ہیں، تاکہ رپورٹیں اور منافع درست لاگت سے شروع ہوں۔</li>
+    <li><strong>زمرے:</strong> بغیر زمرے والے آئٹم <em>Uncategorized</em> میں رکھے جاتے ہیں۔ شروع سے آئٹم گروپوں میں رکھنے کے لیے اپنی فائل میں Category کالم شامل کریں؛ آپ بعد میں Inventory میں بھی زمرہ بدل سکتے ہیں۔</li>
+  </ul>
+
+  <h4>مرحلہ 3 — نتیجہ جانچیں</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Inventory فہرست دیکھیں: نام، مقداریں اور شرحیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Inventory Reports</strong> میں کل اسٹاک کی مالیت کا موازنہ اسی تاریخ کی پرانے سافٹ ویئر کی رپورٹ کی آخری اسٹاک مالیت سے کریں۔</div></div>
+
+  <table>
+    <tr><th>اگر ایسا ہو</th><th>تو یہ کریں</th></tr>
+    <tr><td>"Can't read this file"</td><td>اسے <code>.xlsx</code> میں محفوظ کریں، Excel میں بند کریں، کوئی پاس ورڈ ہو تو ہٹائیں، پھر دوبارہ امپورٹ کریں۔</td></tr>
+    <tr><td>کوئی کالم غلط کام میں لیا گیا</td><td>Import Now پر کلک کرنے سے پہلے امپورٹ ونڈو میں اس کالم کا ڈراپ ڈاؤن بدلیں۔</td></tr>
+    <tr><td>مقداریں یا شرحیں 0 آئیں</td><td>دیکھیں کہ مقدار والا کالم <em>Stock</em> پر اور شرح والا کالم <em>Purchase Rate</em> پر ہے، پھر دوبارہ امپورٹ کریں — پہلے سے موجود آئٹم بدل جاتے ہیں۔</td></tr>
+    <tr><td>کوئی ایک آئٹم غلط آیا</td><td><strong>Inventory</strong> ← آئٹم چنیں ← <strong>🗑️ Delete Selected</strong>۔ جو آئٹم صرف امپورٹ سے آیا ہے (تب سے نہ خریدا، نہ بیچا، نہ لوٹایا)، اسے ڈیلیٹ کیا جا سکتا ہے؛ وہ امپورٹ کے ابتدائی اسٹاک سے بھی ہٹ جاتا ہے۔</td></tr>
+    <tr><td>پورا امپورٹ غلط تھا</td><td>ہر امپورٹ <strong>OPST-…</strong> نام کے ایک ابتدائی اسٹاک اندراج کے طور پر درج ہوتا ہے (امپورٹ کا خلاصہ اس کا نام دکھاتا ہے)۔ <strong>Purchases</strong> میں جائیں، وہ OPST اندراج چنیں، <strong>❌ Delete Bill</strong> پر کلک کریں، پھر اس کے آئٹم بھی ڈیلیٹ کرنے کے لیے <strong>Yes</strong> کہیں۔ فائل درست کریں اور دوبارہ امپورٹ کریں۔</td></tr>
+    <tr><td>بہت سی قطاریں چھوٹ گئیں</td><td>خلاصے میں وجوہات پڑھیں (Save Skipped Rows…)۔ گروپ کے عنوان اور کل والی لائنیں جان بوجھ کر چھوڑی جاتی ہیں۔</td></tr>
+  </table>
+
+  <h3>Tally سے بیلنس</h3>
+  <p>ہر پارٹی کے لیے: <strong>Gateway of Tally → Display More Reports → Account Books → Ledger</strong> اور آخری بیلنس لکھ لیں۔ نقد اور بینک کے لیے: <strong>Display More Reports → Account Books → Cash/Bank Book(s)</strong>۔ انہیں ابتدائی بیلنس کے طور پر ڈالیں (باب 4، مرحلہ 2 اور 3)۔</p>
+
+  <div class="tip">💡 منتقلی کے بعد کم از کم 2–3 مہینے <strong>اپنا پرانا سافٹ ویئر قابلِ رسائی رکھیں</strong>۔ پرانے لین دین دیکھنے کی ضرورت پڑ سکتی ہے۔ وہ پرانے لین دین Accelent میں ڈالنے کی ضرورت نہیں ہے۔</div>
+
+  <div class="good">✅ <strong>آپ کا پرانا ڈیٹا پرانے سافٹ ویئر میں محفوظ ہے۔</strong> Accelent کو صرف بیلنس چاہیے — شروعات کا نقطہ۔ آگے کے سارے لین دین Accelent میں جاتے ہیں۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 6 -->
+<div class="chapter-banner">باب 6 — زبان اور تھیم</div>
+<div class="section" id="ch6">
+  <h2>6. زبان اور تھیم</h2>
+
+  <h3>زبان بدلنا</h3>
+  <p>Accelent <strong>18 زبانوں</strong> میں چلتا ہے: انگریزی، ہندی (हिंदी)، اردو (اردو)، ہسپانوی، فرانسیسی، جرمن، بنگلہ (বাংলা)، تمل (தமிழ்)، تیلگو (తెలుగు)، کنڑ (ಕನ್ನಡ)، گجراتی (ગુજરાતી)، مراٹھی (मराठी)، پنجابی (ਪੰਜਾਬੀ)، نیپالی (नेपाली)، سنہالا (සිංහල)، پشتو (پښتو)، دیویہی (ދިވެހި) اور زونگکھا (རྫོང་ཁ)۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings</strong> پر جائیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Language</strong> ڈراپ ڈاؤن میں اپنی زبان چنیں — ہر زبان اپنے رسم الخط میں نظر آتی ہے (جیسے "ਪੰਜਾਬੀ"، "தமிழ்")، اس لیے اپنی زبان ڈھونڈنے کے لیے انگریزی یا کوئی کوڈ جاننا ضروری نہیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">اسکرین — تمام ٹول ٹپ، ٹیب کے نام اور راستہ بتانے والے اشارے — فوراً بدل جاتے ہیں۔ ایپ دوبارہ شروع کرنے کی ضرورت نہیں۔</div></div>
+  <div class="tip">💡 انگریزی/ہندی/اردو/ہسپانوی/فرانسیسی/جرمن کے بعد شامل کی گئی زبانوں کے ترجمے مشین کی مدد سے بنے ہیں۔ اگر آپ کی زبان میں کوئی ٹول ٹپ عجیب لگے، تو Settings → Support سے ہمیں بتائیں تاکہ ہم اسے درست کر سکیں۔</div>
+
+  <h3>تھیم بدلنا</h3>
+  <p><strong>Settings → ⚙️ App Settings</strong> پر جائیں ← کوئی رنگ تھیم چنیں (Light، Dark یا دوسری)۔ تھیم تمام پینلوں میں فوراً بدل جاتی ہے۔</p>
+
+  <div class="tip">💡 چنی گئی زبان اور تھیم خود بخود محفوظ ہو جاتی ہیں۔ اگلی بار ایپ کھولنے پر بھی وہی رہتی ہیں۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 7 -->
+<div class="chapter-banner">باب 7 — ڈیش بورڈ</div>
+<div class="section" id="ch7">
+  <h2>7. ڈیش بورڈ</h2>
+  <p>ڈیش بورڈ پر آپ کا پورا کاروبار ایک نظر میں نظر آتا ہے۔ ہر بار اس پر جانے پر یہ تازہ ہوتا ہے۔</p>
+
+  <figure class="shot"><a href="manual_images/dashboard.png" target="_blank"><img src="manual_images/dashboard.png" alt="Dashboard" loading="lazy"></a><figcaption>ڈیش بورڈ — جلدی کام والے بٹن، اس مہینے کے اعداد و شمار، چارٹ، اسٹاک کی تنبیہات اور حالیہ پرچیز آرڈر۔</figcaption></figure>
+
+  <table>
+    <tr><th>حصہ</th><th>کیا دکھاتا ہے</th></tr>
+    <tr><td>جلدی کام والے بٹن</td><td>New Sale، New Purchase، Quick Order، Record Payment اور Reports — سب سے عام کاموں تک ایک کلک</td></tr>
+    <tr><td>Total Balance</td><td>آپ کا سارا نقد اور بینک کا پیسہ ملا کر</td></tr>
+    <tr><td>Income / Expenses (Month)</td><td>اس مہینے اب تک کمایا اور خرچ کیا پیسہ</td></tr>
+    <tr><td>Overdue Payments · Pending Invoices</td><td>جن گاہکوں پر ابھی بھی آپ کا پیسہ باقی ہے</td></tr>
+    <tr><td>Monthly Purchases</td><td>اس مہینے آپ نے کیا خریدا</td></tr>
+    <tr><td>Income vs Expenses · Account Distribution</td><td>پچھلے 6 مہینے چارٹ میں، اور آپ کا پیسہ کہاں ہے (نقد اور ہر بینک)</td></tr>
+    <tr><td>Stock Alerts</td><td>جو آئٹم کم ہیں یا ختم ہو گئے، Low Stock / Out of Stock / Suggested Orders کی گنتی کے ساتھ</td></tr>
+    <tr><td>Recent Purchase Orders</td><td>آپ کے تازہ آرڈر اور کیا وہ مل گئے اور ادا ہو گئے — <strong>View All Orders</strong> پوری فہرست کھولتا ہے</td></tr>
+    <tr><td>Top Items by Inventory Value</td><td>وہ آئٹم جن میں آپ کے اسٹاک کا سب سے زیادہ پیسہ لگا ہے</td></tr>
+  </table>
+
+  <div class="tip">💡 ڈیش بورڈ خود بخود مسلسل تازہ نہیں ہوتا — نئے اعداد دیکھنے کے لیے کسی دوسرے پینل پر کلک کر کے واپس آئیں۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8 -->
+<div class="chapter-banner">باب 8 — انوینٹری</div>
+<div class="section" id="ch8">
+  <h2>8. انوینٹری پینل</h2>
+  <p>انوینٹری آپ کی بیچی جانے والی ہر چیز کا حساب رکھتی ہے — اسٹاک، قیمتیں، زمرے اور ایکسپائری کی تاریخیں۔</p>
+
+  <h3>نیا آئٹم شامل کرنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">آئٹم فہرست کے اوپر <strong>➕ Add New Item</strong> پر کلک کریں، اور بائیں طرف کا <strong>Add / Edit Item</strong> فارم بھریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">بھریں: Item Name (نام)، Category (زمرہ)، Vendor (سپلائر)، Buy Rate (آپ نے کتنے میں خریدا)، Sell Price (آپ کتنے میں بیچتے ہیں — اس کے نیچے Margin نظر آتا ہے)، GST %، <strong>Unit</strong> (pcs، kg، litre، metre… — kg، litre اور دوسری ناپ والی اکائیوں میں 0.25 جیسی جزوی مقدار چلتی ہے)، Stock (ابھی آپ کے پاس کتنا ہے) اور کم سے کم اسٹاک (تنبیہ کی حد)۔ آئٹم کوڈ کے لیے <strong>🔍 Generate Smart Code</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">چاہیں تو شامل کریں: Sub Category، Barcode، MRP (قیمت نکالنے کے لیے <strong>Calculate from MRP + Discount %</strong> استعمال کریں)، HSN Code (GST کے لیے)، Expiry Date (جلدی خراب ہونے والے سامان کے لیے)۔ بھارت میں 4 یا زیادہ ہندسوں کا HSN کوڈ ڈالنے پر اس کوڈ کا GST % خود بخود بھر جاتا ہے۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Save</strong> پر کلک کریں۔</div></div>
+  <div class="tip">💡 <strong>مارجن جلدی بدلنا:</strong> Sell Price کے نیچے <strong>Margin: x%</strong> پر ماؤس رکھیں اور وہیل گھمائیں — ہر قدم پر مارجن 1% بڑھتا یا گھٹتا ہے (0.1% کے لیے <strong>Ctrl</strong> دبائے رکھیں) اور Sell Price، Buy Rate سے دوبارہ نکل آتی ہے۔ امپورٹ کیے گئے آئٹم 20% سے شروع ہوتے ہیں، اس لیے من چاہا مارجن رکھنے کا یہ سب سے تیز طریقہ ہے۔</div>
+
+  <h3>آئٹم ڈیلیٹ کرنا</h3>
+  <p>کوئی آئٹم تبھی ڈیلیٹ ہو سکتا ہے جب وہ کبھی خریدا، بیچا، لوٹایا یا منتقل نہ کیا گیا ہو۔ جن آئٹموں کی تاریخ ہے، وہ Inventory میں رہتے ہیں تاکہ آپ کے بل، رپورٹیں اور اسٹاک کا ریکارڈ مکمل رہے۔ ہر ڈیلیٹ کیا گیا آئٹم <strong>Deletion Watcher</strong> میں رکھا جاتا ہے اور وہاں سے اس کے اسٹاک کے ساتھ واپس لایا جا سکتا ہے۔</p>
+  <p><strong>انوینٹری امپورٹ سے آیا آئٹم</strong> جو غلطی سے امپورٹ ہو گیا، ایڈمن ڈیلیٹ کر سکتا ہے (اسے چنیں ← <strong>Delete Selected</strong> ← ایڈمن پاس ورڈ)۔ اس سے اس کا ابتدائی اسٹاک بھی ہٹ جاتا ہے؛ تصدیق کے پیغام میں مقدار اور مالیت نظر آتی ہے۔ یہ تبھی ہوتا ہے جب اس آئٹم کا کچھ بھی خریدا، بیچا یا لوٹایا نہ گیا ہو، اس کا اسٹاک اب بھی ٹھیک اتنا ہی ہو جتنا امپورٹ لایا، اور امپورٹ کا مالی سال بند نہ ہوا ہو۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ایک ساتھ کئی غیر استعمال شدہ آئٹم ہٹانے کے لیے <strong>🧹 Clean Up Unused Items</strong> پر کلک کریں (صرف ایڈمن کو نظر آتا ہے)۔ اس میں ہر وہ آئٹم نظر آتا ہے جو کبھی خریدا یا بیچا نہیں گیا۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ہٹانے والے آئٹموں پر ٹک کریں (تلاش کا خانہ یا <strong>Select All shown</strong> استعمال کریں)، <strong>🗑️ Delete Selected Items</strong> پر کلک کریں اور ایڈمن پاس ورڈ سے تصدیق کریں۔ پہلے آپ کے ڈیٹا کا بیک اپ محفوظ ہوتا ہے۔</div></div>
+
+  <h3>اسٹاک کے رنگ</h3>
+  <table>
+    <tr><th>رنگ</th><th>مطلب</th></tr>
+    <tr><td>🟢 OK</td><td>اسٹاک ٹھیک ہے</td></tr>
+    <tr><td>🟡 Low</td><td>اسٹاک کم سے کم حد سے نیچے ہے — دوبارہ منگوانے کا سوچیں</td></tr>
+    <tr><td>🔴 Out</td><td>اسٹاک ختم — 0 باقی ہے</td></tr>
+  </table>
+  <figure class="shot"><a href="manual_images/inventory.png" target="_blank"><img src="manual_images/inventory.png" alt="Inventory Management" loading="lazy"></a><figcaption>انوینٹری کا انتظام — بائیں طرف Add / Edit Item فارم، دائیں طرف ہر آئٹم اپنی حالت (Status) کے ساتھ۔</figcaption></figure>
+
+  <h3>انوینٹری رپورٹیں</h3>
+  <p><strong>Inventory Reports</strong> پینل (اصل Inventory سے الگ) اسٹاک کی مالیت کی رپورٹیں، آمد و رفت کی تاریخ اور زمرے کے حساب سے خلاصہ دیتا ہے۔ مہینے کی اسٹاک جانچ کے لیے اسے استعمال کریں۔</p>
+
+  <h3>آڈٹ ٹریل</h3>
+  <p><strong>Audit Trail</strong> ٹیب (Inventory Management کے اندر) اسٹاک کی ہر تبدیلی دکھاتا ہے — فروخت، خریداری، درستی، واپسی اور امپورٹ — <strong>Value</strong> کالم اور آپ کے فلٹر کیے ہوئے کا چلتا <strong>Total value</strong> کے ساتھ۔ Reason = "import" فلٹر کریں تو ٹھیک ٹھیک نظر آتا ہے کہ ایک بڑے امپورٹ سے کاروبار میں کتنے کا اسٹاک آیا۔ موجودہ فلٹر کی ہوئی فہرست چھاپنے کے لیے <strong>🖨️ Print Report</strong> استعمال کریں۔ یہ ٹیب صرف دیکھنے کے لیے ہے — کسی آئٹم کا اسٹاک درست کرنے یا ڈیلیٹ کرنے کے لیے Inventory Management ٹیب پر جائیں۔</p>
+
+  <h3>ایکسپائری کی تنبیہات</h3>
+  <p><strong>Expiry Alerts</strong> پینل ان آئٹموں کی فہرست دیتا ہے جن کی ایکسپائری کی تاریخ قریب ہے۔ آئٹم نارنجی (جلد ختم ہونے والے) یا سرخ (ختم ہو چکے) رنگ میں نظر آتے ہیں۔ کسی بھی لائن پر رائٹ کلک کر کے <strong>Set Expiry</strong> یا <strong>Print Report</strong> چنیں۔ بیچنے سے پہلے ایکسپائر ہو چکا اسٹاک ہٹانے کے لیے اسے استعمال کریں۔</p>
+
+  <div class="warn">⚠ فروخت درج کرنے پر (اسٹاک گھٹتا ہے) یا خریداری درج کرنے پر (اسٹاک بڑھتا ہے) اسٹاک خود بخود بدلتا ہے۔ اصل گنتی کی جانچ کے سوا کبھی ہاتھ سے اسٹاک نہ جوڑیں، نہ گھٹائیں۔</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 8b -->
+<div class="chapter-banner">باب 8b — کم اسٹاک کی نگرانی</div>
+<div class="section" id="ch8b">
+  <h2>8b. کم اسٹاک کی نگرانی (Low Stock Monitor)</h2>
+  <p>Low Stock Monitor ہر اس آئٹم کی فہرست دیتا ہے جو اپنے کم سے کم اسٹاک پر یا اس سے نیچے ہے، اور دوبارہ منگوانے کے دو طریقے دیتا ہے: بالکل نئے آئٹم اور سپلائر کو ایک ساتھ درج کرنے کے لیے ایک تیز وزرڈ، اور باقاعدہ پرچیز آرڈر بنانے کے لیے ایک مکمل "Order from Vendor" اسکرین۔ Purchase پینل کے New Purchase سے الگ، یہاں بنے آرڈر <strong>ڈرافٹ</strong> ہوتے ہیں — جب تک آپ انہیں بھیج کر مال ملنا درج نہ کریں، وہ اسٹاک یا سپلائر کے بیلنس کو نہیں چھوتے۔</p>
+
+  <h3>📋 Show Low Stock Suggestions</h3>
+  <p>کم ہوتی ہر چیز ایک ساتھ دوبارہ منگوانے کا سب سے تیز طریقہ۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Show Low Stock Suggestions</strong> پر کلک کریں۔ فہرست میں کم سے کم اسٹاک سے نیچے کا ہر آئٹم نظر آتا ہے، تجویز کردہ Order Qty، Rate، GST % اور Vendor کے ساتھ۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">منگوانے والے آئٹموں پر ٹک کریں (یا <strong>Select All</strong> / <strong>Invert</strong> استعمال کریں) اور کوئی بھی Order Qty بدلیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ہر سپلائر کا ایک آرڈر پانے کے لیے <strong>Group by vendor and create separate orders</strong> پر ٹک رہنے دیں، پھر <strong>Create Orders for Ticked Items</strong> پر کلک کریں۔ نئے آرڈر پیچھے والی فہرست میں ڈرافٹ کے طور پر نظر آتے ہیں۔</div></div>
+  <figure class="shot"><a href="manual_images/low-stock-suggestions.png" target="_blank"><img src="manual_images/low-stock-suggestions.png" alt="Low Stock Purchase Suggestions" loading="lazy"></a><figcaption>کم اسٹاک کی خریداری کی تجاویز — آئٹموں پر ٹک کریں، پھر ہر سپلائر کا ایک آرڈر بنائیں۔</figcaption></figure>
+
+  <h3>⚡ Quick New Order</h3>
+  <p>اسے تب استعمال کریں جب آپ ایک بالکل نئے سپلائر سے ایک بالکل نیا سامان ایک ہی بار میں درج کر رہے ہوں — آئٹم اور سپلائر کی معلومات ساتھ ساتھ، آخر میں ایک ڈرافٹ پرچیز آرڈر۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚡ Quick New Order</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>1️⃣ Add / Edit Item</strong> — Vendor (نئے سپلائر کا نام ٹائپ کریں)، Item Name، Category، پھر کوڈ کے لیے <strong>🔍 Generate</strong> پر کلک کریں۔ Buy Rate، Sell Price، GST%، HSN، Stock، Min Stock بھریں۔ سامان کا بارکوڈ <strong>📱 Scan with Phone</strong> سے اسکین کریں، یا خالی چھوڑ کر بعد میں شامل کریں۔ <strong>💾 Save Item to Inventory</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>2️⃣ Vendor Details & Link</strong> — سپلائر کا فون، پتہ، TIN/GSTIN اور ای میل بھریں، پھر انہیں جوڑنے اور ایک ڈرافٹ PO لائن بنانے کے لیے محفوظ کریں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ضرورت ہو تو پیش منظر والی لائن میں Order Qty بدلیں — GST کے ساتھ کل دوبارہ نکلتا ہے۔</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>📤 Send Purchase Order</strong> پر کلک کریں۔ PO پر SENT لگ جاتا ہے اور وہ نیچے <strong>Existing Purchase Orders</strong> میں نظر آتا ہے۔</div></div>
+
+  <h3>Order from Vendor</h3>
+  <p>اسے اس سپلائر سے عام دوبارہ منگوانے کے لیے استعمال کریں جس سے آپ پہلے سے خریدتے ہیں — یہ تقریباً Purchase پینل کی New Purchase اسکرین جیسا ہی چلتا ہے (وہی پہلے سپلائر چننے پر خود بخود بھرنا، اسکین سے شامل کرنا، اور ہر لائن پر بارکوڈ کے ✓/+📷/🗑 نشان — بارکوڈ کی پوری تفصیل باب 10 میں)، ایک بڑے فرق کے ساتھ: یہاں محفوظ کرنے سے <strong>ڈرافٹ پرچیز آرڈر</strong> بنتا ہے، فوری خریداری نہیں۔ جب تک آرڈر بھیجا نہ جائے اور بعد میں مال نہ ملے، اسٹاک یا سپلائر کے بیلنس میں کچھ نہیں جڑتا۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">سپلائر چنیں — ان کے عام آئٹم Order Items جدول میں خود بخود بھر جاتے ہیں، ٹک پہلے سے لگا ہوتا ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اس بار جو نہیں منگوانا، اس کا ٹک ہٹائیں، مقدار بدلیں، یا Purchase پینل کی طرح ہی نئے آئٹم اسکین کریں/شامل کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ڈرافٹ محفوظ کرنے کے لیے OK پر کلک کریں، پھر تیار ہونے پر اسے <strong>Existing Purchase Orders</strong> سے بھیجیں۔</div></div>
+
+  <h3>Existing Purchase Orders</h3>
+  <p>یہ آپ کے بنائے ہر پرچیز آرڈر کی فہرست کھولتا ہے (اوپر کے کسی بھی طریقے سے)، رنگین حالت کے نقطے کے ساتھ: <strong>سرمئی</strong> = ڈرافٹ، <strong>نارنجی</strong> = بھیجا گیا، <strong>نیلا</strong> = مال ملا، <strong>سبز</strong> = مکمل (مال ملا اور پوری ادائیگی ہوئی)۔ یہاں سے آپ ڈرافٹ آرڈر بھیج سکتے ہیں، بھیجے/ملے آرڈر کی ادائیگی درج کر سکتے ہیں، اور مال ملنا درج کر سکتے ہیں۔ ڈرافٹ/منسوخ/مکمل آرڈر کو <strong>🗑️ Delete</strong> کرنے یا بھیجے جا چکے آرڈر کو <strong>❌ Cancel</strong> کرنے کے لیے لائن پر رائٹ کلک کریں۔</p>
+
+  <div class="good">✅ جب مال درج کرنے کو تیار ہوں، تو Purchase پینل ← <strong>📋 Load from PO</strong> پر جائیں اور آرڈر چنیں — یہ سپلائر اور آئٹموں کو ایک عام New Purchase فارم میں بھر دیتا ہے، تاکہ آپ محفوظ کرنے سے پہلے دیکھ لیں۔ وہی محفوظ کرنا اسٹاک اور سپلائر کی واجب الادا رقم کو آخرکار بدلتا ہے، اس لیے اکیلا PO ان پر کبھی اثر نہیں ڈالتا۔</div>
+
+  <div class="tip">💡 Quick New Order صرف بالکل نئے آئٹم + بالکل نئے سپلائر کے لیے ایک ساتھ چنیں۔ باقی سب کے لیے — پرانے سپلائر سے نیا آئٹم، نئے سپلائر سے پرانا آئٹم، یا عام دوبارہ منگوانا — Order from Vendor استعمال کریں۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8c -->
+<div class="chapter-banner" data-for="production">باب 8c — پروڈکشن <span class="for-badge">کارخانوں، ریسٹورنٹ اور ہوٹل کے لیے</span></div>
+<div class="section" id="ch8c" data-for="production">
+  <h2>8c. پروڈکشن (اپنا سامان خود بنانا)</h2>
+  <div class="tip">💡 ریسٹورنٹ یا ہوٹل میں <strong>🏭 Production</strong> ہمیشہ ہوتا ہے (اس کی ترکیبیں وہیں رہتی ہیں)۔ دکان یا تجارت والے کاروبار کو یہ تب نظر آتا ہے جب وہ <strong>Settings → 🏢 Company</strong> میں <strong>We make our own products</strong> پر ٹک کر کے Accelent بند کریں اور پھر کھولیں (جہاں پہلے سے ترکیبیں ہیں، وہاں یہ خود بخود نظر آتا ہے)۔</div>
+  <p>اگر آپ جو بیچتے ہیں وہ خود بناتے ہیں — کیک، فرنیچر، کپڑے، مصالحے، جوڑ کر بننے والا سامان — تو Accelent آپ کے لیے اسٹاک اور لاگت درست رکھ سکتا ہے۔ آپ ایک بار <strong>ترکیب</strong> لکھتے ہیں (ایک بیچ میں کیا لگتا ہے)؛ ہر بار کچھ بنانے پر Accelent خام مال اسٹاک سے نکالتا ہے، تیار سامان جوڑتا ہے، اور حساب لگاتا ہے کہ ہر ایک کی لاگت کتنی آئی۔ اسے <strong>Inventory → 🏭 Production</strong> سے کھولیں۔</p>
+
+  <h3>شروع کرنے سے پہلے: آئٹم اور اکائیاں</h3>
+  <p>سب کچھ انوینٹری کا آئٹم ہے: <strong>خام مال</strong> (چاکلیٹ کیک کے لیے: بیسن، چاکلیٹ، چینی، گھی) اور <strong>تیار سامان</strong> (کیک)۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Inventory فارم میں ہر آئٹم کی <strong>Unit</strong> رکھیں: <em>pcs</em>، <em>box</em> اور دوسری گنتی والی اکائیاں پوری تعداد ہوتی ہیں؛ <em>kg</em>، <em>g</em>، <em>litre</em>، <em>ml</em>، <em>metre</em> اور دوسری ناپ والی اکائیوں میں 0.25 kg جیسی جزوی مقدار چلتی ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">خام مال <strong>Purchases</strong> سے لائیں، جیسے آپ عام طور پر خریدتے ہیں۔ اس سے وہ اسٹاک میں آتا ہے <em>اور</em> Accelent کو پتہ چلتا ہے کہ اس کی لاگت کیا ہے — اسی سے آپ کے سامان کی لاگت نکالی جاتی ہے۔</div></div>
+
+  <h3>ترکیب لکھنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Production → 🧾 Recipes</strong>، پھر اوپر دائیں طرف <strong>➕ New Recipe</strong>۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Finished item:</strong> سامان چنیں، یا اس کا نام ٹائپ کریں۔ اگر وہ ابھی Inventory میں نہیں ہے، تو محفوظ کرتے وقت Accelent اسے شامل کرنے کو کہتا ہے (نام، اکائی، فروخت کی قیمت اور GST)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>One batch makes:</strong> ایک بیچ میں کتنے بنتے ہیں، جیسے 10 کیک۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Materials for one batch:</strong> ہر خام مال کے لیے <strong>➕ Add Material</strong> پر کلک کریں، ایک بیچ میں لگنے والی مقدار کے ساتھ (جیسے بیسن 1 kg، چاکلیٹ 0.5 kg، چینی 0.8 kg، گھی 1 litre) اور، اگر کچھ ضائع ہوتا ہے، تو <strong>Wastage %</strong>۔ فہرست کے نیچے Accelent آج کی اوسط لاگت پر ایک بیچ کے خام مال کی لاگت اور ہر ایک نگ کی لاگت دکھاتا ہے۔ <strong>In stock</strong> کالم ہر جزو کا اسٹور میں موجود اسٹاک دکھاتا ہے، اور اگر ایک بیچ میں اس سے زیادہ لگتا ہے تو 🔴 دکھائی دیتا ہے۔</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>💾 Save Recipe</strong> پر کلک کریں۔ ترکیب ایک بار لکھیں اور وہ سامان جب بھی بنائیں، اسے استعمال کریں۔</div></div>
+
+  <p>آپ کی ترکیبیں بائیں طرف کارڈ کی شکل میں نظر آتی ہیں۔ ہر کارڈ بتاتا ہے کہ ایک بیچ میں کتنا بنتا ہے، کتنا خام مال لگتا ہے، اور وہ <strong>🍳 Made to order</strong> ہے یا <strong>🏭 Made in batches</strong>۔ ترکیب کھول کر بدلنے کے لیے کارڈ پر کلک کریں؛ کھلے ہوئے کارڈ کا موٹا بارڈر ہوتا ہے۔ ترکیب جلدی ڈھونڈنے کے لیے <strong>Search recipes</strong> میں ٹائپ کریں۔</p>
+
+  <h3>بنانا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Make</strong> ٹیب: آئٹم اور <strong>کتنے</strong> بنانے ہیں چنیں۔ جدول ہر ضروری خام مال، اسٹاک میں کتنا ہے، اور کیا کم ہے، دکھاتا ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">چاہیں تو اس بار کی <strong>Labour / other costs</strong> ڈالیں (مزدوری، گیس، بجلی) — یہ بنائے گئے سامان کی لاگت میں جڑتی ہیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🏭 Make</strong> پر کلک کریں اور تصدیق کریں۔ خام مال گھٹتا ہے، تیار سامان بڑھتا ہے، اور اس بار کو <strong>PRD-0001</strong> جیسا نمبر ملتا ہے۔ یہ ہر آئٹم کی <strong>Item History</strong> میں <em>Production</em> کے طور پر نظر آتا ہے۔</div></div>
+  <div class="tip">💡 اگر کوئی خام مال کم ہے، تو <strong>Make</strong> بند ہو جاتا ہے اور کمی نظر آتی ہے — پہلے وہ خام مال خریدیں یا بنائیں، یا کم بنائیں۔ اگر کسی خام مال پر <em>No cost known</em> نظر آئے، تو وہ کبھی Purchases سے نہیں خریدا گیا اور اس کا Buy Rate نہیں ہے: Inventory میں اس کا Buy Rate رکھیں، ورنہ سامان کی لاگت میں وہ شامل نہیں ہوگا۔ کم پڑنے والا جزو جدول میں 🔴 سے نشان زد ہوتا ہے۔</div>
+
+  <h3>لاگت کتنی آئی</h3>
+  <p>ایک بار بنانے کی لاگت ہے استعمال ہوا خام مال (اس کی اوسط خریداری لاگت پر) اور مزدوری اور دوسری لاگتیں۔ تیار آئٹم کا <strong>Buy Rate</strong> اس کی اوسط بنانے کی لاگت بن جاتا ہے، اس لیے آپ کے اسٹاک کی مالیت اور ہر فروخت کا منافع اس بات سے نکلتا ہے کہ اسے بنانے میں اصل میں کتنا لگا۔ تیار سامان Sales میں ہمیشہ کی طرح بیچیں۔</p>
+
+  <h3>آرڈر پر بننے والی ڈشیں (ریسٹورنٹ)</h3>
+  <p>ریسٹورنٹ کی ڈش آرڈر آنے پر بنتی ہے، پہلے سے نہیں۔ اس کی ترکیب پر <strong>Made to order</strong> پر ٹک کریں: تب ڈش کا اپنا کوئی اسٹاک نہیں ہوتا، اور ہر بار بکنے پر اس کا سامان اسٹاک سے نکلتا ہے (بل بدلنے یا ڈیلیٹ کرنے پر واپس آ جاتا ہے)۔ ڈش تبھی بک سکتی ہے جب اسٹور میں اس کا پورا سامان ہو۔ Made to order ڈشیں Make ٹیب پر نظر نہیں آتیں، اور کم اسٹاک کی فہرستوں سے باہر رہتی ہیں۔ دیکھیں <a href="#ch9b">باب 9b — ریسٹورنٹ</a>۔ Made to order ڈش کبھی خریدی نہیں جاتی: جس خریداری، پرچیز آرڈر یا فون خریداری میں وہ ہو، اسے رد کر دیا جاتا ہے، اور پیغام آتا ہے کہ اس کی جگہ اس کا سامان خریدیں۔</p>
+
+  <h3>تاریخ اور واپس لینا</h3>
+  <p><strong>📜 History</strong> ٹیب ہر بار بنانے کی فہرست دیتا ہے، اس میں لگے خام مال اور لاگت کے ساتھ۔ اگر کوئی بار غلطی تھی، تو ایڈمن اسے چن کر <strong>↩ Undo Run</strong> پر کلک کر سکتا ہے: خام مال اسٹاک میں لوٹ آتا ہے، اس سے بنا سامان نکل جاتا ہے، اور آئٹم کی لاگت پہلے جیسی ہو جاتی ہے۔ کسی آئٹم کا صرف آخری بار ہی واپس لیا جا سکتا ہے، اور تبھی جب اس سے بنا سب کچھ ابھی اسٹاک میں ہو۔</p>
+
+  <div class="tip">💡 Production استعمال کرنے کے لیے عملے کو <strong>Edit inventory</strong> کی اجازت چاہیے۔ <strong>See purchase costs</strong> کے بغیر وہ سامان بنا سکتے ہیں پر کوئی لاگت نہیں دیکھتے۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9 -->
+<div class="chapter-banner" data-for="general">باب 9 — فروخت <span class="for-badge">دکان، تاجر اور سروس کے لیے</span></div>
+<div class="section" id="ch9" data-for="general">
+  <h2>9. سیلز (فروخت) پینل</h2>
+  <p>Sales پینل میں آپ گاہکوں کے بل (انوائس) بناتے ہیں۔ ہر فروخت یہاں درج ہوتی ہے۔</p>
+
+  <h3>نیا بل بنانا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Sales پینل کا بایاں حصہ <strong>Invoice Form</strong> ہے۔ گاہک کا نام ڈالیں — اگر وہ جانی پہچانی پارٹی ہے، تو اس کا بیلنس نظر آئے گا۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ادائیگی کا طریقہ</strong> چنیں: Cash، Bank، UPI، یا Credit (ادھار)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">فون کے کیمرے سے سامان کا بارکوڈ اسکین کرنے کے لیے <strong>📱 Scan with Phone</strong> پر کلک کریں، یا اپنی انوینٹری سے سامان ڈھونڈ کر چننے کے لیے <strong>➕ Add Item</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">مقدار بدلیں۔ کل خود بخود بدلتا ہے۔</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">چاہیں تو رعایت کی رقم یا اضافی خرچ (P&amp;F) ڈالیں۔</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>💾 Save Invoice</strong> پر کلک کریں۔ بل محفوظ ہوتا ہے، اسٹاک گھٹتا ہے، اور گاہک کا بیلنس بدلتا ہے۔</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">بل چھاپنے کے لیے <strong>🖨 Print</strong> پر کلک کریں۔ گاہک کو WhatsApp پر بھیجنے کے لیے نیچے <em>بل WhatsApp پر بھیجنا</em> دیکھیں۔</div></div>
+
+  <figure class="shot"><a href="manual_images/sales-invoice.png" target="_blank"><img src="manual_images/sales-invoice.png" alt="Create Invoices" loading="lazy"></a><figcaption>بل بنانا — بائیں طرف گاہک کی معلومات، دائیں طرف سامان اور کل، نیچے محفوظ کیے گئے بل۔</figcaption></figure>
+
+  <h3>بل WhatsApp پر بھیجنا</h3>
+  <p>Accelent بل خود بھیجتا ہے: اصل بل کی PDF، بالکل ویسی جیسی چھپتی ہے، <em>Original for Recipient</em> لکھی ہوئی، اور اگر آپ نے شامل کیے ہیں تو آپ کے دستخط اور مہر کے ساتھ۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">محفوظ کیے گئے بلوں کی فہرست میں اس بل کے <strong>W</strong> بٹن پر کلک کریں ← <strong>📄 Send the bill (PDF)</strong>۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent PDF محفوظ کر کے کاپی کرتا ہے، اور گاہک کی WhatsApp چیٹ ایک مختصر پیغام کے ساتھ کھولتا ہے۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">چیٹ میں کلک کریں، بل جوڑنے کے لیے <strong>Ctrl+V</strong> دبائیں، اور <strong>Send</strong> دبائیں۔ اگر Ctrl+V سے نہ جڑے، تو <strong>📂 Show the PDF</strong> پر کلک کر کے فائل کو کھینچ کر چیٹ میں ڈالیں۔</div></div>
+  <div class="tip">💡 <strong>دستخط اور مہر:</strong> انہیں ایک بار <strong>Settings → 🏢 Company → Signature &amp; Stamp</strong> میں شامل کریں: ایک سفید کاغذ پر دستخط کر کے مہر لگائیں، اس کی تصویر لیں یا اسکین کریں، اور قریب سے کاٹیں۔ یہ WhatsApp پر بھیجے ہر بل کے <em>Authorised Signatory</em> خانے میں آتے ہیں؛ چھپے بلوں پر بھی لگانے کے لیے <strong>Also put them on printed bills</strong> پر ٹک کریں۔</div>
+  <p><strong>W</strong> بٹن میں <strong>💬 Send a payment reminder (text)</strong> بھی ہے۔ خریداری کے بل بھی ایسے ہی بھیجے جاتے ہیں: بل پر رائٹ کلک کریں ← <strong>📄 Send the bill (PDF) on WhatsApp</strong>۔</p>
+  <div class="tip">💡 <strong>براؤزر میں WhatsApp (WhatsApp Web) استعمال کرتے ہیں؟</strong> Accelent جس بھی چیٹ پر بھیجتا ہے، WhatsApp اسے <strong>براؤزر کے نئے ٹیب</strong> میں کھولتا ہے، اور وہاں WhatsApp Web دوبارہ لوڈ ہوتا ہے؛ WhatsApp ایسے ہی کام کرتا ہے اور Accelent اسے نہیں بدل سکتا۔ اگر پھر کوئی پرانا WhatsApp ٹیب <em>WhatsApp is open in another window</em> کہے، تو یہ عام بات ہے: نیا ٹیب استعمال کرتے رہیں اور پرانے ٹیب کبھی کبھی بند کر دیں۔ ایک ہی WhatsApp ٹیب میں رہنا چاہتے ہیں؟ نیا ٹیب بند کریں، اپنے معمول کے WhatsApp ٹیب پر لوٹیں (پوچھے تو <strong>Use here</strong> پر کلک کریں)، گاہک کی چیٹ کھولیں اور <strong>Ctrl+V</strong> دبائیں: بل اب بھی کاپی ہے۔</div>
+  <p><strong>فون سے:</strong> Accelent ایپ میں بل یا خریداری کا بل کھولیں اور اوپر <strong>📄</strong> آئیکن پر ٹیپ کریں۔ PC وہی PDF بناتا ہے اور فون کا Share مینو کھلتا ہے: WhatsApp چنیں، پھر گاہک۔</p>
+
+  <h3>پرانے بل دیکھنا</h3>
+  <p>فارم کے نیچے <strong>Saved Sales Invoices</strong> فہرست میں تمام محفوظ بل نظر آتے ہیں؛ Source کالم بتاتا ہے کہ ہر بل ڈیسک ٹاپ پر بنا یا فون پر۔ آپ گاہک کے نام، بل نمبر یا تاریخوں سے تلاش کر سکتے ہیں۔ ہر بل کی لائن پر View، Edit، Print یا Delete کے بٹن ہیں۔</p>
+
+  <h3>فروخت کی واپسی</h3>
+  <p>اگر گاہک سامان لوٹائے، تو <strong>Returns</strong> پینل ← <strong>Sales Returns</strong> ٹیب پر جائیں۔ اصل بل چنیں، لوٹایا گیا سامان ڈالیں، اور محفوظ کریں۔ اسٹاک واپس آتا ہے اور کریڈٹ نوٹ بنتا ہے۔ اگر اصل فروخت Cash/Bank/UPI/Card سے تھی، تو واپسی اس Cash/Bank بیلنس کو سیدھا گھٹاتی ہے؛ اگر ادھار فروخت تھی، تو واپسی گاہک پر باقی رقم گھٹاتی ہے۔</p>
+
+  <div class="tip">💡 <strong>ادھار فروخت:</strong> ادائیگی میں "Credit" چننے پر بل <em>Unpaid</em> مانا جاتا ہے اور رقم گاہک کے لینے میں جڑتی ہے۔ جب وہ بعد میں ادا کریں، تو اسے Receipts پینل میں رسید کے طور پر درج کریں۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9b -->
+<div class="chapter-banner" data-for="restaurant hotel">باب 9b — ریسٹورنٹ <span class="for-badge">ریسٹورنٹ اور ہوٹل کے لیے</span></div>
+<div class="section" id="ch9b" data-for="restaurant hotel">
+  <h2>9b. ریسٹورنٹ (میز، کچن ٹکٹ اور بل)</h2>
+  <p>ریسٹورنٹ، کیفے، ڈھابے یا ہوٹل کے کچن کے لیے Accelent میں <strong>🍽 Restaurant</strong> اسکرین ہے: میز پر ٹیپ کریں، ڈش پر ٹیپ کریں، کچن کو <strong>کچن ٹکٹ (KOT)</strong> بھیجیں، اور مہمانوں کے جانے پر میز کا بل بنائیں۔ ہر بل ایک عام فروخت (sale) کی طرح محفوظ ہوتا ہے، اس لیے وہ Accounts، GST اور رپورٹوں میں شامل ہوتا ہے، اور ہر ڈش میں لگنے والا سامان خود بخود اسٹاک سے کم ہو جاتا ہے۔</p>
+
+  <h3>اسے چالو کرنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (ایڈمن پاس ورڈ سے کھولیں) ← <strong>Business Type: Restaurant, café or hotel kitchen</strong> ← <strong>Save</strong>۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent بند کر کے دوبارہ کھولیں۔ اب بائیں طرف کے مینو میں FINANCE کے نیچے <strong>🍽 Restaurant</strong> نظر آئے گا۔ <strong>Sales</strong>، <strong>Returns</strong>، <strong>Aging Report</strong> اور <strong>E-Invoice</strong> چھپ جاتے ہیں، کیونکہ ریسٹورنٹ کا بل Restaurant اسکرین سے بنتا ہے۔ کچھ بھی ڈیلیٹ نہیں ہوتا: Business Type واپس بدلیں تو یہ پھر نظر آنے لگتے ہیں۔</div></div>
+
+  <h3>اپنا مینو بنانا</h3>
+  <div class="tip">💡 <strong>نمونے کے مینو سے شروع کریں:</strong> جب تک مینو خالی ہے، Restaurant اسکرین پر <strong>📋 Start with a sample menu</strong> ملتا ہے (یہ <strong>⚙ Restaurant Settings</strong> میں بھی ہے)۔ اس سے 53 عام ڈشیں اور مشروبات مینو کے حصوں میں جڑ جاتے ہیں (اسٹارٹر، مین کورس، چاول، روٹی، ناشتہ، میٹھا، گرم اور ٹھنڈے مشروبات، جوس، موکٹیل)، تقریباً 100 اجزا ان کی اکائیوں کے ساتھ، اور ہر ڈش کی ایک <em>Made to order</em> ترکیب؛ جس ہوٹل میں ابھی کوئی کمرہ نہیں، اس میں کمرے 101–104 اور 201–204 بھی جڑتے ہیں۔ آپ کی پہلے سے موجود کوئی چیز نہیں بدلتی: اسی نام کی چیز جیسی ہے ویسی رہتی ہے۔ اس کے بعد: Inventory میں اپنی قیمتیں رکھیں (نمونے کی قیمتیں صرف مشورہ ہیں)، جو سامان خریدتے ہیں اسے Purchases میں درج کریں (جب تک کسی ڈش کا سامان اسٹاک میں نہ ہو، اس کا بٹن دھندلا رہتا ہے)، Production → Recipes میں اپنے باورچی کے ساتھ ترکیب کی مقداریں جانچیں، اور جو ڈشیں آپ نہیں بناتے انہیں ڈیلیٹ کر دیں۔</div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ہر ڈش اور مشروب کو <strong>Inventory</strong> میں <strong>Sell Price</strong> (GST سے پہلے کی قیمت) کے ساتھ شامل کریں۔ اس کی <strong>Category</strong> مینو کا حصہ بنتی ہے: <em>Main Course</em>، <em>Starters</em>، <em>Drinks</em>… جس چیز کی Sell Price ہے، وہ مینو میں نظر آتی ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>اجزا (ingredients)</strong> کو بھی آئٹم کی طرح شامل کریں (چاول، چکن، تیل، چائے کی پتی)، kg یا litre جیسی اکائی کے ساتھ، اور انہیں ہمیشہ کی طرح <strong>Purchases</strong> سے خریدیں۔ اجزا کی Sell Price نہیں ہوتی، اس لیے وہ مینو میں نہیں آتے۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">آپ کے کچن میں بننے والی ہر ڈش کی <strong>ترکیب</strong> <strong>Inventory → 🏭 Production → 🧾 Recipes</strong> میں لکھیں (دیکھیں <a href="#ch8c">باب 8c</a>) اور <strong>Made to order</strong> پر ٹک کریں۔ مثال: ایک Chicken Biryani میں 0.25 kg چاول اور 0.2 kg چکن لگتا ہے۔ ڈش بکنے پر یہ سامان اسٹاک سے کم ہو جاتا ہے۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">جو چیزیں آپ خرید کر ویسے ہی بیچتے ہیں (بوتل کا پانی، کولڈ ڈرنک)، ان کی ترکیب کی ضرورت نہیں: انہیں Purchases سے خریدیں، اور بکنے پر ان کا اپنا اسٹاک کم ہوتا ہے۔</div></div>
+  <p>ڈشیں اور اجزا، سب <strong>Inventory</strong> میں آئٹم ہی ہیں۔ اس کی فہرست میں Made to order ڈش کے اسٹاک میں <strong>—</strong> اور حالت (status) میں <strong>🍳 Dish</strong> نظر آتا ہے، کیونکہ اس کا اپنا کوئی اسٹاک نہیں ہوتا۔ ایک وقت میں ایک قسم کی چیزیں دیکھنے کے لیے فہرست کے اوپر کا فلٹر استعمال کریں: <strong>Items for sale</strong> (آپ کا مینو: جس کی بھی Sell Price ہے) یا <strong>Materials &amp; ingredients</strong> (جو بھی کسی ترکیب میں لگتا ہے)۔</p>
+  <h3>سامان اسٹور میں ہونا ضروری ہے</h3>
+  <p>کوئی ڈش آرڈر میں تبھی لی جاتی ہے جب اسٹور میں اس کا پورا سامان ہو۔ Accelent یہ بھی گنتا ہے کہ دوسری میزوں پر پہلے سے آرڈر ہوئی ڈشوں میں کتنا سامان لگے گا، کیونکہ کچن انہیں بنا رہا ہے۔ اگر کچھ کم ہے تو یہ بتاتا ہے کہ کیا کم ہے، جیسے <em>Chicken: needs 0.6 kg, 0.4 kg in the store</em> (چکن 0.6 kg چاہیے، اسٹور میں 0.4 kg ہے)، اور اس ڈش کا بٹن <strong>دھندلا</strong> ہو جاتا ہے۔ سامان <strong>Purchases</strong> سے خریدیں اور ڈش پھر سے دستیاب ہو جاتی ہے۔ یہی جانچ Sales اسکرین پر یا فون سے ڈش بیچتے وقت بھی ہوتی ہے۔ ہر ڈش کا بٹن یہ بھی دکھاتا ہے کہ اسٹور سے اور کتنی بن سکتی ہیں، جیسے <em>12 left</em>؛ 5 یا اس سے کم ہونے پر اس پر <strong>⚠</strong> آتا ہے، اور بٹن پر ماؤس رکھنے سے پتا چلتا ہے کہ کون سا جزو کم ہو رہا ہے۔</p>
+  <div class="tip">💡 مینو کا بٹن تب بھی دھندلا ہوتا ہے جب خرید کر بیچی جانے والی چیز کا اسٹاک ختم ہو، یا کسی ڈش کا نہ اسٹاک ہو اور نہ <em>Made to order</em> ترکیب۔ اگر آپ کا کچن اکثر خریداری درج ہونے سے پہلے ہی کھانا بنا لیتا ہے، تو ایڈمن <strong>⚙ Restaurant Settings</strong> میں <strong>Don't take an order for a dish when the store hasn't enough of its ingredients</strong> کا ٹک ہٹا سکتا ہے: تب ڈشیں ہمیشہ لی جاتی ہیں، سامان کا اسٹاک صفر سے نیچے چلا جاتا ہے، اور Low Stock Monitor آپ کو مزید خریدنے کو کہتا ہے۔</div>
+
+  <h3>میزیں</h3>
+  <p>پہلی بار میں چھ میزیں (Table 1 سے Table 6) بن جاتی ہیں۔ میزیں شامل کرنے، ان کا نام بدلنے یا ہٹانے اور نشستیں رکھنے کے لیے <strong>🪑 Tables…</strong> پر کلک کریں (جیسے <em>Garden 1</em>، <em>Cabin A</em>)۔ ہر میز ایک کارڈ ہے:</p>
+  <ul>
+    <li><strong>خالی</strong> میز سادہ ہوتی ہے اور اپنی نشستیں اور <em>✓ Free</em> دکھاتی ہے۔</li>
+    <li>جس میز پر آرڈر چل رہا ہے، اس کا <strong>رنگین بارڈر</strong> ہوتا ہے اور وہ اپنا کل بل اور کتنی دیر سے کھلی ہے، دکھاتی ہے (<em>🕑 25 min</em>، <em>🕑 1h 05m</em>)۔</li>
+    <li>جب ویٹر یا گاہک بل مانگتا ہے، تو میز کا <strong>زرد (amber) بارڈر</strong> ہو جاتا ہے اور <em>🧾 Bill asked</em> نظر آتا ہے۔</li>
+    <li>جو میز آپ نے کھولی ہے، اس کا <strong>موٹا بارڈر</strong> ہوتا ہے۔</li>
+  </ul>
+  <p>اسکرین کے نیچے ایک فہرست بتاتی ہے کہ کس بارڈر کا کیا مطلب ہے۔</p>
+
+  <h3>آرڈر لینا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>میز</strong> پر کلک کریں، پھر <strong>مینو کے حصے</strong> پر، پھر <strong>ڈشوں</strong> پر۔ ہر ٹیپ پر ایک جڑتی ہے؛ دوبارہ ٹیپ کریں تو ایک اور۔ ڈش جلدی ڈھونڈنے کے لیے <strong>Search the menu</strong> میں ٹائپ کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">آرڈر میں کوئی لائن چنیں اور مقدار بدلنے کے لیے <strong>−</strong> / <strong>+</strong>، کچن کے لیے <strong>📝 Note</strong> (<em>کم مرچ</em>، <em>پیاز نہیں</em>)، یا <strong>✕ Remove</strong> استعمال کریں۔ آپ لائن پر ماؤس کا وہیل بھی گھما سکتے ہیں: اوپر کرنے سے ایک بڑھتا ہے، نیچے کرنے سے ایک گھٹتا ہے (نیچے کرنا 1 پر، اور باورچی خانے کو بھیجی گئی مقدار پر رک جاتا ہے)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🧑‍🍳 Send to Kitchen (KOT)</strong> پر کلک کریں۔ کچن ٹکٹ اپنے نمبر کے ساتھ چھپتا ہے (KOT #1، #2… ہر دن دوبارہ شروع)، ساتھ میں میز اور کیا بنانا ہے۔</div></div>
+  <p><strong>Kitchen</strong> کالم دکھاتا ہے کہ کچن کے پاس کیا پہنچ چکا ہے (<em>✓ sent</em>) اور کیا نیا ہے۔ جب مہمان مزید آرڈر کریں، تو اسے جوڑ کر دوبارہ بھیجیں: اگلے KOT میں <strong>صرف نئی چیزیں</strong> ہوتی ہیں۔ اگر بھیجنے کے بعد کوئی ڈش ہٹائی جائے، تو KOT میں وہ <strong>CANCEL</strong> چھپتی ہے؛ بھیجنے کے بعد بدلا ہوا نوٹ <strong>NOTE</strong> کے طور پر چھپتا ہے۔ KOT بٹن پر نقطے کا مطلب ہے کہ کچھ ابھی کچن نہیں گیا؛ جب کچن کے پاس سب کچھ پہنچ جائے، تو بٹن دھندلا ہو کر <strong>✓ Kitchen has everything</strong> دکھاتا ہے۔</p>
+
+  <h3>کچن کتنا مصروف ہے؟</h3>
+  <p>Restaurant اسکرین کے اوپر کچن کی حالت نظر آتی ہے، جیسے <strong>🟢 Kitchen: Normal · ~12 min</strong>: <em>Normal, Busy, Very busy, Extra busy</em> یا <em>Overloaded</em>، اور ابھی آرڈر کی گئی ڈش میں تقریباً کتنا وقت لگے گا۔ یہ ایک <strong>اندازہ</strong> ہے: Accelent جانتا ہے کہ کچن کو کیا بھیجا گیا اور ہر ڈش میں عام طور پر کتنا وقت لگتا ہے، اور ڈیوٹی پر موجود ہر باورچی کے لیے حساب لگاتا ہے کہ ابھی کتنا بنانا باقی ہے۔ اس پر کلک کریں تو کچن میں باقی آرڈر نظر آتے ہیں، سب سے پرانے پہلے، اور کون سے لیٹ ہیں۔ جب کچن Extra busy ہو جاتا ہے، تو PC بیپ کرتا ہے۔</p>
+  <ul>
+    <li><strong>اس ونڈو میں</strong> انتظار کا وقت 30 منٹ کے بعد <strong>سرخ</strong> اور 15 منٹ سے <strong>زرد (amber)</strong> نظر آتا ہے۔ ہر لائن پر <strong>👁 Items</strong> (اس کچن ٹکٹ کی ڈشیں) اور <strong>🍽 Served</strong> ہے۔</li>
+    <li><strong>⏸ Pause QR orders for 20 min:</strong> میز کے QR سے آرڈر کرنے والے مہمانوں کو بتایا جاتا ہے کہ آرڈر ابھی رکے ہوئے ہیں؛ ویٹر پھر بھی آرڈر لے سکتے ہیں۔ 20 منٹ بعد یہ خود بخود دوبارہ شروع ہو جاتا ہے، یا <strong>▶ Resume QR orders</strong> پر کلک کریں۔</li>
+    <li><strong>⏰ کھانا بہت دیر سے انتظار میں:</strong> جب کوئی کچن ٹکٹ 30 منٹ بعد بھی served نہیں ہوا، تو Restaurant اسکرین بیپ کرتی ہے اور ایک سرخ لائن دکھاتی ہے (جیسے <em>⏰ Table 7: KOT #4 waiting 40 min</em>)، اور یہی پیغام ایک بار ہر جڑے ہوئے ویٹر کے فون پر Messages میں جاتا ہے۔ منٹ بدلنے یا اسے بند (0) کرنے کے لیے: Kitchen Settings ← <em>Alert the floor when food waits</em>۔</li>
+  </ul>
+  <ul>
+    <li><strong>🍽 Served:</strong> جب کھانا میز پر پہنچ جائے، تو PC پر آرڈر کھول کر اس پر کلک کریں۔ اس سے اندازہ درست رہتا ہے۔ جس آرڈر کا بل بن گیا، وہ served مانا جاتا ہے۔</li>
+    <li><strong>⏰ Late:</strong> جس میز کا کھانا اس کی سب سے دیر سے بننے والی ڈش کے وقت سے 5 منٹ زیادہ انتظار کر چکا ہے، اس کا زرد بارڈر ہوتا ہے اور <em>Late … min</em> نظر آتا ہے؛ آرڈر کے عنوان میں بھی یہ لکھا ہوتا ہے۔</li>
+    <li><strong>🕑 Timeline:</strong> آرڈر کب کھلا، ہر کچن ٹکٹ اور اس کی ڈشیں، کھانا کب served ہوا، بل کب مانگا گیا اور کب بنا۔</li>
+  </ul>
+  <div class="tip">💡 <strong>⚙ Restaurant Settings → 🍳 Kitchen Settings</strong> (ایڈمن): ڈیوٹی پر کتنے باورچی ہیں، عام طور پر کھانا بننے کا وقت (جب تک آپ نہ بدلیں، 12 منٹ)، مینو کے ہر حصے کا وقت اور الگ وقت والی ڈشیں (بریانی 25 منٹ، چائے 4…)، اور ہر سطح کہاں سے شروع ہوتی ہے۔ کچن مصروف ہونے پر کیا ہو، یہ آپ کی مرضی ہے: QR آرڈر صفحے پر متوقع انتظار دکھانا، Overloaded ہونے پر QR آرڈر روکنا (ویٹر پھر بھی آرڈر لے سکتے ہیں)، اور Extra busy یا Overloaded ہونے پر دیر سے بننے والی ڈشیں روکنا۔</div>
+
+  <h3>ٹیک اوے (پارسل)</h3>
+  <p><strong>🥡 New Takeaway</strong> پر کلک کریں، چاہیں تو گاہک کا نام لکھیں، پھر میز کی طرح ہی ڈشیں جوڑیں، KOT بھیجیں اور بل بنائیں۔ کھلے ٹیک اوے میزوں کے نیچے <strong>Takeaway orders</strong> میں نظر آتے ہیں (ہوٹل میں <strong>Takeaway &amp; room service</strong>)؛ کھولنے کے لیے کسی پر کلک کریں۔</p>
+
+  <h3>بل بنانا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">میز کھولیں اور <strong>💵 Bill</strong> پر کلک کریں۔ اگر کچھ چیزیں کچن نہیں گئیں، تو Accelent پہلے انہیں بھیجنے کو کہتا ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">مہمان نے کیسے ادائیگی کی، چنیں: <strong>Cash</strong>، <strong>UPI</strong>، <strong>Card</strong> یا <strong>Bank Transfer</strong> (اور کس بینک میں، چاہیں تو حوالہ نمبر کے ساتھ)۔ گاہک کا نام اور فون دینا ضروری نہیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Save Bill</strong> پر کلک کریں۔ بل فروخت کے طور پر محفوظ ہوتا ہے، رقم Cash یا بینک میں جاتی ہے، ڈشوں کا سامان اسٹاک سے کم ہوتا ہے، میز خالی ہو جاتی ہے، اور بل پرنٹ کے لیے کھلتا ہے (پرنٹ نہ کرنا ہو تو <em>Print the bill</em> کا ٹک ہٹائیں)۔</div></div>
+  <div class="tip">💡 <strong>گاہک کے WhatsApp پر بل:</strong> جب بل ونڈو میں گاہک کا موبائل نمبر ہو (QR سے آرڈر کرنے والے گاہک کا نمبر پہلے سے بھرا ہوتا ہے)، تو <strong>📄 Send the bill on WhatsApp</strong> پر ٹک لگا ہوتا ہے۔ محفوظ کرنے کے بعد بل کی PDF بن کر کاپی ہو جاتی ہے، اور WhatsApp میں گاہک کی چیٹ ایک مختصر شکریے کے پیغام کے ساتھ کھلتی ہے: بل جوڑنے کے لیے <strong>Ctrl+V</strong> دبائیں، پھر <strong>Send</strong>۔ بعد میں بھیجنا ہو تو <strong>Today's Bills</strong> میں بل چن کر <strong>📄 Send on WhatsApp</strong> پر کلک کریں۔</div>
+
+  <h3>ہوٹل: ٹھہرے ہوئے مہمانوں کا کھانا</h3>
+  <p>Business Type <em>Hotel, lodge or guest house</em> ہونے پر Restaurant اسکرین پر <strong>🛏 Room Service</strong> اور <strong>🛏 Charge to Room</strong> بھی ہوتے ہیں: کھانا مہمان کے کمرے کے کھاتے میں جاتا ہے اور چیک آؤٹ پر ادا کیا جاتا ہے۔ دیکھیں <a href="#ch9c">باب 9c — کمرے</a>۔</p>
+
+  <h3>آرڈر منتقل یا منسوخ کرنا</h3>
+  <p><strong>⇄ Move to table</strong> چلتے آرڈر کو کسی خالی میز پر لے جاتا ہے (مہمانوں نے میز بدلی، یا ٹیک اوے وہیں بیٹھ کر کھایا جا رہا ہے)۔ <strong>🗑 Cancel order</strong> اس آرڈر کو ہٹاتا ہے جس کا بل نہیں بنے گا؛ نہ کوئی فروخت محفوظ ہوتی ہے، نہ اسٹاک لگتا ہے۔</p>
+  <div class="tip">💡 جو کھانا کچن کے پاس پہنچ چکا ہے، اسے صرف <strong>ایڈمن</strong> منسوخ کر سکتا ہے (یا − یا ✕ Remove سے ڈش ہٹا سکتا ہے): عملے سے ایڈمن پاس ورڈ مانگا جاتا ہے۔ ایسی ہر منسوخی <strong>Settings → 🔍 Deletion Watcher</strong> میں آرڈر، ڈشوں اور کرنے والے کے نام کے ساتھ درج ہوتی ہے، تاکہ بنا ہوا کھانا چپکے سے غائب نہ ہو۔ جو چیزیں ابھی کچن نہیں گئیں، انہیں آزادی سے بدلا جا سکتا ہے۔</div>
+
+  <h3>آج کے بل</h3>
+  <p><strong>🧾 Today's Bills</strong> ٹیب میں دن کے ریسٹورنٹ بل ان کے کل کے ساتھ نظر آتے ہیں؛ تاریخ والے خانے سے دوسرا دن چنیں۔ ہوٹل میں اس میں اس دن <strong>🛏 کمروں پر ڈالا گیا</strong> کھانا بھی نظر آتا ہے، کمرے اور مہمان کے ساتھ، <em>on the room</em> یا <em>paid at check-out</em> لکھا ہوتا ہے؛ کل والی لائن دونوں کو جوڑتی ہے، تاکہ آپ کو ریسٹورنٹ کا پورا دن نظر آئے۔ وہ کھانا مہمان کے چیک آؤٹ بل پر چھپتا اور درست ہوتا ہے، یہاں نہیں۔ بل چن کر دوبارہ پرنٹ کرنے کے لیے <strong>🖨 View / Print bill</strong>، یا غلط بل ہٹانے کے لیے <strong>🗑 Cancel bill</strong> پر کلک کریں: ادائیگی واپس الٹ جاتی ہے، سامان اسٹاک میں لوٹ آتا ہے، اور ایک کاپی Deletion Watcher میں رکھی جاتی ہے۔</p>
+
+  <h3>کچن پرنٹر</h3>
+  <p><strong>⚙ Restaurant Settings</strong> میں <strong>Kitchen printer</strong> چنیں، جیسے کچن میں رکھا چھوٹا تھرمل پرنٹر۔ تب PC سے اور ویٹروں کے فون سے آنے والا ہر KOT سیدھا اسی پر چھپتا ہے، اور بل آپ کے عام پرنٹر پر چھپتے رہتے ہیں۔ کچن پرنٹر نہ ہو تو KOT پرنٹ کے لیے پیش منظر (preview) میں کھلتا ہے، یا وہ آپشن ٹک کریں تو سیدھا Windows کے ڈیفالٹ پرنٹر پر جاتا ہے۔</p>
+
+  <h3>ویٹروں کے فون</h3>
+  <p>ویٹر Accelent ایپ سے اپنے فون پر میز پر ہی آرڈر لے سکتے ہیں (دیکھیں <a href="#ch19">باب 19</a>)۔ جب PC کا Business Type Restaurant یا Hotel ہو، تو ایپ کے ڈیش بورڈ پر <strong>🍽 Restaurant</strong> نظر آتا ہے:</p>
+  <ul>
+    <li>کسی <strong>میز</strong> پر ٹیپ کریں (بھری میزیں اپنا کل اور منٹ دکھاتی ہیں)، یا <strong>New Takeaway</strong>، یا ہوٹل میں <strong>Room Service</strong> (صرف تب جب کوئی مہمان ٹھہرا ہو)۔</li>
+    <li><strong>Add Dishes</strong> مینو کو حصوں کے حساب سے کھولتا ہے، تلاش کے ساتھ؛ ایک ڈش جوڑنے کے لیے اس پر ٹیپ کریں۔ مقدار <strong>− / +</strong> سے بدلیں، اور کچن کے لیے نوٹ دینے کو ڈش پر ٹیپ کریں۔</li>
+    <li><strong>Send to Kitchen</strong> PC پر KOT چھاپتا ہے (ویٹر کے نام کے ساتھ)۔ پھر بٹن پر <strong>✓ Sent to kitchen</strong> نظر آتا ہے، جب تک کچھ نیا نہ جوڑا جائے۔</li>
+    <li><strong>Ask for Bill</strong> کاؤنٹر کو بتاتا ہے: PC بیپ کرتا ہے، میز اور ویٹر کے نام کے ساتھ ایک پٹی دکھاتا ہے، اور میز پر <strong>🧾 Bill asked</strong> لگاتا ہے۔ کیشیئر میز کھول کر 💵 Bill دباتا ہے، جس سے ادائیگی لی جاتی ہے۔</li>
+    <li>ہوٹل میں <strong>Charge to Room</strong> آرڈر کو ٹھہرے ہوئے مہمان کے کھاتے میں ڈالتا ہے۔</li>
+  </ul>
+  <p>PC والے ہی اصول لاگو ہوتے ہیں: ڈش کے لیے اس کا سامان اسٹور میں ہونا چاہیے، اور جو کھانا کچن کے پاس پہنچ چکا ہے اسے صرف ایڈمن ہٹا یا منسوخ کر سکتا ہے۔ ویٹروں کو <strong>Create sales</strong> کی اجازت اور فون تک رسائی چاہیے (Settings → 👥 Users)۔ ایک لائسنس میں ایک وقت میں محدود فون کھاتے چل سکتے ہیں؛ اگر اسی وجہ سے کسی ویٹر کا فون رد ہو جائے، تو مزید شامل کرنے کے لیے ہم سے رابطہ کریں۔</p>
+
+  <h3>میز پر QR سے آرڈر</h3>
+  <p>گاہک اپنی میز پر رکھا QR کوڈ اسکین کر کے اپنے فون سے مینو دیکھ سکتے ہیں اور آرڈر کر سکتے ہیں۔ یہ <strong>صرف آپ کے ریسٹورنٹ کے Wi-Fi پر</strong> چلتا ہے: کچھ بھی انٹرنیٹ پر نہیں جاتا، اور گاہک کو نہ کوئی ایپ چاہیے، نہ اکاؤنٹ۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚙ Restaurant Settings → QR ordering</strong>: <em>Customers can see the menu and order…</em> پر ٹک کریں، <strong>This PC on the Wi-Fi</strong> جانچیں (جس Wi-Fi سے گاہک جڑیں گے، اس پر PC کا پتہ)، اور <strong>Wi-Fi کا نام اور پاس ورڈ</strong> بھریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>🖨 Print table QR cards</strong> پر کلک کریں۔ ہر میز کو دو کوڈ والا ایک کارڈ ملتا ہے: <strong>1. Join our Wi-Fi</strong> (فون پاس ورڈ ٹائپ کیے بغیر جڑ جاتا ہے) اور <strong>2. Scan to see the menu and order</strong>۔ ہر کارڈ اس کی میز پر رکھیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">گاہک فون کے کیمرے سے دونوں اسکین کرتا ہے، ڈشیں چنتا ہے (نوٹ کے ساتھ، جیسے <em>کم مرچ</em>)، اپنا <strong>نام اور موبائل نمبر</strong> ڈالتا ہے (ضروری ہے، اور اگلے آرڈر کے لیے اس فون پر یاد رہتا ہے) اور اگر کوئی ڈرائیور یا گائیڈ اسے لایا ہے تو اس پارٹنر کا کوڈ (جیسے DRV001، دیکھیں <a href="#ch9d">باب 9d</a>)، <strong>Order</strong> پر ٹیپ کرتا ہے، اور اسے دیکھتا رہ سکتا ہے: <em>Received → Confirmed → Preparing (ready about …) → Served</em>، اور <strong>Ask for Bill</strong> پر ٹیپ کر سکتا ہے۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">آرڈر PC پر <strong>🔔 QR orders from tables</strong> میں (بیپ کے ساتھ) اور ویٹروں کے فون پر نظر آتا ہے۔ اس میں گاہک کا نام اور موبائل نمبر ہوتا ہے۔ <strong>جانچ لیں کہ اس میز پر واقعی کوئی بیٹھا ہے</strong>، پھر <strong>Confirm</strong> کریں: ڈشیں میز کے آرڈر میں جڑ جاتی ہیں، اور آپ انہیں Send to Kitchen سے بھیجتے ہیں۔ یا وجہ لکھ کر <strong>Reject</strong> کریں، جو گاہک کو نظر آتی ہے۔</div></div>
+  <ul>
+    <li>گاہک کا فون صرف مینو دیکھ سکتا ہے، <strong>اپنی ہی میز</strong> کے لیے آرڈر کر سکتا ہے، اپنا آرڈر دیکھ سکتا ہے اور بل مانگ سکتا ہے۔ وہ Accelent میں اور کچھ نہیں دیکھ سکتا۔</li>
+    <li>ہر میز کا کوڈ خفیہ ہے۔ اگر کارڈ کی نقل ہو جائے یا کوئی لے جائے، تو <strong>↻ New codes for all tables</strong> سے پرانے کوڈ کام کرنا بند کر دیتے ہیں؛ نئے کارڈ چھاپیں۔</li>
+    <li>شرارت روکنے کے لیے حدیں ہیں: ایک ڈش زیادہ سے زیادہ 20، ایک میز پر 3 آرڈر انتظار میں، اور ایک فون سے 10 منٹ میں 6 آرڈر۔ بند ہونے کے وقت کے بعد QR ordering کا ٹک ہٹا دیں۔</li>
+  </ul>
+  <div class="tip">💡 PC کا Wi-Fi پتہ مستقل رکھیں: اپنے راؤٹر میں PC کو ایک <em>reserved address</em> دیں (اکثر اسے "DHCP reservation" کہتے ہیں)۔ ورنہ ری اسٹارٹ کے بعد پتہ بدل سکتا ہے، اور چھپے ہوئے کارڈ کام کرنا بند کر دیتے ہیں۔ گاہک کے فون پر <em>"Wi-Fi has no internet"</em> آ سکتا ہے؛ آرڈر پھر بھی ہوتا ہے۔</div>
+
+  <h3>ریسٹورنٹ بل پر GST (بھارت)</h3>
+  <p>ریسٹورنٹ کا بل ایک ہی ریسٹورنٹ سروس ہے، اس لیے پورے بل پر ایک ہی GST شرح لگتی ہے۔ اسے <strong>⚙ Restaurant Settings</strong> میں چنیں (صرف ایڈمن):</p>
+  <ul>
+    <li><strong>5% بغیر ان پٹ ٹیکس کریڈٹ کے</strong>: ریسٹورنٹ، کیفے، ڈھابے اور ٹیک اوے (عام صورت، اور یہی پہلے سے چنی ہوتی ہے)۔</li>
+    <li><strong>18% ان پٹ ٹیکس کریڈٹ کے ساتھ</strong>: ایسے ہوٹل کے اندر کا ریسٹورنٹ جو <em>specified premises</em> ہے (جس ہوٹل کے کمروں کا کرایہ پچھلے سال ₹7,500 یومیہ سے زیادہ لیا گیا، یا جس نے خود کو ایسا ظاہر کیا)۔</li>
+  </ul>
+  <p>Rooms اسکرین استعمال کرنے والے ہوٹل کو یہ چننا نہیں پڑتا: جس سال احاطہ specified premises ہوتا ہے، اس سال Accelent ریسٹورنٹ کو خود بخود 18% پر کر دیتا ہے (دیکھیں <a href="#ch9c">باب 9c</a>)۔</p>
+  <div class="tip">💡 اگر یقین نہ ہو کہ آپ پر کون سا لاگو ہوتا ہے، تو اپنے CA سے پوچھیں۔</div>
+
+  <div class="tip">💡 Restaurant اسکرین استعمال کرنے کے لیے عملے کو <strong>Create sales</strong> کی اجازت چاہیے۔ بل منسوخ کرنے کے لیے <strong>Edit or delete bills</strong> چاہیے۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9c -->
+<div class="chapter-banner" data-for="hotel">باب 9c — کمرے <span class="for-badge">ہوٹل، لاج اور گیسٹ ہاؤس کے لیے</span></div>
+<div class="section" id="ch9c" data-for="hotel">
+  <h2>9c. کمرے (ہوٹل، لاج، گیسٹ ہاؤس)</h2>
+  <p>ہوٹل، لاج یا گیسٹ ہاؤس کے لیے، اپنے ریسٹورنٹ کے ساتھ یا اس کے بغیر۔ ہر مہمان کا قیام اس کے کمرے پر ایک چلتا کھاتہ ہے: راتیں خود بخود جڑتی جاتی ہیں، اضافی چارج اور آپ کے ریسٹورنٹ کا کھانا اس میں جڑتا ہے، اور چیک آؤٹ پر مہمان کو سب کچھ کا <strong>ایک GST بل</strong> ملتا ہے، جس میں سے ایڈوانس گھٹا ہوتا ہے۔</p>
+
+  <h3>اسے چالو کرنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (ایڈمن پاس ورڈ سے کھولیں) ← <strong>Business Type: Hotel, lodge or guest house</strong> ← <strong>Save</strong>، پھر Accelent بند کر کے دوبارہ کھولیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اب مینو میں FINANCE کے نیچے <strong>🛏 Rooms</strong> اور <strong>🍽 Restaurant</strong> ہیں (ریسٹورنٹ کے لیے <a href="#ch9b">باب 9b</a> دیکھیں)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🛏 Rooms → 🚪 Rooms…</strong> ← ہر کمرہ <strong>＋ Add</strong> کریں: اس کا نمبر (101)، قسم (Standard، Deluxe، Suite…)، <strong>ہر رات کا کرایہ</strong> اور اس میں کتنے لوگ رہ سکتے ہیں۔</div></div>
+
+  <h3>کمروں کا بورڈ</h3>
+  <p>ہر کمرہ ایک کارڈ ہے:</p>
+  <ul>
+    <li><strong>خالی</strong> کمرہ سادہ ہوتا ہے اور اپنی قسم، <em>✓ Vacant</em> اور کرایہ دکھاتا ہے۔</li>
+    <li><strong>بھرے</strong> کمرے کا <strong>رنگین بارڈر</strong> ہوتا ہے اور وہ مہمان کا نام اور اب تک کی راتیں دکھاتا ہے۔</li>
+    <li>چیک آؤٹ کے بعد صفائی کا انتظار کر رہے کمرے کا <strong>زرد (amber) بارڈر</strong> ہوتا ہے اور <em>⚠ To be cleaned</em> نظر آتا ہے۔</li>
+  </ul>
+  <p>کسی کمرے پر کلک کریں: بیچ میں مہمان کا کھاتہ اور دائیں طرف کمرے کے بٹن نظر آتے ہیں۔ اہم کام سبز ہوتا ہے (<strong>🛎 Check In</strong>، <strong>🧾 Check Out</strong>)؛ <strong>🗑 Cancel Check-in</strong> سرخ ہوتا ہے۔</p>
+
+  <h3>چیک اِن</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">کسی خالی کمرے پر کلک کریں ← <strong>🛎 Check In</strong>۔</div></div>
+  <div class="tip">💡 Check In ونڈو کے اوپر <strong>📷 Scan ID card…</strong> مہمان کے شناختی کارڈ کی تصویر یا اسکین سے اس کی معلومات بھر دیتا ہے، اسی PC پر پڑھ کر (کچھ بھی کہیں نہیں بھیجا جاتا)۔ <strong>آدھار:</strong> بڑے QR کوڈ والی طرف استعمال کریں؛ نام، تاریخ پیدائش، جنس اور پتہ پڑھے جاتے ہیں، اور نمبر کے صرف <strong>آخری 4 ہندسے</strong> رکھے جاتے ہیں (XXXX XXXX 1234)۔ ہاتھ سے ٹائپ کیا آدھار نمبر بھی ایسے ہی رکھا جاتا ہے، اور آدھار کارڈ کی کاپی کبھی نہیں رکھی جاتی: UIDAI ہوٹلوں کو اسے رکھنے کی اجازت نہیں دیتا۔ <strong>پاسپورٹ</strong> (نیچے کی دو لائنوں سے)، <strong>PAN</strong>، <strong>ڈرائیونگ لائسنس</strong> اور <strong>ووٹر ID</strong> بھی پڑھے جاتے ہیں؛ ان کی کاپی تبھی رکھی جاتی ہے جب آپ ٹک کریں کہ مہمان نے اجازت دی، اور چیک آؤٹ کے مقررہ دنوں بعد وہ مٹا دی جاتی ہے (<strong>⚙ Hotel Settings</strong>، جب تک آپ نہ بدلیں، 30 دن)۔ چیک اِن سے پہلے ہمیشہ معلومات کو کارڈ سے ملا لیں۔</div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">مہمانوں کے رجسٹر کی معلومات بھریں: نام، فون، پتہ، <strong>شناختی دستاویز</strong> (آدھار، پاسپورٹ، ڈرائیونگ لائسنس…) اور اس کا نمبر، قومیت، کتنے لوگ، کہاں سے آئے اور کہاں جائیں گے، کتنی راتیں رکیں گے اور کرایہ (رعایت کے لیے بدلیں)۔ شناختی نمبر ضروری ہے، جب تک آپ <strong>⚙ Hotel Settings</strong> میں اسے بند نہ کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">اگر مہمان <strong>ایڈوانس</strong> دیتا ہے، تو اسے ادائیگی کے طریقے کے ساتھ ڈالیں (نقد، UPI، کارڈ یا بینک)۔ وہ فوراً آپ کے نقد یا بینک میں جاتا ہے، اور چیک آؤٹ پر گھٹایا جاتا ہے۔</div></div>
+
+  <h3>مہمان کا کھاتہ</h3>
+  <p>بھرے کمرے پر کلک کریں تو اب تک کا سارا چارج، GST کے ساتھ، اور ابھی ادا کرنے والی رقم نظر آتی ہے:</p>
+  <ul>
+    <li><strong>کمرے کی راتیں</strong> چیک اِن کی تاریخ سے خود بخود گنی جاتی ہیں۔ <strong>₹ Night Rates</strong> کسی خاص رات کا کرایہ بدلتا ہے (ویک اینڈ کا کرایہ، رعایت)۔</li>
+    <li><strong>➕ Add Charge</strong>: اضافی بستر یا جلدی چیک اِن کے لیے <em>Part of the room</em> چنیں (یہ اس رات کے کمرے کی مالیت میں جڑتا ہے)، یا کپڑوں کی دھلائی، گاڑی جیسی خدمات کے لیے <em>Another service</em>، اس کے اپنے GST % کے ساتھ۔ <strong>✕ Remove Charge</strong> غلطی سے جڑا چارج ہٹاتا ہے۔</li>
+    <li><strong>💵 Advance</strong> قیام کے دوران ملا مزید پیسہ درج کرتا ہے۔ چیک آؤٹ بل میں ملا ایڈوانس اور ادا کیا گیا باقی نظر آتا ہے؛ اگر ایڈوانس بل سے زیادہ تھا، تو <strong>لوٹائی گئی</strong> رقم نظر آتی ہے، جو مہمان کو واپس دی گئی درج ہوتی ہے۔</li>
+    <li><strong>⇄ Move Room</strong> مہمان کو کسی خالی کمرے میں لے جاتا ہے؛ پرانا کمرہ صفائی میں چلا جاتا ہے۔</li>
+    <li><strong>🗑 Cancel Check-in</strong> غلطی سے ہوئے چیک اِن کے لیے ہے: کمرہ خالی ہو جاتا ہے اور کوئی بھی ایڈوانس واپس دیا گیا درج ہوتا ہے۔</li>
+  </ul>
+
+  <h3>مہمانوں کا کھانا</h3>
+  <p><strong>🍽 Restaurant</strong> اسکرین پر:</p>
+  <ul>
+    <li><strong>🛏 Room Service</strong>: مہمان کا کمرہ چنیں اور ڈشیں شامل کریں۔ <strong>Send to Kitchen</strong> KOT چھاپتا ہے <em>اور</em> کھانا فوراً مہمان کے کمرے کے کھاتے میں ڈال دیتا ہے، تاکہ وہ بھولا نہ جا سکے۔</li>
+    <li>ٹھہرا ہوا مہمان ڈائننگ ہال میں کھا رہا ہے: میز کا آرڈر ہمیشہ کی طرح لیں۔ <strong>💵 Bill</strong> پر کلک کرنے پر بل ونڈو پوچھتی ہے <strong>Guest staying in a room?</strong>: مہمان کا کمرہ چنیں اور ادائیگی لینے کی جگہ <strong>Charge to Room</strong> پر کلک کریں۔ (<strong>🛏 Charge to Room</strong> بٹن بھی یہی کرتا ہے۔)</li>
+  </ul>
+  <p>کھانا ریسٹورنٹ کی GST شرح پر مہمان کے کھاتے میں جاتا ہے، اس کا سامان (یا اس کا اپنا اسٹاک) فوراً اسٹور سے نکلتا ہے، اور اس کی ادائیگی چیک آؤٹ پر ہوتی ہے۔</p>
+  <div class="tip">💡 مہمان نے جو کھایا، اس میں سے کچھ بھی چیک آؤٹ بل سے نہیں چھوٹتا: جو روم سروس کا کھانا ابھی کسی آرڈر پر ہے، وہ مہمان کے کھاتے میں <strong>⏳ not yet charged</strong> نظر آتا ہے، اور چیک آؤٹ پر کچن نے جو بنایا ہے وہ خود بخود بل میں جڑ جاتا ہے۔ صرف وہ آرڈر چیک آؤٹ روکتا ہے جس کی چیزیں کبھی کچن نہیں بھیجی گئیں، جب تک انہیں بھیجا یا منسوخ نہ کیا جائے۔</div>
+
+  <h3>چیک آؤٹ</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">کمرے پر کلک کریں ← <strong>🧾 Check Out</strong>۔ کل، ایڈوانس اور ادا کرنے والی رقم نظر آتی ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اگر قیام کے دوران کا روم سروس کھانا served نہیں ہوا ہے، تو Accelent پہلے پوچھتا ہے کہ وہ پہنچایا گیا یا نہیں: <strong>✓ Yes, delivered</strong> اسے served کر کے آگے بڑھتا ہے؛ <strong>✕ Not delivered</strong> رک جاتا ہے تاکہ آپ پہلے Restaurant اسکرین پر آرڈر ٹھیک کر سکیں۔ مہمان باقی کیسے ادا کرے گا، چنیں اور <strong>Check Out</strong> پر کلک کریں۔ پورے قیام کا ایک بل محفوظ ہوتا ہے: کمرے کی راتیں، اضافی چیزیں، دوسری خدمات اور کھانا، ہر ایک اپنی GST شرح پر۔ آپ کے نقد یا بینک میں صرف باقی جڑتا ہے، کیونکہ ایڈوانس ملتے وقت ہی جڑ گیا تھا۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">بل پرنٹ کے لیے کھلتا ہے۔ اب کمرے کا زرد بارڈر ہے اور <em>⚠ To be cleaned</em> نظر آتا ہے: صفائی ہو جانے پر اس پر کلک کریں اور پھر <strong>✨ Room Is Ready</strong>۔</div></div>
+  <div class="tip">💡 <strong>مہمان کے WhatsApp پر بل:</strong> چیک آؤٹ ونڈو میں <strong>📄 Send the bill on WhatsApp to</strong> ہوتا ہے، چیک اِن پر دیے موبائل نمبر کے ساتھ (مہمان دوسرا چاہے تو بدلیں)۔ نمبر ہونے پر اس پر ٹک لگا ہوتا ہے۔ چیک آؤٹ کے بعد بل کی PDF بن کر کاپی ہوتی ہے، اور WhatsApp میں مہمان کی چیٹ کھلتی ہے: جوڑنے کے لیے <strong>Ctrl+V</strong> دبائیں، پھر <strong>Send</strong>۔</div>
+
+  <h3>چیک آؤٹ: بل دوبارہ چھاپنا یا درست کرنا</h3>
+  <p><strong>🧾 Check-outs</strong> ٹیب دو تاریخوں کے بیچ کے ہر چیک آؤٹ کو اس کے بل کے ساتھ دکھاتا ہے۔ کسی کو چن کر دوبارہ چھاپنے کے لیے <strong>🖨 View / Print Bill</strong>، یا مہمان کو بھیجنے کے لیے <strong>📄 Send on WhatsApp</strong> پر کلک کریں۔ اگر بل غلطی سے بنا (کوئی چارج بھول گئے، غلط ادائیگی)، تو <strong>↩ Cancel Check-out Bill</strong> پر کلک کریں: بل اور اس کی ادائیگی ہٹ جاتے ہیں (ایک کاپی Deletion Watcher میں رہتی ہے) اور مہمان کا قیام ہر چارج کے ساتھ دوبارہ کھل جاتا ہے۔ اسے درست کریں، پھر مہمان کا دوبارہ چیک آؤٹ کریں۔ کھانا اسٹاک سے باہر ہی رہتا ہے، کیونکہ وہ کھایا جا چکا۔ ہوٹل کا بل کہیں اور سے ڈیلیٹ نہیں ہو سکتا۔</p>
+
+  <h3>کمروں پر GST (بھارت)</h3>
+  <ul>
+    <li>ہر کمرے کا ہر رات <strong>₹7,500</strong> تک: <strong>5%</strong> بغیر ان پٹ ٹیکس کریڈٹ کے۔ ₹7,500 سے زیادہ: <strong>18%</strong>۔ سستے کمروں کے لیے کوئی چھوٹ نہیں ہے۔</li>
+    <li>شرح <strong>ہر کمرے اور ہر رات کے لیے</strong> اصل میں لیے گئے کرائے پر طے ہوتی ہے، رعایت کے بعد، اس رات کے اضافی بستر یا کمرے کی دوسری اضافی چیزوں سمیت۔ جو مہمان ایک رات ₹6,500 اور اگلی رات ₹8,000 دیتا ہے، اس سے ان راتوں پر 5% اور 18% لیا جاتا ہے۔</li>
+    <li><strong>Specified premises:</strong> اگر <em>پچھلے</em> مالی سال میں کسی کمرے کا بل ₹7,500 فی رات سے زیادہ بنا، یا آپ نے احاطے کو specified premises ظاہر کیا (<strong>⚙ Hotel Settings</strong> میں ٹک کریں)، تو اس مالی سال آپ کے ریسٹورنٹ کو <strong>18%</strong> لینا ہوگا۔ Accelent یہ آپ کے اپنے بلوں سے نکالتا ہے اور ریسٹورنٹ کو خود بخود 18% پر کر دیتا ہے؛ Rooms اسکرین کے اوپر کی لائن بتاتی ہے کہ کون سا لاگو ہے۔</li>
+  </ul>
+  <div class="tip">💡 اگر یقین نہ ہو کہ آپ پر کون سی شرح لاگو ہوتی ہے، تو اپنے CA سے پوچھیں۔</div>
+
+  <h3>QR کوڈ سے روم سروس</h3>
+  <p>QR ordering چالو ہونے پر (🍽 Restaurant → ⚙ Restaurant Settings، دیکھیں <a href="#ch9b">باب 9b</a>)، ہر کمرے کا ایک کارڈ چھاپیں: <strong>⚙ Hotel Settings → 🖨 Print room QR cards</strong>۔ کمرے میں ٹھہرا مہمان اسے اسکین کرتا ہے، مینو دیکھتا ہے، اپنا نام اور موبائل نمبر ڈالتا ہے اور آرڈر کرتا ہے۔ آرڈر PC اور ویٹروں کے فون پر اس کمرے کے QR آرڈر کے طور پر پہنچتا ہے؛ ویٹر کے تصدیق کر کے کچن بھیجنے پر وہ کمرے کے بل میں جاتا ہے۔ جس کمرے میں کوئی مہمان چیک اِن نہیں ہے، وہ آرڈر نہیں کر سکتا، اور روم سروس کی ادائیگی چیک آؤٹ پر ہوتی ہے۔ <strong>↻ New codes for all rooms</strong> سے پرانے کمروں کے کارڈ کام کرنا بند کر دیتے ہیں۔</p>
+
+  <h3>مہمانوں کا رجسٹر</h3>
+  <p><strong>📒 Guest Register</strong> ٹیب دو تاریخوں کے بیچ کے ہر چیک اِن کو مہمان کی معلومات، شناختی دستاویز اور سفر کے ساتھ دکھاتا ہے، جیسا پولیس کے لیے رکھا جاتا ہے۔ چھپی کاپی کے لیے <strong>🖨 Print Register</strong> پر کلک کریں۔ جب پولیس کسی ایک مہمان کے بارے میں پوچھے تو یہاں (یا <strong>🧾 Check-outs</strong> میں) مہمان کو چنیں اور <strong>👤 Guest Details</strong> پر کلک کریں: اس مہمان کی رکھی گئی پوری معلومات ایک صفحے پر، <strong>🖨 Print</strong> کے ساتھ۔</p>
+
+  <div class="tip">💡 Rooms اسکرین استعمال کرنے کے لیے عملے کو <strong>Create sales</strong> کی اجازت چاہیے۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9d -->
+<div class="chapter-banner" data-for="restaurant hotel">باب 9d — پارٹنر <span class="for-badge">ریسٹورنٹ اور ہوٹل کے لیے</span></div>
+<div class="section" id="ch9d" data-for="restaurant hotel">
+  <h2>9d. پارٹنر (ٹریول ایجنٹ، گائیڈ، ٹیکسی ڈرائیور)</h2>
+  <p>ٹریول ایجنٹ، بکنگ سائٹیں، مقامی گائیڈ، ٹیکسی ڈرائیور اور ساتھی ہوٹل آپ کے پاس مہمان لاتے ہیں اور کمیشن کماتے ہیں۔ <strong>🤝 Partners</strong> اسکرین پر (FINANCE کے نیچے، ریسٹورنٹ یا ہوٹل کے لیے) آپ ہر ایک کو رکھتے ہیں، Accelent بل کے ساتھ ان کا کمیشن نکالتا ہے، اور آپ وہیں سے اسے ادا کرتے ہیں۔ کمیشن مہمان کے بل پر کبھی نظر نہیں آتا۔</p>
+
+  <h3>پارٹنر شامل کرنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🤝 Partners → ➕ New Partner</strong>: نام، کس طرح کا پارٹنر (ٹریول ایجنٹ، بکنگ سائٹ، گائیڈ، ٹیکسی ڈرائیور، ساتھی ہوٹل) اور فون نمبر۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>کمروں پر کمیشن:</strong> <em>کمرے کے کرائے کا %</em>، <em>₹ فی رات</em> یا <em>₹ فی قیام</em>۔ <strong>ریسٹورنٹ بلوں پر:</strong> ان کے لائے مہمانوں کے کھانے کے بل کا % (نہ ہو تو 0)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">چاہیں تو ان کا <strong>PAN</strong> (TDS کے لیے) اور <strong>GSTIN</strong>۔ <strong>Save</strong> پر کلک کریں۔ ہر پارٹنر کو ایک کوڈ ملتا ہے، جیسے <strong>DRV001</strong> (ڈرائیور)، <strong>GDE001</strong> (گائیڈ) یا <strong>AGT001</strong> (ایجنٹ)۔</div></div>
+
+  <h3>جب وہ مہمان لائیں</h3>
+  <ul>
+    <li><strong>کمرے:</strong> <strong>Check In</strong> ونڈو میں <strong>Booked through</strong> چنیں۔ ان کا معمول کا کمیشن نظر آتا ہے؛ اگر اس قیام کے لیے کچھ اور طے ہوا، تو بدلیں۔ چیک آؤٹ پر کمیشن راتوں کے کمرے کے کرائے پر نکلتا ہے (اضافی بستر اور کمرے کی اضافی چیزیں شامل، GST سے پہلے؛ کپڑوں کی دھلائی اور دوسری خدمات نہیں گنی جاتیں)، اور کمرے کے بل پر کسی بھی کھانے پر ان کا ریسٹورنٹ %۔</li>
+    <li><strong>ریسٹورنٹ:</strong> <strong>Bill</strong> ونڈو میں <strong>Brought by</strong> چنیں۔ کمیشن کھانے پر ان کا ریسٹورنٹ % ہوتا ہے، GST سے پہلے۔</li>
+    <li><strong>QR سے آرڈر:</strong> مہمان آرڈر صفحے پر ڈرائیور یا گائیڈ کا کوڈ (جیسے DRV001) ٹائپ کر سکتے ہیں۔ ویٹر کے آرڈر کی تصدیق کرنے پر پارٹنر میز کے آرڈر پر خود بخود چن لیا جاتا ہے۔</li>
+  </ul>
+  <p>جس چیک آؤٹ یا بل پر کمیشن بنا، اس کے بعد Accelent پوچھتا ہے کہ <strong>💵 Pay now</strong> (ڈرائیور اور گائیڈ کو اکثر اسی وقت نقد دیا جاتا ہے) یا بعد میں۔</p>
+
+  <h3>کمیشن ادا کرنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Partners اسکرین پر پارٹنر چنیں۔ اسٹیٹمنٹ میں ہر قیام اور بل اس کے کمیشن کے ساتھ، آپ نے کتنا ادا کیا، اور کتنا باقی ہے، نظر آتا ہے۔ ہر سطر میں کمرہ اور راتیں، یا میز، مہمان اور بل لکھا ہوتا ہے۔ کسی سطر پر ڈبل کلک کریں (یا <strong>🔍 Details</strong> پر کلک کریں) اور دیکھیں کہ کمیشن کس قیام یا بل پر بنا؛ <strong>🖨 Print Statement</strong> اسے پارٹنر کے لیے چھاپتا ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>💵 Pay Commission</strong>: رقم (باقی رقم بھری ہوتی ہے)، اور آپ نے کیسے ادا کیا: نقد، UPI، بینک ٹرانسفر یا چیک۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ادائیگی <strong>Expenses</strong> میں <strong>Commission</strong> کے نیچے جاتی ہے، آپ کے نقد یا بینک سے، اس لیے Day Book، کھاتے کے اسٹیٹمنٹ اور نفع نقصان میں یہ شامل رہتی ہے۔</div></div>
+  <div class="tip">💡 اگر کوئی چیک آؤٹ یا ریسٹورنٹ بل منسوخ ہو، تو اس کا کمیشن خود بخود گنا جانا بند ہو جاتا ہے۔ اگر آپ اسے پہلے ہی ادا کر چکے تھے، تو پارٹنر کے بیلنس میں نظر آتا ہے کہ انہیں آپ کو کتنا لوٹانا ہے۔</div>
+
+  <h3>پارٹنر سیٹنگز (ایڈمن)</h3>
+  <ul>
+    <li><strong>ایک قیام یا بل پر سب سے زیادہ کمیشن:</strong> ایک حفاظتی حد، تاکہ ٹائپنگ کی غلطی (5% کی جگہ 50%) سے بہت بڑی رقم نہ چلی جائے۔</li>
+    <li><strong>کمیشن پر TDS</strong> (جب تک آپ چالو نہ کریں، بند): شرح (2%، یا PAN کے بغیر 20%) اور سال کی وہ رقم جس کے بعد TDS لگتا ہے (₹20,000)۔ کمپنی یا فرم کو کمیشن پر TDS کاٹنا ہوتا ہے؛ کسی فرد یا HUF کو صرف تب جب پچھلے سال کاروبار کا ٹرن اوور ₹1 کروڑ سے زیادہ تھا (پیشے کے لیے ₹50 لاکھ)۔ اپنے اکاؤنٹنٹ سے پوچھیں کہ آپ کو کاٹنا ہے یا نہیں۔ روکا گیا TDS حکومت کو جمع کرنے تک <em>TDS on commission (payable)</em> کھاتے میں واجب الادا کے طور پر نظر آتا ہے۔</li>
+  </ul>
+
+  <h3>پارٹنر کے حساب سے کاروبار</h3>
+  <p><strong>📊 Business by Partner</strong> ٹیب کسی بھی تاریخوں کے لیے دکھاتا ہے کہ ہر پارٹنر کتنے بل لایا، کتنا کاروبار (کمرے کا کرایہ اور کھانا) اور ان کا کمیشن، آپ نے کتنا ادا کیا اور کتنا ابھی باقی ہے، سب سے بڑا پہلے۔</p>
+
+  <div class="tip">💡 Partners اسکرین استعمال کرنے کے لیے عملے کو <strong>Expenses</strong> کی اجازت چاہیے۔ چیک اِن یا بل پر پارٹنر چننے کے لیے صرف Rooms یا Restaurant اسکرین چاہیے۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9e -->
+<div class="chapter-banner" data-for="hotel">باب 9e — ہاؤس کیپنگ <span class="for-badge">ہوٹل، لاج اور گیسٹ ہاؤس کے لیے</span></div>
+<div class="section" id="ch9e" data-for="hotel">
+  <h2>9e. ہاؤس کیپنگ (کمروں کی صفائی اور کپڑوں کی دھلائی)</h2>
+  <p><strong>🧹 Housekeeping</strong> اسکرین (FINANCE کے نیچے، ہوٹل کے لیے) آپ کے عملے کے صفائی اور دھلائی کے کام دکھاتی ہے۔ زیادہ تر کام خود بخود بنتے ہیں:</p>
+  <ul>
+    <li><strong>چیک آؤٹ</strong> سے <em>Clean the room</em> (کمرہ صاف کریں) کا کام بنتا ہے۔ کام پورا ہونے پر کمرہ اگلے مہمان کے لیے خود بخود <strong>Ready</strong> ہو جاتا ہے (Rooms اسکرین پر <strong>✨ Room Is Ready</strong> دبانے سے بھی یہ پورا ہو جاتا ہے)۔</li>
+    <li><strong>ہر صبح</strong> آپ کے مقررہ وقت پر ہر بھرے کمرے کے لیے <em>Daily cleaning</em> (روزانہ صفائی) کا کام بنتا ہے۔</li>
+    <li><strong>مہمان</strong> کمرے کے QR کارڈ پر <strong>🧹 Clean my room</strong> یا <strong>👕 Laundry pickup</strong> پر ٹیپ کر سکتے ہیں (جب QR ordering چالو ہو)۔ PC بیپ کرتا ہے اور اوپر درخواست دکھاتا ہے۔ اگر روزانہ صفائی انتظار میں تھی، تو مہمان کی درخواست اس کی جگہ لے لیتی ہے۔</li>
+    <li>استقبالیہ <strong>➕ New Task</strong> سے کوئی بھی کام شامل کر سکتا ہے۔</li>
+  </ul>
+
+  <h3>کون کرتا ہے</h3>
+  <p><strong>⚙ Housekeeping Settings</strong> (ایڈمن) میں ڈیوٹی پر موجود ملازمین پر ٹک کریں (پہلے انہیں 👥 Employees میں شامل کریں)۔ ہر نیا کام اسے جاتا ہے جس کے پاس سب سے کم کھلے کام ہیں؛ <strong>👤 Give to…</strong> سے بدلیں۔ Rooms اسکرین دکھاتی ہے کہ صفائی کا انتظار کر رہا کمرہ کون صاف کر رہا ہے۔</p>
+
+  <h3>کام کرنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">کام چنیں اور <strong>▶ Start</strong> پر کلک کریں (چاہیں تو)، پھر پورا ہونے پر <strong>✓ Done</strong>۔ <strong>✕ Cancel task</strong> اس کام کو ہٹاتا ہے جس کی ضرورت نہیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>کپڑوں کی دھلائی:</strong> کمرے سے کپڑے لینے پر <strong>👕 Collected</strong> پر کلک کریں۔ واپس آنے پر <strong>✓ Laundry returned…</strong> پر کلک کریں اور ہر قسم کے کتنے کپڑے ہیں، ڈالیں۔ کل رقم دھلائی کے GST کے ساتھ مہمان کے کمرے کے بل میں جاتی ہے (جب تک آپ نہ بدلیں، 18%)۔</div></div>
+  <div class="tip">💡 دھلائی کی ریٹ لسٹ (قمیص، پتلون، ساڑھی…)، دھلائی پر GST اور روزانہ صفائی کا وقت <strong>⚙ Housekeeping Settings</strong> میں ہیں۔ <strong>✓ Done today</strong> ٹیب آج پورے ہوئے کام، کس نے کیے، اور لگایا گیا دھلائی کا چارج دکھاتا ہے۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 10 -->
+<div class="chapter-banner">باب 10 — خریداری</div>
+<div class="section" id="ch10">
+  <h2>10. پرچیز (خریداری) پینل</h2>
+  <p>سپلائروں سے آیا ہر خریداری کا بل یہاں درج کریں۔ اسٹاک بڑھتا ہے اور سپلائر کی واجب الادا رقم کا حساب خود بخود رہتا ہے۔</p>
+
+  <h3>خریداری درج کرنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>+ New Purchase</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">پہلے <strong>Vendor Name</strong> (سپلائر کا نام) چنیں یا ٹائپ کریں — اس کے نیچے سب کچھ اسی کے حساب سے بدلتا ہے۔ پرانے سپلائر کا پتہ/فون/GSTIN خود بخود بھر جاتا ہے اور اس کے معمول کے آئٹم سیدھے Order Items جدول میں آ جاتے ہیں، ہر ایک پر پہلے سے ٹک لگا، تیار۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">جو لائن (☑) اس بل میں نہیں چاہیے، اس کا ٹک ہٹائیں۔ ہر لائن میں ضرورت کے حساب سے Qty/Rate/GST% بدلیں — Amount اور نیچے Subtotal/GST/Grand Total ساتھ ساتھ بدلتے ہیں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">جو جدول میں پہلے سے نہیں ہے، اسے اسکین کر کے شامل کریں (Order Items کے اوپر <strong>📷</strong> خانہ + <strong>📱 Scan with Phone</strong>)، یا جدول کے نیچے <strong>➕ Add Item to Same Vendor</strong> سے بالکل نیا سامان درج کریں۔</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Bill Details میں بل نمبر، بل کی تاریخ اور ادائیگی کا طریقہ (Cash / Bank Transfer / Cheque / Card / UPI / Credit to Vendor) بھریں۔</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>💾 Save Purchase</strong> پر کلک کریں۔ اسٹاک اور سپلائر کا بیلنس فوراً بدلتے ہیں۔ اگر وہی آئٹم اور وہی کل والا بل 60 دن کے اندر پہلے سے محفوظ ہے (کسی بھی سپلائر کے نام)، تو Accelent دوسری بار محفوظ کرنے سے پہلے پوچھتا ہے۔</div></div>
+  <div class="tip">💡 <strong>بل بدلنا یا ڈیلیٹ کرنا:</strong> بلوں کی فہرست میں اسے چنیں اور <strong>✏️ Edit Bill</strong> یا <strong>❌ Delete Bill</strong> پر کلک کریں۔ بدلنے سے اسٹاک اور سپلائر کا کھاتہ درست کیے گئے بل کے حساب سے ہو جاتے ہیں۔ غلط سپلائر کے نام محفوظ ہوا بل ڈیلیٹ کر کے درست کے نام دوبارہ ڈالنا بہتر ہے — ڈیلیٹ کرنے سے اس کا اسٹاک، کھاتے کا اندراج اور GST الٹ جاتے ہیں، اور ایک کاپی Deletion Watcher میں رہتی ہے۔ ڈیلیٹ کے بعد، Accelent اسی قدم میں بل کے وہ آئٹم ڈیلیٹ کرنے کو کہتا ہے جو اب کہیں اور استعمال نہیں ہوتے۔ جس بل کا مال بک چکا، وہ ڈیلیٹ نہیں ہو سکتا؛ اسے Edit Bill سے درست کریں، یا لوٹایا مال Returns → Purchase Returns میں درج کریں۔</div>
+
+  <h3>سپلائر اور آئٹم کے میل</h3>
+  <p>Order Items جدول اور <strong>➕ Add Item to Same Vendor</strong> پینل چار صورتوں کے حساب سے بدلتے ہیں، اس پر کہ سپلائر اور آپ جو خرید رہے ہیں وہ آئٹم Accelent میں پہلے سے ہیں یا نہیں۔ نیچے کیا نظر آئے گا، یہ ہمیشہ <strong>Vendor Name</strong> طے کرتا ہے، اس لیے پہلے سپلائر چنیں یا ٹائپ کریں۔</p>
+
+  <h4>1. پرانا سپلائر + پرانا آئٹم</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Vendor Name</strong> میں سپلائر کا نام ٹائپ کرنا شروع کریں اور ڈراپ ڈاؤن سے چنیں۔ ان کا پتہ، فون اور GSTIN خود بخود بھر جاتے ہیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Order Items جدول میں اس سپلائر سے پہلے خریدی ہر چیز خود بخود بھر جاتی ہے، ہر لائن پر پہلے سے ٹک۔ جو اس بار نہیں خرید رہے، اس کا ٹک ہٹائیں — ڈیلیٹ کا بٹن جان بوجھ کر نہیں ہے، تاکہ جدول سے کوئی چیز غلطی سے انوینٹری سے نہ ہٹے۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">جو خرید رہے ہیں اس کی Qty بدلیں، پھر محفوظ کریں۔</div></div>
+
+  <h4>2. پرانا سپلائر + نیا آئٹم</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">اوپر کی طرح پرانا سپلائر چنیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>➕ Add Item to Same Vendor</strong> میں Name، Category، Buy Rate، GST%، Sell Price اور Qty بھریں۔ خود بخود آئٹم کوڈ کے لیے Code کے پاس <strong>🔍 Generate</strong> پر کلک کریں، یا اپنا کوڈ ٹائپ کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>✅ Add Item to Purchase</strong> پر کلک کریں۔ آئٹم بنتا ہے، اس سپلائر سے جڑتا ہے، اور Order Items جدول میں آ جاتا ہے۔</div></div>
+
+  <h4>3. نیا سپلائر + نیا آئٹم</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ایسا سپلائر نام ٹائپ کریں جو پہلے سے نہیں ہے۔ پتہ/فون/GSTIN خالی رہیں گے — اگر آپ کے پاس ہیں تو بھریں (ضروری نہیں)۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اس سپلائر کی ابھی کوئی تاریخ نہیں، اس لیے Order Items جدول خالی شروع ہوتا ہے — یہ عام بات ہے، خرابی نہیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>➕ Add Item to Same Vendor</strong> بالکل صورت 2 کی طرح استعمال کریں۔ خریداری محفوظ کرتے ہی Accelent نیا سپلائر اور نیا آئٹم دونوں بنا دیتا ہے۔</div></div>
+
+  <h4>4. نیا سپلائر + پرانا آئٹم</h4>
+  <p>یہ ایسا سامان خریدنا ہے جو آپ کے پاس پہلے سے ہے، ایسے سپلائر سے جس سے آپ نے اسے پہلے نہیں خریدا — جیسے آپ کے معمول کے سپلائر کے پاس مال ختم ہے اور آپ اسی چیز کے لیے کسی نئے کو آزما رہے ہیں۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">نئے سپلائر کا نام ٹائپ کریں (Order Items جدول خالی رہتا ہے — پہلی خریداری میں عام بات)۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">آئٹم کا بارکوڈ اسکین کریں، یا اسکین کے خانے میں اس کا ٹھیک بارکوڈ/آئٹم کوڈ ٹائپ کر کے Enter دبائیں۔ اس خاص صورت میں ابھی نام سے تلاش نہیں ہے — پرانا آئٹم یہاں صرف اس کے کوڈ/بارکوڈ سے لایا جا سکتا ہے۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">خریداری محفوظ کریں۔ آئٹم کی اپنی معلومات نہیں بدلتیں — Accelent بس درج کرتا ہے کہ آپ اسے اس سپلائر سے بھی، اس شرح پر، خرید سکتے ہیں۔</div></div>
+
+  <div class="good">✅ ایک ہی آئٹم دوسرے یا تیسرے سپلائر سے خریدنے سے اس کی پرانی معلومات کبھی نہیں مٹتیں یا بگڑتیں۔ Accelent ہر آئٹم کے لیے ہر سپلائر کا الگ قیمت/تاریخ کا ریکارڈ رکھتا ہے، اس لیے ایک خریداری کے لیے نیا سپلائر آزمانے سے آپ کے دوسرے سپلائروں کے تعلق پر کوئی اثر نہیں پڑتا۔</div>
+
+  <h3>بارکوڈ اسکین اور حالت</h3>
+  <p>آئٹم سیدھا خریداری میں شامل کرنے کے لیے Order Items کے اوپر <strong>📱 Scan with Phone</strong> سے اسکین کریں (یا بارکوڈ کے خانے میں ٹائپ کر کے Enter دبائیں)۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">اگر بارکوڈ انوینٹری کے کسی آئٹم سے ملتا ہے، تو وہ جدول میں شامل ہو جاتا ہے — یا، اگر وہ پہلے سے اس بل میں ہے، تو اس کی Qty 1 بڑھتی ہے اور ایک تصدیقی پیغام آتا ہے، تاکہ آپ کو ہمیشہ پتہ رہے کہ ابھی کیا ہوا۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اگر وہ کسی سے نہیں ملتا، تو Accelent یہ بتاتا ہے اور اسے نئے سامان کے طور پر درج کرنے کے لیے نیچے <strong>➕ Add Item to Same Vendor</strong> کی طرف اشارہ کرتا ہے۔</div></div>
+
+  <p>Order Items جدول کی ہر لائن <strong>🔖</strong> کالم میں اپنے بارکوڈ کی حالت بھی دکھاتی ہے:</p>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><strong>✓ Barcode</strong> (سبز) — اس آئٹم کا بارکوڈ پہلے سے محفوظ ہے۔ اسے ہٹانے کے لیے کلک کریں، جیسے اگر اسکین سے غلط کوڈ جڑ گیا۔</div></div>
+  <div class="step"><div class="step-num">+</div><div class="step-body"><strong>+📷</strong> (نیلا) — ابھی بارکوڈ نہیں۔ اپنے فون سے اسکین کر کے جوڑنے کے لیے کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">🗑</div><div class="step-body"><strong>🗑 Clear Barcode</strong> — اس بارکوڈ کو دوبارہ شروع کرنے کا الگ بٹن جو جڑا پر ٹھیک سے نہیں لگا، تاکہ آپ اسے نئے سرے سے اسکین کر سکیں۔ تبھی چالو ہوتا ہے جب آئٹم کا کوئی بارکوڈ ہٹانے کو ہو۔</div></div>
+
+  <div class="tip">💡 <strong>➕ Add Item to Same Vendor</strong> نئے آئٹم کو ہمیشہ اسی سپلائر سے جوڑتا ہے جو اس وقت <strong>Vendor Name</strong> میں ہے — نیا ہو یا پرانا — اس لیے نیا آئٹم درج کرنے سے پہلے سپلائر کا خانہ دوبارہ دیکھ لیں، خاص طور پر جب ایک ہی ڈلیوری کے کئی سامان ایک کے بعد ایک اسکین کر رہے ہوں۔</div>
+
+  <h3>📷 Scan Vendor Bill — پورا کاغذی بل خود بخود پڑھیں</h3>
+  <p>سپلائر کے بل کی ہر لائن ہاتھ سے ٹائپ کرنے کی جگہ، اس کی تصویر لیں اور Accelent کو تصویر سے سیدھے آئٹم، HSN کوڈ اور GST پڑھنے دیں۔ یہ پوری طرح آپ کے اپنے کمپیوٹر پر چلتا ہے — انٹرنیٹ استعمال نہیں ہوتا، اور تصویر کبھی کہیں نہیں بھیجی جاتی۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">پہلے <strong>Vendor Name</strong> چنیں یا ٹائپ کریں، پھر <strong>📷 Scan Vendor Bill</strong> پر کلک کریں۔ بل کی تصویر چنیں — صاف، اچھی روشنی والی تصویر سب سے اچھی چلتی ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اسکین شروع ہونے سے پہلے، ضرورت ہو تو <strong>Rotate Left / Rotate Right</strong> سے تصویر سیدھی کریں — سیدھی تصویر چند سیکنڈ میں اسکین ہوتی ہے، ٹیڑھی میں زیادہ وقت لگتا ہے کیونکہ یہ خود سمت کا پتہ لگاتا ہے۔ ٹھیک لگے تو <strong>▶ Start Scan</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">جانچ والی اسکرین کھلتی ہے، ایک طرف بل کی تصویر اور دوسری طرف ملی ہر چیز کا قابلِ تبدیلی جدول۔ اوپر <strong>Reconciliation Status</strong> پٹی دیکھیں — یہ بتاتی ہے کہ آئٹموں کا جوڑ بل پر چھپے کل سے ملتا ہے یا نہیں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">کسی بھی لائن پر کلک کریں تو بل کی تصویر پر سیدھے وہاں پہنچیں جہاں سے وہ آئی۔ جو غلط پڑھا گیا، اسے درست کریں — Description، Category، HSN/SAC، Qty، Unit، Rate اور GST% سب بدلے جا سکتے ہیں۔ جو لائن Accelent اعتماد سے نہیں پڑھ پایا، اس پر <strong>⚠️</strong> نظر آتا ہے؛ جو کم ہے وہ ٹائپ کریں اور وہ <strong>✅</strong> ہو جاتا ہے۔ جو لائن نہیں چاہیے، اس کا ٹک ہٹائیں۔</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">جس لائن کی تفصیل انوینٹری کے کسی پرانے آئٹم سے ملتی ہے — کسی بھی سپلائر سے خریدا ہو — اس پر Category کالم میں اس کے کوڈ کے ساتھ <strong>✓ existing item</strong> نظر آتا ہے؛ اس کی مقدار اس آئٹم میں جڑتی ہے۔ باقی ہر لائن نیا آئٹم بنتی ہے اور اسے <strong>Category</strong> چاہیے، کیونکہ زمرے سے آئٹم کوڈ طے ہوتا ہے۔ Apply رک جاتا ہے اور بغیر زمرے والی کسی بھی نئی لائن کی طرف اشارہ کرتا ہے۔</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">کئی لائنوں کو ایک ساتھ آپ کی پرانی فہرست سے ملانے، یا کسی زمرے سے جوڑنے کے لیے <strong>Bulk Actions</strong> استعمال کریں — جس میں اعتماد درمیانہ ہو، اس پر تصدیق کا پیغام کھلتا ہے تاکہ کچھ بھی چپکے سے غلط سامان سے نہ جڑے۔</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">کیسے ختم کریں، چنیں:<br>• <strong>💾 Last Page — Save Now</strong> — خریداری فوراً محفوظ کرتا ہے (ایک صفحے کے بل پر، یا آخری صفحے پر استعمال کریں)۔ تصدیق کے خانے میں ٹھیک Vendor، Goods Amount، GST اور Grand Total نظر آتے ہیں — دیکھ لیں کہ بل سے ملتے ہیں، پھر تصدیق کریں۔<br>• <strong>📷 More Pages? Scan Next</strong> — ایک سے زیادہ صفحوں والے بل کے لیے: اس صفحے کے آئٹم شامل کرتا ہے اور اگلے صفحے کے لیے تصویر چننے کا خانہ کھولتا ہے۔ آخری صفحے پر <em>Last Page — Save Now</em> استعمال کریں؛ سارے صفحے ایک ہی خریداری کے طور پر ساتھ محفوظ ہوتے ہیں۔<br>• <strong>✅ Apply (Save Later)</strong> — آئٹموں کو بغیر محفوظ کیے New Purchase فارم میں شامل کرتا ہے، تاکہ آپ وہاں انہیں دیکھ کر خود <strong>Save Purchase</strong> پر کلک کریں۔</div></div>
+  <figure class="shot"><a href="manual_images/bill-scan-review.png" target="_blank"><img src="manual_images/bill-scan-review.png" alt="Bill Scan Review screen" loading="lazy"></a><figcaption>بل اسکین کی جانچ — بائیں طرف بل کی تصویر، دائیں طرف ملے آئٹم، اور اوپر Reconciliation Status۔</figcaption></figure>
+
+  <div class="good">✅ جدول میں غلطی ہو گئی؟ Ctrl+Z آخری تبدیلی، اضافہ، ہٹانا یا ایک ساتھ کیا کام واپس لیتا ہے — اصل میں محفوظ کرنے تک یہاں کا کچھ بھی پکا نہیں۔ اور اگر بیچ میں رکاوٹ آئے (ایپ بند ہو جائے، کمپیوٹر سو جائے)، تو وہی تصویر دوبارہ چننے پر شروع سے کرنے کی جگہ ٹھیک وہیں سے آگے بڑھنے کا آپشن ملتا ہے۔</div>
+  <div class="tip">💡 یہ بغیر خریداری کی تاریخ والے بالکل نئے سپلائر کے لیے بھی چلتا ہے — جو لائنیں انوینٹری کے پرانے آئٹموں سے ملتی ہیں، وہ ان میں جڑتی ہیں، اور باقی نئے آئٹم بنتی ہیں، بالکل ہاتھ سے شامل کرنے کی طرح۔ Scan Vendor Bill کو مقامی AI کے ایسے حصے چاہئیں جو ہر انسٹال میں نہیں ہوتے؛ اگر یہ کہے کہ دستیاب نہیں ہے، تو Accelent کا باقی سب کچھ ٹھیک چلتا ہے۔</div>
+  <div class="tip">💡 <strong>رفتار:</strong> 8 GB RAM والے PC پر اسکین جلدی پورا ہوتا ہے؛ 4 GB پر بھی چلتا ہے پر زیادہ وقت لگتا ہے — چلنے دیں۔ <strong>مفت ٹرائل:</strong> 15 بل اسکین شامل ہیں؛ اس کے بعد اسکین کے لیے چالو لائسنس چاہیے (ٹرائل کے باقی وقت میں باقی سب چلتا رہتا ہے)۔ سبسکرپشن کے ساتھ اسکین لامحدود ہے۔</div>
+
+  <h3>خریداری کی واپسی</h3>
+  <p>سپلائر کو لوٹایا مال درج کرنے کے لیے <strong>Returns</strong> پینل ← <strong>Purchase Returns</strong> ٹیب پر جائیں۔ ڈیبٹ نوٹ بنتا ہے اور اسٹاک گھٹتا ہے۔ لوٹائی گئی رقم نفع نقصان، Trading Account اور بیلنس شیٹ کی رپورٹوں میں آپ کی خریداری کے اعداد سے بھی گھٹائی جاتی ہے۔</p>
+
+  <div class="tip">💡 خریداری درج کرتے وقت ہمیشہ <strong>سپلائر کا بل نمبر</strong> ڈالیں — اس سے خاص خریداری ڈھونڈنا آسان ہوتا ہے اور GST کے ملان کے لیے یہ ضروری ہے۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 11 -->
+<div class="chapter-banner">باب 11 — اخراجات اور رسیدیں</div>
+<div class="section" id="ch11">
+  <h2>11. اخراجات اور رسیدیں</h2>
+
+  <h3>Expenses پینل</h3>
+  <p>کاروبار کے سارے اخراجات یہاں درج کریں: کرایہ، بجلی، تنخواہ کا ایڈوانس، ٹرانسپورٹ، دفتر کا سامان وغیرہ۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>+ Add Expense</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Category چنیں (Rent / Electricity / Salary / Transport / Other)، رقم، ادائیگی کا طریقہ (نقد یا بینک) اور مختصر تفصیل ڈالیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Save</strong> پر کلک کریں۔ نقد یا بینک بیلنس اسی حساب سے گھٹتا ہے۔</div></div>
+
+  <h3>بار بار ہونے والے اخراجات</h3>
+  <p>مقررہ وقت پر دہرائے جانے والے اخراجات (ہر مہینے کا کرایہ، بجلی پانی کے بل) کے لیے <strong>Recurring Expenses</strong> پینل استعمال کریں:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Recurring Expenses</strong> پر جائیں ← <strong>+ New Template</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">خرچ کا نام، رقم، زمرہ اور دہرانے کا وقت (مہینے میں، ہفتے میں وغیرہ) رکھیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">وقت آنے پر Accelent آپ کو یاد دلائے گا اور خرچ خود بخود درج کر سکتا ہے۔</div></div>
+
+  <h3>Receipts پینل</h3>
+  <p>Receipts پینل ملے اور دیے گئے سارے پیسے کا کھاتہ ہے — وصول کیا گیا نقد، سپلائروں کو ادائیگی، بینک ٹرانسفر اور تنخواہ کی ادائیگی۔ یہ فروخت، خریداری اور اخراجات سے خود بخود بھرتا ہے۔ آپ یہاں الگ سے رسید بھی درج کر سکتے ہیں (جیسے جب ادھار والا گاہک اپنا باقی ادا کرے)۔</p>
+
+  <div class="tip">💡 جب ادھار والا گاہک آپ کو پیسے دے، تو <strong>Receipts → + New Receipt</strong> پر جائیں، گاہک چنیں، اور ملی رقم ڈالیں۔ ان کی باقی رقم خود بخود گھٹ جائے گی۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 12 -->
+<div class="chapter-banner">باب 12 — کھاتے اور ٹرانسفر</div>
+<div class="section" id="ch12">
+  <h2>12. کھاتے اور ٹرانسفر</h2>
+
+  <h3>Accounts پینل</h3>
+  <p>آپ کے سارے پیسے والے کھاتے دکھاتا ہے — نقد، اور ہر بینک کھاتہ۔ ہر کھاتے کے لیے آپ دیکھ سکتے ہیں:</p>
+  <ul>
+    <li>موجودہ بیلنس (ہمیشہ تازہ)</li>
+    <li>تاریخوں اور تفصیل کے ساتھ لین دین کی پوری تاریخ</li>
+    <li>ڈیبٹ (آیا پیسہ) اور کریڈٹ (گیا پیسہ) کے کالم</li>
+  </ul>
+
+  <h3>گاہک کا ادھار اسٹیٹمنٹ</h3>
+  <p><strong>Accounts → Credit Manager → Customer Statement</strong> پر جائیں، گاہک کے نام کا کوئی بھی حصہ ٹائپ کریں (ٹائپ کرتے وقت تجاویز آتی ہیں) اور <strong>Show Statement</strong> یا Enter دبائیں۔ اسٹیٹمنٹ میں کل ادھار، ادا کی گئی رقم اور ابھی باقی، ہر ادھار بل، ہر بل پر <strong>ادھار لیا گیا سامان</strong>، اور ملی ہر ادائیگی نظر آتی ہے۔ <strong>Print</strong> گاہک کے لیے وہی اسٹیٹمنٹ A4 پر دیتا ہے۔</p>
+
+  <h3>بینک کھاتہ شامل کرنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Accounts</strong> پر جائیں ← Bank Accounts کے نیچے <strong>➕ Add New Bank</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">بینک کا نام، کھاتہ نمبر اور ابتدائی بیلنس (شروع کی تاریخ کے بینک اسٹیٹمنٹ سے) ڈالیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save پر کلک کریں۔ بینک کھاتہ اب تمام ادائیگی کے ڈراپ ڈاؤن (Sales، Purchases، Expenses) میں نظر آتا ہے۔</div></div>
+
+  <h3>Transfers پینل</h3>
+  <p>جب آپ اپنے ہی کھاتوں کے بیچ پیسہ لے جائیں، تب Transfers پینل استعمال کریں — جیسے نقد بینک میں جمع کرنا، یا دو بینک کھاتوں کے بیچ ٹرانسفر۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Transfers</strong> پر جائیں۔ <strong>Inter-Accounts Transfer</strong> میں <strong>Paid From</strong> (جیسے Cash in Hand) اور <strong>Received In</strong> (جیسے HDFC Bank) چنیں — ہر ایک کا دستیاب بیلنس اس کے پاس نظر آتا ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">رقم اور تاریخ ڈالیں، اور چاہیں تو Reference اور تفصیل۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Add Transfer</strong> پر کلک کریں۔ نقد گھٹتا ہے، بینک بڑھتا ہے — دونوں بیلنس بدلتے ہیں۔ یہ Recent Transfers میں نظر آتا ہے۔</div></div>
+  <figure class="shot"><a href="manual_images/transfers.png" target="_blank"><img src="manual_images/transfers.png" alt="Transfers" loading="lazy"></a><figcaption>ٹرانسفر — بائیں طرف ٹرانسفر کا فارم، دائیں طرف Transfer History Search۔</figcaption></figure>
+  <p>پرانے ٹرانسفر تاریخ اور کھاتے سے ڈھونڈنے کے لیے دائیں طرف <strong>Transfer History Search</strong>، اور چھاپنے کے لیے <strong>Print Report</strong> استعمال کریں۔</p>
+
+  <div class="warn">⚠ بینک میں جمع کو کبھی "آمدنی" یا "رسید" کے طور پر درج نہ کریں — ہمیشہ Transfers پینل استعمال کریں۔ کہیں اور درج کرنے سے آپ کی آمدنی کے اعداد بڑھے ہوئے نظر آئیں گے۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 13 -->
+<div class="chapter-banner">باب 13 — رپورٹیں اور بقایا</div>
+<div class="section" id="ch13">
+  <h2>13. رپورٹیں، Data Comparison اور بقایا (Aging) رپورٹ</h2>
+
+  <h3>Data Comparison (رپورٹ) پینل</h3>
+  <p>مالی خلاصے اور موازنے بناتا ہے:</p>
+  <ul>
+    <li><strong>ہر مہینے فروخت بمقابلہ خریداری</strong> — ہر مہینے کے کل کا بار چارٹ اور جدول</li>
+    <li><strong>خالص منافع</strong> — فروخت میں سے خریداری اور اخراجات گھٹا کر</li>
+    <li><strong>پارٹی اسٹیٹمنٹ</strong> — آپ اور کسی بھی پارٹی کے بیچ لین دین کی پوری تاریخ</li>
+    <li><strong>کھاتہ اسٹیٹمنٹ</strong> — کسی خاص نقد یا بینک کھاتے کے سارے لین دین</li>
+  </ul>
+  <p>رپورٹ کو فائل میں محفوظ کرنے کے لیے <strong>Export (Ctrl+E)</strong> بٹن، یا سیدھے چھاپنے کے لیے <strong>Print (Ctrl+P)</strong> استعمال کریں۔</p>
+
+  <h3>Aging Report پینل</h3>
+  <p>Aging Report دکھاتی ہے کہ آپ کے گاہکوں کے باقی بل کتنے عرصے سے ادا نہیں ہوئے، اور آپ کے سپلائروں کے بل کتنے عرصے سے واجب الادا ہیں۔</p>
+  <table>
+    <tr><th>بقایا کی مدت</th><th>مطلب</th></tr>
+    <tr><td>0–30 دن</td><td>حالیہ — عام ادھار کی مدت</td></tr>
+    <tr><td>31–60 دن</td><td>پرانا ہو رہا — یاد دہانی بہتر رہے گی</td></tr>
+    <tr><td>61–90 دن</td><td>دیر ہو گئی — پارٹی سے رابطہ کریں</td></tr>
+    <tr><td>90+ دن</td><td>بہت دیر — آگے بڑھائیں یا بٹے کھاتے میں ڈالیں</td></tr>
+  </table>
+  <p>اس رپورٹ سے پہچانیں کہ کن گاہکوں کو فون کر کے یاد دلانا ہے اور کن سپلائروں کے بل جلدی ادا کرنے ہیں۔</p>
+
+  <h3>Finalization پینل</h3>
+  <p>مالی سال کے آخر میں اپنا <strong>نفع نقصان کا کھاتہ (Profit &amp; Loss)</strong> اور <strong>بیلنس شیٹ</strong> بنانے کے لیے <strong>Finalization</strong> پر جائیں۔ یہ رپورٹیں آپ کے اکاؤنٹنٹ یا آڈیٹر کے لیے چھاپی یا ایکسپورٹ کی جا سکتی ہیں۔</p>
+  <p>Finalization مالی سال کو بند بھی کرتا ہے۔ کسی پچھلے سال کو دیکھنے کے لیے ونڈو کے نیچے اسٹیٹس بار سے مالی سال بدلیں۔</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 14 -->
+<div class="chapter-banner">باب 14 — ملازمین اور تنخواہ</div>
+<div class="section" id="ch14">
+  <h2>14. ملازمین اور تنخواہ</h2>
+  <p>Accelent آپ کے عملے کا ریکارڈ رکھتا ہے، حاضری، اوور ٹائم اور ایڈوانس سے ہر مہینے کی تنخواہ نکالتا ہے، اسے نقد یا بینک کھاتے سے ادا کرتا ہے، اور ہر ملازم کو تنخواہ کی پرچی (payslip) دیتا ہے — چھپی ہوئی یا WhatsApp پر۔ نیچے کے مراحل ایک مہینے کو شروع سے آخر تک دکھاتے ہیں۔</p>
+
+  <h3>Accelent تنخواہ کیسے نکالتا ہے</h3>
+  <p>ہر ملازم کی ایک <strong>تنخواہ کی قسم</strong> ہوتی ہے۔ آپ جو <strong>Amount</strong> ڈالتے ہیں، اس کا مطلب ہر قسم میں الگ ہے:</p>
+  <table>
+    <tr><th>تنخواہ کی قسم</th><th>Amount کا مطلب</th><th>مہینے کی تنخواہ</th></tr>
+    <tr><td><strong>Fixed</strong> (مقررہ)</td><td>فی مہینہ</td><td>مہینے کی تنخواہ ÷ کام کے دن × کام کیے دن</td></tr>
+    <tr><td><strong>Daily</strong> (دیہاڑی)</td><td>فی دن</td><td>دیہاڑی × کام کیے دن</td></tr>
+    <tr><td><strong>Hourly</strong> (گھنٹے کے حساب)</td><td>فی گھنٹہ</td><td>گھنٹے کی اجرت × ہر دن کے کام کے گھنٹے × کام کیے دن</td></tr>
+    <tr><td><strong>Piece</strong> (نگ کے حساب)</td><td>فی نگ (یا آپ کی اکائی)</td><td>بنے نگ × فی نگ شرح</td></tr>
+  </table>
+  <p><strong>کام کیے دن</strong> = حاضری − چھٹیاں۔ <strong>اوور ٹائم</strong> (Fixed، Daily، Hourly) = گھنٹے کی شرح × اوور ٹائم گھنٹے × اوور ٹائم ضرب (جیسے 1.5)۔ <strong>خالص تنخواہ</strong> = بنیادی تنخواہ + اوور ٹائم − وصول کیے گئے ایڈوانس۔ جس مہینے ملازم شامل ہوا، وہ شمولیت کی تاریخ سے گنا جاتا ہے۔</p>
+
+  <h3>ملازم شامل کرنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Employees</strong> پر جائیں ← <strong>➕ Add Employee</strong>۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">نام، عہدہ، <strong>موبائل نمبر</strong> (تنخواہ کی پرچی اسی پر WhatsApp سے جاتی ہے)، پتہ اور <strong>شمولیت کی تاریخ</strong> ڈالیں۔ تاریخ میں دن پہلے آتا ہے: <code>01/08/2026</code> یعنی 1 اگست 2026؛ آپ کیلنڈر سے بھی چن سکتے ہیں۔ چاہیں تو شناختی دستاویز اور ضامن شامل کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Salary Type</strong> چنیں اور <strong>Amount</strong> ڈالیں — خانے میں <em>/ month</em>، <em>/ day</em>، <em>/ hour</em> یا <em>/ unit</em> نظر آتا ہے تاکہ آپ کو اس کا مطلب پتہ رہے۔ Piece کام کے لیے اکائی کا نام بھی ڈالیں (جیسے <em>pieces</em>)۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">مہینے کے کام کے دن، ہر دن کے کام کے گھنٹے اور اوور ٹائم ضرب رکھیں، پھر <strong>Save Employee</strong> پر کلک کریں۔</div></div>
+
+  <h3>تنخواہ کی شیٹ</h3>
+  <p>ملازم چنیں اور <strong>📊 Salary Spreadsheet</strong> پر کلک کریں۔ اس میں ملازم کے شامل ہونے کے بعد کا ہر <strong>مکمل مہینہ</strong> نظر آتا ہے — موجودہ مہینہ ختم ہونے پر نظر آتا ہے۔ ہر مہینے کے لیے آپ <strong>Attendance</strong> (حاضری)، <strong>Leaves</strong> (چھٹیاں)، <strong>OT Hours</strong>، <strong>Advances</strong> اور، نگ کے حساب والے ملازمین کے لیے، <strong>Units</strong> بدل سکتے ہیں؛ Base Pay، OT Pay، Gross اور Net Payable ٹائپ کرتے ہی بدلتے ہیں۔ <strong>Status</strong> کالم میں ⏳ Pending، 📝 Saved, not paid، یا ✅ Paid نظر آتا ہے۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>💾 Save (not paid yet)</strong> آپ کی ڈالی معلومات رکھتا ہے، بغیر کچھ ادا کیے۔ مہینے کے دوران اسے استعمال کریں؛ اگلی بار شیٹ آپ کے اندراجات دکھاتی ہے۔ بغیر محفوظ کی تبدیلیوں کے ساتھ شیٹ بند کریں تو Accelent پہلے پوچھتا ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ادا کرنے سے پہلے جانچیں:</strong> مہینہ چنیں اور <strong>🖨 Payslip</strong> پر کلک کریں۔ جو مہینہ ابھی ادا نہیں ہوا، اس کی سرمئی <strong>DRAFT</strong> پرچی ملتی ہے (<em>Not paid yet</em> لکھی، بغیر دستخط یا مہر کے)، تاکہ آپ ملازم کے ساتھ اعداد پکے کر لیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>💰 Pay Salary</strong> ہر غیر ادا شدہ مہینے کی ادائیگی کرتا ہے: نقد یا بینک کھاتہ چنیں، اور ہر مہینہ کھاتوں میں درج ہو کر ✅ Paid ہو جاتا ہے۔ جس مہینے میں کوئی تنخواہ نہیں بنتی (جیسے نگ کا کام جس میں کوئی نگ نہیں ڈالا)، وہ تبھی ادا ہوتا ہے جب آپ کہیں؛ ورنہ باقی رہتا ہے۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ادا کرنے کے فوراً بعد، Accelent آخری مہینے کی تنخواہ کی پرچی دیتا ہے: <strong>📄 Send on WhatsApp</strong>، <strong>🖨 View / Print</strong> یا <strong>Later</strong>۔</div></div>
+
+  <h3>تنخواہ کی پرچیاں</h3>
+  <p>تنخواہ کی پرچی میں آپ کی کمپنی کا عنوان اور لوگو، ملازم کی معلومات، کام کیے دن، چھٹیاں اور اوور ٹائم، ادائیگی کی تاریخ اور کس کھاتے سے ادا کیا، کمائی اور کٹوتیاں، <strong>الفاظ میں خالص تنخواہ</strong>، اور آپ کے دستخط اور مہر ہوتے ہیں (Settings → 🏢 Company میں <em>Signature &amp; Stamp</em> دیکھیں)۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">تنخواہ کی شیٹ میں ادا شدہ مہینہ چنیں اور دیکھنے، چھاپنے یا PDF محفوظ کرنے کے لیے <strong>🖨 Payslip</strong>، یا <strong>📄 Send Payslip on WhatsApp</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">WhatsApp ملازم کی چیٹ ایک مختصر پیغام کے ساتھ کھولتا ہے اور پرچی کی PDF کاپی ہوتی ہے: جوڑنے کے لیے <strong>Ctrl+V</strong> دبائیں، پھر <strong>Send</strong> (بلوں کی طرح — <em>بل WhatsApp پر بھیجنا</em> دیکھیں)۔</div></div>
+  <div class="tip">💡 تمام ملازمین کے تمام ادا شدہ مہینے <strong>Payroll History</strong> ٹیب میں بھی ہیں: مہینہ اور سال چنیں، لائن چنیں، اور وہی <strong>🖨 Payslip</strong> اور <strong>📄 Send Payslip on WhatsApp</strong> بٹن استعمال کریں (لائن پر ڈبل کلک کرنے سے بھی پرچی کھلتی ہے)۔</div>
+
+  <h3>ایڈوانس</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ملازم چنیں ← <strong>💰 Add Advance</strong> (یا ملازم کھول کر <strong>Advances</strong> ٹیب استعمال کریں)۔ تاریخ، رقم، وجہ اور جس نقد یا بینک کھاتے سے دیا، ڈالیں۔ باہر گیا پیسہ <em>Employee Advance</em> خرچ کے طور پر درج ہوتا ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Normal</strong> ایڈوانس مہینے کی تنخواہ کے 40% تک ہو سکتا ہے اور اس مہینے ملازم نے اب تک جتنا کمایا اس سے زیادہ نہیں۔ اس سے بڑا <strong>Forced</strong> ایڈوانس ہے اور اس کے لیے منظوری دینے والے کا نام چاہیے۔ نگ کے حساب والے ملازمین کی مہینے کی تنخواہ ان کا آخری ادا شدہ مہینہ مانی جاتی ہے۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">باقی ایڈوانس اگلے غیر ادا شدہ مہینے کے <strong>Advances</strong> کالم میں نظر آتے ہیں اور اس تنخواہ سے کٹتے ہیں۔ صرف کچھ حصہ وصول کرنا ہو، تو وہاں چھوٹی رقم ٹائپ کریں: باقی اگلے مہینے کے لیے رہتا ہے۔</div></div>
+  <div class="tip">💡 ملازم کے <strong>Advances</strong> ٹیب میں <strong>Extend</strong> ایڈوانس کی رقم بدلتا ہے — Accelent صرف فرق کو دیا یا لوٹایا گیا درج کرتا ہے۔ <strong>Close / Settle</strong> ایڈوانس کو ختم مانتا ہے؛ اگر ملازم نے نقد لوٹایا، تو وہ پیسہ <strong>Receipts</strong> میں درج کریں۔</div>
+
+  <h3>غلطی سے ہوئی ادائیگی درست کرنا</h3>
+  <p>ادا شدہ مہینہ بند ہو جاتا ہے تاکہ غلطی سے نہ بدلے۔ اگر غلط اعداد سے ادا کیا گیا: تنخواہ کی شیٹ میں مہینہ چنیں ← <strong>↩ Undo Payment</strong> ← ایڈمن پاس ورڈ سے تصدیق کریں۔ ادائیگی اور اس کا نقد/بینک اندراج ہٹ جاتا ہے، اس میں وصول کیے گئے ایڈوانس پھر باقی ہو جاتے ہیں، اور مہینہ انہی اعداد کے ساتھ <em>Saved, not paid</em> پر لوٹ آتا ہے — انہیں درست کریں اور <strong>💰 Pay Salary</strong> پر کلک کریں۔ یہ واپسی <strong>Deletion Watcher</strong> میں درج ہوتی ہے۔ بند ہو چکے مالی سال کا مہینہ واپس نہیں لیا جا سکتا۔</p>
+
+  <h3>کون کیا کر سکتا ہے</h3>
+  <p>ایڈمن تنخواہیں دیکھتا ہے اور ادائیگی، ادائیگی کی واپسی اور پرچیاں بھیج سکتا ہے۔ عملے کے کھاتے کو اس کی جگہ <strong>📋 Attendance Sheet</strong> نظر آتی ہے — صرف حاضری، چھٹیاں، اوور ٹائم اور نگ، کوئی رقم نہیں — اور وہ ایڈمن کے ادا کرنے کے لیے <strong>💾 Save (not paid yet)</strong> سے اندراجات محفوظ کر سکتا ہے۔</p>
+
+  <h3>جب کوئی نوکری چھوڑے</h3>
+  <p>ملازم چنیں ← <strong>🚫 Terminate</strong>۔ وہ فعال فہرست سے ہٹ جاتے ہیں پر ان کی تنخواہ کی تاریخ رہتی ہے؛ <strong>Show Terminated</strong> انہیں دوبارہ دکھاتا ہے۔</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 15 -->
+<div class="chapter-banner">باب 15 — GST ریٹرن اور ای-انوائس</div>
+<div class="section" id="ch15">
+  <h2>15. GST ریٹرن اور ای-انوائس (IRN)</h2>
+
+  <h3>GST Returns پینل</h3>
+  <p>یہ پینل آپ کی فروخت اور خریداری کے اعداد کو GST کی تقسیم کے ساتھ جوڑ کر ہر مہینے کی GST فائلنگ (GSTR-1، GSTR-3B) تیار کرنے میں مدد کرتا ہے۔</p>
+  <ul>
+    <li><strong>GSTR-1</strong> — باہر جانے والی سپلائی (آپ کی فروخت) — اگلے مہینے کی 11 تاریخ تک بھری جاتی ہے</li>
+    <li><strong>GSTR-3B</strong> — فروخت اور خریداری کا خلاصہ ریٹرن، واجب الادا ٹیکس کے ساتھ — 20 تاریخ تک بھرا جاتا ہے</li>
+    <li><strong>GSTR-2B کا ملان</strong> — آپ کے خریداری کے بلوں کا موازنہ آپ کے سپلائروں کے GSTR-2B سے کرتا ہے، تاکہ آپ صرف وہی ان پٹ ٹیکس کریڈٹ لیں جو انہوں نے دکھایا ہے</li>
+  </ul>
+  <figure class="shot"><a href="manual_images/gst-dashboard.png" target="_blank"><img src="manual_images/gst-dashboard.png" alt="GST Management" loading="lazy"></a><figcaption>GST کا انتظام — اوپر اس مدت کا واجب الادا ٹیکس اور ان پٹ ٹیکس کریڈٹ، اور لیجر، ریٹرن، GSTR-2B ملان، E-Way Bill وغیرہ کے ٹیب۔</figcaption></figure>
+  <p>Accelent آپ کے انوینٹری آئٹموں کے HSN کوڈ سے CGST، SGST اور IGST نکالتا ہے۔ Inventory پینل میں تمام آئٹموں کے درست HSN کوڈ اور GST شرح پکی کر لیں۔</p>
+  <ul>
+    <li><strong>فون کے اندراجات شامل ہیں:</strong> فون پر ہوئی فروخت اور خریداری آؤٹ پٹ ٹیکس، ان پٹ ٹیکس کریڈٹ اور GST خلاصے میں گنی جاتی ہیں، ڈیسک ٹاپ اندراجات کی طرح۔ فون کے اندراجات آپ کی اپنی ریاست کے اندر مانے جاتے ہیں (CGST + SGST)۔</li>
+    <li><strong>HSN کوڈ:</strong> GSTR-1 کا HSN خلاصہ فروخت کو ہر آئٹم کے اصل HSN کوڈ سے گروپ کرتا ہے۔ GSTR-1 ایکسپورٹ سے پہلے Accelent ان بکے آئٹموں کی فہرست دیتا ہے جن کا HSN کوڈ نہیں ہے — پہلے Inventory میں شامل کریں، پھر دوبارہ ایکسپورٹ کریں۔</li>
+    <li><strong>ڈیلیٹ یا بدلے بل:</strong> بل ڈیلیٹ کرنے سے اس کا ٹیکس GST Returns سے ہٹ جاتا ہے، اور فروخت بدلنے سے اس کا ٹیکس اندراج بدل جاتا ہے، دوسرا نہیں جڑتا۔</li>
+  </ul>
+
+  <h3>E-Invoice / IRN پینل</h3>
+  <p>جن کاروباروں کا سالانہ ٹرن اوور حکومت کی حد سے زیادہ ہے، انہیں ہر B2B بل کے لیے NIC e-Invoice پورٹل سے <strong>IRN (Invoice Reference Number)</strong> بنانا ہوتا ہے۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>E-Invoice</strong> پینل پر جائیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">فہرست سے بل چنیں اور <strong>Generate IRN</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Accelent NIC کے اصولوں والی JSON فائل بناتا ہے۔ IRN اور QR کوڈ پانے کے لیے اسے e-Invoice پورٹل پر جمع کریں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">IRN بل کے ساتھ محفوظ ہوتا ہے اور بل کی کاپی پر چھپتا ہے۔</div></div>
+
+  <div class="warn">⚠ ای-انوائس آپ پر کب لاگو ہوتا ہے اور آخری تاریخیں کیا ہیں، یہ پکا کرنے کے لیے اپنے CA یا ٹیکس مشیر سے پوچھیں۔ اصول وقتاً فوقتاً بدلتے ہیں۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 16 -->
+<div class="chapter-banner">باب 16 — سیٹنگز اور ایڈمن</div>
+<div class="section" id="ch16">
+  <h2>16. سیٹنگز اور ایڈمن</h2>
+
+  <p>Settings پینل میں چھ ٹیب ہیں۔ ہر ایک کیا کرتا ہے:</p>
+
+  <table>
+    <tr><th>ٹیب</th><th>آپ کیا کر سکتے ہیں</th></tr>
+    <tr><td>🔍 Deletion Watcher</td><td>ایپ میں ڈیلیٹ ہوئے ہر ریکارڈ کا آڈٹ ریکارڈ۔ آپ تفصیل دیکھ سکتے ہیں، ڈیلیٹ ریکارڈ واپس لا سکتے ہیں، یا لاگ اندراجات ہمیشہ کے لیے ہٹا سکتے ہیں۔ <strong>بند رہتا ہے — کھولنے کے لیے ایڈمن PIN چاہیے۔</strong></td></tr>
+    <tr><td>⚙️ App Settings</td><td>لین دین سے سارے بیلنس دوبارہ نکالنا، ڈیٹابیس کا بیک اپ، بیک اپ سے واپس لانا، خفیہ (encrypted) Cloud Backup سیٹ کرنا، ڈیٹابیس ری سیٹ (خطرناک!)، زبان اور تھیم بدلنا۔</td></tr>
+    <tr><td>🏢 Company</td><td>کمپنی کا نام، پتہ، رابطہ، GST/TIN، لوگو، اور بلوں اور رپورٹوں پر لگنے والے دستخط اور دکان کی مہر بدلیں۔ <strong>Business Type</strong> مینو کی اسکرینیں چنتا ہے: <em>Restaurant</em> کو Sales، Returns، Aging Report اور E-Invoice کی جگہ 🍽 Restaurant اسکرین ملتی ہے (دیکھیں <a href="#ch9b">باب 9b</a>)، اور <em>Hotel, lodge or guest house</em> کو 🛏 Rooms بھی ملتا ہے (دیکھیں <a href="#ch9c">باب 9c</a>)؛ تبدیلی Accelent دوبارہ کھولنے پر نظر آتی ہے۔</td></tr>
+    <tr><td>👥 Users</td><td>عملے کے کھاتے بنائیں، ہر ایک کیا دیکھ اور کر سکتا ہے چنیں (🔐 Permissions)، اور طے کریں کہ فون ایپ کون استعمال کر سکتا ہے۔ ایڈمن کھاتہ اصل ہے — اس کا پاس ورڈ محفوظ رکھیں۔</td></tr>
+    <tr><td>🔑 License</td><td>اپنا سبسکرپشن چالو یا تجدید کریں، یا ٹرائل کی حالت دیکھیں۔</td></tr>
+    <tr><td>📊 Balances</td><td>نقد، بینک کھاتوں، پارٹیوں، گاہکوں اور ملازمین کے ابتدائی بیلنس بدلیں۔</td></tr>
+  </table>
+
+  <h3>🔒 Deletion Watcher بند کیوں رہتا ہے؟</h3>
+  <p>Deletion Watcher ٹیب ایک بہت اہم وجہ سے <strong>PIN / ایڈمن شناخت</strong> سے محفوظ ہے: اس میں <strong>کوئی بھی ڈیلیٹ ریکارڈ واپس لانے</strong> کی طاقت ہے — بل، خریداری، اخراجات، انوینٹری آئٹم اور بہت کچھ۔</p>
+  <p>اگر یہ سارے عملے کے لیے کھلا ہوتا، تو کوئی بھی آپریٹر:</p>
+  <ul>
+    <li>ڈیلیٹ بل واپس لا کر چھپا سکتا تھا کہ وہ ہٹایا گیا تھا</li>
+    <li>پورا آڈٹ ریکارڈ دیکھ کر جان سکتا تھا کہ اس پر نظر رکھی جا رہی ہے</li>
+    <li>چھیڑ چھاڑ کے ثبوت مٹانے کے لیے لاگ اندراجات ہمیشہ کے لیے ڈیلیٹ کر سکتا تھا</li>
+  </ul>
+  <p>تالا یہ پکا کرتا ہے کہ اس حساس حصے تک <strong>صرف کاروبار کا مالک یا ایڈمن</strong> پہنچے۔ آپریٹر کے طور پر لاگ اِن کرنے والے عملے کو یہ ٹیب نظر ہی نہیں آتا۔</p>
+
+  <h4>Deletion Watcher کیسے کھولیں</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🔍 Deletion Watcher</strong> پر جائیں۔ آپ کو 🔒 تالے کا نشان نظر آئے گا — جدول اور بٹن بند ہیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Authenticate</strong> بٹن پر کلک کریں اور اپنا ایڈمن پاس ورڈ ڈالیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">نشان 🔓 Active میں بدل جاتا ہے اور پورا آڈٹ ریکارڈ نظر آنے لگتا ہے۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Settings بند کرنے یا پینل بدلنے پر یہ خود بخود دوبارہ بند ہو جاتا ہے — آپ اٹھ کر جائیں تب بھی محفوظ رہتا ہے۔</div></div>
+  <p>ہر لائن پر چار بٹن ہیں: <strong>V</strong> تفصیل دیکھیں، <strong>M</strong> دیکھا گیا مانیں، <strong>R</strong> واپس لائیں، <strong>D</strong> اندراج ڈیلیٹ کریں۔ ایک ساتھ کئی لائنوں پر کام کرنے کے لیے انہیں چنیں (کلک، Shift+کلک، Ctrl+کلک یا Ctrl+A)، رائٹ کلک کریں اور <strong>Restore selected</strong>، <strong>Mark selected as reviewed</strong> یا <strong>Delete selected entries permanently</strong> چنیں۔</p>
+
+  <div class="warn">⚠ <strong>اپنا ایڈمن پاس ورڈ کبھی عملے کو نہ بتائیں۔</strong> Deletion Watcher واپس لانے اور جانچنے کا آپ کا سب سے طاقتور اوزار ہے — اسے صرف کاروبار کا مالک کھولے۔</div>
+
+  <h3>بیلنس دوبارہ نکالنا</h3>
+  <p>اگر کبھی کوئی بیلنس غلط لگے، تو <strong>Settings → App Settings → 🔄 Recalculate All Balances</strong> پر جائیں۔ یہ لین دین کی پوری تاریخ سے ہر کھاتے کا بیلنس دوبارہ نکالتا ہے اور کوئی بھی گڑبڑ ٹھیک کرتا ہے۔</p>
+
+  <h3>صارفین کا انتظام</h3>
+  <p>آپ عملے (کیشیئر، ڈیٹا بھرنے والے، اسٹور کیپر) کے لیے الگ کھاتے بنا سکتے ہیں۔ ہر عملہ اپنے پاس ورڈ سے لاگ اِن کرتا ہے۔ ایڈمن کھاتے کے پاس ہمیشہ ہر چیز کی پوری رسائی ہوتی ہے۔</p>
+
+  <h3>🔐 عملے کی اجازتیں — ہر عملہ کیا دیکھ اور کر سکتا ہے</h3>
+  <p>ہر عملے کے کھاتے کے لیے آپ ٹھیک ٹھیک طے کرتے ہیں کہ وہ کیا دیکھ اور کر سکتا ہے۔ جن اسکرینوں کی اجازت نہیں، وہ اس کے مینو سے غائب ہو جاتی ہیں، اور یہی اصول فون ایپ پر بھی لاگو ہوتے ہیں۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 👥 Users</strong> پر جائیں اور ایڈمن پاس ورڈ سے Settings کھولیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">کسی عملے کے پاس <strong>🔐</strong> بٹن پر کلک کریں (یہ ان کا موجودہ ٹیمپلیٹ دکھاتا ہے، جیسے <em>🔐 Billing Staff</em>)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">شروع کرنے کے لیے ایک <strong>ٹیمپلیٹ</strong> چنیں، پھر 12 اجازتوں میں سے کسی پر بھی ٹک لگائیں یا ہٹائیں۔ <strong>Save</strong> پر کلک کریں۔</div></div>
+  <figure class="shot"><a href="manual_images/staff-permissions.png" target="_blank"><img src="manual_images/staff-permissions.png" alt="Staff Permissions window" loading="lazy" style="max-width:420px;width:100%"></a><figcaption>اجازتوں کی ونڈو — اوپر ابتدائی ٹیمپلیٹ، پھر گروپوں میں 12 اجازتیں۔</figcaption></figure>
+  <table>
+    <tr><th>ٹیمپلیٹ</th><th>عام استعمال</th><th>کیا کر سکتا ہے</th></tr>
+    <tr><td>Billing Staff</td><td>کاؤنٹر / کیشیئر</td><td>صرف فروخت بنانا — کوئی رقم کے اعداد نہیں، کوئی خریداری کی لاگت نہیں</td></tr>
+    <tr><td>Store Keeper</td><td>اسٹاک اور خریداری</td><td>خریداری، انوینٹری میں تبدیلی، واپسی، خریداری کی لاگت</td></tr>
+    <tr><td>Accountant</td><td>حساب کتاب اور GST</td><td>تنخواہ اور پرانے بل بدلنے یا ڈیلیٹ کرنے کے سوا سب کچھ</td></tr>
+    <tr><td>Manager</td><td>بھروسے مند سینئر عملہ</td><td>سب کچھ (فون کی رسائی الگ سے طے ہوتی ہے)</td></tr>
+  </table>
+  <div class="tip">💡 نئے عملے کے کھاتے <strong>Billing Staff</strong> سے شروع ہوتے ہیں۔ 🔐 بٹن سے ہر شخص کو اس کی ضرورت کا دیں۔ تبدیلیاں ڈیسک ٹاپ پر اگلی بار لاگ اِن کرنے پر لاگو ہوتی ہیں، اور ان کے فون پر فوراً۔</div>
+  <div class="warn">⚠ اجازتیں آپ کے ڈیٹا کو عملے سے بچاتی ہیں — ایڈمن کھاتے کو نہیں۔ جو بھی ایڈمن پاس ورڈ جانتا ہے، اس کی پوری رسائی ہے، اس لیے اسے خفیہ رکھیں۔</div>
+
+  <h3>🔑 آپ کا سبسکرپشن</h3>
+  <ul>
+    <li><strong>مفت ٹرائل:</strong> ہر سہولت کے ساتھ 45 دن، جس میں 15 سپلائر بل اسکین شامل ہیں۔</li>
+    <li><strong>سبسکرپشن:</strong> چالو کرنے کے بعد آپ کا لائسنس ایک سال چلتا ہے۔ اسٹیٹس بار میں <em>"Licensed until …"</em> نظر آتا ہے۔</li>
+    <li><strong>تجدید:</strong> آخری تاریخ سے 30 دن پہلے یاد دہانی شروع ہوتی ہے، اور آپ اپنی تجدید کی کلید سے Settings → 🔑 License میں تجدید کر سکتے ہیں۔ جلدی تجدید کرنے پر سال آپ کے بچے دنوں کے اوپر جڑتا ہے۔</li>
+    <li><strong>اگر سبسکرپشن ختم ہو جائے:</strong> بل اسکین فوراً رک جاتا ہے، پر بل محفوظ کرنا <strong>7 دن مزید</strong> چلتا ہے، اسٹیٹس بار میں الٹی گنتی کے ساتھ۔ اس کے بعد تجدید تک محفوظ کرنا رک جاتا ہے۔ آپ کا ڈیٹا ہمیشہ دیکھا جا سکتا ہے۔</li>
+    <li><strong>ایک لائسنس پر ایک PC:</strong> لائسنس اسی PC سے بندھا ہوتا ہے جس پر چالو ہوا۔ نئے PC پر لے جانے کے لیے سپورٹ سے رابطہ کریں۔</li>
+  </ul>
+
+  <div class="err">🚨 <strong>اپنا ایڈمن پاس ورڈ کبھی کسی کو نہ بتائیں۔</strong> اگر کوئی آپریٹر کام چھوڑ دے، تو Settings → Users ← اس صارف کو چنیں ← <em>Disable</em> پر کلک کریں۔ اس کے ڈالے اندراجات کی تاریخ رہتی ہے پر وہ اب لاگ اِن نہیں کر سکتا۔</div>
+
+  <h3>🔑 آپ کے کھاتے کی Recovery Key</h3>
+  <p>جب آپ پہلی بار اپنا پاس ورڈ رکھتے ہیں — انسٹال کے فوراً بعد (عارضی ڈیفالٹ پاس ورڈ کی جگہ) یا بعد میں کبھی بھی — Accelent آپ کے کھاتے کے لیے ایک منفرد <strong>Recovery Key</strong> بناتا ہے اور اسے آپ کو <strong>صرف ایک بار</strong> دکھاتا ہے، ایک خانے میں جسے بند کرنے سے پہلے آپ کو تصدیق کرنی ہوتی ہے کہ آپ نے اسے محفوظ کر لیا۔</p>
+  <div class="tip">💡 یہ کلید ڈیش سے الگ کیے گئے حروف/ہندسوں کے گروپوں جیسی دکھتی ہے، جیسے <code>3F7A9C21-8B4E0D6F-...</code>۔ اسے پاس ورڈ مینیجر میں کاپی کریں، کاغذ پر لکھ کر محفوظ جگہ رکھیں، یا بند نوٹ میں رکھیں — کہیں بھی، سوائے اسی PC پر واضح نام والی فائل کے۔</div>
+  <p>یہ کلید ایک ہی کام کے لیے ہے: اگر آپ کبھی اپنا ایڈمن پاس ورڈ بھول جائیں، یا بہت ساری غلط کوششوں کے بعد کھاتہ بند ہو جائے، تو Recovery Key سے آپ لاگ اِن اسکرین سے خود، ایک منٹ سے کم میں، بالکل نیا پاس ورڈ رکھ سکتے ہیں — <strong>کاروبار کا کوئی ڈیٹا کھوئے بغیر</strong> اور سپورٹ سے رابطہ کیے بغیر۔</p>
+  <div class="warn">⚠ Accelent آپ کی Recovery Key کبھی پڑھنے کے قابل شکل میں نہیں رکھتا — صرف اس کا محفوظ ہیش، بالکل پاس ورڈ کی طرح۔ اگر کلید کھو جائے، تو کوئی بھی (آپ کا سافٹ ویئر فراہم کرنے والا بھی) اسے واپس نہیں لا سکتا۔ تب آپ کو کسی اور طریقے سے نیا پاس ورڈ رکھ کر نئی کلید بنانی ہوگی۔</div>
+
+  <h4>نئی Recovery Key پانا</h4>
+  <p>کوئی بھی Recovery Key آپ کو صرف ایک بار نظر آتی ہے۔ اگر وہ کھو گئی، یا آپ بس نئی چاہتے ہیں، تو ایڈمن کے طور پر لاگ اِن ہونے پر آپ کبھی بھی نئی بنا سکتے ہیں — نئی بنتے ہی پرانی کلید فوراً کام کرنا بند کر دیتی ہے۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 👥 Users</strong> (ایڈمن کھاتہ) پر جائیں اور نئی Recovery Key بنانے کا آپشن استعمال کریں، یا بس اپنا ایڈمن پاس ورڈ بدلیں — جب بھی آپ کی کوئی کلید درج نہ ہو، نئی کلید خود بخود ملتی ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">نیا کوڈ بالکل اوپر بتائے طریقے سے محفوظ کریں۔ خانہ بند کرنے کے لیے <strong>"I have saved this recovery code somewhere safe"</strong> پر ٹک کریں — یہ دوبارہ نظر نہیں آئے گا۔</div></div>
+
+  <h3>🔓 پاس ورڈ بھول گئے؟ خود واپس پائیں</h3>
+  <p>اگر آپ کبھی اپنا ایڈمن پاس ورڈ بھول جائیں — یا بار بار غلط کوششوں کے بعد کھاتہ بند ہو جائے — تو سپورٹ کا انتظار نہیں کرنا۔ لاگ اِن اسکرین پر پاس ورڈ کے خانے کے نیچے چھوٹے <strong>"Forgot password?"</strong> لنک پر کلک کریں۔</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">لاگ اِن اسکرین پر <strong>Forgot password?</strong> پر کلک کریں۔ <strong>Account Recovery</strong> ونڈو کھلتی ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اپنا <strong>یوزر نیم</strong> اور پہلے محفوظ کی گئی <strong>Recovery Key</strong> ڈالیں (اوپر دیکھیں)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>نیا پاس ورڈ</strong> ڈالیں اور تصدیق کریں (کم از کم 8 حروف)۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Reset Password</strong> پر کلک کریں۔ اس سے کھاتے کا کوئی بھی تالا بھی خود بخود کھل جاتا ہے۔ نئے پاس ورڈ سے فوراً لاگ اِن کریں۔</div></div>
+  <div class="good">✅ یہ صرف آپ کا لاگ اِن پاس ورڈ بدلتا ہے — آپ کے بل، انوینٹری، بیلنس یا کاروبار کا کوئی اور ڈیٹا کسی بھی طرح نہیں چھوا جاتا۔</div>
+  <div class="err">🚨 اگر آپ نے کبھی Recovery Key محفوظ نہیں کی اور کھاتہ بند ہے، تو خود واپس پانا ممکن نہیں — مدد کے لیے اپنے سافٹ ویئر فراہم کرنے والے سے رابطہ کریں۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 17 -->
+<div class="chapter-banner">باب 17 — آپ کا ڈیٹا</div>
+<div class="section" id="ch17">
+  <h2>17. آپ کا ڈیٹا — مقام، بیک اپ اور ریسٹور</h2>
+
+  <h3>آپ کا ڈیٹا کہاں ہے؟</h3>
+  <p>آپ کا سارا ڈیٹا آپ کے Windows PC پر ایک ہی SQLite ڈیٹابیس فائل میں رہتا ہے:</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\inventory.db</span>
+  </div>
+  <p>خود بخود بننے والے بیک اپ کا ایک فولڈر بھی ہے:</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\backups\</span>
+  </div>
+  <p>Accelent ہر بار شروع ہونے پر خود بخود بیک اپ بناتا ہے۔ حالیہ 10 بیک اپ تک خود بخود رکھے جاتے ہیں۔</p>
+
+  <div class="tip">💡 AppData جلدی کھولنے کے لیے <strong>Windows+R</strong> دبائیں، <code>%APPDATA%\BrandAccShay</code> ٹائپ کریں اور Enter دبائیں۔</div>
+
+  <h3>ہاتھ سے بیک اپ لینا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → 💾 Backup Data</strong> پر جائیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">بیک اپ فائل کہاں محفوظ کرنی ہے، چنیں (USB ڈرائیو، Google Drive فولڈر، یا بیرونی ہارڈ ڈسک)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save پر کلک کریں۔ بیک اپ ایک ہی <code>.db</code> فائل ہے جس میں آپ کا سارا ڈیٹا ہے۔</div></div>
+
+  <div class="good">✅ <strong>بیک اپ کا تجویز کردہ طریقہ:</strong><br>
+  • روزانہ: Accelent کو خود بخود بیک اپ لینے دیں (شروع ہوتے ہی خود ہوتا ہے)<br>
+  • ہر ہفتے: USB ڈرائیو یا Google Drive پر ہاتھ سے بیک اپ<br>
+  • ہر مہینے: پورا AppData\BrandAccShay فولڈر بیرونی ہارڈ ڈسک پر کاپی کریں</div>
+
+  <h3>بیک اپ سے واپس لانا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → 📂 Restore Data</strong> پر جائیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اپنی بیک اپ <code>.db</code> فائل ڈھونڈ کر چنیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Open پر کلک کریں۔ Accelent موجودہ ڈیٹابیس کی جگہ بیک اپ رکھ دے گا۔ <strong>ایپ خود بخود دوبارہ شروع ہوگی۔</strong></div></div>
+
+  <div class="warn">⚠ بیک اپ واپس لانے سے موجودہ سارا ڈیٹا بیک اپ کے ڈیٹا سے بدل جاتا ہے۔ بیک اپ کی تاریخ کے بعد ڈالے گئے سارے لین دین کھو جائیں گے۔ صرف کسی بڑی خرابی سے نکلنے کے لیے ہی واپس لائیں۔</div>
+
+  <h3>☁️ Cloud Backup — خود بخود ہونے والا خفیہ بیرونی بیک اپ</h3>
+  <p>اوپر والے ہاتھ سے لیے بیک اپ اسی PC پر رہتے ہیں — اگر PC کھو جائے، چوری ہو جائے یا خراب ہو جائے، تو صرف یہیں رکھا بیک اپ بھی اس کے ساتھ جا سکتا ہے۔ <strong>Cloud Backup</strong> اس کا حل ہے: یہ آپ کے PC پر ہی آپ کے ڈیٹابیس کی ایک کاپی خفیہ (encrypt) کرتا ہے اور اسے ایسے فولڈر میں محفوظ کرتا ہے جو <strong>آپ کے اپنے</strong> کلاؤڈ اسٹوریج (OneDrive، Google Drive، Dropbox وغیرہ) سے سنک ہوتا ہے۔ آپ کا سافٹ ویئر فراہم کرنے والا آپ کا ڈیٹا کبھی نہیں دیکھتا — فائل آپ کے کمپیوٹر سے نکلنے سے پہلے ہی خفیہ ہو جاتی ہے۔</p>
+
+  <h4>Cloud Backup سیٹ کرنا</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup</strong> پر جائیں اور <strong>Set Up Cloud Backup</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Browse...</strong> پر کلک کریں اور ایسا فولڈر چنیں جو آپ کی کلاؤڈ اسٹوریج ایپ سے سنک ہوتا ہو (جیسے آپ کا <code>OneDrive</code> یا <code>Google Drive</code> فولڈر)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ایک <strong>بیک اپ پاس ورڈ</strong> چنیں (کم از کم 8 حروف) اور تصدیق کریں۔ یہ پاس ورڈ ہر بیک اپ کو خفیہ کرتا ہے — اسے یاد رکھیں، اور اپنے ایڈمن لاگ اِن پاس ورڈ سے الگ رکھیں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Continue</strong> پر کلک کریں۔ Accelent پہلا بیک اپ لیتا ہے اور پھر ایک بار دکھنے والا <strong>Recovery Code</strong> ایک خانے میں دکھاتا ہے، جسے بند کرنے سے پہلے آپ کو تصدیق کرنی ہوتی ہے کہ آپ نے اسے محفوظ کر لیا۔</div></div>
+
+  <div class="warn">⚠ <strong>Cloud Backup کا پاس ورڈ اور Cloud Backup کا ریکوری کوڈ آپ کی لاگ اِن Recovery Key سے الگ ہیں</strong> (باب 16)۔ انہیں واضح نام لکھ کر الگ الگ رکھیں تاکہ آپس میں نہ ملیں:
+    <ul style="margin-top:6px;">
+      <li><strong>لاگ اِن Recovery Key</strong> — لاگ اِن اسکرین پر خود ایپ کا پاس ورڈ بدلتی ہے، بغیر سپورٹ کے۔</li>
+      <li><strong>Cloud Backup پاس ورڈ</strong> — آپ کی کلاؤڈ بیک اپ فائلیں کھولتا ہے؛ ہر بار واپس لانے پر چاہیے۔</li>
+      <li><strong>Cloud Backup ریکوری کوڈ</strong> — اگر آپ Cloud Backup پاس ورڈ بھول جائیں، تو صرف سپورٹ سے ملے ریلیز کوڈ کے ساتھ کام آتا ہے۔</li>
+    </ul>
+  </div>
+
+  <h4>روزمرہ استعمال</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">جب بھی فوراً خفیہ بیک اپ اپنے کلاؤڈ فولڈر میں چاہیے، <strong>⬆️ Backup Now</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Automatic daily backup</strong> پر ٹک کریں، تاکہ Accelent اپنے وقت پر خود بیک اپ لے اور آپ کو یاد نہ رکھنا پڑے۔</div></div>
+
+  <h4>Cloud Backup سے واپس لانا</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup → ⬇️ Restore from Cloud Backup</strong> پر جائیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">فہرست سے اپنا بیک اپ چنیں (سب سے نیا پہلے نظر آتا ہے) اور اپنا <strong>بیک اپ پاس ورڈ</strong> ڈالیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">واپس لانے کی تنبیہ کی تصدیق کریں۔ <strong>موجودہ ڈیٹا بدل جائے گا</strong> — اس کے بعد ایپ دوبارہ شروع کریں۔</div></div>
+
+  <div class="tip">💡 <strong>Cloud Backup کا پاس ورڈ بھول گئے؟</strong> واپس لانے والی ونڈو میں <strong>"Forgot password? Use recovery code instead"</strong> پر کلک کریں۔ اس راستے کے لیے سیٹ اپ کے وقت محفوظ کیا ریکوری کوڈ <strong>اور</strong> آپ کے سافٹ ویئر فراہم کرنے والے کی سپورٹ سے ملا ریلیز کوڈ، دونوں چاہئیں — تاکہ اکیلا کوئی ایک ٹکڑا آپ کا بیک اپ نہ کھول سکے۔</div>
+
+  <div class="good">✅ Cloud Backup ضروری نہیں، اور Accelent کے ہر آغاز پر بننے والے خود بخود کے مقامی بیک اپ سے الگ ہے — سب سے مضبوط حفاظت کے لیے دونوں استعمال کریں: اسی PC پر جلدی واپسی کے لیے مقامی بیک اپ، اور PC ہی کھو جائے یا خراب ہو جائے تو اس کے لیے Cloud Backup۔</div>
+
+  <h3>ایپ کو نئے PC پر لے جانا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">پرانے PC پر ہاتھ سے بیک اپ لیں (Settings → Backup Data)۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">بیک اپ کی <code>.db</code> فائل USB ڈرائیو پر کاپی کریں یا Google Drive / WhatsApp سے بھیجیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">نئے PC پر Accelent انسٹال کریں (باب 3)۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">پہلی بار کھولنے پر Settings → Restore Data ← USB ڈرائیو سے بیک اپ فائل چنیں۔ آپ کا سارا ڈیٹا اب نئے PC پر ہے۔</div></div>
+
+  <div class="warn">⚠ آپ کا لائسنس اسی PC سے بندھا ہوتا ہے جس پر چالو ہوا۔ لے جانے سے پہلے سپورٹ سے رابطہ کریں تاکہ آپ کا لائسنس نئے PC پر منتقل کیا جا سکے؛ پھر اسے Settings → 🔑 License سے چالو کریں۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 18 -->
+<div class="chapter-banner">باب 18 — نئے ورژن پر اپ گریڈ</div>
+<div class="section" id="ch18">
+  <h2>18. نئے ورژن پر اپ گریڈ کرنا</h2>
+  <p>جب Accelent کا نیا ورژن آئے، تو یہ مراحل اپنائیں۔ <strong>اپ گریڈ میں آپ کا ڈیٹا ہمیشہ محفوظ رہتا ہے</strong>، کیونکہ ڈیٹابیس پروگرام کی فائلوں سے الگ رہتا ہے۔</p>
+
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>پہلے بیک اپ لیں</strong> — Settings → Backup Data پر جائیں اور USB ڈرائیو یا کلاؤڈ پر محفوظ کریں۔ یہ احتیاط ہے، عام طور پر ضرورت نہیں پڑتی، پر ہمیشہ اچھی عادت ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Accelent بند کریں</strong> — پکا کریں کہ ایپ چل نہیں رہی۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>نیا ورژن ڈاؤن لوڈ کریں</strong> — <strong>accelentapp.com</strong> سے تازہ <code>Accelent_Setup_v….exe</code> لیں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">اپنے پہلے سے انسٹال Accelent کے اوپر ہی <strong>انسٹالر چلائیں</strong>۔ (اس کی جگہ پورٹیبل زِپ استعمال کرتے ہیں؟ اسے پہلے والے فولڈر میں ہی نکالیں اور فائلیں بدلنے کے سوال پر <strong>Yes to All</strong> پر کلک کریں۔)</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Accelent کھولیں۔</strong> یہ <code>%APPDATA%\BrandAccShay\inventory.db</code> پر آپ کا پرانا ڈیٹابیس خود بخود ڈھونڈ لیتا ہے۔ آپ کا سارا ڈیٹا وہیں ہے، اور نئے ورژن میں شامل درستیاں اسی پہلی شروعات میں لاگو ہو جاتی ہیں۔</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Settings → Recalculate All Balances پر جائیں</strong> — اس سے نئے ورژن کی ڈیٹابیس تبدیلیاں ٹھیک سے لاگو ہونا پکا ہوتا ہے۔</div></div>
+
+  <div class="good">✅ <strong>اپ گریڈ میں آپ کا ڈیٹا کبھی نہیں کھوتا۔</strong> پروگرام کی فائلیں ایک فولڈر میں ہیں؛ آپ کا ڈیٹا AppData میں۔ پروگرام کی فائلیں بدلنے سے آپ کا ڈیٹا نہیں چھوا جاتا۔</div>
+
+  <div class="tip">💡 پورٹیبل زِپ اور فون ایپ استعمال کرتے ہیں؟ اپ گریڈ کے بعد <code>setup.bat</code> ایک بار دوبارہ چلائیں (انسٹالر یہ خود کرتا ہے)۔ اگر فون نہ جڑے، تو 📱 Mobile Connect ونڈو میں <strong>❓ Phone can't connect?</strong> استعمال کریں۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 19 -->
+<div class="chapter-banner">باب 19 — موبائل ایپ</div>
+<div class="section" id="ch19">
+  <h2>19. موبائل ایپ سیٹ اپ اور استعمال</h2>
+
+  <h3>ایپ انسٹال کرنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">فون پر <strong>accelentapp.com</strong> سے <code>Accelent_v1.7.3.apk</code> ڈاؤن لوڈ کریں، یا USB کیبل، WhatsApp یا Google Drive سے بھیجیں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">فون پر اپنی Downloads یا Files ایپ سے فائل کھولیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">اگر <em>unknown sources</em> کے بارے میں پوچھے، تو <strong>Settings</strong> پر ٹیپ کریں، اپنے فائل مینیجر کے لیے <em>Install unknown apps</em> چالو کریں، پھر واپس جا کر انسٹال کریں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Install</strong> ← <strong>Open</strong> پر ٹیپ کریں۔</div></div>
+
+  <h3>ڈیسک ٹاپ سے جوڑنا</h3>
+  <p><strong>طریقہ A — QR کوڈ (تجویز کردہ)</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">پکا کریں کہ آپ کے PC پر ڈیسک ٹاپ ایپ چل رہی ہے۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>📱 Mobile Connect</strong> بٹن پر کلک کریں (ڈیسک ٹاپ کے نیچے دائیں طرف)۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ایک QR کوڈ نظر آتا ہے۔ ونڈو کھلی رکھیں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">فون پر Accelent کھولیں ← ⚙️ آئیکن پر ٹیپ کریں ← <strong>Scan QR Code</strong> ← کیمرا ڈیسک ٹاپ اسکرین کی طرف کریں۔</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">سبز "Connected!" پٹی جڑنے کی تصدیق کرتی ہے۔</div></div>
+
+  <p><strong>طریقہ B — ہاتھ سے IP</strong></p>
+  <p>اگر QR اسکین نہ ہو، تو فون پر Settings میں جائیں ← <em>Desktop IP Address</em> خانے میں ڈیسک ٹاپ کا IP پتہ ٹائپ کریں ← <strong>Test Connection</strong> ← <strong>Save</strong> پر ٹیپ کریں۔</p>
+  <div class="tip">💡 Mobile Connect ونڈو بتاتی ہے کہ پتہ صرف دکان کے WiFi پر چلتا ہے یا کہیں سے بھی۔ اگر فون نہ جڑے، تو اس ونڈو میں <strong>❓ Phone can't connect?</strong> پر کلک کریں: یہ اس PC کو جانچتا ہے (Accelent کی فون سروس، Windows Firewall، نیٹ ورک) اور بتاتا ہے کہ فون پر کیا آزمانا ہے۔</div>
+
+  <h3>دکان کے باہر سے استعمال (Tailscale)</h3>
+  <p>جب آپ دکان سے دور ہوں (موبائل ڈیٹا یا دوسرا WiFi)، تو ڈیسک ٹاپ اور فون دونوں پر <strong>Tailscale</strong> (مفت) انسٹال کریں اور ایک ہی اکاؤنٹ سے لاگ اِن کریں۔ پھر <strong>📱 Mobile Connect</strong> ونڈو سے Tailscale والا QR کوڈ اسکین کریں۔ اب آپ دنیا میں کہیں سے بھی اپنا کاروبار دیکھ اور چلا سکتے ہیں۔ مراحل، اس PC کے لیے ڈاؤن لوڈ لنک، اور فون کے Play Store میں Tailscale کھولنے والے QR کوڈ کے لیے Mobile Connect ونڈو میں <strong>🌐 Connect from anywhere…</strong> پر کلک کریں۔</p>
+
+  <h3>موبائل ایپ کے پینل</h3>
+  <div class="panel-grid">
+    <div class="panel-card"><h4>📊 ڈیش بورڈ</h4><p>آج کی فروخت، اخراجات، نقد اور بینک بیلنس، اور حالیہ لین دین۔ تازہ کرنے کے لیے نیچے کھینچیں۔</p></div>
+    <div class="panel-card"><h4>🧾 فروخت</h4><p>سارے بل دیکھیں۔ Paid/Unpaid سے چھانٹیں۔ فون سے نیا بل بنانے کے لیے + پر ٹیپ کریں۔ بل کھولیں اور PDF کے طور پر بھیجنے کے لیے 📄 پر ٹیپ کریں۔</p></div>
+    <div class="panel-card"><h4>🛒 خریداری</h4><p>پرچیز آرڈر دیکھیں۔ نئی خریداری درج کرنے کے لیے + پر ٹیپ کریں۔ ڈیسک ٹاپ پر اسٹاک فوراً بدلتا ہے۔</p></div>
+    <div class="panel-card"><h4>📦 انوینٹری</h4><p>سارے اسٹاک آئٹم تلاش کریں اور چھانٹیں۔ سرخ = اسٹاک ختم۔ نارنجی = اسٹاک کم۔</p></div>
+    <div class="panel-card"><h4>👥 پارٹیاں</h4><p>سارے گاہک اور سپلائر تازہ بیلنس کے ساتھ۔ سبز = ان پر آپ کا باقی۔ سرخ = آپ پر ان کا باقی۔</p></div>
+    <div class="panel-card"><h4>🏦 کھاتے</h4><p>لین دین کی پوری تاریخ کے ساتھ تازہ نقد اور بینک بیلنس۔</p></div>
+  </div>
+
+  <h3>فون پر ادھار خریداری اور فروخت</h3>
+  <p>نئی خریداری پر <strong>Pending</strong>، یا نئی فروخت پر <strong>Unpaid</strong> چننے پر فون Cash / Bank / UPI بٹن چھپا دیتا ہے — ابھی کچھ ادا نہیں ہوا۔ ڈیسک ٹاپ اسے ادھار کے طور پر درج کرتا ہے: خریداری کے لیے <em>Credit to Vendor</em>، فروخت کے لیے <em>Credit to Party</em> (گاہک کی ادھار کی حد جانچ کر)۔ یہ Accounts میں اس سپلائر یا گاہک کے نیچے نظر آتا ہے، بالکل ڈیسک ٹاپ پر کیے گئے ادھار اندراج کی طرح۔</p>
+
+  <h3>فون ایپ کون استعمال کر سکتا ہے</h3>
+  <ul>
+    <li>ایڈمن ہمیشہ جڑ سکتا ہے۔ عملے کے لیے ایڈمن کو Settings → 👥 Users میں ان کی <strong>📱 Mobile</strong> سیٹنگ چالو کرنی ہوتی ہے۔</li>
+    <li>ہر عملے کا کھاتہ ایک فون سیٹ استعمال کرتا ہے۔ اسی شخص کے فون پر ایپ دوبارہ انسٹال کرنے سے بس ان کی سیٹ منتقل ہو جاتی ہے — دوسری سیٹ نہیں لگتی۔</li>
+    <li>فون صرف وہی دکھاتا ہے جو عملے کی اجازتیں دیتی ہیں؛ جیسے "See money figures" کے بغیر ڈیش بورڈ فروخت اور منافع کے اعداد کی جگہ ایک نوٹ دکھاتا ہے۔</li>
+  </ul>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 19b -->
+<div class="chapter-banner">باب 19b — ڈیسک ٹاپ–موبائل پیغامات</div>
+<div class="section" id="ch19b">
+  <h2>19b. 💬 ڈیسک ٹاپ–موبائل پیغامات</h2>
+  <p>Accelent میں ایک اندر بنا پیغام رسانی کا نظام ہے، جس سے ڈیسک ٹاپ والا مالک اور موبائل ایپ والا صارف ایک دوسرے کو فوراً نوٹ بھیج سکتے ہیں — WhatsApp یا کسی بیرونی ایپ کی ضرورت نہیں۔ پیغامات آپ کے مقامی ڈیٹابیس میں محفوظ رہتے ہیں۔</p>
+
+  <h3>Messages بٹن کہاں ہے؟</h3>
+  <p>ڈیسک ٹاپ ونڈو کے بالکل نیچے، اسٹیٹس بار میں، آپ کو <strong>💬 Messages</strong> بٹن نظر آئے گا۔ چیٹ ونڈو کھولنے کے لیے اس پر کلک کریں۔ نئے پیغام آنے پر بٹن پر نہ پڑھے پیغامات کی گنتی نظر آتی ہے:</p>
+  <table>
+    <tr><th>بٹن کیسا دکھتا ہے</th><th>مطلب</th></tr>
+    <tr><td><code>💬 Messages</code></td><td>کوئی نیا پیغام نہیں</td></tr>
+    <tr><td><code>💬 Messages (3)</code> — سبز رنگ میں</td><td>موبائل ایپ سے 3 نہ پڑھے پیغامات</td></tr>
+  </table>
+
+  <h3>ڈیسک ٹاپ سے پیغام بھیجنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">اسکرین کے نیچے اسٹیٹس بار میں <strong>💬 Messages</strong> پر کلک کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">چیٹ ونڈو کھلتی ہے۔ پرانے پیغامات تاریخ سے آ جاتے ہیں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">نیچے والے خانے میں اپنا پیغام ٹائپ کریں۔</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Enter</strong> دبائیں یا <strong>Send</strong> پر کلک کریں۔ آپ کا پیغام دائیں طرف (نیلے بلبلے میں) نظر آتا ہے۔</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">موبائل صارف کو 5 سیکنڈ کے اندر اپنے فون پر آپ کا پیغام نظر آئے گا۔</div></div>
+
+  <h3>موبائل ایپ سے پیغام بھیجنا</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">فون پر ڈیش بورڈ یا نیویگیشن مینو سے <strong>💬 Chat</strong> آئیکن پر ٹیپ کریں۔</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">اپنا پیغام ٹائپ کریں اور <strong>Send</strong> پر ٹیپ کریں۔</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ڈیسک ٹاپ کو 5 سیکنڈ کے اندر پیغام ملے گا اور 💬 Messages بٹن پر گنتی نظر آئے گی۔</div></div>
+
+  <h3>ڈیسک ٹاپ اطلاعات (سسٹم ٹرے)</h3>
+  <p>جب چیٹ ونڈو <strong>بند یا چھوٹی</strong> ہو اور موبائل ایپ سے نیا پیغام آئے، تو Windows سسٹم ٹرے میں (اسکرین کے نیچے دائیں کونے میں) ایک <strong>پاپ اپ اطلاع</strong> آتی ہے:</p>
+  <p style="text-align:center; font-style:italic; color:#555;">"📱 You have a new message from the mobile app" (موبائل ایپ سے آپ کے لیے نیا پیغام ہے)</p>
+  <p>پڑھنے کے لیے اطلاع پر، یا ایپ میں <strong>💬 Messages</strong> پر کلک کریں۔</p>
+
+  <h3>پیغامات کیسے رکھے جاتے ہیں</h3>
+  <p>سارے پیغامات آپ کے مقامی ڈیٹابیس (<code>inventory.db</code>) میں محفوظ ہوتے ہیں — وہی فائل جس میں آپ کے کاروبار کا سارا ڈیٹا ہے۔ یہ ہر بیک اپ میں شامل ہوتے ہیں۔ کوئی بیرونی سرور نہیں ہے — پیغامات صرف آپ کے اپنے نیٹ ورک پر آپ کے ڈیسک ٹاپ اور فون کے بیچ چلتے ہیں۔</p>
+
+  <div class="tip">💡 <strong>پیغامات کے عام استعمال:</strong>
+    <ul style="margin-top:6px;">
+      <li>مالک باہر ہے — موبائل صارف پوچھتا ہے: "گاہک کو X کے 10 ڈبے چاہئیں، اسٹاک ہے؟" — مالک ڈیسک ٹاپ سے جواب دیتا ہے</li>
+      <li>ڈیسک ٹاپ آپریٹر موبائل صارف کو بتاتا ہے: "ABC Traders سے نئی ادائیگی آئی"</li>
+      <li>دکان کے عملے کے بیچ مختصر نوٹ، بغیر ذاتی فون نمبروں کے</li>
+    </ul>
+  </div>
+
+  <div class="warn">⚠ پیغامات پہنچنے کے لیے <strong>موبائل ایپ کا ڈیسک ٹاپ سے جڑا ہونا ضروری ہے</strong>۔ اگر فون پر "Not Connected" نظر آئے، تو پیغامات قطار میں رہتے ہیں اور جڑتے ہی پہنچ جاتے ہیں۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 20 -->
+<div class="chapter-banner">باب 20 — مسائل اور حل</div>
+<div class="section" id="ch20">
+  <h2>20. مسائل اور ان کا حل</h2>
+
+  <table>
+    <tr><th>مسئلہ</th><th>وجہ</th><th>حل</th></tr>
+    <tr><td>ایپ نہیں کھلتی / SmartScreen کی تنبیہ</td><td>ایپ پر ڈیجیٹل دستخط نہیں</td><td>"More info" ← "Run anyway" پر کلک کریں۔ یہ صرف ایک بار آتا ہے۔</td></tr>
+    <tr><td>بیلنس غلط نظر آتے ہیں</td><td>ڈیٹا کے میل میں گڑبڑ</td><td>Settings → App Settings → 🔄 Recalculate All Balances۔</td></tr>
+    <tr><td>فروخت کے بعد اسٹاک نہیں بدلتا</td><td>آئٹم انوینٹری سے جڑا نہیں</td><td>پکا کریں کہ انوینٹری آئٹم پاپ اپ سے چنے گئے ہیں، ہاتھ سے ٹائپ نہیں کیے۔</td></tr>
+    <tr><td>بل پینل میں "Feature Under Development" نظر آتا ہے</td><td>پہلی بار کھلنے پر ایپ کی خرابی</td><td>ایپ پوری طرح بند کر کے دوبارہ کھولیں۔ ایسا بہت کم ہوتا ہے۔</td></tr>
+    <tr><td>بل پر GST نمبر نہیں آتے</td><td>کمپنی کا GSTIN نہیں ڈالا</td><td>Settings → Company ← اپنا GSTIN ڈالیں ← Save۔</td></tr>
+    <tr><td>موبائل ایپ خالی یا "Could not load" دکھاتی ہے</td><td>ڈیسک ٹاپ ایپ نہیں چل رہی</td><td>پکا کریں کہ ڈیسک ٹاپ PC پر Accelent کھلا ہے۔</td></tr>
+    <tr><td>QR اسکین نہیں ہوتا</td><td>کیمرے کی اجازت نہیں دی</td><td>فون کی Settings → Apps → Accelent → Permissions ← Camera چالو کریں۔</td></tr>
+    <tr><td>WiFi پر چلتا ہے، موبائل ڈیٹا پر نہیں</td><td>مقامی IP باہر سے نہیں پہنچتا</td><td>ڈیسک ٹاپ اور فون پر Tailscale انسٹال کریں۔ Tailscale والا QR کوڈ استعمال کریں۔</td></tr>
+    <tr><td>فون پر APK انسٹال نہیں ہوتی</td><td>Unknown sources بند ہیں</td><td>Android Settings → Apps ← آپ کا فائل مینیجر ← Install unknown apps ← چالو کریں۔</td></tr>
+    <tr><td>پہلی بار غلط ملک چن لیا</td><td>پہلی فروخت، خریداری یا آئٹم کے بعد ملک پکا ہو جاتا ہے</td><td>کوئی بھی ڈیٹا ڈالنے سے پہلے: Settings → App Settings → Reset Database، پھر ملک دوبارہ چنیں۔ ڈیٹا ڈل جانے کے بعد سپورٹ سے رابطہ کریں۔</td></tr>
+    <tr><td>ڈیٹابیس فائل نہیں ملتی / ایپ ری سیٹ کرنے کو کہتی ہے</td><td>AppData فولڈر کا مسئلہ</td><td>بیک اپ سے واپس لائیں: Settings → Restore Data۔ بیک اپ نہ ہو، تو سپورٹ سے رابطہ کریں۔</td></tr>
+    <tr><td>ایڈمن پاس ورڈ بھول گئے / کھاتہ بند</td><td>پاس ورڈ کھو گیا یا بہت بار غلط لاگ اِن</td><td>لاگ اِن اسکرین پر <strong>"Forgot password?"</strong> پر کلک کریں اور محفوظ کی گئی Recovery Key سے خود نیا پاس ورڈ رکھیں (باب 16)۔ Recovery Key محفوظ نہیں کی؟ اپنے سافٹ ویئر فراہم کرنے والے سے رابطہ کریں۔</td></tr>
+    <tr><td>Cloud Backup کا پاس ورڈ بھول گئے</td><td>بیک اپ پاس ورڈ کھو گیا</td><td>Restore ونڈو میں "Forgot password? Use recovery code instead" پر کلک کریں — اس کے لیے محفوظ کیا Cloud Backup ریکوری کوڈ اور سپورٹ سے ریلیز کوڈ چاہیے (باب 17)۔</td></tr>
+    <tr><td>پہلی بار ایپ بہت آہستہ کھلتی ہے</td><td>Python کی ابتدائی تیاری</td><td>عام بات ہے — پہلی بار 5–10 سیکنڈ لگتے ہیں۔ بعد میں جلدی کھلتی ہے۔</td></tr>
+    <tr><td>"Computer Date Is Wrong" پیغام</td><td>PC کی گھڑی پیچھے ہے (اکثر مدر بورڈ/CMOS کی کمزور بیٹری)</td><td>Windows میں درست تاریخ اور وقت رکھیں، یا ایک بار انٹرنیٹ سے جوڑ کر Accelent دوبارہ شروع کریں۔ بار بار ہو تو CMOS بیٹری بدلیں۔</td></tr>
+    <tr><td>فون پر "Phone limit reached"</td><td>ساری فون سیٹیں استعمال میں ہیں</td><td>پیغام میں لکھا ہوتا ہے کہ کون جڑا ہے۔ Mobile Connect میں کوئی پرانا فون ہٹائیں، یا اپنا پلان بڑھائیں۔</td></tr>
+    <tr><td>کسی عملے کو کوئی اسکرین یا بٹن نظر نہیں آتا</td><td>ان کی اجازتوں میں وہ نہیں ہے</td><td>ایڈمن: Settings → 👥 Users ← ان کے نام کے پاس 🔐 ← اجازت پر ٹک کریں ← Save۔ اگلی بار لاگ اِن پر انہیں نظر آئے گا۔</td></tr>
+    <tr><td>بل اسکین کہتا ہے کہ ٹرائل کے اسکین ختم</td><td>مفت ٹرائل میں 15 بل اسکین شامل ہیں</td><td>لامحدود اسکین کے لیے لائسنس چالو کریں۔ ٹرائل ختم ہونے تک باقی سب چلتا رہتا ہے۔</td></tr>
+    <tr><td>اسٹیٹس بار میں "Subscription expired"</td><td>سال کا سبسکرپشن ختم ہو گیا</td><td>Settings → 🔑 License سے تجدید کریں۔ آخری تاریخ کے بعد 7 دن تک بل بنانا چلتا ہے؛ آپ کا ڈیٹا ہمیشہ دیکھا جا سکتا ہے۔</td></tr>
+    <tr><td>GSTR-1 ایکسپورٹ بغیر HSN والے آئٹم دکھاتا ہے</td><td>Inventory میں ان آئٹموں کا HSN کوڈ نہیں ہے</td><td>Inventory میں ان کے HSN کوڈ شامل کریں، پھر دوبارہ ایکسپورٹ کریں۔</td></tr>
+  </table>
+
+  <div class="tip">💡 <strong>ہمیشہ پہلے یہ آزمائیں:</strong> Accelent پوری طرح بند کریں، 5 سیکنڈ رکیں، پھر کھولیں۔ اس سے 70% غیر متوقع مسائل ٹھیک ہو جاتے ہیں۔</div>
+
+  <div class="good">✅ <strong>کسی بھی دوسرے مسئلے کے لیے:</strong> خرابی کے پیغام کا اسکرین شاٹ لیں اور اپنے سافٹ ویئر فراہم کرنے والے سے رابطہ کریں، اسکرین شاٹ کے ساتھ یہ بتاتے ہوئے کہ خرابی کے وقت آپ کیا کر رہے تھے۔</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ QUICK REF -->
+<div class="section">
+  <h2>ایک نظر میں — روزانہ کا کام</h2>
+  <table>
+    <tr><th>کام</th><th>پینل</th><th>مراحل</th></tr>
+    <tr><td>فروخت درج کرنا</td><td>Sales</td><td>فارم بھریں ← آئٹم شامل کریں ← ادائیگی چنیں ← Save Invoice</td></tr>
+    <tr><td>خریداری درج کرنا</td><td>Purchases</td><td>+ New Purchase ← سپلائر ← آئٹم ← ادائیگی ← Save</td></tr>
+    <tr><td>خرچ درج کرنا</td><td>Expenses</td><td>+ Add Expense ← زمرہ ← رقم ← نقد/بینک ← Save</td></tr>
+    <tr><td>نقد بیلنس دیکھنا</td><td>Accounts</td><td>Accounts پر کلک کریں ← Cash والا خانہ موجودہ بیلنس دکھاتا ہے</td></tr>
+    <tr><td>گاہک پر کتنا باقی ہے دیکھنا</td><td>Accounts → Parties</td><td>پارٹی کا نام تلاش کریں — بیلنس سبز رنگ میں نظر آتا ہے (لینا)</td></tr>
+    <tr><td>گاہک سے ادائیگی لینا</td><td>Receipts</td><td>+ New Receipt ← گاہک چنیں ← رقم ← Save</td></tr>
+    <tr><td>سپلائر کو ادائیگی کرنا</td><td>Receipts</td><td>+ New Payment ← سپلائر چنیں ← رقم ← Save</td></tr>
+    <tr><td>کم اسٹاک دیکھنا</td><td>Inventory</td><td>نارنجی/سرخ میں نظر آنے والے آئٹم دوبارہ منگوانے ہیں</td></tr>
+    <tr><td>سپلائر سے دوبارہ منگوانا</td><td>Low Stock Monitor</td><td>Order from Vendor ← سپلائر چنیں ← آئٹم دیکھیں ← Save (ڈرافٹ PO بنتا ہے)</td></tr>
+    <tr><td>بل چھاپنا</td><td>Sales</td><td>فہرست میں بل ڈھونڈیں ← 🖨 Print بٹن پر کلک کریں</td></tr>
+    <tr><td>بیک اپ لینا</td><td>Settings</td><td>App Settings ← 💾 Backup Data ← جگہ چنیں ← Save</td></tr>
+  </table>
+</div>
+
+<footer>Accelent — استعمال کی گائیڈ (اردو)<br>ڈیسک ٹاپ اور موبائل اکاؤنٹنگ سسٹم &nbsp;·&nbsp; 2026<br><br><em>مدد کے لیے، کسی بھی خرابی کے پیغام کا اسکرین شاٹ لے کر اپنے سافٹ ویئر فراہم کرنے والے سے رابطہ کریں۔</em></footer>
+
+<script>
+/* Opened from Accelent: ?type=general|restaurant|hotel (&production=1) shows only that business's chapters. */
+(function () {
+  var q = new URLSearchParams(location.search), t = q.get("type");
+  var names = {"general": "دکان، تجارت، سروس یا مینوفیکچرنگ کے کاروبار", "restaurant": "ریسٹورنٹ", "hotel": "ہوٹل"};
+  if (!names[t]) return;
+  var prod = q.get("production") === "1" || t !== "general";
+  function shows(f) { return f.split(" ").some(function (x) { return x === t || (x === "production" && prod); }); }
+  var hidden = [];
+  document.querySelectorAll(".section[data-for]").forEach(function (s) {
+    if (shows(s.getAttribute("data-for"))) return;
+    hidden.push(s.id); s.style.display = "none";
+    var b = s.previousElementSibling;
+    if (b && b.classList.contains("chapter-banner")) b.style.display = "none";
+  });
+  hidden.forEach(function (id) {
+    document.querySelectorAll('.toc-grid a[href="#' + id + '"]').forEach(function (a) {
+      a.style.display = "none";
+      var br = a.nextElementSibling; if (br && br.tagName === "BR") br.style.display = "none";
+    });
+  });
+  var n = document.getElementById("guideFilter");
+  if (n) n.innerHTML = "" + names[t] + " کے ابواب دکھائے جا رہے ہیں۔ <a href=\"" + location.pathname + "\">تمام ابواب دکھائیں</a>";
+})();
+</script>
+</body>
+</html>
+

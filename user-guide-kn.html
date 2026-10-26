@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="kn" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accelent — ಬಳಕೆದಾರ ಮಾರ್ಗದರ್ಶಿ (ಕನ್ನಡ)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nirmala UI', 'Tunga', 'Noto Sans Kannada', 'Segoe UI', Arial, sans-serif; font-size: 14px; color: #2c3e50; background: #f0f4f8; }
+
+  /* Cover */
+  .cover { background: linear-gradient(135deg, #1abc9c 0%, #16a085 50%, #0e6655 100%);
+           color: white; padding: 70px 40px 50px; text-align: center; }
+  .cover h1 { font-size: 42px; letter-spacing: 1px; }
+  .cover .sub { font-size: 18px; opacity: .85; margin-top: 8px; }
+  .cover .ver { font-size: 13px; opacity: .65; margin-top: 16px; letter-spacing: 2px; text-transform: uppercase; }
+  .cover-badges { margin-top: 28px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .badge { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+           padding: 6px 16px; border-radius: 20px; font-size: 13px; }
+
+  /* Layout */
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+  .section { background: white; max-width: 900px; margin: 28px auto; padding: 36px 44px;
+             border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+
+  /* TOC */
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 14px; }
+  .toc-grid a { color: #2980b9; text-decoration: none; line-height: 2; font-size: 13.5px; }
+  .toc-grid a:hover { text-decoration: underline; }
+  .toc-num { color: #1abc9c; font-weight: bold; margin-right: 5px; }
+
+  /* Headings */
+  h2 { font-size: 22px; color: #16a085; border-bottom: 2px solid #e8f8f5;
+       padding-bottom: 10px; margin-bottom: 20px; }
+  h3 { font-size: 16px; color: #2c3e50; margin: 22px 0 9px; }
+  h4 { font-size: 14px; color: #16a085; margin: 14px 0 6px; }
+  p  { line-height: 1.85; margin-bottom: 11px; color: #444; }
+  ul, ol { padding-left: 22px; line-height: 2.1; color: #444; margin-bottom: 10px; }
+
+  /* Steps */
+  .step { display: flex; gap: 14px; align-items: flex-start; margin: 10px 0; }
+  .step-num { background: #1abc9c; color: white; min-width: 28px; height: 28px;
+              border-radius: 50%; display: flex; align-items: center; justify-content: center;
+              font-weight: bold; font-size: 13px; margin-top: 1px; }
+  .step-body { flex: 1; line-height: 1.8; color: #444; }
+
+  /* Callout boxes */
+  .tip  { background: #eaf6fb; border-left: 4px solid #3498db; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .warn { background: #fef9e7; border-left: 4px solid #f39c12; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .good { background: #eafaf1; border-left: 4px solid #2ecc71; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .err  { background: #fdedec; border-left: 4px solid #e74c3c; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+  th { background: #16a085; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 9px 14px; border-bottom: 1px solid #ecf0f1; vertical-align: top; }
+  tr:hover td { background: #f0fdf9; }
+
+  /* Panel cards */
+  .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .panel-card { border: 1px solid #d5f5ee; border-radius: 8px; padding: 14px 16px;
+                background: #f9fffe; }
+  .panel-card h4 { color: #16a085; margin-bottom: 6px; font-size: 14.5px; }
+  .panel-card p  { font-size: 13px; margin: 0; color: #555; line-height: 1.7; }
+
+  /* Concept boxes */
+  .concept { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;
+             padding: 16px 20px; margin: 12px 0; }
+  .concept h4 { color: #2c3e50; margin-bottom: 6px; }
+
+  /* Code */
+  code { background: #ecf0f1; padding: 2px 7px; border-radius: 3px;
+         font-family: Consolas, monospace; font-size: 13px; }
+  .path { background: #2c3e50; color: #1abc9c; padding: 8px 14px; border-radius: 5px;
+          font-family: Consolas, monospace; font-size: 13px; display: inline-block; margin: 6px 0; }
+
+  /* Chapter header */
+  .chapter-banner { background: linear-gradient(90deg, #1abc9c, #16a085);
+                    color: white; padding: 14px 44px; max-width: 900px; margin: 28px auto 0;
+                    border-radius: 10px 10px 0 0; font-size: 13px; letter-spacing: 1px;
+                    text-transform: uppercase; font-weight: bold; }
+  .chapter-banner + .section { margin-top: 0; border-radius: 0 0 10px 10px; }
+
+  .shot { margin: 18px 0; text-align: center; }
+  .shot img { max-width: 100%; height: auto; border: 1px solid #dee2e6; border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .shot figcaption { font-size: 12.5px; color: #777; margin-top: 6px; }
+
+  footer { text-align: center; padding: 36px; color: #aaa; font-size: 12px; }
+
+  @media(max-width:640px) {
+    .section { padding: 24px 20px; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .panel-grid { grid-template-columns: 1fr; }
+  }
+  .for-badge { display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 999px;
+               background: rgba(255,255,255,.25); font-size: 11px; letter-spacing: .3px; text-transform: none; }
+  .guide-filter { max-width: 900px; margin: 18px auto 0; padding: 10px 16px; border-radius: 8px;
+                  background: #e8f8f5; color: #2c3e50; font-size: 13.5px; line-height: 1.6; }
+  .guide-filter a { color: #16a085; font-weight: bold; }
+  .lang-bar { text-align: center; padding: 8px; font-size: 15px; background: #ffffff; }
+  .lang-bar a { color: #16a085; text-decoration: none; }
+
+  .lang-bar { text-align: center; padding: 8px; font-size: 15px; background: #ffffff; }
+  .lang-bar a { color: #16a085; text-decoration: none; }
+  .mt-note { max-width: 960px; margin: 12px auto; }
+  /* :dir() follows the nearest dir=, so a chapter still in English (wrapped in dir="ltr") keeps the English layout */
+  ul:dir(rtl), ol:dir(rtl) { padding-left: 0; padding-right: 22px; }
+  .tip:dir(rtl), .warn:dir(rtl), .good:dir(rtl), .err:dir(rtl) {
+      border-left: none; border-right-width: 4px; border-right-style: solid; }
+  .tip:dir(rtl) { border-right-color: #3498db; }
+  .warn:dir(rtl) { border-right-color: #f39c12; }
+  .good:dir(rtl) { border-right-color: #2ecc71; }
+  .err:dir(rtl) { border-right-color: #e74c3c; }
+  th:dir(rtl) { text-align: right; }
+  .toc-num:dir(rtl) { margin-right: 0; margin-left: 5px; }
+  .for-badge:dir(rtl) { margin-left: 0; margin-right: 10px; }
+  /* an English button name inside Urdu text keeps its own direction */
+  strong:dir(rtl), em:dir(rtl), code:dir(rtl) { unicode-bidi: plaintext; }
+  /* English chapters keep the English font and spacing */
+  [lang="en"] { font-family: Segoe UI, Arial, sans-serif; font-size: 14px; line-height: 1.6; }
+  .mt-note { font-family: 'Nirmala UI', 'Tunga', 'Noto Sans Kannada', 'Segoe UI', Arial, sans-serif; line-height: 2; }
+
+  body { line-height: 1.8; }
+</style>
+</head>
+<body>
+<!-- lang-bar -->
+<div class="lang-bar">🌐 <a class="lang-link" href="user-guide.html">English</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-hi.html">हिन्दी</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ur.html">اردو</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-bn.html">বাংলা</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-mr.html">मराठी</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-gu.html">ગુજરાતી</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-pa.html">ਪੰਜਾਬੀ</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ta.html">தமிழ்</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-te.html">తెలుగు</a> &nbsp;·&nbsp; <strong>ಕನ್ನಡ</strong> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ne.html">नेपाली</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-si.html">සිංහල</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ps.html">پښتو</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-dv.html">ދިވެހި</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-dz.html">རྫོང་ཁ</a></div>
+<script>document.querySelectorAll('a.lang-link').forEach(function (a) { a.href += location.search; });</script>
+<!-- /lang-bar -->
+<div class="tip mt-note">🌐 ಈ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಇಂಗ್ಲಿಷ್ ಮಾರ್ಗದರ್ಶಿಯಿಂದ ಅನುವಾದಿಸಲಾಗಿದೆ. ಬಟನ್‌ಗಳ ಹೆಸರುಗಳನ್ನು ಪರದೆಯ ಮೇಲೆ ಕಾಣುವಂತೆಯೇ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಇಡಲಾಗಿದೆ. ಏನಾದರೂ ಸ್ಪಷ್ಟವಾಗದಿದ್ದರೆ, ಮೇಲೆ <strong>English</strong> ಕ್ಲಿಕ್ ಮಾಡಿ ಇಂಗ್ಲಿಷ್ ಮಾರ್ಗದರ್ಶಿ ನೋಡಿ.</div>
+
+<!-- ═══════════════════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div dir="ltr" style="text-align:left;max-width:900px;margin:-50px auto 30px;"><a href="index.html" style="color:white;opacity:.85;text-decoration:none;font-size:13px;">← Back to accelentapp.com</a></div>
+  <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
+  <h1>Accelent</h1>
+  <div class="sub">ಸಂಪೂರ್ಣ ಬಳಕೆದಾರ ಮಾರ್ಗದರ್ಶಿ — ಲೆಕ್ಕಪತ್ರ ಮತ್ತು ದಾಸ್ತಾನು (ಸ್ಟಾಕ್) ನಿರ್ವಹಣೆ</div>
+  <div class="ver">ಆವೃತ್ತಿ 2.4.9 &nbsp;·&nbsp; ಡೆಸ್ಕ್‌ಟಾಪ್ + ಮೊಬೈಲ್ &nbsp;·&nbsp; 2026</div>
+  <div class="cover-badges">
+    <span class="badge">🖥️ Windows ಡೆಸ್ಕ್‌ಟಾಪ್</span>
+    <span class="badge">📱 Android ಮೊಬೈಲ್</span>
+    <span class="badge">🌐 18 ಭಾಷೆಗಳು</span>
+    <span class="badge">📊 GST ಗೆ ಸಿದ್ಧ</span>
+    <span class="badge">☁️ ದೂರದಿಂದ ಬಳಕೆ</span>
+    <span class="badge">🔐 ಸಿಬ್ಬಂದಿ ಅನುಮತಿಗಳು</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ TOC -->
+<div class="section">
+  <h2>ವಿಷಯ ಸೂಚಿ</h2>
+  <div class="toc-grid">
+    <div>
+      <a href="#ch1"><span class="toc-num">1.</span>Accelent ಎಂದರೇನು?</a><br>
+      <a href="#ch2"><span class="toc-num">2.</span>ಹೊಸಬರಿಗೆ ಲೆಕ್ಕಪತ್ರದ ಮೂಲಾಂಶಗಳು</a><br>
+      <a href="#ch3"><span class="toc-num">3.</span>ಡೆಸ್ಕ್‌ಟಾಪ್ ಆ್ಯಪ್ ಸ್ಥಾಪನೆ</a><br>
+      <a href="#ch4"><span class="toc-num">4.</span>ಮೊದಲ ಬಾರಿಯ ಕಂಪನಿ ಸೆಟಪ್</a><br>
+      <a href="#ch5"><span class="toc-num">5.</span>ಬೇರೆ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ ಬದಲಾವಣೆ</a><br>
+      <a href="#ch6"><span class="toc-num">6.</span>ಭಾಷೆ ಮತ್ತು ಥೀಮ್</a><br>
+      <a href="#ch7"><span class="toc-num">7.</span>ಡ್ಯಾಶ್‌ಬೋರ್ಡ್</a><br>
+      <a href="#ch8"><span class="toc-num">8.</span>ದಾಸ್ತಾನು ಪ್ಯಾನೆಲ್</a><br>
+      <a href="#ch8b"><span class="toc-num">8b.</span>ಕಡಿಮೆ ಸ್ಟಾಕ್ ಮೇಲ್ವಿಚಾರಣೆ</a><br>
+      <a href="#ch8c"><span class="toc-num">8c.</span>ಉತ್ಪಾದನೆ</a><br>
+      <a href="#ch9"><span class="toc-num">9.</span>ಮಾರಾಟ ಪ್ಯಾನೆಲ್</a><br>
+      <a href="#ch9b"><span class="toc-num">9b.</span>ರೆಸ್ಟೋರೆಂಟ್</a><br>
+      <a href="#ch9c"><span class="toc-num">9c.</span>ಕೊಠಡಿಗಳು (ಹೋಟೆಲ್, ಲಾಡ್ಜ್)</a><br>
+      <a href="#ch9d"><span class="toc-num">9d.</span>ಪಾಲುದಾರರು (ಏಜೆಂಟ್‌ಗಳು, ಗೈಡ್‌ಗಳು, ಡ್ರೈವರ್‌ಗಳು)</a><br>
+      <a href="#ch9e"><span class="toc-num">9e.</span>ಹೌಸ್‌ಕೀಪಿಂಗ್ (ಹೋಟೆಲ್‌ಗಳು)</a><br>
+    </div>
+    <div>
+      <a href="#ch10"><span class="toc-num">10.</span>ಖರೀದಿ ಪ್ಯಾನೆಲ್</a><br>
+      <a href="#ch11"><span class="toc-num">11.</span>ವೆಚ್ಚಗಳು ಮತ್ತು ರಸೀದಿಗಳು</a><br>
+      <a href="#ch12"><span class="toc-num">12.</span>ಖಾತೆಗಳು ಮತ್ತು ವರ್ಗಾವಣೆಗಳು</a><br>
+      <a href="#ch13"><span class="toc-num">13.</span>ವರದಿಗಳು ಮತ್ತು ಬಾಕಿ ಅವಧಿ (Aging)</a><br>
+      <a href="#ch14"><span class="toc-num">14.</span>ನೌಕರರು ಮತ್ತು ಸಂಬಳ</a><br>
+      <a href="#ch15"><span class="toc-num">15.</span>GST ರಿಟರ್ನ್ ಮತ್ತು ಇ-ಇನ್‌ವಾಯ್ಸ್</a><br>
+      <a href="#ch16"><span class="toc-num">16.</span>ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಮತ್ತು ನಿರ್ವಹಣೆ</a><br>
+      <a href="#ch17"><span class="toc-num">17.</span>ನಿಮ್ಮ ಡೇಟಾ — ಸ್ಥಳ, ಬ್ಯಾಕಪ್ ಮತ್ತು ಮರುಸ್ಥಾಪನೆ</a><br>
+      <a href="#ch18"><span class="toc-num">18.</span>ಹೊಸ ಆವೃತ್ತಿಗೆ ಅಪ್‌ಗ್ರೇಡ್</a><br>
+      <a href="#ch19"><span class="toc-num">19.</span>ಮೊಬೈಲ್ ಆ್ಯಪ್ ಸೆಟಪ್ ಮತ್ತು ಬಳಕೆ</a><br>
+      <a href="#ch19b"><span class="toc-num">19b.</span>💬 ಡೆಸ್ಕ್‌ಟಾಪ್–ಮೊಬೈಲ್ ಸಂದೇಶಗಳು</a><br>
+      <a href="#ch20"><span class="toc-num">20.</span>ಸಮಸ್ಯೆಗಳು ಮತ್ತು ಪರಿಹಾರಗಳು</a><br>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 1 -->
+<div class="guide-filter" id="guideFilter">Accelent ನಿಮ್ಮ ವ್ಯಾಪಾರದ ಪ್ರಕಾರಕ್ಕೆ ಬೇಕಾದ ಪರದೆಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸುತ್ತದೆ (ಮೊದಲ ಬಾರಿ ಆರಂಭಿಸುವಾಗ ಆಯ್ಕೆ ಮಾಡಿದ್ದು, ಅಥವಾ <strong>Settings → 🏢 Company</strong> ನಲ್ಲಿ). <em>ರೆಸ್ಟೋರೆಂಟ್‌ಗಳು ಮತ್ತು ಹೋಟೆಲ್‌ಗಳಿಗೆ</em>, <em>ಹೋಟೆಲ್‌ಗಳಿಗೆ</em> ಅಥವಾ <em>ಅಂಗಡಿಗಳು, ವ್ಯಾಪಾರಿಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗೆ</em> ಎಂದು ಗುರುತಿಸಿದ ಅಧ್ಯಾಯಗಳು ಅವರಿಗೆ ಮಾತ್ರ; ಉಳಿದವು ಎಲ್ಲರಿಗೂ. Accelent ನಿಂದ ತೆರೆದಾಗ (F1 ಅಥವಾ 📖 User Guide), ಈ ಮಾರ್ಗದರ್ಶಿ ನಿಮ್ಮ ವ್ಯಾಪಾರದ ಅಧ್ಯಾಯಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸುತ್ತದೆ.</div>
+<div class="chapter-banner">ಅಧ್ಯಾಯ 1 — ಪರಿಚಯ</div>
+<div class="section" id="ch1">
+  <h2>1. Accelent ಎಂದರೇನು?</h2>
+  <div class="tip">💡 Accelent ನ ಕೆಳಭಾಗದಲ್ಲಿರುವ <strong>📖 User Guide</strong> ಬಟನ್‌ನಿಂದ ಯಾವಾಗ ಬೇಕಾದರೂ ಈ ಮಾರ್ಗದರ್ಶಿ ತೆರೆಯಿರಿ, ಅಥವಾ <strong>F1</strong> ಒತ್ತಿರಿ.</div>
+  <p>Accelent ಸಣ್ಣ ಮತ್ತು ಮಧ್ಯಮ ವ್ಯಾಪಾರಗಳಿಗಾಗಿ — ಅಂಗಡಿಗಳು, ವಿತರಕರು, ಸಗಟು ವ್ಯಾಪಾರಿಗಳು ಮತ್ತು ಸೇವಾದಾರರಿಗಾಗಿ — ರೂಪಿಸಿದ ಸಂಪೂರ್ಣ ಲೆಕ್ಕಪತ್ರ ಮತ್ತು ದಾಸ್ತಾನು ನಿರ್ವಹಣಾ ವ್ಯವಸ್ಥೆ. ಇದು Windows PC ಯಲ್ಲಿ ಚಲಿಸುತ್ತದೆ, Android ಮೊಬೈಲ್ ಆ್ಯಪ್‌ನೊಂದಿಗೆ ಜೋಡಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ ನಿಮ್ಮ ವ್ಯಾಪಾರವನ್ನು ಎಲ್ಲಿಂದ ಬೇಕಾದರೂ ನೋಡಬಹುದು.</p>
+
+  <div class="panel-grid">
+    <div class="panel-card">
+      <h4>🖥️ ಡೆಸ್ಕ್‌ಟಾಪ್ ಆ್ಯಪ್</h4>
+      <p>ಪೂರ್ಣ ಸೌಲಭ್ಯಗಳೊಂದಿಗೆ ಲೆಕ್ಕಪತ್ರ, ಬಿಲ್ಲಿಂಗ್, ದಾಸ್ತಾನು, GST ರಿಟರ್ನ್, ಸಂಬಳ ಮತ್ತು ವರದಿಗಳು. ಎಲ್ಲವೂ ನಿಮ್ಮ Windows PC ಯಲ್ಲಿ ಚಲಿಸುತ್ತದೆ. ದಿನನಿತ್ಯದ ಬಳಕೆಗೆ ಇಂಟರ್ನೆಟ್ ಬೇಕಿಲ್ಲ.</p>
+    </div>
+    <div class="panel-card">
+      <h4>📱 ಮೊಬೈಲ್ ಆ್ಯಪ್</h4>
+      <p>ನೇರ ಮಾರಾಟ, ದಾಸ್ತಾನು ಮತ್ತು ಬಾಕಿಗಳನ್ನು ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ನೋಡಿ. ದೂರದಿಂದಲೇ ಇನ್‌ವಾಯ್ಸ್ ಮತ್ತು ಖರೀದಿಗಳನ್ನು ರಚಿಸಿ. ನಿಮ್ಮ ಸ್ಥಳೀಯ WiFi ಮೂಲಕ, ಅಥವಾ Tailscale ಮೂಲಕ ಎಲ್ಲಿಂದಲಾದರೂ ಡೆಸ್ಕ್‌ಟಾಪ್‌ಗೆ ಸಂಪರ್ಕಿಸುತ್ತದೆ.</p>
+    </div>
+    <div class="panel-card">
+      <h4>📊 ಇದು ಏನನ್ನು ನಿರ್ವಹಿಸುತ್ತದೆ</h4>
+      <p>ಮಾರಾಟ ಇನ್‌ವಾಯ್ಸ್‌ಗಳು · ಖರೀದಿ ಬಿಲ್‌ಗಳು · ದಾಸ್ತಾನು ಮತ್ತು ಸ್ಟಾಕ್ · ಪಕ್ಷಗಳು (ಗ್ರಾಹಕರು ಮತ್ತು ಸರಬರಾಜುದಾರರು) · ಬ್ಯಾಂಕ್ ಮತ್ತು ನಗದು ಖಾತೆಗಳು · ನೌಕರರು ಮತ್ತು ಸಂಬಳ · GST ಮತ್ತು ಇ-ಇನ್‌ವಾಯ್ಸಿಂಗ್ (ಭಾರತ), ಜೊತೆಗೆ ಪಾಕಿಸ್ತಾನ, ಶ್ರೀಲಂಕಾ ಮತ್ತು Simple VAT ದೇಶಗಳ ತೆರಿಗೆ</p>
+    </div>
+    <div class="panel-card">
+      <h4>🔒 ನಿಮ್ಮ ಡೇಟಾ ನಿಮ್ಮದೇ</h4>
+      <p>ಎಲ್ಲಾ ಡೇಟಾ ನಿಮ್ಮ PC ಯಲ್ಲಿ ಒಂದೇ ಡೇಟಾಬೇಸ್ ಫೈಲ್‌ನಲ್ಲಿ ಸಂಗ್ರಹವಾಗುತ್ತದೆ. ಯಾವುದೇ ಕ್ಲೌಡ್ ಸರ್ವರ್‌ಗೆ ಏನನ್ನೂ ಕಳುಹಿಸುವುದಿಲ್ಲ. ಅದು ಸಂಪೂರ್ಣವಾಗಿ ನಿಮ್ಮದು.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 2 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 2 — ಲೆಕ್ಕಪತ್ರದ ಮೂಲಾಂಶಗಳು</div>
+<div class="section" id="ch2">
+  <h2>2. ಹೊಸಬರಿಗೆ ಲೆಕ್ಕಪತ್ರದ ಮೂಲಾಂಶಗಳು</h2>
+  <p>ಲೆಕ್ಕಪತ್ರ ಸಾಫ್ಟ್‌ವೇರ್ ನಿಮಗೆ ಹೊಸದಾದರೆ, ಮೊದಲು ಈ ಭಾಗ ಓದಿ. ಲೆಕ್ಕಪತ್ರದಲ್ಲಿ ಪದವಿ ಬೇಕಿಲ್ಲ — ಕೆಲವು ಮುಖ್ಯ ಕಲ್ಪನೆಗಳು ಅರ್ಥವಾದರೆ ಸಾಕು.</p>
+
+  <div class="concept">
+    <h4>💰 ನಗದು vs ಬ್ಯಾಂಕ್</h4>
+    <p>ನಿಮ್ಮ ವ್ಯಾಪಾರದ ಹಣ ಎರಡು ಕಡೆ ಇರುತ್ತದೆ: <strong>ಕೈಯಲ್ಲಿನ ನಗದು</strong> (ನಿಮ್ಮ ಡ್ರಾಯರ್‌ನಲ್ಲಿರುವ ನೋಟುಗಳು) ಮತ್ತು <strong>ಬ್ಯಾಂಕ್ ಖಾತೆಗಳು</strong> (ಬ್ಯಾಂಕ್‌ನಲ್ಲಿರುವ ಹಣ). Accelent ಎರಡನ್ನೂ ಪ್ರತ್ಯೇಕವಾಗಿ ಲೆಕ್ಕ ಇಡುತ್ತದೆ. ನಗದು ಬಂದಾಗ ನಗದು ಬಾಕಿ ಹೆಚ್ಚುತ್ತದೆ. ಬ್ಯಾಂಕ್‌ಗೆ ಜಮಾ ಮಾಡಿದಾಗ ನಗದು ಕಡಿಮೆಯಾಗಿ ಬ್ಯಾಂಕ್ ಹೆಚ್ಚುತ್ತದೆ.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧾 ಇನ್‌ವಾಯ್ಸ್ (ಮಾರಾಟ ಬಿಲ್)</h4>
+    <p>ಗ್ರಾಹಕರು ನಿಮ್ಮಿಂದ ಖರೀದಿಸಿದಾಗ ಅವರಿಗೆ ನೀಡುವ ಬಿಲ್ಲೇ ಇನ್‌ವಾಯ್ಸ್. ಅದರಲ್ಲಿ ವಸ್ತುಗಳು, ಪ್ರಮಾಣಗಳು, ಬೆಲೆಗಳು ಮತ್ತು ಒಟ್ಟು ಮೊತ್ತ ಇರುತ್ತದೆ. Accelent ನಲ್ಲಿ ಪ್ರತಿ ಇನ್‌ವಾಯ್ಸ್ ದಾಖಲಾಗಿ ಗ್ರಾಹಕರ ಖಾತೆಗೆ ತಾನಾಗಿ ಜೋಡಣೆಯಾಗುತ್ತದೆ.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🛒 ಖರೀದಿ ಬಿಲ್</h4>
+    <p>ಸರಕು ಖರೀದಿಸಿದಾಗ ಸರಬರಾಜುದಾರರಿಂದ ಬರುವ ಬಿಲ್ಲೇ ಖರೀದಿ ಬಿಲ್. ಅದನ್ನು Accelent ನಲ್ಲಿ ದಾಖಲಿಸಿದರೆ ನಿಮ್ಮ ದಾಸ್ತಾನು ಸ್ಟಾಕ್ ತಾನಾಗಿ ಹೆಚ್ಚುತ್ತದೆ, ಆ ಸರಬರಾಜುದಾರರಿಗೆ ಕೊಡಬೇಕಾದ ಮೊತ್ತವೂ ದಾಖಲಾಗುತ್ತದೆ.</p>
+  </div>
+
+  <div class="concept">
+    <h4>👥 ಪಕ್ಷಗಳು (ಗ್ರಾಹಕರು ಮತ್ತು ಸರಬರಾಜುದಾರರು)</h4>
+    <p><strong>ಪಕ್ಷ (Party)</strong> ಎಂದರೆ ನೀವು ನಿಯಮಿತವಾಗಿ ವ್ಯವಹರಿಸುವ ಯಾರಾದರೂ. ಗ್ರಾಹಕರು ನಿಮಗೆ ಹಣ ಕೊಡಬೇಕು (ಬರಬೇಕಾದದ್ದು — ಹಸಿರಿನಲ್ಲಿ ತೋರಿಸಲಾಗುತ್ತದೆ). ಸರಬರಾಜುದಾರರಿಗೆ ನೀವು ಹಣ ಕೊಡಬೇಕು (ಕೊಡಬೇಕಾದದ್ದು — ಕೆಂಪಿನಲ್ಲಿ ತೋರಿಸಲಾಗುತ್ತದೆ). ಎಲ್ಲಾ ವ್ಯವಹಾರಗಳಿಂದ ಪ್ರತಿ ಪಕ್ಷದ ಬಾಕಿಯನ್ನು Accelent ತಾನಾಗಿ ಲೆಕ್ಕ ಹಾಕುತ್ತದೆ.</p>
+  </div>
+
+  <div class="concept">
+    <h4>📦 ದಾಸ್ತಾನು / ಸ್ಟಾಕ್</h4>
+    <p>ದಾಸ್ತಾನು ಎಂದರೆ ನೀವು ಮಾರುವ ವಸ್ತುಗಳ ಪಟ್ಟಿ. ಪ್ರತಿ ವಸ್ತುವಿಗೆ Accelent <strong>ಸ್ಟಾಕ್‌ನಲ್ಲಿರುವ ಪ್ರಮಾಣ</strong>, <strong>ಮಾರಾಟ ಬೆಲೆ</strong>, <strong>ಖರೀದಿ ಬೆಲೆ</strong> ಮತ್ತು <strong>ಕನಿಷ್ಠ ಸ್ಟಾಕ್ ಮಟ್ಟ</strong> (ಮತ್ತೆ ಆರ್ಡರ್ ಮಾಡಲು ಯಾವಾಗ ಎಚ್ಚರಿಸಬೇಕು) ಗಮನಿಸುತ್ತದೆ.</p>
+  </div>
+
+  <div class="concept">
+    <h4>⚖️ ಆರಂಭಿಕ ಬಾಕಿ</h4>
+    <p>Accelent ಅನ್ನು ಮೊದಲ ಬಾರಿ ಬಳಸಲು ಆರಂಭಿಸಿದಾಗ, ನಿಮ್ಮ ಬಳಿ ಈಗಾಗಲೇ ಇರುವುದನ್ನು ಸಾಫ್ಟ್‌ವೇರ್‌ಗೆ ತಿಳಿಸಬೇಕು — ಎಷ್ಟು ನಗದು, ಪ್ರತಿ ಬ್ಯಾಂಕ್ ಖಾತೆಯಲ್ಲಿ ಎಷ್ಟು, ಪ್ರತಿ ಗ್ರಾಹಕ ನಿಮಗೆ ಎಷ್ಟು ಕೊಡಬೇಕು, ನೀವು ಪ್ರತಿ ಸರಬರಾಜುದಾರರಿಗೆ ಎಷ್ಟು ಕೊಡಬೇಕು. ಇವನ್ನು <strong>ಆರಂಭಿಕ ಬಾಕಿಗಳು (Opening Balances)</strong> ಎನ್ನುತ್ತಾರೆ, ಆರಂಭಿಕ ಸೆಟಪ್‌ನಲ್ಲಿ ಒಮ್ಮೆ ಮಾತ್ರ ನಮೂದಿಸಲಾಗುತ್ತದೆ.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧮 ಡೆಬಿಟ್ / ಕ್ರೆಡಿಟ್ (ಸರಳವಾಗಿ)</h4>
+    <p>Accelent ನಲ್ಲಿ ಡೆಬಿಟ್/ಕ್ರೆಡಿಟ್ ನಮೂದುಗಳ ಬಗ್ಗೆ ನೀವು ಚಿಂತಿಸಬೇಕಿಲ್ಲ — ಸಾಫ್ಟ್‌ವೇರ್ ಅದನ್ನು ತಾನಾಗಿ ನೋಡಿಕೊಳ್ಳುತ್ತದೆ. ಮಾರಾಟ ದಾಖಲಿಸಿದರೆ ಅದು ನಿಮ್ಮ ಆದಾಯ ಮತ್ತು ಗ್ರಾಹಕರ ಬಾಕಿಗೆ ಸೇರುತ್ತದೆ. ಖರೀದಿ ದಾಖಲಿಸಿದರೆ ಅದು ನಿಮ್ಮ ಸ್ಟಾಕ್ ಮತ್ತು ಸರಬರಾಜುದಾರರ ಬಾಕಿಗೆ ಸೇರುತ್ತದೆ. <strong>ನಡೆದದ್ದನ್ನು ದಾಖಲಿಸಿದರೆ ಸಾಕು — ಲೆಕ್ಕಪತ್ರವನ್ನು Accelent ನೋಡಿಕೊಳ್ಳುತ್ತದೆ.</strong></p>
+  </div>
+
+  <div class="concept">
+    <h4>📅 ಆರ್ಥಿಕ ವರ್ಷ</h4>
+    <p>ಭಾರತದಲ್ಲಿ ಆರ್ಥಿಕ ವರ್ಷ <strong>ಏಪ್ರಿಲ್ 1 ರಿಂದ ಮುಂದಿನ ವರ್ಷದ ಮಾರ್ಚ್ 31 ರವರೆಗೆ</strong>. GST ರಿಟರ್ನ್, ಬ್ಯಾಲೆನ್ಸ್ ಶೀಟ್ ಮತ್ತು ಲಾಭ-ನಷ್ಟವನ್ನು ಈ ಅವಧಿಯೊಳಗೆ ಲೆಕ್ಕ ಹಾಕಲಾಗುತ್ತದೆ. Accelent ನ Finalization ಪ್ಯಾನೆಲ್ ಆರ್ಥಿಕ ವರ್ಷವನ್ನು ಸ್ವಚ್ಛವಾಗಿ ಮುಗಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.</p>
+  </div>
+
+  <div class="tip">💡 <strong>ಸುವರ್ಣ ನಿಯಮ:</strong> ಪ್ರತಿ ಮಾರಾಟ, ಪ್ರತಿ ಖರೀದಿ, ಪ್ರತಿ ವೆಚ್ಚವನ್ನು ಅದು ನಡೆದ ದಿನವೇ ದಾಖಲಿಸಿ. ನೀವು ಎಷ್ಟು ನಿಯಮಿತರಾಗಿರುತ್ತೀರೋ, ನಿಮ್ಮ ವರದಿಗಳು ಮತ್ತು ಬಾಕಿಗಳು ಅಷ್ಟು ನಿಖರವಾಗಿರುತ್ತವೆ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 3 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 3 — ಸ್ಥಾಪನೆ</div>
+<div class="section" id="ch3">
+  <h2>3. ಡೆಸ್ಕ್‌ಟಾಪ್ ಆ್ಯಪ್ ಸ್ಥಾಪನೆ</h2>
+
+  <h3>ನಿಮಗೆ ಬೇಕಾದವು</h3>
+  <ul>
+    <li>Windows 10 ಅಥವಾ Windows 11 (64-bit)</li>
+    <li><strong>RAM:</strong> ವೇಗದ ಬಿಲ್ ಸ್ಕ್ಯಾನಿಂಗ್‌ಗೆ 8 GB ಶಿಫಾರಸು. ಕನಿಷ್ಠ 4 GB — ಎಲ್ಲವೂ ಕೆಲಸ ಮಾಡುತ್ತದೆ, ಆದರೆ ಬಿಲ್ ಸ್ಕ್ಯಾನ್‌ಗಳಿಗೆ ಹೆಚ್ಚು ಸಮಯ ಬೇಕು.</li>
+    <li>ಸುಮಾರು 1 GB ಖಾಲಿ ಡಿಸ್ಕ್ ಸ್ಥಳ</li>
+    <li>ಇನ್‌ಸ್ಟಾಲರ್: <code>Accelent_Setup_v2.4.9.exe</code>, <strong>accelentapp.com</strong> ನಿಂದ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ್ದು</li>
+  </ul>
+
+  <h3>ಇನ್‌ಸ್ಟಾಲರ್‌ನಿಂದ ಸ್ಥಾಪನೆ (ಶಿಫಾರಸು)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>accelentapp.com</strong> → Download for Windows ನಿಂದ <code>Accelent_Setup_v2.4.9.exe</code> ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಅದನ್ನು ಡಬಲ್-ಕ್ಲಿಕ್ ಮಾಡಿ. Windows SmartScreen ಎಚ್ಚರಿಕೆ ತೋರಿಸಿದರೆ, <strong>"More info"</strong> ನಂತರ <strong>"Run anyway"</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಹಂತಗಳನ್ನು ಅನುಸರಿಸಿ <strong>Install</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಬಿಲ್ ಸ್ಕ್ಯಾನಿಂಗ್‌ಗೆ ಬೇಕಾದ Windows ಘಟಕಗಳನ್ನೂ ಇನ್‌ಸ್ಟಾಲರ್ ಸ್ಥಾಪಿಸುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Start ಮೆನು ಅಥವಾ ಡೆಸ್ಕ್‌ಟಾಪ್ ಶಾರ್ಟ್‌ಕಟ್‌ನಿಂದ Accelent ತೆರೆಯಿರಿ.</div></div>
+
+  <h3>ಮೊದಲ ಲಾಗಿನ್</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಬಳಕೆದಾರ ಹೆಸರು <strong>admin</strong> ಮತ್ತು ಪಾಸ್‌ವರ್ಡ್ <strong>Admin@1234</strong> ನೊಂದಿಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ — ದೊಡ್ಡಕ್ಷರ A, ನಂತರ <code>dmin</code>, <strong>@</strong> ಚಿಹ್ನೆ, ನಂತರ <code>1234</code>. ನೀವು ಸ್ವಂತ ಪಾಸ್‌ವರ್ಡ್ ಇಡುವವರೆಗೆ ಲಾಗಿನ್ ಪರದೆ ಇವುಗಳನ್ನು ತೋರಿಸುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ನಂತರ Accelent ನಿಮ್ಮ ಸ್ವಂತ ಪಾಸ್‌ವರ್ಡ್ ಆಯ್ಕೆ ಮಾಡಲು ಕೇಳಿ, ನಿಮ್ಮ <strong>Recovery Key</strong> ತೋರಿಸುತ್ತದೆ — ಅದನ್ನು ಸುರಕ್ಷಿತ ಸ್ಥಳದಲ್ಲಿ ಉಳಿಸಿ ("ನಿಮ್ಮ ಖಾತೆಯ Recovery Key" ನೋಡಿ).</div></div>
+  <div class="tip">💡 5 ತಪ್ಪು ಪಾಸ್‌ವರ್ಡ್‌ಗಳ ನಂತರ ಖಾತೆ 15 ನಿಮಿಷ ಲಾಕ್ ಆಗುತ್ತದೆ; ಇನ್ನೂ ಎಷ್ಟು ಪ್ರಯತ್ನಗಳು ಉಳಿದಿವೆ, ಮತ್ತೆ ಯಾವಾಗ ಪ್ರಯತ್ನಿಸಬಹುದು ಎಂದು ಲಾಗಿನ್ ಪರದೆ ಹೇಳುತ್ತದೆ. ಈ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ಹಿಂದೆ Accelent ಸ್ಥಾಪನೆಯಾಗಿದ್ದರೆ, ನಿಮ್ಮ ಹಳೆಯ ಪಾಸ್‌ವರ್ಡ್ ಚಾಲ್ತಿಯಲ್ಲಿರುತ್ತದೆ — ಅನ್‌ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡುವುದು ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಎಂದಿಗೂ ಅಳಿಸುವುದಿಲ್ಲ.</div>
+
+  <h3>Windows SmartScreen ಮತ್ತು ಆ್ಯಂಟಿವೈರಸ್</h3>
+  <p>Accelent ಗೆ ಇನ್ನೂ ಡಿಜಿಟಲ್ ಸಹಿ ಇಲ್ಲ, ಆದ್ದರಿಂದ Windows ಅದರ ಪ್ರಕಾಶಕರನ್ನು ಗುರುತಿಸುವುದಿಲ್ಲ. ಅದಕ್ಕಾಗಿಯೇ ಇನ್‌ಸ್ಟಾಲರ್ ಅಥವಾ ಆ್ಯಪ್ ಅನ್ನು ಮೊದಲ ಬಾರಿ ಚಲಾಯಿಸಿದಾಗ Windows <strong>"Windows protected your PC"</strong> ಎಂದು ತೋರಿಸಬಹುದು. ಇದು ಒಮ್ಮೆ ಮಾತ್ರ ಬರುತ್ತದೆ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Accelent ಅನ್ನು <strong>accelentapp.com</strong> ನಿಂದ ಮಾತ್ರ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ. ಬೇರೆಡೆಯಿಂದ ಬಂದ ಫೈಲ್‌ಗಳು ಅಸಲಿ ಆಗಿರದಿರಬಹುದು.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">SmartScreen ನಲ್ಲಿ <strong>More info</strong> ಕ್ಲಿಕ್ ಮಾಡಿ, ಫೈಲ್ ಹೆಸರು <code>Accelent_Setup_…exe</code> ಅಥವಾ <code>Accelent.exe</code> ಎಂದು ಖಚಿತಪಡಿಸಿ, <strong>Run anyway</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ನಿಮ್ಮ ಆ್ಯಂಟಿವೈರಸ್ Accelent ಅನ್ನು ತಡೆದರೆ ಅಥವಾ quarantine ಮಾಡಿದರೆ, ಅದನ್ನು quarantine ನಿಂದ ಮರುಸ್ಥಾಪಿಸಿ, Accelent ಫೋಲ್ಡರ್ ಅನ್ನು (ಸ್ಥಾಪಿಸಿದ ಪ್ರತಿಗೆ: <span class="path">C:\Accelent</span>) ಆ್ಯಂಟಿವೈರಸ್‌ನ <strong>exclusions / allowed apps</strong> ಗೆ ಸೇರಿಸಿ. Python ಪ್ಯಾಕೇಜಿಂಗ್ ಉಪಕರಣಗಳಿಂದ ಮಾಡಿದ ಹೊಸ ಪ್ರೋಗ್ರಾಂಗಳನ್ನು ಕೆಲವು ಆ್ಯಂಟಿವೈರಸ್‌ಗಳು ತಪ್ಪಾಗಿ ಗುರುತಿಸುತ್ತವೆ; ಇದು ತಪ್ಪು ಎಚ್ಚರಿಕೆ.</div></div>
+  <div class="tip">💡 Accelent ಸಾಮಾನ್ಯ ಪ್ರೋಗ್ರಾಂ ಫೋಲ್ಡರ್ ಆಗಿ ಸ್ಥಾಪನೆಯಾಗುತ್ತದೆ ಮತ್ತು ಇಂಟರ್ನೆಟ್ ಇಲ್ಲದೆಯೂ ಕೆಲಸ ಮಾಡುತ್ತದೆ. ನಿಮ್ಮ ಪರವಾನಗಿ ಪರಿಶೀಲಿಸಲು ಮಾತ್ರ (ಮತ್ತು, ನೀವು ಆನ್ ಮಾಡಿದರೆ, ನಿಮ್ಮ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಿದ ಬ್ಯಾಕಪ್ ಕೀಯ ಒಂದು ಭಾಗವನ್ನು ಸಂಗ್ರಹಿಸಲು) ಇಂಟರ್ನೆಟ್‌ಗೆ ಸಂಪರ್ಕಿಸುತ್ತದೆ. ನಿಮ್ಮ ವ್ಯಾಪಾರದ ಡೇಟಾ ಎಂದಿಗೂ ನಿಮ್ಮ PC ಬಿಟ್ಟು ಹೋಗುವುದಿಲ್ಲ. ಎಚ್ಚರಿಕೆ ಇನ್ನೂ ಚಿಂತೆ ತಂದರೆ, <strong>support@accelentapp.com</strong> ಗೆ ಬರೆಯಿರಿ.</div>
+
+  <h3>ಪೋರ್ಟಬಲ್ Zip (ಪರ್ಯಾಯ)</h3>
+  <p>ಸ್ಥಾಪಿಸಲು ಬಯಸದಿದ್ದರೆ, ಬದಲಿಗೆ <code>Accelent_Desktop_v2.4.9.zip</code> ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಈ ಹಂತಗಳನ್ನು ಅನುಸರಿಸಿ:</p>
+
+  <h3>ಸ್ಥಾಪನೆಯ ಹಂತಗಳು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><code>Accelent_Desktop_v2.4.9.zip</code> ಮೇಲೆ ರೈಟ್-ಕ್ಲಿಕ್ → <strong>Extract All</strong>. <code>C:\Accelent</code> ಅಥವಾ <code>D:\Accelent</code> ನಂತಹ ಶಾಶ್ವತ ಸ್ಥಳ ಆಯ್ಕೆ ಮಾಡಿ. <strong>zip ಒಳಗಿನಿಂದಲೇ ಚಲಾಯಿಸಬೇಡಿ.</strong></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಹೊರತೆಗೆದ <code>Accelent</code> ಫೋಲ್ಡರ್ ತೆರೆಯಿರಿ. ಅದರಲ್ಲಿ <code>Accelent.exe</code>, <code>setup.bat</code> ಮತ್ತು ಕೆಲವು ಸಹಾಯಕ ಫೋಲ್ಡರ್‌ಗಳು ಕಾಣುತ್ತವೆ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Accelent.exe</strong> ಡಬಲ್-ಕ್ಲಿಕ್ ಮಾಡಿ. Windows SmartScreen ಎಚ್ಚರಿಕೆ ತೋರಿಸಬಹುದು — <strong>"More info"</strong> ನಂತರ <strong>"Run anyway"</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಆ್ಯಪ್‌ಗೆ ಇನ್ನೂ ಡಿಜಿಟಲ್ ಸಹಿ ಇಲ್ಲದ ಕಾರಣ ಹೀಗಾಗುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಆ್ಯಪ್ ತೆರೆಯುತ್ತದೆ. ಮೊದಲ ಬಾರಿ ತೆರೆದಾಗ ಅದು ನಿಮ್ಮ ಡೇಟಾಬೇಸ್ ಫೈಲ್ ಅನ್ನು <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span> ನಲ್ಲಿ ತಾನಾಗಿ ರಚಿಸುತ್ತದೆ</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">ದಿನನಿತ್ಯ ಸುಲಭವಾಗಿ ತೆರೆಯಲು <code>Accelent.exe</code> ಮೇಲೆ ರೈಟ್-ಕ್ಲಿಕ್ → <em>Send to → Desktop (create shortcut)</em>.</div></div>
+
+  <h3>ಮೊದಲ ಬಾರಿಯ ಫೈರ್‌ವಾಲ್ ಸೆಟಪ್ (ಮೊಬೈಲ್ ಆ್ಯಪ್‌ಗಾಗಿ)</h3>
+  <p>ಮೊಬೈಲ್ ಸಹಾಯಕ ಆ್ಯಪ್ ಬಳಸುವುದಾದರೆ ಇದನ್ನು ಒಮ್ಮೆ ಚಲಾಯಿಸಿ:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><code>Accelent</code> ಫೋಲ್ಡರ್‌ನಲ್ಲಿ <strong>setup.bat</strong> ಡಬಲ್-ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Windows ನಿರ್ವಾಹಕ ಅನುಮತಿ ಕೇಳುತ್ತದೆ — <strong>Yes</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಸ್ಕ್ರಿಪ್ಟ್ Windows ಫೈರ್‌ವಾಲ್‌ನಲ್ಲಿ ಪೋರ್ಟ್ 8765 ತೆರೆದು, ನಿಮ್ಮ PC ಯ IP ವಿಳಾಸ ತೋರಿಸುತ್ತದೆ. ಆ IP ಬರೆದಿಟ್ಟುಕೊಳ್ಳಿ — ಫೋನ್ ಅನ್ನು ಕೈಯಾರೆ ಸಂಪರ್ಕಿಸಲು ಬೇಕಾಗಬಹುದು.</div></div>
+
+  <div class="warn">⚠ setup.bat ಬಿಟ್ಟರೆ, ಮೊಬೈಲ್ ಆ್ಯಪ್ ಡೆಸ್ಕ್‌ಟಾಪ್‌ಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 4 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 4 — ಮೊದಲ ಬಾರಿಯ ಕಂಪನಿ ಸೆಟಪ್</div>
+<div class="section" id="ch4">
+  <h2>4. ಮೊದಲ ಬಾರಿಯ ಕಂಪನಿ ಸೆಟಪ್</h2>
+  <p>Accelent ಅನ್ನು ಮೊದಲ ಬಾರಿ ತೆರೆದಾಗ, ಯಾವುದೇ ವ್ಯವಹಾರ ದಾಖಲಿಸುವ ಮೊದಲು 10 ನಿಮಿಷ ತೆಗೆದುಕೊಂಡು ನಿಮ್ಮ ಕಂಪನಿ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ.</p>
+
+  <h3>ಆರಂಭಿಸುವ ಮೊದಲು — ನಿಮ್ಮ ದೇಶ ಆಯ್ಕೆ ಮಾಡಿ</h3>
+  <p>Accelent ಮೊದಲ ಬಾರಿ ಆರಂಭವಾದಾಗ (ನೀವು ಸ್ವಂತ ಪಾಸ್‌ವರ್ಡ್ ಇಟ್ಟ ತಕ್ಷಣ), ನಿಮ್ಮ <strong>ದೇಶ</strong> ಕೇಳುತ್ತದೆ. ದೇಶವು ನಿಮ್ಮ <strong>ತೆರಿಗೆ ನಿಯಮಗಳು</strong> ಮತ್ತು <strong>ಕರೆನ್ಸಿ</strong> ನಿರ್ಧರಿಸುತ್ತದೆ — ಭಾರತಕ್ಕೆ GST, ಇತರ ದೇಶಗಳಿಗೆ VAT — ಆದ್ದರಿಂದ ಪ್ರತಿ ಇನ್‌ವಾಯ್ಸ್, ವರದಿ ಮತ್ತು ತೆರಿಗೆ ರಿಟರ್ನ್ ಮೊದಲ ದಿನದಿಂದಲೇ ಸರಿಯಾದ ದರಗಳನ್ನು ಬಳಸುತ್ತದೆ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Welcome — Set Up Your Country</strong> ವಿಂಡೋದಲ್ಲಿ ನಿಮ್ಮ <strong>Country</strong> ಆಯ್ಕೆ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ನಿಮ್ಮ ದೇಶಕ್ಕೆ ಹೆಚ್ಚುವರಿ ಪ್ರಶ್ನೆ ಬಂದರೆ ಉತ್ತರಿಸಿ (ಕೆಳಗಿನ ಕೋಷ್ಟಕ ನೋಡಿ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Language</strong> ಪರಿಶೀಲಿಸಿ. ಅದರಲ್ಲಿ ನಿಮ್ಮ ದೇಶದ ಮುಖ್ಯ ಭಾಷೆ ಮೊದಲೇ ತುಂಬಿರುತ್ತದೆ (ಉದಾಹರಣೆಗೆ ಭಾರತಕ್ಕೆ Hindi) — ಅದನ್ನು English ಅಥವಾ ನಿಮಗೆ ಇಷ್ಟವಾದ ಬೇರೆ ಭಾಷೆಗೆ ಬದಲಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ನಿಮ್ಮ <strong>Business</strong> ಆಯ್ಕೆ ಮಾಡಿ: <em>Shop, trading, services or manufacturing</em>, <em>Restaurant, café or dhaba</em> (<a href="#ch9b">ಅಧ್ಯಾಯ 9b</a> ನೋಡಿ) ಅಥವಾ <em>Hotel, lodge or guest house</em> (<a href="#ch9c">ಅಧ್ಯಾಯ 9c</a> ನೋಡಿ). ಮೆನು ಯಾವ ಪರದೆಗಳನ್ನು ತೋರಿಸಬೇಕು ಎಂದು ಇದು ನಿರ್ಧರಿಸುತ್ತದೆ, ನಂತರ <strong>Settings → 🏢 Company</strong> ನಲ್ಲಿ ಬದಲಿಸಬಹುದು.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Confirm and Continue</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <table>
+    <tr><th>ದೇಶ</th><th>ತೆರಿಗೆ</th><th>ಕರೆನ್ಸಿ</th><th>ಹೆಚ್ಚುವರಿ ಪ್ರಶ್ನೆ</th></tr>
+    <tr><td>ಭಾರತ</td><td>GST (CGST + SGST / IGST)</td><td>₹ INR</td><td>—</td></tr>
+    <tr><td>ಪಾಕಿಸ್ತಾನ</td><td>ಸರಕುಗಳ ಮೇಲೆ ಫೆಡರಲ್ ಮಾರಾಟ ತೆರಿಗೆ, ಸೇವೆಗಳ ಮೇಲೆ ಪ್ರಾಂತೀಯ ತೆರಿಗೆ</td><td>Rs. PKR</td><td><strong>Province</strong> — ನಿಮ್ಮ ವ್ಯಾಪಾರದ ಸ್ವಂತ ಪ್ರಾಂತ್ಯ (ICT, Punjab, Sindh, KPK, Balochistan, AJ &amp; Kashmir, Gilgit-Baltistan)</td></tr>
+    <tr><td>ಶ್ರೀಲಂಕಾ</td><td>VAT 18%, ಅನ್ವಯವಾಗುವಲ್ಲಿ SSCL ಸಹ</td><td>Rs. LKR</td><td>ನಿಮಗೆ ಅನ್ವಯವಾದರೆ <strong>Financial Institution</strong> (ಹಣಕಾಸು ವಸ್ತುಗಳ ಮೇಲೆ VAT 20.5%) ಮತ್ತು/ಅಥವಾ <strong>SSCL-liable</strong> (ವಾರ್ಷಿಕ ವಹಿವಾಟು LKR 120,000,000 ಕ್ಕಿಂತ ಹೆಚ್ಚು) ಟಿಕ್ ಮಾಡಿ</td></tr>
+    <tr><td>ನೇಪಾಳ</td><td>VAT 13%</td><td>Rs. NPR</td><td>—</td></tr>
+    <tr><td>ಬಾಂಗ್ಲಾದೇಶ</td><td>VAT 15%</td><td>৳ BDT</td><td>—</td></tr>
+    <tr><td>ಭೂತಾನ್</td><td>ಮಾರಾಟ ತೆರಿಗೆ 7%</td><td>Nu. BTN</td><td>—</td></tr>
+    <tr><td>ಮಾಲ್ಡೀವ್ಸ್</td><td>GST 8% (ಪ್ರವಾಸೋದ್ಯಮ ಮಾರಾಟಕ್ಕೆ 17%, ಪ್ರತಿ ಇನ್‌ವಾಯ್ಸ್‌ನಲ್ಲಿ ಆಯ್ಕೆ)</td><td>Rf. MVR</td><td>—</td></tr>
+  </table>
+  <div class="err">🚨 <strong>ಎಚ್ಚರಿಕೆಯಿಂದ ಆಯ್ಕೆ ಮಾಡಿ — ದೇಶವನ್ನು ನಂತರ ಬದಲಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.</strong> ನಿಮ್ಮ ಮೊದಲ ಮಾರಾಟ, ಖರೀದಿ ಅಥವಾ ದಾಸ್ತಾನು ವಸ್ತುವನ್ನು ಉಳಿಸಿದ ತಕ್ಷಣ ದೇಶ ಲಾಕ್ ಆಗುತ್ತದೆ: ಬದಲಿಸಿದರೆ ನಿಮ್ಮ ಉಳಿಸಿದ ಮೊತ್ತಗಳು ಹಳೆಯ ಕರೆನ್ಸಿ ಮತ್ತು ತೆರಿಗೆ ನಿಯಮಗಳಲ್ಲೇ ಉಳಿಯುತ್ತವೆ. ಮತ್ತೆ ಆಯ್ಕೆ ಮಾಡಲು ಏಕೈಕ ಮಾರ್ಗ <strong>Settings → App Settings → Reset Database</strong>, ಅದು ಎಲ್ಲಾ ಡೇಟಾವನ್ನು ಅಳಿಸುತ್ತದೆ. ಭಾಷೆಯನ್ನು ಮಾತ್ರ ಯಾವಾಗ ಬೇಕಾದರೂ ಬದಲಿಸಬಹುದು (ಅಧ್ಯಾಯ 6).</div>
+  <div class="tip">💡 ನಿಮ್ಮ ದೇಶ ಯಾವಾಗಲೂ ವಿಂಡೋದ ಕೆಳಗಿನ ಎಡಭಾಗದಲ್ಲಿ, ಸ್ಟೇಟಸ್ ಬಾರ್‌ನಲ್ಲಿ ಕಾಣುತ್ತದೆ — ಉದಾಹರಣೆಗೆ <em>India · GST</em>. ನಿಮ್ಮ ದೇಶ ಪಟ್ಟಿಯಲ್ಲಿ ಇಲ್ಲದಿದ್ದರೆ, ಆರಂಭಿಸುವ ಮೊದಲು ಸಪೋರ್ಟ್ ಸಂಪರ್ಕಿಸಿ.</div>
+
+  <h3>ಹಂತ 1 — ಕಂಪನಿ ಮಾಹಿತಿ ನಮೂದಿಸಿ</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings</strong> (ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ ⚙️) ಗೆ ಹೋಗಿ → <strong>🏢 Company</strong> ಟ್ಯಾಬ್ ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ನಿಮ್ಮ ಕಂಪನಿ ಹೆಸರು, ವಿಳಾಸ, ಫೋನ್ ನಂಬರ್, ಇಮೇಲ್, GST ನಂಬರ್ (GSTIN) ಮತ್ತು PAN ನಂಬರ್ ತುಂಬಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ನಿಮ್ಮ ಕಂಪನಿ ಲೋಗೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ — ಅದು ಮುದ್ರಿಸುವ ಎಲ್ಲಾ ಇನ್‌ವಾಯ್ಸ್‌ಗಳಲ್ಲಿ ಕಾಣುತ್ತದೆ. ನಿಮ್ಮ <strong>ಸಹಿ ಮತ್ತು ಅಂಗಡಿ ಮುದ್ರೆ</strong> ಅನ್ನೂ ಇಲ್ಲಿ ಸೇರಿಸಬಹುದು (<em>WhatsApp ನಲ್ಲಿ ಬಿಲ್ ಕಳುಹಿಸುವುದು</em> ನೋಡಿ).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Save Company Settings</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+
+  <h3>ಹಂತ 2 — ಆರಂಭಿಕ ಬಾಕಿಗಳನ್ನು ಹೊಂದಿಸಿ</h3>
+  <p>ಮೊದಲ ದಿನ ನಿಮ್ಮ ಬಳಿ ಈಗಾಗಲೇ ಏನಿತ್ತು ಎಂದು ಆರಂಭಿಕ ಬಾಕಿಗಳು ಸಾಫ್ಟ್‌ವೇರ್‌ಗೆ ತಿಳಿಸುತ್ತವೆ. ಇವನ್ನು ಒಮ್ಮೆ ನಮೂದಿಸಿ, ನಂತರ ಬದಲಿಸಬೇಡಿ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 📊 Balances</strong> ಟ್ಯಾಬ್‌ಗೆ ಹೋಗಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Edit Cash Balance</strong> ಕ್ಲಿಕ್ ಮಾಡಿ — ನಿಮ್ಮ ಆರಂಭ ದಿನಾಂಕದಂದು ಕೈಯಲ್ಲಿರುವ ನಿಜವಾದ ನಗದು ನಮೂದಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Edit Bank Balances</strong> ಕ್ಲಿಕ್ ಮಾಡಿ — ನಿಮ್ಮ ಕೊನೆಯ ಬ್ಯಾಂಕ್ ಸ್ಟೇಟ್‌ಮೆಂಟ್‌ನಿಂದ ಪ್ರತಿ ಬ್ಯಾಂಕ್ ಖಾತೆಯ ಅಂತಿಮ ಬಾಕಿ ನಮೂದಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Edit Party Balances</strong> ಕ್ಲಿಕ್ ಮಾಡಿ — ನಿಮ್ಮ ಆರಂಭ ದಿನಾಂಕದಂದು ಪ್ರತಿ ಗ್ರಾಹಕ ನಿಮಗೆ ಎಷ್ಟು ಕೊಡಬೇಕು, ನೀವು ಪ್ರತಿ ಸರಬರಾಜುದಾರರಿಗೆ ಎಷ್ಟು ಕೊಡಬೇಕು ಎಂದು ನಮೂದಿಸಿ.</div></div>
+
+  <h3>ಹಂತ 3 — ನಿಮ್ಮ ದಾಸ್ತಾನು ಸೇರಿಸಿ</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Inventory</strong> ಪ್ಯಾನೆಲ್‌ಗೆ ಹೋಗಿ → <strong>+ Add Item</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಪ್ರತಿ ಉತ್ಪನ್ನಕ್ಕೆ: ಹೆಸರು, ವರ್ಗ, ಘಟಕ (Pcs/Kg/Box ಇತ್ಯಾದಿ), ಖರೀದಿ ಬೆಲೆ, ಮಾರಾಟ ಬೆಲೆ, ಪ್ರಸ್ತುತ ಸ್ಟಾಕ್ ಪ್ರಮಾಣ ಮತ್ತು ಕನಿಷ್ಠ ಸ್ಟಾಕ್ ಮಟ್ಟ ನಮೂದಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಎಲ್ಲಾ ಉತ್ಪನ್ನಗಳಿಗೂ ಹೀಗೆ ಮಾಡಿ. ಯಾವಾಗ ಬೇಕಾದರೂ ಹೆಚ್ಚಿನ ವಸ್ತುಗಳನ್ನು ಸೇರಿಸಬಹುದು.</div></div>
+
+  <div class="tip">💡 <strong>ಸಲಹೆ:</strong> ವೇಗವಾಗಿ ಮಾರಾಟವಾಗುವ ವಸ್ತುಗಳಿಗೆ ಕನಿಷ್ಠ ಸ್ಟಾಕ್ ಮಟ್ಟ ಇಡಿ. ಸ್ಟಾಕ್ ಆ ಮಟ್ಟಕ್ಕಿಂತ ಕಡಿಮೆಯಾದಾಗ Accelent ಅವುಗಳನ್ನು 🟡 Low ಅಥವಾ 🔴 Out ಎಂದು ಗುರುತಿಸುತ್ತದೆ.</div>
+
+  <h3>ಹಂತ 4 — ಭಾಷೆ ಪರಿಶೀಲಿಸಿ</h3>
+  <p>ದೇಶದ ಜೊತೆಗೆ ನೀವು ಒಂದು ಭಾಷೆ ಆಯ್ಕೆ ಮಾಡಿದ್ದೀರಿ. ಅದನ್ನು ಬದಲಿಸಲು <strong>Settings → ⚙️ App Settings</strong> → Language ಗೆ ಹೋಗಿ. ಇಂಟರ್‌ಫೇಸ್ ತಕ್ಷಣ ಬದಲಾಗುತ್ತದೆ — ಎಲ್ಲಾ 18 ಭಾಷೆಗಳಿಗೆ ಅಧ್ಯಾಯ 6 ನೋಡಿ.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 5 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 5 — ಬೇರೆ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ ಬದಲಾವಣೆ</div>
+<div class="section" id="ch5">
+  <h2>5. ಬೇರೆ ಲೆಕ್ಕಪತ್ರ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ ಬದಲಾವಣೆ</h2>
+  <p>Tally, Busy, Marg, Vyapar ಅಥವಾ ಬೇರೆ ಯಾವುದೇ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ ಬದಲಾಯಿಸುತ್ತಿದ್ದರೆ, ಈ ಹಂತಗಳನ್ನು ಅನುಸರಿಸಿ. ಮುಖ್ಯ ವಿಚಾರ: <strong>ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ ಅಂತಿಮ ಬಾಕಿಗಳು ಮಾತ್ರ ಬೇಕು — ಪ್ರತ್ಯೇಕ ವ್ಯವಹಾರಗಳು ಬೇಕಿಲ್ಲ.</strong></p>
+
+  <div class="warn">⚠ ಒಂದು <strong>ಬದಲಾವಣೆ ದಿನಾಂಕ</strong> ಆಯ್ಕೆ ಮಾಡಿ — ಸಾಮಾನ್ಯವಾಗಿ ತಿಂಗಳ ಕೊನೆಯ ದಿನ ಅಥವಾ ನಿಮ್ಮ ಆರ್ಥಿಕ ವರ್ಷದ ಕೊನೆಯ ದಿನ. ಆ ದಿನಾಂಕದಂತೆ ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ ಎಲ್ಲಾ ಬಾಕಿಗಳನ್ನು ಬರೆದಿಟ್ಟುಕೊಳ್ಳಿ. ಮರುದಿನದಿಂದ Accelent ನಲ್ಲಿ ಹೊಸದಾಗಿ ಆರಂಭಿಸಿ.</div>
+
+  <h3>ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ ಸಂಗ್ರಹಿಸಬೇಕಾದವು</h3>
+  <table>
+    <tr><th>ನಿಮಗೆ ಬೇಕಾದದ್ದು</th><th>ಎಲ್ಲಿ ಸಿಗುತ್ತದೆ</th><th>Accelent ನಲ್ಲಿ ಏನು ಮಾಡಬೇಕು</th></tr>
+    <tr><td>ಕೈಯಲ್ಲಿನ ನಗದು (ಅಂತಿಮ ಬಾಕಿ)</td><td>ನಗದು ಲೆಡ್ಜರ್ → ಅಂತಿಮ ಬಾಕಿ</td><td>Settings → Balances → Edit Cash</td></tr>
+    <tr><td>ಬ್ಯಾಂಕ್ ಬಾಕಿಗಳು (ಪ್ರತಿ ಖಾತೆ)</td><td>ಬ್ಯಾಂಕ್ ಲೆಡ್ಜರ್ ಅಥವಾ ಬ್ಯಾಂಕ್ ಸ್ಟೇಟ್‌ಮೆಂಟ್</td><td>Settings → Balances → Edit Bank</td></tr>
+    <tr><td>ಗ್ರಾಹಕರ ಬಾಕಿ ಮೊತ್ತಗಳು</td><td>Debtors / Sundry Debtors ಪಟ್ಟಿ</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>ಸರಬರಾಜುದಾರರ ಬಾಕಿ ಮೊತ್ತಗಳು</td><td>Creditors / Sundry Creditors ಪಟ್ಟಿ</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>ದಾಸ್ತಾನು ವಸ್ತುಗಳು ಮತ್ತು ಸ್ಟಾಕ್</td><td>Stock summary / ವಸ್ತುಗಳ ಪಟ್ಟಿ</td><td>Inventory → 📥 Import / Export (ಕೆಳಗೆ "ನಿಮ್ಮ ಸ್ಟಾಕ್ ಅನ್ನು Accelent ಗೆ ತರುವುದು" ನೋಡಿ)</td></tr>
+    <tr><td>ನೌಕರರ ವಿವರಗಳು</td><td>Employee master / HR ಭಾಗ</td><td>Employees ಪ್ಯಾನೆಲ್ → ಪ್ರತಿ ನೌಕರರನ್ನು ಸೇರಿಸಿ</td></tr>
+  </table>
+
+  <h3>ಬದಲಾವಣೆಯ ಹಂತಗಳು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>ನಿಮ್ಮ ಕಟ್-ಆಫ್ ದಿನಾಂಕ ಆಯ್ಕೆ ಮಾಡಿ.</strong> ಉದಾಹರಣೆ: "31 ಮಾರ್ಚ್ 2026 ರಂತೆ ಬದಲಾಯಿಸುತ್ತೇನೆ — ನನ್ನ Accelent 1 ಏಪ್ರಿಲ್ 2026 ರಿಂದ ಆರಂಭವಾಗುತ್ತದೆ."</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಕಟ್-ಆಫ್ ದಿನಾಂಕದಂತೆ ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ <strong>ಬಾಕಿಗಳನ್ನು ಮುದ್ರಿಸಿ ಅಥವಾ ರಫ್ತು ಮಾಡಿ</strong>: ನಗದು ಬಾಕಿ, ಬ್ಯಾಂಕ್ ಬಾಕಿಗಳು, ಗ್ರಾಹಕರ ಬಾಕಿಗಳು, ಸರಬರಾಜುದಾರರ ಬಾಕಿಗಳು, ಪ್ರಮಾಣಗಳೊಂದಿಗೆ ಸ್ಟಾಕ್ ಪಟ್ಟಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Accelent ಸೆಟಪ್ ಮಾಡಿ</strong> — ಕಂಪನಿ ಮಾಹಿತಿ (ಅಧ್ಯಾಯ 4).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>ಆರಂಭಿಕ ಬಾಕಿಗಳನ್ನು ನಮೂದಿಸಿ</strong> — ಕಟ್-ಆಫ್ ದಿನಾಂಕದಂತೆ ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ ನಗದು, ಬ್ಯಾಂಕ್, ಪಕ್ಷಗಳ ಬಾಕಿಗಳು (Settings → Balances).</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">ಕಟ್-ಆಫ್ ದಿನಾಂಕದ ಸ್ಟಾಕ್ ಪ್ರಮಾಣಗಳೊಂದಿಗೆ <strong>ನಿಮ್ಮ ದಾಸ್ತಾನು ವಸ್ತುಗಳನ್ನು ಆಮದು ಮಾಡಿ</strong> — ಕೆಳಗೆ <strong>ನಿಮ್ಮ ಸ್ಟಾಕ್ ಅನ್ನು Accelent ಗೆ ತರುವುದು</strong> ನೋಡಿ.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">ಕಟ್-ಆಫ್‌ನ ಮರುದಿನದಿಂದ Accelent ನಲ್ಲಿ <strong>ಹೊಸ ವ್ಯವಹಾರಗಳನ್ನು ದಾಖಲಿಸಲು ಆರಂಭಿಸಿ</strong>.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body"><strong>ಒಂದು ವಾರದ ನಂತರ ಪರಿಶೀಲಿಸಿ:</strong> Accounts ಗೆ ಹೋಗಿ ನಗದು ಮತ್ತು ಬ್ಯಾಂಕ್ ಬಾಕಿಗಳು ನಿಮ್ಮ ಬಳಿ ನಿಜವಾಗಿ ಇರುವುದಕ್ಕೆ ಹೊಂದುತ್ತವೆಯೇ ನೋಡಿ. ವ್ಯತ್ಯಾಸವಿದ್ದರೆ, ಎಲ್ಲಾ ಬಾಕಿಗಳನ್ನು ನವೀಕರಿಸಲು Settings → Recalculate ಬಳಸಿ.</div></div>
+
+  <h3>ನಿಮ್ಮ ಸ್ಟಾಕ್ ಅನ್ನು Accelent ಗೆ ತರುವುದು</h3>
+  <p>ನಿಮ್ಮ ವಸ್ತುಗಳನ್ನು ಒಂದೊಂದಾಗಿ ಟೈಪ್ ಮಾಡಬೇಕಿಲ್ಲ. ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ ನಿಮ್ಮ ವಸ್ತುಗಳ ಪಟ್ಟಿ ಅಥವಾ ಸ್ಟಾಕ್ ವರದಿಯನ್ನು ರಫ್ತು ಮಾಡಿ (ಅಥವಾ ನಿಮ್ಮ ಸ್ವಂತ Excel ಶೀಟ್ ಬಳಸಿ) ಒಂದೇ ಬಾರಿಗೆ ಆಮದು ಮಾಡಿ. Accelent Excel (<code>.xlsx</code>) ಮತ್ತು CSV ಫೈಲ್‌ಗಳನ್ನು ಓದುತ್ತದೆ.</p>
+
+  <h4>Import / Export ಬಟನ್</h4>
+  <p><strong>Inventory</strong> ನಲ್ಲಿ <strong>📥 Import / Export</strong> ಬಟನ್ ಮೂರು ಆಯ್ಕೆಗಳನ್ನು ತೆರೆಯುತ್ತದೆ, ಏಕೆಂದರೆ ಮೂರು ಬೇರೆ ಬೇರೆ ಕೆಲಸಗಳಿವೆ:</p>
+  <table>
+    <tr><th>ಆಯ್ಕೆ</th><th>ಯಾವುದಕ್ಕೆ</th></tr>
+    <tr><td><strong>📥 Import items from Excel or CSV…</strong></td><td>Accelent <strong>ಒಳಗೆ</strong> ಬರುವ ಎಲ್ಲವೂ — ಯಾವುದೇ ಸಾಫ್ಟ್‌ವೇರ್ ಅಥವಾ ನಿಮ್ಮ ಸ್ವಂತ ಶೀಟ್‌ನಿಂದ.</td></tr>
+    <tr><td><strong>📋 Download import template</strong></td><td>ಸರಿಯಾದ ಶೀರ್ಷಿಕೆಗಳೊಂದಿಗೆ ಸಿದ್ಧ Excel ಶೀಟ್, ಇನ್ನೂ ಫೈಲ್ ಇಲ್ಲದವರಿಗೆ.</td></tr>
+    <tr><td><strong>💾 Export inventory to Excel</strong></td><td>ನಿಮ್ಮ ವಸ್ತುಗಳನ್ನು Accelent ನಿಂದ <strong>ಹೊರಗೆ</strong> ತೆಗೆಯುತ್ತದೆ — ಬ್ಯಾಕಪ್‌ಗೆ ಅಥವಾ ನಿಮ್ಮ ಲೆಕ್ಕಿಗರಿಗೆ.</td></tr>
+  </table>
+
+  <h4>ಒಂದೇ ಆಮದು ಯಾವುದೇ ಸಾಫ್ಟ್‌ವೇರ್‌ನ ಫೈಲ್ ಅನ್ನು ಹೇಗೆ ಓದುತ್ತದೆ</h4>
+  <p>Tally, Marg, Vyapar, Busy ಮತ್ತು ಅಂತಹ ಸಾಫ್ಟ್‌ವೇರ್‌ಗಳೆಲ್ಲವೂ ತಮ್ಮ ವರದಿಗಳನ್ನು ಸಾಮಾನ್ಯ <strong>Excel ಅಥವಾ CSV ಫೈಲ್</strong> ಆಗಿ ರಫ್ತು ಮಾಡುತ್ತವೆ. ವ್ಯತ್ಯಾಸ ವಿನ್ಯಾಸದಲ್ಲಿ ಮಾತ್ರ — ಶೀರ್ಷಿಕೆಗಳು ಎಲ್ಲಿವೆ, ಪ್ರತಿ ಕಾಲಂನ ಹೆಸರೇನು. ಆಮದು ಇದನ್ನು ತಾನೇ ನಿಭಾಯಿಸುತ್ತದೆ:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>ಶೀರ್ಷಿಕೆಗಳನ್ನು ಹುಡುಕುತ್ತದೆ.</strong> ಮೊದಲ ಸಾಲುಗಳನ್ನು ನೋಡಿ, ಕಂಪನಿ ಹೆಸರು, ವರದಿ ಶೀರ್ಷಿಕೆ ಅಥವಾ ದಿನಾಂಕದ ಸಾಲುಗಳನ್ನು ದಾಟಿ, ಕಾಲಂ ಶೀರ್ಷಿಕೆಗಳಿರುವ ಸಾಲನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. Tally ಯ ಎರಡು ಸಾಲಿನ ಶೀರ್ಷಿಕೆಗಳನ್ನು (<em>Quantity / Rate / Value</em> ಮೇಲೆ <em>Particulars</em>) ಜೋಡಿಸಲಾಗುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ಪ್ರತಿ ಕಾಲಂ ಅನ್ನು ಅದರ ಹೆಸರಿನಿಂದ ಗುರುತಿಸುತ್ತದೆ</strong>, ಇತರ ಸಾಫ್ಟ್‌ವೇರ್‌ಗಳು ಬಳಸುವ ಹೆಸರುಗಳೂ ಸೇರಿ:</div></div>
+  <table>
+    <tr><th>ನಿಮ್ಮ ಫೈಲ್‌ನ ಕಾಲಂ</th><th>ಬಳಕೆ</th></tr>
+    <tr><td>Particulars (Tally), Product Name, Item, Description</td><td>Item Name</td></tr>
+    <tr><td>Quantity, Qty, Closing Stock, Closing Balance</td><td>Stock</td></tr>
+    <tr><td>Rate, Cost, Purchase Price</td><td>Purchase Rate</td></tr>
+    <tr><td>Sale Price, MRP, Selling Price</td><td>Selling Price</td></tr>
+    <tr><td>HSN, HSN/SAC, GST %, Category, Group, Supplier</td><td>ಹೊಂದುವ ಫೀಲ್ಡ್‌ಗಳು</td></tr>
+    <tr><td>S.No, Value, Unit</td><td>ಬಿಡಲಾಗುತ್ತದೆ</td></tr>
+  </table>
+  <p>ನಿಖರವಾಗಿ ತಿಳಿಯದ ಹೆಸರುಗಳನ್ನು ಹೋಲಿಕೆಯ ಆಧಾರದಲ್ಲಿ ಹೊಂದಿಸಲಾಗುತ್ತದೆ.</p>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>ಏನನ್ನಾದರೂ ಆಮದು ಮಾಡುವ ಮೊದಲು ಫಲಿತಾಂಶ ತೋರಿಸುತ್ತದೆ.</strong> ನಿಮ್ಮ ಪ್ರತಿ ಕಾಲಂ ಯಾವುದಕ್ಕೆ ಬಳಕೆಯಾಗುತ್ತದೆ ಎಂಬುದರೊಂದಿಗೆ ಪಟ್ಟಿಯಾಗುತ್ತದೆ: <strong>ಹಸಿರು</strong> = ಗುರುತಿಸಲಾಗಿದೆ, <strong>ಹಳದಿ</strong> = ಪರಿಶೀಲಿಸಬೇಕಾದ ಊಹೆ, <strong>ಬೂದು</strong> = ಬಿಡಲಾಗಿದೆ. ಏನಾದರೂ ತಪ್ಪಾಗಿದ್ದರೆ, ಆ ಡ್ರಾಪ್‌ಡೌನ್ ಬದಲಿಸಿ, <strong>Import Now</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="tip">💡 ಆದ್ದರಿಂದ TallyPrime Stock Summary, Vyapar ವಸ್ತುಗಳ ರಫ್ತು, Marg ಸ್ಟಾಕ್ ವರದಿ ಮತ್ತು ನಿಮ್ಮ ಸ್ವಂತ ಶೀಟ್ — ಎಲ್ಲವೂ ಒಂದೇ <strong>Import items from Excel or CSV…</strong> ಮೂಲಕ ಹೋಗುತ್ತವೆ. ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್‌ನಲ್ಲಿ ಮಾಡಬೇಕಾದದ್ದು <strong>Excel ಗೆ ರಫ್ತು</strong> ಮಾತ್ರ — ಕೆಳಗಿನ ಹಂತ 1 ಹೇಗೆಂದು ತೋರಿಸುತ್ತದೆ.</div>
+
+  <h4>ಹಂತ 1 — ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ ಫೈಲ್ ಪಡೆಯಿರಿ</h4>
+  <p><strong>TallyPrime ನಿಂದ:</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Gateway of Tally → Stock Summary</strong> ತೆರೆಯಿರಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Alt+F2</strong> ಒತ್ತಿ ಅವಧಿ ನಿಮ್ಮ ಕಟ್-ಆಫ್ ದಿನಾಂಕದಂದು ಮುಗಿಯುವಂತೆ ಹೊಂದಿಸಿ, ಆಗ ಅಂತಿಮ ಪ್ರಮಾಣಗಳು ಆ ದಿನದಂತೆ ಇರುತ್ತವೆ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಸ್ಟಾಕ್ ಗುಂಪುಗಳು ಮಾತ್ರವಲ್ಲ, ಪ್ರತಿ ವಸ್ತುವೂ ಪಟ್ಟಿಯಾಗಲು <strong>Alt+F5</strong> (Detailed) ಒತ್ತಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Alt+E</strong> (Export) ಒತ್ತಿ, <strong>Excel (Spreadsheet)</strong> ಸ್ವರೂಪ ಆಯ್ಕೆ ಮಾಡಿ ರಫ್ತು ಮಾಡಿ. ಫೈಲ್ ಎಲ್ಲಿ ಉಳಿಯಿತು ಎಂದು ಗಮನಿಸಿ.</div></div>
+  <p><strong>Marg, Vyapar, Busy ಅಥವಾ ಬೇರೆ ಯಾವುದೇ ಸಾಫ್ಟ್‌ವೇರ್‌ನಿಂದ:</strong> ವಸ್ತುಗಳ ಪಟ್ಟಿ ಅಥವಾ ಸ್ಟಾಕ್ ವರದಿ ತೆರೆದು ಅದರ <strong>Export to Excel</strong> ಆಯ್ಕೆ ಬಳಸಿ. ವಸ್ತುವಿನ ಹೆಸರು, ಪ್ರಮಾಣ ಮತ್ತು ದರ ತೋರಿಸುವ ವರದಿ ಸಾಕು.</p>
+  <p><strong>ನಿಮ್ಮ ಸ್ವಂತ Excel ಶೀಟ್‌ನಿಂದ:</strong> ವಸ್ತುಗಳ ಹೆಸರುಗಳ ಒಂದು ಕಾಲಂ ಮಾತ್ರ ಬೇಕು. ಈ ಕಾಲಂಗಳಿದ್ದರೆ Accelent ಅವನ್ನೂ ಬಳಸುತ್ತದೆ: ವಸ್ತು ಕೋಡ್, ವರ್ಗ, ಪ್ರಮಾಣ (ಸ್ಟಾಕ್), ಖರೀದಿ ದರ, ಮಾರಾಟ ಬೆಲೆ ಅಥವಾ MRP, GST %, HSN ಕೋಡ್ ಮತ್ತು ಸರಬರಾಜುದಾರ. ಖಾಲಿ ಶೀಟ್‌ನಿಂದ ಆರಂಭಿಸಲು <strong>Inventory → 📥 Import / Export → 📋 Download import template</strong> ಬಳಸಿ.</p>
+  <div class="tip">💡 ಹಳೆಯ ಸ್ವರೂಪದ Excel ಫೈಲ್‌ಗಳನ್ನು (<code>.xls</code>) ಓದಲಾಗುವುದಿಲ್ಲ: ಫೈಲ್ ಅನ್ನು Excel ನಲ್ಲಿ ತೆರೆದು <strong>File → Save As → Excel Workbook (*.xlsx)</strong> ಬಳಸಿ. ಆಮದು ಮಾಡುವ ಮೊದಲು Excel ನಲ್ಲಿ ಫೈಲ್ ಮುಚ್ಚಿ.</div>
+
+  <h4>ಹಂತ 2 — ಆಮದು ಮಾಡಿ</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Inventory → 📥 Import / Export → 📥 Import items from Excel or CSV…</strong> ಗೆ ಹೋಗಿ ನಿಮ್ಮ ಫೈಲ್ ಆಯ್ಕೆ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಕಂಪನಿ ಹೆಸರು ಅಥವಾ ವರದಿ ಶೀರ್ಷಿಕೆಯ ಕೆಳಗಿದ್ದರೂ, Accelent ಕಾಲಂ ಶೀರ್ಷಿಕೆಗಳನ್ನು ತಾನೇ ಹುಡುಕಿ, ನಿಮ್ಮ ಪ್ರತಿ ಕಾಲಂ ಹೇಗೆ ಬಳಕೆಯಾಗುತ್ತದೆ ಎಂದು ತೋರಿಸುತ್ತದೆ. ಹಸಿರು ಸಾಲುಗಳು ಗುರುತಿಸಲ್ಪಟ್ಟಿವೆ; ಹಳದಿ ಸಾಲುಗಳು ಊಹೆ, ಆದ್ದರಿಂದ ಪರಿಶೀಲಿಸಿ; ಬೂದು ಸಾಲುಗಳನ್ನು ಬಿಡಲಾಗುತ್ತದೆ (ಉದಾಹರಣೆಗೆ ಕ್ರಮ ಸಂಖ್ಯೆಗಳು ಅಥವಾ Tally ಯ <em>Value</em> ಕಾಲಂ). ತಪ್ಪಾದ ಡ್ರಾಪ್‌ಡೌನ್ ಬದಲಿಸಿ. ಹಲವು ಶೀಟ್‌ಗಳಿರುವ workbook ಗೆ, ಮೇಲೆ ಸರಿಯಾದ ಶೀಟ್ ಆಯ್ಕೆ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Import Now</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಎಷ್ಟು ವಸ್ತುಗಳು ಸೇರುತ್ತವೆ, ಎಷ್ಟು ಈಗಾಗಲೇ ಇದ್ದು ನವೀಕರಣಗೊಳ್ಳುತ್ತವೆ ಎಂದು Accelent ತೋರಿಸುತ್ತದೆ; ದೃಢೀಕರಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಸಾರಾಂಶ ಓದಿ. ಆಮದಾಗದ ಪ್ರತಿ ಸಾಲನ್ನು ಕಾರಣದೊಂದಿಗೆ ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ — ಉದಾಹರಣೆಗೆ <em>Total</em> ಸಾಲು ಅಥವಾ ಸ್ಟಾಕ್ ಗುಂಪಿನ ಶೀರ್ಷಿಕೆ. ಆ ಪಟ್ಟಿ ಉಳಿಸಲು <strong>Save Skipped Rows…</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+
+  <h4>ಆಮದಿನ ಸಮಯದಲ್ಲಿ ಏನಾಗುತ್ತದೆ</h4>
+  <ul>
+    <li><strong>ವಸ್ತು ಕೋಡ್‌ಗಳು:</strong> ಕೋಡ್ ಇಲ್ಲದ ವಸ್ತುಗಳಿಗೆ, ಕೈಯಾರೆ ಸೇರಿಸಿದಂತೆಯೇ, ತಾನಾಗಿ ಒಂದು ಸಿಗುತ್ತದೆ. ನಿಮ್ಮ ಫೈಲ್‌ನಲ್ಲಿ ಕೋಡ್‌ಗಳಿದ್ದರೆ ಅವನ್ನು ಉಳಿಸಲಾಗುತ್ತದೆ.</li>
+    <li><strong>ಈಗಾಗಲೇ ಇರುವ ವಸ್ತುಗಳು</strong> (ಅದೇ ಕೋಡ್, ಅಥವಾ ಫೈಲ್‌ನಲ್ಲಿ ಕೋಡ್‌ಗಳಿಲ್ಲದಿದ್ದರೆ ಅದೇ ಹೆಸರು) ನಕಲಾಗದೆ ನವೀಕರಣಗೊಳ್ಳುತ್ತವೆ — ಆದ್ದರಿಂದ ಫೈಲ್ ಸರಿಪಡಿಸಿ ಮತ್ತೆ ಆಮದು ಮಾಡಬಹುದು.</li>
+    <li><code>1,250.00</code>, <code>₹450</code> ಅಥವಾ <code>10 Nos</code> ನಂತಹ <strong>ಸಂಖ್ಯೆಗಳನ್ನು</strong> ಸರಿಯಾಗಿ ಓದಲಾಗುತ್ತದೆ.</li>
+    <li><strong>ಆರಂಭಿಕ ಸ್ಟಾಕ್:</strong> ಪ್ರಮಾಣಗಳನ್ನು ಖರೀದಿ ದರದಲ್ಲಿ ಒಂದೇ <em>Opening Stock</em> ನಮೂದಾಗಿ ದಾಖಲಿಸಲಾಗುತ್ತದೆ, ಆದ್ದರಿಂದ ವರದಿಗಳು ಮತ್ತು ಲಾಭ ಸರಿಯಾದ ವೆಚ್ಚದಿಂದ ಆರಂಭವಾಗುತ್ತವೆ.</li>
+    <li><strong>ವರ್ಗಗಳು:</strong> ವರ್ಗವಿಲ್ಲದ ವಸ್ತುಗಳನ್ನು <em>Uncategorized</em> ಅಡಿ ಇಡಲಾಗುತ್ತದೆ. ಆರಂಭದಿಂದಲೇ ನಿಮ್ಮ ವಸ್ತುಗಳನ್ನು ಗುಂಪು ಮಾಡಲು ನಿಮ್ಮ ಫೈಲ್‌ಗೆ Category ಕಾಲಂ ಸೇರಿಸಿ; ನಂತರ Inventory ಯಲ್ಲೂ ವರ್ಗಗಳನ್ನು ಬದಲಿಸಬಹುದು.</li>
+  </ul>
+
+  <h4>ಹಂತ 3 — ಫಲಿತಾಂಶ ಪರಿಶೀಲಿಸಿ</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Inventory ಪಟ್ಟಿ ನೋಡಿ: ಹೆಸರುಗಳು, ಪ್ರಮಾಣಗಳು ಮತ್ತು ದರಗಳು.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Inventory Reports</strong> ನ ಒಟ್ಟು ಸ್ಟಾಕ್ ಮೌಲ್ಯವನ್ನು, ಅದೇ ದಿನಾಂಕದ ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್ ವರದಿಯ ಅಂತಿಮ ಸ್ಟಾಕ್ ಮೌಲ್ಯದೊಂದಿಗೆ ಹೋಲಿಸಿ.</div></div>
+
+  <table>
+    <tr><th>ಹೀಗಾದರೆ</th><th>ಹೀಗೆ ಮಾಡಿ</th></tr>
+    <tr><td>"Can't read this file"</td><td>ಅದನ್ನು <code>.xlsx</code> ಆಗಿ ಉಳಿಸಿ, Excel ನಲ್ಲಿ ಮುಚ್ಚಿ, ಪಾಸ್‌ವರ್ಡ್ ಇದ್ದರೆ ತೆಗೆದು, ಮತ್ತೆ ಆಮದು ಮಾಡಿ.</td></tr>
+    <tr><td>ಒಂದು ಕಾಲಂ ತಪ್ಪು ಉದ್ದೇಶಕ್ಕೆ ಬಳಕೆಯಾಗುತ್ತಿದೆ</td><td>Import Now ಕ್ಲಿಕ್ ಮಾಡುವ ಮೊದಲು ಆಮದು ವಿಂಡೋದಲ್ಲಿ ಆ ಕಾಲಂನ ಡ್ರಾಪ್‌ಡೌನ್ ಬದಲಿಸಿ.</td></tr>
+    <tr><td>ಪ್ರಮಾಣಗಳು ಅಥವಾ ದರಗಳು 0 ಆಗಿ ಬಂದವು</td><td>ಪ್ರಮಾಣದ ಕಾಲಂ <em>Stock</em> ಗೆ, ದರದ ಕಾಲಂ <em>Purchase Rate</em> ಗೆ ಹೊಂದಿಸಲಾಗಿದೆಯೇ ನೋಡಿ, ಮತ್ತೆ ಆಮದು ಮಾಡಿ — ಈಗಾಗಲೇ ಇರುವ ವಸ್ತುಗಳು ನವೀಕರಣಗೊಳ್ಳುತ್ತವೆ.</td></tr>
+    <tr><td>ಒಂದು ವಸ್ತು ತಪ್ಪಾಗಿ ಬಂತು</td><td><strong>Inventory</strong> → ವಸ್ತು ಆಯ್ಕೆ ಮಾಡಿ → <strong>🗑️ Delete Selected</strong>. ಆಮದಿನ ಮೂಲಕ ಮಾತ್ರ ಬಂದ ವಸ್ತುವನ್ನು (ನಂತರ ಖರೀದಿಸದ, ಮಾರದ ಅಥವಾ ಹಿಂದಿರುಗಿಸದ) ಅಳಿಸಬಹುದು; ಅದು ಆಮದಿನ ಆರಂಭಿಕ ಸ್ಟಾಕ್‌ನಿಂದಲೂ ತೆಗೆಯಲ್ಪಡುತ್ತದೆ.</td></tr>
+    <tr><td>ಇಡೀ ಆಮದು ತಪ್ಪು</td><td>ಪ್ರತಿ ಆಮದು <strong>OPST-…</strong> ಎಂಬ ಹೆಸರಿನ ಒಂದೇ ಆರಂಭಿಕ-ಸ್ಟಾಕ್ ನಮೂದಾಗಿ ದಾಖಲಾಗುತ್ತದೆ (ಆಮದು ಸಾರಾಂಶ ಅದರ ಹೆಸರು ತೋರಿಸುತ್ತದೆ). <strong>Purchases</strong> ಗೆ ಹೋಗಿ, ಆ OPST ನಮೂದು ಆಯ್ಕೆ ಮಾಡಿ, <strong>❌ Delete Bill</strong> ಕ್ಲಿಕ್ ಮಾಡಿ, ಅದರ ವಸ್ತುಗಳನ್ನೂ ಅಳಿಸಲು <strong>Yes</strong> ಎಂದು ಉತ್ತರಿಸಿ. ಫೈಲ್ ಸರಿಪಡಿಸಿ ಮತ್ತೆ ಆಮದು ಮಾಡಿ.</td></tr>
+    <tr><td>ಹಲವು ಸಾಲುಗಳನ್ನು ಬಿಡಲಾಗಿದೆ</td><td>ಸಾರಾಂಶದಲ್ಲಿ ಕಾರಣಗಳನ್ನು ಓದಿ (Save Skipped Rows…). ಗುಂಪಿನ ಶೀರ್ಷಿಕೆಗಳು ಮತ್ತು ಒಟ್ಟು ಸಾಲುಗಳನ್ನು ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಬಿಡಲಾಗುತ್ತದೆ.</td></tr>
+  </table>
+
+  <h3>Tally ಯಿಂದ ಬಾಕಿಗಳು</h3>
+  <p>ಪ್ರತಿ ಪಕ್ಷಕ್ಕೆ: <strong>Gateway of Tally → Display More Reports → Account Books → Ledger</strong>, ಅಂತಿಮ ಬಾಕಿ ಬರೆದಿಟ್ಟುಕೊಳ್ಳಿ. ನಗದು ಮತ್ತು ಬ್ಯಾಂಕ್‌ಗೆ: <strong>Display More Reports → Account Books → Cash/Bank Book(s)</strong>. ಇವನ್ನು ಆರಂಭಿಕ ಬಾಕಿಗಳಾಗಿ ನಮೂದಿಸಿ (ಅಧ್ಯಾಯ 4, ಹಂತ 2 ಮತ್ತು 3).</p>
+
+  <div class="tip">💡 ಬದಲಾವಣೆಯ ನಂತರ ಕನಿಷ್ಠ 2–3 ತಿಂಗಳು <strong>ನಿಮ್ಮ ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್ ಅನ್ನು ಬಳಸಲು ಸಿಗುವಂತೆ ಇಡಿ</strong>. ಉಲ್ಲೇಖಕ್ಕಾಗಿ ಹಳೆಯ ವ್ಯವಹಾರಗಳನ್ನು ನೋಡಬೇಕಾಗಬಹುದು. ಆ ಹಳೆಯ ವ್ಯವಹಾರಗಳನ್ನು Accelent ನಲ್ಲಿ ನಮೂದಿಸಬೇಕಿಲ್ಲ.</div>
+
+  <div class="good">✅ <strong>ನಿಮ್ಮ ಹಳೆಯ ಡೇಟಾ ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್‌ನಲ್ಲಿ ಸುರಕ್ಷಿತವಾಗಿದೆ.</strong> Accelent ಗೆ ಬಾಕಿಗಳು ಮಾತ್ರ — ಆರಂಭದ ಬಿಂದು — ಬೇಕು. ಭವಿಷ್ಯದ ಎಲ್ಲಾ ವ್ಯವಹಾರಗಳು Accelent ಗೆ ಹೋಗುತ್ತವೆ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 6 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 6 — ಭಾಷೆ ಮತ್ತು ಥೀಮ್</div>
+<div class="section" id="ch6">
+  <h2>6. ಭಾಷೆ ಮತ್ತು ಥೀಮ್</h2>
+
+  <h3>ಭಾಷೆ ಬದಲಿಸುವುದು</h3>
+  <p>Accelent <strong>18 ಭಾಷೆಗಳನ್ನು</strong> ಬೆಂಬಲಿಸುತ್ತದೆ: English, Hindi (हिंदी), Urdu (اردو), Spanish, French, German, Bengali (বাংলা), Tamil (தமிழ்), Telugu (తెలుగు), Kannada (ಕನ್ನಡ), Gujarati (ગુજરાતી), Marathi (मराठी), Punjabi (ਪੰਜਾਬੀ), Nepali (नेपाली), Sinhala (සිංහල), Pashto (پښتو), Dhivehi (ދިވެހި), ಮತ್ತು Dzongkha (རྫོང་ཁ).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings</strong> ಗೆ ಹೋಗಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Language</strong> ಡ್ರಾಪ್‌ಡೌನ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಭಾಷೆ ಆಯ್ಕೆ ಮಾಡಿ — ಪ್ರತಿ ಭಾಷೆ ತನ್ನದೇ ಲಿಪಿಯಲ್ಲಿ ತೋರುತ್ತದೆ (ಉದಾ. "ਪੰਜਾਬੀ", "தமிழ்"), ಆದ್ದರಿಂದ ನಿಮ್ಮ ಭಾಷೆ ಹುಡುಕಲು ಇಂಗ್ಲಿಷ್ ಆಗಲಿ ಯಾವುದೇ ಕೋಡ್ ಆಗಲಿ ತಿಳಿದಿರಬೇಕಿಲ್ಲ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಇಂಟರ್‌ಫೇಸ್ — ಎಲ್ಲಾ tooltips, ಟ್ಯಾಬ್ ಹೆಸರುಗಳು ಮತ್ತು ನ್ಯಾವಿಗೇಶನ್ ಸೂಚನೆಗಳು — ತಕ್ಷಣ ಬದಲಾಗುತ್ತದೆ. ಮರುಆರಂಭ ಬೇಕಿಲ್ಲ.</div></div>
+  <div class="tip">💡 English/Hindi/Urdu/Spanish/French/German ನಂತರ ಸೇರಿಸಿದ ಭಾಷೆಗಳ ಅನುವಾದಗಳು ಯಂತ್ರದ ಸಹಾಯದಿಂದ ಮಾಡಿದವು. ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಯಾವುದೇ tooltip ವಿಚಿತ್ರವಾಗಿ ಓದಿದರೆ, ನಾವು ಸರಿಪಡಿಸಲು Settings → Support ಮೂಲಕ ನಮಗೆ ತಿಳಿಸಿ.</div>
+
+  <h3>ಥೀಮ್ ಬದಲಿಸುವುದು</h3>
+  <p><strong>Settings → ⚙️ App Settings</strong> ಗೆ ಹೋಗಿ → ಬಣ್ಣದ ಥೀಮ್ ಆಯ್ಕೆ ಮಾಡಿ (Light, Dark ಅಥವಾ ಇತರ). ಥೀಮ್ ಎಲ್ಲಾ ಪ್ಯಾನೆಲ್‌ಗಳಲ್ಲಿ ತಕ್ಷಣ ಬದಲಾಗುತ್ತದೆ.</p>
+
+  <div class="tip">💡 ಆಯ್ಕೆ ಮಾಡಿದ ಭಾಷೆ ಮತ್ತು ಥೀಮ್ ತಾನಾಗಿ ಉಳಿಯುತ್ತವೆ. ಮುಂದಿನ ಬಾರಿ ಆ್ಯಪ್ ತೆರೆದಾಗಲೂ ಹಾಗೆಯೇ ಇರುತ್ತವೆ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 7 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 7 — ಡ್ಯಾಶ್‌ಬೋರ್ಡ್</div>
+<div class="section" id="ch7">
+  <h2>7. ಡ್ಯಾಶ್‌ಬೋರ್ಡ್</h2>
+  <p>ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ನಿಮ್ಮ ವ್ಯಾಪಾರವನ್ನು ಒಂದೇ ನೋಟದಲ್ಲಿ ತೋರಿಸುತ್ತದೆ. ನೀವು ಅದಕ್ಕೆ ಹೋದ ಪ್ರತಿ ಬಾರಿ ಅದು ನವೀಕರಣಗೊಳ್ಳುತ್ತದೆ.</p>
+
+  <figure class="shot"><a href="manual_images/dashboard.png" target="_blank"><img src="manual_images/dashboard.png" alt="Dashboard" loading="lazy"></a><figcaption>ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ — ತ್ವರಿತ ಕ್ರಿಯೆಯ ಬಟನ್‌ಗಳು, ಈ ತಿಂಗಳ ಅಂಕಿಗಳು, ಚಾರ್ಟ್‌ಗಳು, ಸ್ಟಾಕ್ ಎಚ್ಚರಿಕೆಗಳು ಮತ್ತು ಇತ್ತೀಚಿನ ಖರೀದಿ ಆರ್ಡರ್‌ಗಳು.</figcaption></figure>
+
+  <table>
+    <tr><th>ಭಾಗ</th><th>ಏನು ತೋರಿಸುತ್ತದೆ</th></tr>
+    <tr><td>ತ್ವರಿತ ಬಟನ್‌ಗಳು</td><td>New Sale, New Purchase, Quick Order, Record Payment ಮತ್ತು Reports — ಆಗಾಗ ಮಾಡುವ ಕೆಲಸಗಳಿಗೆ ಒಂದೇ ಕ್ಲಿಕ್</td></tr>
+    <tr><td>Total Balance</td><td>ನಿಮ್ಮ ನಗದು ಮತ್ತು ಬ್ಯಾಂಕ್ ಹಣ ಒಟ್ಟಾಗಿ</td></tr>
+    <tr><td>Income / Expenses (Month)</td><td>ಈ ತಿಂಗಳು ಇದುವರೆಗೆ ಗಳಿಸಿದ್ದು ಮತ್ತು ಖರ್ಚು ಮಾಡಿದ್ದು</td></tr>
+    <tr><td>Overdue Payments · Pending Invoices</td><td>ಇನ್ನೂ ನಿಮಗೆ ಹಣ ಕೊಡಬೇಕಾದ ಗ್ರಾಹಕರು</td></tr>
+    <tr><td>Monthly Purchases</td><td>ಈ ತಿಂಗಳು ನೀವು ಖರೀದಿಸಿದ್ದು</td></tr>
+    <tr><td>Income vs Expenses · Account Distribution</td><td>ಕಳೆದ 6 ತಿಂಗಳು ಚಾರ್ಟ್ ಆಗಿ, ಮತ್ತು ನಿಮ್ಮ ಹಣ ಎಲ್ಲಿದೆ (ನಗದು ಮತ್ತು ಪ್ರತಿ ಬ್ಯಾಂಕ್)</td></tr>
+    <tr><td>Stock Alerts</td><td>ಸ್ಟಾಕ್ ಕಡಿಮೆ ಇರುವ ಅಥವಾ ಮುಗಿದ ವಸ್ತುಗಳು, Low Stock / Out of Stock / Suggested Orders ಸಂಖ್ಯೆಗಳೊಂದಿಗೆ</td></tr>
+    <tr><td>Recent Purchase Orders</td><td>ನಿಮ್ಮ ಇತ್ತೀಚಿನ ಆರ್ಡರ್‌ಗಳು, ಅವು ಬಂದಿವೆಯೇ ಮತ್ತು ಪಾವತಿಯಾಗಿವೆಯೇ — <strong>View All Orders</strong> ಪೂರ್ಣ ಪಟ್ಟಿ ತೆರೆಯುತ್ತದೆ</td></tr>
+    <tr><td>Top Items by Inventory Value</td><td>ನಿಮ್ಮ ಸ್ಟಾಕ್ ಹಣದ ಹೆಚ್ಚಿನ ಭಾಗ ಹೊಂದಿರುವ ವಸ್ತುಗಳು</td></tr>
+  </table>
+
+  <div class="tip">💡 ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ನೇರವಾಗಿ ತಾನಾಗಿ ನವೀಕರಣಗೊಳ್ಳುವುದಿಲ್ಲ — ಹೊಸ ಅಂಕಿಗಳನ್ನು ನೋಡಲು ಬೇರೆ ಪ್ಯಾನೆಲ್ ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತೆ ಬನ್ನಿ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 8 — ದಾಸ್ತಾನು</div>
+<div class="section" id="ch8">
+  <h2>8. ದಾಸ್ತಾನು ಪ್ಯಾನೆಲ್</h2>
+  <p>ನೀವು ಮಾರುವ ಪ್ರತಿ ಉತ್ಪನ್ನವನ್ನು Inventory ಗಮನಿಸುತ್ತದೆ — ಸ್ಟಾಕ್ ಮಟ್ಟಗಳು, ಬೆಲೆಗಳು, ವರ್ಗಗಳು ಮತ್ತು ಅವಧಿ ಮುಗಿಯುವ ದಿನಾಂಕಗಳು.</p>
+
+  <h3>ಹೊಸ ವಸ್ತು ಸೇರಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ವಸ್ತುಗಳ ಪಟ್ಟಿಯ ಮೇಲೆ <strong>➕ Add New Item</strong> ಕ್ಲಿಕ್ ಮಾಡಿ, ಎಡಭಾಗದ <strong>Add / Edit Item</strong> ಫಾರ್ಮ್ ತುಂಬಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ತುಂಬಿ: Item Name, Category, Vendor, Buy Rate (ನೀವು ಕೊಟ್ಟದ್ದು), Sell Price (ನೀವು ತೆಗೆದುಕೊಳ್ಳುವುದು — ಅದರ ಕೆಳಗೆ Margin ತೋರುತ್ತದೆ), GST %, <strong>Unit</strong> (pcs, kg, litre, metre… — kg, litre ಮತ್ತು ಇತರ ಅಳತೆ ಘಟಕಗಳಲ್ಲಿ 0.25 ನಂತಹ ಭಾಗ ಪ್ರಮಾಣಗಳು ಸಾಧ್ಯ), Stock (ಈಗ ನಿಮ್ಮ ಬಳಿ ಎಷ್ಟಿವೆ) ಮತ್ತು ಕನಿಷ್ಠ ಸ್ಟಾಕ್ ಮಟ್ಟ (ಎಚ್ಚರಿಕೆಯ ಮಿತಿ). ವಸ್ತು ಕೋಡ್‌ಗಾಗಿ <strong>🔍 Generate Smart Code</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಬೇಕಾದರೆ ಸೇರಿಸಿ: Sub Category, Barcode, MRP (ಬೆಲೆ ಲೆಕ್ಕ ಹಾಕಲು <strong>Calculate from MRP + Discount %</strong> ಬಳಸಿ), HSN Code (GST ಗಾಗಿ), Expiry Date (ಕೆಡುವ ವಸ್ತುಗಳಿಗೆ). ಭಾರತದಲ್ಲಿ 4 ಅಥವಾ ಅದಕ್ಕಿಂತ ಹೆಚ್ಚು ಅಂಕಿಯ HSN ಕೋಡ್ ನಮೂದಿಸಿದರೆ ಆ ಕೋಡ್‌ನ GST % ತಾನಾಗಿ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Save</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="tip">💡 <strong>ಮಾರ್ಜಿನ್ ಅನ್ನು ವೇಗವಾಗಿ ಬದಲಿಸುವುದು:</strong> Sell Price ಕೆಳಗಿನ <strong>Margin: x%</strong> ಮೇಲೆ ಮೌಸ್ ಇಟ್ಟು ವೀಲ್ ತಿರುಗಿಸಿ — ಪ್ರತಿ ಹೆಜ್ಜೆ ಮಾರ್ಜಿನ್ ಅನ್ನು 1% ಹೆಚ್ಚಿಸುತ್ತದೆ ಅಥವಾ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ (0.1% ಗಾಗಿ <strong>Ctrl</strong> ಹಿಡಿಯಿರಿ), Sell Price ಮತ್ತೆ Buy Rate ನಿಂದ ಲೆಕ್ಕವಾಗುತ್ತದೆ. ಆಮದು ಮಾಡಿದ ವಸ್ತುಗಳು 20% ನಿಂದ ಆರಂಭವಾಗುತ್ತವೆ, ಆದ್ದರಿಂದ ನಿಮಗೆ ಬೇಕಾದ ಮಾರ್ಜಿನ್ ಇಡಲು ಇದೇ ವೇಗದ ಮಾರ್ಗ.</div>
+
+  <h3>ವಸ್ತುಗಳನ್ನು ಅಳಿಸುವುದು</h3>
+  <p>ಎಂದಿಗೂ ಖರೀದಿಸದ, ಮಾರದ, ಹಿಂದಿರುಗಿಸದ ಅಥವಾ ಸ್ಥಳಾಂತರಿಸದ ವಸ್ತುವನ್ನು ಮಾತ್ರ ಅಳಿಸಬಹುದು. ಇತಿಹಾಸವಿರುವ ವಸ್ತುಗಳು Inventory ಯಲ್ಲಿ ಉಳಿಯುತ್ತವೆ, ಆದ್ದರಿಂದ ನಿಮ್ಮ ಬಿಲ್‌ಗಳು, ವರದಿಗಳು ಮತ್ತು ಸ್ಟಾಕ್ ದಾಖಲೆಗಳು ಪೂರ್ಣವಾಗಿರುತ್ತವೆ. ಅಳಿಸಿದ ಪ್ರತಿ ವಸ್ತುವನ್ನು <strong>Deletion Watcher</strong> ನಲ್ಲಿ ಇಡಲಾಗುತ್ತದೆ, ಅಲ್ಲಿಂದ ಅದರ ಸ್ಟಾಕ್ ಸಹಿತ ಮರುಸ್ಥಾಪಿಸಬಹುದು.</p>
+  <p><strong>ದಾಸ್ತಾನು ಆಮದಿನ ಮೂಲಕ ಬಂದ ವಸ್ತು</strong> ತಪ್ಪಾಗಿ ಆಮದಾಗಿದ್ದರೆ, ಅಡ್ಮಿನ್ ಅದನ್ನು ಅಳಿಸಬಹುದು (ಆಯ್ಕೆ ಮಾಡಿ → <strong>Delete Selected</strong> → ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್). ಇದು ಅದರ ಆರಂಭಿಕ ಸ್ಟಾಕ್ ಅನ್ನೂ ತೆಗೆಯುತ್ತದೆ; ದೃಢೀಕರಣ ಪ್ರಮಾಣ ಮತ್ತು ಮೌಲ್ಯ ತೋರಿಸುತ್ತದೆ. ಆ ವಸ್ತುವಿಗೆ ಏನನ್ನೂ ಖರೀದಿಸದೆ, ಮಾರದೆ ಅಥವಾ ಹಿಂದಿರುಗಿಸದೆ, ಅದರ ಸ್ಟಾಕ್ ಆಮದು ತಂದಷ್ಟೇ ಇದ್ದು, ಆಮದಿನ ಆರ್ಥಿಕ ವರ್ಷ ಮುಚ್ಚದಿರುವವರೆಗೆ ಮಾತ್ರ ಇದಕ್ಕೆ ಅನುಮತಿ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಬಳಸದ ಹಲವು ವಸ್ತುಗಳನ್ನು ಒಮ್ಮೆಗೇ ತೆಗೆಯಲು <strong>🧹 Clean Up Unused Items</strong> ಕ್ಲಿಕ್ ಮಾಡಿ (ಅಡ್ಮಿನ್‌ಗೆ ಮಾತ್ರ ಕಾಣುತ್ತದೆ). ಎಂದಿಗೂ ಖರೀದಿಸದ ಅಥವಾ ಮಾರದ ಪ್ರತಿ ವಸ್ತುವನ್ನು ಇದು ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ತೆಗೆಯಬೇಕಾದ ವಸ್ತುಗಳನ್ನು ಟಿಕ್ ಮಾಡಿ (ಹುಡುಕಾಟ ಪೆಟ್ಟಿಗೆ ಅಥವಾ <strong>Select All shown</strong> ಬಳಸಿ), <strong>🗑️ Delete Selected Items</strong> ಕ್ಲಿಕ್ ಮಾಡಿ ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್‌ನೊಂದಿಗೆ ದೃಢೀಕರಿಸಿ. ಮೊದಲು ನಿಮ್ಮ ಡೇಟಾದ ಬ್ಯಾಕಪ್ ಉಳಿಯುತ್ತದೆ.</div></div>
+
+  <h3>ಸ್ಟಾಕ್ ಬಣ್ಣದ ಸೂಚಕಗಳು</h3>
+  <table>
+    <tr><th>ಬಣ್ಣ</th><th>ಅರ್ಥ</th></tr>
+    <tr><td>🟢 OK</td><td>ಸ್ಟಾಕ್ ಸರಿಯಾಗಿದೆ</td></tr>
+    <tr><td>🟡 Low</td><td>ಸ್ಟಾಕ್ ಕನಿಷ್ಠ ಮಟ್ಟಕ್ಕಿಂತ ಕಡಿಮೆ — ಮತ್ತೆ ಆರ್ಡರ್ ಮಾಡುವುದನ್ನು ಪರಿಗಣಿಸಿ</td></tr>
+    <tr><td>🔴 Out</td><td>ಸ್ಟಾಕ್ ಮುಗಿದಿದೆ — 0 ಪ್ರಮಾಣ ಉಳಿದಿದೆ</td></tr>
+  </table>
+  <figure class="shot"><a href="manual_images/inventory.png" target="_blank"><img src="manual_images/inventory.png" alt="Inventory Management" loading="lazy"></a><figcaption>Inventory Management — ಎಡಭಾಗದಲ್ಲಿ Add / Edit Item ಫಾರ್ಮ್, ಬಲಭಾಗದಲ್ಲಿ ಪ್ರತಿ ವಸ್ತು ಅದರ Status ನೊಂದಿಗೆ.</figcaption></figure>
+
+  <h3>ದಾಸ್ತಾನು ವರದಿಗಳು</h3>
+  <p><strong>Inventory Reports</strong> ಪ್ಯಾನೆಲ್ (ಮುಖ್ಯ Inventory ಯಿಂದ ಪ್ರತ್ಯೇಕ) ಸ್ಟಾಕ್ ಮೌಲ್ಯಮಾಪನ ವರದಿಗಳು, ಚಲನೆಯ ಇತಿಹಾಸ ಮತ್ತು ವರ್ಗವಾರು ಸಾರಾಂಶಗಳನ್ನು ನೀಡುತ್ತದೆ. ಮಾಸಿಕ ಸ್ಟಾಕ್ ಲೆಕ್ಕಪರಿಶೋಧನೆಗೆ ಇದನ್ನು ಬಳಸಿ.</p>
+
+  <h3>ಆಡಿಟ್ ಟ್ರೇಲ್</h3>
+  <p><strong>Audit Trail</strong> ಟ್ಯಾಬ್ (Inventory Management ಒಳಗೆ) ಪ್ರತಿ ಸ್ಟಾಕ್ ಬದಲಾವಣೆಯನ್ನು — ಮಾರಾಟ, ಖರೀದಿ, ಹೊಂದಾಣಿಕೆ, ಹಿಂದಿರುಗಿಸುವಿಕೆ ಮತ್ತು ಆಮದು — ಒಂದು <strong>Value</strong> ಕಾಲಂ ಮತ್ತು ನೀವು ಫಿಲ್ಟರ್ ಮಾಡಿದ್ದಕ್ಕೆ ಚಾಲ್ತಿ <strong>Total value</strong> ನೊಂದಿಗೆ ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ. ಒಂದು ಬೃಹತ್ ಆಮದು ವ್ಯಾಪಾರಕ್ಕೆ ಎಷ್ಟು ಸ್ಟಾಕ್ ಮೌಲ್ಯ ತಂದಿತು ಎಂದು ನೋಡಲು Reason = "import" ಎಂದು ಫಿಲ್ಟರ್ ಮಾಡಿ. ಪ್ರಸ್ತುತ ಫಿಲ್ಟರ್ ಮಾಡಿದ ಪಟ್ಟಿ ಮುದ್ರಿಸಲು <strong>🖨️ Print Report</strong> ಬಳಸಿ. ಈ ಟ್ಯಾಬ್ ಓದಲು ಮಾತ್ರ — ವಸ್ತುವಿನ ಸ್ಟಾಕ್ ಸರಿಪಡಿಸಲು ಅಥವಾ ಅಳಿಸಲು Inventory Management ಟ್ಯಾಬ್‌ಗೆ ಹೋಗಿ.</p>
+
+  <h3>ಅವಧಿ ಮುಕ್ತಾಯದ ಎಚ್ಚರಿಕೆಗಳು</h3>
+  <p><strong>Expiry Alerts</strong> ಪ್ಯಾನೆಲ್ ಅವಧಿ ಮುಗಿಯುವ ದಿನಾಂಕ ಸಮೀಪಿಸುತ್ತಿರುವ ವಸ್ತುಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ. ವಸ್ತುಗಳು ಕಿತ್ತಳೆ (ಶೀಘ್ರದಲ್ಲೇ ಅವಧಿ ಮುಕ್ತಾಯ) ಅಥವಾ ಕೆಂಪು (ಅವಧಿ ಮುಗಿದಿದೆ) ಬಣ್ಣದಲ್ಲಿ ಗುರುತಾಗುತ್ತವೆ. <strong>Set Expiry</strong> ಅಥವಾ <strong>Print Report</strong> ಗಾಗಿ ಯಾವುದೇ ಸಾಲಿನ ಮೇಲೆ ರೈಟ್-ಕ್ಲಿಕ್ ಮಾಡಿ. ಮಾರುವ ಮೊದಲು ಅವಧಿ ಮುಗಿದ ಸ್ಟಾಕ್ ತೆಗೆಯಲು ಇದನ್ನು ಬಳಸಿ.</p>
+
+  <div class="warn">⚠ ಮಾರಾಟ ದಾಖಲಿಸಿದಾಗ (ಸ್ಟಾಕ್ ಕಡಿಮೆಯಾಗುತ್ತದೆ) ಅಥವಾ ಖರೀದಿ ದಾಖಲಿಸಿದಾಗ (ಸ್ಟಾಕ್ ಹೆಚ್ಚುತ್ತದೆ) ಸ್ಟಾಕ್ ಮಟ್ಟಗಳು ತಾನಾಗಿ ಬದಲಾಗುತ್ತವೆ. ಭೌತಿಕ ಸ್ಟಾಕ್ ಲೆಕ್ಕಪರಿಶೋಧನೆ ಹೊರತುಪಡಿಸಿ, ಎಂದಿಗೂ ಸ್ಟಾಕ್ ಅನ್ನು ಕೈಯಾರೆ ಸೇರಿಸಬೇಡಿ ಅಥವಾ ಕಳೆಯಬೇಡಿ.</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 8b -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 8b — ಕಡಿಮೆ ಸ್ಟಾಕ್ ಮೇಲ್ವಿಚಾರಣೆ</div>
+<div class="section" id="ch8b">
+  <h2>8b. ಕಡಿಮೆ ಸ್ಟಾಕ್ ಮೇಲ್ವಿಚಾರಣೆ</h2>
+  <p>Low Stock Monitor ತನ್ನ ಕನಿಷ್ಠ ಸ್ಟಾಕ್ ಮಟ್ಟದಲ್ಲಿ ಅಥವಾ ಅದಕ್ಕಿಂತ ಕಡಿಮೆ ಇರುವ ಪ್ರತಿ ವಸ್ತುವನ್ನು ಪಟ್ಟಿ ಮಾಡಿ, ಮತ್ತೆ ಆರ್ಡರ್ ಮಾಡಲು ಎರಡು ಮಾರ್ಗ ನೀಡುತ್ತದೆ: ಹೊಸ ವಸ್ತು ಮತ್ತು ಹೊಸ ಸರಬರಾಜುದಾರರನ್ನು ಒಟ್ಟಿಗೆ ನೋಂದಾಯಿಸಲು ತ್ವರಿತ ವಿಜಾರ್ಡ್, ಮತ್ತು ಸರಿಯಾದ ಖರೀದಿ ಆರ್ಡರ್ ಮಾಡಲು ಪೂರ್ಣ "Order from Vendor" ಪರದೆ. Purchase ಪ್ಯಾನೆಲ್‌ನ New Purchase ನಂತಲ್ಲದೆ, ಇಲ್ಲಿ ರಚಿಸುವ ಆರ್ಡರ್‌ಗಳು <strong>ಡ್ರಾಫ್ಟ್‌ಗಳು</strong> — ನೀವು ಅವುಗಳನ್ನು ಕಳುಹಿಸಿ ಬಂದ ಸರಕು ದಾಖಲಿಸುವವರೆಗೆ ಅವು ಸ್ಟಾಕ್ ಅಥವಾ ಸರಬರಾಜುದಾರರ ಬಾಕಿಯನ್ನು ಮುಟ್ಟುವುದಿಲ್ಲ.</p>
+
+  <h3>📋 Show Low Stock Suggestions</h3>
+  <p>ಕಡಿಮೆಯಾಗುತ್ತಿರುವ ಎಲ್ಲವನ್ನೂ ಒಮ್ಮೆಗೇ ಮತ್ತೆ ಆರ್ಡರ್ ಮಾಡುವ ವೇಗದ ಮಾರ್ಗ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Show Low Stock Suggestions</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಕನಿಷ್ಠ ಸ್ಟಾಕ್‌ಗಿಂತ ಕಡಿಮೆ ಇರುವ ಪ್ರತಿ ವಸ್ತು, ಸೂಚಿಸಿದ Order Qty, Rate, GST % ಮತ್ತು Vendor ನೊಂದಿಗೆ ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಆರ್ಡರ್ ಮಾಡಬೇಕಾದ ವಸ್ತುಗಳನ್ನು ಟಿಕ್ ಮಾಡಿ (ಅಥವಾ <strong>Select All</strong> / <strong>Invert</strong> ಬಳಸಿ) ಯಾವುದೇ Order Qty ಬದಲಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಪ್ರತಿ ಸರಬರಾಜುದಾರರಿಗೆ ಒಂದು ಆರ್ಡರ್ ಪಡೆಯಲು <strong>Group by vendor and create separate orders</strong> ಟಿಕ್ ಮಾಡಿಯೇ ಇಟ್ಟು, <strong>Create Orders for Ticked Items</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಹೊಸ ಆರ್ಡರ್‌ಗಳು ಹಿಂದಿನ ಪಟ್ಟಿಯಲ್ಲಿ ಡ್ರಾಫ್ಟ್‌ಗಳಾಗಿ ಕಾಣುತ್ತವೆ.</div></div>
+  <figure class="shot"><a href="manual_images/low-stock-suggestions.png" target="_blank"><img src="manual_images/low-stock-suggestions.png" alt="Low Stock Purchase Suggestions" loading="lazy"></a><figcaption>Low Stock Purchase Suggestions — ವಸ್ತುಗಳನ್ನು ಟಿಕ್ ಮಾಡಿ, ಪ್ರತಿ ಸರಬರಾಜುದಾರರಿಗೆ ಒಂದು ಆರ್ಡರ್ ರಚಿಸಿ.</figcaption></figure>
+
+  <h3>⚡ Quick New Order</h3>
+  <p>ನಿಜವಾಗಿಯೂ ಹೊಸ ಸರಬರಾಜುದಾರರಿಂದ ನಿಜವಾಗಿಯೂ ಹೊಸ ಉತ್ಪನ್ನವನ್ನು ಒಂದೇ ಬಾರಿಗೆ ನೋಂದಾಯಿಸುವಾಗ ಇದನ್ನು ಬಳಸಿ — ವಸ್ತುವಿನ ವಿವರಗಳು ಮತ್ತು ಸರಬರಾಜುದಾರರ ವಿವರಗಳು ಅಕ್ಕಪಕ್ಕ, ಕೊನೆಗೆ ಒಂದು ಡ್ರಾಫ್ಟ್ ಖರೀದಿ ಆರ್ಡರ್.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚡ Quick New Order</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>1️⃣ Add / Edit Item</strong> — Vendor (ಹೊಸ ಸರಬರಾಜುದಾರರ ಹೆಸರು ಟೈಪ್ ಮಾಡಿ), Item Name, Category, ನಂತರ ಕೋಡ್‌ಗಾಗಿ <strong>🔍 Generate</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. Buy Rate, Sell Price, GST%, HSN, Stock, Min Stock ತುಂಬಿ. ಉತ್ಪನ್ನದ ಬಾರ್‌ಕೋಡ್ ಅನ್ನು <strong>📱 Scan with Phone</strong> ನಿಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ, ಅಥವಾ ಖಾಲಿ ಬಿಟ್ಟು ನಂತರ ಸೇರಿಸಿ. <strong>💾 Save Item to Inventory</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>2️⃣ Vendor Details & Link</strong> — ಸರಬರಾಜುದಾರರ ಫೋನ್, ವಿಳಾಸ, TIN/GSTIN ಮತ್ತು ಇಮೇಲ್ ತುಂಬಿ, ಜೋಡಿಸಲು ಮತ್ತು ಡ್ರಾಫ್ಟ್ PO ಸಾಲು ರಚಿಸಲು ಉಳಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಬೇಕಾದರೆ ಮುನ್ನೋಟ ಸಾಲಿನಲ್ಲಿ Order Qty ಬದಲಿಸಿ — ಒಟ್ಟು ಮೊತ್ತ GST ಯೊಂದಿಗೆ ಮತ್ತೆ ಲೆಕ್ಕವಾಗುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>📤 Send Purchase Order</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. PO SENT ಎಂದು ಗುರುತಿಸಲ್ಪಟ್ಟು ಕೆಳಗೆ <strong>Existing Purchase Orders</strong> ನಲ್ಲಿ ಕಾಣುತ್ತದೆ.</div></div>
+
+  <h3>Order from Vendor</h3>
+  <p>ನೀವು ಈಗಾಗಲೇ ಖರೀದಿಸುವ ಸರಬರಾಜುದಾರರಿಂದ ಸಾಮಾನ್ಯ ಮರು-ಆರ್ಡರ್‌ಗೆ ಇದನ್ನು ಬಳಸಿ — ಇದು Purchase ಪ್ಯಾನೆಲ್‌ನ New Purchase ಪರದೆಯಂತೆಯೇ ಬಹುತೇಕ ಕೆಲಸ ಮಾಡುತ್ತದೆ (ಅದೇ ಸರಬರಾಜುದಾರ-ಮೊದಲು ಆಟೋ-ಫಿಲ್, ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಸೇರಿಸುವುದು, ಪ್ರತಿ ಸಾಲಿನ ಬಾರ್‌ಕೋಡ್ ✓/+📷/🗑 ಸೂಚಕಗಳು — ಪೂರ್ಣ ಬಾರ್‌ಕೋಡ್ ವಿವರಣೆಗೆ ಅಧ್ಯಾಯ 10 ನೋಡಿ), ಒಂದು ಮುಖ್ಯ ವ್ಯತ್ಯಾಸದೊಂದಿಗೆ: ಇಲ್ಲಿ ಉಳಿಸಿದರೆ ತಕ್ಷಣದ ಖರೀದಿಯಲ್ಲ, <strong>ಡ್ರಾಫ್ಟ್ ಖರೀದಿ ಆರ್ಡರ್</strong> ರಚನೆಯಾಗುತ್ತದೆ. ಆರ್ಡರ್ ಕಳುಹಿಸಿ ನಂತರ ಬರುವವರೆಗೆ ಸ್ಟಾಕ್‌ಗೂ ಸರಬರಾಜುದಾರರ ಬಾಕಿಗೂ ಏನೂ ಸೇರುವುದಿಲ್ಲ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಸರಬರಾಜುದಾರರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ — ಅವರ ಸಾಮಾನ್ಯ ವಸ್ತುಗಳು Order Items ಕೋಷ್ಟಕದಲ್ಲಿ ತಾನಾಗಿ ತುಂಬುತ್ತವೆ, ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ ಟಿಕ್ ಆಗಿರುತ್ತವೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಈ ಬಾರಿ ಆರ್ಡರ್ ಮಾಡಬೇಡದವುಗಳ ಟಿಕ್ ತೆಗೆಯಿರಿ, ಪ್ರಮಾಣಗಳನ್ನು ಬದಲಿಸಿ, ಅಥವಾ Purchase ಪ್ಯಾನೆಲ್‌ನಂತೆಯೇ ಹೊಸ ವಸ್ತುಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ/ಸೇರಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಡ್ರಾಫ್ಟ್ ಉಳಿಸಲು OK ಕ್ಲಿಕ್ ಮಾಡಿ, ಸಿದ್ಧವಾದಾಗ <strong>Existing Purchase Orders</strong> ನಿಂದ ಕಳುಹಿಸಿ.</div></div>
+
+  <h3>Existing Purchase Orders</h3>
+  <p>ನೀವು ರಚಿಸಿದ ಪ್ರತಿ ಖರೀದಿ ಆರ್ಡರ್‌ನ ಪಟ್ಟಿಯನ್ನು (ಮೇಲಿನ ಯಾವುದೇ ಮಾರ್ಗದಿಂದ) ಬಣ್ಣದ ಸ್ಥಿತಿ ಚುಕ್ಕೆಯೊಂದಿಗೆ ತೆರೆಯುತ್ತದೆ: <strong>ಬೂದು</strong> = ಡ್ರಾಫ್ಟ್, <strong>ಕಿತ್ತಳೆ</strong> = ಕಳುಹಿಸಲಾಗಿದೆ, <strong>ನೀಲಿ</strong> = ಬಂದಿದೆ, <strong>ಹಸಿರು</strong> = ಪೂರ್ಣ (ಬಂದು ಪೂರ್ತಿ ಪಾವತಿಯಾಗಿದೆ). ಇಲ್ಲಿಂದ ಡ್ರಾಫ್ಟ್ ಆರ್ಡರ್ ಕಳುಹಿಸಬಹುದು, ಕಳುಹಿಸಿದ/ಬಂದ ಆರ್ಡರ್‌ಗೆ ಪಾವತಿ ದಾಖಲಿಸಬಹುದು, ಸರಕು ಬಂದಿದೆ ಎಂದು ಗುರುತಿಸಬಹುದು. ಡ್ರಾಫ್ಟ್/ರದ್ದಾದ/ಪೂರ್ಣಗೊಂಡ ಆರ್ಡರ್ ಅನ್ನು <strong>🗑️ Delete</strong> ಮಾಡಲು, ಅಥವಾ ಈಗಾಗಲೇ ಕಳುಹಿಸಿದ್ದನ್ನು <strong>❌ Cancel</strong> ಮಾಡಲು ಸಾಲಿನ ಮೇಲೆ ರೈಟ್-ಕ್ಲಿಕ್ ಮಾಡಿ.</p>
+
+  <div class="good">✅ ಸರಕು ದಾಖಲಿಸಲು ಸಿದ್ಧವಾದಾಗ, Purchase ಪ್ಯಾನೆಲ್ → <strong>📋 Load from PO</strong> ಗೆ ಹೋಗಿ ಆರ್ಡರ್ ಆಯ್ಕೆ ಮಾಡಿ — ಅದು ಸರಬರಾಜುದಾರ ಮತ್ತು ವಸ್ತುಗಳನ್ನು ಸಾಮಾನ್ಯ New Purchase ಫಾರ್ಮ್‌ಗೆ ಲೋಡ್ ಮಾಡುತ್ತದೆ, ಉಳಿಸುವ ಮೊದಲು ನೀವು ಪರಿಶೀಲಿಸಬಹುದು. ಆ ಉಳಿಸುವಿಕೆಯೇ ಕೊನೆಗೆ ಸ್ಟಾಕ್ ಮತ್ತು ಸರಬರಾಜುದಾರರಿಗೆ ಕೊಡಬೇಕಾದ ಬಾಕಿಯನ್ನು ಬದಲಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ PO ಒಂದೇ ಅವುಗಳ ಮೇಲೆ ಎಂದಿಗೂ ಪರಿಣಾಮ ಬೀರುವುದಿಲ್ಲ.</div>
+
+  <div class="tip">💡 ಹೊಸ ವಸ್ತು + ಹೊಸ ಸರಬರಾಜುದಾರ ಒಟ್ಟಿಗೆ ಇದ್ದಾಗ ಮಾತ್ರ Quick New Order ಆಯ್ಕೆ ಮಾಡಿ. ಬೇರೆ ಯಾವುದಕ್ಕೂ — ಹಳೆಯ ಸರಬರಾಜುದಾರರಿಂದ ಹೊಸ ವಸ್ತು, ಹೊಸ ಸರಬರಾಜುದಾರರಿಂದ ಹಳೆಯ ವಸ್ತು, ಅಥವಾ ಸಾಮಾನ್ಯ ಮರು-ಆರ್ಡರ್ — Order from Vendor ಬಳಸಿ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8c -->
+<div class="chapter-banner" data-for="production">ಅಧ್ಯಾಯ 8c — ಉತ್ಪಾದನೆ <span class="for-badge">ತಯಾರಕರು, ರೆಸ್ಟೋರೆಂಟ್‌ಗಳು ಮತ್ತು ಹೋಟೆಲ್‌ಗಳಿಗೆ</span></div>
+<div class="section" id="ch8c" data-for="production">
+  <h2>8c. ಉತ್ಪಾದನೆ (ನಿಮ್ಮ ಉತ್ಪನ್ನಗಳನ್ನು ನೀವೇ ತಯಾರಿಸುವುದು)</h2>
+  <div class="tip">💡 ರೆಸ್ಟೋರೆಂಟ್ ಅಥವಾ ಹೋಟೆಲ್‌ನಲ್ಲಿ <strong>🏭 Production</strong> ಯಾವಾಗಲೂ ಇರುತ್ತದೆ (ಅವುಗಳ ರೆಸಿಪಿಗಳು ಅಲ್ಲೇ ಇರುತ್ತವೆ). ಅಂಗಡಿ ಅಥವಾ ವ್ಯಾಪಾರ ಸಂಸ್ಥೆಗೆ, <strong>Settings → 🏢 Company</strong> ನಲ್ಲಿ <strong>We make our own products</strong> ಟಿಕ್ ಮಾಡಿ Accelent ಮುಚ್ಚಿ ಮತ್ತೆ ತೆರೆದ ನಂತರ ಇದು ಕಾಣುತ್ತದೆ (ಈಗಾಗಲೇ ರೆಸಿಪಿಗಳಿದ್ದರೆ ತಾನಾಗಿ ಕಾಣುತ್ತದೆ).</div>
+  <p>ನೀವು ಮಾರುವುದನ್ನು ನೀವೇ ತಯಾರಿಸಿದರೆ — ಕೇಕ್‌ಗಳು, ಪೀಠೋಪಕರಣ, ಉಡುಪುಗಳು, ಮಸಾಲೆಗಳು, ಜೋಡಿಸಿ ಮಾಡುವ ವಸ್ತುಗಳು — Accelent ನಿಮಗಾಗಿ ಸ್ಟಾಕ್ ಮತ್ತು ವೆಚ್ಚವನ್ನು ಸರಿಯಾಗಿ ಇಡುತ್ತದೆ. ನೀವು ಒಮ್ಮೆ <strong>ರೆಸಿಪಿ</strong> ಬರೆಯುತ್ತೀರಿ (ಒಂದು ಬ್ಯಾಚ್‌ಗೆ ಏನು ಬೇಕು); ಪ್ರತಿ ಬಾರಿ ಏನಾದರೂ ತಯಾರಿಸಿದಾಗ, Accelent ಸಾಮಗ್ರಿಗಳನ್ನು ಸ್ಟಾಕ್‌ನಿಂದ ತೆಗೆದು, ತಯಾರಾದ ವಸ್ತುಗಳನ್ನು ಸೇರಿಸಿ, ಪ್ರತಿಯೊಂದಕ್ಕೆ ಎಷ್ಟು ವೆಚ್ಚವಾಯಿತು ಎಂದು ಲೆಕ್ಕ ಹಾಕುತ್ತದೆ. <strong>Inventory → 🏭 Production</strong> ನಿಂದ ತೆರೆಯಿರಿ.</p>
+
+  <h3>ಆರಂಭಿಸುವ ಮೊದಲು: ವಸ್ತುಗಳು ಮತ್ತು ಘಟಕಗಳು</h3>
+  <p>ಎಲ್ಲವೂ Inventory ವಸ್ತುವೇ: <strong>ಸಾಮಗ್ರಿಗಳು</strong> (ಚಾಕೊಲೇಟ್ ಕೇಕ್‌ಗೆ: ಕಡಲೆಹಿಟ್ಟು, ಚಾಕೊಲೇಟ್, ಸಕ್ಕರೆ, ತುಪ್ಪ) ಮತ್ತು <strong>ತಯಾರಾದ ಉತ್ಪನ್ನ</strong> (ಕೇಕ್).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Inventory ಫಾರ್ಮ್‌ನಲ್ಲಿ ಪ್ರತಿ ವಸ್ತುವಿಗೆ ಅದರ <strong>Unit</strong> ನೀಡಿ: <em>pcs</em>, <em>box</em> ಮತ್ತು ಇತರ ಎಣಿಕೆಯ ಘಟಕಗಳು ಪೂರ್ಣ ಸಂಖ್ಯೆಗಳು; <em>kg</em>, <em>g</em>, <em>litre</em>, <em>ml</em>, <em>metre</em> ಮತ್ತು ಇತರ ಅಳತೆ ಘಟಕಗಳಲ್ಲಿ 0.25 kg ನಂತಹ ಭಾಗ ಪ್ರಮಾಣಗಳು ಸಾಧ್ಯ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಸಾಮಗ್ರಿಗಳನ್ನು ನೀವು ಸಾಮಾನ್ಯವಾಗಿ ಖರೀದಿಸುವಂತೆಯೇ <strong>Purchases</strong> ಮೂಲಕ ತನ್ನಿ. ಅದು ಅವನ್ನು ಸ್ಟಾಕ್‌ಗೆ ಸೇರಿಸುತ್ತದೆ <em>ಮತ್ತು</em> ಅವುಗಳ ವೆಚ್ಚವನ್ನು Accelent ಗೆ ತಿಳಿಸುತ್ತದೆ — ಅದರಿಂದಲೇ ನಿಮ್ಮ ಉತ್ಪನ್ನದ ವೆಚ್ಚ ಲೆಕ್ಕವಾಗುತ್ತದೆ.</div></div>
+
+  <h3>ರೆಸಿಪಿ ಬರೆಯುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Production → 🧾 Recipes</strong>, ನಂತರ ಮೇಲಿನ ಬಲಭಾಗದಲ್ಲಿ <strong>➕ New Recipe</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Finished item:</strong> ಉತ್ಪನ್ನವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ, ಅಥವಾ ಅದರ ಹೆಸರು ಟೈಪ್ ಮಾಡಿ. ಅದು ಇನ್ನೂ Inventory ಯಲ್ಲಿ ಇಲ್ಲದಿದ್ದರೆ, ಉಳಿಸುವಾಗ Accelent ಅದನ್ನು ಸೇರಿಸಲು ಮುಂದಾಗುತ್ತದೆ (ಹೆಸರು, ಘಟಕ, ಮಾರಾಟ ಬೆಲೆ ಮತ್ತು GST).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>One batch makes:</strong> ಒಂದು ಬ್ಯಾಚ್ ಎಷ್ಟು ನೀಡುತ್ತದೆ, ಉದಾ. 10 ಕೇಕ್‌ಗಳು.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Materials for one batch:</strong> ಪ್ರತಿಯೊಂದಕ್ಕೂ <strong>➕ Add Material</strong> ಕ್ಲಿಕ್ ಮಾಡಿ, ಒಂದು ಬ್ಯಾಚ್‌ಗೆ ಬೇಕಾದ ಪ್ರಮಾಣದೊಂದಿಗೆ (ಉದಾ. ಕಡಲೆಹಿಟ್ಟು 1 kg, ಚಾಕೊಲೇಟ್ 0.5 kg, ಸಕ್ಕರೆ 0.8 kg, ತುಪ್ಪ 1 litre) ಮತ್ತು, ಸ್ವಲ್ಪ ವ್ಯರ್ಥವಾದರೆ, <strong>Wastage %</strong>. ಪಟ್ಟಿಯ ಕೆಳಗೆ, ಇಂದಿನ ಸರಾಸರಿ ವೆಚ್ಚದಲ್ಲಿ ಒಂದು ಬ್ಯಾಚ್‌ನ ಸಾಮಗ್ರಿ ವೆಚ್ಚ ಮತ್ತು ಪ್ರತಿ ವಸ್ತುವಿನ ವೆಚ್ಚವನ್ನು Accelent ತೋರಿಸುತ್ತದೆ. <strong>In stock</strong> ಕಾಲಂ ಪ್ರತಿ ಸಾಮಗ್ರಿ ಸ್ಟೋರ್‌ನಲ್ಲಿ ಎಷ್ಟಿದೆ ಎಂದು ತೋರಿಸುತ್ತದೆ, ಒಂದು ಬ್ಯಾಚ್‌ಗೆ ಅದಕ್ಕಿಂತ ಹೆಚ್ಚು ಬೇಕಾದರೆ 🔴 ತೋರಿಸುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>💾 Save Recipe</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ರೆಸಿಪಿಯನ್ನು ಒಮ್ಮೆ ಬರೆದು ಆ ಉತ್ಪನ್ನ ತಯಾರಿಸುವ ಪ್ರತಿ ಬಾರಿ ಬಳಸಿ.</div></div>
+
+  <p>ನಿಮ್ಮ ರೆಸಿಪಿಗಳು ಎಡಭಾಗದಲ್ಲಿ ಕಾರ್ಡ್‌ಗಳಾಗಿ ಪಟ್ಟಿಯಾಗುತ್ತವೆ. ಪ್ರತಿ ಕಾರ್ಡ್ ಒಂದು ಬ್ಯಾಚ್ ಎಷ್ಟು ಮಾಡುತ್ತದೆ, ಎಷ್ಟು ಸಾಮಗ್ರಿಗಳನ್ನು ಬಳಸುತ್ತದೆ, ಮತ್ತು ಅದು <strong>🍳 Made to order</strong> ಅಥವಾ <strong>🏭 Made in batches</strong> ಎಂದು ತೋರಿಸುತ್ತದೆ. ರೆಸಿಪಿ ತೆರೆದು ಬದಲಿಸಲು ಕಾರ್ಡ್ ಕ್ಲಿಕ್ ಮಾಡಿ; ತೆರೆದದ್ದಕ್ಕೆ ದಪ್ಪ ಅಂಚು ಇರುತ್ತದೆ. ರೆಸಿಪಿಯನ್ನು ಬೇಗನೆ ಹುಡುಕಲು <strong>Search recipes</strong> ನಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ.</p>
+
+  <h3>ತಯಾರಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Make</strong> ಟ್ಯಾಬ್: ವಸ್ತು ಮತ್ತು <strong>ಎಷ್ಟು</strong> ತಯಾರಿಸಬೇಕು ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ. ಕೋಷ್ಟಕ ಬೇಕಾದ ಪ್ರತಿ ಸಾಮಗ್ರಿ, ಸ್ಟಾಕ್‌ನಲ್ಲಿರುವುದು, ಮತ್ತು ಕೊರತೆಯಿರುವುದನ್ನು ತೋರಿಸುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಬೇಕಾದರೆ ಈ ಬಾರಿಯ <strong>Labour / other costs</strong> (ಕೂಲಿ, ಗ್ಯಾಸ್, ವಿದ್ಯುತ್) ನಮೂದಿಸಿ — ಅವು ನೀವು ತಯಾರಿಸಿದ್ದರ ವೆಚ್ಚಕ್ಕೆ ಸೇರುತ್ತವೆ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🏭 Make</strong> ಕ್ಲಿಕ್ ಮಾಡಿ ದೃಢೀಕರಿಸಿ. ಸಾಮಗ್ರಿಗಳು ಕಡಿಮೆಯಾಗುತ್ತವೆ, ತಯಾರಾದ ವಸ್ತುಗಳು ಹೆಚ್ಚುತ್ತವೆ, ಈ ಬಾರಿಗೆ <strong>PRD-0001</strong> ನಂತಹ ಸಂಖ್ಯೆ ಸಿಗುತ್ತದೆ. ಇದು ಪ್ರತಿ ವಸ್ತುವಿನ <strong>Item History</strong> ನಲ್ಲಿ <em>Production</em> ಆಗಿ ಕಾಣುತ್ತದೆ.</div></div>
+  <div class="tip">💡 ಯಾವುದಾದರೂ ಸಾಮಗ್ರಿ ಕೊರತೆಯಿದ್ದರೆ, <strong>Make</strong> ಆಫ್ ಆಗಿ ಕೊರತೆ ತೋರುತ್ತದೆ — ಮೊದಲು ಆ ಸಾಮಗ್ರಿ ಖರೀದಿಸಿ ಅಥವಾ ತಯಾರಿಸಿ, ಅಥವಾ ಕಡಿಮೆ ತಯಾರಿಸಿ. ಯಾವುದಾದರೂ ಸಾಮಗ್ರಿಯಲ್ಲಿ <em>No cost known</em> ಕಂಡರೆ, ಅದನ್ನು ಎಂದಿಗೂ Purchases ಮೂಲಕ ಖರೀದಿಸಿಲ್ಲ ಮತ್ತು Buy Rate ಇಲ್ಲ: Inventory ಯಲ್ಲಿ ಅದರ Buy Rate ಇಡಿ, ಇಲ್ಲದಿದ್ದರೆ ಉತ್ಪನ್ನದ ವೆಚ್ಚದಲ್ಲಿ ಅದು ಸೇರುವುದಿಲ್ಲ. ಕೊರತೆಯಿರುವ ಸಾಮಗ್ರಿಯನ್ನು ಕೋಷ್ಟಕದಲ್ಲಿ 🔴 ನಿಂದ ಗುರುತಿಸಲಾಗುತ್ತದೆ.</div>
+
+  <h3>ಎಷ್ಟು ವೆಚ್ಚವಾಗುತ್ತದೆ</h3>
+  <p>ಒಂದು ಬಾರಿಯ ವೆಚ್ಚ = ಬಳಸಿದ ಸಾಮಗ್ರಿಗಳು (ಅವುಗಳ ಸರಾಸರಿ ಖರೀದಿ ವೆಚ್ಚದಲ್ಲಿ) + ಕೂಲಿ ಮತ್ತು ಇತರ ವೆಚ್ಚಗಳು. ತಯಾರಾದ ವಸ್ತುವಿನ <strong>Buy Rate</strong> ಅದರ ಸರಾಸರಿ ಉತ್ಪಾದನಾ ವೆಚ್ಚವಾಗುತ್ತದೆ, ಆದ್ದರಿಂದ ನಿಮ್ಮ ಸ್ಟಾಕ್ ಮೌಲ್ಯ ಮತ್ತು ಪ್ರತಿ ಮಾರಾಟದ ಲಾಭ ಆ ವಸ್ತು ತಯಾರಿಸಲು ನಿಜವಾಗಿ ಆದ ವೆಚ್ಚದಿಂದ ಲೆಕ್ಕವಾಗುತ್ತದೆ. ತಯಾರಾದ ವಸ್ತುಗಳನ್ನು Sales ನಲ್ಲಿ ಸಾಮಾನ್ಯವಾಗಿ ಮಾರಿ.</p>
+
+  <h3>ಆರ್ಡರ್ ಮೇಲೆ ತಯಾರಾಗುವ ಖಾದ್ಯಗಳು (ರೆಸ್ಟೋರೆಂಟ್‌ಗಳು)</h3>
+  <p>ರೆಸ್ಟೋರೆಂಟ್ ಖಾದ್ಯವನ್ನು ಮುಂಚಿತವಾಗಿ ತಯಾರಿಸುವುದಿಲ್ಲ, ಆರ್ಡರ್ ಬಂದಾಗ ಬೇಯಿಸಲಾಗುತ್ತದೆ. ಅದರ ರೆಸಿಪಿಯಲ್ಲಿ <strong>Made to order</strong> ಟಿಕ್ ಮಾಡಿ: ಆಗ ಖಾದ್ಯಕ್ಕೆ ಸ್ವಂತ ಸ್ಟಾಕ್ ಇರುವುದಿಲ್ಲ, ಮಾರಿದ ಪ್ರತಿ ಬಾರಿ ಅದರ ಪದಾರ್ಥಗಳು ಸ್ಟಾಕ್‌ನಿಂದ ಕಡಿಮೆಯಾಗುತ್ತವೆ (ಬಿಲ್ ಬದಲಿಸಿದರೆ ಅಥವಾ ಅಳಿಸಿದರೆ ಅವು ಮರಳುತ್ತವೆ). ಸ್ಟೋರ್‌ನಲ್ಲಿ ಅದರ ಪದಾರ್ಥಗಳು ಸಾಕಷ್ಟಿದ್ದಾಗ ಮಾತ್ರ ಖಾದ್ಯವನ್ನು ಮಾರಬಹುದು. Made to order ಖಾದ್ಯಗಳು Make ಟ್ಯಾಬ್‌ನಲ್ಲಿ ಪಟ್ಟಿಯಾಗುವುದಿಲ್ಲ, ಕಡಿಮೆ-ಸ್ಟಾಕ್ ಪಟ್ಟಿಗಳಿಂದಲೂ ಹೊರಗಿರುತ್ತವೆ. <a href="#ch9b">ಅಧ್ಯಾಯ 9b — ರೆಸ್ಟೋರೆಂಟ್</a> ನೋಡಿ. Made to order ಖಾದ್ಯವನ್ನು ಎಂದಿಗೂ ಖರೀದಿಸುವುದಿಲ್ಲ: ಅದನ್ನು ಒಳಗೊಂಡ ಖರೀದಿ, ಖರೀದಿ ಆರ್ಡರ್ ಅಥವಾ ಫೋನ್ ಖರೀದಿ ತಿರಸ್ಕೃತವಾಗುತ್ತದೆ, ಬದಲಿಗೆ ಅದರ ಪದಾರ್ಥಗಳನ್ನು ಖರೀದಿಸಿ ಎಂಬ ಸಂದೇಶ ಬರುತ್ತದೆ.</p>
+
+  <h3>ಇತಿಹಾಸ ಮತ್ತು ರದ್ದು</h3>
+  <p><strong>📜 History</strong> ಟ್ಯಾಬ್ ಪ್ರತಿ ಬಾರಿಯನ್ನು ಅದು ಬಳಸಿದ ಸಾಮಗ್ರಿಗಳು ಮತ್ತು ವೆಚ್ಚದೊಂದಿಗೆ ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ. ಯಾವುದಾದರೂ ಬಾರಿ ತಪ್ಪಾಗಿದ್ದರೆ, ಅಡ್ಮಿನ್ ಅದನ್ನು ಆಯ್ಕೆ ಮಾಡಿ <strong>↩ Undo Run</strong> ಕ್ಲಿಕ್ ಮಾಡಬಹುದು: ಸಾಮಗ್ರಿಗಳು ಸ್ಟಾಕ್‌ಗೆ ಮರಳುತ್ತವೆ, ಅದು ತಯಾರಿಸಿದ ವಸ್ತುಗಳು ತೆಗೆಯಲ್ಪಡುತ್ತವೆ, ವಸ್ತುವಿನ ವೆಚ್ಚ ಹಿಂದಿನಂತಾಗುತ್ತದೆ. ಒಂದು ವಸ್ತುವಿನ ಕೊನೆಯ ಬಾರಿಯನ್ನು ಮಾತ್ರ ರದ್ದು ಮಾಡಬಹುದು, ಅದೂ ಅದು ತಯಾರಿಸಿದ್ದೆಲ್ಲ ಇನ್ನೂ ಸ್ಟಾಕ್‌ನಲ್ಲಿದ್ದಾಗ ಮಾತ್ರ.</p>
+
+  <div class="tip">💡 Production ಬಳಸಲು ಸಿಬ್ಬಂದಿಗೆ <strong>Edit inventory</strong> ಅನುಮತಿ ಬೇಕು. <strong>See purchase costs</strong> ಇಲ್ಲದೆ ಅವರು ವಸ್ತುಗಳನ್ನು ತಯಾರಿಸಬಹುದು ಆದರೆ ಯಾವುದೇ ವೆಚ್ಚ ನೋಡಲಾಗುವುದಿಲ್ಲ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9 -->
+<div class="chapter-banner" data-for="general">ಅಧ್ಯಾಯ 9 — ಮಾರಾಟ <span class="for-badge">ಅಂಗಡಿಗಳು, ವ್ಯಾಪಾರಿಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗೆ</span></div>
+<div class="section" id="ch9" data-for="general">
+  <h2>9. ಮಾರಾಟ ಪ್ಯಾನೆಲ್</h2>
+  <p>Sales ಪ್ಯಾನೆಲ್‌ನಲ್ಲಿ ನೀವು ಗ್ರಾಹಕರ ಇನ್‌ವಾಯ್ಸ್‌ಗಳನ್ನು ರಚಿಸುತ್ತೀರಿ. ಪ್ರತಿ ಮಾರಾಟವೂ ಇಲ್ಲಿ ದಾಖಲಾಗುತ್ತದೆ.</p>
+
+  <h3>ಹೊಸ ಇನ್‌ವಾಯ್ಸ್ ರಚಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Sales ಪ್ಯಾನೆಲ್‌ನ ಎಡಭಾಗ <strong>Invoice Form</strong>. ಗ್ರಾಹಕರ ಹೆಸರು ನಮೂದಿಸಿ — ಅವರು ಪರಿಚಿತ ಪಕ್ಷವಾದರೆ, ಅವರ ಬಾಕಿ ಕಾಣುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ಪಾವತಿ ವಿಧಾನ</strong> ಆಯ್ಕೆ ಮಾಡಿ: Cash, Bank, UPI, ಅಥವಾ Credit (ಸಾಲ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಫೋನ್ ಕ್ಯಾಮೆರಾದಿಂದ ಉತ್ಪನ್ನದ ಬಾರ್‌ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಲು <strong>📱 Scan with Phone</strong>, ಅಥವಾ ನಿಮ್ಮ ದಾಸ್ತಾನಿನಿಂದ ಉತ್ಪನ್ನಗಳನ್ನು ಹುಡುಕಿ ಆಯ್ಕೆ ಮಾಡಲು <strong>➕ Add Item</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಪ್ರಮಾಣಗಳನ್ನು ಬದಲಿಸಿ. ಒಟ್ಟು ತಾನಾಗಿ ಬದಲಾಗುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">ಬೇಕಾದರೆ ರಿಯಾಯಿತಿ ಮೊತ್ತ ಅಥವಾ ಹೆಚ್ಚುವರಿ ಶುಲ್ಕ (P&amp;F) ನಮೂದಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>💾 Save Invoice</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಇನ್‌ವಾಯ್ಸ್ ಉಳಿಯುತ್ತದೆ, ಸ್ಟಾಕ್ ಕಡಿಮೆಯಾಗುತ್ತದೆ, ಗ್ರಾಹಕರ ಬಾಕಿ ಬದಲಾಗುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">ಇನ್‌ವಾಯ್ಸ್ ಮುದ್ರಿಸಲು <strong>🖨 Print</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಗ್ರಾಹಕರಿಗೆ WhatsApp ನಲ್ಲಿ ಕಳುಹಿಸಲು, ಕೆಳಗೆ <em>WhatsApp ನಲ್ಲಿ ಬಿಲ್ ಕಳುಹಿಸುವುದು</em> ನೋಡಿ.</div></div>
+
+  <figure class="shot"><a href="manual_images/sales-invoice.png" target="_blank"><img src="manual_images/sales-invoice.png" alt="Create Invoices" loading="lazy"></a><figcaption>ಇನ್‌ವಾಯ್ಸ್ ರಚನೆ — ಎಡಭಾಗದಲ್ಲಿ ಗ್ರಾಹಕರ ವಿವರಗಳು, ಬಲಭಾಗದಲ್ಲಿ ವಸ್ತುಗಳು ಮತ್ತು ಒಟ್ಟುಗಳು, ಕೆಳಗೆ ಉಳಿಸಿದ ಇನ್‌ವಾಯ್ಸ್‌ಗಳು.</figcaption></figure>
+
+  <h3>WhatsApp ನಲ್ಲಿ ಬಿಲ್ ಕಳುಹಿಸುವುದು</h3>
+  <p>Accelent ಬಿಲ್ಲನ್ನೇ ಕಳುಹಿಸುತ್ತದೆ: ಮೂಲ ಇನ್‌ವಾಯ್ಸ್‌ನ PDF, ಮುದ್ರಿಸಿದಂತೆಯೇ, <em>Original for Recipient</em> ಎಂದು ಗುರುತಿಸಿ, ನೀವು ಸೇರಿಸಿದ್ದರೆ ನಿಮ್ಮ ಸಹಿ ಮತ್ತು ಮುದ್ರೆಯೊಂದಿಗೆ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಉಳಿಸಿದ ಇನ್‌ವಾಯ್ಸ್‌ಗಳ ಪಟ್ಟಿಯಲ್ಲಿ, ಆ ಇನ್‌ವಾಯ್ಸ್‌ನ <strong>W</strong> ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ → <strong>📄 Send the bill (PDF)</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent PDF ಉಳಿಸಿ, ನಕಲಿಸಿ, ಗ್ರಾಹಕರ WhatsApp ಚಾಟ್ ಅನ್ನು ಒಂದು ಚಿಕ್ಕ ಸಂದೇಶದೊಂದಿಗೆ ತೆರೆಯುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಚಾಟ್‌ನಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ, ಬಿಲ್ ಲಗತ್ತಿಸಲು <strong>Ctrl+V</strong> ಒತ್ತಿ, <strong>Send</strong> ಒತ್ತಿ. Ctrl+V ಲಗತ್ತಿಸದಿದ್ದರೆ, <strong>📂 Show the PDF</strong> ಕ್ಲಿಕ್ ಮಾಡಿ ಫೈಲ್ ಅನ್ನು ಚಾಟ್‌ಗೆ ಎಳೆದು ಹಾಕಿ.</div></div>
+  <div class="tip">💡 <strong>ಸಹಿ ಮತ್ತು ಮುದ್ರೆ:</strong> ಅವನ್ನು ಒಮ್ಮೆ <strong>Settings → 🏢 Company → Signature &amp; Stamp</strong> ನಲ್ಲಿ ಸೇರಿಸಿ: ಬಿಳಿ ಕಾಗದದ ಮೇಲೆ ಸಹಿ ಮಾಡಿ ಮುದ್ರೆ ಒತ್ತಿ, ಫೋಟೋ ತೆಗೆದು ಅಥವಾ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ, ಹತ್ತಿರದಿಂದ ಕತ್ತರಿಸಿ. WhatsApp ನಲ್ಲಿ ಕಳುಹಿಸುವ ಪ್ರತಿ ಬಿಲ್‌ನ <em>Authorised Signatory</em> ಪೆಟ್ಟಿಗೆಯಲ್ಲಿ ಅವು ಕಾಣುತ್ತವೆ; ಮುದ್ರಿತ ಬಿಲ್‌ಗಳಲ್ಲೂ ಬರಲು <strong>Also put them on printed bills</strong> ಟಿಕ್ ಮಾಡಿ.</div>
+  <p><strong>W</strong> ಬಟನ್ <strong>💬 Send a payment reminder (text)</strong> ಅನ್ನೂ ನೀಡುತ್ತದೆ. ಖರೀದಿ ಬಿಲ್‌ಗಳನ್ನೂ ಹೀಗೆಯೇ ಕಳುಹಿಸಲಾಗುತ್ತದೆ: ಬಿಲ್ ಮೇಲೆ ರೈಟ್-ಕ್ಲಿಕ್ → <strong>📄 Send the bill (PDF) on WhatsApp</strong>.</p>
+  <div class="tip">💡 <strong>ಬ್ರೌಸರ್‌ನಲ್ಲಿ WhatsApp (WhatsApp Web) ಬಳಸುತ್ತೀರಾ?</strong> Accelent ಕಳುಹಿಸುವ ಪ್ರತಿ ಚಾಟ್ ಅನ್ನು WhatsApp ಒಂದು <strong>ಹೊಸ ಬ್ರೌಸರ್ ಟ್ಯಾಬ್‌ನಲ್ಲಿ</strong> ತೆರೆಯುತ್ತದೆ, ಅಲ್ಲಿ WhatsApp Web ಮತ್ತೆ ಲೋಡ್ ಆಗುತ್ತದೆ; WhatsApp ಹೀಗೆಯೇ ಕೆಲಸ ಮಾಡುತ್ತದೆ, Accelent ಇದನ್ನು ಬದಲಿಸಲಾಗದು. ಆ ನಂತರ ಹಳೆಯ WhatsApp ಟ್ಯಾಬ್ <em>WhatsApp is open in another window</em> ಎಂದು ಹೇಳಿದರೆ, ಅದು ಸಾಮಾನ್ಯ: ಹೊಸ ಟ್ಯಾಬ್ ಬಳಸುತ್ತಿರಿ, ಹಳೆಯ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಆಗಾಗ ಮುಚ್ಚಿ. ಒಂದೇ WhatsApp ಟ್ಯಾಬ್‌ನಲ್ಲಿ ಉಳಿಯಲು ಬಯಸುತ್ತೀರಾ? ಹೊಸ ಟ್ಯಾಬ್ ಮುಚ್ಚಿ, ನಿಮ್ಮ ಸಾಮಾನ್ಯ WhatsApp ಟ್ಯಾಬ್‌ಗೆ ಮರಳಿ (ಕೇಳಿದರೆ <strong>Use here</strong> ಕ್ಲಿಕ್ ಮಾಡಿ), ಗ್ರಾಹಕರ ಚಾಟ್ ತೆರೆದು <strong>Ctrl+V</strong> ಒತ್ತಿ: ಬಿಲ್ ಇನ್ನೂ ನಕಲಾಗಿಯೇ ಇದೆ.</div>
+  <p><strong>ಫೋನ್‌ನಿಂದ:</strong> Accelent ಆ್ಯಪ್‌ನಲ್ಲಿ ಇನ್‌ವಾಯ್ಸ್ ಅಥವಾ ಖರೀದಿ ಬಿಲ್ ತೆರೆದು ಮೇಲಿನ <strong>📄</strong> ಐಕಾನ್ ಒತ್ತಿ. PC ಅದೇ PDF ತಯಾರಿಸುತ್ತದೆ, ಫೋನ್‌ನ Share ಮೆನು ತೆರೆಯುತ್ತದೆ: WhatsApp, ನಂತರ ಗ್ರಾಹಕರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.</p>
+
+  <h3>ಹಳೆಯ ಇನ್‌ವಾಯ್ಸ್‌ಗಳನ್ನು ನೋಡುವುದು</h3>
+  <p>ಫಾರ್ಮ್‌ನ ಕೆಳಗಿನ <strong>Saved Sales Invoices</strong> ಪಟ್ಟಿ ಉಳಿಸಿದ ಎಲ್ಲಾ ಇನ್‌ವಾಯ್ಸ್‌ಗಳನ್ನು ತೋರಿಸುತ್ತದೆ; ಪ್ರತಿಯೊಂದು ಡೆಸ್ಕ್‌ಟಾಪ್‌ನಲ್ಲಿ ಮಾಡಿದ್ದೋ ಫೋನ್‌ನಲ್ಲೋ ಎಂದು Source ಕಾಲಂ ತೋರಿಸುತ್ತದೆ. ಗ್ರಾಹಕರ ಹೆಸರು, ಇನ್‌ವಾಯ್ಸ್ ಸಂಖ್ಯೆ ಅಥವಾ ದಿನಾಂಕ ಶ್ರೇಣಿಯಿಂದ ಹುಡುಕಬಹುದು. ಪ್ರತಿ ಇನ್‌ವಾಯ್ಸ್ ಸಾಲಿನಲ್ಲಿ View, Edit, Print ಅಥವಾ Delete ಬಟನ್‌ಗಳಿವೆ.</p>
+
+  <h3>ಮಾರಾಟ ಹಿಂದಿರುಗಿಸುವಿಕೆ</h3>
+  <p>ಗ್ರಾಹಕರು ಸರಕು ಹಿಂದಿರುಗಿಸಿದರೆ, <strong>Returns</strong> ಪ್ಯಾನೆಲ್ → <strong>Sales Returns</strong> ಟ್ಯಾಬ್‌ಗೆ ಹೋಗಿ. ಮೂಲ ಇನ್‌ವಾಯ್ಸ್ ಆಯ್ಕೆ ಮಾಡಿ, ಹಿಂದಿರುಗಿದ ವಸ್ತುಗಳನ್ನು ನಮೂದಿಸಿ, ಉಳಿಸಿ. ಸ್ಟಾಕ್ ಮರುಸ್ಥಾಪನೆಯಾಗಿ ಕ್ರೆಡಿಟ್ ನೋಟ್ ನೀಡಲಾಗುತ್ತದೆ. ಮೂಲ ಮಾರಾಟ Cash/Bank/UPI/Card ಆಗಿದ್ದರೆ, ಹಿಂದಿರುಗಿಸಿದ ಹಣ ಆ Cash/Bank ಬಾಕಿಯನ್ನು ನೇರವಾಗಿ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ; ಸಾಲದ ಮಾರಾಟವಾಗಿದ್ದರೆ, ಗ್ರಾಹಕರು ನಿಮಗೆ ಕೊಡಬೇಕಾದದ್ದನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ.</p>
+
+  <div class="tip">💡 <strong>ಸಾಲದ ಮಾರಾಟ:</strong> ಪಾವತಿಯಲ್ಲಿ "Credit" ಆಯ್ಕೆ ಮಾಡಿದರೆ, ಇನ್‌ವಾಯ್ಸ್ <em>Unpaid</em> ಎಂದು ಗುರುತಾಗಿ, ಮೊತ್ತ ಗ್ರಾಹಕರ ಬರಬೇಕಾದ ಬಾಕಿಗೆ ಸೇರುತ್ತದೆ. ಅವರು ನಂತರ ಪಾವತಿಸಿದಾಗ, Receipts ಪ್ಯಾನೆಲ್‌ನಲ್ಲಿ ರಸೀದಿಯಾಗಿ ದಾಖಲಿಸಿ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9b -->
+<div class="chapter-banner" data-for="restaurant hotel">ಅಧ್ಯಾಯ 9b — ರೆಸ್ಟೋರೆಂಟ್ <span class="for-badge">ರೆಸ್ಟೋರೆಂಟ್‌ಗಳು ಮತ್ತು ಹೋಟೆಲ್‌ಗಳಿಗೆ</span></div>
+<div class="section" id="ch9b" data-for="restaurant hotel">
+  <h2>9b. ರೆಸ್ಟೋರೆಂಟ್ (ಟೇಬಲ್‌ಗಳು, ಕಿಚನ್ ಟಿಕೆಟ್‌ಗಳು ಮತ್ತು ಬಿಲ್‌ಗಳು)</h2>
+  <p>ರೆಸ್ಟೋರೆಂಟ್, ಕೆಫೆ, ಢಾಬಾ ಅಥವಾ ಹೋಟೆಲ್ ಅಡುಗೆಮನೆಗೆ Accelent ನಲ್ಲಿ <strong>🍽 Restaurant</strong> ಪರದೆ ಇದೆ: ಟೇಬಲ್ ಒತ್ತಿ, ಖಾದ್ಯಗಳನ್ನು ಒತ್ತಿ, ಅಡುಗೆಮನೆಗೆ <strong>ಕಿಚನ್ ಟಿಕೆಟ್ (KOT)</strong> ಕಳುಹಿಸಿ, ಅತಿಥಿಗಳು ಹೊರಟಾಗ ಟೇಬಲ್‌ಗೆ ಬಿಲ್ ಮಾಡಿ. ಪ್ರತಿ ಬಿಲ್ ಸಾಮಾನ್ಯ ಮಾರಾಟವಾಗಿ ಉಳಿಯುತ್ತದೆ, ಆದ್ದರಿಂದ Accounts, GST ಮತ್ತು ವರದಿಗಳಲ್ಲಿ ಸೇರುತ್ತದೆ, ಪ್ರತಿ ಖಾದ್ಯ ಬಳಸುವ ಪದಾರ್ಥಗಳು ಸ್ಟಾಕ್‌ನಿಂದ ತಾನಾಗಿ ಕಡಿಮೆಯಾಗುತ್ತವೆ.</p>
+
+  <h3>ಇದನ್ನು ಆನ್ ಮಾಡುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್‌ನಿಂದ ತೆರೆಯಿರಿ) → <strong>Business Type: Restaurant, café or hotel kitchen</strong> → <strong>Save</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent ಮುಚ್ಚಿ ಮತ್ತೆ ತೆರೆಯಿರಿ. ಈಗ ಎಡ ಮೆನುವಿನಲ್ಲಿ FINANCE ಅಡಿ <strong>🍽 Restaurant</strong> ಇರುತ್ತದೆ. <strong>Sales</strong>, <strong>Returns</strong>, <strong>Aging Report</strong> ಮತ್ತು <strong>E-Invoice</strong> ಮರೆಯಾಗುತ್ತವೆ, ಏಕೆಂದರೆ ರೆಸ್ಟೋರೆಂಟ್ Restaurant ಪರದೆಯಿಂದಲೇ ಬಿಲ್ ಮಾಡುತ್ತದೆ. ಏನೂ ಅಳಿಸುವುದಿಲ್ಲ: Business Type ಮತ್ತೆ ಬದಲಿಸಿದರೆ ಅವು ಮರಳುತ್ತವೆ.</div></div>
+
+  <h3>ನಿಮ್ಮ ಮೆನು ಸಿದ್ಧಪಡಿಸುವುದು</h3>
+  <div class="tip">💡 <strong>ಮಾದರಿ ಮೆನುವಿನಿಂದ ಆರಂಭಿಸಿ:</strong> ಮೆನು ಖಾಲಿಯಿರುವವರೆಗೆ, Restaurant ಪರದೆ <strong>📋 Start with a sample menu</strong> ನೀಡುತ್ತದೆ (<strong>⚙ Restaurant Settings</strong> ನಲ್ಲೂ ಇದೆ). ಇದು ಮೆನು ವಿಭಾಗಗಳಲ್ಲಿ 53 ಸಾಮಾನ್ಯ ಖಾದ್ಯಗಳು ಮತ್ತು ಪಾನೀಯಗಳನ್ನು (ಸ್ಟಾರ್ಟರ್‌ಗಳು, ಮೇನ್ ಕೋರ್ಸ್, ಅನ್ನ, ರೊಟ್ಟಿಗಳು, ಉಪಾಹಾರ, ಸಿಹಿ, ಬಿಸಿ ಮತ್ತು ತಂಪು ಪಾನೀಯಗಳು, ಜ್ಯೂಸ್‌ಗಳು, ಮಾಕ್‌ಟೇಲ್‌ಗಳು), ಘಟಕಗಳೊಂದಿಗೆ ಸುಮಾರು 100 ಪದಾರ್ಥಗಳನ್ನು, ಮತ್ತು ಪ್ರತಿ ಖಾದ್ಯಕ್ಕೆ ಒಂದು <em>Made to order</em> ರೆಸಿಪಿಯನ್ನು ಸೇರಿಸುತ್ತದೆ; ಇನ್ನೂ ಕೊಠಡಿಗಳಿಲ್ಲದ ಹೋಟೆಲ್‌ಗೆ ಕೊಠಡಿ 101–104 ಮತ್ತು 201–204 ಸಹ. ನಿಮ್ಮ ಬಳಿ ಈಗಾಗಲೇ ಇರುವುದು ಏನೂ ಬದಲಾಗುವುದಿಲ್ಲ: ಅದೇ ಹೆಸರಿನ ವಸ್ತು ಹಾಗೆಯೇ ಉಳಿಯುತ್ತದೆ. ನಂತರ: Inventory ಯಲ್ಲಿ ನಿಮ್ಮ ಸ್ವಂತ ಬೆಲೆಗಳನ್ನು ಇಡಿ (ಮಾದರಿ ಬೆಲೆಗಳು ಸಲಹೆ ಮಾತ್ರ), ನೀವು ಖರೀದಿಸುವುದನ್ನು Purchases ನಲ್ಲಿ ನಮೂದಿಸಿ (ಪದಾರ್ಥಗಳು ಸ್ಟಾಕ್‌ಗೆ ಬರುವವರೆಗೆ ಪ್ರತಿ ಖಾದ್ಯ ಮಸುಕಾಗಿಯೇ ಇರುತ್ತದೆ), Production → Recipes ನಲ್ಲಿ ನಿಮ್ಮ ಅಡುಗೆಯವರೊಂದಿಗೆ ರೆಸಿಪಿ ಪ್ರಮಾಣಗಳನ್ನು ಪರಿಶೀಲಿಸಿ, ನೀವು ಬಡಿಸದ ಖಾದ್ಯಗಳನ್ನು ಅಳಿಸಿ.</div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಪ್ರತಿ ಖಾದ್ಯ ಮತ್ತು ಪಾನೀಯವನ್ನು <strong>Inventory</strong> ಯಲ್ಲಿ <strong>Sell Price</strong> (GST ಗಿಂತ ಮೊದಲು) ನೊಂದಿಗೆ ಸೇರಿಸಿ. ಅದರ <strong>Category</strong> ಮೆನು ವಿಭಾಗವಾಗುತ್ತದೆ: <em>Main Course</em>, <em>Starters</em>, <em>Drinks</em>… Sell Price ಇರುವ ಪ್ರತಿ ವಸ್ತು ಮೆನುವಿನಲ್ಲಿ ಕಾಣುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ಪದಾರ್ಥಗಳನ್ನೂ</strong> ವಸ್ತುಗಳಾಗಿ ಸೇರಿಸಿ (ಅಕ್ಕಿ, ಚಿಕನ್, ಎಣ್ಣೆ, ಚಹಾಪುಡಿ), kg ಅಥವಾ litre ನಂತಹ ಘಟಕಗಳೊಂದಿಗೆ, ಮತ್ತು ಅವನ್ನು ಸಾಮಾನ್ಯವಾಗಿ <strong>Purchases</strong> ಮೂಲಕ ಖರೀದಿಸಿ. ಪದಾರ್ಥಗಳಿಗೆ Sell Price ಇಲ್ಲ, ಆದ್ದರಿಂದ ಅವು ಮೆನುವಿನಲ್ಲಿ ಬರುವುದಿಲ್ಲ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ನಿಮ್ಮ ಅಡುಗೆಮನೆಯಲ್ಲಿ ಬೇಯಿಸುವ ಪ್ರತಿ ಖಾದ್ಯಕ್ಕೆ <strong>Inventory → 🏭 Production → 🧾 Recipes</strong> ನಲ್ಲಿ ಒಂದು <strong>ರೆಸಿಪಿ</strong> ಬರೆಯಿರಿ (<a href="#ch8c">ಅಧ್ಯಾಯ 8c</a> ನೋಡಿ) ಮತ್ತು <strong>Made to order</strong> ಟಿಕ್ ಮಾಡಿ. ಉದಾಹರಣೆ: ಒಂದು Chicken Biryani ಗೆ ಅಕ್ಕಿ 0.25 kg ಮತ್ತು ಚಿಕನ್ 0.2 kg. ಖಾದ್ಯ ಮಾರಾಟವಾದಾಗ ಆ ಪದಾರ್ಥಗಳು ಸ್ಟಾಕ್‌ನಿಂದ ಕಡಿಮೆಯಾಗುತ್ತವೆ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಖರೀದಿಸಿ ಹಾಗೆಯೇ ಮಾರುವ ವಸ್ತುಗಳಿಗೆ (ಬಾಟಲ್ ನೀರು, ತಂಪು ಪಾನೀಯಗಳು) ರೆಸಿಪಿ ಬೇಕಿಲ್ಲ: ಅವನ್ನು Purchases ಮೂಲಕ ಖರೀದಿಸಿ, ಮಾರಿದಾಗ ಅವುಗಳ ಸ್ವಂತ ಸ್ಟಾಕ್ ಕಡಿಮೆಯಾಗುತ್ತದೆ.</div></div>
+  <p>ಖಾದ್ಯಗಳು ಮತ್ತು ಪದಾರ್ಥಗಳು ಎಲ್ಲವೂ <strong>Inventory</strong> ಯ ವಸ್ತುಗಳೇ. ಅದರ ಪಟ್ಟಿಯಲ್ಲಿ Made to order ಖಾದ್ಯಕ್ಕೆ ಸ್ವಂತ ಸ್ಟಾಕ್ ಇಲ್ಲದ್ದರಿಂದ, ಸ್ಟಾಕ್‌ನಲ್ಲಿ <strong>—</strong> ಮತ್ತು ಸ್ಥಿತಿಯಲ್ಲಿ <strong>🍳 Dish</strong> ಕಾಣುತ್ತದೆ. ಒಮ್ಮೆಗೆ ಒಂದು ರೀತಿಯನ್ನು ನೋಡಲು, ಪಟ್ಟಿಯ ಮೇಲಿನ ಫಿಲ್ಟರ್ ಬಳಸಿ: <strong>Items for sale</strong> (ನಿಮ್ಮ ಮೆನು: Sell Price ಇರುವ ಎಲ್ಲವೂ) ಅಥವಾ <strong>Materials &amp; ingredients</strong> (ರೆಸಿಪಿಯಲ್ಲಿ ಬಳಸುವ ಎಲ್ಲವೂ).</p>
+  <h3>ಪದಾರ್ಥಗಳು ಸ್ಟೋರ್‌ನಲ್ಲಿ ಇರಬೇಕು</h3>
+  <p>ಸ್ಟೋರ್‌ನಲ್ಲಿ ಖಾದ್ಯದ ಪದಾರ್ಥಗಳು ಸಾಕಷ್ಟಿದ್ದಾಗ ಮಾತ್ರ ಆ ಖಾದ್ಯವನ್ನು ಆರ್ಡರ್‌ನಲ್ಲಿ ತೆಗೆದುಕೊಳ್ಳಲಾಗುತ್ತದೆ. ಬೇರೆ ಟೇಬಲ್‌ಗಳಲ್ಲಿ ಈಗಾಗಲೇ ಆರ್ಡರ್ ಮಾಡಿದ ಖಾದ್ಯಗಳು ಎಷ್ಟು ಬಳಸುತ್ತವೆ ಎಂದೂ Accelent ಲೆಕ್ಕ ಹಾಕುತ್ತದೆ, ಏಕೆಂದರೆ ಅಡುಗೆಮನೆ ಅವನ್ನು ಬೇಯಿಸುತ್ತಿದೆ. ಏನಾದರೂ ಕೊರತೆಯಿದ್ದರೆ, ಏನು ಕಡಿಮೆ ಎಂದು ತಿಳಿಸುತ್ತದೆ, ಉದಾಹರಣೆಗೆ <em>Chicken: needs 0.6 kg, 0.4 kg in the store</em> (ಚಿಕನ್ 0.6 kg ಬೇಕು, ಸ್ಟೋರ್‌ನಲ್ಲಿ 0.4 kg ಇದೆ), ಮತ್ತು ಆ ಖಾದ್ಯದ ಬಟನ್ <strong>ಮಸುಕಾಗುತ್ತದೆ</strong>. <strong>Purchases</strong> ಮೂಲಕ ಪದಾರ್ಥಗಳನ್ನು ಖರೀದಿಸಿದರೆ ಖಾದ್ಯ ಮತ್ತೆ ಲಭ್ಯವಾಗುತ್ತದೆ. Sales ಪರದೆಯಲ್ಲಿ ಅಥವಾ ಫೋನ್‌ನಿಂದ ಖಾದ್ಯ ಮಾರುವಾಗಲೂ ಇದೇ ಪರಿಶೀಲನೆ ನಡೆಯುತ್ತದೆ. ಪ್ರತಿ ಖಾದ್ಯದ ಬಟನ್ ಸ್ಟೋರ್‌ನಿಂದ ಇನ್ನೂ ಎಷ್ಟು ತಯಾರಿಸಬಹುದು ಎಂದೂ ತೋರಿಸುತ್ತದೆ, ಉದಾ. <em>12 left</em>; 5 ಅಥವಾ ಕಡಿಮೆ ಇದ್ದಾಗ ಅದರ ಮೇಲೆ <strong>⚠</strong> ಬರುತ್ತದೆ, ಬಟನ್ ಮೇಲೆ ಮೌಸ್ ಇಟ್ಟರೆ ಯಾವ ಪದಾರ್ಥ ಕಡಿಮೆಯಾಗುತ್ತಿದೆ ಎಂದು ತಿಳಿಯುತ್ತದೆ.</p>
+  <div class="tip">💡 ಖರೀದಿಸಿ ಮಾರುವ ವಸ್ತುವಿನ ಸ್ಟಾಕ್ ಮುಗಿದಾಗ, ಅಥವಾ ಸ್ಟಾಕ್ ಆಗಲಿ <em>Made to order</em> ರೆಸಿಪಿ ಆಗಲಿ ಇಲ್ಲದ ಖಾದ್ಯಕ್ಕೂ ಮೆನು ಬಟನ್ ಮಸುಕಾಗುತ್ತದೆ. ಖರೀದಿಗಳು ನಮೂದಾಗುವ ಮೊದಲೇ ನಿಮ್ಮ ಅಡುಗೆಮನೆ ಆಗಾಗ ಬೇಯಿಸುತ್ತಿದ್ದರೆ, ಅಡ್ಮಿನ್ <strong>⚙ Restaurant Settings</strong> ನಲ್ಲಿ <strong>Don't take an order for a dish when the store hasn't enough of its ingredients</strong> ಟಿಕ್ ತೆಗೆಯಬಹುದು: ಆಗ ಖಾದ್ಯಗಳು ಯಾವಾಗಲೂ ಅನುಮತಿಸಲ್ಪಡುತ್ತವೆ, ಪದಾರ್ಥಗಳ ಸ್ಟಾಕ್ ಶೂನ್ಯಕ್ಕಿಂತ ಕೆಳಗೆ ಹೋಗುತ್ತದೆ, Low Stock Monitor ಹೆಚ್ಚು ಖರೀದಿಸಲು ಹೇಳುತ್ತದೆ.</div>
+
+  <h3>ಟೇಬಲ್‌ಗಳು</h3>
+  <p>ಮೊದಲ ಬಾರಿ ಆರು ಟೇಬಲ್‌ಗಳು (Table 1 ರಿಂದ Table 6) ಸಿದ್ಧವಾಗುತ್ತವೆ. ಟೇಬಲ್‌ಗಳನ್ನು ಸೇರಿಸಲು, ಮರುಹೆಸರಿಸಲು ಅಥವಾ ತೆಗೆಯಲು ಮತ್ತು ಆಸನಗಳನ್ನು ಇಡಲು <strong>🪑 Tables…</strong> ಕ್ಲಿಕ್ ಮಾಡಿ (ಉದಾ. <em>Garden 1</em>, <em>Cabin A</em>). ಪ್ರತಿ ಟೇಬಲ್ ಒಂದು ಕಾರ್ಡ್:</p>
+  <ul>
+    <li><strong>ಖಾಲಿ</strong> ಟೇಬಲ್ ಸಾದಾ ಇರುತ್ತದೆ, ಅದರ ಆಸನಗಳು ಮತ್ತು <em>✓ Free</em> ತೋರಿಸುತ್ತದೆ.</li>
+    <li>ನಡೆಯುತ್ತಿರುವ ಆರ್ಡರ್ ಇರುವ ಟೇಬಲ್‌ಗೆ <strong>ಬಣ್ಣದ ಅಂಚು</strong> ಇರುತ್ತದೆ, ಅದರ ಒಟ್ಟು ಮತ್ತು ಎಷ್ಟು ಹೊತ್ತಿನಿಂದ ತೆರೆದಿದೆ ಎಂದು ತೋರಿಸುತ್ತದೆ (<em>🕑 25 min</em>, <em>🕑 1h 05m</em>).</li>
+    <li>ವೇಟರ್ ಅಥವಾ ಗ್ರಾಹಕ ಬಿಲ್ ಕೇಳಿದಾಗ, ಟೇಬಲ್‌ಗೆ <strong>ಹಳದಿ (amber) ಅಂಚು</strong> ಬಂದು <em>🧾 Bill asked</em> ತೋರಿಸುತ್ತದೆ.</li>
+    <li>ನೀವು ತೆರೆದಿರುವ ಟೇಬಲ್‌ಗೆ <strong>ದಪ್ಪ ಅಂಚು</strong> ಇರುತ್ತದೆ.</li>
+  </ul>
+  <p>ಪರದೆಯ ಕೆಳಗಿನ ಒಂದು ಸೂಚಿ ಅಂಚುಗಳ ಅರ್ಥ ವಿವರಿಸುತ್ತದೆ.</p>
+
+  <h3>ಆರ್ಡರ್ ತೆಗೆದುಕೊಳ್ಳುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>ಟೇಬಲ್</strong> ಕ್ಲಿಕ್ ಮಾಡಿ, ನಂತರ ಒಂದು <strong>ಮೆನು ವಿಭಾಗ</strong>, ನಂತರ <strong>ಖಾದ್ಯಗಳು</strong>. ಪ್ರತಿ ಒತ್ತುವಿಕೆ ಒಂದನ್ನು ಸೇರಿಸುತ್ತದೆ; ಮತ್ತೆ ಒತ್ತಿದರೆ ಇನ್ನೊಂದು. ಖಾದ್ಯವನ್ನು ಬೇಗ ಹುಡುಕಲು <strong>Search the menu</strong> ನಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಆರ್ಡರ್‌ನಲ್ಲಿ ಒಂದು ಸಾಲು ಆಯ್ಕೆ ಮಾಡಿ, ಪ್ರಮಾಣ ಬದಲಿಸಲು <strong>−</strong> / <strong>+</strong>, ಅಡುಗೆಮನೆಗೆ <strong>📝 Note</strong> (<em>ಕಡಿಮೆ ಖಾರ</em>, <em>ಈರುಳ್ಳಿ ಬೇಡ</em>), ಅಥವಾ <strong>✕ Remove</strong> ಬಳಸಿ. ಸಾಲಿನ ಮೇಲೆ ಮೌಸ್ ವೀಲ್ ತಿರುಗಿಸಿಯೂ ಪ್ರಮಾಣ ಬದಲಿಸಬಹುದು: ಮೇಲಕ್ಕೆ ತಿರುಗಿಸಿದರೆ ಒಂದು ಹೆಚ್ಚುತ್ತದೆ, ಕೆಳಕ್ಕೆ ತಿರುಗಿಸಿದರೆ ಒಂದು ಕಡಿಮೆಯಾಗುತ್ತದೆ (ಕೆಳಕ್ಕೆ ತಿರುಗಿಸುವುದು 1 ರಲ್ಲಿ, ಮತ್ತು ಅಡುಗೆಮನೆಗೆ ಕಳುಹಿಸಿದ ಪ್ರಮಾಣದಲ್ಲಿ ನಿಲ್ಲುತ್ತದೆ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🧑‍🍳 Send to Kitchen (KOT)</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಕಿಚನ್ ಟಿಕೆಟ್ ಅದರ ಸಂಖ್ಯೆಯೊಂದಿಗೆ (KOT #1, #2… ಪ್ರತಿದಿನ ಮತ್ತೆ ಆರಂಭ), ಟೇಬಲ್ ಮತ್ತು ಏನು ಬೇಯಿಸಬೇಕು ಎಂಬುದರೊಂದಿಗೆ ಮುದ್ರಿತವಾಗುತ್ತದೆ.</div></div>
+  <p><strong>Kitchen</strong> ಕಾಲಂ ಅಡುಗೆಮನೆಗೆ ಈಗಾಗಲೇ ಹೋದದ್ದು (<em>✓ sent</em>) ಮತ್ತು ಹೊಸದನ್ನು ತೋರಿಸುತ್ತದೆ. ಅತಿಥಿಗಳು ಇನ್ನಷ್ಟು ಆರ್ಡರ್ ಮಾಡಿದರೆ, ಅದನ್ನು ಸೇರಿಸಿ ಮತ್ತೆ ಕಳುಹಿಸಿ: ಮುಂದಿನ KOT ಯಲ್ಲಿ <strong>ಹೊಸ ವಸ್ತುಗಳು ಮಾತ್ರ</strong> ಇರುತ್ತವೆ. ಕಳುಹಿಸಿದ ನಂತರ ಖಾದ್ಯ ಕಡಿತಗೊಂಡರೆ, KOT ಅದನ್ನು <strong>CANCEL</strong> ಎಂದು ಮುದ್ರಿಸುತ್ತದೆ; ಕಳುಹಿಸಿದ ನಂತರ ಬದಲಿಸಿದ ಟಿಪ್ಪಣಿ <strong>NOTE</strong> ಆಗಿ ಮುದ್ರಿತವಾಗುತ್ತದೆ. KOT ಬಟನ್ ಮೇಲಿನ ಚುಕ್ಕೆ ಎಂದರೆ ಏನೋ ಇನ್ನೂ ಅಡುಗೆಮನೆಗೆ ಹೋಗಿಲ್ಲ; ಅಡುಗೆಮನೆಗೆ ಎಲ್ಲವೂ ಹೋದಾಗ, ಬಟನ್ ಮಸುಕಾಗಿ <strong>✓ Kitchen has everything</strong> ತೋರಿಸುತ್ತದೆ.</p>
+
+  <h3>ಅಡುಗೆಮನೆ ಎಷ್ಟು ಬ್ಯುಸಿ?</h3>
+  <p>Restaurant ಪರದೆಯ ಮೇಲ್ಭಾಗ ಅಡುಗೆಮನೆಯ ಸ್ಥಿತಿ ತೋರಿಸುತ್ತದೆ, ಉದಾಹರಣೆಗೆ <strong>🟢 Kitchen: Normal · ~12 min</strong>: <em>Normal, Busy, Very busy, Extra busy</em> ಅಥವಾ <em>Overloaded</em>, ಮತ್ತು ಈಗ ಆರ್ಡರ್ ಮಾಡಿದ ಖಾದ್ಯಕ್ಕೆ ಸುಮಾರು ಎಷ್ಟು ಸಮಯ ಬೇಕು. ಇದು ಒಂದು <strong>ಅಂದಾಜು</strong>: ಅಡುಗೆಮನೆಗೆ ಏನು ಕಳುಹಿಸಲಾಯಿತು, ಪ್ರತಿ ಖಾದ್ಯಕ್ಕೆ ಸಾಮಾನ್ಯವಾಗಿ ಎಷ್ಟು ಸಮಯ ಬೇಕು ಎಂದು Accelent ಗೆ ತಿಳಿದಿದೆ, ಮತ್ತು ಕರ್ತವ್ಯದಲ್ಲಿರುವ ಪ್ರತಿ ಅಡುಗೆಯವರಿಗೆ ಇನ್ನೂ ಎಷ್ಟು ಬೇಯಿಸಬೇಕು ಎಂದು ಲೆಕ್ಕ ಹಾಕುತ್ತದೆ. ಅಡುಗೆಮನೆಯಲ್ಲಿ ಇನ್ನೂ ಇರುವ ಆರ್ಡರ್‌ಗಳನ್ನು, ಹಳೆಯವು ಮೊದಲು, ಯಾವುದು ತಡವಾಗಿದೆ ಎಂಬುದರೊಂದಿಗೆ ನೋಡಲು ಅದನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ. ಅಡುಗೆಮನೆ Extra busy ಆದಾಗ PC ಬೀಪ್ ಮಾಡುತ್ತದೆ.</p>
+  <ul>
+    <li><strong>ಆ ವಿಂಡೋದಲ್ಲಿ</strong> ಕಾಯುವ ಸಮಯ 30 ನಿಮಿಷಗಳ ನಂತರ <strong>ಕೆಂಪು</strong>, 15 ನಿಮಿಷದಿಂದ <strong>ಹಳದಿ (amber)</strong>. ಪ್ರತಿ ಸಾಲಿನಲ್ಲಿ <strong>👁 Items</strong> (ಆ ಕಿಚನ್ ಟಿಕೆಟ್‌ನ ಖಾದ್ಯಗಳು) ಮತ್ತು <strong>🍽 Served</strong> ಇವೆ.</li>
+    <li><strong>⏸ Pause QR orders for 20 min:</strong> ಟೇಬಲ್ QR ನಿಂದ ಆರ್ಡರ್ ಮಾಡುವ ಅತಿಥಿಗಳಿಗೆ ಆರ್ಡರ್ ವಿರಾಮದಲ್ಲಿದೆ ಎಂದು ತಿಳಿಸಲಾಗುತ್ತದೆ; ವೇಟರ್‌ಗಳು ಇನ್ನೂ ಆರ್ಡರ್ ತೆಗೆದುಕೊಳ್ಳಬಹುದು. 20 ನಿಮಿಷದ ನಂತರ ತಾನಾಗಿ ಮತ್ತೆ ಆರಂಭವಾಗುತ್ತದೆ, ಅಥವಾ <strong>▶ Resume QR orders</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</li>
+    <li><strong>⏰ ಆಹಾರ ತುಂಬಾ ಹೊತ್ತು ಕಾಯುತ್ತಿದೆ:</strong> ಒಂದು ಕಿಚನ್ ಟಿಕೆಟ್ 30 ನಿಮಿಷದ ನಂತರವೂ served ಎಂದು ಗುರುತಿಸದಿದ್ದರೆ, Restaurant ಪರದೆ ಬೀಪ್ ಮಾಡಿ ಕೆಂಪು ಸಾಲು ತೋರಿಸುತ್ತದೆ (ಉದಾಹರಣೆಗೆ <em>⏰ Table 7: KOT #4 waiting 40 min</em>), ಅದೇ ಟಿಪ್ಪಣಿ ಜೋಡಿಸಲಾದ ಪ್ರತಿ ವೇಟರ್ ಫೋನ್‌ಗೆ Messages ನಲ್ಲಿ ಒಮ್ಮೆ ಹೋಗುತ್ತದೆ. ನಿಮಿಷಗಳನ್ನು ಬದಲಿಸಲು, ಅಥವಾ ಆಫ್ ಮಾಡಲು (0): Kitchen Settings → <em>Alert the floor when food waits</em>.</li>
+  </ul>
+  <ul>
+    <li><strong>🍽 Served:</strong> ಆಹಾರ ಟೇಬಲ್ ತಲುಪಿದಾಗ, PC ಯಲ್ಲಿ ಆರ್ಡರ್ ತೆರೆದು ಇದನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ. ಇದು ಅಂದಾಜನ್ನು ಸರಿಯಾಗಿ ಇಡುತ್ತದೆ. ಬಿಲ್ ಆದ ಆರ್ಡರ್ served ಎಂದು ಪರಿಗಣಿತವಾಗುತ್ತದೆ.</li>
+    <li><strong>⏰ Late:</strong> ತನ್ನ ಅತ್ಯಂತ ನಿಧಾನ ಖಾದ್ಯದ ಸಮಯಕ್ಕಿಂತ 5 ನಿಮಿಷ ಹೆಚ್ಚು ಆಹಾರ ಕಾಯುತ್ತಿರುವ ಟೇಬಲ್‌ಗೆ ಹಳದಿ ಅಂಚು ಮತ್ತು <em>Late … min</em> ಬರುತ್ತದೆ; ಆರ್ಡರ್‌ನ ಶೀರ್ಷಿಕೆಯಲ್ಲೂ ಇದು ಇರುತ್ತದೆ.</li>
+    <li><strong>🕑 Timeline:</strong> ಆರ್ಡರ್ ಯಾವಾಗ ತೆರೆಯಿತು, ಪ್ರತಿ ಕಿಚನ್ ಟಿಕೆಟ್ ಅದರ ಖಾದ್ಯಗಳೊಂದಿಗೆ, ಯಾವಾಗ served ಆಯಿತು, ಬಿಲ್ ಯಾವಾಗ ಕೇಳಲಾಯಿತು ಮತ್ತು ಯಾವಾಗ ಬಿಲ್ ಆಯಿತು.</li>
+  </ul>
+  <div class="tip">💡 <strong>⚙ Restaurant Settings → 🍳 Kitchen Settings</strong> (ಅಡ್ಮಿನ್): ಕರ್ತವ್ಯದಲ್ಲಿರುವ ಅಡುಗೆಯವರು, ಸಾಮಾನ್ಯ ಅಡುಗೆ ಸಮಯ (ನೀವು ಬದಲಿಸದಿದ್ದರೆ 12 ನಿಮಿಷ), ಪ್ರತಿ ಮೆನು ವಿಭಾಗದ ಮತ್ತು ಭಿನ್ನವಾದ ಖಾದ್ಯಗಳ ಸಮಯ (ಬಿರಿಯಾನಿ 25 ನಿಮಿಷ, ಚಹಾ 4…), ಮತ್ತು ಪ್ರತಿ ಮಟ್ಟ ಎಲ್ಲಿಂದ ಆರಂಭವಾಗುತ್ತದೆ. ಅಡುಗೆಮನೆ ಬ್ಯುಸಿಯಾದಾಗ ಏನಾಗಬೇಕು ಎಂಬುದು ನಿಮ್ಮ ಆಯ್ಕೆ: QR ಆರ್ಡರ್ ಪುಟದಲ್ಲಿ ಅಂದಾಜು ಕಾಯುವಿಕೆ ತೋರಿಸುವುದು, Overloaded ಆದಾಗ QR ಆರ್ಡರ್ ನಿಲ್ಲಿಸುವುದು (ವೇಟರ್‌ಗಳು ಇನ್ನೂ ಆರ್ಡರ್ ತೆಗೆದುಕೊಳ್ಳಬಹುದು), ಮತ್ತು Extra busy ಅಥವಾ Overloaded ಆದಾಗ ನಿಧಾನ ಖಾದ್ಯಗಳನ್ನು ನಿಲ್ಲಿಸುವುದು.</div>
+
+  <h3>ಟೇಕ್‌ಅವೇ (ಪಾರ್ಸೆಲ್)</h3>
+  <p><strong>🥡 New Takeaway</strong> ಕ್ಲಿಕ್ ಮಾಡಿ, ಬೇಕಾದರೆ ಗ್ರಾಹಕರ ಹೆಸರು ನಮೂದಿಸಿ, ನಂತರ ಟೇಬಲ್‌ನಂತೆಯೇ ಖಾದ್ಯಗಳನ್ನು ಸೇರಿಸಿ, KOT ಕಳುಹಿಸಿ ಮತ್ತು ಬಿಲ್ ಮಾಡಿ. ತೆರೆದ ಟೇಕ್‌ಅವೇಗಳು ಟೇಬಲ್‌ಗಳ ಕೆಳಗೆ <strong>Takeaway orders</strong> ನಲ್ಲಿ ಪಟ್ಟಿಯಾಗುತ್ತವೆ (ಹೋಟೆಲ್‌ನಲ್ಲಿ <strong>Takeaway &amp; room service</strong>); ತೆರೆಯಲು ಒಂದನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ.</p>
+
+  <h3>ಬಿಲ್ ಮಾಡುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಟೇಬಲ್ ತೆರೆದು <strong>💵 Bill</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಕೆಲವು ವಸ್ತುಗಳು ಅಡುಗೆಮನೆಗೆ ಹೋಗಿಲ್ಲದಿದ್ದರೆ, Accelent ಮೊದಲು ಅವನ್ನು ಕಳುಹಿಸಲು ಮುಂದಾಗುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಅತಿಥಿ ಹೇಗೆ ಪಾವತಿಸಿದರು ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ: <strong>Cash</strong>, <strong>UPI</strong>, <strong>Card</strong> ಅಥವಾ <strong>Bank Transfer</strong> (ಯಾವ ಬ್ಯಾಂಕ್‌ಗೆ, ಬೇಕಾದರೆ ಉಲ್ಲೇಖದೊಂದಿಗೆ). ಗ್ರಾಹಕರ ಹೆಸರು ಮತ್ತು ಫೋನ್ ಐಚ್ಛಿಕ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Save Bill</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಬಿಲ್ ಮಾರಾಟವಾಗಿ ಉಳಿಯುತ್ತದೆ, ಹಣ Cash ಅಥವಾ ಬ್ಯಾಂಕ್‌ಗೆ ಹೋಗುತ್ತದೆ, ಖಾದ್ಯಗಳ ಪದಾರ್ಥಗಳು ಸ್ಟಾಕ್‌ನಿಂದ ಕಡಿಮೆಯಾಗುತ್ತವೆ, ಟೇಬಲ್ ಖಾಲಿಯಾಗುತ್ತದೆ, ಬಿಲ್ ಮುದ್ರಣಕ್ಕೆ ತೆರೆಯುತ್ತದೆ (ಬೇಡವಾದರೆ <em>Print the bill</em> ಟಿಕ್ ತೆಗೆಯಿರಿ).</div></div>
+  <div class="tip">💡 <strong>ಗ್ರಾಹಕರ WhatsApp ನಲ್ಲಿ ಬಿಲ್:</strong> ಬಿಲ್ ವಿಂಡೋದಲ್ಲಿ ಗ್ರಾಹಕರ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ಇದ್ದಾಗ (QR ಆರ್ಡರ್ ಗ್ರಾಹಕರ ಸಂಖ್ಯೆ ಈಗಾಗಲೇ ತುಂಬಿರುತ್ತದೆ), <strong>📄 Send the bill on WhatsApp</strong> ಟಿಕ್ ಆಗಿರುತ್ತದೆ. ಉಳಿಸಿದ ನಂತರ ಬಿಲ್ PDF ಆಗಿ ನಕಲಾಗುತ್ತದೆ, WhatsApp ಗ್ರಾಹಕರ ಚಾಟ್ ಅನ್ನು ಚಿಕ್ಕ ಧನ್ಯವಾದ ಸಂದೇಶದೊಂದಿಗೆ ತೆರೆಯುತ್ತದೆ: ಬಿಲ್ ಲಗತ್ತಿಸಲು <strong>Ctrl+V</strong> ಒತ್ತಿ, ನಂತರ <strong>Send</strong>. ನಂತರ ಕಳುಹಿಸಲು, <strong>Today's Bills</strong> ನಲ್ಲಿ ಬಿಲ್ ಆಯ್ಕೆ ಮಾಡಿ <strong>📄 Send on WhatsApp</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div>
+
+  <h3>ಹೋಟೆಲ್‌ಗಳು: ತಂಗಿರುವ ಅತಿಥಿಗಳಿಗೆ ಆಹಾರ</h3>
+  <p>Business Type <em>Hotel, lodge or guest house</em> ಆಗಿದ್ದಾಗ, Restaurant ಪರದೆಯಲ್ಲಿ <strong>🛏 Room Service</strong> ಮತ್ತು <strong>🛏 Charge to Room</strong> ಸಹ ಇರುತ್ತವೆ: ಆಹಾರ ಅತಿಥಿಯ ಕೊಠಡಿ ಖಾತೆಗೆ ಹೋಗಿ ಚೆಕ್-ಔಟ್‌ನಲ್ಲಿ ಪಾವತಿಯಾಗುತ್ತದೆ. <a href="#ch9c">ಅಧ್ಯಾಯ 9c — ಕೊಠಡಿಗಳು</a> ನೋಡಿ.</p>
+
+  <h3>ಆರ್ಡರ್ ಸ್ಥಳಾಂತರಿಸುವುದು ಅಥವಾ ರದ್ದುಗೊಳಿಸುವುದು</h3>
+  <p><strong>⇄ Move to table</strong> ನಡೆಯುತ್ತಿರುವ ಆರ್ಡರ್ ಅನ್ನು ಖಾಲಿ ಟೇಬಲ್‌ಗೆ ಸ್ಥಳಾಂತರಿಸುತ್ತದೆ (ಅತಿಥಿಗಳು ಟೇಬಲ್ ಬದಲಿಸಿದರು, ಅಥವಾ ಟೇಕ್‌ಅವೇ ಅಲ್ಲೇ ತಿನ್ನಲಾಗುತ್ತಿದೆ). <strong>🗑 Cancel order</strong> ಬಿಲ್ ಆಗದ ಆರ್ಡರ್ ಅನ್ನು ತೆಗೆಯುತ್ತದೆ; ಏನೂ ಮಾರಾಟವಾಗಿ ಉಳಿಯುವುದಿಲ್ಲ, ಸ್ಟಾಕ್ ಬಳಕೆಯಾಗುವುದಿಲ್ಲ.</p>
+  <div class="tip">💡 ಅಡುಗೆಮನೆಗೆ ಈಗಾಗಲೇ ಹೋದ ಆಹಾರವನ್ನು <strong>ಅಡ್ಮಿನ್</strong> ಮಾತ್ರ ರದ್ದುಗೊಳಿಸಬಹುದು (ಅಥವಾ − ಅಥವಾ ✕ Remove ನಿಂದ ಖಾದ್ಯ ತೆಗೆಯಬಹುದು): ಸಿಬ್ಬಂದಿಯನ್ನು ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್ ಕೇಳಲಾಗುತ್ತದೆ. ಅಂತಹ ಪ್ರತಿ ರದ್ದತಿ <strong>Settings → 🔍 Deletion Watcher</strong> ನಲ್ಲಿ ಆರ್ಡರ್, ಖಾದ್ಯಗಳು ಮತ್ತು ಯಾರು ಮಾಡಿದರು ಎಂಬುದರೊಂದಿಗೆ ದಾಖಲಾಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಬೇಯಿಸಿದ ಆಹಾರ ಸದ್ದಿಲ್ಲದೆ ಮಾಯವಾಗಲು ಸಾಧ್ಯವಿಲ್ಲ. ಇನ್ನೂ ಅಡುಗೆಮನೆಗೆ ಹೋಗದ ವಸ್ತುಗಳನ್ನು ಮುಕ್ತವಾಗಿ ಬದಲಿಸಬಹುದು.</div>
+
+  <h3>ಇಂದಿನ ಬಿಲ್‌ಗಳು</h3>
+  <p><strong>🧾 Today's Bills</strong> ಟ್ಯಾಬ್ ದಿನದ ರೆಸ್ಟೋರೆಂಟ್ ಬಿಲ್‌ಗಳನ್ನು ಅವುಗಳ ಒಟ್ಟಿನೊಂದಿಗೆ ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ; ದಿನಾಂಕ ಪೆಟ್ಟಿಗೆಯಿಂದ ಬೇರೆ ದಿನ ಆಯ್ಕೆ ಮಾಡಿ. ಹೋಟೆಲ್‌ನಲ್ಲಿ ಆ ದಿನ <strong>🛏 ಕೊಠಡಿಗಳಿಗೆ ಹಾಕಿದ</strong> ಆಹಾರವನ್ನೂ, ಕೊಠಡಿ ಮತ್ತು ಅತಿಥಿಯೊಂದಿಗೆ, <em>on the room</em> ಅಥವಾ <em>paid at check-out</em> ಎಂದು ಗುರುತಿಸಿ ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ; ಒಟ್ಟು ಸಾಲು ಎರಡನ್ನೂ ಕೂಡಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ ರೆಸ್ಟೋರೆಂಟ್‌ನ ಇಡೀ ದಿನ ಕಾಣುತ್ತದೆ. ಆ ಆಹಾರ ಇಲ್ಲಲ್ಲ, ಅತಿಥಿಯ ಚೆಕ್-ಔಟ್ ಬಿಲ್‌ನಲ್ಲೇ ಮುದ್ರಿತವಾಗಿ ಸರಿಪಡಿಸಲ್ಪಡುತ್ತದೆ. ಮತ್ತೆ ಮುದ್ರಿಸಲು ಬಿಲ್ ಆಯ್ಕೆ ಮಾಡಿ <strong>🖨 View / Print bill</strong>, ಅಥವಾ ತಪ್ಪು ಬಿಲ್ ಅಳಿಸಲು <strong>🗑 Cancel bill</strong> ಕ್ಲಿಕ್ ಮಾಡಿ: ಪಾವತಿ ಹಿಂತಿರುಗುತ್ತದೆ, ಪದಾರ್ಥಗಳು ಸ್ಟಾಕ್‌ಗೆ ಮರಳುತ್ತವೆ, ಒಂದು ಪ್ರತಿ Deletion Watcher ನಲ್ಲಿ ಉಳಿಯುತ್ತದೆ.</p>
+
+  <h3>ಕಿಚನ್ ಪ್ರಿಂಟರ್</h3>
+  <p><strong>⚙ Restaurant Settings</strong> ನಲ್ಲಿ <strong>Kitchen printer</strong> ಆಯ್ಕೆ ಮಾಡಿ, ಉದಾಹರಣೆಗೆ ಅಡುಗೆಮನೆಯಲ್ಲಿನ ಚಿಕ್ಕ ಥರ್ಮಲ್ ಪ್ರಿಂಟರ್. ಆಗ PC ಯಿಂದ ಮತ್ತು ವೇಟರ್‌ಗಳ ಫೋನ್‌ಗಳಿಂದ ಬರುವ ಪ್ರತಿ KOT ನೇರವಾಗಿ ಅದರಲ್ಲಿ ಮುದ್ರಿತವಾಗುತ್ತದೆ, ಬಿಲ್‌ಗಳು ನಿಮ್ಮ ಸಾಮಾನ್ಯ ಪ್ರಿಂಟರ್‌ನಲ್ಲೇ ಮುದ್ರಿತವಾಗುತ್ತವೆ. ಕಿಚನ್ ಪ್ರಿಂಟರ್ ಇಲ್ಲದಿದ್ದರೆ, KOT ಮುದ್ರಿಸಲು ಮುನ್ನೋಟವಾಗಿ ತೆರೆಯುತ್ತದೆ, ಅಥವಾ ಆ ಆಯ್ಕೆ ಟಿಕ್ ಮಾಡಿದರೆ ನೇರವಾಗಿ Windows ನ ಡೀಫಾಲ್ಟ್ ಪ್ರಿಂಟರ್‌ಗೆ ಹೋಗುತ್ತದೆ.</p>
+
+  <h3>ವೇಟರ್‌ಗಳ ಫೋನ್‌ಗಳು</h3>
+  <p>ವೇಟರ್‌ಗಳು Accelent ಆ್ಯಪ್‌ನೊಂದಿಗೆ ತಮ್ಮ ಫೋನ್‌ಗಳಲ್ಲಿ ಟೇಬಲ್ ಬಳಿಯೇ ಆರ್ಡರ್ ತೆಗೆದುಕೊಳ್ಳಬಹುದು (<a href="#ch19">ಅಧ್ಯಾಯ 19</a> ನೋಡಿ). PC ಯ Business Type Restaurant ಅಥವಾ Hotel ಆಗಿದ್ದಾಗ, ಆ್ಯಪ್‌ನ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ <strong>🍽 Restaurant</strong> ಕಾಣುತ್ತದೆ:</p>
+  <ul>
+    <li>ಒಂದು <strong>ಟೇಬಲ್</strong> ಒತ್ತಿ (ಬ್ಯುಸಿಯಾದವು ತಮ್ಮ ಒಟ್ಟು ಮತ್ತು ನಿಮಿಷಗಳನ್ನು ತೋರಿಸುತ್ತವೆ), ಅಥವಾ <strong>New Takeaway</strong>, ಅಥವಾ ಹೋಟೆಲ್‌ನಲ್ಲಿ <strong>Room Service</strong> (ಅತಿಥಿ ತಂಗಿದ್ದಾಗ ಮಾತ್ರ).</li>
+    <li><strong>Add Dishes</strong> ಮೆನುವನ್ನು ವಿಭಾಗವಾರು, ಹುಡುಕಾಟದೊಂದಿಗೆ ತೆರೆಯುತ್ತದೆ; ಒಂದನ್ನು ಸೇರಿಸಲು ಖಾದ್ಯ ಒತ್ತಿ. <strong>− / +</strong> ನಿಂದ ಪ್ರಮಾಣ ಬದಲಿಸಿ, ಅಡುಗೆಮನೆಗೆ ಟಿಪ್ಪಣಿ ನೀಡಲು ಖಾದ್ಯ ಒತ್ತಿ.</li>
+    <li><strong>Send to Kitchen</strong> PC ಯಲ್ಲಿ KOT ಮುದ್ರಿಸುತ್ತದೆ (ವೇಟರ್ ಹೆಸರಿನೊಂದಿಗೆ). ನಂತರ ಹೊಸದು ಸೇರಿಸುವವರೆಗೆ ಬಟನ್ <strong>✓ Sent to kitchen</strong> ತೋರಿಸುತ್ತದೆ.</li>
+    <li><strong>Ask for Bill</strong> ಕೌಂಟರ್‌ಗೆ ತಿಳಿಸುತ್ತದೆ: PC ಬೀಪ್ ಮಾಡಿ, ಟೇಬಲ್ ಮತ್ತು ವೇಟರ್‌ನೊಂದಿಗೆ ಪಟ್ಟಿ ತೋರಿಸಿ, ಟೇಬಲ್ ಅನ್ನು <strong>🧾 Bill asked</strong> ಎಂದು ಗುರುತಿಸುತ್ತದೆ. ಕ್ಯಾಷಿಯರ್ ಟೇಬಲ್ ತೆರೆದು 💵 Bill ಒತ್ತುತ್ತಾರೆ, ಅದು ಪಾವತಿ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ.</li>
+    <li>ಹೋಟೆಲ್‌ನಲ್ಲಿ <strong>Charge to Room</strong> ಆರ್ಡರ್ ಅನ್ನು ತಂಗಿರುವ ಅತಿಥಿಯ ಖಾತೆಗೆ ಹಾಕುತ್ತದೆ.</li>
+  </ul>
+  <p>PC ಯಲ್ಲಿನ ಅದೇ ನಿಯಮಗಳು ಅನ್ವಯಿಸುತ್ತವೆ: ಖಾದ್ಯಕ್ಕೆ ಅದರ ಪದಾರ್ಥಗಳು ಸ್ಟೋರ್‌ನಲ್ಲಿರಬೇಕು, ಅಡುಗೆಮನೆಗೆ ಹೋದ ಆಹಾರವನ್ನು ಅಡ್ಮಿನ್ ಮಾತ್ರ ತೆಗೆಯಬಹುದು ಅಥವಾ ರದ್ದುಗೊಳಿಸಬಹುದು. ವೇಟರ್‌ಗಳಿಗೆ <strong>Create sales</strong> ಅನುಮತಿ ಮತ್ತು ಫೋನ್ ಪ್ರವೇಶ ಬೇಕು (Settings → 👥 Users). ಒಂದು ಪರವಾನಗಿ ಒಮ್ಮೆಗೆ ಸೀಮಿತ ಸಂಖ್ಯೆಯ ಫೋನ್ ಖಾತೆಗಳನ್ನು ಅನುಮತಿಸುತ್ತದೆ; ಆ ಕಾರಣಕ್ಕೆ ವೇಟರ್‌ನ ಫೋನ್ ತಿರಸ್ಕೃತವಾದರೆ, ಹೆಚ್ಚು ಸೇರಿಸಲು ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.</p>
+
+  <h3>ಟೇಬಲ್ ಬಳಿ QR ಆರ್ಡರ್</h3>
+  <p>ಗ್ರಾಹಕರು ತಮ್ಮ ಟೇಬಲ್ ಮೇಲಿನ QR ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ತಮ್ಮ ಸ್ವಂತ ಫೋನ್‌ನಿಂದ ಮೆನು ನೋಡಿ ಆರ್ಡರ್ ಮಾಡಬಹುದು. ಇದು <strong>ನಿಮ್ಮ ರೆಸ್ಟೋರೆಂಟ್‌ನ Wi-Fi ನಲ್ಲಿ ಮಾತ್ರ</strong> ಕೆಲಸ ಮಾಡುತ್ತದೆ: ಏನೂ ಇಂಟರ್ನೆಟ್‌ಗೆ ಹೋಗುವುದಿಲ್ಲ, ಗ್ರಾಹಕರಿಗೆ ಆ್ಯಪ್ ಆಗಲಿ ಖಾತೆ ಆಗಲಿ ಬೇಕಿಲ್ಲ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚙ Restaurant Settings → QR ordering</strong>: <em>Customers can see the menu and order…</em> ಟಿಕ್ ಮಾಡಿ, <strong>This PC on the Wi-Fi</strong> ಪರಿಶೀಲಿಸಿ (ಗ್ರಾಹಕರು ಸೇರುವ Wi-Fi ನಲ್ಲಿ PC ಯ ವಿಳಾಸ), <strong>Wi-Fi ಹೆಸರು ಮತ್ತು ಪಾಸ್‌ವರ್ಡ್</strong> ತುಂಬಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>🖨 Print table QR cards</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಪ್ರತಿ ಟೇಬಲ್‌ಗೆ ಎರಡು ಕೋಡ್‌ಗಳ ಒಂದು ಕಾರ್ಡ್ ಸಿಗುತ್ತದೆ: <strong>1. Join our Wi-Fi</strong> (ಪಾಸ್‌ವರ್ಡ್ ಟೈಪ್ ಮಾಡದೆ ಫೋನ್ ಸೇರುತ್ತದೆ) ಮತ್ತು <strong>2. Scan to see the menu and order</strong>. ಪ್ರತಿ ಕಾರ್ಡ್ ಅನ್ನು ಅದರ ಟೇಬಲ್ ಮೇಲೆ ಇಡಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಗ್ರಾಹಕರು ಫೋನ್ ಕ್ಯಾಮೆರಾದಿಂದ ಎರಡನ್ನೂ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ, ಖಾದ್ಯಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ (ಟಿಪ್ಪಣಿಗಳೊಂದಿಗೆ, ಉದಾ. <em>ಕಡಿಮೆ ಖಾರ</em>), ತಮ್ಮ <strong>ಹೆಸರು ಮತ್ತು ಮೊಬೈಲ್ ಸಂಖ್ಯೆ</strong> ನಮೂದಿಸಿ (ಕಡ್ಡಾಯ, ಮುಂದಿನ ಆರ್ಡರ್‌ಗಾಗಿ ಆ ಫೋನ್‌ನಲ್ಲಿ ನೆನಪಿನಲ್ಲಿರುತ್ತದೆ), ಡ್ರೈವರ್ ಅಥವಾ ಗೈಡ್ ಕರೆತಂದಿದ್ದರೆ ಆ ಪಾಲುದಾರರ ಕೋಡ್ (ಉದಾ. DRV001, <a href="#ch9d">ಅಧ್ಯಾಯ 9d</a> ನೋಡಿ) ನಮೂದಿಸಿ, <strong>Order</strong> ಒತ್ತಿ, ಅದನ್ನು ಅನುಸರಿಸಬಹುದು: <em>Received → Confirmed → Preparing (ready about …) → Served</em>, ಮತ್ತು <strong>Ask for Bill</strong> ಒತ್ತಬಹುದು.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಆರ್ಡರ್ PC ಯಲ್ಲಿ <strong>🔔 QR orders from tables</strong> ಆಗಿ (ಬೀಪ್‌ನೊಂದಿಗೆ) ಮತ್ತು ವೇಟರ್‌ಗಳ ಫೋನ್‌ಗಳಲ್ಲಿ ಕಾಣುತ್ತದೆ. ಅದರಲ್ಲಿ ಗ್ರಾಹಕರ ಹೆಸರು ಮತ್ತು ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ಇರುತ್ತದೆ. <strong>ಆ ಟೇಬಲ್‌ನಲ್ಲಿ ನಿಜವಾಗಿ ಯಾರಾದರೂ ಇದ್ದಾರೆಯೇ ಪರಿಶೀಲಿಸಿ</strong>, ನಂತರ <strong>Confirm</strong> ಮಾಡಿ: ಖಾದ್ಯಗಳು ಟೇಬಲ್‌ನ ಆರ್ಡರ್‌ಗೆ ಸೇರುತ್ತವೆ, ಅವನ್ನು Send to Kitchen ನಿಂದ ಕಳುಹಿಸಿ. ಅಥವಾ ಗ್ರಾಹಕರಿಗೆ ಕಾಣುವ ಕಾರಣದೊಂದಿಗೆ <strong>Reject</strong> ಮಾಡಿ.</div></div>
+  <ul>
+    <li>ಗ್ರಾಹಕರ ಫೋನ್ ಮೆನು ನೋಡುವುದು, <strong>ತನ್ನದೇ ಟೇಬಲ್‌ಗೆ</strong> ಆರ್ಡರ್ ಮಾಡುವುದು, ತನ್ನ ಆರ್ಡರ್ ಅನುಸರಿಸುವುದು ಮತ್ತು ಬಿಲ್ ಕೇಳುವುದನ್ನು ಮಾತ್ರ ಮಾಡಬಹುದು. Accelent ನಲ್ಲಿ ಬೇರೇನೂ ನೋಡಲಾಗುವುದಿಲ್ಲ.</li>
+    <li>ಪ್ರತಿ ಟೇಬಲ್‌ನ ಕೋಡ್ ರಹಸ್ಯ. ಕಾರ್ಡ್‌ಗಳು ನಕಲಾದರೆ ಅಥವಾ ಯಾರಾದರೂ ತೆಗೆದುಕೊಂಡು ಹೋದರೆ, <strong>↻ New codes for all tables</strong> ಹಳೆಯವನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುತ್ತದೆ; ಹೊಸ ಕಾರ್ಡ್‌ಗಳನ್ನು ಮುದ್ರಿಸಿ.</li>
+    <li>ಕಿಡಿಗೇಡಿತನ ತಡೆಯಲು ಮಿತಿಗಳು: ಒಂದು ಖಾದ್ಯ ಗರಿಷ್ಠ 20, ಒಂದು ಟೇಬಲ್‌ನಲ್ಲಿ 3 ಆರ್ಡರ್‌ಗಳು ಕಾಯುವಿಕೆಯಲ್ಲಿ, ಒಂದು ಫೋನ್‌ನಿಂದ 10 ನಿಮಿಷದಲ್ಲಿ 6 ಆರ್ಡರ್‌ಗಳು. ಮುಚ್ಚುವ ಸಮಯದ ನಂತರ QR ordering ಟಿಕ್ ತೆಗೆಯಿರಿ.</li>
+  </ul>
+  <div class="tip">💡 PC ಯ Wi-Fi ವಿಳಾಸವನ್ನು ಸ್ಥಿರವಾಗಿ ಇಡಿ: ನಿಮ್ಮ ರೌಟರ್‌ನಲ್ಲಿ PC ಗೆ ಒಂದು <em>reserved address</em> ನೀಡಿ (ಆಗಾಗ "DHCP reservation" ಎನ್ನುತ್ತಾರೆ). ಇಲ್ಲದಿದ್ದರೆ ಮರುಆರಂಭದ ನಂತರ ವಿಳಾಸ ಬದಲಾಗಬಹುದು, ಮುದ್ರಿಸಿದ ಕಾರ್ಡ್‌ಗಳು ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ. ಗ್ರಾಹಕರ ಫೋನ್ <em>"Wi-Fi has no internet"</em> ಎನ್ನಬಹುದು; ಆರ್ಡರ್ ಆದರೂ ಕೆಲಸ ಮಾಡುತ್ತದೆ.</div>
+
+  <h3>ರೆಸ್ಟೋರೆಂಟ್ ಬಿಲ್‌ಗಳ ಮೇಲೆ GST (ಭಾರತ)</h3>
+  <p>ರೆಸ್ಟೋರೆಂಟ್ ಬಿಲ್ ಒಂದೇ ರೆಸ್ಟೋರೆಂಟ್ ಸೇವೆ, ಆದ್ದರಿಂದ ಇಡೀ ಬಿಲ್‌ಗೆ ಒಂದೇ GST ದರ. ಅದನ್ನು <strong>⚙ Restaurant Settings</strong> ನಲ್ಲಿ ಆಯ್ಕೆ ಮಾಡಿ (ಅಡ್ಮಿನ್ ಮಾತ್ರ):</p>
+  <ul>
+    <li><strong>ಇನ್‌ಪುಟ್ ಟ್ಯಾಕ್ಸ್ ಕ್ರೆಡಿಟ್ ಇಲ್ಲದೆ 5%</strong>: ರೆಸ್ಟೋರೆಂಟ್‌ಗಳು, ಕೆಫೆಗಳು, ಢಾಬಾಗಳು ಮತ್ತು ಟೇಕ್‌ಅವೇ (ಸಾಮಾನ್ಯ ಸಂದರ್ಭ, ಡೀಫಾಲ್ಟ್ ಕೂಡ).</li>
+    <li><strong>ಇನ್‌ಪುಟ್ ಟ್ಯಾಕ್ಸ್ ಕ್ರೆಡಿಟ್‌ನೊಂದಿಗೆ 18%</strong>: <em>specified premises</em> ಆಗಿರುವ ಹೋಟೆಲ್‌ನೊಳಗಿನ ರೆಸ್ಟೋರೆಂಟ್ (ಹಿಂದಿನ ವರ್ಷ ಕೊಠಡಿಗಳಿಗೆ ದಿನಕ್ಕೆ ₹7,500 ಕ್ಕಿಂತ ಹೆಚ್ಚು ವಿಧಿಸಿದ, ಅಥವಾ ತನ್ನನ್ನು ಹಾಗೆಂದು ಘೋಷಿಸಿದ ಹೋಟೆಲ್).</li>
+  </ul>
+  <p>Rooms ಪರದೆ ಬಳಸುವ ಹೋಟೆಲ್ ಆಯ್ಕೆ ಮಾಡಬೇಕಿಲ್ಲ: ಆವರಣ specified premises ಆಗಿರುವ ವರ್ಷದಲ್ಲಿ Accelent ರೆಸ್ಟೋರೆಂಟ್ ಅನ್ನು ತಾನಾಗಿ 18% ಗೆ ಬದಲಿಸುತ್ತದೆ (<a href="#ch9c">ಅಧ್ಯಾಯ 9c</a> ನೋಡಿ).</p>
+  <div class="tip">💡 ನಿಮಗೆ ಯಾವುದು ಅನ್ವಯಿಸುತ್ತದೆ ಎಂದು ಖಚಿತವಿಲ್ಲದಿದ್ದರೆ ನಿಮ್ಮ CA ಅವರನ್ನು ಕೇಳಿ.</div>
+
+  <div class="tip">💡 Restaurant ಪರದೆ ಬಳಸಲು ಸಿಬ್ಬಂದಿಗೆ <strong>Create sales</strong> ಅನುಮತಿ ಬೇಕು. ಬಿಲ್ ರದ್ದುಗೊಳಿಸಲು <strong>Edit or delete bills</strong> ಬೇಕು.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9c -->
+<div class="chapter-banner" data-for="hotel">ಅಧ್ಯಾಯ 9c — ಕೊಠಡಿಗಳು <span class="for-badge">ಹೋಟೆಲ್‌ಗಳು, ಲಾಡ್ಜ್‌ಗಳು ಮತ್ತು ಅತಿಥಿಗೃಹಗಳಿಗೆ</span></div>
+<div class="section" id="ch9c" data-for="hotel">
+  <h2>9c. ಕೊಠಡಿಗಳು (ಹೋಟೆಲ್, ಲಾಡ್ಜ್, ಅತಿಥಿಗೃಹ)</h2>
+  <p>ಸ್ವಂತ ರೆಸ್ಟೋರೆಂಟ್‌ನೊಂದಿಗೆ ಅಥವಾ ಇಲ್ಲದೆ, ಹೋಟೆಲ್, ಲಾಡ್ಜ್ ಅಥವಾ ಅತಿಥಿಗೃಹಕ್ಕೆ. ಪ್ರತಿ ಅತಿಥಿಯ ವಾಸ್ತವ್ಯ ಅವರ ಕೊಠಡಿಯ ಮೇಲಿನ ಚಾಲ್ತಿ ಖಾತೆ: ರಾತ್ರಿಗಳು ತಾನಾಗಿ ಸೇರುತ್ತವೆ, ಹೆಚ್ಚುವರಿ ಶುಲ್ಕಗಳು ಮತ್ತು ನಿಮ್ಮ ರೆಸ್ಟೋರೆಂಟ್‌ನ ಆಹಾರ ಅದಕ್ಕೆ ಸೇರುತ್ತವೆ, ಚೆಕ್-ಔಟ್‌ನಲ್ಲಿ ಅತಿಥಿಗೆ ಎಲ್ಲದಕ್ಕೂ <strong>ಒಂದೇ GST ಬಿಲ್</strong> ಸಿಗುತ್ತದೆ, ಮುಂಗಡ ಕಳೆಯಲಾಗುತ್ತದೆ.</p>
+
+  <h3>ಇದನ್ನು ಆನ್ ಮಾಡುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್‌ನಿಂದ ತೆರೆಯಿರಿ) → <strong>Business Type: Hotel, lodge or guest house</strong> → <strong>Save</strong>, ನಂತರ Accelent ಮುಚ್ಚಿ ಮತ್ತೆ ತೆರೆಯಿರಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಈಗ ಮೆನುವಿನಲ್ಲಿ FINANCE ಅಡಿ <strong>🛏 Rooms</strong> ಮತ್ತು <strong>🍽 Restaurant</strong> ಇವೆ (ರೆಸ್ಟೋರೆಂಟ್‌ಗೆ <a href="#ch9b">ಅಧ್ಯಾಯ 9b</a> ನೋಡಿ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🛏 Rooms → 🚪 Rooms…</strong> → ಪ್ರತಿ ಕೊಠಡಿಯನ್ನು <strong>＋ Add</strong> ಮಾಡಿ: ಅದರ ಸಂಖ್ಯೆ (101), ರೀತಿ (Standard, Deluxe, Suite…), <strong>ರಾತ್ರಿಯ ಬಾಡಿಗೆ</strong> ಮತ್ತು ಎಷ್ಟು ಜನರು ಉಳಿಯಬಹುದು.</div></div>
+
+  <h3>ಕೊಠಡಿ ಫಲಕ</h3>
+  <p>ಪ್ರತಿ ಕೊಠಡಿ ಒಂದು ಕಾರ್ಡ್:</p>
+  <ul>
+    <li><strong>ಖಾಲಿ</strong> ಕೊಠಡಿ ಸಾದಾ ಇರುತ್ತದೆ, ಅದರ ರೀತಿ, <em>✓ Vacant</em> ಮತ್ತು ಬಾಡಿಗೆ ತೋರಿಸುತ್ತದೆ.</li>
+    <li><strong>ಭರ್ತಿಯಾದ</strong> ಕೊಠಡಿಗೆ <strong>ಬಣ್ಣದ ಅಂಚು</strong> ಇರುತ್ತದೆ, ಅತಿಥಿಯ ಹೆಸರು ಮತ್ತು ಇದುವರೆಗಿನ ರಾತ್ರಿಗಳನ್ನು ತೋರಿಸುತ್ತದೆ.</li>
+    <li>ಚೆಕ್-ಔಟ್ ನಂತರ ಸ್ವಚ್ಛತೆಗೆ ಕಾಯುತ್ತಿರುವ ಕೊಠಡಿಗೆ <strong>ಹಳದಿ (amber) ಅಂಚು</strong> ಇರುತ್ತದೆ, <em>⚠ To be cleaned</em> ತೋರಿಸುತ್ತದೆ.</li>
+  </ul>
+  <p>ಕೊಠಡಿ ಕ್ಲಿಕ್ ಮಾಡಿ: ಅತಿಥಿಯ ಖಾತೆ ಮಧ್ಯದಲ್ಲಿ ಮತ್ತು ಕೊಠಡಿಯ ಬಟನ್‌ಗಳು ಬಲಭಾಗದಲ್ಲಿ ಕಾಣುತ್ತವೆ. ಮುಖ್ಯ ಕ್ರಿಯೆ ಹಸಿರು (<strong>🛎 Check In</strong>, <strong>🧾 Check Out</strong>); <strong>🗑 Cancel Check-in</strong> ಕೆಂಪು.</p>
+
+  <h3>ಚೆಕ್-ಇನ್</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಖಾಲಿ ಕೊಠಡಿ ಕ್ಲಿಕ್ ಮಾಡಿ → <strong>🛎 Check In</strong>.</div></div>
+  <div class="tip">💡 Check In ವಿಂಡೋದ ಮೇಲಿನ <strong>📷 Scan ID card…</strong> ಅತಿಥಿಯ ಗುರುತಿನ ಚೀಟಿಯ ಫೋಟೋ ಅಥವಾ ಸ್ಕ್ಯಾನ್‌ನಿಂದ, ಇದೇ PC ಯಲ್ಲಿ ಓದಿ, ವಿವರಗಳನ್ನು ತುಂಬುತ್ತದೆ (ಏನೂ ಎಲ್ಲಿಗೂ ಕಳುಹಿಸುವುದಿಲ್ಲ). <strong>ಆಧಾರ್:</strong> ದೊಡ್ಡ QR ಕೋಡ್ ಇರುವ ಬದಿಯನ್ನು ಬಳಸಿ; ಹೆಸರು, ಹುಟ್ಟಿದ ದಿನಾಂಕ, ಲಿಂಗ ಮತ್ತು ವಿಳಾಸ ಓದಲಾಗುತ್ತದೆ, ಸಂಖ್ಯೆಯ <strong>ಕೊನೆಯ 4 ಅಂಕಿಗಳನ್ನು</strong> ಮಾತ್ರ ಇಡಲಾಗುತ್ತದೆ (XXXX XXXX 1234). ಕೈಯಾರೆ ಟೈಪ್ ಮಾಡಿದ ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನೂ ಹೀಗೆಯೇ ಇಡಲಾಗುತ್ತದೆ, ಆಧಾರ್ ಕಾರ್ಡ್‌ನ ಪ್ರತಿಯನ್ನು ಎಂದಿಗೂ ಇಡುವುದಿಲ್ಲ: UIDAI ಹೋಟೆಲ್‌ಗಳಿಗೆ ಅವನ್ನು ಇಡಲು ಅನುಮತಿ ನೀಡುವುದಿಲ್ಲ. <strong>ಪಾಸ್‌ಪೋರ್ಟ್</strong> (ಕೆಳಗಿನ ಎರಡು ಸಾಲುಗಳಿಂದ), <strong>PAN</strong>, <strong>ಚಾಲನಾ ಪರವಾನಗಿ</strong> ಮತ್ತು <strong>ಮತದಾರರ ID</strong> ಸಹ ಓದಲಾಗುತ್ತದೆ; ಅತಿಥಿ ಒಪ್ಪಿದ್ದಾರೆ ಎಂದು ನೀವು ಟಿಕ್ ಮಾಡಿದರೆ ಮಾತ್ರ ಇವುಗಳ ಪ್ರತಿ ಇಡಲಾಗುತ್ತದೆ, ಚೆಕ್-ಔಟ್‌ನಿಂದ ನಿಗದಿತ ದಿನಗಳ ನಂತರ ಅಳಿಸಲಾಗುತ್ತದೆ (<strong>⚙ Hotel Settings</strong>, ನೀವು ಬದಲಿಸದಿದ್ದರೆ 30 ದಿನ). ಚೆಕ್-ಇನ್ ಮಾಡುವ ಮೊದಲು ಯಾವಾಗಲೂ ವಿವರಗಳನ್ನು ಕಾರ್ಡ್‌ನೊಂದಿಗೆ ಹೋಲಿಸಿ ಪರಿಶೀಲಿಸಿ.</div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಅತಿಥಿ ರಿಜಿಸ್ಟರ್ ವಿವರಗಳನ್ನು ತುಂಬಿ: ಹೆಸರು, ಫೋನ್, ವಿಳಾಸ, <strong>ಗುರುತಿನ ಪುರಾವೆ</strong> (ಆಧಾರ್, ಪಾಸ್‌ಪೋರ್ಟ್, ಚಾಲನಾ ಪರವಾನಗಿ…) ಮತ್ತು ಅದರ ಸಂಖ್ಯೆ, ರಾಷ್ಟ್ರೀಯತೆ, ಜನರ ಸಂಖ್ಯೆ, ಎಲ್ಲಿಂದ ಬಂದರು ಎಲ್ಲಿಗೆ ಹೋಗುತ್ತಾರೆ, ಅಂದಾಜು ರಾತ್ರಿಗಳು ಮತ್ತು ಬಾಡಿಗೆ (ರಿಯಾಯಿತಿಗೆ ಬದಲಿಸಿ). <strong>⚙ Hotel Settings</strong> ನಲ್ಲಿ ನೀವು ಆಫ್ ಮಾಡದಿದ್ದರೆ ID ಸಂಖ್ಯೆ ಕಡ್ಡಾಯ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಅತಿಥಿ <strong>ಮುಂಗಡ</strong> ಕೊಟ್ಟರೆ, ಅದನ್ನು ಮತ್ತು ಹೇಗೆ ಕೊಟ್ಟರು (ನಗದು, UPI, ಕಾರ್ಡ್ ಅಥವಾ ಬ್ಯಾಂಕ್) ಎಂದು ನಮೂದಿಸಿ. ಅದು ತಕ್ಷಣ ನಿಮ್ಮ ನಗದು ಅಥವಾ ಬ್ಯಾಂಕ್‌ಗೆ ಹೋಗುತ್ತದೆ, ಚೆಕ್-ಔಟ್‌ನಲ್ಲಿ ಕಳೆಯಲಾಗುತ್ತದೆ.</div></div>
+
+  <h3>ಅತಿಥಿಯ ಖಾತೆ</h3>
+  <p>ಇದುವರೆಗೆ ವಿಧಿಸಿದ ಎಲ್ಲವನ್ನೂ, GST ಮತ್ತು ಇನ್ನೂ ಪಾವತಿಸಬೇಕಾದ ಮೊತ್ತದೊಂದಿಗೆ ನೋಡಲು ಭರ್ತಿಯಾದ ಕೊಠಡಿ ಕ್ಲಿಕ್ ಮಾಡಿ:</p>
+  <ul>
+    <li><strong>ಕೊಠಡಿ ರಾತ್ರಿಗಳು</strong> ಚೆಕ್-ಇನ್ ದಿನಾಂಕದಿಂದ ತಾನಾಗಿ ಲೆಕ್ಕವಾಗುತ್ತವೆ. <strong>₹ Night Rates</strong> ನಿರ್ದಿಷ್ಟ ರಾತ್ರಿಯ ದರ ಬದಲಿಸುತ್ತದೆ (ವಾರಾಂತ್ಯದ ದರ, ರಿಯಾಯಿತಿ).</li>
+    <li><strong>➕ Add Charge</strong>: ಹೆಚ್ಚುವರಿ ಹಾಸಿಗೆ ಅಥವಾ ಮುಂಚಿನ ಚೆಕ್-ಇನ್‌ಗೆ <em>Part of the room</em> ಆಯ್ಕೆ ಮಾಡಿ (ಅದು ಆ ರಾತ್ರಿಯ ಕೊಠಡಿ ಮೌಲ್ಯಕ್ಕೆ ಸೇರುತ್ತದೆ), ಅಥವಾ ಲಾಂಡ್ರಿ, ಸಾರಿಗೆ ಇತ್ಯಾದಿಗೆ ಅದರ ಸ್ವಂತ GST % ನೊಂದಿಗೆ <em>Another service</em>. <strong>✕ Remove Charge</strong> ತಪ್ಪಾಗಿ ಸೇರಿಸಿದ ಶುಲ್ಕ ತೆಗೆಯುತ್ತದೆ.</li>
+    <li><strong>💵 Advance</strong> ವಾಸ್ತವ್ಯದಲ್ಲಿ ಬಂದ ಹೆಚ್ಚಿನ ಹಣ ದಾಖಲಿಸುತ್ತದೆ. ಚೆಕ್-ಔಟ್ ಬಿಲ್ ಬಂದ ಮುಂಗಡ ಮತ್ತು ಪಾವತಿಸಿದ ಉಳಿಕೆ ತೋರಿಸುತ್ತದೆ; ಮುಂಗಡ ಬಿಲ್‌ಗಿಂತ ಹೆಚ್ಚಿದ್ದರೆ, <strong>ಮರಳಿ ಕೊಟ್ಟ</strong> ಮೊತ್ತ ತೋರಿಸುತ್ತದೆ, ಅದು ಅತಿಥಿಗೆ ಮರುಪಾವತಿ ಎಂದು ದಾಖಲಾಗುತ್ತದೆ.</li>
+    <li><strong>⇄ Move Room</strong> ಅತಿಥಿಯನ್ನು ಖಾಲಿ ಕೊಠಡಿಗೆ ಸ್ಥಳಾಂತರಿಸುತ್ತದೆ; ಹಳೆಯ ಕೊಠಡಿ ಸ್ವಚ್ಛತೆಗೆ ಹೋಗುತ್ತದೆ.</li>
+    <li><strong>🗑 Cancel Check-in</strong> ತಪ್ಪಾಗಿ ಮಾಡಿದ ಚೆಕ್-ಇನ್‌ಗೆ: ಕೊಠಡಿ ಖಾಲಿಯಾಗುತ್ತದೆ, ಯಾವುದೇ ಮುಂಗಡ ಮರುಪಾವತಿ ಎಂದು ದಾಖಲಾಗುತ್ತದೆ.</li>
+  </ul>
+
+  <h3>ಅತಿಥಿಗಳಿಗೆ ಆಹಾರ</h3>
+  <p><strong>🍽 Restaurant</strong> ಪರದೆಯಲ್ಲಿ:</p>
+  <ul>
+    <li><strong>🛏 Room Service</strong>: ಅತಿಥಿಯ ಕೊಠಡಿ ಆಯ್ಕೆ ಮಾಡಿ ಖಾದ್ಯಗಳನ್ನು ಸೇರಿಸಿ. <strong>Send to Kitchen</strong> KOT ಮುದ್ರಿಸುತ್ತದೆ <em>ಮತ್ತು</em> ಆಹಾರವನ್ನು ತಕ್ಷಣ ಅತಿಥಿಯ ಕೊಠಡಿ ಖಾತೆಗೆ ಹಾಕುತ್ತದೆ, ಆದ್ದರಿಂದ ಅದನ್ನು ಮರೆಯಲಾಗದು.</li>
+    <li>ತಂಗಿರುವ ಅತಿಥಿ ಊಟದ ಹಾಲ್‌ನಲ್ಲಿ ತಿಂದರೆ: ಸಾಮಾನ್ಯವಾಗಿ ಟೇಬಲ್‌ನ ಆರ್ಡರ್ ತೆಗೆದುಕೊಳ್ಳಿ. <strong>💵 Bill</strong> ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ, ಬಿಲ್ ವಿಂಡೋ <strong>Guest staying in a room?</strong> ಎಂದು ಕೇಳುತ್ತದೆ: ಅತಿಥಿಯ ಕೊಠಡಿ ಆಯ್ಕೆ ಮಾಡಿ ಪಾವತಿ ತೆಗೆದುಕೊಳ್ಳುವ ಬದಲು <strong>Charge to Room</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. (<strong>🛏 Charge to Room</strong> ಬಟನ್ ಕೂಡ ಇದನ್ನೇ ಮಾಡುತ್ತದೆ.)</li>
+  </ul>
+  <p>ಆಹಾರ ರೆಸ್ಟೋರೆಂಟ್‌ನ GST ದರದಲ್ಲಿ ಅತಿಥಿಯ ಖಾತೆಗೆ ಹೋಗುತ್ತದೆ, ಅದರ ಪದಾರ್ಥಗಳು (ಅಥವಾ ಅದರ ಸ್ವಂತ ಸ್ಟಾಕ್) ತಕ್ಷಣ ಸ್ಟೋರ್‌ನಿಂದ ಕಡಿಮೆಯಾಗುತ್ತವೆ, ಚೆಕ್-ಔಟ್‌ನಲ್ಲಿ ಪಾವತಿಯಾಗುತ್ತದೆ.</p>
+  <div class="tip">💡 ಅತಿಥಿ ತಿಂದ ಯಾವುದೂ ಚೆಕ್-ಔಟ್ ಬಿಲ್‌ನಿಂದ ಬಿಟ್ಟುಹೋಗುವುದಿಲ್ಲ: ಆರ್ಡರ್‌ನಲ್ಲಿ ಇನ್ನೂ ಕಾಯುತ್ತಿರುವ ರೂಮ್ ಸರ್ವೀಸ್ ಆಹಾರ ಅತಿಥಿಯ ಖಾತೆಯಲ್ಲಿ <strong>⏳ not yet charged</strong> ಆಗಿ ಕಾಣುತ್ತದೆ, ಚೆಕ್-ಔಟ್‌ನಲ್ಲಿ ಅಡುಗೆಮನೆ ತಯಾರಿಸಿದ್ದು ತಾನಾಗಿ ಬಿಲ್‌ಗೆ ಸೇರುತ್ತದೆ. ಎಂದಿಗೂ ಅಡುಗೆಮನೆಗೆ ಕಳುಹಿಸದ ವಸ್ತುಗಳಿರುವ ಆರ್ಡರ್ ಮಾತ್ರ, ಕಳುಹಿಸುವವರೆಗೆ ಅಥವಾ ರದ್ದುಗೊಳಿಸುವವರೆಗೆ, ಚೆಕ್-ಔಟ್ ಅನ್ನು ತಡೆಯುತ್ತದೆ.</div>
+
+  <h3>ಚೆಕ್-ಔಟ್</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಕೊಠಡಿ ಕ್ಲಿಕ್ ಮಾಡಿ → <strong>🧾 Check Out</strong>. ಒಟ್ಟು, ಮುಂಗಡ ಮತ್ತು ಪಾವತಿಸಬೇಕಾದ ಮೊತ್ತ ತೋರುತ್ತವೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ವಾಸ್ತವ್ಯದ ರೂಮ್ ಸರ್ವೀಸ್ ಆಹಾರ served ಎಂದು ಗುರುತಿಸದಿದ್ದರೆ, Accelent ಮೊದಲು ಅದು ತಲುಪಿತೇ ಎಂದು ಕೇಳುತ್ತದೆ: <strong>✓ Yes, delivered</strong> ಅದನ್ನು served ಎಂದು ಗುರುತಿಸಿ ಮುಂದುವರಿಯುತ್ತದೆ; <strong>✕ Not delivered</strong> ನಿಲ್ಲುತ್ತದೆ, ಆದ್ದರಿಂದ ಮೊದಲು Restaurant ಪರದೆಯಲ್ಲಿ ಆರ್ಡರ್ ಸರಿಪಡಿಸಬಹುದು. ಅತಿಥಿ ಉಳಿಕೆಯನ್ನು ಹೇಗೆ ಪಾವತಿಸುತ್ತಾರೆ ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ <strong>Check Out</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಇಡೀ ವಾಸ್ತವ್ಯಕ್ಕೆ ಒಂದೇ ಬಿಲ್ ಉಳಿಯುತ್ತದೆ: ಕೊಠಡಿ ರಾತ್ರಿಗಳು, ಹೆಚ್ಚುವರಿಗಳು, ಇತರ ಸೇವೆಗಳು ಮತ್ತು ಆಹಾರ, ಪ್ರತಿಯೊಂದೂ ತನ್ನ ಸ್ವಂತ GST ದರದಲ್ಲಿ. ಉಳಿಕೆ ಮಾತ್ರ ನಿಮ್ಮ ನಗದು ಅಥವಾ ಬ್ಯಾಂಕ್‌ಗೆ ಸೇರುತ್ತದೆ, ಏಕೆಂದರೆ ಮುಂಗಡ ಬಂದಾಗಲೇ ಸೇರಿತ್ತು.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಬಿಲ್ ಮುದ್ರಣಕ್ಕೆ ತೆರೆಯುತ್ತದೆ. ಈಗ ಕೊಠಡಿಗೆ ಹಳದಿ ಅಂಚು ಮತ್ತು <em>⚠ To be cleaned</em> ಇರುತ್ತದೆ: ಸ್ವಚ್ಛಗೊಳಿಸಿದ ನಂತರ ಅದನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ <strong>✨ Room Is Ready</strong> ಒತ್ತಿ.</div></div>
+  <div class="tip">💡 <strong>ಅತಿಥಿಯ WhatsApp ನಲ್ಲಿ ಬಿಲ್:</strong> ಚೆಕ್-ಔಟ್ ವಿಂಡೋದಲ್ಲಿ ಚೆಕ್-ಇನ್‌ನಲ್ಲಿ ಕೊಟ್ಟ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯೊಂದಿಗೆ <strong>📄 Send the bill on WhatsApp to</strong> ಇದೆ (ಅತಿಥಿ ಬೇರೆ ಸಂಖ್ಯೆ ಬಯಸಿದರೆ ಬದಲಿಸಿ). ಸಂಖ್ಯೆ ಇದ್ದಾಗ ಅದು ಟಿಕ್ ಆಗಿರುತ್ತದೆ. ಚೆಕ್-ಔಟ್ ನಂತರ ಬಿಲ್ PDF ಆಗಿ ನಕಲಾಗುತ್ತದೆ, WhatsApp ಅತಿಥಿಯ ಚಾಟ್ ತೆರೆಯುತ್ತದೆ: ಲಗತ್ತಿಸಲು <strong>Ctrl+V</strong> ಒತ್ತಿ, ನಂತರ <strong>Send</strong>.</div>
+
+  <h3>ಚೆಕ್-ಔಟ್‌ಗಳು: ಬಿಲ್ ಮತ್ತೆ ಮುದ್ರಿಸುವುದು ಅಥವಾ ಸರಿಪಡಿಸುವುದು</h3>
+  <p><strong>🧾 Check-outs</strong> ಟ್ಯಾಬ್ ಎರಡು ದಿನಾಂಕಗಳ ನಡುವಿನ ಪ್ರತಿ ಚೆಕ್-ಔಟ್ ಅನ್ನು ಅದರ ಬಿಲ್‌ನೊಂದಿಗೆ ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ. ಒಂದನ್ನು ಆಯ್ಕೆ ಮಾಡಿ ಮತ್ತೆ ಮುದ್ರಿಸಲು <strong>🖨 View / Print Bill</strong>, ಅಥವಾ ಅತಿಥಿಗೆ ಕಳುಹಿಸಲು <strong>📄 Send on WhatsApp</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಬಿಲ್ ತಪ್ಪಾಗಿ ಮಾಡಿದ್ದರೆ (ಶುಲ್ಕ ಮರೆತಿದ್ದು, ತಪ್ಪು ಪಾವತಿ), <strong>↩ Cancel Check-out Bill</strong> ಕ್ಲಿಕ್ ಮಾಡಿ: ಬಿಲ್ ಮತ್ತು ಅದರ ಪಾವತಿ ತೆಗೆಯಲ್ಪಡುತ್ತವೆ (ಒಂದು ಪ್ರತಿ Deletion Watcher ನಲ್ಲಿ ಉಳಿಯುತ್ತದೆ), ಅತಿಥಿಯ ವಾಸ್ತವ್ಯ ಪ್ರತಿ ಶುಲ್ಕದೊಂದಿಗೆ ಮತ್ತೆ ತೆರೆಯುತ್ತದೆ. ಸರಿಪಡಿಸಿ, ಅತಿಥಿಯನ್ನು ಮತ್ತೆ ಚೆಕ್-ಔಟ್ ಮಾಡಿ. ಆಹಾರ ಸ್ಟಾಕ್‌ನಿಂದ ಹೊರಗೇ ಇರುತ್ತದೆ, ಏಕೆಂದರೆ ಅದನ್ನು ತಿನ್ನಲಾಗಿದೆ. ಹೋಟೆಲ್ ಬಿಲ್ ಅನ್ನು ಬೇರೆಲ್ಲಿಂದಲೂ ಅಳಿಸಲಾಗುವುದಿಲ್ಲ.</p>
+
+  <h3>ಕೊಠಡಿಗಳ ಮೇಲೆ GST (ಭಾರತ)</h3>
+  <ul>
+    <li>ಪ್ರತಿ ಕೊಠಡಿಗೆ ರಾತ್ರಿಗೆ <strong>₹7,500</strong> ವರೆಗೆ: ಇನ್‌ಪುಟ್ ಟ್ಯಾಕ್ಸ್ ಕ್ರೆಡಿಟ್ ಇಲ್ಲದೆ <strong>5%</strong>. ₹7,500 ಕ್ಕಿಂತ ಹೆಚ್ಚು: <strong>18%</strong>. ಅಗ್ಗದ ಕೊಠಡಿಗಳಿಗೆ ವಿನಾಯಿತಿ ಇಲ್ಲ.</li>
+    <li>ದರವನ್ನು <strong>ಪ್ರತಿ ಕೊಠಡಿ ಮತ್ತು ಪ್ರತಿ ರಾತ್ರಿಗೆ</strong> ಯಾವುದೇ ರಿಯಾಯಿತಿಯ ನಂತರ ನಿಜವಾಗಿ ವಿಧಿಸಿದ ದರದ ಮೇಲೆ, ಆ ರಾತ್ರಿಯ ಹೆಚ್ಚುವರಿ ಹಾಸಿಗೆ ಅಥವಾ ಇತರ ಕೊಠಡಿ ಹೆಚ್ಚುವರಿಗಳೊಂದಿಗೆ ನಿರ್ಧರಿಸಲಾಗುತ್ತದೆ. ಒಂದು ರಾತ್ರಿ ₹6,500 ಮತ್ತು ಮುಂದಿನ ರಾತ್ರಿ ₹8,000 ಕೊಡುವ ಅತಿಥಿಗೆ ಆ ರಾತ್ರಿಗಳಿಗೆ 5% ಮತ್ತು 18% ವಿಧಿಸಲಾಗುತ್ತದೆ.</li>
+    <li><strong>Specified premises:</strong> <em>ಹಿಂದಿನ</em> ಆರ್ಥಿಕ ವರ್ಷದಲ್ಲಿ ಯಾವುದಾದರೂ ಕೊಠಡಿಗೆ ರಾತ್ರಿಗೆ ₹7,500 ಕ್ಕಿಂತ ಹೆಚ್ಚು ಬಿಲ್ ಆಗಿದ್ದರೆ, ಅಥವಾ ನೀವು ಆವರಣವನ್ನು specified premises ಎಂದು ಘೋಷಿಸಿದ್ದರೆ (<strong>⚙ Hotel Settings</strong> ನಲ್ಲಿ ಟಿಕ್ ಮಾಡಿ), ಈ ಆರ್ಥಿಕ ವರ್ಷ ನಿಮ್ಮ ರೆಸ್ಟೋರೆಂಟ್ <strong>18%</strong> ವಿಧಿಸಬೇಕು. Accelent ಇದನ್ನು ನಿಮ್ಮ ಸ್ವಂತ ಬಿಲ್‌ಗಳಿಂದ ಲೆಕ್ಕ ಹಾಕಿ ರೆಸ್ಟೋರೆಂಟ್ ಅನ್ನು ತಾನಾಗಿ 18% ಗೆ ಬದಲಿಸುತ್ತದೆ; Rooms ಪರದೆಯ ಮೇಲಿನ ಸಾಲು ಯಾವುದು ಅನ್ವಯಿಸುತ್ತದೆ ಎಂದು ಹೇಳುತ್ತದೆ.</li>
+  </ul>
+  <div class="tip">💡 ನಿಮಗೆ ಯಾವ ದರ ಅನ್ವಯಿಸುತ್ತದೆ ಎಂದು ಖಚಿತವಿಲ್ಲದಿದ್ದರೆ ನಿಮ್ಮ CA ಅವರನ್ನು ಕೇಳಿ.</div>
+
+  <h3>QR ಕೋಡ್ ಮೂಲಕ ರೂಮ್ ಸರ್ವೀಸ್</h3>
+  <p>QR ordering ಆನ್ ಇದ್ದಾಗ (🍽 Restaurant → ⚙ Restaurant Settings, <a href="#ch9b">ಅಧ್ಯಾಯ 9b</a> ನೋಡಿ), ಪ್ರತಿ ಕೊಠಡಿಗೆ ಒಂದು ಕಾರ್ಡ್ ಮುದ್ರಿಸಿ: <strong>⚙ Hotel Settings → 🖨 Print room QR cards</strong>. ಕೊಠಡಿಯಲ್ಲಿ ತಂಗಿರುವ ಅತಿಥಿ ಅದನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ, ಮೆನು ನೋಡಿ, ತಮ್ಮ ಹೆಸರು ಮತ್ತು ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ ಆರ್ಡರ್ ಮಾಡುತ್ತಾರೆ. ಆರ್ಡರ್ PC ಮತ್ತು ವೇಟರ್‌ಗಳ ಫೋನ್‌ಗಳಿಗೆ ಆ ಕೊಠಡಿಯ QR ಆರ್ಡರ್ ಆಗಿ ತಲುಪುತ್ತದೆ; ವೇಟರ್ ದೃಢೀಕರಿಸಿ ಅಡುಗೆಮನೆಗೆ ಕಳುಹಿಸಿದ ನಂತರ ಅದು ಕೊಠಡಿಯ ಬಿಲ್‌ಗೆ ಸೇರುತ್ತದೆ. ಅತಿಥಿ ಚೆಕ್-ಇನ್ ಆಗದ ಕೊಠಡಿಯಿಂದ ಆರ್ಡರ್ ಮಾಡಲಾಗದು, ರೂಮ್ ಸರ್ವೀಸ್ ಚೆಕ್-ಔಟ್‌ನಲ್ಲಿ ಪಾವತಿಯಾಗುತ್ತದೆ. <strong>↻ New codes for all rooms</strong> ಹಳೆಯ ಕೊಠಡಿ ಕಾರ್ಡ್‌ಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುತ್ತದೆ.</p>
+
+  <h3>ಅತಿಥಿ ರಿಜಿಸ್ಟರ್</h3>
+  <p><strong>📒 Guest Register</strong> ಟ್ಯಾಬ್ ಎರಡು ದಿನಾಂಕಗಳ ನಡುವಿನ ಪ್ರತಿ ಚೆಕ್-ಇನ್ ಅನ್ನು, ಪೊಲೀಸರಿಗಾಗಿ ಇಡುವಂತೆ, ಅತಿಥಿಯ ವಿವರಗಳು, ಗುರುತಿನ ಪುರಾವೆ ಮತ್ತು ಪ್ರಯಾಣದೊಂದಿಗೆ ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ. ಮುದ್ರಿತ ಪ್ರತಿಗೆ <strong>🖨 Print Register</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಪೊಲೀಸರು ಒಬ್ಬ ಅತಿಥಿಯ ಬಗ್ಗೆ ಕೇಳಿದಾಗ, ಇಲ್ಲಿ (ಅಥವಾ <strong>🧾 Check-outs</strong> ನಲ್ಲಿ) ಅತಿಥಿಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿ <strong>👤 Guest Details</strong> ಕ್ಲಿಕ್ ಮಾಡಿ: ಆ ಅತಿಥಿಯ ಬಗ್ಗೆ ಇಟ್ಟಿರುವ ಎಲ್ಲಾ ವಿವರಗಳು ಒಂದೇ ಪುಟದಲ್ಲಿ, <strong>🖨 Print</strong> ಜೊತೆಗೆ.</p>
+
+  <div class="tip">💡 Rooms ಪರದೆ ಬಳಸಲು ಸಿಬ್ಬಂದಿಗೆ <strong>Create sales</strong> ಅನುಮತಿ ಬೇಕು.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9d -->
+<div class="chapter-banner" data-for="restaurant hotel">ಅಧ್ಯಾಯ 9d — ಪಾಲುದಾರರು <span class="for-badge">ರೆಸ್ಟೋರೆಂಟ್‌ಗಳು ಮತ್ತು ಹೋಟೆಲ್‌ಗಳಿಗೆ</span></div>
+<div class="section" id="ch9d" data-for="restaurant hotel">
+  <h2>9d. ಪಾಲುದಾರರು (ಟ್ರಾವೆಲ್ ಏಜೆಂಟ್‌ಗಳು, ಗೈಡ್‌ಗಳು, ಟ್ಯಾಕ್ಸಿ ಡ್ರೈವರ್‌ಗಳು)</h2>
+  <p>ಟ್ರಾವೆಲ್ ಏಜೆಂಟ್‌ಗಳು, ಬುಕಿಂಗ್ ಸೈಟ್‌ಗಳು, ಸ್ಥಳೀಯ ಗೈಡ್‌ಗಳು, ಟ್ಯಾಕ್ಸಿ ಡ್ರೈವರ್‌ಗಳು ಮತ್ತು ಪಾಲುದಾರ ಹೋಟೆಲ್‌ಗಳು ನಿಮಗೆ ಅತಿಥಿಗಳನ್ನು ಕರೆತಂದು ಕಮಿಷನ್ ಗಳಿಸುತ್ತಾರೆ. <strong>🤝 Partners</strong> ಪರದೆಯಲ್ಲಿ (FINANCE ಅಡಿ, ರೆಸ್ಟೋರೆಂಟ್ ಅಥವಾ ಹೋಟೆಲ್‌ಗೆ) ಅವರಲ್ಲಿ ಪ್ರತಿಯೊಬ್ಬರನ್ನು ಇಡುತ್ತೀರಿ, Accelent ಬಿಲ್‌ನೊಂದಿಗೆ ಅವರ ಕಮಿಷನ್ ಲೆಕ್ಕ ಹಾಕುತ್ತದೆ, ನೀವು ಅಲ್ಲಿಂದಲೇ ಪಾವತಿಸುತ್ತೀರಿ. ಕಮಿಷನ್ ಅತಿಥಿಯ ಬಿಲ್‌ನಲ್ಲಿ ಎಂದಿಗೂ ಕಾಣುವುದಿಲ್ಲ.</p>
+
+  <h3>ಪಾಲುದಾರರನ್ನು ಸೇರಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🤝 Partners → ➕ New Partner</strong>: ಹೆಸರು, ಯಾವ ರೀತಿಯ ಪಾಲುದಾರ (ಟ್ರಾವೆಲ್ ಏಜೆಂಟ್, ಬುಕಿಂಗ್ ಸೈಟ್, ಗೈಡ್, ಟ್ಯಾಕ್ಸಿ ಡ್ರೈವರ್, ಪಾಲುದಾರ ಹೋಟೆಲ್) ಮತ್ತು ಫೋನ್ ಸಂಖ್ಯೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ಕೊಠಡಿಗಳ ಮೇಲಿನ ಕಮಿಷನ್:</strong> <em>ಕೊಠಡಿ ಬಾಡಿಗೆಯ %</em>, <em>ರಾತ್ರಿಗೆ ₹</em> ಅಥವಾ <em>ವಾಸ್ತವ್ಯಕ್ಕೆ ₹</em>. <strong>ರೆಸ್ಟೋರೆಂಟ್ ಬಿಲ್‌ಗಳ ಮೇಲೆ:</strong> ಅವರು ಕರೆತಂದ ಅತಿಥಿಗಳ ಆಹಾರ ಬಿಲ್‌ನ % (ಇಲ್ಲದಿದ್ದರೆ 0).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಬೇಕಾದರೆ ಅವರ <strong>PAN</strong> (TDS ಗಾಗಿ) ಮತ್ತು <strong>GSTIN</strong>. <strong>Save</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಪ್ರತಿ ಪಾಲುದಾರರಿಗೆ <strong>DRV001</strong> (ಡ್ರೈವರ್‌ಗಳು), <strong>GDE001</strong> (ಗೈಡ್‌ಗಳು) ಅಥವಾ <strong>AGT001</strong> (ಏಜೆಂಟ್‌ಗಳು) ನಂತಹ ಕೋಡ್ ಸಿಗುತ್ತದೆ.</div></div>
+
+  <h3>ಅವರು ಅತಿಥಿಗಳನ್ನು ಕರೆತಂದಾಗ</h3>
+  <ul>
+    <li><strong>ಕೊಠಡಿಗಳು:</strong> <strong>Check In</strong> ವಿಂಡೋದಲ್ಲಿ <strong>Booked through</strong> ಆಯ್ಕೆ ಮಾಡಿ. ಅವರ ಸಾಮಾನ್ಯ ಕಮಿಷನ್ ಕಾಣುತ್ತದೆ; ಈ ವಾಸ್ತವ್ಯಕ್ಕೆ ಬೇರೆ ಒಪ್ಪಂದವಿದ್ದರೆ ಬದಲಿಸಿ. ಚೆಕ್-ಔಟ್‌ನಲ್ಲಿ ಕಮಿಷನ್ ರಾತ್ರಿಗಳ ಕೊಠಡಿ ಬಾಡಿಗೆಯ ಮೇಲೆ ಲೆಕ್ಕವಾಗುತ್ತದೆ (ಹೆಚ್ಚುವರಿ ಹಾಸಿಗೆ ಮತ್ತು ಕೊಠಡಿ ಹೆಚ್ಚುವರಿಗಳೊಂದಿಗೆ, GST ಗಿಂತ ಮೊದಲು; ಲಾಂಡ್ರಿ ಮತ್ತು ಇತರ ಸೇವೆಗಳು ಲೆಕ್ಕಕ್ಕಿಲ್ಲ), ಜೊತೆಗೆ ಕೊಠಡಿಯ ಬಿಲ್‌ನ ಯಾವುದೇ ಆಹಾರದ ಮೇಲೆ ಅವರ ರೆಸ್ಟೋರೆಂಟ್ %.</li>
+    <li><strong>ರೆಸ್ಟೋರೆಂಟ್:</strong> <strong>Bill</strong> ವಿಂಡೋದಲ್ಲಿ <strong>Brought by</strong> ಆಯ್ಕೆ ಮಾಡಿ. ಕಮಿಷನ್ ಆಹಾರದ ಮೇಲಿನ ಅವರ ರೆಸ್ಟೋರೆಂಟ್ %, GST ಗಿಂತ ಮೊದಲು.</li>
+    <li><strong>QR ordering:</strong> ಅತಿಥಿಗಳು ಆರ್ಡರ್ ಪುಟದಲ್ಲಿ ಡ್ರೈವರ್ ಅಥವಾ ಗೈಡ್‌ನ ಕೋಡ್ (ಉದಾ. DRV001) ಟೈಪ್ ಮಾಡಬಹುದು. ವೇಟರ್ ಆರ್ಡರ್ ದೃಢೀಕರಿಸಿದಾಗ, ಟೇಬಲ್‌ನ ಆರ್ಡರ್‌ನಲ್ಲಿ ಪಾಲುದಾರರು ತಾನಾಗಿ ಆಯ್ಕೆಯಾಗುತ್ತಾರೆ.</li>
+  </ul>
+  <p>ಕಮಿಷನ್ ಗಳಿಸಿದ ಚೆಕ್-ಔಟ್ ಅಥವಾ ಬಿಲ್ ನಂತರ, Accelent <strong>💵 Pay now</strong> (ಡ್ರೈವರ್‌ಗಳು ಮತ್ತು ಗೈಡ್‌ಗಳಿಗೆ ಆಗಾಗ ಅಲ್ಲೇ ನಗದು ಕೊಡಲಾಗುತ್ತದೆ) ಅಥವಾ ನಂತರ ಎಂದು ಕೇಳುತ್ತದೆ.</p>
+
+  <h3>ಕಮಿಷನ್ ಪಾವತಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Partners ಪರದೆಯಲ್ಲಿ ಪಾಲುದಾರರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಸ್ಟೇಟ್‌ಮೆಂಟ್ ಪ್ರತಿ ವಾಸ್ತವ್ಯ ಮತ್ತು ಬಿಲ್ ಅನ್ನು ಅದರ ಕಮಿಷನ್‌ನೊಂದಿಗೆ, ನೀವು ಪಾವತಿಸಿದ್ದು, ಮತ್ತು ಕೊಡಬೇಕಾದ ಉಳಿಕೆ ತೋರಿಸುತ್ತದೆ. ಪ್ರತಿ ಸಾಲಿನಲ್ಲಿ ಕೋಣೆ ಮತ್ತು ರಾತ್ರಿಗಳು, ಅಥವಾ ಟೇಬಲ್, ಅತಿಥಿ ಮತ್ತು ಬಿಲ್ ಇರುತ್ತದೆ. ಕಮಿಷನ್ ಯಾವ ವಾಸ್ತವ್ಯ ಅಥವಾ ಬಿಲ್‌ನಿಂದ ಬಂತು ಎಂದು ನೋಡಲು ಸಾಲನ್ನು ಡಬಲ್-ಕ್ಲಿಕ್ ಮಾಡಿ (ಅಥವಾ <strong>🔍 Details</strong> ಕ್ಲಿಕ್ ಮಾಡಿ); <strong>🖨 Print Statement</strong> ಅದನ್ನು ಪಾಲುದಾರರಿಗಾಗಿ ಮುದ್ರಿಸುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>💵 Pay Commission</strong>: ಮೊತ್ತ (ಕೊಡಬೇಕಾದದ್ದು ತುಂಬಿರುತ್ತದೆ), ಮತ್ತು ಹೇಗೆ ಪಾವತಿಸಿದಿರಿ: ನಗದು, UPI, ಬ್ಯಾಂಕ್ ವರ್ಗಾವಣೆ ಅಥವಾ ಚೆಕ್.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಪಾವತಿ <strong>Expenses</strong> ನಲ್ಲಿ <strong>Commission</strong> ಅಡಿ, ನಿಮ್ಮ ನಗದು ಅಥವಾ ಬ್ಯಾಂಕ್‌ನಿಂದ ಹೋಗುತ್ತದೆ, ಆದ್ದರಿಂದ Day Book, ಖಾತೆ ಸ್ಟೇಟ್‌ಮೆಂಟ್‌ಗಳು ಮತ್ತು Profit &amp; Loss ಅದನ್ನು ಸೇರಿಸುತ್ತವೆ.</div></div>
+  <div class="tip">💡 ಚೆಕ್-ಔಟ್ ಅಥವಾ ರೆಸ್ಟೋರೆಂಟ್ ಬಿಲ್ ರದ್ದಾದರೆ, ಅದರ ಕಮಿಷನ್ ತಾನಾಗಿ ಲೆಕ್ಕದಿಂದ ಹೊರಗುಳಿಯುತ್ತದೆ. ನೀವು ಈಗಾಗಲೇ ಪಾವತಿಸಿದ್ದರೆ, ಪಾಲುದಾರರ ಬಾಕಿ ಅವರು ನಿಮಗೆ ಮರಳಿ ಕೊಡಬೇಕಾದದ್ದನ್ನು ತೋರಿಸುತ್ತದೆ.</div>
+
+  <h3>ಪಾಲುದಾರ ಸೆಟ್ಟಿಂಗ್‌ಗಳು (ಅಡ್ಮಿನ್)</h3>
+  <ul>
+    <li><strong>ಒಂದು ವಾಸ್ತವ್ಯ ಅಥವಾ ಬಿಲ್‌ಗೆ ಗರಿಷ್ಠ ಕಮಿಷನ್:</strong> ಒಂದು ಸುರಕ್ಷತಾ ಮಿತಿ, ಆದ್ದರಿಂದ ಟೈಪಿಂಗ್ ತಪ್ಪು (5% ಬದಲು 50%) ದೊಡ್ಡ ಮೊತ್ತ ಪಾವತಿಸುವಂತಾಗದು.</li>
+    <li><strong>ಕಮಿಷನ್ ಮೇಲೆ TDS</strong> (ನೀವು ಆನ್ ಮಾಡುವವರೆಗೆ ಆಫ್): ದರ (2%, ಅಥವಾ PAN ಇಲ್ಲದೆ 20%) ಮತ್ತು TDS ಅನ್ವಯಿಸುವ ಮೊದಲು ಒಬ್ಬ ಪಾಲುದಾರ ಗಳಿಸಬಹುದಾದ ವಾರ್ಷಿಕ ಮೊತ್ತ (₹20,000). ಕಂಪನಿ ಅಥವಾ ಸಂಸ್ಥೆ ಕಮಿಷನ್ ಮೇಲೆ TDS ಕಡಿತಗೊಳಿಸಬೇಕು; ವ್ಯಕ್ತಿ ಅಥವಾ HUF, ಕಳೆದ ವರ್ಷದ ವ್ಯಾಪಾರ ವಹಿವಾಟು ₹1 ಕೋಟಿಗಿಂತ ಹೆಚ್ಚು (ವೃತ್ತಿಗೆ ₹50 ಲಕ್ಷ) ಇದ್ದರೆ ಮಾತ್ರ. ನೀವು ಕಡಿತಗೊಳಿಸಬೇಕೇ ಎಂದು ನಿಮ್ಮ ಲೆಕ್ಕಿಗರನ್ನು ಕೇಳಿ. ಕಡಿತಗೊಳಿಸಿದ TDS ಸರ್ಕಾರಕ್ಕೆ ಪಾವತಿಸುವವರೆಗೆ <em>TDS on commission (payable)</em> ಖಾತೆಯಲ್ಲಿ ಕೊಡಬೇಕಾದದ್ದಾಗಿ ಕಾಣುತ್ತದೆ.</li>
+  </ul>
+
+  <h3>ಪಾಲುದಾರವಾರು ವ್ಯಾಪಾರ</h3>
+  <p><strong>📊 Business by Partner</strong> ಟ್ಯಾಬ್ ಯಾವುದೇ ದಿನಾಂಕಗಳಿಗೆ, ಪ್ರತಿ ಪಾಲುದಾರ ಎಷ್ಟು ಬಿಲ್‌ಗಳನ್ನು ತಂದರು, ವ್ಯಾಪಾರ (ಕೊಠಡಿ ಬಾಡಿಗೆ ಮತ್ತು ಆಹಾರ) ಮತ್ತು ಅವರ ಕಮಿಷನ್, ನೀವು ಪಾವತಿಸಿದ್ದು ಮತ್ತು ಇನ್ನೂ ಕೊಡಬೇಕಾದ್ದು, ದೊಡ್ಡದು ಮೊದಲು ತೋರಿಸುತ್ತದೆ.</p>
+
+  <div class="tip">💡 Partners ಪರದೆ ಬಳಸಲು ಸಿಬ್ಬಂದಿಗೆ <strong>Expenses</strong> ಅನುಮತಿ ಬೇಕು. ಚೆಕ್-ಇನ್ ಅಥವಾ ಬಿಲ್‌ನಲ್ಲಿ ಪಾಲುದಾರರನ್ನು ಆಯ್ಕೆ ಮಾಡಲು Rooms ಅಥವಾ Restaurant ಪರದೆ ಸಾಕು.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9e -->
+<div class="chapter-banner" data-for="hotel">ಅಧ್ಯಾಯ 9e — ಹೌಸ್‌ಕೀಪಿಂಗ್ <span class="for-badge">ಹೋಟೆಲ್‌ಗಳು, ಲಾಡ್ಜ್‌ಗಳು ಮತ್ತು ಅತಿಥಿಗೃಹಗಳಿಗೆ</span></div>
+<div class="section" id="ch9e" data-for="hotel">
+  <h2>9e. ಹೌಸ್‌ಕೀಪಿಂಗ್ (ಕೊಠಡಿ ಸ್ವಚ್ಛತೆ ಮತ್ತು ಲಾಂಡ್ರಿ)</h2>
+  <p><strong>🧹 Housekeeping</strong> ಪರದೆ (FINANCE ಅಡಿ, ಹೋಟೆಲ್‌ಗೆ) ನಿಮ್ಮ ಸಿಬ್ಬಂದಿಗೆ ಸ್ವಚ್ಛತೆ ಮತ್ತು ಲಾಂಡ್ರಿ ಕೆಲಸಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ. ಹೆಚ್ಚಿನ ಕೆಲಸಗಳು ತಾನಾಗಿ ಬರುತ್ತವೆ:</p>
+  <ul>
+    <li><strong>ಚೆಕ್-ಔಟ್</strong> ಒಂದು <em>Clean the room</em> ಕೆಲಸ ಸೃಷ್ಟಿಸುತ್ತದೆ. ಅದು ಮುಗಿದಾಗ, ಕೊಠಡಿ ಮುಂದಿನ ಅತಿಥಿಗೆ ತಾನಾಗಿ <strong>Ready</strong> ಆಗುತ್ತದೆ (Rooms ಪರದೆಯಲ್ಲಿ <strong>✨ Room Is Ready</strong> ಒತ್ತಿದರೂ ಅದು ಮುಗಿಯುತ್ತದೆ).</li>
+    <li><strong>ಪ್ರತಿ ಬೆಳಿಗ್ಗೆ</strong> ನೀವು ಇಟ್ಟ ಸಮಯಕ್ಕೆ, ಭರ್ತಿಯಾದ ಪ್ರತಿ ಕೊಠಡಿಗೆ ಒಂದು <em>Daily cleaning</em> ಕೆಲಸ ಸೃಷ್ಟಿಯಾಗುತ್ತದೆ.</li>
+    <li><strong>ಅತಿಥಿಗಳು</strong> ಕೊಠಡಿ QR ಕಾರ್ಡ್‌ನಲ್ಲಿ <strong>🧹 Clean my room</strong> ಅಥವಾ <strong>👕 Laundry pickup</strong> ಒತ್ತಬಹುದು (QR ordering ಆನ್ ಇದ್ದಾಗ). PC ಬೀಪ್ ಮಾಡಿ ವಿನಂತಿಯನ್ನು ಮೇಲೆ ತೋರಿಸುತ್ತದೆ. ದಿನನಿತ್ಯದ ಸ್ವಚ್ಛತೆ ಕಾಯುತ್ತಿದ್ದರೆ, ಅತಿಥಿಯ ವಿನಂತಿ ಅದರ ಸ್ಥಾನ ಪಡೆಯುತ್ತದೆ.</li>
+    <li>ಫ್ರಂಟ್ ಡೆಸ್ಕ್ <strong>➕ New Task</strong> ನಿಂದ ಯಾವುದೇ ಕೆಲಸ ಸೇರಿಸಬಹುದು.</li>
+  </ul>
+
+  <h3>ಯಾರು ಮಾಡುತ್ತಾರೆ</h3>
+  <p><strong>⚙ Housekeeping Settings</strong> (ಅಡ್ಮಿನ್) ನಲ್ಲಿ ಕರ್ತವ್ಯದಲ್ಲಿರುವ ನೌಕರರನ್ನು ಟಿಕ್ ಮಾಡಿ (ಮೊದಲು ಅವರನ್ನು 👥 Employees ನಲ್ಲಿ ಸೇರಿಸಿ). ಪ್ರತಿ ಹೊಸ ಕೆಲಸ ಅತಿ ಕಡಿಮೆ ತೆರೆದ ಕೆಲಸಗಳಿರುವವರಿಗೆ ಹೋಗುತ್ತದೆ; <strong>👤 Give to…</strong> ಅದನ್ನು ಬದಲಿಸುತ್ತದೆ. ಸ್ವಚ್ಛತೆಗೆ ಕಾಯುತ್ತಿರುವ ಕೊಠಡಿಯನ್ನು ಯಾರು ಸ್ವಚ್ಛಗೊಳಿಸುತ್ತಿದ್ದಾರೆ ಎಂದು Rooms ಪರದೆ ತೋರಿಸುತ್ತದೆ.</p>
+
+  <h3>ಕೆಲಸ ಮಾಡುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಕೆಲಸ ಆಯ್ಕೆ ಮಾಡಿ <strong>▶ Start</strong> (ಐಚ್ಛಿಕ), ಮುಗಿದಾಗ <strong>✓ Done</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. <strong>✕ Cancel task</strong> ಬೇಡದ ಕೆಲಸ ತೆಗೆಯುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ಲಾಂಡ್ರಿ:</strong> ಕೊಠಡಿಯಿಂದ ಬಟ್ಟೆ ತೆಗೆದುಕೊಂಡಾಗ <strong>👕 Collected</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಅವು ಮರಳಿ ಬಂದಾಗ, <strong>✓ Laundry returned…</strong> ಕ್ಲಿಕ್ ಮಾಡಿ ಪ್ರತಿ ರೀತಿಯ ಎಷ್ಟು ತುಂಡುಗಳು ಎಂದು ನಮೂದಿಸಿ. ಒಟ್ಟು ಲಾಂಡ್ರಿ GST ಯೊಂದಿಗೆ ಅತಿಥಿಯ ಕೊಠಡಿ ಬಿಲ್‌ಗೆ ಹೋಗುತ್ತದೆ (ನೀವು ಬದಲಿಸದಿದ್ದರೆ 18%).</div></div>
+  <div class="tip">💡 ಲಾಂಡ್ರಿ ಬೆಲೆ ಪಟ್ಟಿ (ಅಂಗಿ, ಪ್ಯಾಂಟ್, ಸೀರೆ…), ಲಾಂಡ್ರಿಯ ಮೇಲಿನ GST ಮತ್ತು ದಿನನಿತ್ಯದ ಸ್ವಚ್ಛತೆಯ ಸಮಯ <strong>⚙ Housekeeping Settings</strong> ನಲ್ಲಿವೆ. <strong>✓ Done today</strong> ಟ್ಯಾಬ್ ಇಂದು ಮುಗಿದ ಕೆಲಸಗಳು, ಯಾರು ಮಾಡಿದರು, ಮತ್ತು ವಿಧಿಸಿದ ಲಾಂಡ್ರಿ ಶುಲ್ಕ ತೋರಿಸುತ್ತದೆ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 10 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 10 — ಖರೀದಿಗಳು</div>
+<div class="section" id="ch10">
+  <h2>10. ಖರೀದಿ ಪ್ಯಾನೆಲ್</h2>
+  <p>ಸರಬರಾಜುದಾರರಿಂದ ಬರುವ ಪ್ರತಿ ಖರೀದಿ ಬಿಲ್ ಅನ್ನು ಇಲ್ಲಿ ದಾಖಲಿಸಿ. ಸ್ಟಾಕ್ ಹೆಚ್ಚುತ್ತದೆ, ಸರಬರಾಜುದಾರರಿಗೆ ಕೊಡಬೇಕಾದ ಬಾಕಿಯನ್ನು ತಾನಾಗಿ ಗಮನಿಸಲಾಗುತ್ತದೆ.</p>
+
+  <h3>ಖರೀದಿ ದಾಖಲಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>+ New Purchase</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಮೊದಲು <strong>Vendor Name</strong> ಆಯ್ಕೆ ಮಾಡಿ ಅಥವಾ ಟೈಪ್ ಮಾಡಿ — ಅದರ ಕೆಳಗಿನ ಎಲ್ಲವೂ ಇದನ್ನು ಅವಲಂಬಿಸಿದೆ. ಈಗಾಗಲೇ ಇರುವ ಸರಬರಾಜುದಾರರಿಗೆ ವಿಳಾಸ/ಫೋನ್/GSTIN ತಾನಾಗಿ ತುಂಬುತ್ತವೆ, ಅವರ ಸಾಮಾನ್ಯ ವಸ್ತುಗಳು ನೇರವಾಗಿ Order Items ಕೋಷ್ಟಕಕ್ಕೆ ಲೋಡ್ ಆಗುತ್ತವೆ, ಪ್ರತಿಯೊಂದೂ ಮೊದಲೇ ಟಿಕ್ ಆಗಿ ಸಿದ್ಧವಾಗಿರುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಈ ಬಿಲ್‌ನಲ್ಲಿ ಸೇರಿಸಬೇಡದ ಯಾವುದೇ ಸಾಲಿನ (☑) ಟಿಕ್ ತೆಗೆಯಿರಿ. ಬೇಕಾದಂತೆ ಪ್ರತಿ ಸಾಲಿನ Qty/Rate/GST% ಬದಲಿಸಿ — Amount ಮತ್ತು ಕೆಳಗಿನ Subtotal/GST/Grand Total ತಕ್ಷಣ ಬದಲಾಗುತ್ತವೆ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಕೋಷ್ಟಕದಲ್ಲಿ ಈಗಾಗಲೇ ಇಲ್ಲದ್ದನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಸೇರಿಸಿ (Order Items ಮೇಲಿನ <strong>📷</strong> ಫೀಲ್ಡ್ + <strong>📱 Scan with Phone</strong>), ಅಥವಾ ಕೋಷ್ಟಕದ ಕೆಳಗಿನ <strong>➕ Add Item to Same Vendor</strong> ಮೂಲಕ ಸಂಪೂರ್ಣ ಹೊಸ ಉತ್ಪನ್ನ ನೋಂದಾಯಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Bill Details ನಲ್ಲಿ Bill Number, Bill Date ಮತ್ತು Payment Method (Cash / Bank Transfer / Cheque / Card / UPI / Credit to Vendor) ತುಂಬಿ.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>💾 Save Purchase</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಸ್ಟಾಕ್ ಮತ್ತು ಸರಬರಾಜುದಾರರ ಬಾಕಿ ತಕ್ಷಣ ಬದಲಾಗುತ್ತವೆ. ಅದೇ ವಸ್ತುಗಳು ಮತ್ತು ಒಟ್ಟಿನ ಬಿಲ್ 60 ದಿನಗಳೊಳಗೆ (ಯಾವುದೇ ಸರಬರಾಜುದಾರರ ಅಡಿ) ಈಗಾಗಲೇ ಉಳಿದಿದ್ದರೆ, ಎರಡನೇ ಬಾರಿ ಉಳಿಸುವ ಮೊದಲು Accelent ಕೇಳುತ್ತದೆ.</div></div>
+  <div class="tip">💡 <strong>ಬಿಲ್ ಸಂಪಾದಿಸುವುದು ಅಥವಾ ಅಳಿಸುವುದು:</strong> ಬಿಲ್‌ಗಳ ಪಟ್ಟಿಯಲ್ಲಿ ಅದನ್ನು ಆಯ್ಕೆ ಮಾಡಿ <strong>✏️ Edit Bill</strong> ಅಥವಾ <strong>❌ Delete Bill</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಸಂಪಾದನೆ ಸ್ಟಾಕ್ ಮತ್ತು ಸರಬರಾಜುದಾರರ ಖಾತೆಯನ್ನು ಸರಿಪಡಿಸಿದ ಬಿಲ್‌ಗೆ ಹೊಂದಿಸುತ್ತದೆ. ತಪ್ಪು ಸರಬರಾಜುದಾರರ ಅಡಿ ಉಳಿದ ಬಿಲ್ ಅನ್ನು ಅಳಿಸಿ ಸರಿಯಾದವರ ಅಡಿ ಮತ್ತೆ ನಮೂದಿಸುವುದು ಉತ್ತಮ — ಅಳಿಸುವುದು ಅದರ ಸ್ಟಾಕ್, ಖಾತೆ ನಮೂದು ಮತ್ತು GST ಅನ್ನು ಹಿಂತಿರುಗಿಸುತ್ತದೆ, ಒಂದು ಪ್ರತಿಯನ್ನು Deletion Watcher ನಲ್ಲಿ ಇಡುತ್ತದೆ. ಅಳಿಸಿದ ನಂತರ, ಈಗ ಬೇರೆಲ್ಲೂ ಬಳಸದ ಬಿಲ್‌ನ ವಸ್ತುಗಳನ್ನು ಅದೇ ಹಂತದಲ್ಲಿ ಅಳಿಸಲು Accelent ಮುಂದಾಗುತ್ತದೆ. ಸರಕು ಈಗಾಗಲೇ ಮಾರಾಟವಾದ ಬಿಲ್ ಅನ್ನು ಅಳಿಸಲಾಗದು; ಅದನ್ನು Edit Bill ನಿಂದ ಸರಿಪಡಿಸಿ, ಅಥವಾ ಹಿಂದಿರುಗಿಸಿದ ಸರಕನ್ನು Returns → Purchase Returns ನಲ್ಲಿ ದಾಖಲಿಸಿ.</div>
+
+  <h3>ಸರಬರಾಜುದಾರ ಮತ್ತು ವಸ್ತುವಿನ ಸಂಯೋಜನೆಗಳು</h3>
+  <p>ಸರಬರಾಜುದಾರ ಮತ್ತು ನೀವು ಖರೀದಿಸುವ ವಸ್ತು Accelent ನಲ್ಲಿ ಈಗಾಗಲೇ ಇದೆಯೇ ಎಂಬುದರ ಮೇಲೆ, Order Items ಕೋಷ್ಟಕ ಮತ್ತು <strong>➕ Add Item to Same Vendor</strong> ಪ್ಯಾನೆಲ್ ನಾಲ್ಕು ಸಂದರ್ಭಗಳಿಗೆ ಹೊಂದಿಕೊಳ್ಳುತ್ತವೆ. <strong>Vendor Name</strong> ಫೀಲ್ಡೇ ಅದರ ಕೆಳಗೆ ಏನು ಕಾಣಬೇಕು ಎಂದು ಯಾವಾಗಲೂ ನಿರ್ಧರಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ ಮೊದಲು ಸರಬರಾಜುದಾರರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ ಅಥವಾ ಟೈಪ್ ಮಾಡಿ.</p>
+
+  <h4>1. ಹಳೆಯ ಸರಬರಾಜುದಾರ + ಹಳೆಯ ವಸ್ತು</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Vendor Name</strong> ನಲ್ಲಿ ಸರಬರಾಜುದಾರರ ಹೆಸರು ಟೈಪ್ ಮಾಡಲು ಆರಂಭಿಸಿ ಡ್ರಾಪ್‌ಡೌನ್‌ನಿಂದ ಆಯ್ಕೆ ಮಾಡಿ. ಅವರ ವಿಳಾಸ, ಫೋನ್ ಮತ್ತು GSTIN ತಾನಾಗಿ ತುಂಬುತ್ತವೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಈ ಸರಬರಾಜುದಾರರಿಂದ ಹಿಂದೆ ಖರೀದಿಸಿದ ಎಲ್ಲವೂ Order Items ಕೋಷ್ಟಕದಲ್ಲಿ ತಾನಾಗಿ ತುಂಬುತ್ತದೆ, ಪ್ರತಿ ಸಾಲು ಟಿಕ್ ಆಗಿರುತ್ತದೆ. ಈ ಬಾರಿ ಖರೀದಿಸದವುಗಳ ಟಿಕ್ ತೆಗೆಯಿರಿ — ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಅಳಿಸುವ ಬಟನ್ ಇಲ್ಲ, ಆದ್ದರಿಂದ ಕೋಷ್ಟಕದಿಂದ ಏನೂ ಆಕಸ್ಮಿಕವಾಗಿ ದಾಸ್ತಾನಿನಿಂದ ತೆಗೆಯಲ್ಪಡುವುದಿಲ್ಲ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ನೀವು ಖರೀದಿಸುವವುಗಳ Qty ಬದಲಿಸಿ, ಉಳಿಸಿ.</div></div>
+
+  <h4>2. ಹಳೆಯ ಸರಬರಾಜುದಾರ + ಹೊಸ ವಸ್ತು</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಮೇಲಿನಂತೆ ಹಳೆಯ ಸರಬರಾಜುದಾರರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>➕ Add Item to Same Vendor</strong> ನಲ್ಲಿ Name, Category, Buy Rate, GST%, Sell Price ಮತ್ತು Qty ತುಂಬಿ. ತಾನಾಗಿ ವಸ್ತು ಕೋಡ್‌ಗೆ Code ಪಕ್ಕದ <strong>🔍 Generate</strong> ಕ್ಲಿಕ್ ಮಾಡಿ, ಅಥವಾ ನಿಮ್ಮದೇ ಟೈಪ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>✅ Add Item to Purchase</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ವಸ್ತು ಸೃಷ್ಟಿಯಾಗಿ, ಈ ಸರಬರಾಜುದಾರರಿಗೆ ಜೋಡಿಸಲ್ಪಟ್ಟು, Order Items ಕೋಷ್ಟಕಕ್ಕೆ ಸೇರುತ್ತದೆ.</div></div>
+
+  <h4>3. ಹೊಸ ಸರಬರಾಜುದಾರ + ಹೊಸ ವಸ್ತು</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಈಗಾಗಲೇ ಇಲ್ಲದ ಸರಬರಾಜುದಾರರ ಹೆಸರು ಟೈಪ್ ಮಾಡಿ. ವಿಳಾಸ/ಫೋನ್/GSTIN ಖಾಲಿ ಇರುತ್ತವೆ — ನಿಮ್ಮ ಬಳಿ ಇದ್ದರೆ ತುಂಬಿ (ಐಚ್ಛಿಕ).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಈ ಸರಬರಾಜುದಾರರಿಗೆ ಇನ್ನೂ ಇತಿಹಾಸವಿಲ್ಲದ್ದರಿಂದ, Order Items ಕೋಷ್ಟಕ ಖಾಲಿಯಾಗಿ ಆರಂಭವಾಗುತ್ತದೆ — ಇದು ನಿರೀಕ್ಷಿತ, ದೋಷವಲ್ಲ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>➕ Add Item to Same Vendor</strong> ಅನ್ನು ಸಂದರ್ಭ 2 ರಂತೆಯೇ ಬಳಸಿ. ಖರೀದಿ ಉಳಿಸುವ ಕ್ಷಣದಲ್ಲೇ Accelent ಹೊಸ ಸರಬರಾಜುದಾರ ಮತ್ತು ಹೊಸ ವಸ್ತು ಎರಡನ್ನೂ ಸೃಷ್ಟಿಸುತ್ತದೆ.</div></div>
+
+  <h4>4. ಹೊಸ ಸರಬರಾಜುದಾರ + ಹಳೆಯ ವಸ್ತು</h4>
+  <p>ನೀವು ಈಗಾಗಲೇ ಇಡುವ ಉತ್ಪನ್ನವನ್ನು, ಹಿಂದೆ ಖರೀದಿಸದ ಸರಬರಾಜುದಾರರಿಂದ ಖರೀದಿಸುವುದು ಇದು — ಉದಾಹರಣೆಗೆ ನಿಮ್ಮ ಸಾಮಾನ್ಯ ಸರಬರಾಜುದಾರರ ಬಳಿ ಸ್ಟಾಕ್ ಇಲ್ಲ, ಅದೇ ವಸ್ತುವಿಗೆ ಹೊಸಬರನ್ನು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದೀರಿ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಹೊಸ ಸರಬರಾಜುದಾರರ ಹೆಸರು ಟೈಪ್ ಮಾಡಿ (Order Items ಕೋಷ್ಟಕ ಖಾಲಿಯಾಗಿಯೇ ಇರುತ್ತದೆ — ಮೊದಲ ಖರೀದಿಗೆ ಇದು ಸಾಮಾನ್ಯ).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ವಸ್ತುವಿನ ಬಾರ್‌ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ, ಅಥವಾ ಸ್ಕ್ಯಾನ್ ಫೀಲ್ಡ್‌ನಲ್ಲಿ ಅದರ ನಿಖರ ಬಾರ್‌ಕೋಡ್/ವಸ್ತು ಕೋಡ್ ಟೈಪ್ ಮಾಡಿ Enter ಒತ್ತಿ. ಈ ಸಂದರ್ಭಕ್ಕೆ ಸದ್ಯಕ್ಕೆ ಹೆಸರಿನಿಂದ ಹುಡುಕಾಟ ಇಲ್ಲ — ಹಳೆಯ ವಸ್ತುವನ್ನು ಇಲ್ಲಿ ಅದರ ಕೋಡ್/ಬಾರ್‌ಕೋಡ್‌ನಿಂದ ಮಾತ್ರ ತರಬಹುದು.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಖರೀದಿ ಉಳಿಸಿ. ವಸ್ತುವಿನ ಸ್ವಂತ ವಿವರಗಳು ಬದಲಾಗುವುದಿಲ್ಲ — ಈ ಸರಬರಾಜುದಾರರಿಂದಲೂ, ಈ ದರದಲ್ಲಿ, ಅದನ್ನು ಖರೀದಿಸಬಹುದು ಎಂದು ಮಾತ್ರ Accelent ದಾಖಲಿಸುತ್ತದೆ.</div></div>
+
+  <div class="good">✅ ಒಂದೇ ವಸ್ತುವನ್ನು ಎರಡನೇ ಅಥವಾ ಮೂರನೇ ಸರಬರಾಜುದಾರರಿಂದ ಖರೀದಿಸುವುದು ಅದರ ಈಗಿನ ವಿವರಗಳನ್ನು ಎಂದಿಗೂ ಬದಲಿಸುವುದಿಲ್ಲ ಅಥವಾ ಹಾಳುಮಾಡುವುದಿಲ್ಲ. Accelent ಪ್ರತಿ ವಸ್ತುವಿಗೆ ಪ್ರತಿ ಸರಬರಾಜುದಾರರ ಪ್ರತ್ಯೇಕ ಬೆಲೆ/ದಿನಾಂಕ ದಾಖಲೆ ಇಡುತ್ತದೆ, ಆದ್ದರಿಂದ ಒಂದು ಖರೀದಿಗೆ ಹೊಸ ಸರಬರಾಜುದಾರರನ್ನು ಪ್ರಯತ್ನಿಸುವುದು ನಿಮ್ಮ ಇತರ ಸರಬರಾಜುದಾರ ಸಂಬಂಧಗಳ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುವುದಿಲ್ಲ.</div>
+
+  <h3>ಬಾರ್‌ಕೋಡ್ ಸ್ಕ್ಯಾನಿಂಗ್ ಮತ್ತು ಸ್ಥಿತಿ</h3>
+  <p>ವಸ್ತುವನ್ನು ನೇರವಾಗಿ ಖರೀದಿಗೆ ಸೇರಿಸಲು Order Items ಮೇಲಿನ <strong>📱 Scan with Phone</strong> ನಿಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ (ಅಥವಾ ಬಾರ್‌ಕೋಡ್ ಫೀಲ್ಡ್‌ನಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ Enter ಒತ್ತಿ).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಬಾರ್‌ಕೋಡ್ ದಾಸ್ತಾನಿನಲ್ಲಿ ಈಗಾಗಲೇ ಇರುವ ವಸ್ತುವಿಗೆ ಹೊಂದಿದರೆ, ಅದು ಕೋಷ್ಟಕಕ್ಕೆ ಸೇರುತ್ತದೆ — ಅಥವಾ ಈಗಾಗಲೇ ಈ ಬಿಲ್‌ನಲ್ಲಿದ್ದರೆ, ಅದರ Qty 1 ಹೆಚ್ಚಿ ದೃಢೀಕರಣ ಸಂದೇಶ ಬರುತ್ತದೆ, ಆದ್ದರಿಂದ ಈಗ ಏನಾಯಿತು ಎಂದು ನಿಮಗೆ ಯಾವಾಗಲೂ ತಿಳಿಯುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಯಾವುದಕ್ಕೂ ಹೊಂದದಿದ್ದರೆ, Accelent ಅದನ್ನು ತಿಳಿಸಿ ಹೊಸ ಉತ್ಪನ್ನವಾಗಿ ನೋಂದಾಯಿಸಲು ಕೆಳಗಿನ <strong>➕ Add Item to Same Vendor</strong> ಕಡೆಗೆ ತೋರಿಸುತ್ತದೆ.</div></div>
+
+  <p>Order Items ಕೋಷ್ಟಕದ ಪ್ರತಿ ಸಾಲು <strong>🔖</strong> ಕಾಲಂನಲ್ಲಿ ತನ್ನ ಬಾರ್‌ಕೋಡ್ ಸ್ಥಿತಿಯನ್ನೂ ತೋರಿಸುತ್ತದೆ:</p>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><strong>✓ Barcode</strong> (ಹಸಿರು) — ಈ ವಸ್ತುವಿಗೆ ಈಗಾಗಲೇ ಬಾರ್‌ಕೋಡ್ ಉಳಿದಿದೆ. ಆ ಬಾರ್‌ಕೋಡ್ ತೆಗೆಯಲು ಇದನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ, ಉದಾ. ಸ್ಕ್ಯಾನ್ ತಪ್ಪು ಕೋಡ್ ಜೋಡಿಸಿದ್ದರೆ.</div></div>
+  <div class="step"><div class="step-num">+</div><div class="step-body"><strong>+📷</strong> (ನೀಲಿ) — ಇನ್ನೂ ಬಾರ್‌ಕೋಡ್ ಇಲ್ಲ. ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಜೋಡಿಸಲು ಇದನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">🗑</div><div class="step-body"><strong>🗑 Clear Barcode</strong> — ಜೋಡಣೆಯಾದರೂ ಸರಿಯಾಗಿ ಕೂಡದ ಬಾರ್‌ಕೋಡ್‌ಗೆ ಪ್ರತ್ಯೇಕ ಮರುಹೊಂದಿಸುವ ಬಟನ್, ಆದ್ದರಿಂದ ಹೊಸದಾಗಿ ಸ್ಕ್ಯಾನ್ ಮಾಡಬಹುದು. ವಸ್ತುವಿಗೆ ತೆಗೆಯಲು ಬಾರ್‌ಕೋಡ್ ಇದ್ದಾಗ ಮಾತ್ರ ಕೆಲಸ ಮಾಡುತ್ತದೆ.</div></div>
+
+  <div class="tip">💡 <strong>➕ Add Item to Same Vendor</strong> ಹೊಸ ವಸ್ತುವನ್ನು ಯಾವಾಗಲೂ ಈಗ <strong>Vendor Name</strong> ನಲ್ಲಿರುವ ಸರಬರಾಜುದಾರರಿಗೆ — ಹೊಸಬರಾಗಲಿ ಹಳಬರಾಗಲಿ — ಜೋಡಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ ಹೊಸ ವಸ್ತು ನೋಂದಾಯಿಸುವ ಮೊದಲು ಸರಬರಾಜುದಾರ ಫೀಲ್ಡ್ ಮತ್ತೆ ನೋಡಿ, ವಿಶೇಷವಾಗಿ ಒಂದೇ ಡೆಲಿವರಿಯ ಹಲವು ಉತ್ಪನ್ನಗಳನ್ನು ಸತತವಾಗಿ ಸ್ಕ್ಯಾನ್ ಮಾಡುವಾಗ.</div>
+
+  <h3>📷 Scan Vendor Bill — ಸಂಪೂರ್ಣ ಕಾಗದದ ಬಿಲ್ ಅನ್ನು ತಾನಾಗಿ ಓದುವುದು</h3>
+  <p>ಸರಬರಾಜುದಾರರ ಬಿಲ್‌ನ ಪ್ರತಿ ಸಾಲನ್ನು ಕೈಯಾರೆ ಟೈಪ್ ಮಾಡುವ ಬದಲು, ಅದರ ಫೋಟೋ ತೆಗೆಯಿರಿ, Accelent ಫೋಟೋದಿಂದಲೇ ಸಾಲುಗಳು, HSN ಕೋಡ್‌ಗಳು ಮತ್ತು GST ಓದಲಿ. ಇದು ಸಂಪೂರ್ಣವಾಗಿ ನಿಮ್ಮ ಸ್ವಂತ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ಚಲಿಸುತ್ತದೆ — ಇಂಟರ್ನೆಟ್ ಬಳಸುವುದಿಲ್ಲ, ಫೋಟೋ ಎಲ್ಲಿಗೂ ಕಳುಹಿಸುವುದಿಲ್ಲ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಮೊದಲು <strong>Vendor Name</strong> ಆಯ್ಕೆ ಮಾಡಿ ಅಥವಾ ಟೈಪ್ ಮಾಡಿ, ನಂತರ <strong>📷 Scan Vendor Bill</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಬಿಲ್ ಫೋಟೋ ಆಯ್ಕೆ ಮಾಡಿ — ಸ್ಪಷ್ಟ, ಚೆನ್ನಾಗಿ ಬೆಳಕಿರುವ ಫೋಟೋ ಉತ್ತಮ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಸ್ಕ್ಯಾನ್ ಆರಂಭವಾಗುವ ಮೊದಲು, ಬೇಕಾದರೆ <strong>Rotate Left / Rotate Right</strong> ನಿಂದ ಫೋಟೋ ನೇರಗೊಳಿಸಿ — ನೇರ ಫೋಟೋ ಕೆಲವು ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಸ್ಕ್ಯಾನ್ ಆಗುತ್ತದೆ, ಓರೆಯಾದದ್ದು ದಿಕ್ಕನ್ನು ತಾನೇ ಕಂಡುಹಿಡಿಯುವುದರಿಂದ ಹೆಚ್ಚು ಸಮಯ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. ಸರಿಯಾಗಿ ಕಂಡಾಗ <strong>▶ Start Scan</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಪರಿಶೀಲನಾ ಪರದೆ ಒಂದು ಬದಿಯಲ್ಲಿ ಬಿಲ್ ಫೋಟೋ ಮತ್ತು ಇನ್ನೊಂದು ಬದಿಯಲ್ಲಿ ಕಂಡುಬಂದ ಎಲ್ಲದರ ಸಂಪಾದಿಸಬಹುದಾದ ಕೋಷ್ಟಕದೊಂದಿಗೆ ತೆರೆಯುತ್ತದೆ. ಮೇಲಿನ <strong>Reconciliation Status</strong> ಪಟ್ಟಿ ನೋಡಿ — ಸಾಲುಗಳ ಮೊತ್ತ ಬಿಲ್‌ನಲ್ಲಿ ಮುದ್ರಿತ ಒಟ್ಟಿಗೆ ಹೊಂದುತ್ತದೆಯೇ ಎಂದು ಅದು ಹೇಳುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಯಾವುದೇ ಸಾಲು ಕ್ಲಿಕ್ ಮಾಡಿದರೆ ಬಿಲ್ ಫೋಟೋದಲ್ಲಿ ಅದು ಬಂದ ಸ್ಥಳಕ್ಕೆ ನೇರವಾಗಿ ಹೋಗುತ್ತದೆ. ತಪ್ಪಾಗಿ ಓದಿದ್ದನ್ನು ಸರಿಪಡಿಸಿ — Description, Category, HSN/SAC, Qty, Unit, Rate ಮತ್ತು GST% ಎಲ್ಲವೂ ಸಂಪಾದಿಸಬಹುದಾದವು. Accelent ಆತ್ಮವಿಶ್ವಾಸದಿಂದ ಓದಲಾಗದ ಸಾಲಿನಲ್ಲಿ <strong>⚠️</strong> ಕಾಣುತ್ತದೆ; ಇಲ್ಲದ್ದನ್ನು ಟೈಪ್ ಮಾಡಿದರೆ ಅದು <strong>✅</strong> ಆಗುತ್ತದೆ. ಸೇರಿಸಬೇಡದ ಸಾಲಿನ ಟಿಕ್ ತೆಗೆಯಿರಿ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">ವಿವರಣೆ Inventory ಯಲ್ಲಿ ಈಗಾಗಲೇ ಇರುವ ವಸ್ತುವಿಗೆ — ಯಾವುದೇ ಸರಬರಾಜುದಾರರಿಂದ ಖರೀದಿಸಿದ್ದು — ಹೊಂದುವ ಸಾಲು Category ಕಾಲಂನಲ್ಲಿ ಅದರ ಕೋಡ್‌ನೊಂದಿಗೆ <strong>✓ existing item</strong> ತೋರಿಸುತ್ತದೆ; ಅದರ ಪ್ರಮಾಣ ಆ ವಸ್ತುವಿಗೆ ಸೇರುತ್ತದೆ. ಇತರ ಪ್ರತಿ ಸಾಲು ಹೊಸ ವಸ್ತುವಾಗುತ್ತದೆ ಮತ್ತು ಅದಕ್ಕೆ <strong>Category</strong> ಬೇಕು, ಏಕೆಂದರೆ ವರ್ಗವೇ ವಸ್ತು ಕೋಡ್ ನಿರ್ಧರಿಸುತ್ತದೆ. ವರ್ಗವಿಲ್ಲದ ಯಾವುದೇ ಹೊಸ ಸಾಲಿನಲ್ಲಿ Apply ನಿಂತು ಅದನ್ನು ತೋರಿಸುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">ಹಲವು ಸಾಲುಗಳನ್ನು ಒಮ್ಮೆಗೇ ನಿಮ್ಮ ಈಗಿನ ಪಟ್ಟಿಗೆ ತಾನಾಗಿ ಹೊಂದಿಸಲು, ಅಥವಾ ಒಂದು ವರ್ಗಕ್ಕೆ ನಿಯೋಜಿಸಲು <strong>Bulk Actions</strong> ಬಳಸಿ — ಮಧ್ಯಮ ವಿಶ್ವಾಸದವು ದೃಢೀಕರಣ ವಿಂಡೋ ತೆರೆಯುತ್ತವೆ, ಆದ್ದರಿಂದ ಏನೂ ಸದ್ದಿಲ್ಲದೆ ತಪ್ಪು ಉತ್ಪನ್ನಕ್ಕೆ ಹೊಂದುವುದಿಲ್ಲ.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">ಹೇಗೆ ಮುಗಿಸಬೇಕು ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ:<br>• <strong>💾 Last Page — Save Now</strong> — ಖರೀದಿಯನ್ನು ತಕ್ಷಣ ಉಳಿಸುತ್ತದೆ (ಒಂದು ಪುಟದ ಬಿಲ್‌ನಲ್ಲಿ, ಅಥವಾ ಕೊನೆಯ ಪುಟದಲ್ಲಿ ಬಳಸಿ). ದೃಢೀಕರಣ ಪೆಟ್ಟಿಗೆ ನಿಖರ Vendor, Goods Amount, GST ಮತ್ತು Grand Total ತೋರಿಸುತ್ತದೆ — ಬಿಲ್‌ಗೆ ಹೊಂದುತ್ತದೆಯೇ ಪರಿಶೀಲಿಸಿ, ದೃಢೀಕರಿಸಿ.<br>• <strong>📷 More Pages? Scan Next</strong> — ಒಂದಕ್ಕಿಂತ ಹೆಚ್ಚು ಪುಟಗಳಲ್ಲಿ ಮುದ್ರಿತ ಬಿಲ್‌ಗೆ: ಈ ಪುಟದ ವಸ್ತುಗಳನ್ನು ಸೇರಿಸಿ ಮುಂದಿನ ಪುಟಕ್ಕೆ ಫೋಟೋ ಆಯ್ಕೆ ತೆರೆಯುತ್ತದೆ. ಕೊನೆಯ ಪುಟದಲ್ಲಿ <em>Last Page — Save Now</em> ಬಳಸಿ; ಎಲ್ಲಾ ಪುಟಗಳು ಒಟ್ಟಾಗಿ ಒಂದೇ ಖರೀದಿಯಾಗಿ ಉಳಿಯುತ್ತವೆ.<br>• <strong>✅ Apply (Save Later)</strong> — ವಸ್ತುಗಳನ್ನು ಉಳಿಸದೆ New Purchase ಫಾರ್ಮ್‌ಗೆ ಸೇರಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ ಅಲ್ಲಿ ಪರಿಶೀಲಿಸಿ ನೀವೇ <strong>Save Purchase</strong> ಕ್ಲಿಕ್ ಮಾಡಬಹುದು.</div></div>
+  <figure class="shot"><a href="manual_images/bill-scan-review.png" target="_blank"><img src="manual_images/bill-scan-review.png" alt="Bill Scan Review screen" loading="lazy"></a><figcaption>Bill Scan Review — ಎಡಭಾಗದಲ್ಲಿ ಬಿಲ್ ಫೋಟೋ, ಬಲಭಾಗದಲ್ಲಿ ಕಂಡುಬಂದ ವಸ್ತುಗಳು, ಮೇಲೆ Reconciliation Status.</figcaption></figure>
+
+  <div class="good">✅ ಕೋಷ್ಟಕದಲ್ಲಿ ತಪ್ಪಾಯಿತೇ? Ctrl+Z ಕೊನೆಯ ಸಂಪಾದನೆ, ಸೇರ್ಪಡೆ, ತೆಗೆದುಹಾಕುವಿಕೆ ಅಥವಾ bulk action ಅನ್ನು ಹಿಂತೆಗೆಯುತ್ತದೆ — ನೀವು ನಿಜವಾಗಿ ಉಳಿಸುವವರೆಗೆ ಇಲ್ಲಿ ಏನೂ ಶಾಶ್ವತವಲ್ಲ. ಮಧ್ಯದಲ್ಲಿ ಅಡಚಣೆಯಾದರೆ (ಆ್ಯಪ್ ಮುಚ್ಚಿದರೆ, ಕಂಪ್ಯೂಟರ್ ನಿದ್ರಿಸಿದರೆ), ಅದೇ ಫೋಟೋ ಮತ್ತೆ ಆಯ್ಕೆ ಮಾಡಿದರೆ ಹೊಸದಾಗಿ ಆರಂಭಿಸುವ ಬದಲು ನೀವು ನಿಲ್ಲಿಸಿದ ಸ್ಥಳದಿಂದಲೇ ಮುಂದುವರಿಸಲು ಮುಂದಾಗುತ್ತದೆ.</div>
+  <div class="tip">💡 ಖರೀದಿ ಇತಿಹಾಸವಿಲ್ಲದ ಸಂಪೂರ್ಣ ಹೊಸ ಸರಬರಾಜುದಾರರಿಗೂ ಇದು ಕೆಲಸ ಮಾಡುತ್ತದೆ — Inventory ಯಲ್ಲಿ ಈಗಾಗಲೇ ಇರುವ ವಸ್ತುಗಳಿಗೆ ಹೊಂದುವ ಸಾಲುಗಳು ಅವುಗಳಿಗೆ ಸೇರುತ್ತವೆ, ಉಳಿದವು ಕೈಯಾರೆ ಸೇರಿಸಿದಂತೆಯೇ ಹೊಸ ವಸ್ತುಗಳಾಗುತ್ತವೆ. Scan Vendor Bill ಗೆ ಪ್ರತಿ ಸ್ಥಾಪನೆಯಲ್ಲಿ ಸೇರಿಸದ ಸ್ಥಳೀಯ AI ಘಟಕಗಳು ಬೇಕು; ಅದು ಲಭ್ಯವಿಲ್ಲ ಎಂದು ಹೇಳಿದರೆ, Accelent ನ ಬೇರೆ ಯಾವುದರ ಮೇಲೂ ಪರಿಣಾಮವಿಲ್ಲ.</div>
+  <div class="tip">💡 <strong>ವೇಗ:</strong> 8 GB RAM ಇರುವ PC ಯಲ್ಲಿ ಸ್ಕ್ಯಾನ್ ಬೇಗ ಮುಗಿಯುತ್ತದೆ; 4 GB ಯಲ್ಲೂ ಕೆಲಸ ಮಾಡುತ್ತದೆ ಆದರೆ ಹೆಚ್ಚು ಸಮಯ ಬೇಕು — ಚಲಿಸಲು ಬಿಡಿ. <strong>ಉಚಿತ ಪ್ರಯೋಗ:</strong> 15 ಬಿಲ್ ಸ್ಕ್ಯಾನ್‌ಗಳು ಸೇರಿವೆ; ಅದರ ನಂತರ ಸ್ಕ್ಯಾನಿಂಗ್‌ಗೆ ಸಕ್ರಿಯಗೊಳಿಸಿದ ಪರವಾನಗಿ ಬೇಕು (ಪ್ರಯೋಗದ ಉಳಿದ ಅವಧಿಗೆ ಬೇರೆಲ್ಲವೂ ಕೆಲಸ ಮಾಡುತ್ತಿರುತ್ತದೆ). ಚಂದಾದಾರಿಕೆಯೊಂದಿಗೆ ಸ್ಕ್ಯಾನಿಂಗ್ ಅಪರಿಮಿತ.</div>
+
+  <h3>ಖರೀದಿ ಹಿಂದಿರುಗಿಸುವಿಕೆ</h3>
+  <p>ಸರಬರಾಜುದಾರರಿಗೆ ಹಿಂದಿರುಗಿಸಿದ ಸರಕನ್ನು ದಾಖಲಿಸಲು <strong>Returns</strong> ಪ್ಯಾನೆಲ್ → <strong>Purchase Returns</strong> ಟ್ಯಾಬ್‌ಗೆ ಹೋಗಿ. ಡೆಬಿಟ್ ನೋಟ್ ಸೃಷ್ಟಿಯಾಗಿ ಸ್ಟಾಕ್ ಕಡಿಮೆಯಾಗುತ್ತದೆ. ಹಿಂದಿರುಗಿಸಿದ ಮೊತ್ತ Profit &amp; Loss, Trading Account ಮತ್ತು Balance Sheet ವರದಿಗಳಲ್ಲಿ ನಿಮ್ಮ ಖರೀದಿ ಮೊತ್ತದಿಂದಲೂ ಕಳೆಯಲ್ಪಡುತ್ತದೆ.</p>
+
+  <div class="tip">💡 ಖರೀದಿ ದಾಖಲಿಸುವಾಗ ಯಾವಾಗಲೂ <strong>ಸರಬರಾಜುದಾರರ ಬಿಲ್ ಸಂಖ್ಯೆ</strong> ನಮೂದಿಸಿ — ನಿರ್ದಿಷ್ಟ ಖರೀದಿಗಳನ್ನು ಹುಡುಕುವುದು ಸುಲಭವಾಗುತ್ತದೆ, GST ಹೊಂದಾಣಿಕೆಗೆ ಇದು ಅಗತ್ಯ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 11 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 11 — ವೆಚ್ಚಗಳು ಮತ್ತು ರಸೀದಿಗಳು</div>
+<div class="section" id="ch11">
+  <h2>11. ವೆಚ್ಚಗಳು ಮತ್ತು ರಸೀದಿಗಳು</h2>
+
+  <h3>ವೆಚ್ಚಗಳ ಪ್ಯಾನೆಲ್</h3>
+  <p>ಎಲ್ಲಾ ವ್ಯಾಪಾರ ವೆಚ್ಚಗಳನ್ನು ಇಲ್ಲಿ ದಾಖಲಿಸಿ: ಬಾಡಿಗೆ, ವಿದ್ಯುತ್, ಸಂಬಳ ಮುಂಗಡ, ಸಾರಿಗೆ, ಕಚೇರಿ ಸಾಮಗ್ರಿ ಇತ್ಯಾದಿ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>+ Add Expense</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Category (Rent / Electricity / Salary / Transport / Other) ಆಯ್ಕೆ ಮಾಡಿ, ಮೊತ್ತ, ಪಾವತಿ ವಿಧಾನ (Cash ಅಥವಾ Bank) ಮತ್ತು ಚಿಕ್ಕ ವಿವರಣೆ ನಮೂದಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Save</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ನಗದು ಅಥವಾ ಬ್ಯಾಂಕ್ ಬಾಕಿ ಅದಕ್ಕೆ ತಕ್ಕಂತೆ ಕಡಿಮೆಯಾಗುತ್ತದೆ.</div></div>
+
+  <h3>ಪುನರಾವರ್ತಿತ ವೆಚ್ಚಗಳು</h3>
+  <p>ನಿಗದಿತ ವೇಳಾಪಟ್ಟಿಯಲ್ಲಿ ಮರುಕಳಿಸುವ ವೆಚ್ಚಗಳಿಗೆ (ಮಾಸಿಕ ಬಾಡಿಗೆ, ವಿದ್ಯುತ್/ನೀರಿನ ಬಿಲ್‌ಗಳು), <strong>Recurring Expenses</strong> ಪ್ಯಾನೆಲ್ ಬಳಸಿ:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Recurring Expenses</strong> ಗೆ ಹೋಗಿ → <strong>+ New Template</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ವೆಚ್ಚದ ಹೆಸರು, ಮೊತ್ತ, ವರ್ಗ ಮತ್ತು ಪುನರಾವರ್ತನೆಯ ವೇಳಾಪಟ್ಟಿ (ಮಾಸಿಕ, ವಾರಕ್ಕೊಮ್ಮೆ ಇತ್ಯಾದಿ) ಹೊಂದಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಸಮಯ ಬಂದಾಗ Accelent ನೆನಪಿಸುತ್ತದೆ, ವೆಚ್ಚವನ್ನು ತಾನಾಗಿ ದಾಖಲಿಸಲೂ ಸಾಧ್ಯ.</div></div>
+
+  <h3>ರಸೀದಿಗಳ ಪ್ಯಾನೆಲ್</h3>
+  <p>Receipts ಪ್ಯಾನೆಲ್ ಬಂದ ಮತ್ತು ಕೊಟ್ಟ ಎಲ್ಲಾ ಹಣದ ಲೆಡ್ಜರ್ — ಸಂಗ್ರಹಿಸಿದ ನಗದು, ಸರಬರಾಜುದಾರರಿಗೆ ಪಾವತಿಗಳು, ಬ್ಯಾಂಕ್ ವರ್ಗಾವಣೆಗಳು ಮತ್ತು ಸಂಬಳ ಪಾವತಿಗಳು. ಇದು ಮಾರಾಟ, ಖರೀದಿ ಮತ್ತು ವೆಚ್ಚಗಳಿಂದ ತಾನಾಗಿ ತುಂಬುತ್ತದೆ. ಇಲ್ಲಿ ಪ್ರತ್ಯೇಕ ರಸೀದಿಯನ್ನೂ ದಾಖಲಿಸಬಹುದು (ಉದಾ. ಸಾಲದ ಗ್ರಾಹಕರು ತಮ್ಮ ಬಾಕಿ ಪಾವತಿಸಿದಾಗ).</p>
+
+  <div class="tip">💡 ಸಾಲದ ಗ್ರಾಹಕರು ನಿಮಗೆ ಪಾವತಿಸಿದಾಗ, <strong>Receipts → + New Receipt</strong> ಗೆ ಹೋಗಿ, ಗ್ರಾಹಕರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ, ಬಂದ ಮೊತ್ತ ನಮೂದಿಸಿ. ಅವರ ಬಾಕಿ ತಾನಾಗಿ ಕಡಿಮೆಯಾಗುತ್ತದೆ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 12 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 12 — ಖಾತೆಗಳು ಮತ್ತು ವರ್ಗಾವಣೆಗಳು</div>
+<div class="section" id="ch12">
+  <h2>12. ಖಾತೆಗಳು ಮತ್ತು ವರ್ಗಾವಣೆಗಳು</h2>
+
+  <h3>ಖಾತೆಗಳ ಪ್ಯಾನೆಲ್</h3>
+  <p>ನಿಮ್ಮ ಎಲ್ಲಾ ಹಣದ ಖಾತೆಗಳನ್ನು ತೋರಿಸುತ್ತದೆ — Cash, ಮತ್ತು ಪ್ರತಿ ಬ್ಯಾಂಕ್ ಖಾತೆ. ಪ್ರತಿ ಖಾತೆಗೆ ನೀವು ನೋಡಬಹುದು:</p>
+  <ul>
+    <li>ಪ್ರಸ್ತುತ ಬಾಕಿ (ಯಾವಾಗಲೂ ತಾಜಾ)</li>
+    <li>ದಿನಾಂಕಗಳು ಮತ್ತು ವಿವರಣೆಗಳೊಂದಿಗೆ ಪೂರ್ಣ ವ್ಯವಹಾರ ಇತಿಹಾಸ</li>
+    <li>ಡೆಬಿಟ್ (ಬಂದ ಹಣ) ಮತ್ತು ಕ್ರೆಡಿಟ್ (ಹೋದ ಹಣ) ಕಾಲಂಗಳು</li>
+  </ul>
+
+  <h3>ಗ್ರಾಹಕರ ಸಾಲದ ಸ್ಟೇಟ್‌ಮೆಂಟ್</h3>
+  <p><strong>Accounts → Credit Manager → Customer Statement</strong> ಗೆ ಹೋಗಿ, ಗ್ರಾಹಕರ ಹೆಸರಿನ ಯಾವುದೇ ಭಾಗ ಟೈಪ್ ಮಾಡಿ (ಟೈಪ್ ಮಾಡುತ್ತಿದ್ದಂತೆ ಸಲಹೆಗಳು ಬರುತ್ತವೆ) <strong>Show Statement</strong> ಅಥವಾ Enter ಒತ್ತಿ. ಸ್ಟೇಟ್‌ಮೆಂಟ್ ಒಟ್ಟು ಸಾಲ, ಪಾವತಿಸಿದ ಮೊತ್ತ ಮತ್ತು ಇನ್ನೂ ಬಾಕಿ, ಪ್ರತಿ ಸಾಲದ ಇನ್‌ವಾಯ್ಸ್, ಪ್ರತಿ ಇನ್‌ವಾಯ್ಸ್‌ನಲ್ಲಿ <strong>ಸಾಲದಲ್ಲಿ ತೆಗೆದುಕೊಂಡ ವಸ್ತುಗಳು</strong>, ಮತ್ತು ಬಂದ ಪ್ರತಿ ಪಾವತಿ ತೋರಿಸುತ್ತದೆ. <strong>Print</strong> ಗ್ರಾಹಕರಿಗಾಗಿ ಅದೇ ಸ್ಟೇಟ್‌ಮೆಂಟ್ ಅನ್ನು A4 ನಲ್ಲಿ ನೀಡುತ್ತದೆ.</p>
+
+  <h3>ಬ್ಯಾಂಕ್ ಖಾತೆ ಸೇರಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Accounts</strong> ಗೆ ಹೋಗಿ → Bank Accounts ಅಡಿ <strong>➕ Add New Bank</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಬ್ಯಾಂಕ್ ಹೆಸರು, ಖಾತೆ ಸಂಖ್ಯೆ ಮತ್ತು ಆರಂಭಿಕ ಬಾಕಿ (ನಿಮ್ಮ ಆರಂಭ ದಿನಾಂಕದ ಬ್ಯಾಂಕ್ ಸ್ಟೇಟ್‌ಮೆಂಟ್‌ನಿಂದ) ನಮೂದಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save ಕ್ಲಿಕ್ ಮಾಡಿ. ಈಗ ಬ್ಯಾಂಕ್ ಖಾತೆ ಎಲ್ಲಾ ಪಾವತಿ ಡ್ರಾಪ್‌ಡೌನ್‌ಗಳಲ್ಲಿ (Sales, Purchases, Expenses) ಕಾಣುತ್ತದೆ.</div></div>
+
+  <h3>ವರ್ಗಾವಣೆಗಳ ಪ್ಯಾನೆಲ್</h3>
+  <p>ನಿಮ್ಮ ಸ್ವಂತ ಖಾತೆಗಳ ನಡುವೆ ಹಣ ಸ್ಥಳಾಂತರಿಸುವಾಗ — ಉದಾಹರಣೆಗೆ ನಗದನ್ನು ಬ್ಯಾಂಕ್‌ಗೆ ಜಮಾ ಮಾಡುವುದು, ಅಥವಾ ಎರಡು ಬ್ಯಾಂಕ್ ಖಾತೆಗಳ ನಡುವೆ ವರ್ಗಾವಣೆ — Transfers ಪ್ಯಾನೆಲ್ ಬಳಸಿ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Transfers</strong> ಗೆ ಹೋಗಿ. <strong>Inter-Accounts Transfer</strong> ನಲ್ಲಿ <strong>Paid From</strong> (ಉದಾ. Cash in Hand) ಮತ್ತು <strong>Received In</strong> (ಉದಾ. HDFC Bank) ಆಯ್ಕೆ ಮಾಡಿ — ಪ್ರತಿಯೊಂದರ ಲಭ್ಯ ಬಾಕಿ ಪಕ್ಕದಲ್ಲೇ ಕಾಣುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಮೊತ್ತ ಮತ್ತು ದಿನಾಂಕ, ಬೇಕಾದರೆ Reference ಮತ್ತು Description ನಮೂದಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Add Transfer</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ನಗದು ಕಡಿಮೆಯಾಗುತ್ತದೆ, ಬ್ಯಾಂಕ್ ಹೆಚ್ಚುತ್ತದೆ — ಎರಡೂ ಬಾಕಿಗಳು ಬದಲಾಗುತ್ತವೆ. ಇದು Recent Transfers ನಲ್ಲಿ ಕಾಣುತ್ತದೆ.</div></div>
+  <figure class="shot"><a href="manual_images/transfers.png" target="_blank"><img src="manual_images/transfers.png" alt="Transfers" loading="lazy"></a><figcaption>Transfers — ಎಡಭಾಗದಲ್ಲಿ ವರ್ಗಾವಣೆ ಫಾರ್ಮ್, ಬಲಭಾಗದಲ್ಲಿ Transfer History Search.</figcaption></figure>
+  <p>ಹಳೆಯ ವರ್ಗಾವಣೆಗಳನ್ನು ದಿನಾಂಕ ಮತ್ತು ಖಾತೆಯಿಂದ ಹುಡುಕಲು ಬಲಭಾಗದ <strong>Transfer History Search</strong>, ಮುದ್ರಿಸಲು <strong>Print Report</strong> ಬಳಸಿ.</p>
+
+  <div class="warn">⚠ ಬ್ಯಾಂಕ್ ಜಮಾವನ್ನು ಎಂದಿಗೂ "ಆದಾಯ" ಅಥವಾ "ರಸೀದಿ" ಆಗಿ ದಾಖಲಿಸಬೇಡಿ — ಯಾವಾಗಲೂ Transfers ಪ್ಯಾನೆಲ್ ಬಳಸಿ. ಬೇರೆಡೆ ದಾಖಲಿಸಿದರೆ ನಿಮ್ಮ ಆದಾಯದ ಅಂಕಿಗಳು ಹೆಚ್ಚಾಗುತ್ತವೆ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 13 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 13 — ವರದಿಗಳು ಮತ್ತು ಬಾಕಿ ಅವಧಿ</div>
+<div class="section" id="ch13">
+  <h2>13. ವರದಿಗಳು, ಡೇಟಾ ಹೋಲಿಕೆ ಮತ್ತು Aging ವರದಿ</h2>
+
+  <h3>ಡೇಟಾ ಹೋಲಿಕೆ (Reports) ಪ್ಯಾನೆಲ್</h3>
+  <p>ಹಣಕಾಸು ಸಾರಾಂಶಗಳು ಮತ್ತು ಹೋಲಿಕೆಗಳನ್ನು ತಯಾರಿಸುತ್ತದೆ:</p>
+  <ul>
+    <li><strong>Monthly Sales vs Purchases</strong> — ಪ್ರತಿ ತಿಂಗಳ ಒಟ್ಟುಗಳನ್ನು ತೋರಿಸುವ ಬಾರ್ ಚಾರ್ಟ್ ಮತ್ತು ಕೋಷ್ಟಕ</li>
+    <li><strong>Net Profit</strong> — ಮಾರಾಟದಿಂದ ಖರೀದಿ ಮತ್ತು ವೆಚ್ಚಗಳನ್ನು ಕಳೆದು</li>
+    <li><strong>Party Statement</strong> — ನಿಮ್ಮ ಮತ್ತು ಯಾವುದೇ ಪಕ್ಷದ ನಡುವಿನ ಪೂರ್ಣ ವ್ಯವಹಾರ ಇತಿಹಾಸ</li>
+    <li><strong>Account Statement</strong> — ನಿರ್ದಿಷ್ಟ ನಗದು ಅಥವಾ ಬ್ಯಾಂಕ್ ಖಾತೆಯ ಎಲ್ಲಾ ವ್ಯವಹಾರಗಳು</li>
+  </ul>
+  <p>ವರದಿಯನ್ನು ಫೈಲ್ ಆಗಿ ಉಳಿಸಲು <strong>Export (Ctrl+E)</strong> ಬಟನ್, ನೇರವಾಗಿ ಮುದ್ರಿಸಲು <strong>Print (Ctrl+P)</strong> ಬಳಸಿ.</p>
+
+  <h3>Aging ವರದಿ ಪ್ಯಾನೆಲ್</h3>
+  <p>ನಿಮ್ಮ ಗ್ರಾಹಕರ ಬಾಕಿ ಇನ್‌ವಾಯ್ಸ್‌ಗಳು ಎಷ್ಟು ಸಮಯದಿಂದ ಪಾವತಿಯಾಗಿಲ್ಲ, ನಿಮ್ಮ ಸರಬರಾಜುದಾರರ ಬಿಲ್‌ಗಳು ಎಷ್ಟು ಸಮಯದಿಂದ ಬಾಕಿಯಿವೆ ಎಂದು Aging ವರದಿ ತೋರಿಸುತ್ತದೆ.</p>
+  <table>
+    <tr><th>ಅವಧಿ ವಿಭಾಗ</th><th>ಅರ್ಥ</th></tr>
+    <tr><td>0–30 ದಿನಗಳು</td><td>ಇತ್ತೀಚಿನದು — ಸಾಮಾನ್ಯ ಸಾಲದ ಅವಧಿ</td></tr>
+    <tr><td>31–60 ದಿನಗಳು</td><td>ಹಳೆಯದಾಗುತ್ತಿದೆ — ನೆನಪಿಸುವುದು ಒಳ್ಳೆಯದು</td></tr>
+    <tr><td>61–90 ದಿನಗಳು</td><td>ಅವಧಿ ಮೀರಿದೆ — ಪಕ್ಷವನ್ನು ಸಂಪರ್ಕಿಸಿ</td></tr>
+    <tr><td>90+ ದಿನಗಳು</td><td>ಬಹಳ ತಡವಾಗಿದೆ — ಕಠಿಣ ಕ್ರಮ ತೆಗೆದುಕೊಳ್ಳಿ ಅಥವಾ ವಸೂಲಾಗದ ಸಾಲವೆಂದು ಬರೆಯಿರಿ</td></tr>
+  </table>
+  <p>ಯಾವ ಗ್ರಾಹಕರಿಗೆ ನೆನಪಿಸುವ ಕರೆ ಬೇಕು, ಯಾವ ಸರಬರಾಜುದಾರರ ಬಿಲ್‌ಗಳನ್ನು ತುರ್ತಾಗಿ ಪಾವತಿಸಬೇಕು ಎಂದು ಗುರುತಿಸಲು ಈ ವರದಿ ಬಳಸಿ.</p>
+
+  <h3>Finalization ಪ್ಯಾನೆಲ್</h3>
+  <p>ಆರ್ಥಿಕ ವರ್ಷದ ಕೊನೆಯಲ್ಲಿ, ನಿಮ್ಮ <strong>Profit &amp; Loss Statement</strong> ಮತ್ತು <strong>Balance Sheet</strong> ತಯಾರಿಸಲು <strong>Finalization</strong> ಗೆ ಹೋಗಿ. ಈ ವರದಿಗಳನ್ನು ನಿಮ್ಮ ಲೆಕ್ಕಿಗ ಅಥವಾ ಲೆಕ್ಕಪರಿಶೋಧಕರಿಗಾಗಿ ಮುದ್ರಿಸಬಹುದು ಅಥವಾ ರಫ್ತು ಮಾಡಬಹುದು.</p>
+  <p>Finalization ಆರ್ಥಿಕ ವರ್ಷವನ್ನೂ ಮುಚ್ಚುತ್ತದೆ. ಹಿಂದಿನ ವರ್ಷ ನೋಡಲು, ವಿಂಡೋದ ಕೆಳಗಿನ ಸ್ಟೇಟಸ್ ಬಾರ್‌ನಿಂದ ಆರ್ಥಿಕ ವರ್ಷ ಬದಲಿಸಿ.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 14 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 14 — ನೌಕರರು ಮತ್ತು ಸಂಬಳ</div>
+<div class="section" id="ch14">
+  <h2>14. ನೌಕರರು ಮತ್ತು ಸಂಬಳ</h2>
+  <p>Accelent ನಿಮ್ಮ ಸಿಬ್ಬಂದಿ ದಾಖಲೆಗಳನ್ನು ಇಡುತ್ತದೆ, ಹಾಜರಾತಿ, ಓವರ್‌ಟೈಮ್ ಮತ್ತು ಮುಂಗಡಗಳಿಂದ ಪ್ರತಿ ತಿಂಗಳ ಸಂಬಳ ಲೆಕ್ಕ ಹಾಕುತ್ತದೆ, Cash ಅಥವಾ ಬ್ಯಾಂಕ್ ಖಾತೆಯಿಂದ ಪಾವತಿಸುತ್ತದೆ, ಮತ್ತು ಪ್ರತಿ ನೌಕರರಿಗೆ ಸಂಬಳ ಚೀಟಿ ನೀಡುತ್ತದೆ — ಮುದ್ರಿತ ಅಥವಾ WhatsApp ನಲ್ಲಿ. ಕೆಳಗಿನ ಹಂತಗಳು ಒಂದು ತಿಂಗಳನ್ನು ಆರಂಭದಿಂದ ಕೊನೆಯವರೆಗೆ ಅನುಸರಿಸುತ್ತವೆ.</p>
+
+  <h3>Accelent ಸಂಬಳವನ್ನು ಹೇಗೆ ಲೆಕ್ಕ ಹಾಕುತ್ತದೆ</h3>
+  <p>ಪ್ರತಿ ನೌಕರರಿಗೆ ಒಂದು <strong>ಸಂಬಳದ ರೀತಿ</strong> ಇರುತ್ತದೆ. ನೀವು ನಮೂದಿಸುವ <strong>Amount</strong> ಪ್ರತಿಯೊಂದಕ್ಕೂ ಬೇರೆ ಅರ್ಥ ಕೊಡುತ್ತದೆ:</p>
+  <table>
+    <tr><th>ಸಂಬಳದ ರೀತಿ</th><th>Amount ನ ಅರ್ಥ</th><th>ತಿಂಗಳ ಸಂಬಳ</th></tr>
+    <tr><td><strong>Fixed</strong></td><td>ತಿಂಗಳಿಗೆ</td><td>ತಿಂಗಳ ಸಂಬಳ ÷ ಕೆಲಸದ ದಿನಗಳು × ಕೆಲಸ ಮಾಡಿದ ದಿನಗಳು</td></tr>
+    <tr><td><strong>Daily</strong></td><td>ದಿನಕ್ಕೆ</td><td>ದಿನಗೂಲಿ × ಕೆಲಸ ಮಾಡಿದ ದಿನಗಳು</td></tr>
+    <tr><td><strong>Hourly</strong></td><td>ಗಂಟೆಗೆ</td><td>ಗಂಟೆಯ ಕೂಲಿ × ದಿನದ ಕೆಲಸದ ಗಂಟೆಗಳು × ಕೆಲಸ ಮಾಡಿದ ದಿನಗಳು</td></tr>
+    <tr><td><strong>Piece</strong></td><td>ಪ್ರತಿ ತುಂಡಿಗೆ (ಅಥವಾ ನಿಮ್ಮ ಘಟಕಕ್ಕೆ)</td><td>ತಯಾರಿಸಿದ ಘಟಕಗಳು × ಘಟಕದ ದರ</td></tr>
+  </table>
+  <p><strong>ಕೆಲಸ ಮಾಡಿದ ದಿನಗಳು</strong> = ಹಾಜರಾತಿ − ರಜೆಗಳು. <strong>ಓವರ್‌ಟೈಮ್</strong> (Fixed, Daily, Hourly) = ಗಂಟೆಯ ದರ × ಓವರ್‌ಟೈಮ್ ಗಂಟೆಗಳು × ಓವರ್‌ಟೈಮ್ ಗುಣಕ (ಉದಾ. 1.5). <strong>ನಿವ್ವಳ ಸಂಬಳ</strong> = ಮೂಲ ಸಂಬಳ + ಓವರ್‌ಟೈಮ್ − ವಸೂಲಾದ ಮುಂಗಡಗಳು. ನೌಕರರು ಸೇರಿದ ತಿಂಗಳನ್ನು ಸೇರಿದ ದಿನಾಂಕದಿಂದ ಲೆಕ್ಕ ಹಾಕಲಾಗುತ್ತದೆ.</p>
+
+  <h3>ನೌಕರರನ್ನು ಸೇರಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Employees</strong> ಗೆ ಹೋಗಿ → <strong>➕ Add Employee</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಹೆಸರು, ಹುದ್ದೆ, <strong>ಮೊಬೈಲ್ ಸಂಖ್ಯೆ</strong> (ಸಂಬಳ ಚೀಟಿಗಳು WhatsApp ನಲ್ಲಿ ಇದಕ್ಕೇ ಹೋಗುತ್ತವೆ), ವಿಳಾಸ ಮತ್ತು <strong>ಸೇರಿದ ದಿನಾಂಕ</strong> ನಮೂದಿಸಿ. ದಿನಾಂಕದಲ್ಲಿ ದಿನ ಮೊದಲು: <code>01/08/2026</code> ಎಂದರೆ 1 ಆಗಸ್ಟ್ 2026; ಕ್ಯಾಲೆಂಡರ್‌ನಿಂದಲೂ ಆಯ್ಕೆ ಮಾಡಬಹುದು. ಬೇಕಾದರೆ ಗುರುತಿನ ಪುರಾವೆ ಮತ್ತು ಜಾಮೀನುದಾರರನ್ನು ಸೇರಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Salary Type</strong> ಆಯ್ಕೆ ಮಾಡಿ <strong>Amount</strong> ನಮೂದಿಸಿ — ಪೆಟ್ಟಿಗೆ <em>/ month</em>, <em>/ day</em>, <em>/ hour</em> ಅಥವಾ <em>/ unit</em> ತೋರಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ ಅದರ ಅರ್ಥ ಕಾಣುತ್ತದೆ. ತುಂಡು ಕೆಲಸಕ್ಕೆ ಘಟಕದ ಹೆಸರನ್ನೂ ನಮೂದಿಸಿ (ಉದಾ. <em>pieces</em>).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ತಿಂಗಳ ಕೆಲಸದ ದಿನಗಳು, ದಿನದ ಕೆಲಸದ ಗಂಟೆಗಳು ಮತ್ತು ಓವರ್‌ಟೈಮ್ ಗುಣಕ ಹೊಂದಿಸಿ, <strong>Save Employee</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+
+  <h3>ಸಂಬಳ ಶೀಟ್</h3>
+  <p>ನೌಕರರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ <strong>📊 Salary Spreadsheet</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ನೌಕರರು ಸೇರಿದಾಗಿನಿಂದ ಪ್ರತಿ <strong>ಮುಗಿದ ತಿಂಗಳನ್ನು</strong> ಅದು ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ — ಚಾಲ್ತಿ ತಿಂಗಳು ಮುಗಿದ ನಂತರ ಕಾಣುತ್ತದೆ. ಪ್ರತಿ ತಿಂಗಳಿಗೆ <strong>Attendance</strong>, <strong>Leaves</strong>, <strong>OT Hours</strong>, <strong>Advances</strong> ಮತ್ತು ತುಂಡು ಕೆಲಸಗಾರರಿಗೆ <strong>Units</strong> ಬದಲಿಸಬಹುದು; Base Pay, OT Pay, Gross ಮತ್ತು Net Payable ಟೈಪ್ ಮಾಡುತ್ತಿದ್ದಂತೆ ಬದಲಾಗುತ್ತವೆ. <strong>Status</strong> ಕಾಲಂ ⏳ Pending, 📝 Saved, not paid, ಅಥವಾ ✅ Paid ತೋರಿಸುತ್ತದೆ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>💾 Save (not paid yet)</strong> ಏನನ್ನೂ ಪಾವತಿಸದೆ ನೀವು ನಮೂದಿಸಿದ್ದನ್ನು ಉಳಿಸುತ್ತದೆ. ತಿಂಗಳ ಮಧ್ಯೆ ಇದನ್ನು ಬಳಸಿ; ಮುಂದಿನ ಬಾರಿ ಶೀಟ್ ನಿಮ್ಮ ನಮೂದುಗಳನ್ನು ತೋರಿಸುತ್ತದೆ. ಉಳಿಸದ ಬದಲಾವಣೆಗಳೊಂದಿಗೆ ಶೀಟ್ ಮುಚ್ಚಿದರೆ, Accelent ಮೊದಲು ಕೇಳುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ಪಾವತಿಸುವ ಮೊದಲು ಪರಿಶೀಲಿಸಿ:</strong> ತಿಂಗಳು ಆಯ್ಕೆ ಮಾಡಿ <strong>🖨 Payslip</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಇನ್ನೂ ಪಾವತಿಸದ ತಿಂಗಳಿಗೆ ಬೂದು ಬಣ್ಣದ <strong>DRAFT</strong> ಚೀಟಿ ಸಿಗುತ್ತದೆ (<em>Not paid yet</em> ಎಂದು ಗುರುತಿಸಿ, ಸಹಿ ಅಥವಾ ಮುದ್ರೆ ಇಲ್ಲದೆ), ನೌಕರರೊಂದಿಗೆ ಅಂಕಿಗಳನ್ನು ಒಪ್ಪಿಕೊಳ್ಳಲು.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>💰 Pay Salary</strong> ಇನ್ನೂ ಪಾವತಿಸದ ಪ್ರತಿ ತಿಂಗಳನ್ನು ಪಾವತಿಸುತ್ತದೆ: Cash ಅಥವಾ ಬ್ಯಾಂಕ್ ಖಾತೆ ಆಯ್ಕೆ ಮಾಡಿ, ಪ್ರತಿ ತಿಂಗಳು ಖಾತೆಗಳಲ್ಲಿ ದಾಖಲಾಗಿ ✅ Paid ಎಂದು ಗುರುತಾಗುತ್ತದೆ. ಸಂಬಳವಿಲ್ಲದ ತಿಂಗಳು (ಉದಾಹರಣೆಗೆ ಘಟಕಗಳನ್ನು ನಮೂದಿಸದ ತುಂಡು ಕೆಲಸ) ನೀವು ಹೇಳಿದರೆ ಮಾತ್ರ ಪಾವತಿಯಾಗುತ್ತದೆ; ಇಲ್ಲದಿದ್ದರೆ ಬಾಕಿಯಾಗಿ ಉಳಿಯುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಪಾವತಿಸಿದ ತಕ್ಷಣ, Accelent ಕೊನೆಯ ತಿಂಗಳ ಚೀಟಿಯನ್ನು ನೀಡುತ್ತದೆ: <strong>📄 Send on WhatsApp</strong>, <strong>🖨 View / Print</strong> ಅಥವಾ <strong>Later</strong>.</div></div>
+
+  <h3>ಸಂಬಳ ಚೀಟಿಗಳು</h3>
+  <p>ಸಂಬಳ ಚೀಟಿ ನಿಮ್ಮ ಕಂಪನಿಯ ಶೀರ್ಷಿಕೆ ಮತ್ತು ಲೋಗೋ, ನೌಕರರ ವಿವರಗಳು, ಕೆಲಸ ಮಾಡಿದ ದಿನಗಳು, ರಜೆಗಳು ಮತ್ತು ಓವರ್‌ಟೈಮ್, ಪಾವತಿಯ ದಿನಾಂಕ ಮತ್ತು ಯಾವ ಖಾತೆಯಿಂದ, ಗಳಿಕೆ ಮತ್ತು ಕಡಿತಗಳು, <strong>ಅಕ್ಷರಗಳಲ್ಲಿ ನಿವ್ವಳ ಸಂಬಳ</strong>, ಮತ್ತು ನಿಮ್ಮ ಸಹಿ ಮತ್ತು ಮುದ್ರೆ (Settings → 🏢 Company ನಲ್ಲಿ <em>Signature &amp; Stamp</em> ನೋಡಿ) ತೋರಿಸುತ್ತದೆ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಸಂಬಳ ಶೀಟ್‌ನಲ್ಲಿ ಪಾವತಿಸಿದ ತಿಂಗಳು ಆಯ್ಕೆ ಮಾಡಿ, ನೋಡಲು, ಮುದ್ರಿಸಲು ಅಥವಾ PDF ಆಗಿ ಉಳಿಸಲು <strong>🖨 Payslip</strong>, ಅಥವಾ <strong>📄 Send Payslip on WhatsApp</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">WhatsApp ನೌಕರರ ಚಾಟ್ ಅನ್ನು ಚಿಕ್ಕ ಸಂದೇಶದೊಂದಿಗೆ ತೆರೆಯುತ್ತದೆ, ಚೀಟಿಯ PDF ನಕಲಾಗಿರುತ್ತದೆ: ಲಗತ್ತಿಸಲು <strong>Ctrl+V</strong> ಒತ್ತಿ, ನಂತರ <strong>Send</strong> (ಬಿಲ್‌ಗಳಂತೆಯೇ — <em>WhatsApp ನಲ್ಲಿ ಬಿಲ್ ಕಳುಹಿಸುವುದು</em> ನೋಡಿ).</div></div>
+  <div class="tip">💡 ಎಲ್ಲಾ ನೌಕರರ ಪಾವತಿಸಿದ ಎಲ್ಲಾ ತಿಂಗಳುಗಳು <strong>Payroll History</strong> ಟ್ಯಾಬ್‌ನಲ್ಲೂ ಇವೆ: ತಿಂಗಳು ಮತ್ತು ವರ್ಷ ಆಯ್ಕೆ ಮಾಡಿ, ಒಂದು ಸಾಲು ಆಯ್ಕೆ ಮಾಡಿ, ಅದೇ <strong>🖨 Payslip</strong> ಮತ್ತು <strong>📄 Send Payslip on WhatsApp</strong> ಬಟನ್‌ಗಳನ್ನು ಬಳಸಿ (ಸಾಲಿನ ಮೇಲೆ ಡಬಲ್-ಕ್ಲಿಕ್ ಮಾಡಿದರೂ ಚೀಟಿ ತೆರೆಯುತ್ತದೆ).</div>
+
+  <h3>ಮುಂಗಡಗಳು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ನೌಕರರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ → <strong>💰 Add Advance</strong> (ಅಥವಾ ನೌಕರರನ್ನು ತೆರೆದು <strong>Advances</strong> ಟ್ಯಾಬ್ ಬಳಸಿ). ದಿನಾಂಕ, ಮೊತ್ತ, ಕಾರಣ ಮತ್ತು ಯಾವ Cash ಅಥವಾ ಬ್ಯಾಂಕ್ ಖಾತೆಯಿಂದ ಕೊಡಲಾಗುತ್ತಿದೆ ಎಂದು ನಮೂದಿಸಿ. ಹೊರಗೆ ಹೋಗುವ ಹಣ <em>Employee Advance</em> ವೆಚ್ಚವಾಗಿ ದಾಖಲಾಗುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Normal</strong> ಮುಂಗಡ ಒಂದು ತಿಂಗಳ ಸಂಬಳದ 40% ವರೆಗೆ, ಈ ತಿಂಗಳು ನೌಕರರು ಇದುವರೆಗೆ ಗಳಿಸಿದ್ದಕ್ಕಿಂತ ಹೆಚ್ಚಿಲ್ಲದಂತೆ ಇರಬಹುದು. ಅದಕ್ಕಿಂತ ದೊಡ್ಡದು <strong>Forced</strong> ಮುಂಗಡ, ಅದಕ್ಕೆ ಅನುಮೋದಿಸುವವರ ಹೆಸರು ಬೇಕು. ತುಂಡು ಕೆಲಸಗಾರರಿಗೆ ತಿಂಗಳ ಸಂಬಳ ಎಂದರೆ ಅವರ ಕೊನೆಯ ಪಾವತಿಸಿದ ತಿಂಗಳು.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಬಾಕಿ ಮುಂಗಡಗಳು ಮುಂದಿನ ಪಾವತಿಸದ ತಿಂಗಳ <strong>Advances</strong> ಕಾಲಂನಲ್ಲಿ ಕಾಣುತ್ತವೆ ಮತ್ತು ಆ ಸಂಬಳದಿಂದ ಕಡಿತಗೊಳ್ಳುತ್ತವೆ. ಒಂದು ಭಾಗ ಮಾತ್ರ ವಸೂಲಿಸಲು, ಅಲ್ಲಿ ಕಡಿಮೆ ಮೊತ್ತ ಟೈಪ್ ಮಾಡಿ: ಉಳಿದದ್ದು ಮುಂದಿನ ತಿಂಗಳಿಗೆ ಬಾಕಿಯಾಗಿ ಉಳಿಯುತ್ತದೆ.</div></div>
+  <div class="tip">💡 ನೌಕರರ <strong>Advances</strong> ಟ್ಯಾಬ್‌ನಲ್ಲಿ, <strong>Extend</strong> ಮುಂಗಡದ ಮೊತ್ತ ಬದಲಿಸುತ್ತದೆ — ವ್ಯತ್ಯಾಸವನ್ನು ಮಾತ್ರ ಕೊಟ್ಟದ್ದು ಅಥವಾ ಮರಳಿ ಬಂದದ್ದು ಎಂದು Accelent ದಾಖಲಿಸುತ್ತದೆ. <strong>Close / Settle</strong> ಮುಂಗಡವನ್ನು ಮುಗಿದದ್ದು ಎಂದು ಗುರುತಿಸುತ್ತದೆ; ನೌಕರರು ನಗದಾಗಿ ಮರುಪಾವತಿಸಿದ್ದರೆ, ಆ ಹಣವನ್ನು <strong>Receipts</strong> ನಲ್ಲಿ ದಾಖಲಿಸಿ.</div>
+
+  <h3>ತಪ್ಪಾಗಿ ಮಾಡಿದ ಪಾವತಿ ಸರಿಪಡಿಸುವುದು</h3>
+  <p>ಪಾವತಿಸಿದ ತಿಂಗಳು ಆಕಸ್ಮಿಕವಾಗಿ ಬದಲಾಗದಂತೆ ಲಾಕ್ ಆಗುತ್ತದೆ. ತಪ್ಪು ಅಂಕಿಯೊಂದಿಗೆ ಪಾವತಿಸಿದ್ದರೆ: ಸಂಬಳ ಶೀಟ್‌ನಲ್ಲಿ ತಿಂಗಳು ಆಯ್ಕೆ ಮಾಡಿ → <strong>↩ Undo Payment</strong> → ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್‌ನೊಂದಿಗೆ ದೃಢೀಕರಿಸಿ. ಪಾವತಿ ಮತ್ತು ಅದರ Cash/ಬ್ಯಾಂಕ್ ನಮೂದು ತೆಗೆಯಲ್ಪಡುತ್ತವೆ, ಅದು ವಸೂಲಿಸಿದ ಮುಂಗಡಗಳು ಮತ್ತೆ ಬಾಕಿಯಾಗುತ್ತವೆ, ತಿಂಗಳು ಅದೇ ಅಂಕಿಗಳೊಂದಿಗೆ <em>Saved, not paid</em> ಗೆ ಮರಳುತ್ತದೆ — ಅವನ್ನು ಸರಿಪಡಿಸಿ <strong>💰 Pay Salary</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಈ ರದ್ದತಿ <strong>Deletion Watcher</strong> ನಲ್ಲಿ ದಾಖಲಾಗುತ್ತದೆ. ಮುಚ್ಚಿದ ಆರ್ಥಿಕ ವರ್ಷದ ತಿಂಗಳನ್ನು ರದ್ದು ಮಾಡಲಾಗದು.</p>
+
+  <h3>ಯಾರು ಏನು ಮಾಡಬಹುದು</h3>
+  <p>ಅಡ್ಮಿನ್ ಸಂಬಳಗಳನ್ನು ನೋಡುತ್ತಾರೆ, ಪಾವತಿಸಬಹುದು, ಪಾವತಿಗಳನ್ನು ರದ್ದು ಮಾಡಬಹುದು ಮತ್ತು ಚೀಟಿಗಳನ್ನು ಕಳುಹಿಸಬಹುದು. ಸಿಬ್ಬಂದಿ ಖಾತೆಗೆ ಬದಲಿಗೆ <strong>📋 Attendance Sheet</strong> ಕಾಣುತ್ತದೆ — ಹಾಜರಾತಿ, ರಜೆಗಳು, ಓವರ್‌ಟೈಮ್ ಮತ್ತು ಘಟಕಗಳು ಮಾತ್ರ, ಹಣದ ಅಂಕಿಗಳಿಲ್ಲ — ಮತ್ತು ಅಡ್ಮಿನ್ ಪಾವತಿಸಲು <strong>💾 Save (not paid yet)</strong> ನಿಂದ ನಮೂದುಗಳನ್ನು ಉಳಿಸಬಹುದು.</p>
+
+  <h3>ಯಾರಾದರೂ ಕೆಲಸ ಬಿಟ್ಟಾಗ</h3>
+  <p>ನೌಕರರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ → <strong>🚫 Terminate</strong>. ಅವರು ಸಕ್ರಿಯ ಪಟ್ಟಿಯಿಂದ ಹೊರಗುಳಿಯುತ್ತಾರೆ ಆದರೆ ಅವರ ಸಂಬಳ ಇತಿಹಾಸ ಉಳಿಯುತ್ತದೆ; <strong>Show Terminated</strong> ಅವರನ್ನು ಮತ್ತೆ ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 15 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 15 — GST ರಿಟರ್ನ್ ಮತ್ತು ಇ-ಇನ್‌ವಾಯ್ಸ್</div>
+<div class="section" id="ch15">
+  <h2>15. GST ರಿಟರ್ನ್ ಮತ್ತು ಇ-ಇನ್‌ವಾಯ್ಸ್ (IRN)</h2>
+
+  <h3>GST ರಿಟರ್ನ್ ಪ್ಯಾನೆಲ್</h3>
+  <p>ನಿಮ್ಮ ಮಾರಾಟ ಮತ್ತು ಖರೀದಿ ಡೇಟಾವನ್ನು GST ವಿವರಗಳೊಂದಿಗೆ ಸಂಕ್ಷೇಪಿಸಿ, ಮಾಸಿಕ GST ರಿಟರ್ನ್‌ಗಳನ್ನು (GSTR-1, GSTR-3B) ಸಿದ್ಧಪಡಿಸಲು ಈ ಪ್ಯಾನೆಲ್ ಸಹಾಯ ಮಾಡುತ್ತದೆ.</p>
+  <ul>
+    <li><strong>GSTR-1</strong> — ಹೊರಹೋಗುವ ಸರಬರಾಜುಗಳು (ನಿಮ್ಮ ಮಾರಾಟ) — ಮುಂದಿನ ತಿಂಗಳ 11 ರೊಳಗೆ ಸಲ್ಲಿಸಲಾಗುತ್ತದೆ</li>
+    <li><strong>GSTR-3B</strong> — ಪಾವತಿಸಬೇಕಾದ ತೆರಿಗೆಯೊಂದಿಗೆ ಮಾರಾಟ ಮತ್ತು ಖರೀದಿಯ ಸಾರಾಂಶ ರಿಟರ್ನ್ — 20 ರೊಳಗೆ ಸಲ್ಲಿಸಲಾಗುತ್ತದೆ</li>
+    <li><strong>GSTR-2B ಹೊಂದಾಣಿಕೆ</strong> — ನಿಮ್ಮ ಖರೀದಿ ಬಿಲ್‌ಗಳನ್ನು ನಿಮ್ಮ ಸರಬರಾಜುದಾರರ GSTR-2B ಯೊಂದಿಗೆ ಹೋಲಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ ಅವರು ವರದಿ ಮಾಡಿದ ಇನ್‌ಪುಟ್ ಟ್ಯಾಕ್ಸ್ ಕ್ರೆಡಿಟ್ ಅನ್ನು ಮಾತ್ರ ನೀವು ಕ್ಲೈಮ್ ಮಾಡುತ್ತೀರಿ</li>
+  </ul>
+  <figure class="shot"><a href="manual_images/gst-dashboard.png" target="_blank"><img src="manual_images/gst-dashboard.png" alt="GST Management" loading="lazy"></a><figcaption>GST Management — ಮೇಲೆ ಈ ಅವಧಿಯ ತೆರಿಗೆ ಹೊಣೆಗಾರಿಕೆ ಮತ್ತು ಇನ್‌ಪುಟ್ ಟ್ಯಾಕ್ಸ್ ಕ್ರೆಡಿಟ್, ಮತ್ತು ಲೆಡ್ಜರ್, ರಿಟರ್ನ್‌ಗಳು, GSTR-2B ಹೊಂದಾಣಿಕೆ, E-Way Bill ಇತ್ಯಾದಿಗಳಿಗೆ ಟ್ಯಾಬ್‌ಗಳು.</figcaption></figure>
+  <p>ನಿಮ್ಮ ದಾಸ್ತಾನು ವಸ್ತುಗಳಿಗೆ ನೀಡಿದ HSN ಕೋಡ್‌ಗಳಿಂದ Accelent CGST, SGST ಮತ್ತು IGST ಲೆಕ್ಕ ಹಾಕುತ್ತದೆ. Inventory ಪ್ಯಾನೆಲ್‌ನಲ್ಲಿ ಎಲ್ಲಾ ವಸ್ತುಗಳಿಗೆ ಸರಿಯಾದ HSN ಕೋಡ್ ಮತ್ತು GST ದರ ನೀಡಲಾಗಿದೆಯೇ ಖಚಿತಪಡಿಸಿ.</p>
+  <ul>
+    <li><strong>ಫೋನ್ ನಮೂದುಗಳು ಸೇರುತ್ತವೆ:</strong> ಫೋನ್‌ನಲ್ಲಿ ಮಾಡಿದ ಮಾರಾಟ ಮತ್ತು ಖರೀದಿಗಳು ಔಟ್‌ಪುಟ್ ತೆರಿಗೆ, ಇನ್‌ಪುಟ್ ಟ್ಯಾಕ್ಸ್ ಕ್ರೆಡಿಟ್ ಮತ್ತು GST ಸಾರಾಂಶದಲ್ಲಿ, ಡೆಸ್ಕ್‌ಟಾಪ್ ನಮೂದುಗಳಂತೆಯೇ ಲೆಕ್ಕವಾಗುತ್ತವೆ. ಫೋನ್ ನಮೂದುಗಳನ್ನು ನಿಮ್ಮ ಸ್ವಂತ ರಾಜ್ಯದೊಳಗಿನವು ಎಂದು ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ (CGST + SGST).</li>
+    <li><strong>HSN ಕೋಡ್‌ಗಳು:</strong> GSTR-1 HSN ಸಾರಾಂಶ ಮಾರಾಟವನ್ನು ಪ್ರತಿ ವಸ್ತುವಿನ ನಿಜವಾದ HSN ಕೋಡ್ ಪ್ರಕಾರ ಗುಂಪು ಮಾಡುತ್ತದೆ. GSTR-1 ರಫ್ತಿಗೆ ಮೊದಲು, HSN ಕೋಡ್ ಇಲ್ಲದ ಮಾರಿದ ವಸ್ತುಗಳನ್ನು Accelent ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ — ಮೊದಲು ಅವನ್ನು Inventory ಯಲ್ಲಿ ಸೇರಿಸಿ, ನಂತರ ಮತ್ತೆ ರಫ್ತು ಮಾಡಿ.</li>
+    <li><strong>ಅಳಿಸಿದ ಅಥವಾ ಸಂಪಾದಿಸಿದ ಬಿಲ್‌ಗಳು:</strong> ಬಿಲ್ ಅಳಿಸಿದರೆ ಅದರ ತೆರಿಗೆ GST ರಿಟರ್ನ್‌ಗಳಿಂದ ತೆಗೆಯಲ್ಪಡುತ್ತದೆ, ಮಾರಾಟ ಸಂಪಾದಿಸಿದರೆ ಎರಡನೇ ನಮೂದು ಸೇರಿಸದೆ ಅದರ ತೆರಿಗೆ ನಮೂದು ಬದಲಾಗುತ್ತದೆ.</li>
+  </ul>
+
+  <h3>ಇ-ಇನ್‌ವಾಯ್ಸ್ / IRN ಪ್ಯಾನೆಲ್</h3>
+  <p>ಸರ್ಕಾರದ ಮಿತಿಗಿಂತ ಹೆಚ್ಚು ವಾರ್ಷಿಕ ವಹಿವಾಟು ಇರುವ ವ್ಯಾಪಾರಗಳು ಪ್ರತಿ B2B ಇನ್‌ವಾಯ್ಸ್‌ಗೆ NIC ಇ-ಇನ್‌ವಾಯ್ಸ್ ಪೋರ್ಟಲ್ ಮೂಲಕ <strong>IRN (Invoice Reference Number)</strong> ತಯಾರಿಸಬೇಕು.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>E-Invoice</strong> ಪ್ಯಾನೆಲ್‌ಗೆ ಹೋಗಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಪಟ್ಟಿಯಿಂದ ಇನ್‌ವಾಯ್ಸ್ ಆಯ್ಕೆ ಮಾಡಿ <strong>Generate IRN</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Accelent NIC ಗೆ ಹೊಂದುವ JSON ಫೈಲ್ ತಯಾರಿಸುತ್ತದೆ. IRN ಮತ್ತು QR ಕೋಡ್ ಪಡೆಯಲು ಅದನ್ನು ಇ-ಇನ್‌ವಾಯ್ಸ್ ಪೋರ್ಟಲ್‌ಗೆ ಸಲ್ಲಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">IRN ಇನ್‌ವಾಯ್ಸ್‌ನೊಂದಿಗೆ ಉಳಿದು ಇನ್‌ವಾಯ್ಸ್ ಪ್ರತಿಯಲ್ಲಿ ಮುದ್ರಿತವಾಗುತ್ತದೆ.</div></div>
+
+  <div class="warn">⚠ ನಿಮಗೆ ಇ-ಇನ್‌ವಾಯ್ಸ್ ಅನ್ವಯವಾಗುವ ಮಿತಿ ಮತ್ತು ಕೊನೆಯ ದಿನಾಂಕಗಳನ್ನು ಖಚಿತಪಡಿಸಲು ನಿಮ್ಮ CA ಅಥವಾ ತೆರಿಗೆ ಸಲಹೆಗಾರರನ್ನು ಸಂಪರ್ಕಿಸಿ. ನಿಯಮಗಳು ಆಗಾಗ ಬದಲಾಗುತ್ತವೆ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 16 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 16 — ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಮತ್ತು ನಿರ್ವಹಣೆ</div>
+<div class="section" id="ch16">
+  <h2>16. ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಮತ್ತು ನಿರ್ವಹಣೆ</h2>
+
+  <p>Settings ಪ್ಯಾನೆಲ್‌ನಲ್ಲಿ ಆರು ಟ್ಯಾಬ್‌ಗಳಿವೆ. ಪ್ರತಿಯೊಂದೂ ಮಾಡುವುದು ಇದು:</p>
+
+  <table>
+    <tr><th>ಟ್ಯಾಬ್</th><th>ನೀವು ಏನು ಮಾಡಬಹುದು</th></tr>
+    <tr><td>🔍 Deletion Watcher</td><td>ಆ್ಯಪ್‌ನಲ್ಲಿ ಅಳಿಸಿದ ಪ್ರತಿ ದಾಖಲೆಯ ಆಡಿಟ್ ಟ್ರೇಲ್. ವಿವರಗಳನ್ನು ನೋಡಬಹುದು, ಅಳಿಸಿದ ದಾಖಲೆಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಬಹುದು, ಅಥವಾ ಲಾಗ್ ನಮೂದುಗಳನ್ನು ಶಾಶ್ವತವಾಗಿ ತೆಗೆಯಬಹುದು. <strong>ಲಾಕ್ ಆಗಿದೆ — ತೆರೆಯಲು ಅಡ್ಮಿನ್ PIN ಬೇಕು.</strong></td></tr>
+    <tr><td>⚙️ App Settings</td><td>ವ್ಯವಹಾರಗಳಿಂದ ಎಲ್ಲಾ ಬಾಕಿಗಳನ್ನು ಮತ್ತೆ ಲೆಕ್ಕ ಹಾಕುವುದು, ಡೇಟಾಬೇಸ್ ಬ್ಯಾಕಪ್, ಬ್ಯಾಕಪ್‌ನಿಂದ ಮರುಸ್ಥಾಪನೆ, ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಿದ Cloud Backup ಹೊಂದಿಸುವುದು, ಡೇಟಾಬೇಸ್ ಮರುಹೊಂದಿಸುವುದು (ಅಪಾಯ!), ಭಾಷೆ ಮತ್ತು ಥೀಮ್ ಬದಲಿಸುವುದು.</td></tr>
+    <tr><td>🏢 Company</td><td>ಕಂಪನಿ ಹೆಸರು, ವಿಳಾಸ, ಸಂಪರ್ಕ, GST/TIN, ಲೋಗೋ, ಮತ್ತು ಇನ್‌ವಾಯ್ಸ್ ಮತ್ತು ವರದಿಗಳಲ್ಲಿ ಬರುವ ಸಹಿ ಮತ್ತು ಅಂಗಡಿ ಮುದ್ರೆ ಸಂಪಾದಿಸಿ. <strong>Business Type</strong> ಮೆನುವಿನ ಪರದೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡುತ್ತದೆ: <em>Restaurant</em> ಗೆ Sales, Returns, Aging Report ಮತ್ತು E-Invoice ಬದಲು 🍽 Restaurant ಪರದೆ ಸಿಗುತ್ತದೆ (<a href="#ch9b">ಅಧ್ಯಾಯ 9b</a> ನೋಡಿ), <em>Hotel, lodge or guest house</em> ಗೆ 🛏 Rooms ಕೂಡ ಸಿಗುತ್ತದೆ (<a href="#ch9c">ಅಧ್ಯಾಯ 9c</a> ನೋಡಿ); Accelent ಮತ್ತೆ ತೆರೆದ ನಂತರ ಬದಲಾವಣೆ ಕಾಣುತ್ತದೆ.</td></tr>
+    <tr><td>👥 Users</td><td>ಸಿಬ್ಬಂದಿ ಖಾತೆಗಳನ್ನು ರಚಿಸಿ, ಪ್ರತಿಯೊಬ್ಬರು ಏನು ನೋಡಬಹುದು ಮಾಡಬಹುದು ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ (🔐 Permissions), ಫೋನ್ ಆ್ಯಪ್ ಯಾರು ಬಳಸಬಹುದು ಎಂದು ನಿರ್ಧರಿಸಿ. ಅಡ್ಮಿನ್ ಖಾತೆಯೇ ಮುಖ್ಯ — ಅದರ ಪಾಸ್‌ವರ್ಡ್ ಸುರಕ್ಷಿತವಾಗಿಡಿ.</td></tr>
+    <tr><td>🔑 License</td><td>ನಿಮ್ಮ ಚಂದಾದಾರಿಕೆ ಸಕ್ರಿಯಗೊಳಿಸಿ ಅಥವಾ ನವೀಕರಿಸಿ, ಅಥವಾ ಪ್ರಯೋಗದ ಸ್ಥಿತಿ ನೋಡಿ.</td></tr>
+    <tr><td>📊 Balances</td><td>ನಗದು, ಬ್ಯಾಂಕ್ ಖಾತೆಗಳು, ಪಕ್ಷಗಳು, ಗ್ರಾಹಕರು ಮತ್ತು ನೌಕರರ ಆರಂಭಿಕ ಬಾಕಿಗಳನ್ನು ಸಂಪಾದಿಸಿ.</td></tr>
+  </table>
+
+  <h3>🔒 Deletion Watcher ಏಕೆ ಲಾಕ್ ಆಗಿದೆ?</h3>
+  <p>Deletion Watcher ಟ್ಯಾಬ್ ಒಂದು ಬಹಳ ಮುಖ್ಯ ಕಾರಣಕ್ಕಾಗಿ <strong>PIN / ಅಡ್ಮಿನ್ ದೃಢೀಕರಣ</strong> ದಿಂದ ರಕ್ಷಿತವಾಗಿದೆ: ಅದರಲ್ಲಿ <strong>ಅಳಿಸಿದ ಯಾವುದೇ ದಾಖಲೆಯನ್ನು ಮರುಸ್ಥಾಪಿಸುವ</strong> ಶಕ್ತಿ ಇದೆ — ಇನ್‌ವಾಯ್ಸ್‌ಗಳು, ಖರೀದಿಗಳು, ವೆಚ್ಚಗಳು, ದಾಸ್ತಾನು ವಸ್ತುಗಳು ಮತ್ತು ಇನ್ನಷ್ಟು.</p>
+  <p>ಇದು ಎಲ್ಲಾ ಸಿಬ್ಬಂದಿಗೆ ತೆರೆದಿದ್ದರೆ, ಯಾವುದೇ ಆಪರೇಟರ್:</p>
+  <ul>
+    <li>ಅಳಿಸಿದ ಇನ್‌ವಾಯ್ಸ್ ಅನ್ನು ಮರುಸ್ಥಾಪಿಸಿ ಅದು ಅಳಿಸಲ್ಪಟ್ಟಿತ್ತು ಎಂಬುದನ್ನು ಮರೆಮಾಡಬಹುದು</li>
+    <li>ಪೂರ್ಣ ಆಡಿಟ್ ಟ್ರೇಲ್ ನೋಡಿ ತಮ್ಮ ಮೇಲೆ ಕಣ್ಣಿಡಲಾಗಿದೆ ಎಂದು ತಿಳಿಯಬಹುದು</li>
+    <li>ಮೋಸದ ಸಾಕ್ಷ್ಯ ಅಳಿಸಲು ಲಾಗ್ ನಮೂದುಗಳನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಬಹುದು</li>
+  </ul>
+  <p>ಈ ಸೂಕ್ಷ್ಮ ಭಾಗವನ್ನು <strong>ವ್ಯಾಪಾರದ ಮಾಲೀಕರು ಅಥವಾ ಅಡ್ಮಿನ್ ಮಾತ್ರ</strong> ತೆರೆಯಬಹುದು ಎಂದು ಲಾಕ್ ಖಚಿತಪಡಿಸುತ್ತದೆ. ಆಪರೇಟರ್‌ಗಳಾಗಿ ಲಾಗಿನ್ ಆಗುವ ಸಿಬ್ಬಂದಿಗೆ ಈ ಟ್ಯಾಬ್ ಕಾಣುವುದೇ ಇಲ್ಲ.</p>
+
+  <h4>Deletion Watcher ಅನ್ನು ಹೇಗೆ ತೆರೆಯುವುದು</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🔍 Deletion Watcher</strong> ಗೆ ಹೋಗಿ. 🔒 ಲಾಕ್ ಚಿಹ್ನೆ ಕಾಣುತ್ತದೆ — ಕೋಷ್ಟಕ ಮತ್ತು ಬಟನ್‌ಗಳು ನಿಷ್ಕ್ರಿಯವಾಗಿವೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Authenticate</strong> ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ ನಿಮ್ಮ ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಚಿಹ್ನೆ 🔓 Active ಆಗಿ, ಪೂರ್ಣ ಆಡಿಟ್ ಟ್ರೇಲ್ ಕಾಣುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Settings ಮುಚ್ಚಿದಾಗ ಅಥವಾ ಪ್ಯಾನೆಲ್ ಬದಲಿಸಿದಾಗ ಪ್ಯಾನೆಲ್ ತಾನಾಗಿ ಮತ್ತೆ ಲಾಕ್ ಆಗುತ್ತದೆ — ನೀವು ಎದ್ದು ಹೋದರೂ ಸುರಕ್ಷಿತವಾಗಿರುತ್ತದೆ.</div></div>
+  <p>ಪ್ರತಿ ಸಾಲಿನಲ್ಲಿ ನಾಲ್ಕು ಬಟನ್‌ಗಳಿವೆ: <strong>V</strong> ವಿವರಗಳನ್ನು ನೋಡಿ, <strong>M</strong> ಪರಿಶೀಲಿಸಲಾಗಿದೆ ಎಂದು ಗುರುತಿಸಿ, <strong>R</strong> ಮರುಸ್ಥಾಪಿಸಿ, <strong>D</strong> ನಮೂದು ಅಳಿಸಿ. ಹಲವು ಸಾಲುಗಳ ಮೇಲೆ ಒಮ್ಮೆಗೇ ಕೆಲಸ ಮಾಡಲು, ಅವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ (ಕ್ಲಿಕ್, Shift+ಕ್ಲಿಕ್, Ctrl+ಕ್ಲಿಕ್ ಅಥವಾ Ctrl+A), ರೈಟ್-ಕ್ಲಿಕ್ ಮಾಡಿ <strong>Restore selected</strong>, <strong>Mark selected as reviewed</strong> ಅಥವಾ <strong>Delete selected entries permanently</strong> ಆಯ್ಕೆ ಮಾಡಿ.</p>
+
+  <div class="warn">⚠ <strong>ನಿಮ್ಮ ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್ ಅನ್ನು ಎಂದಿಗೂ ಸಿಬ್ಬಂದಿಯೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ.</strong> Deletion Watcher ನಿಮ್ಮ ಅತ್ಯಂತ ಶಕ್ತಿಶಾಲಿ ಮರುಸ್ಥಾಪನೆ ಮತ್ತು ಆಡಿಟ್ ಸಾಧನ — ವ್ಯಾಪಾರದ ಮಾಲೀಕರು ಮಾತ್ರ ಅದನ್ನು ತೆರೆಯಬೇಕು.</div>
+
+  <h3>ಬಾಕಿಗಳನ್ನು ಮತ್ತೆ ಲೆಕ್ಕ ಹಾಕುವುದು</h3>
+  <p>ಯಾವಾಗಲಾದರೂ ಒಂದು ಬಾಕಿ ತಪ್ಪಾಗಿ ಕಂಡರೆ, <strong>Settings → App Settings → 🔄 Recalculate All Balances</strong> ಗೆ ಹೋಗಿ. ಇದು ಪೂರ್ಣ ವ್ಯವಹಾರ ಇತಿಹಾಸದಿಂದ ಪ್ರತಿ ಖಾತೆಯ ಬಾಕಿಯನ್ನು ಮತ್ತೆ ಲೆಕ್ಕ ಹಾಕಿ ಯಾವುದೇ ವ್ಯತ್ಯಾಸವನ್ನು ಸರಿಪಡಿಸುತ್ತದೆ.</p>
+
+  <h3>ಬಳಕೆದಾರ ನಿರ್ವಹಣೆ</h3>
+  <p>ಸಿಬ್ಬಂದಿಗೆ (ಕ್ಯಾಷಿಯರ್‌ಗಳು, ಡೇಟಾ ಎಂಟ್ರಿ ಆಪರೇಟರ್‌ಗಳು, ಸ್ಟೋರ್ ಕೀಪರ್‌ಗಳು) ಪ್ರತ್ಯೇಕ ಬಳಕೆದಾರ ಖಾತೆಗಳನ್ನು ರಚಿಸಬಹುದು. ಪ್ರತಿ ಸಿಬ್ಬಂದಿ ತಮ್ಮ ಸ್ವಂತ ಪಾಸ್‌ವರ್ಡ್‌ನಿಂದ ಲಾಗಿನ್ ಆಗುತ್ತಾರೆ. ಅಡ್ಮಿನ್ ಖಾತೆಗೆ ಯಾವಾಗಲೂ ಎಲ್ಲದಕ್ಕೂ ಪೂರ್ಣ ಪ್ರವೇಶವಿರುತ್ತದೆ.</p>
+
+  <h3>🔐 ಸಿಬ್ಬಂದಿ ಅನುಮತಿಗಳು — ಪ್ರತಿ ಸಿಬ್ಬಂದಿ ಏನು ನೋಡಬಹುದು ಮಾಡಬಹುದು</h3>
+  <p>ಪ್ರತಿ ಸಿಬ್ಬಂದಿ ಖಾತೆಗೆ ಅವರು ಏನು ನೋಡಬಹುದು ಮಾಡಬಹುದು ಎಂದು ನೀವು ನಿಖರವಾಗಿ ನಿರ್ಧರಿಸುತ್ತೀರಿ. ಅನುಮತಿ ಇಲ್ಲದ ಪರದೆಗಳು ಅವರ ಮೆನುವಿನಿಂದ ಮಾಯವಾಗುತ್ತವೆ, ಫೋನ್ ಆ್ಯಪ್‌ನಲ್ಲೂ ಅದೇ ನಿಯಮಗಳು ಅನ್ವಯಿಸುತ್ತವೆ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 👥 Users</strong> ಗೆ ಹೋಗಿ ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್‌ನಿಂದ Settings ತೆರೆಯಿರಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಸಿಬ್ಬಂದಿ ಸದಸ್ಯರ ಪಕ್ಕದ <strong>🔐</strong> ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ (ಅದು ಅವರ ಈಗಿನ ಟೆಂಪ್ಲೇಟ್ ತೋರಿಸುತ್ತದೆ, ಉದಾ. <em>🔐 Billing Staff</em>).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಆರಂಭಿಸಲು ಒಂದು <strong>ಟೆಂಪ್ಲೇಟ್</strong> ಆಯ್ಕೆ ಮಾಡಿ, 12 ಅನುಮತಿಗಳಲ್ಲಿ ಯಾವುದನ್ನಾದರೂ ಟಿಕ್ ಮಾಡಿ ಅಥವಾ ತೆಗೆಯಿರಿ. <strong>Save</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <figure class="shot"><a href="manual_images/staff-permissions.png" target="_blank"><img src="manual_images/staff-permissions.png" alt="Staff Permissions window" loading="lazy" style="max-width:420px;width:100%"></a><figcaption>Permissions ವಿಂಡೋ — ಮೇಲೆ ಆರಂಭಿಕ ಟೆಂಪ್ಲೇಟ್, ನಂತರ ಗುಂಪುಗಳಲ್ಲಿ 12 ಅನುಮತಿಗಳು.</figcaption></figure>
+  <table>
+    <tr><th>ಟೆಂಪ್ಲೇಟ್</th><th>ಸಾಮಾನ್ಯ ಬಳಕೆ</th><th>ಏನು ಮಾಡಬಹುದು</th></tr>
+    <tr><td>Billing Staff</td><td>ಕೌಂಟರ್ / ಕ್ಯಾಷಿಯರ್</td><td>ಮಾರಾಟ ರಚಿಸುವುದು ಮಾತ್ರ — ಹಣದ ಅಂಕಿಗಳಿಲ್ಲ, ಖರೀದಿ ವೆಚ್ಚಗಳಿಲ್ಲ</td></tr>
+    <tr><td>Store Keeper</td><td>ಸ್ಟಾಕ್ ಮತ್ತು ಖರೀದಿ</td><td>ಖರೀದಿಗಳು, ದಾಸ್ತಾನು ಬದಲಾವಣೆಗಳು, ಹಿಂದಿರುಗಿಸುವಿಕೆ, ಖರೀದಿ ವೆಚ್ಚಗಳು</td></tr>
+    <tr><td>Accountant</td><td>ಲೆಕ್ಕದ ಪುಸ್ತಕಗಳು ಮತ್ತು GST</td><td>ಸಂಬಳ ಮತ್ತು ಹಳೆಯ ಬಿಲ್‌ಗಳ ಸಂಪಾದನೆ ಅಥವಾ ಅಳಿಸುವಿಕೆ ಹೊರತುಪಡಿಸಿ ಎಲ್ಲವೂ</td></tr>
+    <tr><td>Manager</td><td>ನಂಬಿಕೆಯ ಹಿರಿಯ ಸಿಬ್ಬಂದಿ</td><td>ಎಲ್ಲವೂ (ಫೋನ್ ಪ್ರವೇಶವನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿ ಹೊಂದಿಸಲಾಗುತ್ತದೆ)</td></tr>
+  </table>
+  <div class="tip">💡 ಹೊಸ ಸಿಬ್ಬಂದಿ ಖಾತೆಗಳು <strong>Billing Staff</strong> ಆಗಿ ಆರಂಭವಾಗುತ್ತವೆ. 🔐 ಬಟನ್‌ನಿಂದ ಪ್ರತಿಯೊಬ್ಬರಿಗೆ ಬೇಕಾದ್ದನ್ನು ನೀಡಿ. ಬದಲಾವಣೆಗಳು ಡೆಸ್ಕ್‌ಟಾಪ್‌ನಲ್ಲಿ ಮುಂದಿನ ಲಾಗಿನ್‌ನಲ್ಲಿ, ಫೋನ್‌ನಲ್ಲಿ ತಕ್ಷಣ ಅನ್ವಯವಾಗುತ್ತವೆ.</div>
+  <div class="warn">⚠ ಅನುಮತಿಗಳು ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಸಿಬ್ಬಂದಿಯಿಂದ ರಕ್ಷಿಸುತ್ತವೆ — ಅವು ಅಡ್ಮಿನ್ ಖಾತೆಯನ್ನು ರಕ್ಷಿಸುವುದಿಲ್ಲ. ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್ ತಿಳಿದ ಯಾರಿಗಾದರೂ ಪೂರ್ಣ ಪ್ರವೇಶವಿರುತ್ತದೆ, ಆದ್ದರಿಂದ ಅದನ್ನು ಗುಟ್ಟಾಗಿಡಿ.</div>
+
+  <h3>🔑 ನಿಮ್ಮ ಚಂದಾದಾರಿಕೆ</h3>
+  <ul>
+    <li><strong>ಉಚಿತ ಪ್ರಯೋಗ:</strong> ಎಲ್ಲಾ ಸೌಲಭ್ಯಗಳೊಂದಿಗೆ 45 ದಿನಗಳು, 15 ಸರಬರಾಜುದಾರ ಬಿಲ್ ಸ್ಕ್ಯಾನ್‌ಗಳು ಸೇರಿ.</li>
+    <li><strong>ಚಂದಾದಾರಿಕೆ:</strong> ಸಕ್ರಿಯಗೊಳಿಸಿದ ನಂತರ ನಿಮ್ಮ ಪರವಾನಗಿ ಒಂದು ವರ್ಷ ಚಲಿಸುತ್ತದೆ. ಸ್ಟೇಟಸ್ ಬಾರ್ <em>"Licensed until …"</em> ತೋರಿಸುತ್ತದೆ.</li>
+    <li><strong>ನವೀಕರಣ:</strong> ಕೊನೆಯ ದಿನಾಂಕಕ್ಕೆ 30 ದಿನ ಮೊದಲು ನೆನಪುಗಳು ಆರಂಭವಾಗುತ್ತವೆ, ನಿಮ್ಮ ನವೀಕರಣ ಕೀಯೊಂದಿಗೆ Settings → 🔑 License ನಿಂದ ನವೀಕರಿಸಬಹುದು. ಬೇಗ ನವೀಕರಿಸಿದರೆ ನಿಮಗೆ ಉಳಿದ ದಿನಗಳ ಮೇಲೆ ವರ್ಷ ಸೇರುತ್ತದೆ.</li>
+    <li><strong>ಚಂದಾದಾರಿಕೆ ಮುಗಿದರೆ:</strong> ಬಿಲ್ ಸ್ಕ್ಯಾನಿಂಗ್ ತಕ್ಷಣ ನಿಲ್ಲುತ್ತದೆ, ಆದರೆ ಬಿಲ್‌ಗಳನ್ನು ಉಳಿಸುವುದು ಸ್ಟೇಟಸ್ ಬಾರ್‌ನಲ್ಲಿ ಕೌಂಟ್‌ಡೌನ್‌ನೊಂದಿಗೆ <strong>ಇನ್ನೂ 7 ದಿನ</strong> ಕೆಲಸ ಮಾಡುತ್ತದೆ. ಅದರ ನಂತರ ನವೀಕರಿಸುವವರೆಗೆ ಉಳಿಸುವಿಕೆ ನಿಲ್ಲುತ್ತದೆ. ನಿಮ್ಮ ಡೇಟಾ ಯಾವಾಗಲೂ ನೋಡಲು ಸಿಗುತ್ತದೆ.</li>
+    <li><strong>ಒಂದು ಪರವಾನಗಿಗೆ ಒಂದು PC:</strong> ಪರವಾನಗಿ ಅದು ಸಕ್ರಿಯಗೊಂಡ PC ಗೆ ಬದ್ಧವಾಗಿರುತ್ತದೆ. ಹೊಸ PC ಗೆ ಹೋಗಲು ಸಪೋರ್ಟ್ ಸಂಪರ್ಕಿಸಿ.</li>
+  </ul>
+
+  <div class="err">🚨 <strong>ನಿಮ್ಮ ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್ ಅನ್ನು ಎಂದಿಗೂ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ.</strong> ಒಬ್ಬ ಆಪರೇಟರ್ ಕೆಲಸ ಬಿಟ್ಟರೆ, Settings → Users → ಆ ಬಳಕೆದಾರರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ → <em>Disable</em> ಕ್ಲಿಕ್ ಮಾಡಿ. ಅವರ ನಮೂದುಗಳ ಇತಿಹಾಸ ಉಳಿಯುತ್ತದೆ ಆದರೆ ಅವರು ಇನ್ನು ಲಾಗಿನ್ ಆಗಲಾರರು.</div>
+
+  <h3>🔑 ನಿಮ್ಮ ಖಾತೆಯ Recovery Key</h3>
+  <p>ನೀವು ಮೊದಲ ಬಾರಿ ಸ್ವಂತ ಪಾಸ್‌ವರ್ಡ್ ಇಟ್ಟಾಗ — ಸ್ಥಾಪನೆಯ ತಕ್ಷಣ (ತಾತ್ಕಾಲಿಕ ಡೀಫಾಲ್ಟ್ ಪಾಸ್‌ವರ್ಡ್ ಬದಲಿಗೆ) ಅಥವಾ ನಂತರ ಯಾವಾಗಲಾದರೂ — Accelent ನಿಮ್ಮ ಖಾತೆಗೆ ವಿಶಿಷ್ಟ <strong>Recovery Key</strong> ಸೃಷ್ಟಿಸಿ, ಮುಚ್ಚುವ ಮೊದಲು ಉಳಿಸಿದ್ದೀರಿ ಎಂದು ದೃಢೀಕರಿಸಬೇಕಾದ ಪೆಟ್ಟಿಗೆಯಲ್ಲಿ, <strong>ಒಂದೇ ಬಾರಿ</strong> ತೋರಿಸುತ್ತದೆ.</p>
+  <div class="tip">💡 ಈ ಕೀ ಡ್ಯಾಶ್‌ಗಳಿಂದ ಬೇರ್ಪಡಿಸಿದ ಅಕ್ಷರ/ಅಂಕಿ ಗುಂಪುಗಳ ಸರಣಿಯಂತೆ ಕಾಣುತ್ತದೆ, ಉದಾ. <code>3F7A9C21-8B4E0D6F-...</code>. ಅದನ್ನು ಪಾಸ್‌ವರ್ಡ್ ಮ್ಯಾನೇಜರ್‌ಗೆ ನಕಲಿಸಿ, ಕಾಗದದ ಮೇಲೆ ಬರೆದು ಸುರಕ್ಷಿತ ಸ್ಥಳದಲ್ಲಿಡಿ, ಅಥವಾ ಲಾಕ್ ಮಾಡಿದ ಟಿಪ್ಪಣಿಯಲ್ಲಿ ಇಡಿ — ಅದೇ PC ಯಲ್ಲಿ ಸ್ಪಷ್ಟ ಹೆಸರಿನ ಫೈಲ್ ಹೊರತುಪಡಿಸಿ ಎಲ್ಲಿಯಾದರೂ.</div>
+  <p>ಈ ಕೀ ಒಂದೇ ಉದ್ದೇಶಕ್ಕಾಗಿ: ನೀವು ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್ ಮರೆತರೆ, ಅಥವಾ ತುಂಬಾ ತಪ್ಪು ಪ್ರಯತ್ನಗಳ ನಂತರ ಖಾತೆ ಲಾಕ್ ಆದರೆ, Recovery Key ಯಿಂದ ಲಾಗಿನ್ ಪರದೆಯಿಂದಲೇ ಒಂದು ನಿಮಿಷದೊಳಗೆ ಸಂಪೂರ್ಣ ಹೊಸ ಪಾಸ್‌ವರ್ಡ್ ಅನ್ನು ನೀವೇ ಇಡಬಹುದು — <strong>ಯಾವುದೇ ವ್ಯಾಪಾರ ಡೇಟಾ ಕಳೆದುಕೊಳ್ಳದೆ</strong>, ಸಪೋರ್ಟ್ ಸಂಪರ್ಕಿಸದೆ.</p>
+  <div class="warn">⚠ Accelent ನಿಮ್ಮ Recovery Key ಅನ್ನು ಎಂದಿಗೂ ಓದಬಹುದಾದ ರೂಪದಲ್ಲಿ ಇಡುವುದಿಲ್ಲ — ಪಾಸ್‌ವರ್ಡ್‌ಗಳನ್ನು ರಕ್ಷಿಸುವಂತೆಯೇ, ಅದರ ಸುರಕ್ಷಿತ hash ಮಾತ್ರ. ಕೀ ಕಳೆದುಕೊಂಡರೆ, ಯಾರೂ (ನಿಮ್ಮ ಸಾಫ್ಟ್‌ವೇರ್ ಒದಗಿಸುವವರೂ ಸೇರಿ) ಅದನ್ನು ನಿಮಗೆ ಮರಳಿ ಪಡೆಯಲಾರರು. ಬೇರೆ ಮಾರ್ಗದಿಂದ ಹೊಸ ಪಾಸ್‌ವರ್ಡ್ ಇಟ್ಟು ಹೊಸ ಕೀ ಸೃಷ್ಟಿಸಬೇಕಾಗುತ್ತದೆ.</div>
+
+  <h4>ಹೊಸ Recovery Key ಪಡೆಯುವುದು</h4>
+  <p>ಯಾವುದೇ Recovery Key ನಿಮಗೆ ಒಂದೇ ಬಾರಿ ಕಾಣುತ್ತದೆ. ಅದನ್ನು ಕಳೆದುಕೊಂಡಿದ್ದರೆ, ಅಥವಾ ಹೊಸದು ಬೇಕಾದರೆ, ಅಡ್ಮಿನ್ ಆಗಿ ಲಾಗಿನ್ ಆಗಿರುವಾಗ ಯಾವಾಗ ಬೇಕಾದರೂ ಬದಲಿ ಸೃಷ್ಟಿಸಬಹುದು — ಹೊಸದು ನೀಡಿದ ತಕ್ಷಣ ಹಳೆಯ ಕೀ ಕೆಲಸ ಮಾಡುವುದನ್ನು ನಿಲ್ಲಿಸುತ್ತದೆ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 👥 Users</strong> (ಅಡ್ಮಿನ್ ಖಾತೆ) ಗೆ ಹೋಗಿ ಹೊಸ Recovery Key ಸೃಷ್ಟಿಸುವ ಆಯ್ಕೆ ಬಳಸಿ, ಅಥವಾ ನಿಮ್ಮ ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್ ಬದಲಿಸಿ — ದಾಖಲೆಯಲ್ಲಿ ಕೀ ಇಲ್ಲದಾಗಲೆಲ್ಲಾ ಹೊಸ ಕೀ ತಾನಾಗಿ ನೀಡಲಾಗುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಹೊಸ ಕೋಡ್ ಅನ್ನು ಮೇಲೆ ಹೇಳಿದಂತೆಯೇ ಉಳಿಸಿ. ಪೆಟ್ಟಿಗೆ ಮುಚ್ಚಲು <strong>"I have saved this recovery code somewhere safe"</strong> ಟಿಕ್ ಮಾಡಿ — ಅದು ಮತ್ತೆ ಕಾಣುವುದಿಲ್ಲ.</div></div>
+
+  <h3>🔓 ಪಾಸ್‌ವರ್ಡ್ ಮರೆತಿರಾ? ನೀವೇ ಮರುಪಡೆಯಿರಿ</h3>
+  <p>ನೀವು ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್ ಮರೆತರೆ — ಅಥವಾ ಸತತ ತಪ್ಪು ಪ್ರಯತ್ನಗಳ ನಂತರ ಖಾತೆ ತಾನಾಗಿ ಲಾಕ್ ಆದರೆ — ಸಪೋರ್ಟ್‌ಗಾಗಿ ಕಾಯಬೇಕಿಲ್ಲ. ಲಾಗಿನ್ ಪರದೆಯಲ್ಲಿ ಪಾಸ್‌ವರ್ಡ್ ಫೀಲ್ಡ್ ಕೆಳಗಿನ ಚಿಕ್ಕ <strong>"Forgot password?"</strong> ಲಿಂಕ್ ಕ್ಲಿಕ್ ಮಾಡಿ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಲಾಗಿನ್ ಪರದೆಯಲ್ಲಿ <strong>Forgot password?</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. <strong>Account Recovery</strong> ವಿಂಡೋ ತೆರೆಯುತ್ತದೆ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ನಿಮ್ಮ <strong>username</strong> ಮತ್ತು ಹಿಂದೆ ಉಳಿಸಿದ <strong>Recovery Key</strong> ನಮೂದಿಸಿ (ಮೇಲೆ ನೋಡಿ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಒಂದು <strong>ಹೊಸ ಪಾಸ್‌ವರ್ಡ್</strong> ನಮೂದಿಸಿ ದೃಢೀಕರಿಸಿ (ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳು).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Reset Password</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಇದು ಯಾವುದೇ ಖಾತೆ ಲಾಕ್ ಅನ್ನು ತಾನಾಗಿ ತೆಗೆಯುತ್ತದೆ. ಹೊಸ ಪಾಸ್‌ವರ್ಡ್‌ನಿಂದ ತಕ್ಷಣ ಲಾಗಿನ್ ಆಗಿ.</div></div>
+  <div class="good">✅ ಇದು ನಿಮ್ಮ ಲಾಗಿನ್ ಪಾಸ್‌ವರ್ಡ್ ಅನ್ನು ಮಾತ್ರ ಮರುಹೊಂದಿಸುತ್ತದೆ — ನಿಮ್ಮ ಇನ್‌ವಾಯ್ಸ್‌ಗಳು, ದಾಸ್ತಾನು, ಬಾಕಿಗಳು ಅಥವಾ ಬೇರೆ ಯಾವುದೇ ವ್ಯಾಪಾರ ಡೇಟಾವನ್ನು ಯಾವುದೇ ರೀತಿಯಲ್ಲಿ ಮುಟ್ಟುವುದಿಲ್ಲ.</div>
+  <div class="err">🚨 ನೀವು ಎಂದಿಗೂ Recovery Key ಉಳಿಸದೆ ಖಾತೆ ಲಾಕ್ ಆಗಿದ್ದರೆ, ನೀವೇ ಮರುಪಡೆಯುವುದು ಸಾಧ್ಯವಿಲ್ಲ — ಸಹಾಯಕ್ಕಾಗಿ ನಿಮ್ಮ ಸಾಫ್ಟ್‌ವೇರ್ ಒದಗಿಸುವವರನ್ನು ಸಂಪರ್ಕಿಸಿ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 17 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 17 — ನಿಮ್ಮ ಡೇಟಾ</div>
+<div class="section" id="ch17">
+  <h2>17. ನಿಮ್ಮ ಡೇಟಾ — ಸ್ಥಳ, ಬ್ಯಾಕಪ್ ಮತ್ತು ಮರುಸ್ಥಾಪನೆ</h2>
+
+  <h3>ನಿಮ್ಮ ಡೇಟಾ ಎಲ್ಲಿದೆ?</h3>
+  <p>ನಿಮ್ಮ ಎಲ್ಲಾ ಡೇಟಾ ನಿಮ್ಮ Windows PC ಯಲ್ಲಿ ಒಂದೇ SQLite ಡೇಟಾಬೇಸ್ ಫೈಲ್‌ನಲ್ಲಿ ಸಂಗ್ರಹವಾಗುತ್ತದೆ:</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\inventory.db</span>
+  </div>
+  <p>ಒಂದು ಆಟೋ-ಬ್ಯಾಕಪ್ ಫೋಲ್ಡರ್ ಸಹ ಇದೆ:</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\backups\</span>
+  </div>
+  <p>Accelent ಪ್ರತಿ ಬಾರಿ ಆರಂಭವಾದಾಗ ತಾನಾಗಿ ಬ್ಯಾಕಪ್ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. ಇತ್ತೀಚಿನ 10 ಬ್ಯಾಕಪ್‌ಗಳವರೆಗೆ ತಾನಾಗಿ ಉಳಿಸಲಾಗುತ್ತದೆ.</p>
+
+  <div class="tip">💡 AppData ಅನ್ನು ಬೇಗ ತೆರೆಯಲು <strong>Windows+R</strong> ಒತ್ತಿ, <code>%APPDATA%\BrandAccShay</code> ಟೈಪ್ ಮಾಡಿ Enter ಒತ್ತಿ.</div>
+
+  <h3>ಕೈಯಾರೆ ಬ್ಯಾಕಪ್ ತೆಗೆದುಕೊಳ್ಳುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → 💾 Backup Data</strong> ಗೆ ಹೋಗಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಬ್ಯಾಕಪ್ ಫೈಲ್ ಎಲ್ಲಿ ಉಳಿಸಬೇಕು ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ (USB ಡ್ರೈವ್, Google Drive ಫೋಲ್ಡರ್, ಅಥವಾ ಬಾಹ್ಯ ಹಾರ್ಡ್ ಡಿಸ್ಕ್).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save ಕ್ಲಿಕ್ ಮಾಡಿ. ಬ್ಯಾಕಪ್ ನಿಮ್ಮ ಎಲ್ಲಾ ಡೇಟಾ ಇರುವ ಒಂದೇ <code>.db</code> ಫೈಲ್.</div></div>
+
+  <div class="good">✅ <strong>ಶಿಫಾರಸು ಮಾಡಿದ ಬ್ಯಾಕಪ್ ಕ್ರಮ:</strong><br>
+  • ಪ್ರತಿದಿನ: Accelent ಆಟೋ-ಬ್ಯಾಕಪ್ ಮಾಡಲಿ (ಆರಂಭದಲ್ಲಿ ತಾನಾಗಿ ಆಗುತ್ತದೆ)<br>
+  • ವಾರಕ್ಕೊಮ್ಮೆ: USB ಡ್ರೈವ್ ಅಥವಾ Google Drive ಗೆ ಕೈಯಾರೆ ಬ್ಯಾಕಪ್<br>
+  • ತಿಂಗಳಿಗೊಮ್ಮೆ: ಇಡೀ AppData\BrandAccShay ಫೋಲ್ಡರ್ ಅನ್ನು ಬಾಹ್ಯ ಹಾರ್ಡ್ ಡಿಸ್ಕ್‌ಗೆ ನಕಲಿಸಿ</div>
+
+  <h3>ಬ್ಯಾಕಪ್‌ನಿಂದ ಮರುಸ್ಥಾಪನೆ</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → 📂 Restore Data</strong> ಗೆ ಹೋಗಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ನಿಮ್ಮ ಬ್ಯಾಕಪ್ <code>.db</code> ಫೈಲ್ ಹುಡುಕಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Open ಕ್ಲಿಕ್ ಮಾಡಿ. Accelent ಈಗಿನ ಡೇಟಾಬೇಸ್ ಅನ್ನು ಬ್ಯಾಕಪ್‌ನಿಂದ ಬದಲಿಸುತ್ತದೆ. <strong>ಆ್ಯಪ್ ತಾನಾಗಿ ಮರುಆರಂಭವಾಗುತ್ತದೆ.</strong></div></div>
+
+  <div class="warn">⚠ ಬ್ಯಾಕಪ್‌ನಿಂದ ಮರುಸ್ಥಾಪನೆ ಈಗಿನ ಎಲ್ಲಾ ಡೇಟಾವನ್ನು ಬ್ಯಾಕಪ್ ಡೇಟಾದಿಂದ ಬದಲಿಸುತ್ತದೆ. ಬ್ಯಾಕಪ್ ದಿನಾಂಕದ ನಂತರ ನಮೂದಿಸಿದ ಎಲ್ಲಾ ವ್ಯವಹಾರಗಳು ಕಳೆದುಹೋಗುತ್ತವೆ. ಗಂಭೀರ ತಪ್ಪಿನಿಂದ ಚೇತರಿಸಿಕೊಳ್ಳಬೇಕಾದಾಗ ಮಾತ್ರ ಮರುಸ್ಥಾಪಿಸಿ.</div>
+
+  <h3>☁️ Cloud Backup — ತಾನಾಗಿ, ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಿದ, ಬೇರೆಡೆ ಬ್ಯಾಕಪ್</h3>
+  <p>ಮೇಲಿನ ಕೈ ಬ್ಯಾಕಪ್‌ಗಳು ಸ್ಥಳೀಯವಾಗಿ ಉಳಿಯುತ್ತವೆ — ನಿಮ್ಮ PC ಕಳೆದುಹೋದರೆ, ಕಳುವಾದರೆ ಅಥವಾ ಹಾಳಾದರೆ, ಸ್ಥಳೀಯವಾಗಿ ಮಾತ್ರ ಇರುವ ಬ್ಯಾಕಪ್ ಕೂಡ ಅದರೊಂದಿಗೆ ಹೋಗಬಹುದು. <strong>Cloud Backup</strong> ಇದನ್ನು ಪರಿಹರಿಸುತ್ತದೆ: ನಿಮ್ಮ ಸ್ವಂತ PC ಯಲ್ಲೇ ಡೇಟಾಬೇಸ್ ಪ್ರತಿಯನ್ನು ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಿ, <strong>ನಿಮ್ಮ ಸ್ವಂತ</strong> ಕ್ಲೌಡ್ ಸ್ಟೋರೇಜ್‌ನೊಂದಿಗೆ (OneDrive, Google Drive, Dropbox ಇತ್ಯಾದಿ) ಸಿಂಕ್ ಆಗುವ ಫೋಲ್ಡರ್‌ನಲ್ಲಿ ಉಳಿಸುತ್ತದೆ. ನಿಮ್ಮ ಸಾಫ್ಟ್‌ವೇರ್ ಒದಗಿಸುವವರು ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಎಂದಿಗೂ ನೋಡುವುದಿಲ್ಲ — ಫೈಲ್ ನಿಮ್ಮ ಕಂಪ್ಯೂಟರ್ ಬಿಡುವ ಮೊದಲೇ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗುತ್ತದೆ.</p>
+
+  <h4>Cloud Backup ಹೊಂದಿಸುವುದು</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup</strong> ಗೆ ಹೋಗಿ <strong>Set Up Cloud Backup</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Browse...</strong> ಕ್ಲಿಕ್ ಮಾಡಿ ನಿಮ್ಮ ಕ್ಲೌಡ್ ಸ್ಟೋರೇಜ್ ಆ್ಯಪ್ ಸಿಂಕ್ ಮಾಡುವ ಫೋಲ್ಡರ್ ಆಯ್ಕೆ ಮಾಡಿ (ಉದಾ. ನಿಮ್ಮ <code>OneDrive</code> ಅಥವಾ <code>Google Drive</code> ಫೋಲ್ಡರ್).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಒಂದು <strong>Backup Password</strong> ಆಯ್ಕೆ ಮಾಡಿ (ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳು) ದೃಢೀಕರಿಸಿ. ಈ ಪಾಸ್‌ವರ್ಡ್ ಪ್ರತಿ ಬ್ಯಾಕಪ್ ಅನ್ನು ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡುತ್ತದೆ — ಅದನ್ನು ನೆನಪಿಡಿ, ನಿಮ್ಮ ಅಡ್ಮಿನ್ ಲಾಗಿನ್ ಪಾಸ್‌ವರ್ಡ್‌ನಿಂದ ಪ್ರತ್ಯೇಕವಾಗಿಡಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Continue</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. Accelent ಮೊದಲ ಬ್ಯಾಕಪ್ ತೆಗೆದು, ನಂತರ ಮುಚ್ಚುವ ಮೊದಲು ಉಳಿಸಿದ್ದೀರಿ ಎಂದು ದೃಢೀಕರಿಸಬೇಕಾದ ಪೆಟ್ಟಿಗೆಯಲ್ಲಿ ಒಂದು ಬಾರಿಯ <strong>Recovery Code</strong> ತೋರಿಸುತ್ತದೆ.</div></div>
+
+  <div class="warn">⚠ <strong>Cloud Backup ಪಾಸ್‌ವರ್ಡ್ ಮತ್ತು Cloud Backup recovery code ನಿಮ್ಮ ಲಾಗಿನ್ Recovery Key ಯಿಂದ ಬೇರೆ</strong> (ಅಧ್ಯಾಯ 16). ಗೊಂದಲವಾಗದಂತೆ ಅವುಗಳಿಗೆ ಸ್ಪಷ್ಟವಾಗಿ ಬೇರೆ ಲೇಬಲ್ ಹಾಕಿಡಿ:
+    <ul style="margin-top:6px;">
+      <li><strong>Login Recovery Key</strong> — ಲಾಗಿನ್ ಪರದೆಯಲ್ಲಿ ನಿಮ್ಮ ಆ್ಯಪ್ ಪಾಸ್‌ವರ್ಡ್ ಅನ್ನು ನೀವೇ ಮರುಹೊಂದಿಸುತ್ತದೆ, ಸಪೋರ್ಟ್ ಬೇಕಿಲ್ಲ.</li>
+      <li><strong>Cloud Backup password</strong> — ನಿಮ್ಮ ಕ್ಲೌಡ್ ಬ್ಯಾಕಪ್ ಫೈಲ್‌ಗಳನ್ನು ತೆರೆಯುತ್ತದೆ; ಪ್ರತಿ ಮರುಸ್ಥಾಪನೆಗೂ ಬೇಕು.</li>
+      <li><strong>Cloud Backup recovery code</strong> — Cloud Backup ಪಾಸ್‌ವರ್ಡ್ ಮರೆತರೆ, ಸಪೋರ್ಟ್‌ನ release code ಜೊತೆಗೆ ಮಾತ್ರ ಉಪಯೋಗ.</li>
+    </ul>
+  </div>
+
+  <h4>ದಿನನಿತ್ಯದ ಬಳಕೆ</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ತಕ್ಷಣದ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಿದ ಬ್ಯಾಕಪ್ ಅನ್ನು ನಿಮ್ಮ ಕ್ಲೌಡ್ ಫೋಲ್ಡರ್‌ಗೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಬೇಕೆನಿಸಿದಾಗ <strong>⬆️ Backup Now</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ನೀವು ನೆನಪಿಡದೆಯೇ Accelent ತನ್ನ ವೇಳಾಪಟ್ಟಿಯಲ್ಲಿ ಡೇಟಾ ಬ್ಯಾಕಪ್ ತೆಗೆಯಲು <strong>Automatic daily backup</strong> ಟಿಕ್ ಮಾಡಿ.</div></div>
+
+  <h4>Cloud Backup ನಿಂದ ಮರುಸ್ಥಾಪನೆ</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup → ⬇️ Restore from Cloud Backup</strong> ಗೆ ಹೋಗಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಪಟ್ಟಿಯಿಂದ ಬೇಕಾದ ಬ್ಯಾಕಪ್ ಆಯ್ಕೆ ಮಾಡಿ (ಇತ್ತೀಚಿನದು ಮೊದಲು) ನಿಮ್ಮ <strong>Backup Password</strong> ನಮೂದಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಮರುಸ್ಥಾಪನೆಯ ಎಚ್ಚರಿಕೆ ದೃಢೀಕರಿಸಿ. <strong>ಈಗಿನ ಡೇಟಾ ಬದಲಾಗುತ್ತದೆ</strong> — ನಂತರ ಆ್ಯಪ್ ಮರುಆರಂಭಿಸಿ.</div></div>
+
+  <div class="tip">💡 <strong>Cloud Backup ಪಾಸ್‌ವರ್ಡ್ ಮರೆತಿರಾ?</strong> ಮರುಸ್ಥಾಪನಾ ವಿಂಡೋದಲ್ಲಿ <strong>"Forgot password? Use recovery code instead"</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ಈ ಮಾರ್ಗಕ್ಕೆ ಸೆಟಪ್‌ನಲ್ಲಿ ಉಳಿಸಿದ recovery code <strong>ಮತ್ತು</strong> ನಿಮ್ಮ ಸಾಫ್ಟ್‌ವೇರ್ ಒದಗಿಸುವವರ ಸಪೋರ್ಟ್‌ನಿಂದ release code ಎರಡೂ ಬೇಕು — ಯಾವುದೇ ಒಂದು ಭಾಗ ಒಂಟಿಯಾಗಿ ನಿಮ್ಮ ಬ್ಯಾಕಪ್ ತೆರೆಯಲಾಗದಂತೆ ಇದು.</div>
+
+  <div class="good">✅ Cloud Backup ಐಚ್ಛಿಕ, ಮತ್ತು Accelent ಪ್ರತಿ ಆರಂಭದಲ್ಲಿ ಈಗಾಗಲೇ ತೆಗೆಯುವ ತಾನಾಗಿನ ಸ್ಥಳೀಯ ಬ್ಯಾಕಪ್‌ಗಳಿಂದ ಬೇರೆ — ಬಲವಾದ ರಕ್ಷಣೆಗೆ ಎರಡನ್ನೂ ಬಳಸಿ: ಅದೇ PC ಯಲ್ಲಿ ಬೇಗ ಚೇತರಿಕೆಗೆ ಸ್ಥಳೀಯ ಬ್ಯಾಕಪ್‌ಗಳು, PC ಯೇ ಕಳೆದುಹೋದರೆ ಅಥವಾ ಹಾಳಾದರೆ ರಕ್ಷಣೆಗೆ Cloud Backup.</div>
+
+  <h3>ಆ್ಯಪ್ ಅನ್ನು ಹೊಸ PC ಗೆ ಸ್ಥಳಾಂತರಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಹಳೆಯ PC ಯಲ್ಲಿ ಕೈಯಾರೆ ಬ್ಯಾಕಪ್ ತೆಗೆಯಿರಿ (Settings → Backup Data).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಬ್ಯಾಕಪ್ <code>.db</code> ಫೈಲ್ ಅನ್ನು USB ಡ್ರೈವ್‌ಗೆ ನಕಲಿಸಿ ಅಥವಾ Google Drive / WhatsApp ಮೂಲಕ ಕಳುಹಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಹೊಸ PC ಯಲ್ಲಿ Accelent ಸ್ಥಾಪಿಸಿ (ಅಧ್ಯಾಯ 3).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಮೊದಲ ಬಾರಿ ತೆರೆದಾಗ Settings → Restore Data ಗೆ ಹೋಗಿ → USB ಡ್ರೈವ್‌ನಿಂದ ಬ್ಯಾಕಪ್ ಫೈಲ್ ಆಯ್ಕೆ ಮಾಡಿ. ಈಗ ನಿಮ್ಮ ಎಲ್ಲಾ ಡೇಟಾ ಹೊಸ PC ಯಲ್ಲಿದೆ.</div></div>
+
+  <div class="warn">⚠ ನಿಮ್ಮ ಪರವಾನಗಿ ಅದು ಸಕ್ರಿಯಗೊಂಡ PC ಗೆ ಬದ್ಧವಾಗಿದೆ. ಸ್ಥಳಾಂತರಿಸುವ ಮೊದಲು, ಪರವಾನಗಿಯನ್ನು ಹೊಸ PC ಗೆ ವರ್ಗಾಯಿಸಲು ಸಪೋರ್ಟ್ ಸಂಪರ್ಕಿಸಿ; ನಂತರ Settings → 🔑 License ನಿಂದ ಸಕ್ರಿಯಗೊಳಿಸಿ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 18 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 18 — ಹೊಸ ಆವೃತ್ತಿಗೆ ಅಪ್‌ಗ್ರೇಡ್</div>
+<div class="section" id="ch18">
+  <h2>18. ಹೊಸ ಆವೃತ್ತಿಗೆ ಅಪ್‌ಗ್ರೇಡ್</h2>
+  <p>Accelent ನ ಹೊಸ ಆವೃತ್ತಿ ಬಿಡುಗಡೆಯಾದಾಗ, ಈ ಹಂತಗಳನ್ನು ಅನುಸರಿಸಿ. <strong>ಅಪ್‌ಗ್ರೇಡ್ ಸಮಯದಲ್ಲಿ ನಿಮ್ಮ ಡೇಟಾ ಯಾವಾಗಲೂ ಸುರಕ್ಷಿತ</strong>, ಏಕೆಂದರೆ ಡೇಟಾಬೇಸ್ ಪ್ರೋಗ್ರಾಂ ಫೈಲ್‌ಗಳಿಂದ ಪ್ರತ್ಯೇಕವಾಗಿರುತ್ತದೆ.</p>
+
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>ಮೊದಲು ಬ್ಯಾಕಪ್ ತೆಗೆಯಿರಿ</strong> — Settings → Backup Data ಗೆ ಹೋಗಿ USB ಡ್ರೈವ್ ಅಥವಾ ಕ್ಲೌಡ್‌ಗೆ ಉಳಿಸಿ. ಇದು ಮುನ್ನೆಚ್ಚರಿಕೆ, ಸಾಮಾನ್ಯವಾಗಿ ಬೇಕಾಗುವುದಿಲ್ಲ, ಆದರೆ ಯಾವಾಗಲೂ ಒಳ್ಳೆಯ ಅಭ್ಯಾಸ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Accelent ಮುಚ್ಚಿ</strong> — ಆ್ಯಪ್ ಚಲಿಸುತ್ತಿಲ್ಲ ಎಂದು ಖಚಿತಪಡಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>ಹೊಸ ಆವೃತ್ತಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ</strong> — <strong>accelentapp.com</strong> ನಿಂದ ಇತ್ತೀಚಿನ <code>Accelent_Setup_v….exe</code> ಪಡೆಯಿರಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ನಿಮ್ಮ ಈಗಿನ ಸ್ಥಾಪನೆಯ ಮೇಲೆಯೇ <strong>ಇನ್‌ಸ್ಟಾಲರ್ ಚಲಾಯಿಸಿ</strong>. (ಬದಲಿಗೆ ಪೋರ್ಟಬಲ್ zip ಬಳಸುತ್ತೀರಾ? ಹಿಂದಿನ ಅದೇ ಫೋಲ್ಡರ್‌ಗೆ ಅದನ್ನು ಹೊರತೆಗೆದು, ಫೈಲ್‌ಗಳನ್ನು ಬದಲಿಸಲು ಕೇಳಿದಾಗ <strong>Yes to All</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.)</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Accelent ತೆರೆಯಿರಿ.</strong> ಅದು ನಿಮ್ಮ ಈಗಿನ ಡೇಟಾಬೇಸ್ ಅನ್ನು <code>%APPDATA%\BrandAccShay\inventory.db</code> ನಲ್ಲಿ ತಾನಾಗಿ ಕಂಡುಹಿಡಿಯುತ್ತದೆ. ನಿಮ್ಮ ಎಲ್ಲಾ ಡೇಟಾ ಅಲ್ಲಿದೆ, ಹೊಸ ಆವೃತ್ತಿಯಲ್ಲಿನ ಯಾವುದೇ ತಿದ್ದುಪಡಿಗಳು ಈ ಮೊದಲ ಆರಂಭದಲ್ಲಿ ಅನ್ವಯವಾಗುತ್ತವೆ.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Settings → Recalculate All Balances ಗೆ ಹೋಗಿ</strong> — ಹೊಸ ಆವೃತ್ತಿಯಲ್ಲಿನ ಡೇಟಾಬೇಸ್ ರಚನೆಯ ಬದಲಾವಣೆಗಳು ಸರಿಯಾಗಿ ಅನ್ವಯವಾಗಿವೆ ಎಂದು ಇದು ಖಚಿತಪಡಿಸುತ್ತದೆ.</div></div>
+
+  <div class="good">✅ <strong>ಅಪ್‌ಗ್ರೇಡ್ ಸಮಯದಲ್ಲಿ ನೀವು ಎಂದಿಗೂ ಡೇಟಾ ಕಳೆದುಕೊಳ್ಳುವುದಿಲ್ಲ.</strong> ಪ್ರೋಗ್ರಾಂ ಫೈಲ್‌ಗಳು ಒಂದು ಫೋಲ್ಡರ್‌ನಲ್ಲಿವೆ; ನಿಮ್ಮ ಡೇಟಾ AppData ದಲ್ಲಿದೆ. ಪ್ರೋಗ್ರಾಂ ಫೈಲ್‌ಗಳನ್ನು ಬದಲಿಸುವುದು ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಮುಟ್ಟುವುದಿಲ್ಲ.</div>
+
+  <div class="tip">💡 ಪೋರ್ಟಬಲ್ zip ಮತ್ತು ಫೋನ್ ಆ್ಯಪ್ ಬಳಸುತ್ತೀರಾ? ಅಪ್‌ಗ್ರೇಡ್ ನಂತರ ಒಮ್ಮೆ <code>setup.bat</code> ಮತ್ತೆ ಚಲಾಯಿಸಿ (ಇನ್‌ಸ್ಟಾಲರ್ ಇದನ್ನು ತಾನೇ ಮಾಡುತ್ತದೆ). ಫೋನ್ ಸಂಪರ್ಕವಾಗದಿದ್ದರೆ, 📱 Mobile Connect ವಿಂಡೋದಲ್ಲಿ <strong>❓ Phone can't connect?</strong> ಬಳಸಿ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 19 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 19 — ಮೊಬೈಲ್ ಆ್ಯಪ್</div>
+<div class="section" id="ch19">
+  <h2>19. ಮೊಬೈಲ್ ಆ್ಯಪ್ ಸೆಟಪ್ ಮತ್ತು ಬಳಕೆ</h2>
+
+  <h3>ಆ್ಯಪ್ ಸ್ಥಾಪನೆ</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಫೋನ್‌ನಲ್ಲಿ <strong>accelentapp.com</strong> ನಿಂದ <code>Accelent_v1.7.3.apk</code> ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ, ಅಥವಾ USB ಕೇಬಲ್, WhatsApp ಅಥವಾ Google Drive ಮೂಲಕ ಕಳುಹಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಫೋನ್‌ನಲ್ಲಿ Downloads ಅಥವಾ Files ಆ್ಯಪ್‌ನಿಂದ ಫೈಲ್ ತೆರೆಯಿರಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><em>unknown sources</em> ಬಗ್ಗೆ ಕೇಳಿದರೆ, <strong>Settings</strong> ಒತ್ತಿ, ನಿಮ್ಮ ಫೈಲ್ ಮ್ಯಾನೇಜರ್‌ಗೆ <em>Install unknown apps</em> ಆನ್ ಮಾಡಿ, ಹಿಂದೆ ಹೋಗಿ ಸ್ಥಾಪಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Install</strong> → <strong>Open</strong> ಒತ್ತಿ.</div></div>
+
+  <h3>ಡೆಸ್ಕ್‌ಟಾಪ್‌ಗೆ ಸಂಪರ್ಕಿಸುವುದು</h3>
+  <p><strong>ವಿಧಾನ A — QR ಕೋಡ್ (ಶಿಫಾರಸು)</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ನಿಮ್ಮ PC ಯಲ್ಲಿ ಡೆಸ್ಕ್‌ಟಾಪ್ ಆ್ಯಪ್ ಚಲಿಸುತ್ತಿದೆ ಎಂದು ಖಚಿತಪಡಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>📱 Mobile Connect</strong> ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ (ಡೆಸ್ಕ್‌ಟಾಪ್‌ನ ಕೆಳಗಿನ ಬಲಭಾಗ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಒಂದು QR ಕೋಡ್ ಕಾಣುತ್ತದೆ. ವಿಂಡೋ ತೆರೆದೇ ಇಡಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ಫೋನ್‌ನಲ್ಲಿ Accelent ತೆರೆಯಿರಿ → ⚙️ ಐಕಾನ್ ಒತ್ತಿ → <strong>Scan QR Code</strong> → ಕ್ಯಾಮೆರಾವನ್ನು ಡೆಸ್ಕ್‌ಟಾಪ್ ಪರದೆಯತ್ತ ತಿರುಗಿಸಿ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">ಹಸಿರು "Connected!" ಪಟ್ಟಿ ಸಂಪರ್ಕವನ್ನು ದೃಢೀಕರಿಸುತ್ತದೆ.</div></div>
+
+  <p><strong>ವಿಧಾನ B — ಕೈಯಾರೆ IP</strong></p>
+  <p>QR ಸ್ಕ್ಯಾನ್ ವಿಫಲವಾದರೆ, ಫೋನ್‌ನಲ್ಲಿ Settings ಗೆ ಹೋಗಿ → <em>Desktop IP Address</em> ಫೀಲ್ಡ್‌ನಲ್ಲಿ ಡೆಸ್ಕ್‌ಟಾಪ್‌ನ IP ವಿಳಾಸ ಟೈಪ್ ಮಾಡಿ → <strong>Test Connection</strong> → <strong>Save</strong> ಒತ್ತಿ.</p>
+  <div class="tip">💡 ವಿಳಾಸ ಅಂಗಡಿಯ WiFi ನಲ್ಲಿ ಮಾತ್ರವೋ ಎಲ್ಲಿಂದಲಾದರೂ ಕೆಲಸ ಮಾಡುತ್ತದೆಯೋ ಎಂದು Mobile Connect ವಿಂಡೋ ಹೇಳುತ್ತದೆ. ಫೋನ್ ಸಂಪರ್ಕವಾಗದಿದ್ದರೆ, ಆ ವಿಂಡೋದಲ್ಲಿ <strong>❓ Phone can't connect?</strong> ಕ್ಲಿಕ್ ಮಾಡಿ: ಅದು ಈ PC ಯನ್ನು ಪರಿಶೀಲಿಸಿ (Accelent ನ ಫೋನ್ ಸೇವೆ, Windows Firewall, ನೆಟ್‌ವರ್ಕ್) ಫೋನ್‌ನಲ್ಲಿ ಏನು ಪ್ರಯತ್ನಿಸಬೇಕು ಎಂದು ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ.</div>
+
+  <h3>ಅಂಗಡಿಯ ಹೊರಗಿನಿಂದ ಬಳಕೆ (Tailscale)</h3>
+  <p>ನೀವು ಅಂಗಡಿಯಿಂದ ದೂರವಿದ್ದಾಗ (ಮೊಬೈಲ್ ಡೇಟಾ ಅಥವಾ ಬೇರೆ WiFi), ಡೆಸ್ಕ್‌ಟಾಪ್ ಮತ್ತು ಫೋನ್ ಎರಡರಲ್ಲೂ <strong>Tailscale</strong> (ಉಚಿತ) ಸ್ಥಾಪಿಸಿ ಒಂದೇ ಖಾತೆಯಿಂದ ಸೈನ್ ಇನ್ ಮಾಡಿ. ನಂತರ <strong>📱 Mobile Connect</strong> ವಿಂಡೋದಿಂದ Tailscale QR ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ. ಈಗ ಜಗತ್ತಿನ ಎಲ್ಲಿಂದಲಾದರೂ ನಿಮ್ಮ ವ್ಯಾಪಾರವನ್ನು ನೋಡಬಹುದು ಮತ್ತು ನಿರ್ವಹಿಸಬಹುದು. ಹಂತಗಳು, ಈ PC ಗಾಗಿ ಡೌನ್‌ಲೋಡ್ ಲಿಂಕ್, ಮತ್ತು ಫೋನ್‌ನ Play Store ನಲ್ಲಿ Tailscale ತೆರೆಯುವ QR ಕೋಡ್‌ಗಾಗಿ Mobile Connect ವಿಂಡೋದಲ್ಲಿ <strong>🌐 Connect from anywhere…</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</p>
+
+  <h3>ಮೊಬೈಲ್ ಆ್ಯಪ್‌ನ ಪ್ಯಾನೆಲ್‌ಗಳು</h3>
+  <div class="panel-grid">
+    <div class="panel-card"><h4>📊 Dashboard</h4><p>ಇಂದಿನ ಮಾರಾಟ, ವೆಚ್ಚಗಳು, ನಗದು ಮತ್ತು ಬ್ಯಾಂಕ್ ಬಾಕಿಗಳು, ಇತ್ತೀಚಿನ ವ್ಯವಹಾರಗಳು. ನವೀಕರಿಸಲು ಕೆಳಗೆ ಎಳೆಯಿರಿ.</p></div>
+    <div class="panel-card"><h4>🧾 Sales</h4><p>ಎಲ್ಲಾ ಇನ್‌ವಾಯ್ಸ್‌ಗಳನ್ನು ನೋಡಿ. Paid/Unpaid ಫಿಲ್ಟರ್ ಮಾಡಿ. ಫೋನ್‌ನಿಂದ ಹೊಸ ಇನ್‌ವಾಯ್ಸ್ ರಚಿಸಲು + ಒತ್ತಿ. ಇನ್‌ವಾಯ್ಸ್ ತೆರೆದು PDF ಆಗಿ ಹಂಚಲು 📄 ಒತ್ತಿ.</p></div>
+    <div class="panel-card"><h4>🛒 Purchases</h4><p>ಖರೀದಿ ಆರ್ಡರ್‌ಗಳನ್ನು ನೋಡಿ. ಹೊಸ ಖರೀದಿ ದಾಖಲಿಸಲು + ಒತ್ತಿ. ಡೆಸ್ಕ್‌ಟಾಪ್‌ನಲ್ಲಿ ಸ್ಟಾಕ್ ತಕ್ಷಣ ಬದಲಾಗುತ್ತದೆ.</p></div>
+    <div class="panel-card"><h4>📦 Inventory</h4><p>ಎಲ್ಲಾ ಸ್ಟಾಕ್ ವಸ್ತುಗಳನ್ನು ಹುಡುಕಿ ಫಿಲ್ಟರ್ ಮಾಡಿ. ಕೆಂಪು = ಸ್ಟಾಕ್ ಮುಗಿದಿದೆ. ಕಿತ್ತಳೆ = ಸ್ಟಾಕ್ ಕಡಿಮೆ.</p></div>
+    <div class="panel-card"><h4>👥 Parties</h4><p>ನೇರ ಬಾಕಿಗಳೊಂದಿಗೆ ಎಲ್ಲಾ ಗ್ರಾಹಕರು ಮತ್ತು ಸರಬರಾಜುದಾರರು. ಹಸಿರು = ಅವರು ನಿಮಗೆ ಕೊಡಬೇಕು. ಕೆಂಪು = ನೀವು ಅವರಿಗೆ ಕೊಡಬೇಕು.</p></div>
+    <div class="panel-card"><h4>🏦 Accounts</h4><p>ಪೂರ್ಣ ವ್ಯವಹಾರ ಇತಿಹಾಸದೊಂದಿಗೆ ನೇರ ನಗದು ಮತ್ತು ಬ್ಯಾಂಕ್ ಬಾಕಿಗಳು.</p></div>
+  </div>
+
+  <h3>ಫೋನ್‌ನಲ್ಲಿ ಸಾಲದ ಖರೀದಿ ಮತ್ತು ಮಾರಾಟ</h3>
+  <p>ಹೊಸ ಖರೀದಿಯಲ್ಲಿ <strong>Pending</strong>, ಅಥವಾ ಹೊಸ ಮಾರಾಟದಲ್ಲಿ <strong>Unpaid</strong> ಆಯ್ಕೆ ಮಾಡಿದರೆ, ಫೋನ್ Cash / Bank / UPI ಬಟನ್‌ಗಳನ್ನು ಮರೆಮಾಡುತ್ತದೆ — ಇನ್ನೂ ಏನೂ ಪಾವತಿಯಾಗಿಲ್ಲ. ಡೆಸ್ಕ್‌ಟಾಪ್ ಅದನ್ನು ಸಾಲವಾಗಿ ದಾಖಲಿಸುತ್ತದೆ: ಖರೀದಿಗೆ <em>Credit to Vendor</em>, ಮಾರಾಟಕ್ಕೆ <em>Credit to Party</em> (ಗ್ರಾಹಕರ ಸಾಲದ ಮಿತಿ ಪರಿಶೀಲಿಸಿ). ಅದು Accounts ನಲ್ಲಿ ಆ ಸರಬರಾಜುದಾರ ಅಥವಾ ಗ್ರಾಹಕರ ಅಡಿ, ಡೆಸ್ಕ್‌ಟಾಪ್‌ನಲ್ಲಿ ಮಾಡಿದ ಸಾಲದ ನಮೂದಿನಂತೆಯೇ ಕಾಣುತ್ತದೆ.</p>
+
+  <h3>ಫೋನ್ ಆ್ಯಪ್ ಯಾರು ಬಳಸಬಹುದು</h3>
+  <ul>
+    <li>ಅಡ್ಮಿನ್ ಯಾವಾಗಲೂ ಸಂಪರ್ಕಿಸಬಹುದು. ಸಿಬ್ಬಂದಿಗೆ, ಅಡ್ಮಿನ್ Settings → 👥 Users ನಲ್ಲಿ ಅವರ <strong>📱 Mobile</strong> ಸೆಟ್ಟಿಂಗ್ ಆನ್ ಮಾಡಬೇಕು.</li>
+    <li>ಪ್ರತಿ ಸಿಬ್ಬಂದಿ ಖಾತೆ ಒಂದು ಫೋನ್ ಸೀಟ್ ಬಳಸುತ್ತದೆ. ಅದೇ ವ್ಯಕ್ತಿಯ ಫೋನ್‌ನಲ್ಲಿ ಆ್ಯಪ್ ಮರುಸ್ಥಾಪಿಸಿದರೆ ಅವರ ಸೀಟ್ ಮಾತ್ರ ಸ್ಥಳಾಂತರವಾಗುತ್ತದೆ — ಇನ್ನೊಂದನ್ನು ಬಳಸುವುದಿಲ್ಲ.</li>
+    <li>ಸಿಬ್ಬಂದಿಯ ಅನುಮತಿಗಳು ಅನುಮತಿಸಿದ್ದನ್ನು ಮಾತ್ರ ಫೋನ್ ತೋರಿಸುತ್ತದೆ; ಉದಾಹರಣೆಗೆ "See money figures" ಇಲ್ಲದೆ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಮಾರಾಟ ಮತ್ತು ಲಾಭದ ಅಂಕಿಗಳ ಬದಲು ಒಂದು ಟಿಪ್ಪಣಿ ತೋರಿಸುತ್ತದೆ.</li>
+  </ul>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 19b -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 19b — ಡೆಸ್ಕ್‌ಟಾಪ್–ಮೊಬೈಲ್ ಸಂದೇಶಗಳು</div>
+<div class="section" id="ch19b">
+  <h2>19b. 💬 ಡೆಸ್ಕ್‌ಟಾಪ್–ಮೊಬೈಲ್ ಸಂದೇಶಗಳು</h2>
+  <p>Accelent ನಲ್ಲಿ ಒಳಗೊಂಡ ಸಂದೇಶ ವ್ಯವಸ್ಥೆ ಇದೆ, ಅದರ ಮೂಲಕ ಡೆಸ್ಕ್‌ಟಾಪ್ ಮಾಲೀಕರು ಮತ್ತು ಮೊಬೈಲ್ ಆ್ಯಪ್ ಬಳಕೆದಾರರು ಪರಸ್ಪರ ತಕ್ಷಣ ಟಿಪ್ಪಣಿಗಳನ್ನು ಕಳುಹಿಸಬಹುದು — WhatsApp ಅಥವಾ ಬಾಹ್ಯ ಆ್ಯಪ್ ಬೇಕಿಲ್ಲ. ಸಂದೇಶಗಳು ನಿಮ್ಮ ಸ್ಥಳೀಯ ಡೇಟಾಬೇಸ್‌ನಲ್ಲಿ ಸುರಕ್ಷಿತವಾಗಿ ಉಳಿಯುತ್ತವೆ.</p>
+
+  <h3>ಸಂದೇಶಗಳ ಬಟನ್ ಎಲ್ಲಿದೆ?</h3>
+  <p>ಡೆಸ್ಕ್‌ಟಾಪ್ ವಿಂಡೋದ ಅತಿ ಕೆಳಗೆ, ಸ್ಟೇಟಸ್ ಬಾರ್‌ನಲ್ಲಿ, <strong>💬 Messages</strong> ಬಟನ್ ಕಾಣುತ್ತದೆ. ಚಾಟ್ ವಿಂಡೋ ತೆರೆಯಲು ಅದನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ. ಹೊಸ ಸಂದೇಶಗಳು ಬಂದಾಗ ಬಟನ್ ಓದದ ಸಂಖ್ಯೆ ತೋರಿಸುತ್ತದೆ:</p>
+  <table>
+    <tr><th>ಬಟನ್‌ನ ರೂಪ</th><th>ಅರ್ಥ</th></tr>
+    <tr><td><code>💬 Messages</code></td><td>ಹೊಸ ಸಂದೇಶಗಳಿಲ್ಲ</td></tr>
+    <tr><td><code>💬 Messages (3)</code> — ಹಸಿರಿನಲ್ಲಿ ಎದ್ದು ಕಾಣುತ್ತದೆ</td><td>ಮೊಬೈಲ್ ಆ್ಯಪ್‌ನಿಂದ 3 ಓದದ ಸಂದೇಶಗಳು</td></tr>
+  </table>
+
+  <h3>ಡೆಸ್ಕ್‌ಟಾಪ್‌ನಿಂದ ಸಂದೇಶ ಕಳುಹಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಪರದೆಯ ಕೆಳಗಿನ ಸ್ಟೇಟಸ್ ಬಾರ್‌ನಲ್ಲಿ <strong>💬 Messages</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ಚಾಟ್ ವಿಂಡೋ ತೆರೆಯುತ್ತದೆ. ಹಳೆಯ ಸಂದೇಶಗಳು ಇತಿಹಾಸದಿಂದ ಲೋಡ್ ಆಗುತ್ತವೆ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಕೆಳಗಿನ ಪಠ್ಯ ಪೆಟ್ಟಿಗೆಯಲ್ಲಿ ನಿಮ್ಮ ಸಂದೇಶ ಟೈಪ್ ಮಾಡಿ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Enter</strong> ಒತ್ತಿ ಅಥವಾ <strong>Send</strong> ಕ್ಲಿಕ್ ಮಾಡಿ. ನಿಮ್ಮ ಸಂದೇಶ ಬಲಭಾಗದಲ್ಲಿ ಕಾಣುತ್ತದೆ (ನೀಲಿ ಗುಳ್ಳೆ).</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">ಮೊಬೈಲ್ ಬಳಕೆದಾರರು 5 ಸೆಕೆಂಡುಗಳಲ್ಲಿ ತಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಸಂದೇಶ ನೋಡುತ್ತಾರೆ.</div></div>
+
+  <h3>ಮೊಬೈಲ್ ಆ್ಯಪ್‌ನಿಂದ ಸಂದೇಶ ಕಳುಹಿಸುವುದು</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ಫೋನ್‌ನಲ್ಲಿ Dashboard ಅಥವಾ ನ್ಯಾವಿಗೇಶನ್ ಮೆನುವಿನಿಂದ <strong>💬 Chat</strong> ಐಕಾನ್ ಒತ್ತಿ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ನಿಮ್ಮ ಸಂದೇಶ ಟೈಪ್ ಮಾಡಿ <strong>Send</strong> ಒತ್ತಿ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ಡೆಸ್ಕ್‌ಟಾಪ್ 5 ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಸಂದೇಶ ಪಡೆದು 💬 Messages ಬಟನ್ ಮೇಲೆ ಸಂಖ್ಯೆ ತೋರಿಸುತ್ತದೆ.</div></div>
+
+  <h3>ಡೆಸ್ಕ್‌ಟಾಪ್ ಅಧಿಸೂಚನೆಗಳು (System Tray)</h3>
+  <p>ಚಾಟ್ ವಿಂಡೋ <strong>ಮುಚ್ಚಿದ್ದಾಗ ಅಥವಾ ಚಿಕ್ಕದಾಗಿಸಿದ್ದಾಗ</strong> ಮೊಬೈಲ್ ಆ್ಯಪ್‌ನಿಂದ ಹೊಸ ಸಂದೇಶ ಬಂದರೆ, Windows system tray ಯಲ್ಲಿ (ಪರದೆಯ ಕೆಳಗಿನ ಬಲ ಮೂಲೆ) ಒಂದು <strong>ಪಾಪ್-ಅಪ್ ಅಧಿಸೂಚನೆ</strong> ಹೀಗೆ ಕಾಣುತ್ತದೆ:</p>
+  <p style="text-align:center; font-style:italic; color:#555;">"📱 You have a new message from the mobile app"</p>
+  <p>ಓದಲು ಅಧಿಸೂಚನೆ ಕ್ಲಿಕ್ ಮಾಡಿ ಅಥವಾ ಆ್ಯಪ್‌ನಲ್ಲಿ <strong>💬 Messages</strong> ಕ್ಲಿಕ್ ಮಾಡಿ.</p>
+
+  <h3>ಸಂದೇಶಗಳು ಹೇಗೆ ಉಳಿಯುತ್ತವೆ</h3>
+  <p>ಎಲ್ಲಾ ಸಂದೇಶಗಳು ನಿಮ್ಮ ಸ್ಥಳೀಯ ಡೇಟಾಬೇಸ್‌ನಲ್ಲಿ (<code>inventory.db</code>) ಉಳಿಯುತ್ತವೆ — ನಿಮ್ಮ ಎಲ್ಲಾ ವ್ಯಾಪಾರ ಡೇಟಾ ಇರುವ ಅದೇ ಫೈಲ್. ಅವು ಪ್ರತಿ ಬ್ಯಾಕಪ್‌ನಲ್ಲೂ ಸೇರುತ್ತವೆ. ಯಾವುದೇ ಬಾಹ್ಯ ಸರ್ವರ್ ಇಲ್ಲ — ಸಂದೇಶಗಳು ನಿಮ್ಮ ಸ್ವಂತ ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಡೆಸ್ಕ್‌ಟಾಪ್ ಮತ್ತು ಫೋನ್ ನಡುವೆ ಮಾತ್ರ ಸಾಗುತ್ತವೆ.</p>
+
+  <div class="tip">💡 <strong>ಸಂದೇಶಗಳ ಸಾಮಾನ್ಯ ಉಪಯೋಗಗಳು:</strong>
+    <ul style="margin-top:6px;">
+      <li>ಮಾಲೀಕರು ಹೊರಗಿದ್ದಾರೆ — ಮೊಬೈಲ್ ಬಳಕೆದಾರರು ಕೇಳುತ್ತಾರೆ: "ಗ್ರಾಹಕರಿಗೆ X ನ 10 ಬಾಕ್ಸ್ ಬೇಕು, ಸ್ಟಾಕ್ ಇದೆಯೇ?" — ಮಾಲೀಕರು ಡೆಸ್ಕ್‌ಟಾಪ್‌ನಿಂದ ಉತ್ತರಿಸುತ್ತಾರೆ</li>
+      <li>ಡೆಸ್ಕ್‌ಟಾಪ್ ಆಪರೇಟರ್ ಮೊಬೈಲ್ ಬಳಕೆದಾರರಿಗೆ ತಿಳಿಸುತ್ತಾರೆ: "ABC Traders ನಿಂದ ಹೊಸ ಪಾವತಿ ಬಂದಿದೆ"</li>
+      <li>ವೈಯಕ್ತಿಕ ಫೋನ್ ಸಂಖ್ಯೆಗಳಿಲ್ಲದೆ ಅಂಗಡಿ ಸಿಬ್ಬಂದಿ ನಡುವೆ ಚಿಕ್ಕ ಟಿಪ್ಪಣಿಗಳು</li>
+    </ul>
+  </div>
+
+  <div class="warn">⚠ ಸಂದೇಶಗಳು ತಲುಪಲು <strong>ಮೊಬೈಲ್ ಆ್ಯಪ್ ಡೆಸ್ಕ್‌ಟಾಪ್‌ಗೆ ಸಂಪರ್ಕಗೊಂಡಿರಬೇಕು</strong>. ಫೋನ್ "Not Connected" ತೋರಿಸಿದರೆ, ಸಂದೇಶಗಳು ಸರತಿಯಲ್ಲಿ ಕಾಯ್ದು ಸಂಪರ್ಕ ಮರಳಿದಾಗ ತಲುಪುತ್ತವೆ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 20 -->
+<div class="chapter-banner">ಅಧ್ಯಾಯ 20 — ಸಮಸ್ಯೆಗಳು ಮತ್ತು ಪರಿಹಾರಗಳು</div>
+<div class="section" id="ch20">
+  <h2>20. ಸಮಸ್ಯೆಗಳು ಮತ್ತು ಪರಿಹಾರಗಳು</h2>
+
+  <table>
+    <tr><th>ಸಮಸ್ಯೆ</th><th>ಕಾರಣ</th><th>ಪರಿಹಾರ</th></tr>
+    <tr><td>ಆ್ಯಪ್ ತೆರೆಯುವುದಿಲ್ಲ / SmartScreen ಎಚ್ಚರಿಕೆ</td><td>ಆ್ಯಪ್‌ಗೆ ಡಿಜಿಟಲ್ ಸಹಿ ಇಲ್ಲ</td><td>"More info" → "Run anyway" ಕ್ಲಿಕ್ ಮಾಡಿ. ಇದು ಒಮ್ಮೆ ಮಾತ್ರ ಕೇಳುತ್ತದೆ.</td></tr>
+    <tr><td>ಬಾಕಿಗಳು ತಪ್ಪಾಗಿ ಕಾಣುತ್ತವೆ</td><td>ಡೇಟಾ ಸಿಂಕ್ ಸಮಸ್ಯೆ</td><td>Settings → App Settings → 🔄 Recalculate All Balances.</td></tr>
+    <tr><td>ಮಾರಾಟದ ನಂತರ ಸ್ಟಾಕ್ ಬದಲಾಗುತ್ತಿಲ್ಲ</td><td>ವಸ್ತು ದಾಸ್ತಾನಿಗೆ ಜೋಡಣೆಯಾಗಿಲ್ಲ</td><td>ದಾಸ್ತಾನು ವಸ್ತುಗಳನ್ನು ಪಾಪ್-ಅಪ್‌ನಿಂದ ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ, ಕೈಯಾರೆ ಟೈಪ್ ಮಾಡಿಲ್ಲ ಎಂದು ಖಚಿತಪಡಿಸಿ.</td></tr>
+    <tr><td>Invoice ಪ್ಯಾನೆಲ್ "Feature Under Development" ತೋರಿಸುತ್ತದೆ</td><td>ಮೊದಲ ಲೋಡ್‌ನಲ್ಲಿ ಆ್ಯಪ್ ದೋಷ</td><td>ಆ್ಯಪ್ ಅನ್ನು ಪೂರ್ಣವಾಗಿ ಮುಚ್ಚಿ ಮತ್ತೆ ತೆರೆಯಿರಿ. ಇದು ಅಪರೂಪ.</td></tr>
+    <tr><td>ಇನ್‌ವಾಯ್ಸ್‌ನಲ್ಲಿ GST ಸಂಖ್ಯೆಗಳು ಕಾಣುತ್ತಿಲ್ಲ</td><td>ಕಂಪನಿ GSTIN ನಮೂದಿಸಿಲ್ಲ</td><td>Settings → Company → ನಿಮ್ಮ GSTIN ನಮೂದಿಸಿ → Save.</td></tr>
+    <tr><td>ಮೊಬೈಲ್ ಆ್ಯಪ್ ಖಾಲಿ ಅಥವಾ "Could not load" ತೋರಿಸುತ್ತದೆ</td><td>ಡೆಸ್ಕ್‌ಟಾಪ್ ಆ್ಯಪ್ ಚಲಿಸುತ್ತಿಲ್ಲ</td><td>ಡೆಸ್ಕ್‌ಟಾಪ್ PC ಯಲ್ಲಿ Accelent ತೆರೆದಿದೆ ಎಂದು ಖಚಿತಪಡಿಸಿ.</td></tr>
+    <tr><td>QR ಸ್ಕ್ಯಾನ್ ಕೆಲಸ ಮಾಡುತ್ತಿಲ್ಲ</td><td>ಕ್ಯಾಮೆರಾ ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ</td><td>ಫೋನ್ Settings → Apps → Accelent → Permissions → Camera ಆನ್ ಮಾಡಿ.</td></tr>
+    <tr><td>WiFi ನಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ, ಮೊಬೈಲ್ ಡೇಟಾದಲ್ಲಿ ಅಲ್ಲ</td><td>ಸ್ಥಳೀಯ IP ದೂರದಿಂದ ತಲುಪುವುದಿಲ್ಲ</td><td>ಡೆಸ್ಕ್‌ಟಾಪ್ ಮತ್ತು ಫೋನ್‌ನಲ್ಲಿ Tailscale ಸ್ಥಾಪಿಸಿ. Tailscale QR ಕೋಡ್ ಬಳಸಿ.</td></tr>
+    <tr><td>ಫೋನ್‌ನಲ್ಲಿ APK ಸ್ಥಾಪನೆಯಾಗುವುದಿಲ್ಲ</td><td>Unknown sources ತಡೆಯಲಾಗಿದೆ</td><td>Android Settings → Apps → ನಿಮ್ಮ ಫೈಲ್ ಮ್ಯಾನೇಜರ್ → Install unknown apps → ಆನ್ ಮಾಡಿ.</td></tr>
+    <tr><td>ಮೊದಲ ಆರಂಭದಲ್ಲಿ ತಪ್ಪು ದೇಶ ಆಯ್ಕೆಯಾಯಿತು</td><td>ಮೊದಲ ಮಾರಾಟ, ಖರೀದಿ ಅಥವಾ ವಸ್ತುವಿನ ನಂತರ ದೇಶ ಲಾಕ್ ಆಗುತ್ತದೆ</td><td>ಯಾವುದೇ ಡೇಟಾ ನಮೂದಿಸುವ ಮೊದಲು: Settings → App Settings → Reset Database, ನಂತರ ದೇಶವನ್ನು ಮತ್ತೆ ಆಯ್ಕೆ ಮಾಡಿ. ಡೇಟಾ ಇದ್ದ ನಂತರ, ಸಪೋರ್ಟ್ ಸಂಪರ್ಕಿಸಿ.</td></tr>
+    <tr><td>ಡೇಟಾಬೇಸ್ ಫೈಲ್ ಇಲ್ಲ / ಆ್ಯಪ್ ಮರುಹೊಂದಿಸಲು ಕೇಳುತ್ತದೆ</td><td>AppData ಫೋಲ್ಡರ್ ಸಮಸ್ಯೆ</td><td>ಬ್ಯಾಕಪ್‌ನಿಂದ ಮರುಸ್ಥಾಪಿಸಿ: Settings → Restore Data. ಬ್ಯಾಕಪ್ ಇಲ್ಲದಿದ್ದರೆ, ಸಪೋರ್ಟ್ ಸಂಪರ್ಕಿಸಿ.</td></tr>
+    <tr><td>ಅಡ್ಮಿನ್ ಪಾಸ್‌ವರ್ಡ್ ಮರೆತಿದೆ / ಖಾತೆ ಲಾಕ್ ಆಗಿದೆ</td><td>ಪಾಸ್‌ವರ್ಡ್ ಕಳೆದುಹೋಗಿದೆ ಅಥವಾ ತುಂಬಾ ವಿಫಲ ಲಾಗಿನ್‌ಗಳು</td><td>ಲಾಗಿನ್ ಪರದೆಯಲ್ಲಿ <strong>"Forgot password?"</strong> ಕ್ಲಿಕ್ ಮಾಡಿ, ಉಳಿಸಿದ Recovery Key ಯಿಂದ ಹೊಸ ಪಾಸ್‌ವರ್ಡ್ ಅನ್ನು ನೀವೇ ಇಡಿ (ಅಧ್ಯಾಯ 16). Recovery Key ಉಳಿಸಿಲ್ಲವೇ? ನಿಮ್ಮ ಸಾಫ್ಟ್‌ವೇರ್ ಒದಗಿಸುವವರನ್ನು ಸಂಪರ್ಕಿಸಿ.</td></tr>
+    <tr><td>Cloud Backup ಪಾಸ್‌ವರ್ಡ್ ಮರೆತಿದೆ</td><td>ಬ್ಯಾಕಪ್ ಪಾಸ್‌ವರ್ಡ್ ಕಳೆದುಹೋಗಿದೆ</td><td>Restore ವಿಂಡೋದಲ್ಲಿ "Forgot password? Use recovery code instead" ಕ್ಲಿಕ್ ಮಾಡಿ — ನಿಮ್ಮ ಉಳಿಸಿದ Cloud Backup recovery code ಮತ್ತು ಸಪೋರ್ಟ್‌ನಿಂದ release code ಬೇಕು (ಅಧ್ಯಾಯ 17).</td></tr>
+    <tr><td>ಮೊದಲ ಬಾರಿ ತೆರೆದಾಗ ಆ್ಯಪ್ ತುಂಬಾ ನಿಧಾನ</td><td>Python ನ ಮೊದಲ ಆರಂಭ</td><td>ಸಾಮಾನ್ಯ — ಮೊದಲ ಆರಂಭಕ್ಕೆ 5–10 ಸೆಕೆಂಡುಗಳು ಬೇಕು. ನಂತರದ ಆರಂಭಗಳು ವೇಗವಾಗಿರುತ್ತವೆ.</td></tr>
+    <tr><td>"Computer Date Is Wrong" ಸಂದೇಶ</td><td>PC ಯ ಗಡಿಯಾರ ಹಿಂದಿದೆ (ಆಗಾಗ ದುರ್ಬಲ ಮದರ್‌ಬೋರ್ಡ್/CMOS ಬ್ಯಾಟರಿ)</td><td>Windows ನಲ್ಲಿ ಸರಿಯಾದ ದಿನಾಂಕ ಮತ್ತು ಸಮಯ ಇಡಿ, ಅಥವಾ ಒಮ್ಮೆ ಇಂಟರ್ನೆಟ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ Accelent ಮರುಆರಂಭಿಸಿ. ಮತ್ತೆ ಮತ್ತೆ ಆದರೆ CMOS ಬ್ಯಾಟರಿ ಬದಲಿಸಿ.</td></tr>
+    <tr><td>ಫೋನ್‌ನಲ್ಲಿ "Phone limit reached"</td><td>ಎಲ್ಲಾ ಫೋನ್ ಸೀಟ್‌ಗಳು ಬಳಕೆಯಲ್ಲಿವೆ</td><td>ಯಾರು ಸಂಪರ್ಕಗೊಂಡಿದ್ದಾರೆ ಎಂದು ಸಂದೇಶ ಹೇಳುತ್ತದೆ. Mobile Connect ನಲ್ಲಿ ಹಳೆಯ ಫೋನ್ ತೆಗೆಯಿರಿ, ಅಥವಾ ನಿಮ್ಮ ಯೋಜನೆಯನ್ನು ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ.</td></tr>
+    <tr><td>ಸಿಬ್ಬಂದಿಗೆ ಒಂದು ಪರದೆ ಅಥವಾ ಬಟನ್ ಕಾಣುತ್ತಿಲ್ಲ</td><td>ಅವರ ಅನುಮತಿಗಳಲ್ಲಿ ಅದು ಇಲ್ಲ</td><td>ಅಡ್ಮಿನ್: Settings → 👥 Users → ಅವರ ಹೆಸರಿನ ಪಕ್ಕ 🔐 → ಅನುಮತಿ ಟಿಕ್ ಮಾಡಿ → Save. ಮುಂದಿನ ಲಾಗಿನ್‌ನಲ್ಲಿ ಅವರಿಗೆ ಕಾಣುತ್ತದೆ.</td></tr>
+    <tr><td>ಪ್ರಯೋಗದ ಸ್ಕ್ಯಾನ್‌ಗಳು ಮುಗಿದಿವೆ ಎಂದು ಬಿಲ್ ಸ್ಕ್ಯಾನಿಂಗ್ ಹೇಳುತ್ತದೆ</td><td>ಉಚಿತ ಪ್ರಯೋಗದಲ್ಲಿ 15 ಬಿಲ್ ಸ್ಕ್ಯಾನ್‌ಗಳು ಸೇರಿವೆ</td><td>ಅಪರಿಮಿತ ಸ್ಕ್ಯಾನಿಂಗ್‌ಗೆ ಪರವಾನಗಿ ಸಕ್ರಿಯಗೊಳಿಸಿ. ಪ್ರಯೋಗ ಮುಗಿಯುವವರೆಗೆ ಬೇರೆಲ್ಲವೂ ಕೆಲಸ ಮಾಡುತ್ತಿರುತ್ತದೆ.</td></tr>
+    <tr><td>ಸ್ಟೇಟಸ್ ಬಾರ್‌ನಲ್ಲಿ "Subscription expired"</td><td>ವಾರ್ಷಿಕ ಚಂದಾದಾರಿಕೆ ಮುಗಿದಿದೆ</td><td>Settings → 🔑 License ನಿಂದ ನವೀಕರಿಸಿ. ಕೊನೆಯ ದಿನಾಂಕದ ನಂತರ 7 ದಿನಗಳವರೆಗೆ ಬಿಲ್ಲಿಂಗ್ ಕೆಲಸ ಮಾಡುತ್ತದೆ; ನಿಮ್ಮ ಡೇಟಾ ಯಾವಾಗಲೂ ನೋಡಲು ಸಿಗುತ್ತದೆ.</td></tr>
+    <tr><td>GSTR-1 ರಫ್ತು HSN ಇಲ್ಲದ ವಸ್ತುಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ</td><td>ಆ ವಸ್ತುಗಳಿಗೆ Inventory ಯಲ್ಲಿ HSN ಕೋಡ್ ಇಲ್ಲ</td><td>Inventory ಯಲ್ಲಿ ಅವುಗಳ HSN ಕೋಡ್‌ಗಳನ್ನು ಸೇರಿಸಿ, ನಂತರ ಮತ್ತೆ ರಫ್ತು ಮಾಡಿ.</td></tr>
+  </table>
+
+  <div class="tip">💡 <strong>ಯಾವಾಗಲೂ ಮೊದಲು ಇದನ್ನು ಪ್ರಯತ್ನಿಸಿ:</strong> Accelent ಅನ್ನು ಪೂರ್ಣವಾಗಿ ಮುಚ್ಚಿ, 5 ಸೆಕೆಂಡು ಕಾದು, ಮತ್ತೆ ತೆರೆಯಿರಿ. ಇದು ಅನಿರೀಕ್ಷಿತ ಸಮಸ್ಯೆಗಳಲ್ಲಿ 70% ಸರಿಪಡಿಸುತ್ತದೆ.</div>
+
+  <div class="good">✅ <strong>ಬೇರೆ ಯಾವುದೇ ಸಮಸ್ಯೆಗೆ:</strong> ದೋಷ ಸಂದೇಶದ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ತೆಗೆದು, ಆ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಮತ್ತು ದೋಷ ಬಂದಾಗ ನೀವು ಏನು ಮಾಡುತ್ತಿದ್ದಿರಿ ಎಂಬ ವಿವರದೊಂದಿಗೆ ನಿಮ್ಮ ಸಾಫ್ಟ್‌ವೇರ್ ಒದಗಿಸುವವರನ್ನು ಸಂಪರ್ಕಿಸಿ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ QUICK REF -->
+<div class="section">
+  <h2>ತ್ವರಿತ ಉಲ್ಲೇಖ — ದಿನನಿತ್ಯದ ಕೆಲಸ</h2>
+  <table>
+    <tr><th>ಕೆಲಸ</th><th>ಪ್ಯಾನೆಲ್</th><th>ಹಂತಗಳು</th></tr>
+    <tr><td>ಮಾರಾಟ ದಾಖಲಿಸುವುದು</td><td>Sales</td><td>ಫಾರ್ಮ್ ತುಂಬಿ → ವಸ್ತುಗಳನ್ನು ಸೇರಿಸಿ → ಪಾವತಿ ಆಯ್ಕೆ ಮಾಡಿ → Save Invoice</td></tr>
+    <tr><td>ಖರೀದಿ ದಾಖಲಿಸುವುದು</td><td>Purchases</td><td>+ New Purchase → ಸರಬರಾಜುದಾರ → ವಸ್ತುಗಳು → ಪಾವತಿ → Save</td></tr>
+    <tr><td>ವೆಚ್ಚ ದಾಖಲಿಸುವುದು</td><td>Expenses</td><td>+ Add Expense → ವರ್ಗ → ಮೊತ್ತ → Cash/Bank → Save</td></tr>
+    <tr><td>ನಗದು ಬಾಕಿ ನೋಡುವುದು</td><td>Accounts</td><td>Accounts ಕ್ಲಿಕ್ ಮಾಡಿ → Cash ಟೈಲ್ ಈಗಿನ ಬಾಕಿ ತೋರಿಸುತ್ತದೆ</td></tr>
+    <tr><td>ಗ್ರಾಹಕರು ಎಷ್ಟು ಕೊಡಬೇಕು ನೋಡುವುದು</td><td>Accounts → Parties</td><td>ಪಕ್ಷದ ಹೆಸರು ಹುಡುಕಿ — ಬಾಕಿ ಹಸಿರಿನಲ್ಲಿ (ಬರಬೇಕಾದದ್ದು)</td></tr>
+    <tr><td>ಗ್ರಾಹಕರಿಂದ ಪಾವತಿ ಪಡೆಯುವುದು</td><td>Receipts</td><td>+ New Receipt → ಗ್ರಾಹಕರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ → ಮೊತ್ತ → Save</td></tr>
+    <tr><td>ಸರಬರಾಜುದಾರರಿಗೆ ಪಾವತಿಸುವುದು</td><td>Receipts</td><td>+ New Payment → ಸರಬರಾಜುದಾರರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ → ಮೊತ್ತ → Save</td></tr>
+    <tr><td>ಕಡಿಮೆ ಸ್ಟಾಕ್ ನೋಡುವುದು</td><td>Inventory</td><td>ಕಿತ್ತಳೆ/ಕೆಂಪಿನಲ್ಲಿ ಕಾಣುವ ವಸ್ತುಗಳನ್ನು ಮತ್ತೆ ಆರ್ಡರ್ ಮಾಡಬೇಕು</td></tr>
+    <tr><td>ಸರಬರಾಜುದಾರರಿಂದ ಮತ್ತೆ ಆರ್ಡರ್</td><td>Low Stock Monitor</td><td>Order from Vendor → ಸರಬರಾಜುದಾರರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ → ವಸ್ತುಗಳನ್ನು ಪರಿಶೀಲಿಸಿ → Save (ಡ್ರಾಫ್ಟ್ ಖರೀದಿ ಆರ್ಡರ್ ಸೃಷ್ಟಿಯಾಗುತ್ತದೆ)</td></tr>
+    <tr><td>ಇನ್‌ವಾಯ್ಸ್ ಮುದ್ರಿಸುವುದು</td><td>Sales</td><td>ಪಟ್ಟಿಯಲ್ಲಿ ಇನ್‌ವಾಯ್ಸ್ ಹುಡುಕಿ → 🖨 Print ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ</td></tr>
+    <tr><td>ಬ್ಯಾಕಪ್ ತೆಗೆಯುವುದು</td><td>Settings</td><td>App Settings → 💾 Backup Data → ಸ್ಥಳ ಆಯ್ಕೆ ಮಾಡಿ → Save</td></tr>
+  </table>
+</div>
+
+<footer>Accelent — ಬಳಕೆದಾರ ಮಾರ್ಗದರ್ಶಿ (ಕನ್ನಡ)<br>ಡೆಸ್ಕ್‌ಟಾಪ್ ಮತ್ತು ಮೊಬೈಲ್ ಲೆಕ್ಕಪತ್ರ ವ್ಯವಸ್ಥೆ &nbsp;·&nbsp; 2026<br><br><em>ಸಹಾಯಕ್ಕಾಗಿ, ಯಾವುದೇ ದೋಷ ಸಂದೇಶದ ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ನೊಂದಿಗೆ ನಿಮ್ಮ ಸಾಫ್ಟ್‌ವೇರ್ ಒದಗಿಸುವವರನ್ನು ಸಂಪರ್ಕಿಸಿ.</em></footer>
+
+<script>
+/* Opened from Accelent: ?type=general|restaurant|hotel (&production=1) shows only that business's chapters. */
+(function () {
+  var q = new URLSearchParams(location.search), t = q.get("type");
+  var names = {"general": "ಅಂಗಡಿ, ವ್ಯಾಪಾರ, ಸೇವೆ ಅಥವಾ ಉತ್ಪಾದನಾ ಸಂಸ್ಥೆಗೆ ಸಂಬಂಧಿಸಿದ", "restaurant": "ರೆಸ್ಟೋರೆಂಟ್‌ಗೆ ಸಂಬಂಧಿಸಿದ", "hotel": "ಹೋಟೆಲ್‌ಗೆ ಸಂಬಂಧಿಸಿದ"};
+  if (!names[t]) return;
+  var prod = q.get("production") === "1" || t !== "general";
+  function shows(f) { return f.split(" ").some(function (x) { return x === t || (x === "production" && prod); }); }
+  var hidden = [];
+  document.querySelectorAll(".section[data-for]").forEach(function (s) {
+    if (shows(s.getAttribute("data-for"))) return;
+    hidden.push(s.id); s.style.display = "none";
+    var b = s.previousElementSibling;
+    if (b && b.classList.contains("chapter-banner")) b.style.display = "none";
+  });
+  hidden.forEach(function (id) {
+    document.querySelectorAll('.toc-grid a[href="#' + id + '"]').forEach(function (a) {
+      a.style.display = "none";
+      var br = a.nextElementSibling; if (br && br.tagName === "BR") br.style.display = "none";
+    });
+  });
+  var n = document.getElementById("guideFilter");
+  if (n) n.innerHTML = "" + names[t] + " ಅಧ್ಯಾಯಗಳನ್ನು ತೋರಿಸಲಾಗುತ್ತಿದೆ. <a href=\"" + location.pathname + "\">ಎಲ್ಲಾ ಅಧ್ಯಾಯಗಳನ್ನು ತೋರಿಸಿ</a>";
+})();
+</script>
+</body>
+</html>
+

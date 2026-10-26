@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accelent — පරිශීලක මාර්ගෝපදේශය (සිංහල)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nirmala UI', 'Iskoola Pota', 'Noto Sans Sinhala', 'Segoe UI', Arial, sans-serif; font-size: 14px; color: #2c3e50; background: #f0f4f8; }
+
+  /* Cover */
+  .cover { background: linear-gradient(135deg, #1abc9c 0%, #16a085 50%, #0e6655 100%);
+           color: white; padding: 70px 40px 50px; text-align: center; }
+  .cover h1 { font-size: 42px; letter-spacing: 1px; }
+  .cover .sub { font-size: 18px; opacity: .85; margin-top: 8px; }
+  .cover .ver { font-size: 13px; opacity: .65; margin-top: 16px; letter-spacing: 2px; text-transform: uppercase; }
+  .cover-badges { margin-top: 28px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .badge { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+           padding: 6px 16px; border-radius: 20px; font-size: 13px; }
+
+  /* Layout */
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+  .section { background: white; max-width: 900px; margin: 28px auto; padding: 36px 44px;
+             border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+
+  /* TOC */
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 14px; }
+  .toc-grid a { color: #2980b9; text-decoration: none; line-height: 2; font-size: 13.5px; }
+  .toc-grid a:hover { text-decoration: underline; }
+  .toc-num { color: #1abc9c; font-weight: bold; margin-right: 5px; }
+
+  /* Headings */
+  h2 { font-size: 22px; color: #16a085; border-bottom: 2px solid #e8f8f5;
+       padding-bottom: 10px; margin-bottom: 20px; }
+  h3 { font-size: 16px; color: #2c3e50; margin: 22px 0 9px; }
+  h4 { font-size: 14px; color: #16a085; margin: 14px 0 6px; }
+  p  { line-height: 1.85; margin-bottom: 11px; color: #444; }
+  ul, ol { padding-left: 22px; line-height: 2.1; color: #444; margin-bottom: 10px; }
+
+  /* Steps */
+  .step { display: flex; gap: 14px; align-items: flex-start; margin: 10px 0; }
+  .step-num { background: #1abc9c; color: white; min-width: 28px; height: 28px;
+              border-radius: 50%; display: flex; align-items: center; justify-content: center;
+              font-weight: bold; font-size: 13px; margin-top: 1px; }
+  .step-body { flex: 1; line-height: 1.8; color: #444; }
+
+  /* Callout boxes */
+  .tip  { background: #eaf6fb; border-left: 4px solid #3498db; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .warn { background: #fef9e7; border-left: 4px solid #f39c12; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .good { background: #eafaf1; border-left: 4px solid #2ecc71; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+  .err  { background: #fdedec; border-left: 4px solid #e74c3c; padding: 12px 16px;
+          border-radius: 4px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+  th { background: #16a085; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 9px 14px; border-bottom: 1px solid #ecf0f1; vertical-align: top; }
+  tr:hover td { background: #f0fdf9; }
+
+  /* Panel cards */
+  .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .panel-card { border: 1px solid #d5f5ee; border-radius: 8px; padding: 14px 16px;
+                background: #f9fffe; }
+  .panel-card h4 { color: #16a085; margin-bottom: 6px; font-size: 14.5px; }
+  .panel-card p  { font-size: 13px; margin: 0; color: #555; line-height: 1.7; }
+
+  /* Concept boxes */
+  .concept { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;
+             padding: 16px 20px; margin: 12px 0; }
+  .concept h4 { color: #2c3e50; margin-bottom: 6px; }
+
+  /* Code */
+  code { background: #ecf0f1; padding: 2px 7px; border-radius: 3px;
+         font-family: Consolas, monospace; font-size: 13px; }
+  .path { background: #2c3e50; color: #1abc9c; padding: 8px 14px; border-radius: 5px;
+          font-family: Consolas, monospace; font-size: 13px; display: inline-block; margin: 6px 0; }
+
+  /* Chapter header */
+  .chapter-banner { background: linear-gradient(90deg, #1abc9c, #16a085);
+                    color: white; padding: 14px 44px; max-width: 900px; margin: 28px auto 0;
+                    border-radius: 10px 10px 0 0; font-size: 13px; letter-spacing: 1px;
+                    text-transform: uppercase; font-weight: bold; }
+  .chapter-banner + .section { margin-top: 0; border-radius: 0 0 10px 10px; }
+
+  .shot { margin: 18px 0; text-align: center; }
+  .shot img { max-width: 100%; height: auto; border: 1px solid #dee2e6; border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .shot figcaption { font-size: 12.5px; color: #777; margin-top: 6px; }
+
+  footer { text-align: center; padding: 36px; color: #aaa; font-size: 12px; }
+
+  @media(max-width:640px) {
+    .section { padding: 24px 20px; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .panel-grid { grid-template-columns: 1fr; }
+  }
+  .for-badge { display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 999px;
+               background: rgba(255,255,255,.25); font-size: 11px; letter-spacing: .3px; text-transform: none; }
+  .guide-filter { max-width: 900px; margin: 18px auto 0; padding: 10px 16px; border-radius: 8px;
+                  background: #e8f8f5; color: #2c3e50; font-size: 13.5px; line-height: 1.6; }
+  .guide-filter a { color: #16a085; font-weight: bold; }
+  .lang-bar { text-align: center; padding: 8px; font-size: 15px; background: #ffffff; }
+  .lang-bar a { color: #16a085; text-decoration: none; }
+
+  .lang-bar { text-align: center; padding: 8px; font-size: 15px; background: #ffffff; }
+  .lang-bar a { color: #16a085; text-decoration: none; }
+  .mt-note { max-width: 960px; margin: 12px auto; }
+  /* :dir() follows the nearest dir=, so a chapter still in English (wrapped in dir="ltr") keeps the English layout */
+  ul:dir(rtl), ol:dir(rtl) { padding-left: 0; padding-right: 22px; }
+  .tip:dir(rtl), .warn:dir(rtl), .good:dir(rtl), .err:dir(rtl) {
+      border-left: none; border-right-width: 4px; border-right-style: solid; }
+  .tip:dir(rtl) { border-right-color: #3498db; }
+  .warn:dir(rtl) { border-right-color: #f39c12; }
+  .good:dir(rtl) { border-right-color: #2ecc71; }
+  .err:dir(rtl) { border-right-color: #e74c3c; }
+  th:dir(rtl) { text-align: right; }
+  .toc-num:dir(rtl) { margin-right: 0; margin-left: 5px; }
+  .for-badge:dir(rtl) { margin-left: 0; margin-right: 10px; }
+  /* an English button name inside Urdu text keeps its own direction */
+  strong:dir(rtl), em:dir(rtl), code:dir(rtl) { unicode-bidi: plaintext; }
+  /* English chapters keep the English font and spacing */
+  [lang="en"] { font-family: Segoe UI, Arial, sans-serif; font-size: 14px; line-height: 1.6; }
+  .mt-note { font-family: 'Nirmala UI', 'Iskoola Pota', 'Noto Sans Sinhala', 'Segoe UI', Arial, sans-serif; line-height: 2; }
+
+  body { line-height: 1.8; }
+</style>
+</head>
+<body>
+<!-- lang-bar -->
+<div class="lang-bar">🌐 <a class="lang-link" href="user-guide.html">English</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-hi.html">हिन्दी</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ur.html">اردو</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-bn.html">বাংলা</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-mr.html">मराठी</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-gu.html">ગુજરાતી</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-pa.html">ਪੰਜਾਬੀ</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ta.html">தமிழ்</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-te.html">తెలుగు</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-kn.html">ಕನ್ನಡ</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ne.html">नेपाली</a> &nbsp;·&nbsp; <strong>සිංහල</strong> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-ps.html">پښتو</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-dv.html">ދިވެހި</a> &nbsp;·&nbsp; <a class="lang-link" href="user-guide-dz.html">རྫོང་ཁ</a></div>
+<script>document.querySelectorAll('a.lang-link').forEach(function (a) { a.href += location.search; });</script>
+<!-- /lang-bar -->
+<div class="tip mt-note">🌐 මෙම මාර්ගෝපදේශය ඉංග්‍රීසි මාර්ගෝපදේශයෙන් පරිවර්තනය කර ඇත. බොත්තම්වල නම් තිරයේ පෙනෙන ආකාරයටම ඉංග්‍රීසියෙන් තබා ඇත. යමක් පැහැදිලි නැත්නම්, ඉහළ ඇති <strong>English</strong> ක්ලික් කර ඉංග්‍රීසි මාර්ගෝපදේශය බලන්න.</div>
+
+<!-- ═══════════════════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div dir="ltr" style="text-align:left;max-width:900px;margin:-50px auto 30px;"><a href="index.html" style="color:white;opacity:.85;text-decoration:none;font-size:13px;">← Back to accelentapp.com</a></div>
+  <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
+  <h1>Accelent</h1>
+  <div class="sub">සම්පූර්ණ පරිශීලක මාර්ගෝපදේශය — ගිණුම්කරණය සහ තොග කළමනාකරණය</div>
+  <div class="ver">අනුවාදය 2.4.9 &nbsp;·&nbsp; ඩෙස්ක්ටොප් + ජංගම &nbsp;·&nbsp; 2026</div>
+  <div class="cover-badges">
+    <span class="badge">🖥️ Windows ඩෙස්ක්ටොප්</span>
+    <span class="badge">📱 Android ජංගම</span>
+    <span class="badge">🌐 භාෂා 18</span>
+    <span class="badge">📊 GST සඳහා සූදානම්</span>
+    <span class="badge">☁️ දුරස්ථ ප්‍රවේශය</span>
+    <span class="badge">🔐 සේවක අවසර</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ TOC -->
+<div class="section">
+  <h2>පටුන</h2>
+  <div class="toc-grid">
+    <div>
+      <a href="#ch1"><span class="toc-num">1.</span>Accelent යනු කුමක්ද?</a><br>
+      <a href="#ch2"><span class="toc-num">2.</span>ආරම්භකයින් සඳහා ගිණුම්කරණ මූලික කරුණු</a><br>
+      <a href="#ch3"><span class="toc-num">3.</span>ඩෙස්ක්ටොප් යෙදුම ස්ථාපනය</a><br>
+      <a href="#ch4"><span class="toc-num">4.</span>පළමු වරට සමාගම සැකසීම</a><br>
+      <a href="#ch5"><span class="toc-num">5.</span>වෙනත් මෘදුකාංගයකින් මාරු වීම</a><br>
+      <a href="#ch6"><span class="toc-num">6.</span>භාෂාව සහ තේමාව</a><br>
+      <a href="#ch7"><span class="toc-num">7.</span>උපකරණ පුවරුව</a><br>
+      <a href="#ch8"><span class="toc-num">8.</span>තොග පැනලය</a><br>
+      <a href="#ch8b"><span class="toc-num">8b.</span>අඩු තොග නිරීක්ෂකය</a><br>
+      <a href="#ch8c"><span class="toc-num">8c.</span>නිෂ්පාදනය</a><br>
+      <a href="#ch9"><span class="toc-num">9.</span>විකුණුම් පැනලය</a><br>
+      <a href="#ch9b"><span class="toc-num">9b.</span>අවන්හල</a><br>
+      <a href="#ch9c"><span class="toc-num">9c.</span>කාමර (හෝටල්, ලැගුම්හල්)</a><br>
+      <a href="#ch9d"><span class="toc-num">9d.</span>හවුල්කරුවන් (නියෝජිතයින්, මාර්ගෝපදේශකයින්, රියදුරන්)</a><br>
+      <a href="#ch9e"><span class="toc-num">9e.</span>නිවාස පවිත්‍රතාව (හෝටල්)</a><br>
+    </div>
+    <div>
+      <a href="#ch10"><span class="toc-num">10.</span>මිලදී ගැනීම් පැනලය</a><br>
+      <a href="#ch11"><span class="toc-num">11.</span>වියදම් සහ ලදුපත්</a><br>
+      <a href="#ch12"><span class="toc-num">12.</span>ගිණුම් සහ මාරු කිරීම්</a><br>
+      <a href="#ch13"><span class="toc-num">13.</span>වාර්තා සහ ණය කාලය (Aging)</a><br>
+      <a href="#ch14"><span class="toc-num">14.</span>සේවකයින් සහ වැටුප්</a><br>
+      <a href="#ch15"><span class="toc-num">15.</span>GST ප්‍රතිලාභ සහ ඊ-ඉන්වොයිස්</a><br>
+      <a href="#ch16"><span class="toc-num">16.</span>සැකසුම් සහ පරිපාලනය</a><br>
+      <a href="#ch17"><span class="toc-num">17.</span>ඔබේ දත්ත — ස්ථානය, උපස්ථය සහ ප්‍රතිසාධනය</a><br>
+      <a href="#ch18"><span class="toc-num">18.</span>නව අනුවාදයකට යාවත්කාලීන කිරීම</a><br>
+      <a href="#ch19"><span class="toc-num">19.</span>ජංගම යෙදුම සැකසීම සහ භාවිතය</a><br>
+      <a href="#ch19b"><span class="toc-num">19b.</span>💬 ඩෙස්ක්ටොප්–ජංගම පණිවිඩ</a><br>
+      <a href="#ch20"><span class="toc-num">20.</span>ගැටලු නිරාකරණය</a><br>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 1 -->
+<div class="guide-filter" id="guideFilter">Accelent ඔබේ ව්‍යාපාර වර්ගයට අදාළ තිර පමණක් පෙන්වයි (පළමු ආරම්භයේදී තෝරාගත්, හෝ <strong>Settings → 🏢 Company</strong> හි). <em>අවන්හල් සහ හෝටල් සඳහා</em>, <em>හෝටල් සඳහා</em> හෝ <em>වෙළඳසැල්, වෙළෙන්දන් සහ සේවා සඳහා</em> ලෙස සලකුණු කළ පරිච්ඡේද ඔවුන්ට පමණි; අනෙක් සියල්ල සැමට ය. Accelent වෙතින් විවෘත කළ විට (F1 හෝ 📖 User Guide), මෙම මාර්ගෝපදේශය ඔබේ ව්‍යාපාරයේ පරිච්ඡේද පමණක් පෙන්වයි.</div>
+<div class="chapter-banner">පරිච්ඡේදය 1 — හැඳින්වීම</div>
+<div class="section" id="ch1">
+  <h2>1. Accelent යනු කුමක්ද?</h2>
+  <div class="tip">💡 Accelent හි පහළ ඇති <strong>📖 User Guide</strong> බොත්තමෙන් ඕනෑම වේලාවක මෙම මාර්ගෝපදේශය විවෘත කරන්න, නැතහොත් <strong>F1</strong> ඔබන්න.</div>
+  <p>Accelent යනු කුඩා හා මධ්‍යම ප්‍රමාණයේ ව්‍යාපාර — වෙළඳසැල්, බෙදාහරින්නන්, තොග වෙළෙන්දන් සහ සේවා සපයන්නන් — සඳහා සාදන ලද සම්පූර්ණ ගිණුම්කරණ සහ තොග කළමනාකරණ පද්ධතියකි. එය Windows PC එකක ධාවනය වන අතර Android ජංගම යෙදුමක් සමඟ සම්බන්ධ වන නිසා, ඔබට ඕනෑම තැනක සිට ඔබේ ව්‍යාපාරය බැලිය හැක.</p>
+
+  <div class="panel-grid">
+    <div class="panel-card">
+      <h4>🖥️ ඩෙස්ක්ටොප් යෙදුම</h4>
+      <p>සම්පූර්ණ ගිණුම්කරණය, බිල්පත්, තොග, GST ප්‍රතිලාභ, වැටුප් සහ වාර්තා. සියල්ල ඔබේ Windows PC එකේ ධාවනය වේ. දෛනික භාවිතයට අන්තර්ජාලය අවශ්‍ය නැත.</p>
+    </div>
+    <div class="panel-card">
+      <h4>📱 ජංගම යෙදුම</h4>
+      <p>සජීවී විකුණුම්, තොග සහ ශේෂ ඔබේ දුරකථනයෙන් බලන්න. දුර සිට ඉන්වොයිස් සහ මිලදී ගැනීම් සාදන්න. ඔබේ දේශීය WiFi හරහා, හෝ Tailscale හරහා ඕනෑම තැනක සිට ඩෙස්ක්ටොප් සමඟ සම්බන්ධ වේ.</p>
+    </div>
+    <div class="panel-card">
+      <h4>📊 එය කළමනාකරණය කරන දේ</h4>
+      <p>විකුණුම් ඉන්වොයිස් · මිලදී ගැනීමේ බිල්පත් · තොග සහ භාණ්ඩ · පාර්ශවයන් (පාරිභෝගිකයින් සහ සැපයුම්කරුවන්) · බැංකු සහ මුදල් ගිණුම් · සේවකයින් සහ වැටුප් · GST සහ ඊ-ඉන්වොයිසිං (ඉන්දියාව), සහ පාකිස්තානය, ශ්‍රී ලංකාව සහ Simple VAT රටවල බදු</p>
+    </div>
+    <div class="panel-card">
+      <h4>🔒 ඔබේ දත්ත ඔබේමයි</h4>
+      <p>සියලු දත්ත ඔබේ PC එකේ එක් දත්ත ගොනුවක ගබඩා වේ. කිසිවක් වලාකුළු සේවාදායකයකට යවන්නේ නැත. එය සම්පූර්ණයෙන්ම ඔබ සතුය.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 2 -->
+<div class="chapter-banner">පරිච්ඡේදය 2 — ගිණුම්කරණ මූලික කරුණු</div>
+<div class="section" id="ch2">
+  <h2>2. ආරම්භකයින් සඳහා ගිණුම්කරණ මූලික කරුණු</h2>
+  <p>ගිණුම්කරණ මෘදුකාංග ඔබට අලුත් නම්, මුලින්ම මෙම කොටස කියවන්න. ගිණුම්කරණ උපාධියක් අවශ්‍ය නැත — ප්‍රධාන සංකල්ප කිහිපයක් තේරුම් ගැනීම ප්‍රමාණවත්ය.</p>
+
+  <div class="concept">
+    <h4>💰 මුදල් එදිරිව බැංකුව</h4>
+    <p>ඔබේ ව්‍යාපාරයේ මුදල් ස්ථාන දෙකක තිබේ: <strong>අතැති මුදල්</strong> (ඔබේ ලාච්චුවේ ඇති නෝට්ටු) සහ <strong>බැංකු ගිණුම</strong> (බැංකුවේ ඇති මුදල්). Accelent දෙකම වෙන වෙනම ගණනය කරයි. මුදල් ලැබුණු විට මුදල් ශේෂය වැඩි වේ. බැංකුවේ තැන්පත් කළ විට මුදල් අඩු වී බැංකුව වැඩි වේ.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧾 ඉන්වොයිසිය (විකුණුම් බිල්පත)</h4>
+    <p>පාරිභෝගිකයෙකු ඔබෙන් මිලදී ගන්නා විට ඔබ ඔහුට දෙන බිල්පත ඉන්වොයිසියයි. එහි භාණ්ඩ, ප්‍රමාණය, මිල සහ මුළු මුදල ඇත. Accelent හි සෑම ඉන්වොයිසියක්ම සටහන් වී පාරිභෝගිකයාගේ ගිණුමට ස්වයංක්‍රීයව සම්බන්ධ වේ.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🛒 මිලදී ගැනීමේ බිල්පත</h4>
+    <p>ඔබ භාණ්ඩ මිලදී ගන්නා විට සැපයුම්කරුගෙන් ලැබෙන බිල්පත මිලදී ගැනීමේ බිල්පතයි. එය Accelent හි සටහන් කළ විට ඔබේ තොගය ස්වයංක්‍රීයව වැඩි වන අතර, එම සැපයුම්කරුට ගෙවිය යුතු මුදලද සටහන් වේ.</p>
+  </div>
+
+  <div class="concept">
+    <h4>👥 පාර්ශවයන් (පාරිභෝගිකයින් සහ සැපයුම්කරුවන්)</h4>
+    <p><strong>පාර්ශවය (Party)</strong> යනු ඔබ නිතිපතා ගනුදෙනු කරන ඕනෑම අයෙකි. පාරිභෝගිකයින් ඔබට මුදල් ණයයි (ලැබිය යුතු — කොළ පාටින් පෙන්වයි). ඔබ සැපයුම්කරුවන්ට මුදල් ණයයි (ගෙවිය යුතු — රතු පාටින් පෙන්වයි). Accelent සියලු ගනුදෙනු වලින් සෑම පාර්ශවයකම ශේෂය ස්වයංක්‍රීයව ගණනය කරයි.</p>
+  </div>
+
+  <div class="concept">
+    <h4>📦 තොගය</h4>
+    <p>තොගය යනු ඔබ විකුණන භාණ්ඩ ලැයිස්තුවයි. සෑම භාණ්ඩයක් සඳහාම Accelent <strong>තොගයේ ඇති ප්‍රමාණය</strong>, <strong>විකුණුම් මිල</strong>, <strong>මිලදී ගැනීමේ මිල</strong> සහ <strong>අවම තොග මට්ටම</strong> (නැවත ඇණවුම් කිරීමට ඔබට අනතුරු අඟවන්නේ කවදාද) නිරීක්ෂණය කරයි.</p>
+  </div>
+
+  <div class="concept">
+    <h4>⚖️ ආරම්භක ශේෂ</h4>
+    <p>ඔබ පළමු වරට Accelent භාවිතා කිරීමට පටන් ගන්නා විට, ඔබ සතුව දැනටමත් ඇති දේ මෘදුකාංගයට පැවසිය යුතුය — කොපමණ මුදල්, සෑම බැංකු ගිණුමකම කොපමණ, සෑම පාරිභෝගිකයෙක්ම ඔබට කොපමණ ණයද, සහ ඔබ සෑම සැපයුම්කරුවෙකුටම කොපමණ ණයද. මේවා <strong>ආරම්භක ශේෂ (Opening Balances)</strong> ලෙස හඳුන්වන අතර ආරම්භක සැකසීමේදී එක් වරක් පමණක් ඇතුළත් කෙරේ.</p>
+  </div>
+
+  <div class="concept">
+    <h4>🧮 හර / බැර (සරලව)</h4>
+    <p>Accelent හි හර/බැර සටහන් ගැන කරදර විය යුතු නැත — මෘදුකාංගය එය හසුරුවයි. ඔබ විකුණුමක් සටහන් කළ විට, එය ඔබේ ආදායමට සහ පාරිභෝගිකයාගේ ශේෂයට එකතු වේ. ඔබ මිලදී ගැනීමක් සටහන් කළ විට, එය ඔබේ තොගයට සහ සැපයුම්කරුගේ ශේෂයට එකතු වේ. <strong>සිදු වූ දේ සටහන් කළ පමණින් ප්‍රමාණවත් — ගිණුම්කරණය Accelent හසුරුවයි.</strong></p>
+  </div>
+
+  <div class="concept">
+    <h4>📅 මූල්‍ය වර්ෂය</h4>
+    <p>ඉන්දියාවේ මූල්‍ය වර්ෂය <strong>අප්‍රේල් 1 සිට ඊළඟ වර්ෂයේ මාර්තු 31 දක්වා</strong> වේ. GST ප්‍රතිලාභ, ශේෂ පත්‍රය සහ ලාභ අලාභ මෙම කාලය තුළ ගණනය කෙරේ. Accelent හි Finalization පැනලය මූල්‍ය වර්ෂය පිරිසිදුව වසා දැමීමට උදව් කරයි.</p>
+  </div>
+
+  <div class="tip">💡 <strong>රන් නීතිය:</strong> සෑම විකුණුමක්ම, සෑම මිලදී ගැනීමක්ම සහ සෑම වියදමක්ම එදිනම සටහන් කරන්න. ඔබ කොතරම් නිතිපතා වේද, ඔබේ වාර්තා සහ ශේෂ එතරම් නිවැරදි වේ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 3 -->
+<div class="chapter-banner">පරිච්ඡේදය 3 — ස්ථාපනය</div>
+<div class="section" id="ch3">
+  <h2>3. ඩෙස්ක්ටොප් යෙදුම ස්ථාපනය</h2>
+
+  <h3>ඔබට අවශ්‍ය දේ</h3>
+  <ul>
+    <li>Windows 10 හෝ Windows 11 (64-bit)</li>
+    <li><strong>RAM:</strong> වේගවත් බිල්පත් ස්කෑන් කිරීමට 8 GB නිර්දේශිතයි. අවම 4 GB — සියල්ල ක්‍රියා කරයි, නමුත් බිල්පත් ස්කෑන් කිරීමට වැඩි වේලාවක් ගතවේ.</li>
+    <li>ආසන්න වශයෙන් 1 GB නිදහස් තැටි ඉඩ</li>
+    <li>ස්ථාපකය: <code>Accelent_Setup_v2.4.9.exe</code>, <strong>accelentapp.com</strong> වෙතින් බාගත කළ</li>
+  </ul>
+
+  <h3>ස්ථාපකයෙන් ස්ථාපනය (නිර්දේශිත)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>accelentapp.com</strong> → Download for Windows වෙතින් <code>Accelent_Setup_v2.4.9.exe</code> බාගත කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">එය දෙවරක් ක්ලික් කරන්න. Windows SmartScreen අනතුරු ඇඟවීමක් පෙන්වුවහොත්, <strong>"More info"</strong> සහ පසුව <strong>"Run anyway"</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">පියවර අනුගමනය කර <strong>Install</strong> ක්ලික් කරන්න. බිල්පත් ස්කෑන් කිරීමට අවශ්‍ය Windows කොටස් ද ස්ථාපකය විසින්ම සකසයි.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">Start මෙනුවෙන් හෝ ඩෙස්ක්ටොප් කෙටිමඟෙන් Accelent විවෘත කරන්න.</div></div>
+
+  <h3>පළමු පිවිසුම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">පරිශීලක නාමය <strong>admin</strong> සහ මුරපදය <strong>Admin@1234</strong> සමඟ පිවිසෙන්න — කැපිටල් A, පසුව <code>dmin</code>, <strong>@</strong> ලකුණ, පසුව <code>1234</code>. ඔබ ඔබේම මුරපදයක් සකසන තුරු පිවිසුම් තිරය මේවා පෙන්වයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඉන්පසු Accelent ඔබෙන් ඔබේම මුරපදයක් තෝරා ගැනීමට ඉල්ලා ඔබේ <strong>Recovery Key</strong> පෙන්වයි — එය ආරක්ෂිත ස්ථානයක තබන්න ("ඔබේ ගිණුමේ Recovery Key" බලන්න).</div></div>
+  <div class="tip">💡 වැරදි මුරපද 5කට පසු ගිණුම මිනිත්තු 15ක් අගුළු දමයි; තව කොපමණ උත්සාහයන් ඉතිරිද සහ නැවත උත්සාහ කළ හැක්කේ කවදාද යන්න පිවිසුම් තිරය පවසයි. මෙම පරිගණකයේ කලින් Accelent ස්ථාපනය කර තිබුණේ නම්, ඔබේ පැරණි මුරපදය ක්‍රියා කරයි — අස්ථාපනය කිරීමෙන් ඔබේ දත්ත කිසි විටෙක මැකෙන්නේ නැත.</div>
+
+  <h3>Windows SmartScreen සහ ප්‍රතිවයිරස</h3>
+  <p>Accelent තවම ඩිජිටල් අත්සන් කර නැති නිසා Windows එහි ප්‍රකාශකයා හඳුනා නොගනී. එබැවින් ඔබ ස්ථාපකය හෝ යෙදුම පළමු වරට ධාවනය කරන විට Windows <strong>"Windows protected your PC"</strong> පෙන්විය හැක. මෙය එක් වරක් පමණක් සිදු වේ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Accelent බාගත කරන්න <strong>accelentapp.com</strong> වෙතින් පමණි. වෙනත් තැන්වලින් එන ගොනු සත්‍ය නොවිය හැක.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">SmartScreen හි <strong>More info</strong> ක්ලික් කර, ගොනුවේ නම <code>Accelent_Setup_…exe</code> හෝ <code>Accelent.exe</code> දැයි පරීක්ෂා කර, <strong>Run anyway</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ඔබේ ප්‍රතිවයිරසය Accelent අවහිර කරයි නම් හෝ quarantine කරයි නම්, එය quarantine වෙතින් ප්‍රතිසාධනය කර Accelent ෆෝල්ඩරය (ස්ථාපිත පිටපත සඳහා: <span class="path">C:\Accelent</span>) ප්‍රතිවයිරසයේ <strong>exclusions / allowed apps</strong> වෙත එක් කරන්න. Python ඇසුරුම් මෙවලම් වලින් සාදන ලද නව වැඩසටහන් සමහර ප්‍රතිවයිරස වැරදියට සලකුණු කරයි; මෙය වැරදි අනතුරු ඇඟවීමකි.</div></div>
+  <div class="tip">💡 Accelent සාමාන්‍ය වැඩසටහන් ෆෝල්ඩරයක් ලෙස ස්ථාපනය වන අතර අන්තර්ජාලය නොමැතිව ක්‍රියා කරයි. එය අන්තර්ජාලයට සම්බන්ධ වන්නේ ඔබේ බලපත්‍රය පරීක්ෂා කිරීමට පමණි (සහ, ඔබ සක්‍රිය කළහොත්, ඔබේ සංකේතනය කළ උපස්ථ යතුරේ කොටසක් තබා ගැනීමට). ඔබේ ව්‍යාපාර දත්ත කිසි විටෙක ඔබේ PC එකෙන් පිටතට යන්නේ නැත. අනතුරු ඇඟවීම තවමත් ඔබට කරදරයක් නම්, <strong>support@accelentapp.com</strong> වෙත ලියන්න.</div>
+
+  <h3>අතේ ගෙන යා හැකි Zip (විකල්ප)</h3>
+  <p>ස්ථාපනය නොකිරීමට කැමති නම්, ඒ වෙනුවට <code>Accelent_Desktop_v2.4.9.zip</code> බාගත කර මෙම පියවර අනුගමනය කරන්න:</p>
+
+  <h3>ස්ථාපන පියවර</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><code>Accelent_Desktop_v2.4.9.zip</code> මත දකුණු-ක්ලික් → <strong>Extract All</strong>. <code>C:\Accelent</code> හෝ <code>D:\Accelent</code> වැනි ස්ථිර ස්ථානයක් තෝරන්න. <strong>zip ඇතුළේ සිටම ධාවනය නොකරන්න.</strong></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">නිස්සාරණය කළ <code>Accelent</code> ෆෝල්ඩරය විවෘත කරන්න. එහි <code>Accelent.exe</code>, <code>setup.bat</code> සහ ආධාරක ෆෝල්ඩර කිහිපයක් පෙනේ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Accelent.exe</strong> දෙවරක් ක්ලික් කරන්න. Windows SmartScreen අනතුරු ඇඟවීමක් පෙන්විය හැක — <strong>"More info"</strong> සහ පසුව <strong>"Run anyway"</strong> ක්ලික් කරන්න. යෙදුම තවම ඩිජිටල් අත්සන් කර නැති නිසා මෙය සිදු වේ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">යෙදුම විවෘත වේ. පළමු ධාවනයේදී එය ඔබේ දත්ත ගොනුව <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span> හි ස්වයංක්‍රීයව සාදයි</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">දිනපතා පහසුවෙන් විවෘත කිරීමට <code>Accelent.exe</code> මත දකුණු-ක්ලික් → <em>Send to → Desktop (create shortcut)</em>.</div></div>
+
+  <h3>පළමු වරට ෆයර්වෝල් සැකසීම (ජංගම යෙදුම සඳහා)</h3>
+  <p>ඔබ ජංගම සහායක යෙදුම භාවිතා කරන්නේ නම් මෙය එක් වරක් ධාවනය කරන්න:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><code>Accelent</code> ෆෝල්ඩරයේ <strong>setup.bat</strong> දෙවරක් ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Windows පරිපාලක අවසරය ඉල්ලයි — <strong>Yes</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ස්ක්‍රිප්ටය Windows ෆයර්වෝලයේ 8765 පෝට් එක විවෘත කර ඔබේ PC හි IP ලිපිනය පෙන්වයි. එම IP සටහන් කරගන්න — දුරකථනය අතින් සම්බන්ධ කිරීමට අවශ්‍ය විය හැක.</div></div>
+
+  <div class="warn">⚠ ඔබ setup.bat මඟ හැරියහොත්, ජංගම යෙදුමට ඩෙස්ක්ටොප් සමඟ සම්බන්ධ විය නොහැක.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 4 -->
+<div class="chapter-banner">පරිච්ඡේදය 4 — පළමු වරට සමාගම සැකසීම</div>
+<div class="section" id="ch4">
+  <h2>4. පළමු වරට සමාගම සැකසීම</h2>
+  <p>ඔබ පළමු වරට Accelent විවෘත කරන විට, කිසිදු ගනුදෙනුවක් සටහන් කිරීමට පෙර ඔබේ සමාගමේ විස්තර පිරවීමට මිනිත්තු 10ක් ගන්න.</p>
+
+  <h3>ආරම්භ කිරීමට පෙර — ඔබේ රට තෝරන්න</h3>
+  <p>Accelent පළමු වරට ආරම්භ වන විට (ඔබ ඔබේම මුරපදය සැකසූ වහාම), එය ඔබේ <strong>රට</strong> අසයි. රට ඔබේ <strong>බදු නීති</strong> සහ <strong>මුදල් ඒකකය</strong> තීරණය කරයි — ඉන්දියාවට GST, අනෙක් රටවලට VAT — එබැවින් සෑම ඉන්වොයිසියක්ම, වාර්තාවක්ම සහ බදු ප්‍රතිලාභයක්ම පළමු දිනයේ සිටම නිවැරදි අනුපාත භාවිතා කරයි.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Welcome — Set Up Your Country</strong> කවුළුවේ ඔබේ <strong>Country</strong> තෝරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඔබේ රටට අමතර ප්‍රශ්නයක් පෙනේ නම් එයට පිළිතුරු දෙන්න (පහත වගුව බලන්න).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Language</strong> පරීක්ෂා කරන්න. එහි ඔබේ රටේ ප්‍රධාන භාෂාව දැනටමත් තෝරා ඇත (උදා: ඉන්දියාවට Hindi) — එය English හෝ ඔබ කැමති වෙනත් භාෂාවකට වෙනස් කරන්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ඔබේ <strong>Business</strong> තෝරන්න: <em>Shop, trading, services or manufacturing</em>, <em>Restaurant, café or dhaba</em> (<a href="#ch9b">පරිච්ඡේදය 9b</a> බලන්න) හෝ <em>Hotel, lodge or guest house</em> (<a href="#ch9c">පරිච්ඡේදය 9c</a> බලන්න). මෙනුව පෙන්වන තිර මෙයින් තීරණය වන අතර, පසුව <strong>Settings → 🏢 Company</strong> හි වෙනස් කළ හැක.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Confirm and Continue</strong> ක්ලික් කරන්න.</div></div>
+  <table>
+    <tr><th>රට</th><th>බද්ද</th><th>මුදල් ඒකකය</th><th>අමතර ප්‍රශ්නය</th></tr>
+    <tr><td>ඉන්දියාව</td><td>GST (CGST + SGST / IGST)</td><td>₹ INR</td><td>—</td></tr>
+    <tr><td>පාකිස්තානය</td><td>භාණ්ඩ සඳහා ෆෙඩරල් විකුණුම් බද්ද, සේවා සඳහා පළාත් බද්ද</td><td>Rs. PKR</td><td><strong>Province</strong> — ඔබේ ව්‍යාපාරයේ පළාත (ICT, Punjab, Sindh, KPK, Balochistan, AJ &amp; Kashmir, Gilgit-Baltistan)</td></tr>
+    <tr><td>ශ්‍රී ලංකාව</td><td>VAT 18%, අදාළ තැන්වල SSCL ද</td><td>Rs. LKR</td><td>ඔබට අදාළ නම් <strong>Financial Institution</strong> (මූල්‍ය සැපයුම් මත VAT 20.5%) සහ/හෝ <strong>SSCL-liable</strong> (වාර්ෂික පිරිවැටුම LKR 120,000,000 ට වැඩි) සලකුණු කරන්න</td></tr>
+    <tr><td>නේපාලය</td><td>VAT 13%</td><td>Rs. NPR</td><td>—</td></tr>
+    <tr><td>බංග්ලාදේශය</td><td>VAT 15%</td><td>৳ BDT</td><td>—</td></tr>
+    <tr><td>භූතානය</td><td>විකුණුම් බද්ද 7%</td><td>Nu. BTN</td><td>—</td></tr>
+    <tr><td>මාලදිවයින</td><td>GST 8% (සංචාරක විකුණුම් සඳහා 17%, එක් එක් ඉන්වොයිසියේ තෝරනු ලැබේ)</td><td>Rf. MVR</td><td>—</td></tr>
+  </table>
+  <div class="err">🚨 <strong>පරිස්සමින් තෝරන්න — රට පසුව වෙනස් කළ නොහැක.</strong> ඔබ ඔබේ පළමු විකුණුම, මිලදී ගැනීම හෝ තොග භාණ්ඩය සුරැකූ වහාම රට අගුළු වැටේ: එය වෙනස් කළහොත් ඔබ සුරැකූ මුදල් පැරණි මුදල් ඒකකයේ සහ බදු නීතිවල ඉතිරි වේ. නැවත තෝරා ගැනීමට ඇති එකම මාර්ගය <strong>Settings → App Settings → Reset Database</strong> වන අතර, එය සියලු දත්ත මකා දමයි. නමුත් භාෂාව ඕනෑම වේලාවක වෙනස් කළ හැක (පරිච්ඡේදය 6).</div>
+  <div class="tip">💡 ඔබේ රට සැමවිටම කවුළුවේ පහළ වම්පස, තත්ව තීරුවේ පෙනේ — උදා: <em>India · GST</em>. ඔබේ රට ලැයිස්තුවේ නැත්නම්, ආරම්භ කිරීමට පෙර සහාය අමතන්න.</div>
+
+  <h3>පියවර 1 — සමාගම් තොරතුරු පුරවන්න</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings</strong> (පැති තීරුවේ ⚙️) වෙත යන්න → <strong>🏢 Company</strong> ටැබය ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඔබේ සමාගමේ නම, ලිපිනය, දුරකථන අංකය, ඊමේල්, GST අංකය (GSTIN) සහ PAN අංකය පුරවන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ඔබේ සමාගම් ලාංඡනය උඩුගත කරන්න — එය මුද්‍රණය කරන සියලු ඉන්වොයිස්වල පෙනේ. මෙහිම ඔබේ <strong>අත්සන සහ සාප්පු මුද්‍රාව</strong> ද එක් කළ හැක (<em>WhatsApp හි බිල්පත් යැවීම</em> බලන්න).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Save Company Settings</strong> ක්ලික් කරන්න.</div></div>
+
+  <h3>පියවර 2 — ආරම්භක ශේෂ සකසන්න</h3>
+  <p>පළමු දිනයේදී ඔබ සතුව දැනටමත් තිබූ දේ ආරම්භක ශේෂ මෘදුකාංගයට පවසයි. මේවා එක් වරක් ඇතුළත් කර පසුව වෙනස් නොකරන්න.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 📊 Balances</strong> ටැබයට යන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Edit Cash Balance</strong> ක්ලික් කරන්න — ඔබේ ආරම්භක දිනයේ අතැති සැබෑ මුදල් ඇතුළත් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Edit Bank Balances</strong> ක්ලික් කරන්න — ඔබේ නවතම බැංකු ප්‍රකාශයෙන් සෑම බැංකු ගිණුමකම අවසාන ශේෂය ඇතුළත් කරන්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Edit Party Balances</strong> ක්ලික් කරන්න — ඔබේ ආරම්භක දිනයේදී සෑම පාරිභෝගිකයෙක්ම ඔබට කොපමණ ණයද, ඔබ සෑම සැපයුම්කරුවෙකුටම කොපමණ ණයද ඇතුළත් කරන්න.</div></div>
+
+  <h3>පියවර 3 — ඔබේ තොග එක් කරන්න</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Inventory</strong> පැනලයට යන්න → <strong>+ Add Item</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">සෑම භාණ්ඩයක් සඳහාම: නම, කාණ්ඩය, ඒකකය (Pcs/Kg/Box ආදිය), මිලදී ගැනීමේ මිල, විකුණුම් මිල, දැනට ඇති තොග ප්‍රමාණය සහ අවම තොග මට්ටම ඇතුළත් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">සියලු භාණ්ඩ සඳහා මෙය කරන්න. ඕනෑම වේලාවක තවත් භාණ්ඩ එක් කළ හැක.</div></div>
+
+  <div class="tip">💡 <strong>ඉඟිය:</strong> වේගයෙන් විකිණෙන භාණ්ඩ සඳහා අවම තොග මට්ටමක් සකසන්න. තොගය එම මට්ටමට වඩා පහළ වැටුණු විට Accelent ඒවා 🟡 Low හෝ 🔴 Out ලෙස සලකුණු කරයි.</div>
+
+  <h3>පියවර 4 — භාෂාව පරීක්ෂා කරන්න</h3>
+  <p>ඔබ රට සමඟ භාෂාවක් තෝරා ගත්තා. එය වෙනස් කිරීමට <strong>Settings → ⚙️ App Settings</strong> → Language වෙත යන්න. අතුරු මුහුණත වහාම වෙනස් වේ — සියලු භාෂා 18 සඳහා පරිච්ඡේදය 6 බලන්න.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 5 -->
+<div class="chapter-banner">පරිච්ඡේදය 5 — වෙනත් මෘදුකාංගයකින් මාරු වීම</div>
+<div class="section" id="ch5">
+  <h2>5. වෙනත් ගිණුම්කරණ මෘදුකාංගයකින් මාරු වීම</h2>
+  <p>ඔබ Tally, Busy, Marg, Vyapar හෝ වෙනත් මෘදුකාංගයකින් මාරු වන්නේ නම්, මෙම පියවර අනුගමනය කරන්න. ප්‍රධාන අදහස: <strong>පැරණි මෘදුකාංගයෙන් ඔබට අවශ්‍ය වන්නේ අවසාන ශේෂ පමණි — තනි ගනුදෙනු නොවේ.</strong></p>
+
+  <div class="warn">⚠ <strong>මාරු වන දිනයක්</strong> තෝරන්න — සාමාන්‍යයෙන් මාසයක අවසාන දිනය හෝ ඔබේ මූල්‍ය වර්ෂයේ අවසාන දිනය. එම දිනයට පැරණි මෘදුකාංගයේ ඇති සියලු ශේෂ ලියා ගන්න. ඊළඟ දින සිට Accelent හි අලුතින් ආරම්භ කරන්න.</div>
+
+  <h3>පැරණි මෘදුකාංගයෙන් එකතු කළ යුතු දේ</h3>
+  <table>
+    <tr><th>ඔබට අවශ්‍ය දේ</th><th>සොයා ගත හැකි තැන</th><th>Accelent හි කළ යුතු දේ</th></tr>
+    <tr><td>අතැති මුදල් (අවසාන ශේෂය)</td><td>මුදල් ලෙජරය → අවසාන ශේෂය</td><td>Settings → Balances → Edit Cash</td></tr>
+    <tr><td>බැංකු ශේෂ (සෑම ගිණුමක්ම)</td><td>බැංකු ලෙජරය හෝ බැංකු ප්‍රකාශය</td><td>Settings → Balances → Edit Bank</td></tr>
+    <tr><td>පාරිභෝගිකයින්ගෙන් ලැබිය යුතු මුදල්</td><td>Debtors / Sundry Debtors ලැයිස්තුව</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>සැපයුම්කරුවන්ට ගෙවිය යුතු මුදල්</td><td>Creditors / Sundry Creditors ලැයිස්තුව</td><td>Settings → Balances → Edit Party Balances</td></tr>
+    <tr><td>තොග භාණ්ඩ සහ තොගය</td><td>Stock summary / භාණ්ඩ ලැයිස්තුව</td><td>Inventory → 📥 Import / Export (පහත "ඔබේ තොගය Accelent වෙත ගෙන ඒම" බලන්න)</td></tr>
+    <tr><td>සේවක විස්තර</td><td>Employee master / HR මොඩියුලය</td><td>Employees පැනලය → සෑම සේවකයෙක්ම එක් කරන්න</td></tr>
+  </table>
+
+  <h3>මාරු කිරීමේ පියවර</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>ඔබේ කපා හැරීමේ දිනය තෝරන්න.</strong> උදාහරණය: "මම 2026 මාර්තු 31 වන විට මාරු වෙමි — මගේ Accelent 2026 අප්‍රේල් 1 සිට ආරම්භ වේ."</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">කපා හැරීමේ දිනයට පැරණි මෘදුකාංගයෙන් <strong>ශේෂ මුද්‍රණය හෝ අපනයනය කරන්න</strong>: මුදල් ශේෂය, බැංකු ශේෂ, පාරිභෝගිකයින්ගෙන් ලැබිය යුතු, සැපයුම්කරුවන්ට ගෙවිය යුතු, සහ ප්‍රමාණ සමඟ තොග ලැයිස්තුව.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Accelent සකසන්න</strong> — සමාගම් තොරතුරු (පරිච්ඡේදය 4).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>ආරම්භක ශේෂ ඇතුළත් කරන්න</strong> — කපා හැරීමේ දිනයට පැරණි මෘදුකාංගයේ මුදල්, බැංකු සහ පාර්ශව ශේෂ (Settings → Balances).</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">කපා හැරීමේ දිනයේ තොග ප්‍රමාණ සමඟ <strong>ඔබේ තොග භාණ්ඩ ආයාත කරන්න</strong> — පහත <strong>ඔබේ තොගය Accelent වෙත ගෙන ඒම</strong> බලන්න.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">කපා හැරීමෙන් පසු දින සිට Accelent හි <strong>නව ගනුදෙනු සටහන් කිරීම ආරම්භ කරන්න</strong>.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body"><strong>සතියකට පසු හරස් පරීක්ෂා කරන්න:</strong> Accounts වෙත ගොස් මුදල් සහ බැංකු ශේෂ ඔබ සතුව සැබවින්ම ඇති දේට ගැළපේදැයි තහවුරු කරන්න. වෙනස් නම්, සියලු ශේෂ නැවුම් කිරීමට Settings → Recalculate භාවිතා කරන්න.</div></div>
+
+  <h3>ඔබේ තොගය Accelent වෙත ගෙන ඒම</h3>
+  <p>ඔබේ භාණ්ඩ එකින් එක ටයිප් කිරීමට අවශ්‍ය නැත. පැරණි මෘදුකාංගයෙන් භාණ්ඩ ලැයිස්තුව හෝ තොග වාර්තාව අපනයනය කරන්න (නැතහොත් ඔබේම Excel පත්‍රය භාවිතා කරන්න) සහ එකවර ආයාත කරන්න. Accelent Excel (<code>.xlsx</code>) සහ CSV ගොනු කියවයි.</p>
+
+  <h4>Import / Export බොත්තම</h4>
+  <p><strong>Inventory</strong> හි, <strong>📥 Import / Export</strong> බොත්තම විකල්ප තුනක් විවෘත කරයි, මන්ද වෙනස් කාර්යයන් තුනක් ඇති නිසා:</p>
+  <table>
+    <tr><th>විකල්පය</th><th>එය කුමක් සඳහාද</th></tr>
+    <tr><td><strong>📥 Import items from Excel or CSV…</strong></td><td>Accelent <strong>තුළට</strong> එන සියල්ල — ඕනෑම මෘදුකාංගයකින් හෝ ඔබේම පත්‍රයෙන්.</td></tr>
+    <tr><td><strong>📋 Download import template</strong></td><td>නිවැරදි ශීර්ෂ සහිත සූදානම් Excel පත්‍රයක්, තවම ගොනුවක් නැති අය සඳහා.</td></tr>
+    <tr><td><strong>💾 Export inventory to Excel</strong></td><td>ඔබේ භාණ්ඩ Accelent වෙතින් <strong>පිටතට</strong> ගනී — උපස්ථයක් සඳහා හෝ ඔබේ ගණකාධිකාරී සඳහා.</td></tr>
+  </table>
+
+  <h4>එක් ආයාතයක් ඕනෑම මෘදුකාංගයක ගොනු කියවන ආකාරය</h4>
+  <p>Tally, Marg, Vyapar, Busy සහ ඒ හා සමාන මෘදුකාංග සියල්ලම ඒවායේ වාර්තා සාමාන්‍ය <strong>Excel හෝ CSV ගොනුවක්</strong> ලෙස අපනයනය කරයි. වෙනස වන්නේ පිරිසැලසුම පමණි — ශීර්ෂ ඇත්තේ කොතැනද සහ සෑම තීරුවක්ම හඳුන්වන්නේ කෙසේද. ආයාතය මෙය ස්වයංක්‍රීයව හසුරුවයි:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>එය ශීර්ෂ සොයා ගනී.</strong> එය පළමු පේළි හරහා බලා, සමාගම් නාමය, වාර්තා මාතෘකාව හෝ දින පේළි මඟ හැර, තීරු ශීර්ෂ ඇති පේළිය ගනී. Tally හි පේළි දෙකේ ශීර්ෂ (<em>Particulars</em> ට ඉහළින් <em>Quantity / Rate / Value</em>) එකතු කෙරේ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>එය සෑම තීරුවක්ම එහි නමින් හඳුනා ගනී</strong>, වෙනත් මෘදුකාංග භාවිතා කරන නම් ද ඇතුළුව:</div></div>
+  <table>
+    <tr><th>ඔබේ ගොනුවේ තීරුව</th><th>භාවිතා වන්නේ</th></tr>
+    <tr><td>Particulars (Tally), Product Name, Item, Description</td><td>Item Name</td></tr>
+    <tr><td>Quantity, Qty, Closing Stock, Closing Balance</td><td>Stock</td></tr>
+    <tr><td>Rate, Cost, Purchase Price</td><td>Purchase Rate</td></tr>
+    <tr><td>Sale Price, MRP, Selling Price</td><td>Selling Price</td></tr>
+    <tr><td>HSN, HSN/SAC, GST %, Category, Group, Supplier</td><td>ගැළපෙන ක්ෂේත්‍ර</td></tr>
+    <tr><td>S.No, Value, Unit</td><td>මඟ හරිනු ලැබේ</td></tr>
+  </table>
+  <p>හරියටම නොදන්නා නම් සමානකම අනුව ගළපනු ලැබේ.</p>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>කිසිවක් ආයාත කිරීමට පෙර එය ප්‍රතිඵලය පෙන්වයි.</strong> ඔබේ සෑම තීරුවක්ම භාවිතා වන්නේ කුමක් සඳහාද යන්න සමඟ ලැයිස්තුගත වේ: <strong>කොළ</strong> = හඳුනාගත්, <strong>කහ</strong> = පරීක්ෂා කළ යුතු අනුමානයක්, <strong>අළු</strong> = මඟ හරින ලද. එකක් වැරදි නම්, එම පතන ලැයිස්තුව වෙනස් කර <strong>Import Now</strong> ක්ලික් කරන්න.</div></div>
+  <div class="tip">💡 එබැවින් TallyPrime Stock Summary, Vyapar භාණ්ඩ අපනයනය, Marg තොග වාර්තාව සහ ඔබේම පත්‍රය සියල්ලම එකම <strong>Import items from Excel or CSV…</strong> හරහා යයි. පැරණි මෘදුකාංගයේ කළ යුතු එකම දෙය <strong>Excel වෙත අපනයනය</strong> කිරීමයි — පහත පියවර 1 එය පෙන්වයි.</div>
+
+  <h4>පියවර 1 — පැරණි මෘදුකාංගයෙන් ගොනුව ලබා ගන්න</h4>
+  <p><strong>TallyPrime වෙතින්:</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Gateway of Tally → Stock Summary</strong> විවෘත කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Alt+F2</strong> ඔබා කාලය ඔබේ කපා හැරීමේ දිනයෙන් අවසන් වන ලෙස සකසන්න, එවිට අවසාන ප්‍රමාණ එම දිනයට වේ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Alt+F5</strong> (Detailed) ඔබන්න, එවිට තොග කණ්ඩායම් පමණක් නොව සෑම භාණ්ඩයක්ම ලැයිස්තුගත වේ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Alt+E</strong> (Export) ඔබා, <strong>Excel (Spreadsheet)</strong> ආකෘතිය තෝරා අපනයනය කරන්න. ගොනුව සුරැකෙන ස්ථානය සටහන් කරගන්න.</div></div>
+  <p><strong>Marg, Vyapar, Busy හෝ වෙනත් ඕනෑම මෘදුකාංගයකින්:</strong> භාණ්ඩ ලැයිස්තුව හෝ තොග වාර්තාව විවෘත කර එහි <strong>Export to Excel</strong> විකල්පය භාවිතා කරන්න. භාණ්ඩ නම, ප්‍රමාණය සහ අනුපාතය පෙන්වන වාර්තාවක් ප්‍රමාණවත්ය.</p>
+  <p><strong>ඔබේම Excel පත්‍රයෙන්:</strong> ඔබට අවශ්‍ය වන්නේ භාණ්ඩ නාම තීරුවක් පමණි. ඔබ සතුව ඇත්නම් Accelent මෙම තීරු ද භාවිතා කරයි: භාණ්ඩ කේතය, කාණ්ඩය, ප්‍රමාණය (තොගය), මිලදී ගැනීමේ අනුපාතය, විකුණුම් මිල හෝ MRP, GST %, HSN කේතය සහ සැපයුම්කරු. පිරිසිදු පත්‍රයකින් ආරම්භ කිරීමට, <strong>Inventory → 📥 Import / Export → 📋 Download import template</strong> භාවිතා කරන්න.</p>
+  <div class="tip">💡 පැරණි ආකෘතියේ Excel ගොනු (<code>.xls</code>) කියවිය නොහැක: ගොනුව Excel හි විවෘත කර <strong>File → Save As → Excel Workbook (*.xlsx)</strong> භාවිතා කරන්න. ආයාත කිරීමට පෙර ගොනුව Excel හි වසන්න.</div>
+
+  <h4>පියවර 2 — එය ආයාත කරන්න</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Inventory → 📥 Import / Export → 📥 Import items from Excel or CSV…</strong> වෙත ගොස් ඔබේ ගොනුව තෝරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent තීරු ශීර්ෂ ස්වයංක්‍රීයව සොයා ගනී — සමාගම් නාමයකට හෝ වාර්තා මාතෘකාවකට පහළින් වුවද — සහ ඔබේ සෑම තීරුවක්ම භාවිතා වන ආකාරය පෙන්වයි. කොළ පේළි හඳුනාගත් ඒවා ය; කහ පේළි අනුමාන ය, එබැවින් ඒවා පරීක්ෂා කරන්න; අළු පේළි මඟ හරිනු ලැබේ (උදා: අනුක්‍රමික අංක හෝ Tally හි <em>Value</em> තීරුව). වැරදි පතන ලැයිස්තුවක් වෙනස් කරන්න. පත්‍ර කිහිපයක් ඇති වැඩපොතක් සඳහා, ඉහළින් නිවැරදි පත්‍රය තෝරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Import Now</strong> ක්ලික් කරන්න. භාණ්ඩ කීයක් එක් වේද සහ කීයක් දැනටමත් පවතින නිසා යාවත්කාලීන වේද Accelent පෙන්වයි; තහවුරු කරන්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">සාරාංශය කියවන්න. ආයාත නොවූ සෑම පේළියක්ම සහ හේතුව එහි ඇත — උදා: <em>Total</em> පේළියක් හෝ තොග කණ්ඩායම් ශීර්ෂයක්. එම ලැයිස්තුව තබා ගැනීමට <strong>Save Skipped Rows…</strong> ක්ලික් කරන්න.</div></div>
+
+  <h4>ආයාතය අතරතුර සිදු වන්නේ කුමක්ද</h4>
+  <ul>
+    <li><strong>භාණ්ඩ කේත:</strong> කේතයක් නැති භාණ්ඩවලට ස්වයංක්‍රීයව එකක් ලැබේ, ඔබ අතින් භාණ්ඩයක් එක් කරන විට මෙන්ම. ඔබේ ගොනුවේ කේත ඇත්නම්, ඒවා තබා ගනී.</li>
+    <li><strong>පවතින භාණ්ඩ</strong> (එකම කේතය, හෝ ගොනුවේ කේත නැත්නම් එකම නම) යාවත්කාලීන වේ, අනුපිටපත් නොවේ — එබැවින් ඔබට ගොනුව නිවැරදි කර නැවත ආයාත කළ හැක.</li>
+    <li><code>1,250.00</code>, <code>₹450</code> හෝ <code>10 Nos</code> වැනි <strong>අංක</strong> නිවැරදිව කියවේ.</li>
+    <li><strong>ආරම්භක තොගය:</strong> ප්‍රමාණ මිලදී ගැනීමේ අනුපාතයෙන් එක් <em>Opening Stock</em> සටහනක් ලෙස සටහන් වේ, එබැවින් වාර්තා සහ ලාභය නිවැරදි පිරිවැයෙන් ආරම්භ වේ.</li>
+    <li><strong>කාණ්ඩ:</strong> කාණ්ඩයක් නැති භාණ්ඩ <em>Uncategorized</em> යටතේ ගොනු කෙරේ. මුල සිටම ඔබේ භාණ්ඩ කණ්ඩායම් කිරීමට ගොනුවට Category තීරුවක් එක් කරන්න; පසුව Inventory හි කාණ්ඩ වෙනස් කළ හැක.</li>
+  </ul>
+
+  <h4>පියවර 3 — ප්‍රතිඵලය පරීක්ෂා කරන්න</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Inventory ලැයිස්තුව බලන්න: නම්, ප්‍රමාණ සහ අනුපාත.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Inventory Reports</strong> හි මුළු තොග වටිනාකම එම දිනයටම පැරණි මෘදුකාංගයේ වාර්තාවේ අවසාන තොග වටිනාකම සමඟ සසඳන්න.</div></div>
+
+  <table>
+    <tr><th>මෙය සිදු වුවහොත්</th><th>මෙය කරන්න</th></tr>
+    <tr><td>"Can't read this file"</td><td>එය <code>.xlsx</code> ලෙස සුරකින්න, Excel හි වසන්න, මුරපදයක් ඇත්නම් ඉවත් කරන්න, පසුව නැවත ආයාත කරන්න.</td></tr>
+    <tr><td>තීරුවක් වැරදි දෙයකට භාවිතා විය</td><td>Import Now ක්ලික් කිරීමට පෙර ආයාත කවුළුවේ එම තීරුවේ පතන ලැයිස්තුව වෙනස් කරන්න.</td></tr>
+    <tr><td>ප්‍රමාණ හෝ අනුපාත 0 ලෙස පැමිණියේය</td><td>ප්‍රමාණ තීරුව <em>Stock</em> ලෙසත් අනුපාත තීරුව <em>Purchase Rate</em> ලෙසත් ඇත්දැයි පරීක්ෂා කර නැවත ආයාත කරන්න — පවතින භාණ්ඩ යාවත්කාලීන වේ.</td></tr>
+    <tr><td>එක් භාණ්ඩයක් වැරදියට පැමිණියේය</td><td><strong>Inventory</strong> → භාණ්ඩය තෝරන්න → <strong>🗑️ Delete Selected</strong>. ආයාතයක් හරහා පමණක් පැමිණි (එතැන් සිට මිලදී ගැනීම, විකිණීම හෝ ආපසු දීම සිදු නොවූ) භාණ්ඩයක් මැකිය හැක; එය ආයාතයේ ආරම්භක තොගයෙන් ද ඉවත් වේ.</td></tr>
+    <tr><td>සම්පූර්ණ ආයාතයම වැරදියි</td><td>සෑම ආයාතයක්ම <strong>OPST-…</strong> නමින් එක් ආරම්භක-තොග සටහනක් ලෙස සටහන් වේ (ආයාත සාරාංශය එහි නම පෙන්වයි). <strong>Purchases</strong> වෙත ගොස්, එම OPST සටහන තෝරා, <strong>❌ Delete Bill</strong> ක්ලික් කර, එහි භාණ්ඩ ද මැකීමට <strong>Yes</strong> පිළිතුරු දෙන්න. ගොනුව නිවැරදි කර නැවත ආයාත කරන්න.</td></tr>
+    <tr><td>පේළි බොහොමයක් මඟ හැරිණි</td><td>සාරාංශයේ හේතු කියවන්න (Save Skipped Rows…). කණ්ඩායම් ශීර්ෂ සහ එකතු පේළි හිතාමතාම මඟ හරිනු ලැබේ.</td></tr>
+  </table>
+
+  <h3>Tally වෙතින් ශේෂ</h3>
+  <p>සෑම පාර්ශවයක් සඳහාම: <strong>Gateway of Tally → Display More Reports → Account Books → Ledger</strong> වෙත ගොස් අවසාන ශේෂය සටහන් කරන්න. මුදල් සහ බැංකු සඳහා: <strong>Display More Reports → Account Books → Cash/Bank Book(s)</strong>. ඒවා ආරම්භක ශේෂ ලෙස ඇතුළත් කරන්න (පරිච්ඡේදය 4, පියවර 2 සහ 3).</p>
+
+  <div class="tip">💡 මාරු වීමෙන් පසු අවම වශයෙන් මාස 2–3ක් <strong>ඔබේ පැරණි මෘදුකාංගය ප්‍රවේශ විය හැකි ලෙස තබා ගන්න</strong>. පැරණි ගනුදෙනු යොමු කිරීමට ඔබට අවශ්‍ය විය හැක. එම පැරණි ගනුදෙනු Accelent වෙත ඇතුළත් කිරීමට අවශ්‍ය නැත.</div>
+
+  <div class="good">✅ <strong>ඔබේ පැරණි දත්ත පැරණි මෘදුකාංගයේ ආරක්ෂිතයි.</strong> Accelent ට අවශ්‍ය වන්නේ ශේෂ පමණි — ආරම්භක ලක්ෂ්‍යය. සියලු අනාගත ගනුදෙනු Accelent හි සිදු වේ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 6 -->
+<div class="chapter-banner">පරිච්ඡේදය 6 — භාෂාව සහ තේමාව</div>
+<div class="section" id="ch6">
+  <h2>6. භාෂාව සහ තේමාව</h2>
+
+  <h3>භාෂාව වෙනස් කිරීම</h3>
+  <p>Accelent <strong>භාෂා 18ක්</strong> සඳහා සහාය දක්වයි: English, Hindi (हिंदी), Urdu (اردو), Spanish, French, German, Bengali (বাংলা), Tamil (தமிழ்), Telugu (తెలుగు), Kannada (ಕನ್ನಡ), Gujarati (ગુજરાતી), Marathi (मराठी), Punjabi (ਪੰਜਾਬੀ), Nepali (नेपाली), Sinhala (සිංහල), Pashto (پښتو), Dhivehi (ދިވެހި) සහ Dzongkha (རྫོང་ཁ).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings</strong> වෙත යන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Language</strong> පතන ලැයිස්තුව සොයා ඔබේ භාෂාව තෝරන්න — සෑම භාෂාවක්ම තමන්ගේම අක්ෂර මාලාවෙන් පෙන්වයි (උදා: "සිංහල", "தமிழ்"), එබැවින් ඔබේ භාෂාව සොයා ගැනීමට ඉංග්‍රීසි හෝ කිසිදු කේතයක් දැනගත යුතු නැත.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">අතුරු මුහුණත — සියලු ඉඟි, ටැබ් නම් සහ සංචාලන ඉඟි — වහාම යාවත්කාලීන වේ. නැවත ආරම්භ කිරීමට අවශ්‍ය නැත.</div></div>
+  <div class="tip">💡 English/Hindi/Urdu/Spanish/French/German ට පසු එක් කළ භාෂාවල පරිවර්තන යන්ත්‍ර සහාය ඇතිව කළ ඒවා ය. ඔබේ භාෂාවෙන් අමුතු ලෙස කියවෙන ඉඟියක් දුටුවහොත්, අපට නිවැරදි කිරීමට හැකි වන ලෙස Settings → Support හරහා අපට දන්වන්න.</div>
+
+  <h3>තේමාව වෙනස් කිරීම</h3>
+  <p><strong>Settings → ⚙️ App Settings</strong> වෙත යන්න → වර්ණ තේමාවක් තෝරන්න (Light, Dark හෝ වෙනත්). තේමාව සියලු පැනලවල වහාම වෙනස් වේ.</p>
+
+  <div class="tip">💡 තෝරාගත් භාෂාව සහ තේමාව ස්වයංක්‍රීයව සුරැකේ. ඊළඟ වතාවේ ඔබ යෙදුම විවෘත කරන විටද ඒවා එලෙසම පවතී.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 7 -->
+<div class="chapter-banner">පරිච්ඡේදය 7 — උපකරණ පුවරුව</div>
+<div class="section" id="ch7">
+  <h2>7. උපකරණ පුවරුව</h2>
+  <p>උපකරණ පුවරුව ඔබේ ව්‍යාපාරය එක් බැල්මකින් පෙන්වයි. ඔබ එයට යන සෑම වතාවකම එය නැවුම් වේ.</p>
+
+  <figure class="shot"><a href="manual_images/dashboard.png" target="_blank"><img src="manual_images/dashboard.png" alt="Dashboard" loading="lazy"></a><figcaption>උපකරණ පුවරුව — ඉක්මන් ක්‍රියා බොත්තම්, මේ මාසයේ සංඛ්‍යා, ප්‍රස්තාර, තොග අනතුරු ඇඟවීම් සහ මෑත මිලදී ගැනීමේ ඇණවුම්.</figcaption></figure>
+
+  <table>
+    <tr><th>කොටස</th><th>එය පෙන්වන දේ</th></tr>
+    <tr><td>ඉක්මන් බොත්තම්</td><td>New Sale, New Purchase, Quick Order, Record Payment සහ Reports — වඩාත් සුලභ කාර්යයන් වෙත එක් ක්ලික් එකක්</td></tr>
+    <tr><td>Total Balance</td><td>ඔබේ සියලු මුදල් සහ බැංකු මුදල් එකට</td></tr>
+    <tr><td>Income / Expenses (Month)</td><td>මේ මාසයේ මේ දක්වා උපයාගත් සහ වියදම් කළ මුදල්</td></tr>
+    <tr><td>Overdue Payments · Pending Invoices</td><td>තවමත් ඔබට ණය පාරිභෝගිකයින්</td></tr>
+    <tr><td>Monthly Purchases</td><td>ඔබ මේ මාසයේ මිලදී ගත් දේ</td></tr>
+    <tr><td>Income vs Expenses · Account Distribution</td><td>පසුගිය මාස 6 ප්‍රස්තාරයක් ලෙස, සහ ඔබේ මුදල් ඇත්තේ කොතැනද (මුදල් සහ සෑම බැංකුවක්ම)</td></tr>
+    <tr><td>Stock Alerts</td><td>අඩු හෝ අවසන් වූ භාණ්ඩ, Low Stock / Out of Stock / Suggested Orders ගණන් සමඟ</td></tr>
+    <tr><td>Recent Purchase Orders</td><td>ඔබේ නවතම ඇණවුම් සහ ඒවා ලැබී ගෙවා ඇත්දැයි — <strong>View All Orders</strong> සම්පූර්ණ ලැයිස්තුව විවෘත කරයි</td></tr>
+    <tr><td>Top Items by Inventory Value</td><td>ඔබේ තොග මුදලින් වැඩිපුරම රඳවා ඇති භාණ්ඩ</td></tr>
+  </table>
+
+  <div class="tip">💡 උපකරණ පුවරුව සජීවීව ස්වයංක්‍රීයව නැවුම් නොවේ — යාවත්කාලීන සංඛ්‍යා බැලීමට වෙනත් පැනලයක් ක්ලික් කර ආපසු එන්න.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8 -->
+<div class="chapter-banner">පරිච්ඡේදය 8 — තොග</div>
+<div class="section" id="ch8">
+  <h2>8. තොග පැනලය</h2>
+  <p>තොග පැනලය ඔබ විකුණන සෑම නිෂ්පාදනයක්ම නිරීක්ෂණය කරයි — තොග මට්ටම්, මිල, කාණ්ඩ සහ කල් ඉකුත් වන දින.</p>
+
+  <h3>නව භාණ්ඩයක් එක් කිරීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">භාණ්ඩ ලැයිස්තුවට ඉහළින් ඇති <strong>➕ Add New Item</strong> ක්ලික් කර, වම් පස ඇති <strong>Add / Edit Item</strong> පෝරමය පුරවන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">පුරවන්න: Item Name, Category, Vendor, Buy Rate (ඔබ ගෙවූ මිල), Sell Price (ඔබ අය කරන මිල — එයට පහළින් Margin පෙන්වයි), GST %, <strong>Unit</strong> (pcs, kg, litre, metre… — kg, litre සහ අනෙකුත් මනින ඒකකවල 0.25 වැනි කොටස් ප්‍රමාණ ඉඩ දෙයි), Stock (දැනට ඔබ සතුව ඇති ප්‍රමාණය) සහ අවම තොග මට්ටම (අනතුරු ඇඟවීමේ සීමාව). භාණ්ඩ කේතයක් සඳහා <strong>🔍 Generate Smart Code</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">අවශ්‍ය නම් එක් කරන්න: Sub Category, Barcode, MRP (මිල ගණනය කිරීමට <strong>Calculate from MRP + Discount %</strong> භාවිතා කරන්න), HSN Code (GST සඳහා), Expiry Date (ඉක්මනින් නරක් වන භාණ්ඩ සඳහා). ඉන්දියාවේ, ඉලක්කම් 4 හෝ වැඩි HSN කේතයක් ඇතුළත් කිරීමෙන් එම කේතයේ GST % ස්වයංක්‍රීයව සකසයි.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Save</strong> ක්ලික් කරන්න.</div></div>
+  <div class="tip">💡 <strong>ලාභ ප්‍රතිශතය ඉක්මනින් වෙනස් කිරීම:</strong> Sell Price ට පහළින් ඇති <strong>Margin: x%</strong> මත මූසිකය තබා රෝදය කරකවන්න — සෑම පියවරක්ම ලාභය 1% කින් ඉහළ හෝ පහළ දමයි (0.1% සඳහා <strong>Ctrl</strong> අල්ලාගෙන සිටින්න) සහ Sell Price Buy Rate වෙතින් නැවත ගණනය වේ. ආයාත කළ භාණ්ඩ 20% කින් ආරම්භ වන නිසා, ඔබට අවශ්‍ය ලාභය සැකසීමට වේගවත්ම ක්‍රමය මෙයයි.</div>
+
+  <h3>භාණ්ඩ මැකීම</h3>
+  <p>භාණ්ඩයක් මැකිය හැක්කේ එය කිසි විටෙක මිලදී ගෙන, විකුණා, ආපසු දී හෝ ගෙනයාමක් නොකළේ නම් පමණි. ඉතිහාසයක් ඇති භාණ්ඩ තොගයේ රැඳී සිටින නිසා ඔබේ බිල්පත්, වාර්තා සහ තොග වාර්තා සම්පූර්ණව පවතී. මකන ලද සෑම භාණ්ඩයක්ම <strong>Deletion Watcher</strong> හි තබා ඇති අතර, එහි තොගය සමඟ එතැනින් ප්‍රතිසාධනය කළ හැක.</p>
+  <p><strong>තොග ආයාතයක් හරහා පැමිණි</strong> සහ වැරදීමකින් ආයාත කළ භාණ්ඩයක් පරිපාලකට මැකිය හැක (එය තෝරන්න → <strong>Delete Selected</strong> → පරිපාලක මුරපදය). මෙය එහි ආරම්භක තොගය ද ඉවත් කරයි; තහවුරු කිරීම ප්‍රමාණය සහ වටිනාකම පෙන්වයි. එය ඉඩ දෙන්නේ එම භාණ්ඩය සඳහා කිසිවක් මිලදී ගෙන, විකුණා හෝ ආපසු දී නැති විට, එහි තොගය ආයාතය ගෙනා ප්‍රමාණයම වන විට, සහ ආයාතයේ මූල්‍ය වර්ෂය වසා නැති විට පමණි.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">භාවිතා නොකළ භාණ්ඩ කිහිපයක් එකවර ඉවත් කිරීමට, <strong>🧹 Clean Up Unused Items</strong> ක්ලික් කරන්න (පරිපාලකට පමණක් පෙන්වයි). එය කිසි විටෙක මිලදී ගෙන හෝ විකුණා නැති සෑම භාණ්ඩයක්ම ලැයිස්තුගත කරයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඉවත් කළ යුතු භාණ්ඩ සලකුණු කරන්න (සෙවුම් කොටුව හෝ <strong>Select All shown</strong> භාවිතා කරන්න), <strong>🗑️ Delete Selected Items</strong> ක්ලික් කර පරිපාලක මුරපදයෙන් තහවුරු කරන්න. මුලින්ම ඔබේ දත්තවල උපස්ථයක් සුරැකේ.</div></div>
+
+  <h3>තොග වර්ණ දර්ශක</h3>
+  <table>
+    <tr><th>වර්ණය</th><th>අර්ථය</th></tr>
+    <tr><td>🟢 OK</td><td>තොගය හොඳ තත්වයේ ඇත</td></tr>
+    <tr><td>🟡 Low</td><td>තොගය අවම මට්ටමට වඩා අඩුයි — නැවත ඇණවුම් කිරීම සලකා බලන්න</td></tr>
+    <tr><td>🔴 Out</td><td>තොගය අවසන් — ප්‍රමාණය 0 යි</td></tr>
+  </table>
+  <figure class="shot"><a href="manual_images/inventory.png" target="_blank"><img src="manual_images/inventory.png" alt="Inventory Management" loading="lazy"></a><figcaption>Inventory Management — වම් පස Add / Edit Item පෝරමය, දකුණු පස සෑම භාණ්ඩයක්ම එහි Status සමඟ.</figcaption></figure>
+
+  <h3>තොග වාර්තා</h3>
+  <p><strong>Inventory Reports</strong> පැනලය (ප්‍රධාන Inventory වෙතින් වෙනම) තොග තක්සේරු වාර්තා, චලන ඉතිහාසය සහ කාණ්ඩ අනුව සාරාංශ ලබා දෙයි. මාසික තොග විගණන සඳහා එය භාවිතා කරන්න.</p>
+
+  <h3>Audit Trail</h3>
+  <p><strong>Audit Trail</strong> ටැබය (Inventory Management ඇතුළත) සෑම තොග වෙනසක්ම — විකුණුම්, මිලදී ගැනීම්, ගැලපීම්, ආපසු දීම් සහ ආයාත — <strong>Value</strong> තීරුවක් සහ ඔබ පෙරූ ඕනෑම දෙයක ධාවන <strong>Total value</strong> සමඟ ලැයිස්තුගත කරයි. තොග ආයාතයක් ව්‍යාපාරයට ගෙනා තොග වටිනාකම හරියටම බැලීමට Reason = "import" පෙරන්න. වත්මන් පෙරූ ලැයිස්තුව මුද්‍රණය කිරීමට <strong>🖨️ Print Report</strong> භාවිතා කරන්න. මෙම ටැබය කියවීමට පමණි — භාණ්ඩයක තොගය නිවැරදි කිරීමට හෝ මැකීමට, Inventory Management ටැබයට යන්න.</p>
+
+  <h3>කල් ඉකුත් වීමේ අනතුරු ඇඟවීම්</h3>
+  <p><strong>Expiry Alerts</strong> පැනලය කල් ඉකුත් වීමට ළං වන භාණ්ඩ ලැයිස්තුගත කරයි. භාණ්ඩ තැඹිලි (ඉක්මනින් ඉකුත් වන) හෝ රතු (ඉකුත් වූ) පාටින් ඉස්මතු වේ. <strong>Set Expiry</strong> හෝ <strong>Print Report</strong> සඳහා ඕනෑම පේළියක් දකුණු-ක්ලික් කරන්න. විකිණීමට පෙර ඉකුත් වූ තොග ඉවත් කිරීමට මෙය භාවිතා කරන්න.</p>
+
+  <div class="warn">⚠ ඔබ විකුණුමක් (තොගය අඩු වේ) හෝ මිලදී ගැනීමක් (තොගය වැඩි වේ) සටහන් කරන විට තොග මට්ටම් ස්වයංක්‍රීයව යාවත්කාලීන වේ. භෞතික තොග විගණන හැර කිසි විටෙක අතින් තොග එක් නොකරන්න හෝ අඩු නොකරන්න.</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 8b -->
+<div class="chapter-banner">පරිච්ඡේදය 8b — අඩු තොග නිරීක්ෂකය</div>
+<div class="section" id="ch8b">
+  <h2>8b. අඩු තොග නිරීක්ෂකය</h2>
+  <p>Low Stock Monitor එහි අවම තොග මට්ටමේ හෝ ඊට පහළින් ඇති සෑම භාණ්ඩයක්ම ලැයිස්තුගත කර නැවත ඇණවුම් කිරීමට ක්‍රම දෙකක් ලබා දෙයි: සම්පූර්ණයෙන්ම නව භාණ්ඩයක් සහ සැපයුම්කරුවෙකු එකට ලියාපදිංචි කිරීමට ඉක්මන් විශාරදයක්, සහ නිසි මිලදී ගැනීමේ ඇණවුමක් සෑදීමට පූර්ණ "Order from Vendor" තිරයක්. Purchase Panel හි New Purchase මෙන් නොව, මෙහි සාදන ඇණවුම් <strong>කෙටුම්පත්</strong> වේ — ඔබ ඒවා යවා භාණ්ඩ ලැබුණු බව සටහන් කරන තුරු ඒවා තොග හෝ සැපයුම්කරු ශේෂ ස්පර්ශ නොකරයි.</p>
+
+  <h3>📋 Show Low Stock Suggestions</h3>
+  <p>අඩු වෙමින් පවතින සියල්ල එකවර නැවත ඇණවුම් කිරීමට වේගවත්ම ක්‍රමය.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Show Low Stock Suggestions</strong> ක්ලික් කරන්න. ලැයිස්තුව අවම තොගයට වඩා අඩු සෑම භාණ්ඩයක්ම, යෝජිත Order Qty, Rate, GST % සහ Vendor සමඟ පෙන්වයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඇණවුම් කළ යුතු භාණ්ඩ සලකුණු කරන්න (හෝ <strong>Select All</strong> / <strong>Invert</strong> භාවිතා කරන්න) සහ ඕනෑම Order Qty ගළපන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">සැපයුම්කරුවෙකුට එක් ඇණවුමක් ලබා ගැනීමට <strong>Group by vendor and create separate orders</strong> සලකුණු කර තබා, <strong>Create Orders for Ticked Items</strong> ක්ලික් කරන්න. නව ඇණවුම් පිටුපස ලැයිස්තුවේ කෙටුම්පත් ලෙස පෙනේ.</div></div>
+  <figure class="shot"><a href="manual_images/low-stock-suggestions.png" target="_blank"><img src="manual_images/low-stock-suggestions.png" alt="Low Stock Purchase Suggestions" loading="lazy"></a><figcaption>Low Stock Purchase Suggestions — භාණ්ඩ සලකුණු කර, සැපයුම්කරුවෙකුට එක් ඇණවුමක් සාදන්න.</figcaption></figure>
+
+  <h3>⚡ Quick New Order</h3>
+  <p>සැබවින්ම නව සැපයුම්කරුවෙකුගෙන් සැබවින්ම නව නිෂ්පාදනයක් එකවර ලියාපදිංචි කරන විට මෙය භාවිතා කරන්න — භාණ්ඩ විස්තර සහ සැපයුම්කරු විස්තර පැත්තෙන් පැත්තට, කෙටුම්පත් මිලදී ගැනීමේ ඇණවුමකින් අවසන් වේ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚡ Quick New Order</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>1️⃣ Add / Edit Item</strong> — Vendor (නව සැපයුම්කරුගේ නම ටයිප් කරන්න), Item Name, Category, පසුව Code සඳහා <strong>🔍 Generate</strong> ක්ලික් කරන්න. Buy Rate, Sell Price, GST%, HSN, Stock, Min Stock පුරවන්න. නිෂ්පාදනයේ බාකෝඩය <strong>📱 Scan with Phone</strong> මඟින් ස්කෑන් කරන්න, නැතහොත් හිස්ව තබා පසුව එක් කරන්න. <strong>💾 Save Item to Inventory</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>2️⃣ Vendor Details & Link</strong> — සැපයුම්කරුගේ දුරකථනය, ලිපිනය, TIN/GSTIN සහ ඊමේල් පුරවා, ඔවුන් සම්බන්ධ කර කෙටුම්පත් PO පේළියක් සෑදීමට සුරකින්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">අවශ්‍ය නම් පෙරදසුන් පේළියේ Order Qty ගළපන්න — මුළු මුදල GST සමඟ නැවත ගණනය වේ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>📤 Send Purchase Order</strong> ක්ලික් කරන්න. PO එක SENT ලෙස සලකුණු වී පහළ <strong>Existing Purchase Orders</strong> හි පෙනේ.</div></div>
+
+  <h3>Order from Vendor</h3>
+  <p>ඔබ දැනටමත් මිලදී ගන්නා සැපයුම්කරුවෙකුගෙන් සාමාන්‍ය නැවත ඇණවුමක් සඳහා මෙය භාවිතා කරන්න — එය Purchase Panel හි New Purchase තිරයට බොහෝ දුරට සමානව ක්‍රියා කරයි (එකම සැපයුම්කරු-පළමු ස්වයං පිරවීම, ස්කෑන් කර එක් කිරීම, සහ පේළි අනුව බාකෝඩ ✓/+📷/🗑 දර්ශක — සම්පූර්ණ බාකෝඩ විස්තරය සඳහා පරිච්ඡේදය 10 බලන්න), එක් ප්‍රධාන වෙනසක් සමඟ: මෙහි සුරැකීමෙන් ක්ෂණික මිලදී ගැනීමක් නොව <strong>කෙටුම්පත් මිලදී ගැනීමේ ඇණවුමක්</strong> සාදයි. ඇණවුම යවා පසුව ලැබෙන තුරු තොගයට හෝ සැපයුම්කරුගේ ශේෂයට කිසිවක් එක් නොවේ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">සැපයුම්කරු තෝරන්න — ඔවුන්ගේ සුපුරුදු භාණ්ඩ Order Items වගුවට ස්වයංක්‍රීයව පිරවෙන අතර, පිරික්සුම් කොටුව පෙරනිමියෙන් සලකුණු කර ඇත.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">මෙවර ඇණවුම් කිරීමට අකමැති ඕනෑම දෙයක සලකුණ ඉවත් කරන්න, ප්‍රමාණ ගළපන්න, නැතහොත් Purchase Panel හි මෙන්ම නව භාණ්ඩ ස්කෑන් කරන්න/එක් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">කෙටුම්පත සුරැකීමට OK ක්ලික් කර, සූදානම් වූ විට <strong>Existing Purchase Orders</strong> වෙතින් එය යවන්න.</div></div>
+
+  <h3>Existing Purchase Orders</h3>
+  <p>ඔබ සාදා ඇති සෑම මිලදී ගැනීමේ ඇණවුමකම (ඉහත ක්‍රම දෙකෙන්ම) ලැයිස්තුවක් වර්ණ තත්ව තිතක් සමඟ විවෘත කරයි: <strong>අළු</strong> = කෙටුම්පත, <strong>තැඹිලි</strong> = යවන ලද, <strong>නිල්</strong> = ලැබුණු, <strong>කොළ</strong> = සම්පූර්ණ (ලැබී සම්පූර්ණයෙන් ගෙවා ඇත). මෙතැනින් ඔබට කෙටුම්පත් ඇණවුමක් යැවිය හැක, යවන ලද/ලැබුණු ඇණවුමකට ගෙවීම් සටහන් කළ හැක, සහ භාණ්ඩ ලැබුණු ලෙස සලකුණු කළ හැක. කෙටුම්පත්/අවලංගු/සම්පූර්ණ ඇණවුමක් <strong>🗑️ Delete</strong> කිරීමට හෝ දැනටමත් යවා ඇති එකක් <strong>❌ Cancel</strong> කිරීමට පේළියක් දකුණු-ක්ලික් කරන්න.</p>
+
+  <div class="good">✅ භාණ්ඩ සටහන් කිරීමට ඔබ සූදානම් වූ විට, Purchase Panel → <strong>📋 Load from PO</strong> වෙත ගොස් ඇණවුම තෝරන්න — එය සැපයුම්කරු සහ භාණ්ඩ සුරැකීමට පෙර ඔබට සමාලෝචනය කිරීමට සාමාන්‍ය New Purchase පෝරමයකට පූරණය කරයි. එම සුරැකීම අවසානයේ තොගය සහ සැපයුම්කරුට ගෙවිය යුතු ශේෂය යාවත්කාලීන කරන පියවරයි, එබැවින් PO එකක් තනිවම ඒවාට කිසි විටෙක බලපාන්නේ නැත.</div>
+
+  <div class="tip">💡 Quick New Order තෝරන්න සම්පූර්ණයෙන්ම නව භාණ්ඩයක් + සම්පූර්ණයෙන්ම නව සැපයුම්කරුවෙකු එකට ඇති විට පමණි. වෙනත් ඕනෑම දෙයක් සඳහා — පවතින සැපයුම්කරුවෙකුගෙන් නව භාණ්ඩයක්, නව සැපයුම්කරුවෙකුගෙන් පවතින භාණ්ඩයක්, හෝ සාමාන්‍ය නැවත ඇණවුමක් — ඒ වෙනුවට Order from Vendor භාවිතා කරන්න.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 8c -->
+<div class="chapter-banner" data-for="production">පරිච්ඡේදය 8c — නිෂ්පාදනය <span class="for-badge">නිෂ්පාදකයින්, අවන්හල් සහ හෝටල් සඳහා</span></div>
+<div class="section" id="ch8c" data-for="production">
+  <h2>8c. නිෂ්පාදනය (ඔබේම නිෂ්පාදන සෑදීම)</h2>
+  <div class="tip">💡 අවන්හලක හෝ හෝටලයක සැමවිටම <strong>🏭 Production</strong> ඇත (එහි වට්ටෝරු එහි පවතී). වෙළඳසැලක් හෝ වෙළඳ ව්‍යාපාරයක් <strong>Settings → 🏢 Company</strong> හි <strong>We make our own products</strong> සලකුණු කර Accelent වසා නැවත විවෘත කිරීමෙන් පසු එය දකී (වට්ටෝරු දැනටමත් පවතින තැන්වල එය ඉබේම පෙන්වයි).</div>
+  <p>ඔබ විකුණන දේ ඔබම සාදන්නේ නම් — කේක්, ගෘහ භාණ්ඩ, ඇඳුම්, කුළුබඩු, එකලස් කළ භාණ්ඩ — Accelent ට ඔබ වෙනුවෙන් තොගය සහ පිරිවැය නිවැරදිව තබා ගත හැක. ඔබ එක් වරක් <strong>වට්ටෝරුවක්</strong> ලියයි (එක් කාණ්ඩයක් භාවිතා කරන දේ); ඔබ යමක් සාදන සෑම වතාවකම, Accelent අමුද්‍රව්‍ය තොගයෙන් ඉවත් කර, නිමි භාණ්ඩ එක් කර, එකක පිරිවැය ගණනය කරයි. එය <strong>Inventory → 🏭 Production</strong> වෙතින් විවෘත කරන්න.</p>
+
+  <h3>ආරම්භ කිරීමට පෙර: භාණ්ඩ සහ ඒකක</h3>
+  <p>සියල්ල තොග භාණ්ඩයකි: <strong>අමුද්‍රව්‍ය</strong> (චොකලට් කේක් එකකට: කඩල පිටි, චොකලට්, සීනි, ගී) සහ <strong>නිමි නිෂ්පාදනය</strong> (කේක් එක).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Inventory පෝරමයේ සෑම භාණ්ඩයකටම එහි <strong>Unit</strong> දෙන්න: <em>pcs</em>, <em>box</em> සහ අනෙකුත් ගණන් කරන ඒකක සම්පූර්ණ සංඛ්‍යා වේ; <em>kg</em>, <em>g</em>, <em>litre</em>, <em>ml</em>, <em>metre</em> සහ අනෙකුත් මනින ඒකක 0.25 kg වැනි කොටස් ප්‍රමාණ ඉඩ දෙයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඔබ සාමාන්‍යයෙන් මිලදී ගන්නා ලෙසම අමුද්‍රව්‍ය <strong>Purchases</strong> හරහා ගෙන එන්න. එය ඒවා තොගයට දමයි <em>සහ</em> ඒවායේ පිරිවැය Accelent ට පවසයි — ඔබේ නිෂ්පාදනයේ පිරිවැය ගණනය කරන්නේ මෙයිනි.</div></div>
+
+  <h3>වට්ටෝරුවක් ලිවීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Production → 🧾 Recipes</strong>, පසුව ඉහළ දකුණේ <strong>➕ New Recipe</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Finished item:</strong> නිෂ්පාදනය තෝරන්න, හෝ එහි නම ටයිප් කරන්න. එය තවම Inventory හි නැත්නම්, ඔබ සුරකින විට Accelent එය එක් කිරීමට ඉදිරිපත් කරයි (නම, ඒකකය, විකුණුම් මිල සහ GST).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>One batch makes:</strong> එක් කාණ්ඩයක් ලබා දෙන ප්‍රමාණය, උදා: කේක් 10.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Materials for one batch:</strong> සෑම අමුද්‍රව්‍යයක් සඳහාම <strong>➕ Add Material</strong> ක්ලික් කරන්න, එක් කාණ්ඩයක් භාවිතා කරන ප්‍රමාණය සමඟ (උදා: කඩල පිටි 1 kg, චොකලට් 0.5 kg, සීනි 0.8 kg, ගී 1 litre) සහ, යම් ප්‍රමාණයක් නාස්ති වේ නම්, <strong>Wastage %</strong>. ලැයිස්තුවට පහළින්, Accelent අද සාමාන්‍ය පිරිවැයෙන් එක් කාණ්ඩයක අමුද්‍රව්‍ය පිරිවැය සහ එක් භාණ්ඩයක පිරිවැය පෙන්වයි. <strong>In stock</strong> තීරුව ගබඩාවේ එක් එක් අමුද්‍රව්‍යය කොපමණ තිබේද පෙන්වන අතර, එක් කාණ්ඩයකට ඊට වඩා අවශ්‍ය වූ විට 🔴 පෙන්වයි.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>💾 Save Recipe</strong> ක්ලික් කරන්න. ඔබ වට්ටෝරුවක් එක් වරක් ලියා එම නිෂ්පාදනය සාදන සෑම වතාවකම එය භාවිතා කරයි.</div></div>
+
+  <p>ඔබේ වට්ටෝරු වම් පස කාඩ්පත් ලෙස ලැයිස්තුගත වේ. සෑම කාඩ්පතක්ම එක් කාණ්ඩයක් කොපමණ සාදයිද, අමුද්‍රව්‍ය කීයක් භාවිතා කරයිද, සහ එය <strong>🍳 Made to order</strong> ද <strong>🏭 Made in batches</strong> ද යන්න පෙන්වයි. වට්ටෝරුව විවෘත කර වෙනස් කිරීමට කාඩ්පතක් ක්ලික් කරන්න; විවෘත එකට ඝන දාරයක් ඇත. වට්ටෝරුවක් ඉක්මනින් සොයා ගැනීමට, <strong>Search recipes</strong> හි ටයිප් කරන්න.</p>
+
+  <h3>එය සෑදීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🏭 Make</strong> ටැබය: භාණ්ඩය සහ සෑදිය යුතු <strong>ප්‍රමාණය</strong> තෝරන්න. වගුව අවශ්‍ය සෑම අමුද්‍රව්‍යයක්ම, තොගයේ ඇති ප්‍රමාණය සහ හිඟ ඕනෑම දෙයක් පෙන්වයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">අවශ්‍ය නම් මෙම වාරය සඳහා <strong>Labour / other costs</strong> ඇතුළත් කරන්න (වැටුප්, ගෑස්, විදුලිය) — ඒවා ඔබ සාදන දේවල පිරිවැයට එක් වේ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🏭 Make</strong> ක්ලික් කර තහවුරු කරන්න. අමුද්‍රව්‍ය අඩු වේ, නිමි භාණ්ඩ වැඩි වේ, සහ වාරයට <strong>PRD-0001</strong> වැනි අංකයක් ලැබේ. එය සෑම භාණ්ඩයකම <strong>Item History</strong> හි <em>Production</em> ලෙස පෙනේ.</div></div>
+  <div class="tip">💡 කිසියම් අමුද්‍රව්‍යයක් හිඟ නම්, <strong>Make</strong> අක්‍රිය වී හිඟය පෙන්වයි — මුලින්ම එම අමුද්‍රව්‍යය මිලදී ගන්න හෝ සාදන්න, නැතහොත් අඩුවෙන් සාදන්න. අමුද්‍රව්‍යයක් <em>No cost known</em> පෙන්වයි නම්, එය කිසි විටෙක Purchases හරහා මිලදී ගෙන නැති අතර Buy Rate එකක් නැත: Inventory හි එහි Buy Rate සකසන්න, නැතහොත් නිෂ්පාදනයේ පිරිවැයෙන් එය ඉවත් වේ. හිඟ අමුද්‍රව්‍යයක් වගුවේ 🔴 ලෙස සලකුණු වේ.</div>
+
+  <h3>එහි පිරිවැය</h3>
+  <p>වාරයක පිරිවැය යනු භාවිතා කළ අමුද්‍රව්‍ය (ඒවායේ සාමාන්‍ය මිලදී ගැනීමේ පිරිවැයෙන්) සහ ශ්‍රමය හා අනෙකුත් වියදම් ය. නිමි භාණ්ඩයේ <strong>Buy Rate</strong> එහි සාමාන්‍ය නිෂ්පාදන පිරිවැය බවට පත් වේ, එබැවින් ඔබේ තොග වටිනාකම සහ සෑම විකුණුමකම ලාභය එම භාණ්ඩය සෑදීමට සැබවින්ම වැය වූ දෙයින් ගණනය වේ. නිමි භාණ්ඩ සුපුරුදු පරිදි Sales හි විකුණන්න.</p>
+
+  <h3>ඇණවුමට සාදන ආහාර (අවන්හල්)</h3>
+  <p>අවන්හල් ආහාරයක් පිසින්නේ එය ඇණවුම් කළ විටයි, කලින් සාදන්නේ නැත. එහි වට්ටෝරුවේ <strong>Made to order</strong> සලකුණු කරන්න: එවිට ආහාරයට තමන්ගේම තොගයක් නැති අතර, එය විකුණන සෑම වතාවකම එහි අමුද්‍රව්‍ය තොගයෙන් ඉවත් වේ (සංස්කරණය කළ හෝ මැකූ බිල්පතක් ඒවා ආපසු දමයි). ආහාරයක් විකිණිය හැක්කේ ගබඩාවේ එහි අමුද්‍රව්‍ය ප්‍රමාණවත් විට පමණි. ඇණවුමට සාදන ආහාර Make ටැබයේ ලැයිස්තුගත නොවන අතර, අඩු-තොග ලැයිස්තුවලින් ද ඉවත් කෙරේ. <a href="#ch9b">පරිච්ඡේදය 9b — අවන්හල</a> බලන්න. ඇණවුමට සාදන ආහාරයක් කිසි විටෙක මිලදී ගන්නේ නැත: එවැන්නක් ඇතුළත් මිලදී ගැනීමක්, මිලදී ගැනීමේ ඇණවුමක් හෝ දුරකථන මිලදී ගැනීමක් ප්‍රතික්ෂේප කෙරේ, ඒ වෙනුවට එහි අමුද්‍රව්‍ය මිලදී ගැනීමට පණිවිඩයක් සමඟ.</p>
+
+  <h3>ඉතිහාසය සහ Undo</h3>
+  <p><strong>📜 History</strong> ටැබය සෑම වාරයක්ම එය භාවිතා කළ අමුද්‍රව්‍ය සහ පිරිවැය සමඟ ලැයිස්තුගත කරයි. වාරයක් වැරදීමක් නම්, පරිපාලකට එය තෝරා <strong>↩ Undo Run</strong> ක්ලික් කළ හැක: අමුද්‍රව්‍ය තොගයට ආපසු යයි, එය සෑදූ භාණ්ඩ ඉවත් කෙරේ, සහ භාණ්ඩයේ පිරිවැය පෙර තිබූ තත්වයට පැමිණේ. භාණ්ඩයක නවතම වාරය පමණක් අහෝසි කළ හැකි අතර, එය සෑදූ සියල්ල තවමත් තොගයේ ඇති විට පමණි.</p>
+
+  <div class="tip">💡 Production භාවිතා කිරීමට කාර්ය මණ්ඩලයට <strong>Edit inventory</strong> අවසරය අවශ්‍යයි. <strong>See purchase costs</strong> නොමැතිව ඔවුන්ට දේවල් සෑදිය හැකි නමුත් කිසිදු පිරිවැයක් නොපෙනේ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9 -->
+<div class="chapter-banner" data-for="general">පරිච්ඡේදය 9 — විකුණුම් <span class="for-badge">වෙළඳසැල්, වෙළෙන්දන් සහ සේවා සඳහා</span></div>
+<div class="section" id="ch9" data-for="general">
+  <h2>9. විකුණුම් පැනලය</h2>
+  <p>විකුණුම් පැනලයේදී ඔබ පාරිභෝගික ඉන්වොයිස් සාදයි. සෑම විකුණුමක්ම මෙහි සටහන් වේ.</p>
+
+  <h3>නව ඉන්වොයිසියක් සෑදීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">විකුණුම් පැනලයේ වම් පස <strong>Invoice Form</strong> වේ. පාරිභෝගිකයාගේ නම ඇතුළත් කරන්න — ඔවුන් දන්නා පාර්ශවයක් නම්, ඔවුන්ගේ ශේෂය පෙනේ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ගෙවීමේ ක්‍රමය</strong> තෝරන්න: Cash, Bank, UPI, හෝ Credit (ණයට).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">දුරකථන කැමරාවෙන් නිෂ්පාදන බාකෝඩයක් ස්කෑන් කිරීමට <strong>📱 Scan with Phone</strong> ක්ලික් කරන්න, නැතහොත් ඔබේ තොගයෙන් නිෂ්පාදන සොයා තෝරා ගැනීමට <strong>➕ Add Item</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ප්‍රමාණ ගළපන්න. මුළු මුදල ස්වයංක්‍රීයව යාවත්කාලීන වේ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">අවශ්‍ය නම් වට්ටම් මුදලක් හෝ අමතර ගාස්තු (P&amp;F) ඇතුළත් කරන්න.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>💾 Save Invoice</strong> ක්ලික් කරන්න. ඉන්වොයිසිය සුරැකේ, තොගය අඩු වේ, සහ පාරිභෝගිකයාගේ ශේෂය යාවත්කාලීන වේ.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">ඉන්වොයිසිය මුද්‍රණය කිරීමට <strong>🖨 Print</strong> ක්ලික් කරන්න. එය පාරිභෝගිකයාට WhatsApp හි යැවීමට, පහත <em>WhatsApp හි බිල්පත් යැවීම</em> බලන්න.</div></div>
+
+  <figure class="shot"><a href="manual_images/sales-invoice.png" target="_blank"><img src="manual_images/sales-invoice.png" alt="Create Invoices" loading="lazy"></a><figcaption>ඉන්වොයිසියක් සෑදීම — වම් පස පාරිභෝගික විස්තර, දකුණු පස භාණ්ඩ සහ මුළු එකතු, පහළින් සුරැකූ ඉන්වොයිස්.</figcaption></figure>
+
+  <h3>WhatsApp හි බිල්පත් යැවීම</h3>
+  <p>Accelent බිල්පත ම යවයි: මුල් ඉන්වොයිසියේ PDF එකක්, මුද්‍රණය වන ආකාරයටම, <em>Original for Recipient</em> ලෙස සලකුණු කර, ඔබ එක් කර ඇත්නම් ඔබේ අත්සන සහ මුද්‍රාව සමඟ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">සුරැකූ ඉන්වොයිස් ලැයිස්තුවේ, ඉන්වොයිසියේ <strong>W</strong> බොත්තම → <strong>📄 Send the bill (PDF)</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent PDF එක සුරකියි, පිටපත් කරයි, සහ කෙටි පණිවිඩයක් සමඟ පාරිභෝගිකයාගේ WhatsApp කතාබහ විවෘත කරයි.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">කතාබහ තුළ ක්ලික් කර, බිල්පත අමුණන්න <strong>Ctrl+V</strong> ඔබා, <strong>Send</strong> ඔබන්න. Ctrl+V එය නොඅමුණයි නම්, <strong>📂 Show the PDF</strong> ක්ලික් කර ගොනුව කතාබහට ඇදගෙන යන්න.</div></div>
+  <div class="tip">💡 <strong>අත්සන සහ මුද්‍රාව:</strong> ඒවා එක් වරක් <strong>Settings → 🏢 Company → Signature &amp; Stamp</strong> හි එක් කරන්න: සුදු කඩදාසියක අත්සන් කර මුද්‍රාව තබා, ඡායාරූපයක් ගෙන හෝ ස්කෑන් කර, සමීපව කපන්න. ඒවා WhatsApp හි යවන සෑම බිල්පතකම <em>Authorised Signatory</em> කොටුවේ පෙනේ; ඒවා මුද්‍රණය කිරීමට ද <strong>Also put them on printed bills</strong> සලකුණු කරන්න.</div>
+  <p><strong>W</strong> බොත්තම <strong>💬 Send a payment reminder (text)</strong> ද ලබා දෙයි. මිලදී ගැනීමේ බිල්පත් ද එලෙසම යවනු ලැබේ: බිල්පත දකුණු-ක්ලික් කරන්න → <strong>📄 Send the bill (PDF) on WhatsApp</strong>.</p>
+  <div class="tip">💡 <strong>බ්‍රවුසරයේ WhatsApp (WhatsApp Web) භාවිතා කරනවාද?</strong> Accelent යවන සෑම කතාබහක්ම WhatsApp <strong>නව බ්‍රවුසර ටැබයක</strong> විවෘත කරන අතර, WhatsApp Web එහි නැවත පූරණය වේ; WhatsApp ක්‍රියා කරන්නේ එලෙස වන අතර Accelent ට එය වෙනස් කළ නොහැක. පැරණි WhatsApp ටැබයක් <em>WhatsApp is open in another window</em> පවසන්නේ නම්, එය සාමාන්‍යයි: නව ටැබය දිගටම භාවිතා කර පැරණි ඒවා වරින් වර වසන්න. එක් WhatsApp ටැබයක සිටීමට කැමතිද? නව ටැබය වසා, ඔබේ සුපුරුදු WhatsApp ටැබයට ආපසු ගොස් (අසයි නම් <strong>Use here</strong> ක්ලික් කරන්න), පාරිභෝගිකයාගේ කතාබහ විවෘත කර <strong>Ctrl+V</strong> ඔබන්න: බිල්පත තවමත් පිටපත් කර ඇත.</div>
+  <p><strong>දුරකථනයෙන්:</strong> Accelent යෙදුමේ, ඉන්වොයිසිය හෝ මිලදී ගැනීමේ බිල්පත විවෘත කර ඉහළ ඇති <strong>📄</strong> නිරූපකය තට්ටු කරන්න. PC එක එම PDF එකම සාදන අතර දුරකථනයේ Share මෙනුව විවෘත වේ: WhatsApp තෝරා, පසුව පාරිභෝගිකයා තෝරන්න.</p>
+
+  <h3>පැරණි ඉන්වොයිස් බැලීම</h3>
+  <p>පෝරමයට පහළින් ඇති <strong>Saved Sales Invoices</strong> ලැයිස්තුව සියලු සුරැකූ ඉන්වොයිස් පෙන්වයි; Source තීරුව එක් එක් එක සාදන ලද්දේ ඩෙස්ක්ටොප් හෝ දුරකථනයේද යන්න පෙන්වයි. පාරිභෝගික නාමය, ඉන්වොයිස් අංකය, හෝ දින පරාසය අනුව සෙවිය හැක. සෑම ඉන්වොයිස් පේළියකම View, Edit, Print, හෝ Delete බොත්තම් ඇත.</p>
+
+  <h3>විකුණුම් ආපසු දීම්</h3>
+  <p>පාරිභෝගිකයෙකු භාණ්ඩ ආපසු දෙන්නේ නම්, <strong>Returns</strong> පැනලය → <strong>Sales Returns</strong> ටැබයට යන්න. මුල් ඉන්වොයිසිය තෝරා, ආපසු දුන් භාණ්ඩ ඇතුළත් කර, සුරකින්න. තොගය ප්‍රතිසාධනය වී ණය සටහනක් නිකුත් කෙරේ. මුල් විකුණුම Cash/Bank/UPI/Card නම්, ආපසු ගෙවීම එම Cash/Bank ශේෂය සෘජුවම අඩු කරයි; එය Credit විකුණුමක් නම්, ඒ වෙනුවට පාරිභෝගිකයා ඔබට ණය මුදල අඩු කරයි.</p>
+
+  <div class="tip">💡 <strong>ණය විකුණුම්:</strong> ඔබ ගෙවීම ලෙස "Credit" තෝරන විට, ඉන්වොයිසිය <em>Unpaid</em> ලෙස සලකුණු වී මුදල පාරිභෝගිකයාගේ ලැබිය යුතු ශේෂයට එක් වේ. ඔවුන් පසුව ගෙවන විට, එය Receipts පැනලයේ Receipt එකක් ලෙස සටහන් කරන්න.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9b -->
+<div class="chapter-banner" data-for="restaurant hotel">පරිච්ඡේදය 9b — අවන්හල <span class="for-badge">අවන්හල් සහ හෝටල් සඳහා</span></div>
+<div class="section" id="ch9b" data-for="restaurant hotel">
+  <h2>9b. අවන්හල (මේස, මුළුතැන්ගෙයි ටිකට් සහ බිල්පත්)</h2>
+  <p>අවන්හලක්, කැෆේ එකක්, ධාබා එකක් හෝ හෝටල් මුළුතැන්ගෙයක් සඳහා Accelent හි <strong>🍽 Restaurant</strong> තිරයක් ඇත: මේසයක් තට්ටු කරන්න, ආහාර තට්ටු කරන්න, මුළුතැන්ගෙට <strong>මුළුතැන්ගෙයි ටිකට් පතක් (KOT)</strong> යවන්න, සහ අමුත්තන් පිටව යන විට මේසයට බිල්පත සාදන්න. සෑම බිල්පතක්ම සාමාන්‍ය විකුණුමක් ලෙස සුරැකෙන නිසා Accounts, GST සහ වාර්තාවලට එය ඇතුළත් වන අතර, සෑම ආහාරයක්ම භාවිතා කරන අමුද්‍රව්‍ය ඉබේම තොගයෙන් ඉවත් වේ.</p>
+
+  <h3>එය සක්‍රිය කිරීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (පරිපාලක මුරපදයෙන් අගුළු හරින්න) → <strong>Business Type: Restaurant, café or hotel kitchen</strong> → <strong>Save</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Accelent වසා නැවත විවෘත කරන්න. වම් පස මෙනුවේ දැන් FINANCE යටතේ <strong>🍽 Restaurant</strong> ඇත. <strong>Sales</strong>, <strong>Returns</strong>, <strong>Aging Report</strong> සහ <strong>E-Invoice</strong> සඟවා ඇත, මන්ද අවන්හලක් Restaurant තිරයෙන් බිල්පත් සාදන නිසා. කිසිවක් මැකෙන්නේ නැත: Business Type ආපසු සකසන්න, ඒවා ආපසු එයි.</div></div>
+
+  <h3>ඔබේ මෙනුව සැකසීම</h3>
+  <div class="tip">💡 <strong>නියැදි මෙනුවකින් ආරම්භ කරන්න:</strong> මෙනුව හිස්ව ඇති විට, Restaurant තිරය <strong>📋 Start with a sample menu</strong> ලබා දෙයි (<strong>⚙ Restaurant Settings</strong> හි ද). එය මෙනු කොටස්වල (ආරම්භක, ප්‍රධාන ආහාර, බත්, රොටි, උදේ ආහාර, අතුරුපස, උණු සහ සිසිල් බීම, යුෂ, මොක්ටේල්) සුලභ ආහාර සහ බීම 53ක්, ඒවායේ ඒකක සමඟ අමුද්‍රව්‍ය 100ක් පමණ, සහ සෑම ආහාරයක් සඳහාම <em>Made to order</em> වට්ටෝරුවක් එක් කරයි; තවම කාමර නැති හෝටලයක් සඳහා, කාමර 101–104 සහ 201–204 ද. ඔබ සතුව දැනටමත් ඇති කිසිවක් වෙනස් නොවේ: එකම නමින් ඇති භාණ්ඩයක් එලෙසම තබා ගනී. ඉන්පසු: Inventory හි ඔබේම මිල ගණන් සකසන්න (නියැදි මිල යෝජනා පමණි), ඔබ මිලදී ගන්නා දේ Purchases හි ඇතුළත් කරන්න (එහි අමුද්‍රව්‍ය තොගයට එන තුරු සෑම ආහාරයක්ම අළු පාටින් පවතී), Production → Recipes හි වට්ටෝරු ප්‍රමාණ ඔබේ අරක්කැමියා සමඟ පරීක්ෂා කරන්න, සහ ඔබ නොපිළිගන්වන ආහාර මකන්න.</div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">සෑම ආහාරයක්ම සහ බීමක්ම <strong>Inventory</strong> හි <strong>Sell Price</strong> (GST ට පෙර) සමඟ එක් කරන්න. එහි <strong>Category</strong> මෙනු කොටස බවට පත් වේ: <em>Main Course</em>, <em>Starters</em>, <em>Drinks</em>… Sell Price ඇති සෑම භාණ්ඩයක්ම මෙනුවේ පෙනේ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>අමුද්‍රව්‍ය</strong> ද භාණ්ඩ ලෙස එක් කරන්න (සහල්, කුකුළු මස්, තෙල්, තේ කොළ), kg හෝ litre වැනි ඒකක සමඟ, සහ ඒවා සුපුරුදු පරිදි <strong>Purchases</strong> හරහා මිලදී ගන්න. අමුද්‍රව්‍යවලට Sell Price නැති නිසා ඒවා මෙනුවේ නොපෙනේ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ඔබේ මුළුතැන්ගෙයි පිසින සෑම ආහාරයක් සඳහාම <strong>Inventory → 🏭 Production → 🧾 Recipes</strong> හි <strong>වට්ටෝරුවක්</strong> ලියා (<a href="#ch8c">පරිච්ඡේදය 8c</a> බලන්න) <strong>Made to order</strong> සලකුණු කරන්න. උදාහරණය: එක් Chicken Biryani එකක් සහල් 0.25 kg සහ කුකුළු මස් 0.2 kg භාවිතා කරයි. ආහාරය විකුණන විට, එම අමුද්‍රව්‍ය තොගයෙන් ඉවත් වේ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ඔබ මිලදී ගෙන එලෙසම විකුණන භාණ්ඩ (බෝතල් වතුර, සිසිල් බීම) සඳහා වට්ටෝරුවක් අවශ්‍ය නැත: ඒවා Purchases හරහා මිලදී ගන්න, විකුණන විට ඒවායේම තොගය අඩු වේ.</div></div>
+  <p>ආහාර සහ අමුද්‍රව්‍ය සියල්ලම <strong>Inventory</strong> හි භාණ්ඩ වේ. එහි ලැයිස්තුවේ ඇණවුමට සාදන ආහාරයක් තොගය සඳහා <strong>—</strong> සහ එහි තත්වය ලෙස <strong>🍳 Dish</strong> පෙන්වයි, මන්ද එයට තමන්ගේම තොගයක් නැති නිසා. වරකට එක් වර්ගයක් බැලීමට, ලැයිස්තුවට ඉහළින් ඇති පෙරහන භාවිතා කරන්න: <strong>Items for sale</strong> (ඔබේ මෙනුව: Sell Price ඇති සියල්ල) හෝ <strong>Materials &amp; ingredients</strong> (වට්ටෝරුවක භාවිතා වන සියල්ල).</p>
+  <h3>අමුද්‍රව්‍ය ගබඩාවේ තිබිය යුතුය</h3>
+  <p>ආහාරයක් ඇණවුමකට ගනු ලබන්නේ ගබඩාවේ එහි අමුද්‍රව්‍ය ප්‍රමාණවත් ලෙස ඇති විට පමණි. අනෙක් මේසවල දැනටමත් ඇණවුම් කළ ආහාර භාවිතා කරන දේ ද Accelent ගණන් කරයි, මන්ද මුළුතැන්ගෙය ඒවා පිසිමින් සිටින නිසා. යමක් හිඟ නම්, එය අඩු වන්නේ කුමක්දැයි පවසයි, උදා: <em>Chicken: needs 0.6 kg, 0.4 kg in the store</em>, සහ එම ආහාරයේ බොත්තම <strong>අළු පාට</strong> වේ. <strong>Purchases</strong> හරහා අමුද්‍රව්‍ය මිලදී ගන්න, ආහාරය නැවත ලබා ගත හැක. Sales තිරයෙන් හෝ දුරකථනයෙන් ආහාරයක් විකුණන විට ද මෙම පරීක්ෂාව අදාළ වේ. සෑම ආහාර බොත්තමක්ම ගබඩාවට තව කොපමණ සෑදිය හැකිද යන්න ද පෙන්වයි, උදා: <em>12 left</em>; 5 හෝ ඊට අඩු විට එය <strong>⚠</strong> පෙන්වන අතර, බොත්තම වෙත යොමු කිරීමෙන් අඩු වන අමුද්‍රව්‍යයේ නම පෙන්වයි.</p>
+  <div class="tip">💡 තොගය ඉතිරි නැති මිලදී ගත් භාණ්ඩයක, හෝ තොගයක් හා <em>Made to order</em> වට්ටෝරුවක් නැති ආහාරයක මෙනු බොත්තම ද අළු පාට වේ. ඔබේ මුළුතැන්ගෙය බොහෝ විට මිලදී ගැනීම් ඇතුළත් කිරීමට පෙර පිසින්නේ නම්, පරිපාලකට <strong>⚙ Restaurant Settings</strong> හි <strong>Don't take an order for a dish when the store hasn't enough of its ingredients</strong> සලකුණ ඉවත් කළ හැක: එවිට ආහාර සැමවිටම ඉඩ දෙන අතර, අමුද්‍රව්‍ය බිංදුවට වඩා අඩු වන අතර, Low Stock Monitor තවත් මිලදී ගන්නා ලෙස පවසයි.</div>
+
+  <h3>මේස</h3>
+  <p>පළමු වරට මේස හයක් (Table 1 සිට Table 6) සකසා ඇත. මේස එක් කිරීමට, නැවත නම් කිරීමට හෝ ඉවත් කිරීමට සහ ඒවායේ ආසන සැකසීමට <strong>🪑 Tables…</strong> ක්ලික් කරන්න (උදා: <em>Garden 1</em>, <em>Cabin A</em>). සෑම මේසයක්ම කාඩ්පතකි:</p>
+  <ul>
+    <li><strong>නිදහස්</strong> මේසයක් සරල වන අතර එහි ආසන සහ <em>✓ Free</em> පෙන්වයි.</li>
+    <li>ධාවනය වන ඇණවුමක් ඇති මේසයකට <strong>වර්ණ දාරයක්</strong> ඇති අතර එහි මුළු මුදල සහ එය කොපමණ කලක් විවෘතව ඇත්දැයි පෙන්වයි (<em>🕑 25 min</em>, <em>🕑 1h 05m</em>).</li>
+    <li>වේටර්වරයෙකු හෝ පාරිභෝගිකයෙකු බිල්පත ඉල්ලන විට, මේසයට <strong>ඇම්බර් දාරයක්</strong> ලැබී <em>🧾 Bill asked</em> පෙන්වයි.</li>
+    <li>ඔබ විවෘත කර ඇති මේසයට <strong>ඝන දාරයක්</strong> ඇත.</li>
+  </ul>
+  <p>තිරයේ පහළ ඇති යතුරක් දාර පැහැදිලි කරයි.</p>
+
+  <h3>ඇණවුමක් ගැනීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>මේසය</strong> ක්ලික් කරන්න, පසුව <strong>මෙනු කොටසක්</strong>, පසුව <strong>ආහාර</strong>. සෑම තට්ටුවක්ම එකක් එක් කරයි; නැවත තට්ටු කිරීම තවත් එකක් එක් කරයි. ආහාරයක් ඉක්මනින් සොයා ගැනීමට, <strong>Search the menu</strong> හි ටයිප් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඇණවුමේ, පේළියක් තෝරා ප්‍රමාණය වෙනස් කිරීමට <strong>−</strong> / <strong>+</strong>, මුළුතැන්ගෙට <strong>📝 Note</strong> (<em>සැර අඩුවෙන්</em>, <em>ළූණු නැතිව</em>), හෝ <strong>✕ Remove</strong> භාවිතා කරන්න. පේළියක් මත මූසික රෝදය කරකැවිය හැක: ඉහළට එකක් එක් කරයි, පහළට එකක් අඩු කරයි (පහළට 1 දී, සහ මුළුතැන්ගෙයට දැනටමත් ඇති ප්‍රමාණයේදී නවතී).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🧑‍🍳 Send to Kitchen (KOT)</strong> ක්ලික් කරන්න. මුළුතැන්ගෙයි ටිකට් පතක් එහි අංකය (KOT #1, #2… සෑම දිනකම නැවත ආරම්භ වේ), මේසය සහ පිසිය යුතු දේ සමඟ මුද්‍රණය වේ.</div></div>
+  <p><strong>Kitchen</strong> තීරුව මුළුතැන්ගෙයට දැනටමත් ඇති දේ (<em>✓ sent</em>) සහ අලුත් දේ පෙන්වයි. අමුත්තන් තවත් ඇණවුම් කරන විට, එය එක් කර නැවත යවන්න: ඊළඟ KOT එකේ <strong>නව භාණ්ඩ පමණක්</strong> ඇත. යැවීමෙන් පසු ආහාරයක් අඩු කළහොත්, KOT එය <strong>CANCEL</strong> ලෙස මුද්‍රණය කරයි; යැවීමෙන් පසු වෙනස් කළ සටහනක් <strong>NOTE</strong> ලෙස මුද්‍රණය වේ. KOT බොත්තමේ තිතක් යනු යමක් තවම මුළුතැන්ගෙට ගොස් නැති බවයි; මුළුතැන්ගෙයට සියල්ල ලැබුණු පසු, බොත්තම අළු පාට වී <strong>✓ Kitchen has everything</strong> කියවේ.</p>
+
+  <h3>මුළුතැන්ගෙය කොතරම් කාර්යබහුලද?</h3>
+  <p>Restaurant තිරයේ ඉහළ මුළුතැන්ගෙයි තත්වය පෙන්වයි, උදා: <strong>🟢 Kitchen: Normal · ~12 min</strong>: <em>Normal, Busy, Very busy, Extra busy</em> හෝ <em>Overloaded</em>, සහ දැන් ඇණවුම් කරන ආහාරයකට ආසන්න වශයෙන් කොපමණ කාලයක් ගතවේද. එය <strong>ඇස්තමේන්තුවකි</strong>: මුළුතැන්ගෙට යවන ලද්දේ කුමක්ද සහ සෑම ආහාරයක්ම සාමාන්‍යයෙන් කොපමණ කාලයක් ගනීද Accelent දනී, සහ රාජකාරියේ සිටින සෑම අරක්කැමියෙකුටම තවම පිසීමට ඇති දේ ගණනය කරයි. මුළුතැන්ගෙයි තවමත් ඇති ඇණවුම්, පැරණිම පළමුව, සහ ප්‍රමාද වූ ඒවා බැලීමට එය ක්ලික් කරන්න. මුළුතැන්ගෙය Extra busy වූ විට PC එක බීප් හඬක් නගයි.</p>
+  <ul>
+    <li><strong>එම කවුළුවේ</strong> රැඳී සිටීමේ කාලය මිනිත්තු 30 කට පසු <strong>රතු</strong> සහ මිනිත්තු 15 සිට <strong>ඇම්බර්</strong> වේ. සෑම පේළියකම <strong>👁 Items</strong> (එම මුළුතැන්ගෙයි ටිකට් පතේ ආහාර) සහ <strong>🍽 Served</strong> ඇත.</li>
+    <li><strong>⏸ Pause QR orders for 20 min:</strong> මේස QR මඟින් ඇණවුම් කරන අමුත්තන්ට ඇණවුම් කිරීම නවතා ඇති බව කියනු ලැබේ; වේටර්වරුන්ට තවමත් ඇණවුම් ගත හැක. එය මිනිත්තු 20 කට පසු ඉබේම නැවත ආරම්භ වේ, නැතහොත් <strong>▶ Resume QR orders</strong> ක්ලික් කරන්න.</li>
+    <li><strong>⏰ ආහාර බොහෝ වේලාවක් රැඳී සිටී:</strong> මුළුතැන්ගෙයි ටිකට් පතක් මිනිත්තු 30 කට පසුවත් served ලෙස සලකුණු කර නැති විට, Restaurant තිරය බීප් හඬක් නගා රතු පේළියක් පෙන්වයි (උදා: <em>⏰ Table 7: KOT #4 waiting 40 min</em>), සහ එම සටහනම සම්බන්ධ කළ සෑම වේටර් දුරකථනයකටම එක් වරක්, Messages හි යයි. Kitchen Settings → <em>Alert the floor when food waits</em> හි මිනිත්තු වෙනස් කරන්න, හෝ එය අක්‍රිය කරන්න (0).</li>
+  </ul>
+  <ul>
+    <li><strong>🍽 Served:</strong> ආහාරය මේසයට ළඟා වූ විට, PC හි ඇණවුම විවෘත කර එය ක්ලික් කරන්න. මෙය ඇස්තමේන්තුව නිවැරදිව තබා ගනී. බිල්පත් සාදන ලද ඇණවුමක් served ලෙස ගණන් ගනී.</li>
+    <li><strong>⏰ Late:</strong> එහි මන්දගාමීම ආහාරය ගන්නා කාලයට වඩා මිනිත්තු 5 ක් වැඩිපුර ආහාර රැඳී සිටි මේසයකට ඇම්බර් දාරයක් සහ <em>Late … min</em> ලැබේ; ඇණවුමේ මාතෘකාව ද එය පවසයි.</li>
+    <li><strong>🕑 Timeline:</strong> ඇණවුම විවෘත කළේ කවදාද, සෑම මුළුතැන්ගෙයි ටිකට් පතක්ම එහි ආහාර සමඟ, එය served වූයේ කවදාද, බිල්පත ඉල්ලුවේ කවදාද සහ බිල්පත් සාදන ලද්දේ කවදාද.</li>
+  </ul>
+  <div class="tip">💡 <strong>⚙ Restaurant Settings → 🍳 Kitchen Settings</strong> (පරිපාලක): රාජකාරියේ සිටින අරක්කැමියන්, සුපුරුදු පිසීමේ කාලය (ඔබ වෙනස් නොකරන්නේ නම් මිනිත්තු 12), සෑම මෙනු කොටසකම සහ වෙනස් ආහාරවල කාලය (බිරියානි මිනිත්තු 25, තේ 4…), සහ සෑම මට්ටමක්ම ආරම්භ වන්නේ කොතැනින්ද. මුළුතැන්ගෙය කාර්යබහුල වූ විට සිදු වන්නේ කුමක්ද යන්න ඔබේ තේරීමයි: QR ඇණවුම් පිටුවේ අපේක්ෂිත රැඳී සිටීම පෙන්වන්න, Overloaded අතරතුර QR ඇණවුම් නවත්වන්න (වේටර්වරුන්ට තවමත් ඇණවුම් ගත හැක), සහ Extra busy හෝ Overloaded අතරතුර මන්දගාමී ආහාර නවත්වන්න.</div>
+
+  <h3>රැගෙන යාම (Takeaway)</h3>
+  <p><strong>🥡 New Takeaway</strong> ක්ලික් කර, ඔබ කැමති නම් පාරිභෝගිකයාගේ නම ඇතුළත් කර, පසුව මේසයකට මෙන්ම ආහාර එක් කර, KOT යවා බිල්පත සාදන්න. විවෘත takeaway ඇණවුම් මේසවලට පහළින් <strong>Takeaway orders</strong> යටතේ ලැයිස්තුගත වේ (හෝටලයක, <strong>Takeaway &amp; room service</strong>); එකක් විවෘත කිරීමට එය ක්ලික් කරන්න.</p>
+
+  <h3>බිල්පත් සෑදීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">මේසය විවෘත කර <strong>💵 Bill</strong> ක්ලික් කරන්න. සමහර භාණ්ඩ මුළුතැන්ගෙට ගොස් නැත්නම්, Accelent ඒවා මුලින්ම යැවීමට ඉදිරිපත් කරයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">අමුත්තා ගෙවූ ආකාරය තෝරන්න: <strong>Cash</strong>, <strong>UPI</strong>, <strong>Card</strong> හෝ <strong>Bank Transfer</strong> (සහ කුමන බැංකුවටද, ඔබ කැමති නම් යොමුවක් සමඟ). පාරිභෝගික නාමය සහ දුරකථනය අත්‍යවශ්‍ය නොවේ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Save Bill</strong> ක්ලික් කරන්න. බිල්පත විකුණුමක් ලෙස සුරැකේ, මුදල් Cash හෝ බැංකුවට යයි, ආහාරවල අමුද්‍රව්‍ය තොගයෙන් ඉවත් වේ, මේසය නිදහස් වේ, සහ බිල්පත මුද්‍රණය සඳහා විවෘත වේ (එය මඟ හැරීමට <em>Print the bill</em> සලකුණ ඉවත් කරන්න).</div></div>
+  <div class="tip">💡 <strong>පාරිභෝගිකයාගේ WhatsApp හි බිල්පත:</strong> බිල්පත් කවුළුවේ පාරිභෝගිකයාගේ ජංගම අංකය ඇති විට (QR-ඇණවුම් පාරිභෝගිකයෙකුගේ අංකය දැනටමත් පුරවා ඇත), <strong>📄 Send the bill on WhatsApp</strong> සලකුණු කර ඇත. සුරැකීමෙන් පසු, බිල්පත PDF එකක් බවට පත් කර පිටපත් කෙරෙන අතර, WhatsApp කෙටි ස්තුති පණිවිඩයක් සමඟ පාරිභෝගිකයාගේ කතාබහ විවෘත කරයි: බිල්පත අමුණන්න <strong>Ctrl+V</strong> ඔබා, පසුව <strong>Send</strong>. පසුව යැවීමට, <strong>Today's Bills</strong> හි බිල්පත තෝරා <strong>📄 Send on WhatsApp</strong> ක්ලික් කරන්න.</div>
+
+  <h3>හෝටල්: නවාතැන් ගන්නා අමුත්තන් සඳහා ආහාර</h3>
+  <p>Business Type <em>Hotel, lodge or guest house</em> සමඟ, Restaurant තිරයේ <strong>🛏 Room Service</strong> සහ <strong>🛏 Charge to Room</strong> ද ඇත: ආහාර අමුත්තාගේ කාමර ගිණුමට යන අතර පිටවීමේදී ගෙවනු ලැබේ. <a href="#ch9c">පරිච්ඡේදය 9c — කාමර</a> බලන්න.</p>
+
+  <h3>ඇණවුමක් ගෙනයාම හෝ අවලංගු කිරීම</h3>
+  <p><strong>⇄ Move to table</strong> ධාවනය වන ඇණවුමක් නිදහස් මේසයකට මාරු කරයි (අමුත්තන් මේස වෙනස් කළා, හෝ takeaway එකක් මෙහි අනුභව කරයි). <strong>🗑 Cancel order</strong> බිල්පත් නොකරන ඇණවුමක් ඉවත් කරයි; කිසිවක් විකුණුමක් ලෙස සුරැකෙන්නේ නැති අතර කිසිදු තොගයක් භාවිතා නොවේ.</p>
+  <div class="tip">💡 මුළුතැන්ගෙයට දැනටමත් ඇති ආහාර අවලංගු කළ හැක්කේ (හෝ − හෝ ✕ Remove මඟින් ආහාරයක් ඉවත් කළ හැක්කේ) <strong>පරිපාලකට</strong> පමණි: කාර්ය මණ්ඩලයෙන් පරිපාලක මුරපදය ඉල්ලනු ලැබේ. එවැනි සෑම අවලංගු කිරීමක්ම ඇණවුම, ආහාර සහ එය කළ පුද්ගලයා සමඟ <strong>Settings → 🔍 Deletion Watcher</strong> හි සටහන් වේ, එබැවින් පිසූ ආහාර නිහඬව අතුරුදහන් විය නොහැක. තවම මුළුතැන්ගෙට නොයැවූ භාණ්ඩ නිදහසේ වෙනස් කළ හැක.</div>
+
+  <h3>අද බිල්පත්</h3>
+  <p><strong>🧾 Today's Bills</strong> ටැබය දවසේ අවන්හල් බිල්පත් ඒවායේ මුළු එකතුව සමඟ ලැයිස්තුගත කරයි; දින කොටුවෙන් වෙනත් දිනයක් තෝරන්න. හෝටලයක එය එදින <strong>🛏 කාමරවලට අය කළ</strong> ආහාර ද, කාමරය සහ අමුත්තා සමඟ, <em>on the room</em> හෝ <em>paid at check-out</em> ලෙස සලකුණු කර ලැයිස්තුගත කරයි; එකතු පේළිය දෙකම එකතු කරයි, එබැවින් ඔබට අවන්හලේ සම්පූර්ණ දිනය පෙනේ. එම ආහාර මුද්‍රණය කර නිවැරදි කරනු ලබන්නේ අමුත්තාගේ පිටවීමේ බිල්පතේ මිස මෙහි නොවේ. එය නැවත මුද්‍රණය කිරීමට බිල්පතක් තෝරා <strong>🖨 View / Print bill</strong> ක්ලික් කරන්න, නැතහොත් වැරදි බිල්පතක් මැකීමට <strong>🗑 Cancel bill</strong>: ගෙවීම ආපසු හැරේ, අමුද්‍රව්‍ය තොගයට ආපසු යයි, සහ පිටපතක් Deletion Watcher හි තබා ගනී.</p>
+
+  <h3>මුළුතැන්ගෙයි මුද්‍රණ යන්ත්‍රය</h3>
+  <p><strong>⚙ Restaurant Settings</strong> හි, <strong>Kitchen printer</strong> තෝරන්න, උදා: මුළුතැන්ගෙයි කුඩා තාප මුද්‍රණ යන්ත්‍රයක්. එවිට PC එකෙන් සහ වේටර්වරුන්ගේ දුරකථනවලින් එන සෑම KOT එකක්ම එයට සෘජුවම මුද්‍රණය වන අතර, බිල්පත් ඔබේ සාමාන්‍ය මුද්‍රණ යන්ත්‍රයේම මුද්‍රණය වේ. මුළුතැන්ගෙයි මුද්‍රණ යන්ත්‍රයක් නොමැතිව, KOT එකක් මුද්‍රණය කිරීමට පෙරදසුනක් ලෙස විවෘත වේ, නැතහොත් ඔබ එම විකල්පය සලකුණු කළහොත් Windows හි පෙරනිමි මුද්‍රණ යන්ත්‍රයට සෘජුවම යයි.</p>
+
+  <h3>වේටර්වරුන්ගේ දුරකථන</h3>
+  <p>වේටර්වරුන්ට Accelent යෙදුම සමඟ ඔවුන්ගේ දුරකථනවලින් මේස අසලදීම ඇණවුම් ගත හැක (<a href="#ch19">පරිච්ඡේදය 19</a> බලන්න). PC හි Business Type Restaurant හෝ Hotel වන විට, යෙදුමේ උපකරණ පුවරුව <strong>🍽 Restaurant</strong> පෙන්වයි:</p>
+  <ul>
+    <li><strong>මේසයක්</strong> තට්ටු කරන්න (කාර්යබහුල ඒවා ඒවායේ මුළු එකතුව සහ මිනිත්තු පෙන්වයි), හෝ <strong>New Takeaway</strong>, හෝ හෝටලයක <strong>Room Service</strong> (අමුත්තෙකු නවාතැන් ගෙන සිටින විට පමණි).</li>
+    <li><strong>Add Dishes</strong> සෙවුම සමඟ කොටස් අනුව මෙනුව විවෘත කරයි; එකක් එක් කිරීමට ආහාරයක් තට්ටු කරන්න. <strong>− / +</strong> මඟින් ප්‍රමාණ වෙනස් කරන්න, සහ මුළුතැන්ගෙට සටහනක් දීමට ආහාරයක් තට්ටු කරන්න.</li>
+    <li><strong>Send to Kitchen</strong> PC හි KOT එක මුද්‍රණය කරයි (වේටර්ගේ නම සමඟ). ඉන්පසු අලුත් යමක් එක් කරන තුරු බොත්තම <strong>✓ Sent to kitchen</strong> පෙන්වයි.</li>
+    <li><strong>Ask for Bill</strong> කවුන්ටරයට දන්වයි: PC එක බීප් හඬක් නගා, මේසය සහ වේටර් සමඟ බැනරයක් පෙන්වා, මේසය <strong>🧾 Bill asked</strong> ලෙස සලකුණු කරයි. මුදල් අයකරු මේසය විවෘත කර 💵 Bill ඔබයි, එය ගෙවීම ගනී.</li>
+    <li>හෝටලයක, <strong>Charge to Room</strong> ඇණවුම නවාතැන් ගන්නා අමුත්තෙකුගේ ගිණුමට දමයි.</li>
+  </ul>
+  <p>PC හි මෙන්ම එකම නීති අදාළ වේ: ආහාරයකට එහි අමුද්‍රව්‍ය ගබඩාවේ තිබිය යුතුය, සහ මුළුතැන්ගෙයට දැනටමත් ඇති ආහාර ඉවත් කිරීමට හෝ අවලංගු කිරීමට හැක්කේ පරිපාලකට පමණි. වේටර්වරුන්ට <strong>Create sales</strong> අවසරය සහ දුරකථන ප්‍රවේශය අවශ්‍යයි (Settings → 👥 Users). බලපත්‍රයක් එකවර සීමිත දුරකථන ගිණුම් සංඛ්‍යාවකට ඉඩ දෙයි; එම හේතුව නිසා වේටර්වරයෙකුගේ දුරකථනය ප්‍රතික්ෂේප වුවහොත්, තවත් එක් කිරීම ගැන අප අමතන්න.</p>
+
+  <h3>මේසයේදී QR ඇණවුම්</h3>
+  <p>පාරිභෝගිකයින්ට ඔවුන්ගේ මේසයේ ඇති QR කේතයක් ස්කෑන් කිරීමෙන් ඔවුන්ගේම දුරකථනයෙන් මෙනුව බලා ඇණවුම් කළ හැක. එය ක්‍රියා කරන්නේ <strong>ඔබේ අවන්හලේ Wi-Fi හරහා පමණි</strong>: කිසිවක් අන්තර්ජාලයට යන්නේ නැති අතර, පාරිභෝගිකයාට යෙදුමක් හෝ ගිණුමක් අවශ්‍ය නැත.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>⚙ Restaurant Settings → QR ordering</strong>: <em>Customers can see the menu and order…</em> සලකුණු කරන්න, <strong>This PC on the Wi-Fi</strong> පරීක්ෂා කරන්න (පාරිභෝගිකයින් සම්බන්ධ වන Wi-Fi හි PC හි ලිපිනය), සහ <strong>Wi-Fi නම සහ මුරපදය</strong> පුරවන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>🖨 Print table QR cards</strong> ක්ලික් කරන්න. සෑම මේසයකටම කේත දෙකක් සහිත කාඩ්පතක් ලැබේ: <strong>1. Join our Wi-Fi</strong> (මුරපදය ටයිප් නොකර දුරකථනය සම්බන්ධ වේ) සහ <strong>2. Scan to see the menu and order</strong>. සෑම කාඩ්පතක්ම එහි මේසය මත තබන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">පාරිභෝගිකයා දුරකථන කැමරාවෙන් දෙකම ස්කෑන් කර, ආහාර තෝරා (සටහන් සමඟ, උදා: <em>සැර අඩුවෙන්</em>), ඔවුන්ගේ <strong>නම සහ ජංගම අංකය</strong> ඇතුළත් කර (අනිවාර්යයි, සහ ඊළඟ ඇණවුම සඳහා එම දුරකථනයේ මතක තබා ගනී) සහ, රියදුරෙකු හෝ මාර්ගෝපදේශකයෙකු ඔවුන් ගෙනාවේ නම්, එම හවුල්කරුගේ කේතය (උදා: DRV001, <a href="#ch9d">පරිච්ඡේදය 9d</a> බලන්න), <strong>Order</strong> තට්ටු කර, එය අනුගමනය කළ හැක: <em>Received → Confirmed → Preparing (ready about …) → Served</em>, සහ <strong>Ask for Bill</strong> තට්ටු කළ හැක.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ඇණවුම PC හි <strong>🔔 QR orders from tables</strong> ලෙස (බීප් හඬක් සමඟ) සහ වේටර්වරුන්ගේ දුරකථනවල පෙනේ. එය පාරිභෝගිකයාගේ නම සහ ජංගම අංකය පෙන්වයි. <strong>එම මේසයේ සැබවින්ම කවුරුන් හෝ සිටීදැයි පරීක්ෂා කරන්න</strong>, පසුව <strong>Confirm</strong>: ආහාර මේසයේ ඇණවුමට එක් වන අතර, ඔබ ඒවා Send to Kitchen මඟින් යවයි. නැතහොත් පාරිභෝගිකයාට පෙනෙන හේතුවක් සමඟ එය <strong>Reject</strong> කරන්න.</div></div>
+  <ul>
+    <li>පාරිභෝගිකයෙකුගේ දුරකථනයට කළ හැක්කේ මෙනුව බැලීම, <strong>එහිම මේසය</strong> සඳහා ඇණවුම් කිරීම, එහි ඇණවුම අනුගමනය කිරීම සහ බිල්පත ඉල්ලීම පමණි. එයට Accelent හි වෙන කිසිවක් නොපෙනේ.</li>
+    <li>සෑම මේසයකම කේතය රහසිගතයි. කාඩ්පත් පිටපත් කළහොත් හෝ රැගෙන ගියහොත්, <strong>↻ New codes for all tables</strong> පැරණි ඒවා ක්‍රියා විරහිත කරයි; නව කාඩ්පත් මුද්‍රණය කරන්න.</li>
+    <li>සීමා විහිළු වළක්වයි: ආහාරයකින් උපරිම 20, මේසයක රැඳී සිටින ඇණවුම් 3, සහ එක් දුරකථනයකින් මිනිත්තු 10 කින් ඇණවුම් 6. වසා දැමීමෙන් පසු QR ඇණවුම් සලකුණ ඉවත් කරන්න.</li>
+  </ul>
+  <div class="tip">💡 PC හි Wi-Fi ලිපිනය ස්ථාවරව තබා ගන්න: ඔබේ රවුටරයේ, PC එකට <em>reserved address</em> එකක් දෙන්න (බොහෝ විට "DHCP reservation" ලෙස හැඳින්වේ). එසේ නොමැති නම් නැවත ආරම්භයකින් පසු ලිපිනය වෙනස් විය හැකි අතර, මුද්‍රිත කාඩ්පත් ක්‍රියා නොකරයි. පාරිභෝගිකයාගේ දුරකථනය <em>"Wi-Fi has no internet"</em> පැවසිය හැක; ඇණවුම් කිරීම තවමත් ක්‍රියා කරයි.</div>
+
+  <h3>අවන්හල් බිල්පත්වල GST (ඉන්දියාව)</h3>
+  <p>අවන්හල් බිල්පතක් එක් අවන්හල් සේවාවකි, එබැවින් සම්පූර්ණ බිල්පතට එක් GST අනුපාතයක් ඇත. එය <strong>⚙ Restaurant Settings</strong> හි තෝරන්න (පරිපාලකට පමණි):</p>
+  <ul>
+    <li><strong>ආදාන බදු බැර නොමැතිව 5%</strong>: අවන්හල්, කැෆේ, ධාබා සහ takeaway (සුපුරුදු අවස්ථාව, සහ පෙරනිමිය).</li>
+    <li><strong>ආදාන බදු බැර සමඟ 18%</strong>: <em>specified premises</em> වන හෝටලයක් තුළ ඇති අවන්හලක් (පෙර වර්ෂයේ කාමර දිනකට ₹7,500 ට වඩා අය කළ, හෝ එසේ ප්‍රකාශ කළ හෝටලයක්).</li>
+  </ul>
+  <p>Rooms තිරය භාවිතා කරන හෝටලයකට තෝරා ගැනීමට අවශ්‍ය නැත: පරිශ්‍රය specified premises වන වර්ෂයක Accelent අවන්හල ඉබේම 18% වෙත මාරු කරයි (<a href="#ch9c">පරිච්ඡේදය 9c</a> බලන්න).</p>
+  <div class="tip">💡 ඔබට අදාළ වන්නේ කුමක්දැයි විශ්වාස නැත්නම් ඔබේ ගණකාධිකාරීගෙන් විමසන්න.</div>
+
+  <div class="tip">💡 Restaurant තිරය භාවිතා කිරීමට කාර්ය මණ්ඩලයට <strong>Create sales</strong> අවසරය අවශ්‍යයි. බිල්පතක් අවලංගු කිරීමට <strong>Edit or delete bills</strong> අවශ්‍යයි.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9c -->
+<div class="chapter-banner" data-for="hotel">පරිච්ඡේදය 9c — කාමර <span class="for-badge">හෝටල්, ලැගුම්හල් සහ අමුත්තන්ගේ නිවාස සඳහා</span></div>
+<div class="section" id="ch9c" data-for="hotel">
+  <h2>9c. කාමර (හෝටල්, ලැගුම්හල්, අමුත්තන්ගේ නිවාස)</h2>
+  <p>තමන්ගේම අවන්හලක් සහිතව හෝ රහිතව, හෝටලයක්, ලැගුම්හලක් හෝ අමුත්තන්ගේ නිවාසයක් සඳහා. සෑම අමුත්තෙකුගේම නවාතැන ඔවුන්ගේ කාමරයේ ධාවනය වන ගිණුමකි: රාත්‍රි ඉබේම එකතු වේ, අමතර ගාස්තු සහ ඔබේ අවන්හලේ ආහාර එයට එක් වේ, සහ පිටවීමේදී අමුත්තාට සියල්ල සඳහා <strong>එක් GST බිල්පතක්</strong> ලැබේ, ඕනෑම අත්තිකාරමක් අඩු කර.</p>
+
+  <h3>එය සක්‍රිය කිරීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🏢 Company</strong> (පරිපාලක මුරපදයෙන් අගුළු හරින්න) → <strong>Business Type: Hotel, lodge or guest house</strong> → <strong>Save</strong>, පසුව Accelent වසා නැවත විවෘත කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">මෙනුවේ දැන් FINANCE යටතේ <strong>🛏 Rooms</strong> සහ <strong>🍽 Restaurant</strong> ඇත (අවන්හල සඳහා <a href="#ch9b">පරිච්ඡේදය 9b</a> බලන්න).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>🛏 Rooms → 🚪 Rooms…</strong> → සෑම කාමරයක්ම <strong>＋ Add</strong> කරන්න: එහි අංකය (101), වර්ගය (Standard, Deluxe, Suite…), <strong>රාත්‍රියකට ගාස්තුව</strong> සහ එයට කී දෙනෙක් ඉඩ ඇත්ද.</div></div>
+
+  <h3>කාමර පුවරුව</h3>
+  <p>සෑම කාමරයක්ම කාඩ්පතකි:</p>
+  <ul>
+    <li><strong>හිස්</strong> කාමරයක් සරල වන අතර එහි වර්ගය, <em>✓ Vacant</em> සහ එහි ගාස්තුව පෙන්වයි.</li>
+    <li><strong>පදිංචි</strong> කාමරයකට <strong>වර්ණ දාරයක්</strong> ඇති අතර අමුත්තාගේ නම සහ මේ දක්වා රාත්‍රි පෙන්වයි.</li>
+    <li>පිටවීමකින් පසු පිරිසිදු කිරීමට රැඳී සිටින කාමරයකට <strong>ඇම්බර් දාරයක්</strong> ඇති අතර <em>⚠ To be cleaned</em> පෙන්වයි.</li>
+  </ul>
+  <p>කාමරයක් ක්ලික් කරන්න: අමුත්තාගේ ගිණුම මැද සහ කාමරයේ බොත්තම් දකුණු පස පෙනේ. ප්‍රධාන ක්‍රියාව කොළ පාටයි (<strong>🛎 Check In</strong>, <strong>🧾 Check Out</strong>); <strong>🗑 Cancel Check-in</strong> රතු පාටයි.</p>
+
+  <h3>පැමිණීම (Check-In)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">හිස් කාමරයක් ක්ලික් කරන්න → <strong>🛎 Check In</strong>.</div></div>
+  <div class="tip">💡 Check In කවුළුවේ ඉහළ ඇති <strong>📷 Scan ID card…</strong> අමුත්තාගේ හැඳුනුම්පතේ ඡායාරූපයකින් හෝ ස්කෑන් එකකින් විස්තර පුරවයි, මෙම PC එකේම කියවා (කිසිවක් කොහේවත් යවන්නේ නැත). <strong>Aadhaar:</strong> විශාල QR කේතය ඇති පැත්ත භාවිතා කරන්න; නම, උපන් දිනය, ස්ත්‍රී පුරුෂ භාවය සහ ලිපිනය කියවන අතර, අංකයේ <strong>අවසාන ඉලක්කම් 4</strong> පමණක් තබා ගනී (XXXX XXXX 1234). අතින් ටයිප් කළ Aadhaar අංකයක් ද එලෙසම තබා ගන්නා අතර, Aadhaar කාඩ්පතක පිටපතක් කිසි විටෙක තබා නොගනී: UIDAI හෝටල්වලට ඒවා තබා ගැනීමට ඉඩ නොදේ. <strong>Passport</strong> (පහළ පේළි දෙකෙන්), <strong>PAN</strong>, <strong>driving licence</strong> සහ <strong>voter ID</strong> ද කියවේ; මේවායේ පිටපතක් තබා ගන්නේ අමුත්තා එකඟ වූ බව ඔබ සලකුණු කළහොත් පමණක් වන අතර, පිටවීමෙන් නියමිත දින ගණනකට පසු එය මකා දමයි (<strong>⚙ Hotel Settings</strong>, ඔබ වෙනස් නොකරන්නේ නම් දින 30). පැමිණීම සටහන් කිරීමට පෙර සැමවිටම විස්තර කාඩ්පත සමඟ පරීක්ෂා කරන්න.</div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">අමුත්තන්ගේ ලේඛනයේ විස්තර පුරවන්න: නම, දුරකථනය, ලිපිනය, <strong>හැඳුනුම් සාක්ෂිය</strong> (Aadhaar, passport, driving licence…) සහ එහි අංකය, ජාතිකත්වය, පුද්ගලයින් ගණන, පැමිණියේ කොහේ සිටද සහ යන්නේ කොහේටද, අපේක්ෂිත රාත්‍රි සහ ගාස්තුව (වට්ටමක් සඳහා එය වෙනස් කරන්න). <strong>⚙ Hotel Settings</strong> හි ඔබ එය අක්‍රිය නොකරන්නේ නම් හැඳුනුම් අංකය අනිවාර්යයි.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">අමුත්තා <strong>අත්තිකාරමක්</strong> ගෙවන්නේ නම්, එය ගෙවූ ආකාරය (මුදල්, UPI, කාඩ්පත හෝ බැංකුව) සමඟ ඇතුළත් කරන්න. එය වහාම ඔබේ මුදල් හෝ බැංකුවට යන අතර, පිටවීමේදී අඩු කරනු ලැබේ.</div></div>
+
+  <h3>අමුත්තාගේ ගිණුම</h3>
+  <p>මේ දක්වා අය කළ සියල්ල, GST සහ තවමත් ගෙවිය යුතු මුදල බැලීමට පදිංචි කාමරයක් ක්ලික් කරන්න:</p>
+  <ul>
+    <li><strong>කාමර රාත්‍රි</strong> පැමිණි දිනයේ සිට ඉබේම ගණන් කෙරේ. <strong>₹ Night Rates</strong> කිසියම් රාත්‍රියක ගාස්තුව වෙනස් කරයි (සති අන්ත ගාස්තුවක්, වට්ටමක්).</li>
+    <li><strong>➕ Add Charge</strong>: අමතර ඇඳක් හෝ කලින් පැමිණීමක් සඳහා <em>Part of the room</em> තෝරන්න (එය එම රාත්‍රියේ කාමර වටිනාකමට එක් වේ), හෝ රෙදි සේදීම, ප්‍රවාහනය වැනි දේ සඳහා එහිම GST % සමඟ <em>Another service</em>. <strong>✕ Remove Charge</strong> වැරදීමකින් එක් කළ ගාස්තුවක් ඉවත් කරයි.</li>
+    <li><strong>💵 Advance</strong> නවාතැන අතරතුර ලැබුණු තවත් මුදල් සටහන් කරයි. පිටවීමේ බිල්පත ලැබුණු අත්තිකාරම සහ ගෙවූ ශේෂය පෙන්වයි; අත්තිකාරම බිල්පතට වඩා වැඩි නම්, <strong>ආපසු දුන්</strong> මුදල පෙන්වන අතර, එය අමුත්තාට ආපසු ගෙවූ ලෙස සටහන් වේ.</li>
+    <li><strong>⇄ Move Room</strong> අමුත්තා හිස් කාමරයකට මාරු කරයි; පැරණි කාමරය පිරිසිදු කිරීමට යයි.</li>
+    <li><strong>🗑 Cancel Check-in</strong> වැරදීමකින් කළ පැමිණීමක් සඳහා ය: කාමරය හිස් වන අතර ඕනෑම අත්තිකාරමක් ආපසු ගෙවූ ලෙස සටහන් වේ.</li>
+  </ul>
+
+  <h3>අමුත්තන් සඳහා ආහාර</h3>
+  <p><strong>🍽 Restaurant</strong> තිරයේ:</p>
+  <ul>
+    <li><strong>🛏 Room Service</strong>: අමුත්තාගේ කාමරය තෝරා ආහාර එක් කරන්න. <strong>Send to Kitchen</strong> KOT එක මුද්‍රණය කරයි <em>සහ</em> ආහාර වහාම අමුත්තාගේ කාමර ගිණුමට දමයි, එබැවින් එය අමතක කළ නොහැක.</li>
+    <li>නවාතැන් ගන්නා අමුත්තෙකු භෝජනාගාරයේ අනුභව කරයි නම්: සුපුරුදු පරිදි මේසයේ ඇණවුම ගන්න. ඔබ <strong>💵 Bill</strong> ක්ලික් කරන විට, බිල්පත් කවුළුව <strong>Guest staying in a room?</strong> අසයි: අමුත්තාගේ කාමරය තෝරා ගෙවීම ගැනීම වෙනුවට <strong>Charge to Room</strong> ක්ලික් කරන්න. (<strong>🛏 Charge to Room</strong> බොත්තම ද එයම කරයි.)</li>
+  </ul>
+  <p>ආහාර අවන්හලේ GST අනුපාතයෙන් අමුත්තාගේ ගිණුමට යයි, එහි අමුද්‍රව්‍ය (හෝ එහිම තොගය) වහාම ගබඩාවෙන් ඉවත් වේ, සහ එය පිටවීමේදී ගෙවනු ලැබේ.</p>
+  <div class="tip">💡 අමුත්තෙකු අනුභව කළ කිසිවක් පිටවීමේ බිල්පතෙන් ඉවත් නොවේ: ඇණවුමක තවමත් රැඳී සිටින room-service ආහාර අමුත්තාගේ ගිණුමේ <strong>⏳ not yet charged</strong> ලෙස පෙනේ, සහ පිටවීමේදී මුළුතැන්ගෙය සාදා ඇති ඕනෑම දෙයක් ඉබේම බිල්පතට එක් වේ. කිසි විටෙක මුළුතැන්ගෙට නොයැවූ භාණ්ඩ ඇති ඇණවුමක් පමණක්, එය යවන තුරු හෝ අවලංගු කරන තුරු පිටවීම නවත්වයි.</div>
+
+  <h3>පිටවීම (Check-Out)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">කාමරය ක්ලික් කරන්න → <strong>🧾 Check Out</strong>. මුළු මුදල, අත්තිකාරම සහ ගෙවිය යුතු මුදල පෙන්වයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">නවාතැනේ room service ආහාර served ලෙස සලකුණු කර නැත්නම්, Accelent මුලින්ම එය ලබා දුන්නේදැයි අසයි: <strong>✓ Yes, delivered</strong> එය served ලෙස සලකුණු කර ඉදිරියට යයි; <strong>✕ Not delivered</strong> නවතින නිසා ඔබට මුලින්ම Restaurant තිරයේ ඇණවුම විසඳිය හැක. අමුත්තා ශේෂය ගෙවන ආකාරය තෝරා <strong>Check Out</strong> ක්ලික් කරන්න. සම්පූර්ණ නවාතැන සඳහා එක් බිල්පතක් සුරැකේ: කාමර රාත්‍රි, අමතර දේ, වෙනත් සේවා සහ ආහාර, සෑම එකක්ම එහිම GST අනුපාතයෙන්. ඔබේ මුදල් හෝ බැංකුවට එක් වන්නේ ශේෂය පමණි, මන්ද අත්තිකාරම ලැබුණු විටම එක් කළ නිසා.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">බිල්පත මුද්‍රණය සඳහා විවෘත වේ. කාමරය දැන් ඇම්බර් දාරයක් සහ <em>⚠ To be cleaned</em> පෙන්වයි: එය පිරිසිදු කළ පසු, එය ක්ලික් කර පසුව <strong>✨ Room Is Ready</strong> ක්ලික් කරන්න.</div></div>
+  <div class="tip">💡 <strong>අමුත්තාගේ WhatsApp හි බිල්පත:</strong> පිටවීමේ කවුළුවේ පැමිණීමේදී දුන් ජංගම අංකය සමඟ <strong>📄 Send the bill on WhatsApp to</strong> ඇත (අමුත්තා වෙනත් එකක් අවශ්‍ය නම් එය වෙනස් කරන්න). අංකයක් ඇති විට එය සලකුණු කර ඇත. පිටවීමෙන් පසු, බිල්පත PDF එකක් බවට පත් කර පිටපත් කෙරෙන අතර, WhatsApp අමුත්තාගේ කතාබහ විවෘත කරයි: එය අමුණන්න <strong>Ctrl+V</strong> ඔබා, පසුව <strong>Send</strong>.</div>
+
+  <h3>පිටවීම්: බිල්පතක් නැවත මුද්‍රණය කිරීම හෝ නිවැරදි කිරීම</h3>
+  <p><strong>🧾 Check-outs</strong> ටැබය දින දෙකක් අතර සෑම පිටවීමක්ම එහි බිල්පත සමඟ ලැයිස්තුගත කරයි. එකක් තෝරා එය නැවත මුද්‍රණය කිරීමට <strong>🖨 View / Print Bill</strong>, හෝ අමුත්තාට යැවීමට <strong>📄 Send on WhatsApp</strong> ක්ලික් කරන්න. බිල්පතක් වැරදීමකින් සාදා ඇත්නම් (ගාස්තුවක් අමතක විය, වැරදි ගෙවීම), <strong>↩ Cancel Check-out Bill</strong> ක්ලික් කරන්න: බිල්පත සහ එහි ගෙවීම ඉවත් කෙරේ (පිටපතක් Deletion Watcher හි තබා ගනී) සහ අමුත්තාගේ නවාතැන සෑම ගාස්තුවක්ම සමඟ නැවත විවෘත වේ. එය නිවැරදි කර, පසුව අමුත්තා නැවත පිටවීම සටහන් කරන්න. ආහාර තොගයෙන් පිටතම රැඳේ, මන්ද එය අනුභව කළ නිසා. හෝටල් බිල්පතක් වෙනත් කිසිම තැනකින් මැකිය නොහැක.</p>
+
+  <h3>කාමර මත GST (ඉන්දියාව)</h3>
+  <ul>
+    <li>කාමරයකට රාත්‍රියකට <strong>₹7,500</strong> දක්වා: ආදාන බදු බැර නොමැතිව <strong>5%</strong>. ₹7,500 ට ඉහළින්: <strong>18%</strong>. ලාභ කාමර සඳහා නිදහස් කිරීමක් නැත.</li>
+    <li>අනුපාතය තීරණය වන්නේ <strong>සෑම කාමරයක් සහ සෑම රාත්‍රියක් සඳහාම</strong>, ඕනෑම වට්ටමකින් පසු සැබවින්ම අය කළ ගාස්තුව මත, එම රාත්‍රියේ අමතර ඇඳ හෝ වෙනත් කාමර අමතර දේ ඇතුළත් කර. එක් රාත්‍රියක ₹6,500 සහ ඊළඟ රාත්‍රියේ ₹8,000 ගෙවන අමුත්තෙකුට එම රාත්‍රිවල 5% සහ 18% අය කෙරේ.</li>
+    <li><strong>Specified premises:</strong> <em>පෙර</em> මූල්‍ය වර්ෂයේ ඕනෑම කාමරයක් රාත්‍රියකට ₹7,500 ට වඩා බිල්පත් කර ඇත්නම්, හෝ ඔබ පරිශ්‍රය specified premises ලෙස ප්‍රකාශ කළේ නම් (<strong>⚙ Hotel Settings</strong> හි සලකුණු කරන්න), ඔබේ අවන්හල මෙම මූල්‍ය වර්ෂය සඳහා <strong>18%</strong> අය කළ යුතුය. Accelent මෙය ඔබේම බිල්පත්වලින් ගණනය කර අවන්හල ඉබේම 18% වෙත මාරු කරයි; Rooms තිරයේ ඉහළ පේළිය අදාළ වන්නේ කුමක්දැයි පවසයි.</li>
+  </ul>
+  <div class="tip">💡 ඔබට අදාළ අනුපාතය කුමක්දැයි විශ්වාස නැත්නම් ඔබේ ගණකාධිකාරීගෙන් විමසන්න.</div>
+
+  <h3>QR කේතයෙන් Room Service</h3>
+  <p>QR ඇණවුම් සක්‍රිය කර ඇති විට (🍽 Restaurant → ⚙ Restaurant Settings, <a href="#ch9b">පරිච්ඡේදය 9b</a> බලන්න), සෑම කාමරයක් සඳහාම කාඩ්පතක් මුද්‍රණය කරන්න: <strong>⚙ Hotel Settings → 🖨 Print room QR cards</strong>. කාමරයේ නවාතැන් ගන්නා අමුත්තෙකු එය ස්කෑන් කර, මෙනුව බලා, ඔවුන්ගේ නම සහ ජංගම අංකය ඇතුළත් කර ඇණවුම් කරයි. ඇණවුම එම කාමරය සඳහා QR ඇණවුමක් ලෙස PC සහ වේටර්වරුන්ගේ දුරකථන වෙත ළඟා වේ; වේටර්වරයෙකු එය තහවුරු කර මුළුතැන්ගෙට යැවූ පසු, එය කාමරයේ බිල්පතට යයි. අමුත්තෙකු පැමිණ නැති කාමරයකට ඇණවුම් කළ නොහැකි අතර, room service පිටවීමේදී ගෙවනු ලැබේ. <strong>↻ New codes for all rooms</strong> පැරණි කාමර කාඩ්පත් ක්‍රියා විරහිත කරයි.</p>
+
+  <h3>අමුත්තන්ගේ ලේඛනය</h3>
+  <p><strong>📒 Guest Register</strong> ටැබය දින දෙකක් අතර සෑම පැමිණීමක්ම අමුත්තාගේ විස්තර, හැඳුනුම් සාක්ෂිය සහ ගමන සමඟ, පොලිසිය සඳහා තබා ගන්නා පරිදි ලැයිස්තුගත කරයි. මුද්‍රිත පිටපතක් සඳහා <strong>🖨 Print Register</strong> ක්ලික් කරන්න. පොලිසිය එක් අමුත්තෙකු ගැන විමසූ විට, මෙහි (හෝ <strong>🧾 Check-outs</strong> තුළ) අමුත්තා තෝරා <strong>👤 Guest Details</strong> ක්ලික් කරන්න: එම අමුත්තා ගැන තබා ඇති සියල්ල එක් පිටුවක, <strong>🖨 Print</strong> සමඟ.</p>
+
+  <div class="tip">💡 Rooms තිරය භාවිතා කිරීමට කාර්ය මණ්ඩලයට <strong>Create sales</strong> අවසරය අවශ්‍යයි.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9d -->
+<div class="chapter-banner" data-for="restaurant hotel">පරිච්ඡේදය 9d — හවුල්කරුවන් <span class="for-badge">අවන්හල් සහ හෝටල් සඳහා</span></div>
+<div class="section" id="ch9d" data-for="restaurant hotel">
+  <h2>9d. හවුල්කරුවන් (සංචාරක නියෝජිතයින්, මාර්ගෝපදේශකයින්, කුලී රථ රියදුරන්)</h2>
+  <p>සංචාරක නියෝජිතයින්, වෙන්කිරීම් අඩවි, දේශීය මාර්ගෝපදේශකයින්, කුලී රථ රියදුරන් සහ හවුල්කාර හෝටල් ඔබට අමුත්තන් ගෙනැවිත් කොමිස් උපයයි. <strong>🤝 Partners</strong> තිරයේ (FINANCE යටතේ, අවන්හලක් හෝ හෝටලයක් සඳහා) ඔබ ඔවුන් එක් එක්කෙනා තබා ගනී, Accelent බිල්පත සමඟ ඔවුන්ගේ කොමිස් ගණනය කරයි, සහ ඔබ එය එතැනින් ගෙවයි. කොමිස් කිසි විටෙක අමුත්තාගේ බිල්පතේ පෙන්වන්නේ නැත.</p>
+
+  <h3>හවුල්කරුවෙකු එක් කිරීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>🤝 Partners → ➕ New Partner</strong>: නම, කුමන ආකාරයේ හවුල්කරුවෙක්ද (සංචාරක නියෝජිත, වෙන්කිරීම් අඩවිය, මාර්ගෝපදේශක, කුලී රථ රියදුරා, හවුල්කාර හෝටලය) සහ දුරකථන අංකය.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>කාමර මත කොමිස්:</strong> <em>කාමර කුලියේ %</em>, <em>රාත්‍රියකට ₹</em> හෝ <em>නවාතැනකට ₹</em>. <strong>අවන්හල් බිල්පත් මත:</strong> ඔවුන් ගෙනෙන අමුත්තන්ගේ ආහාර බිල්පතේ % (නැත්නම් 0).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">අවශ්‍ය නම් ඔවුන්ගේ <strong>PAN</strong> (TDS සඳහා) සහ <strong>GSTIN</strong>. <strong>Save</strong> ක්ලික් කරන්න. සෑම හවුල්කරුවෙකුටම <strong>DRV001</strong> (රියදුරන්), <strong>GDE001</strong> (මාර්ගෝපදේශකයින්) හෝ <strong>AGT001</strong> (නියෝජිතයින්) වැනි කේතයක් ලැබේ.</div></div>
+
+  <h3>ඔවුන් අමුත්තන් ගෙනෙන විට</h3>
+  <ul>
+    <li><strong>කාමර:</strong> <strong>Check In</strong> කවුළුවේ <strong>Booked through</strong> තෝරන්න. ඔවුන්ගේ සුපුරුදු කොමිස් පෙනේ; මෙම නවාතැන සඳහා ඔබ වෙනත් දෙයකට එකඟ වූයේ නම් එය වෙනස් කරන්න. පිටවීමේදී කොමිස් ගණනය වන්නේ රාත්‍රිවල කාමර කුලිය මත (අමතර ඇඳ සහ කාමර අමතර දේ ඇතුළුව, GST ට පෙර; රෙදි සේදීම සහ වෙනත් සේවා ගණන් නොගනී), සහ කාමරයේ බිල්පතේ ඇති ඕනෑම ආහාරයක් මත ඔවුන්ගේ අවන්හල් % ය.</li>
+    <li><strong>අවන්හල:</strong> <strong>Bill</strong> කවුළුවේ <strong>Brought by</strong> තෝරන්න. කොමිස් යනු GST ට පෙර ආහාරවල ඔවුන්ගේ අවන්හල් % ය.</li>
+    <li><strong>QR ඇණවුම්:</strong> අමුත්තන්ට ඇණවුම් පිටුවේ රියදුරාගේ හෝ මාර්ගෝපදේශකයාගේ කේතය (උදා: DRV001) ටයිප් කළ හැක. වේටර්වරයා ඇණවුම තහවුරු කරන විට, හවුල්කරු මේසයේ ඇණවුමේ ඉබේම තෝරා ගනී.</li>
+  </ul>
+  <p>කොමිස් උපයාගත් පිටවීමකින් හෝ බිල්පතකින් පසු, Accelent <strong>💵 Pay now</strong> (රියදුරන්ට සහ මාර්ගෝපදේශකයින්ට බොහෝ විට එතැනම මුදලින් ගෙවයි) හෝ පසුව ගෙවිය යුතුදැයි අසයි.</p>
+
+  <h3>කොමිස් ගෙවීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Partners තිරයේ, හවුල්කරු තෝරන්න. ප්‍රකාශය සෑම නවාතැනක්ම සහ බිල්පතක්ම එහි කොමිස්, ඔබ ගෙවූ දේ සහ ණය ශේෂය සමඟ පෙන්වයි. සෑම පේළියකම කාමරය සහ රාත්‍රී, නැතහොත් මේසය, අමුත්තා සහ බිල්පත සඳහන් වේ. කොමිස් ලැබුණේ කුමන නවාතැනකින් හෝ බිල්පතකින්දැයි බැලීමට පේළියක් මත දෙවරක් ක්ලික් කරන්න (හෝ <strong>🔍 Details</strong> ක්ලික් කරන්න); <strong>🖨 Print Statement</strong> එය හවුල්කරු සඳහා මුද්‍රණය කරයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>💵 Pay Commission</strong>: මුදල (ණය මුදල පුරවා ඇත), සහ ඔබ ගෙවූ ආකාරය: මුදල්, UPI, බැංකු මාරුව හෝ චෙක්පත.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ගෙවීම ඔබේ මුදල් හෝ බැංකුවෙන්, <strong>Commission</strong> යටතේ <strong>Expenses</strong> වෙත යයි, එබැවින් Day Book, ගිණුම් ප්‍රකාශ සහ Profit &amp; Loss එය ඇතුළත් කරයි.</div></div>
+  <div class="tip">💡 පිටවීමක් හෝ අවන්හල් බිල්පතක් අවලංගු කළහොත්, එහි කොමිස් ඉබේම ගණන් කිරීම නවතී. ඔබ දැනටමත් එය ගෙවා ඇත්නම්, හවුල්කරුගේ ශේෂය ඔවුන් ඔබට ආපසු ගෙවිය යුතු දේ පෙන්වයි.</div>
+
+  <h3>හවුල්කරු සැකසුම් (පරිපාලක)</h3>
+  <ul>
+    <li><strong>එක් නවාතැනක හෝ බිල්පතක උපරිම කොමිස්:</strong> ආරක්ෂිත සීමාවක්, එබැවින් ටයිප් කිරීමේ වැරැද්දකට (5% වෙනුවට 50%) විශාල මුදලක් ගෙවිය නොහැක.</li>
+    <li><strong>කොමිස් මත TDS</strong> (ඔබ සක්‍රිය කරන තුරු අක්‍රියයි): අනුපාතය (2%, හෝ PAN නොමැතිව 20%) සහ TDS අදාළ වීමට පෙර හවුල්කරුවෙකුට උපයා ගත හැකි වාර්ෂික මුදල (₹20,000). සමාගමක් හෝ ව්‍යාපාරයක් කොමිස් මත TDS අඩු කළ යුතුය; පුද්ගලයෙකු හෝ HUF එකක් පසුගිය වර්ෂයේ ව්‍යාපාර පිරිවැටුම ₹1 කෝටියකට වඩා වැඩි වූ විට පමණි (වෘත්තියක් සඳහා ₹50 ලක්ෂ). ඔබ එසේ කළ යුතුදැයි ඔබේ ගණකාධිකාරීගෙන් විමසන්න. රඳවා ගත් TDS ඔබ එය රජයට ගෙවන තුරු <em>TDS on commission (payable)</em> ගිණුමේ ණය ලෙස පෙන්වයි.</li>
+  </ul>
+
+  <h3>හවුල්කරු අනුව ව්‍යාපාරය</h3>
+  <p><strong>📊 Business by Partner</strong> ටැබය, ඕනෑම දිනයක් සඳහා, සෑම හවුල්කරුවෙක්ම ගෙනා බිල්පත් ගණන, ව්‍යාපාරය (කාමර කුලිය සහ ආහාර) සහ ඔවුන්ගේ කොමිස්, ඔබ ගෙවූ දේ සහ තවමත් ණය දේ, විශාලතම පළමුව පෙන්වයි.</p>
+
+  <div class="tip">💡 Partners තිරය භාවිතා කිරීමට කාර්ය මණ්ඩලයට <strong>Expenses</strong> අවසරය අවශ්‍යයි. පැමිණීමේදී හෝ බිල්පතක හවුල්කරුවෙකු තෝරා ගැනීමට අවශ්‍ය වන්නේ Rooms හෝ Restaurant තිරය පමණි.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 9e -->
+<div class="chapter-banner" data-for="hotel">පරිච්ඡේදය 9e — නිවාස පවිත්‍රතාව <span class="for-badge">හෝටල්, ලැගුම්හල් සහ අමුත්තන්ගේ නිවාස සඳහා</span></div>
+<div class="section" id="ch9e" data-for="hotel">
+  <h2>9e. නිවාස පවිත්‍රතාව (කාමර පිරිසිදු කිරීම සහ රෙදි සේදීම)</h2>
+  <p><strong>🧹 Housekeeping</strong> තිරය (FINANCE යටතේ, හෝටලයක් සඳහා) ඔබේ කාර්ය මණ්ඩලය සඳහා පිරිසිදු කිරීමේ සහ රෙදි සේදීමේ කාර්යයන් ලැයිස්තුගත කරයි. බොහෝ කාර්යයන් ඉබේම පෙනේ:</p>
+  <ul>
+    <li><strong>පිටවීමක්</strong> <em>Clean the room</em> කාර්යයක් සාදයි. එය අවසන් වූ විට, කාමරය ඊළඟ අමුත්තා සඳහා ඉබේම <strong>Ready</strong> වේ (Rooms තිරයේ <strong>✨ Room Is Ready</strong> එබීම ද එය අවසන් කරයි).</li>
+    <li><strong>සෑම උදෑසනකම</strong> ඔබ සකසන වේලාවට, සෑම පදිංචි කාමරයක් සඳහාම <em>Daily cleaning</em> කාර්යයක් සාදනු ලැබේ.</li>
+    <li><strong>අමුත්තන්ට</strong> කාමර QR කාඩ්පතේ <strong>🧹 Clean my room</strong> හෝ <strong>👕 Laundry pickup</strong> තට්ටු කළ හැක (QR ඇණවුම් සක්‍රිය විට). PC එක බීප් හඬක් නගා ඉල්ලීම ඉහළින් පෙන්වයි. දෛනික පිරිසිදු කිරීමක් රැඳී සිටියේ නම්, අමුත්තාගේ ඉල්ලීම එහි ස්ථානය ගනී.</li>
+    <li>ඉදිරිපස මේසයට <strong>➕ New Task</strong> මඟින් ඕනෑම කාර්යයක් එක් කළ හැක.</li>
+  </ul>
+
+  <h3>එය කරන්නේ කවුද</h3>
+  <p><strong>⚙ Housekeeping Settings</strong> (පරිපාලක) හි, රාජකාරියේ සිටින සේවකයින් සලකුණු කරන්න (මුලින්ම ඔවුන් 👥 Employees හි එක් කරන්න). සෑම නව කාර්යයක්ම අඩුම විවෘත කාර්යයන් ඇති අයට යයි; <strong>👤 Give to…</strong> එය වෙනස් කරයි. පිරිසිදු කිරීමට රැඳී සිටින කාමරයක් පිරිසිදු කරන්නේ කවුදැයි Rooms තිරය පෙන්වයි.</p>
+
+  <h3>කාර්යයක් කිරීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">කාර්යය තෝරා <strong>▶ Start</strong> (අත්‍යවශ්‍ය නොවේ), පසුව එය අවසන් වූ විට <strong>✓ Done</strong> ක්ලික් කරන්න. <strong>✕ Cancel task</strong> අවශ්‍ය නැති කාර්යයක් ඉවත් කරයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>රෙදි සේදීම:</strong> කාමරයෙන් ඇඳුම් ගන්නා විට <strong>👕 Collected</strong> ක්ලික් කරන්න. ඒවා ආපසු එන විට, <strong>✓ Laundry returned…</strong> ක්ලික් කර සෑම වර්ගයකින්ම කැබලි කීයක්දැයි ඇතුළත් කරන්න. මුළු මුදල රෙදි සේදීමේ GST සමඟ (ඔබ වෙනස් නොකරන්නේ නම් 18%) අමුත්තාගේ කාමර බිල්පතට යයි.</div></div>
+  <div class="tip">💡 රෙදි සේදීමේ මිල ලැයිස්තුව (කමිසය, කලිසම, සාරිය…), රෙදි සේදීම මත GST සහ දෛනික පිරිසිදු කිරීමේ වේලාව <strong>⚙ Housekeeping Settings</strong> හි ඇත. <strong>✓ Done today</strong> ටැබය අද අවසන් කළ කාර්යයන්, කවුරුන් විසින්ද, සහ අය කළ රෙදි සේදීම ලැයිස්තුගත කරයි.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 10 -->
+<div class="chapter-banner">පරිච්ඡේදය 10 — මිලදී ගැනීම්</div>
+<div class="section" id="ch10">
+  <h2>10. මිලදී ගැනීම් පැනලය</h2>
+  <p>සැපයුම්කරුවන්ගෙන් ලැබෙන සෑම මිලදී ගැනීමේ බිල්පතක්ම මෙහි සටහන් කරන්න. තොගය වැඩි වන අතර සැපයුම්කරුට ගෙවිය යුතු ශේෂය ස්වයංක්‍රීයව නිරීක්ෂණය කෙරේ.</p>
+
+  <h3>මිලදී ගැනීමක් සටහන් කිරීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>+ New Purchase</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">මුලින්ම <strong>Vendor Name</strong> තෝරන්න හෝ ටයිප් කරන්න — එයට පහළින් ඇති සියල්ල මෙයට ප්‍රතිචාර දක්වයි. පවතින සැපයුම්කරුවෙකු සඳහා, ලිපිනය/දුරකථනය/GSTIN ස්වයංක්‍රීයව පිරවෙන අතර ඔවුන්ගේ සුපුරුදු භාණ්ඩ සෘජුවම Order Items වගුවට පූරණය වේ, සෑම එකක්ම කලින් සලකුණු කර සූදානම්ව.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">මෙම බිල්පතට ඇතුළත් කිරීමට අකමැති ඕනෑම පේළියක (☑) සලකුණ ඉවත් කරන්න. අවශ්‍ය පරිදි සෑම පේළියකම Qty/Rate/GST% ගළපන්න — Amount සහ පහළ Subtotal/GST/Grand Total සජීවීව යාවත්කාලීන වේ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">වගුවේ දැනටමත් නැති ඕනෑම දෙයක් ස්කෑන් කිරීමෙන් එක් කරන්න (Order Items ඉහළ ඇති <strong>📷</strong> ක්ෂේත්‍රය + <strong>📱 Scan with Phone</strong>), නැතහොත් වගුවට පහළින් ඇති <strong>➕ Add Item to Same Vendor</strong> හරහා සම්පූර්ණයෙන්ම නව නිෂ්පාදනයක් ලියාපදිංචි කරන්න.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">Bill Details හි Bill Number, Bill Date, සහ Payment Method (Cash / Bank Transfer / Cheque / Card / UPI / Credit to Vendor) පුරවන්න.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>💾 Save Purchase</strong> ක්ලික් කරන්න. තොගය සහ සැපයුම්කරුගේ ශේෂය වහාම යාවත්කාලීන වේ. එකම භාණ්ඩ සහ මුළු මුදල ඇති බිල්පතක් දින 60ක් ඇතුළත (ඕනෑම සැපයුම්කරුවෙකු යටතේ) දැනටමත් සුරැකී ඇත්නම්, එය දෙවන වරට සුරැකීමට පෙර Accelent අසයි.</div></div>
+  <div class="tip">💡 <strong>බිල්පතක් සංස්කරණය කිරීම හෝ මැකීම:</strong> බිල්පත් ලැයිස්තුවේ එය තෝරා <strong>✏️ Edit Bill</strong> හෝ <strong>❌ Delete Bill</strong> ක්ලික් කරන්න. සංස්කරණයක් තොගය සහ සැපයුම්කරුගේ ගිණුම නිවැරදි කළ බිල්පතට ගැළපෙන ලෙස යාවත්කාලීන කරයි. වැරදි සැපයුම්කරුවෙකු යටතේ සුරැකූ බිල්පතක් මකා නිවැරදි එක යටතේ නැවත ඇතුළත් කිරීම වඩාත් සුදුසුයි — මැකීම එහි තොගය, ගිණුම් සටහන සහ GST ආපසු හරවන අතර, පිටපතක් Deletion Watcher හි තබා ගනී. මැකීමෙන් පසු, දැන් වෙනත් කිසිම තැනක භාවිතා නොවන බිල්පතේ භාණ්ඩ එකම පියවරේදී මැකීමට Accelent ඉදිරිපත් කරයි. භාණ්ඩ දැනටමත් විකුණා ඇති බිල්පතක් මැකිය නොහැක; එය Edit Bill මඟින් නිවැරදි කරන්න, නැතහොත් ආපසු යැවූ භාණ්ඩ Returns → Purchase Returns යටතේ සටහන් කරන්න.</div>
+
+  <h3>සැපයුම්කරු සහ භාණ්ඩ සංයෝජන</h3>
+  <p>ඔබ මිලදී ගන්නා සැපයුම්කරු සහ භාණ්ඩය Accelent හි දැනටමත් පවතීද යන්න අනුව Order Items වගුව සහ <strong>➕ Add Item to Same Vendor</strong> පැනලය අවස්ථා හතරකට අනුවර්තනය වේ. <strong>Vendor Name</strong> ක්ෂේත්‍රය සැමවිටම එයට පහළින් ඔබ දකින දේ තීරණය කරයි, එබැවින් මුලින්ම සැපයුම්කරු තෝරන්න හෝ ටයිප් කරන්න.</p>
+
+  <h4>1. පවතින සැපයුම්කරු + පවතින භාණ්ඩය</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Vendor Name</strong> හි සැපයුම්කරුගේ නම ටයිප් කිරීමට පටන් ගෙන පතන ලැයිස්තුවෙන් ඔවුන් තෝරන්න. ඔවුන්ගේ ලිපිනය, දුරකථනය සහ GSTIN ස්වයංක්‍රීයව පිරවේ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඔබ මෙම සැපයුම්කරුගෙන් කලින් මිලදී ගත් සියල්ල සමඟ Order Items වගුව ස්වයංක්‍රීයව පිරවෙන අතර, සෑම පේළියක්ම දැනටමත් සලකුණු කර ඇත. මෙවර මිලදී නොගන්නා ඕනෑම දෙයක සලකුණ ඉවත් කරන්න — හිතාමතාම මැකීමේ බොත්තමක් නැත, එබැවින් වගුවේ කිසිවක් අහම්බෙන් තොගයෙන් ඉවත් කළ නොහැක.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ඔබ මිලදී ගන්නා ඕනෑම දෙයක Qty යාවත්කාලීන කර, සුරකින්න.</div></div>
+
+  <h4>2. පවතින සැපයුම්කරු + නව භාණ්ඩය</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ඉහත පරිදි පවතින සැපයුම්කරු තෝරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>➕ Add Item to Same Vendor</strong> හි Name, Category, Buy Rate, GST%, Sell Price, සහ Qty පුරවන්න. ස්වයංක්‍රීය භාණ්ඩ කේතයක් සඳහා Code අසල ඇති <strong>🔍 Generate</strong> ක්ලික් කරන්න, නැතහොත් ඔබේම එකක් ටයිප් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>✅ Add Item to Purchase</strong> ක්ලික් කරන්න. භාණ්ඩය සාදා, මෙම සැපයුම්කරු සමඟ සම්බන්ධ කර, Order Items වගුවට එක් කෙරේ.</div></div>
+
+  <h4>3. නව සැපයුම්කරු + නව භාණ්ඩය</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">දැනටමත් නොපවතින සැපයුම්කරු නාමයක් ටයිප් කරන්න. ලිපිනය/දුරකථනය/GSTIN හිස්ව ඇත — ඔබ සතුව ඇත්නම් ඒවා පුරවන්න (අත්‍යවශ්‍ය නොවේ).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">මෙම සැපයුම්කරු සඳහා තවම ඉතිහාසයක් නැති නිසා, Order Items වගුව හිස්ව ආරම්භ වේ — එය අපේක්ෂිතයි, දෝෂයක් නොවේ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>➕ Add Item to Same Vendor</strong> හරියටම අවස්ථාව 2 හි මෙන් භාවිතා කරන්න. ඔබ මිලදී ගැනීම සුරකින මොහොතේ Accelent නව සැපයුම්කරු සහ නව භාණ්ඩය දෙකම සාදයි.</div></div>
+
+  <h4>4. නව සැපයුම්කරු + පවතින භාණ්ඩය</h4>
+  <p>මෙය ඔබ දැනටමත් තබා ගන්නා නිෂ්පාදනයක් කලින් මිලදී නොගත් සැපයුම්කරුවෙකුගෙන් මිලදී ගැනීමයි — උදාහරණයක් ලෙස, ඔබේ සුපුරුදු සැපයුම්කරුගේ තොගය අවසන් වී ඇති අතර එකම භාණ්ඩය සඳහා ඔබ අලුත් අයෙකු උත්සාහ කරයි.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">නව සැපයුම්කරුගේ නම ටයිප් කරන්න (Order Items වගුව හිස්ව පවතී — පළමු මිලදී ගැනීමකට සාමාන්‍යයි).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">භාණ්ඩයේ බාකෝඩය ස්කෑන් කරන්න, නැතහොත් ස්කෑන් ක්ෂේත්‍රයේ එහි නිවැරදි බාකෝඩය/භාණ්ඩ කේතය ටයිප් කර Enter ඔබන්න. මෙම විශේෂ අවස්ථාව සඳහා දැනට නම-සෙවීමක් නැත — පවතින භාණ්ඩයක් මෙහි ගෙන ආ හැක්කේ එහි කේතය/බාකෝඩය මඟින් පමණි.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">මිලදී ගැනීම සුරකින්න. භාණ්ඩයේම විස්තර වෙනස් නොවේ — Accelent ඔබට එය මෙම සැපයුම්කරුගෙන්, මෙම මිලට ද මිලදී ගත හැකි බව පමණක් සටහන් කරයි.</div></div>
+
+  <div class="good">✅ එකම භාණ්ඩය දෙවන හෝ තෙවන සැපයුම්කරුවෙකුගෙන් මිලදී ගැනීම කිසි විටෙක එහි පවතින විස්තර උඩින් ලියන්නේ හෝ බිඳින්නේ නැත. Accelent සෑම භාණ්ඩයක් සඳහාම සැපයුම්කරු අනුව වෙනම මිල/දින වාර්තාවක් තබා ගනී, එබැවින් එක් මිලදී ගැනීමක් සඳහා නව සැපයුම්කරුවෙකු උත්සාහ කිරීම ඔබේ අනෙක් සැපයුම්කරු සබඳතාවලට කිසි විටෙක බලපාන්නේ නැත.</div>
+
+  <h3>බාකෝඩ් ස්කෑන් කිරීම සහ තත්වය</h3>
+  <p>භාණ්ඩයක් සෘජුවම මිලදී ගැනීමට එක් කිරීමට Order Items ඉහළ ඇති <strong>📱 Scan with Phone</strong> මඟින් ස්කෑන් කරන්න (හෝ බාකෝඩ ක්ෂේත්‍රයේ ටයිප් කර Enter ඔබන්න).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">බාකෝඩය දැනටමත් තොගයේ ඇති භාණ්ඩයකට ගැළපේ නම්, එය වගුවට එක් වේ — නැතහොත්, එය දැනටමත් මෙම බිල්පතේ ඇත්නම්, තහවුරු කිරීමේ පණිවිඩයක් සමඟ එහි Qty 1 කින් වැඩි වේ, එවිට දැන් සිදු වූ දේ ඔබ සැමවිටම දනී.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">එය කිසිවකට නොගැළපේ නම්, Accelent එසේ පවසා නව නිෂ්පාදනයක් ලෙස ලියාපදිංචි කිරීමට පහත <strong>➕ Add Item to Same Vendor</strong> වෙත ඔබව යොමු කරයි.</div></div>
+
+  <p>Order Items වගුවේ සෑම පේළියක්ම <strong>🔖</strong> තීරුවේ එහිම බාකෝඩ තත්වය ද පෙන්වයි:</p>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><strong>✓ Barcode</strong> (කොළ) — මෙම භාණ්ඩයට දැනටමත් බාකෝඩයක් සුරැකී ඇත. එම බාකෝඩය ඉවත් කිරීමට එය ක්ලික් කරන්න, උදා: ස්කෑන් එකක් වැරදි කේතයක් අමුණා ඇත්නම්.</div></div>
+  <div class="step"><div class="step-num">+</div><div class="step-body"><strong>+📷</strong> (නිල්) — තවම බාකෝඩයක් නැත. ඔබේ දුරකථනයෙන් ස්කෑන් කර එකක් අමුණන්න එය ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">🗑</div><div class="step-body"><strong>🗑 Clear Barcode</strong> — අමුණා ඇති නමුත් නිසි ලෙස නොගත් බාකෝඩයක් සඳහා වෙනම යළි පිහිටුවීමේ බොත්තමක්, එවිට ඔබට එය අලුතින් ස්කෑන් කළ හැක. භාණ්ඩයට ඉවත් කිරීමට බාකෝඩයක් ඇති විට පමණක් සක්‍රිය වේ.</div></div>
+
+  <div class="tip">💡 <strong>➕ Add Item to Same Vendor</strong> සැමවිටම නව භාණ්ඩය දැනට <strong>Vendor Name</strong> හි ඇති සැපයුම්කරු සමඟ සම්බන්ධ කරයි — නව හෝ පවතින — එබැවින් නව භාණ්ඩයක් ලියාපදිංචි කිරීමට පෙර සැපයුම්කරු ක්ෂේත්‍රය දෙවරක් පරීක්ෂා කරන්න, විශේෂයෙන් එකම බෙදාහැරීමේ නිෂ්පාදන කිහිපයක් පිළිවෙලින් ස්කෑන් කරන විට.</div>
+
+  <h3>📷 Scan Vendor Bill — සම්පූර්ණ කඩදාසි බිල්පතක් ස්වයංක්‍රීයව කියවීම</h3>
+  <p>සැපයුම්කරුගේ බිල්පතක සෑම පේළියක්ම අතින් ටයිප් කරනවා වෙනුවට, එය ඡායාරූපයක් ගෙන Accelent ට ඡායාරූපයෙන්ම භාණ්ඩ පේළි, HSN කේත සහ GST කියවීමට ඉඩ දෙන්න. මෙය සම්පූර්ණයෙන්ම ඔබේම පරිගණකයේ ධාවනය වේ — අන්තර්ජාල සම්බන්ධතාවයක් භාවිතා නොවන අතර, ඡායාරූපය කිසි විටෙක කොහේවත් යවන්නේ නැත.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">මුලින්ම <strong>Vendor Name</strong> තෝරන්න හෝ ටයිප් කරන්න, පසුව <strong>📷 Scan Vendor Bill</strong> ක්ලික් කරන්න. බිල්පත් ඡායාරූපය තෝරන්න — පැහැදිලි, හොඳින් ආලෝකමත් ඡායාරූපයක් වඩාත් හොඳින් ක්‍රියා කරයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ස්කෑන් කිරීම ආරම්භ වීමට පෙර, අවශ්‍ය නම් <strong>Rotate Left / Rotate Right</strong> භාවිතයෙන් ඡායාරූපය කෙළින් කරන්න — කෙළින් ඡායාරූපයක් තත්පර කිහිපයකින් ස්කෑන් වේ, පැත්තට හැරුණු එකක් එහි දිශාව ඉබේම සොයා ගන්නා අතරතුර වැඩි කාලයක් ගනී. එය නිවැරදි ලෙස පෙනෙන විට <strong>▶ Start Scan</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">සමාලෝචන තිරය එක් පැත්තක බිල්පත් ඡායාරූපය සහ අනෙක් පැත්තේ සොයාගත් සියල්ලේ සංස්කරණය කළ හැකි ජාලකයක් සමඟ විවෘත වේ. ඉහළ ඇති <strong>Reconciliation Status</strong> බැනරය පරීක්ෂා කරන්න — භාණ්ඩ පේළි බිල්පතේම මුද්‍රිත මුළු එකතුවට ගැළපේදැයි එය ඔබට පවසයි.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">බිල්පත් ඡායාරූපයේ එය පැමිණි ස්ථානයට සෘජුවම යාමට ඕනෑම පේළියක් ක්ලික් කරන්න. වැරදියට කියවෙන ඕනෑම දෙයක් නිවැරදි කරන්න — Description, Category, HSN/SAC, Qty, Unit, Rate, සහ GST% සියල්ල සංස්කරණය කළ හැක. Accelent ට විශ්වාසයෙන් කියවිය නොහැකි පේළියක් <strong>⚠️</strong> පෙන්වයි; අඩු දේ ටයිප් කරන්න, එය <strong>✅</strong> වෙත යාවත්කාලීන වේ. ඇතුළත් කිරීමට අකමැති ඕනෑම පේළියක සලකුණ ඉවත් කරන්න.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">විස්තරය දැනටමත් Inventory හි ඇති භාණ්ඩයකට ගැළපෙන පේළියක් — ඕනෑම සැපයුම්කරුවෙකුගෙන් මිලදී ගත් — Category තීරුවේ එහි කේතය සමඟ <strong>✓ existing item</strong> පෙන්වයි; එහි ප්‍රමාණය එම භාණ්ඩයට එක් වේ. අනෙක් සෑම පේළියක්ම නව භාණ්ඩයක් බවට පත් වන අතර එයට <strong>Category</strong> එකක් අවශ්‍යයි, මන්ද කාණ්ඩය භාණ්ඩ කේතය තීරණය කරන නිසා. කාණ්ඩයක් නැති ඕනෑම නව පේළියකදී Apply නතර වී එය වෙත යොමු කරයි.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body">පේළි කිහිපයක් එකවර ඔබේ පවතින නාමාවලියට ස්වයංක්‍රීයව ගැළපීමට, හෝ කාණ්ඩයකට සිතියම්ගත කිරීමට <strong>Bulk Actions</strong> භාවිතා කරන්න — මධ්‍යස්ථ විශ්වාසයක් පමණක් ඇති ඕනෑම දෙයක් තහවුරු කිරීමේ උත්පතනයක් විවෘත කරයි, එබැවින් කිසිවක් නිහඬව වැරදි නිෂ්පාදනයකට නොගැළපේ.</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body">අවසන් කරන ආකාරය තෝරන්න:<br>• <strong>💾 Last Page — Save Now</strong> — මිලදී ගැනීම වහාම සුරකියි (එක් පිටුවක බිල්පතක, හෝ අවසාන පිටුවේ භාවිතා කරන්න). තහවුරු කිරීමේ කොටුවක් නිවැරදි Vendor, Goods Amount, GST, සහ Grand Total පෙන්වයි — එය බිල්පතට ගැළපේදැයි පරීක්ෂා කර, තහවුරු කරන්න.<br>• <strong>📷 More Pages? Scan Next</strong> — පිටු කිහිපයක මුද්‍රණය කළ බිල්පතක් සඳහා: මෙම පිටුවේ භාණ්ඩ එක් කර ඊළඟ පිටුව සඳහා ඡායාරූප තෝරන්නා විවෘත කරයි. අවසාන පිටුවේ, <em>Last Page — Save Now</em> භාවිතා කරන්න; සියලු පිටු එක් මිලදී ගැනීමක් ලෙස එකට සුරැකේ.<br>• <strong>✅ Apply (Save Later)</strong> — සුරැකීමකින් තොරව භාණ්ඩ New Purchase පෝරමයට එක් කරයි, එවිට ඔබට ඒවා එහි සමාලෝචනය කර <strong>Save Purchase</strong> ඔබම ක්ලික් කළ හැක.</div></div>
+  <figure class="shot"><a href="manual_images/bill-scan-review.png" target="_blank"><img src="manual_images/bill-scan-review.png" alt="Bill Scan Review screen" loading="lazy"></a><figcaption>Bill Scan Review — වම් පස බිල්පත් ඡායාරූපය, දකුණු පස සොයාගත් භාණ්ඩ, සහ ඉහළින් Reconciliation Status.</figcaption></figure>
+
+  <div class="good">✅ ජාලකයේ වැරැද්දක් කළාද? Ctrl+Z අවසාන සංස්කරණය, එකතු කිරීම, ඉවත් කිරීම, හෝ තොග ක්‍රියාව අහෝසි කරයි — ඔබ සැබවින්ම සුරකින තුරු මෙහි ඔබ කරන කිසිවක් ස්ථිර නොවේ. සහ ඔබට අතරමගදී බාධා වුවහොත් (යෙදුම වැසේ, ඔබේ පරිගණකය නිදා ගනී), එම ඡායාරූපයම නැවත තේරීමෙන් අලුතින් ආරම්භ කරනවා වෙනුවට ඔබ නතර කළ තැනින්ම නැවත ආරම්භ කිරීමට ඉදිරිපත් කරයි.</div>
+  <div class="tip">💡 මිලදී ගැනීමේ ඉතිහාසයක් නැති සම්පූර්ණයෙන්ම නව සැපයුම්කරුවෙකු සඳහා ද මෙය ක්‍රියා කරයි — දැනටමත් Inventory හි ඇති භාණ්ඩවලට ගැළපෙන පේළි ඒවාට එක් වන අතර, ඉතිරිය නව භාණ්ඩ බවට පත් වේ, අතින් එකක් එක් කරන ආකාරයටම සාදනු ලැබේ. Scan Vendor Bill ට සෑම ස්ථාපනයකම ඇතුළත් නොවන දේශීය AI සංරචක අවශ්‍යයි; එය ලබා ගත නොහැකි බව වාර්තා කරයි නම්, Accelent හි අනෙක් සියල්ලට බලපෑමක් නැත.</div>
+  <div class="tip">💡 <strong>වේගය:</strong> 8 GB RAM ඇති PC එකක ස්කෑන් එකක් ඉක්මනින් අවසන් වේ; 4 GB සමඟ එය තවමත් ක්‍රියා කරන නමුත් වැඩි කාලයක් ගනී — එය ධාවනය වීමට ඉඩ දෙන්න. <strong>නොමිලේ අත්හදා බැලීම:</strong> බිල්පත් ස්කෑන් 15ක් ඇතුළත් වේ; ඉන්පසු, ස්කෑන් කිරීමට සක්‍රිය බලපත්‍රයක් අවශ්‍යයි (අත්හදා බැලීමේ ඉතිරි කාලය පුරා අනෙක් සියල්ල දිගටම ක්‍රියා කරයි). දායකත්වයක් සමඟ, ස්කෑන් කිරීම අසීමිතයි.</div>
+
+  <h3>මිලදී ගැනීම් ආපසු දීම්</h3>
+  <p>සැපයුම්කරුවෙකුට ආපසු දුන් භාණ්ඩ සටහන් කිරීමට <strong>Returns</strong> පැනලය → <strong>Purchase Returns</strong> ටැබයට යන්න. හර සටහනක් සාදනු ලබන අතර තොගය අඩු වේ. ආපසු දීමේ මුදල Profit &amp; Loss, Trading Account, සහ Balance Sheet වාර්තාවල ඔබේ Purchases සංඛ්‍යාවෙන් ද අඩු කෙරේ.</p>
+
+  <div class="tip">💡 මිලදී ගැනීමක් සටහන් කරන විට සැමවිටම <strong>සැපයුම්කරුගේ බිල්පත් අංකය</strong> ඇතුළත් කරන්න — එය නිශ්චිත මිලදී ගැනීම් සොයා ගැනීම පහසු කරන අතර GST සැසඳීම සඳහා අවශ්‍යයි.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 11 -->
+<div class="chapter-banner">පරිච්ඡේදය 11 — වියදම් සහ ලදුපත්</div>
+<div class="section" id="ch11">
+  <h2>11. වියදම් සහ ලදුපත්</h2>
+
+  <h3>වියදම් පැනලය</h3>
+  <p>සියලු ව්‍යාපාරික වියදම් මෙහි සටහන් කරන්න: කුලිය, විදුලිය, වැටුප් අත්තිකාරම්, ප්‍රවාහනය, කාර්යාල සැපයුම් ආදිය.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>+ Add Expense</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Category (Rent / Electricity / Salary / Transport / Other) තෝරා, මුදල, ගෙවීමේ ක්‍රමය (Cash හෝ Bank) සහ කෙටි විස්තරයක් ඇතුළත් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Save</strong> ක්ලික් කරන්න. මුදල් හෝ බැංකු ශේෂය ඒ අනුව අඩු වේ.</div></div>
+
+  <h3>පුනරාවර්තන වියදම්</h3>
+  <p>කාලසටහනකට අනුව පුනරාවර්තනය වන වියදම් සඳහා (මාසික කුලිය, උපයෝගිතා බිල්පත්), <strong>Recurring Expenses</strong> පැනලය භාවිතා කරන්න:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Recurring Expenses</strong> වෙත යන්න → <strong>+ New Template</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">වියදමේ නම, මුදල, කාණ්ඩය සහ පුනරාවර්තන කාලසටහන (මාසික, සතිපතා ආදිය) සකසන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">නියමිත වූ විට Accelent ඔබට මතක් කරන අතර වියදම ස්වයංක්‍රීයව සටහන් කළ හැක.</div></div>
+
+  <h3>ලදුපත් පැනලය</h3>
+  <p>Receipts පැනලය ලැබුණු සහ ගෙවූ සියලු මුදල්වල ලෙජරයකි — එකතු කළ මුදල්, සැපයුම්කරුවන්ට ගෙවීම්, බැංකු මාරු කිරීම් සහ වැටුප් ගෙවීම්. එය විකුණුම්, මිලදී ගැනීම් සහ වියදම් වලින් ස්වයංක්‍රීයව පිරවේ. ඔබට මෙහි වෙනම ලදුපතක් ද සටහන් කළ හැක (උදා: ණය පාරිභෝගිකයෙකු ඔවුන්ගේ ඉතිරි ශේෂය ගෙවන විට).</p>
+
+  <div class="tip">💡 ණය පාරිභෝගිකයෙකු ඔබට ගෙවන විට, <strong>Receipts → + New Receipt</strong> වෙත ගොස්, පාරිභෝගිකයා තෝරා, ලැබුණු මුදල ඇතුළත් කරන්න. ඔවුන්ගේ ඉතිරි ශේෂය ස්වයංක්‍රීයව අඩු වේ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 12 -->
+<div class="chapter-banner">පරිච්ඡේදය 12 — ගිණුම් සහ මාරු කිරීම්</div>
+<div class="section" id="ch12">
+  <h2>12. ගිණුම් සහ මාරු කිරීම්</h2>
+
+  <h3>ගිණුම් පැනලය</h3>
+  <p>ඔබේ සියලු මුදල් ගිණුම් පෙන්වයි — මුදල්, සහ සෑම බැංකු ගිණුමක්ම. සෑම ගිණුමක් සඳහාම ඔබට දැකිය හැක:</p>
+  <ul>
+    <li>වත්මන් ශේෂය (සැමවිටම සජීවී)</li>
+    <li>දින සහ විස්තර සමඟ සම්පූර්ණ ගනුදෙනු ඉතිහාසය</li>
+    <li>හර (ලැබෙන මුදල්) සහ බැර (යන මුදල්) තීරු</li>
+  </ul>
+
+  <h3>පාරිභෝගික ණය ප්‍රකාශය</h3>
+  <p><strong>Accounts → Credit Manager → Customer Statement</strong> වෙත ගොස්, පාරිභෝගිකයාගේ නමේ ඕනෑම කොටසක් ටයිප් කර (ඔබ ටයිප් කරන විට යෝජනා පෙනේ) <strong>Show Statement</strong> හෝ Enter ඔබන්න. ප්‍රකාශය මුළු ණය, ගෙවූ මුදල සහ තවමත් ගෙවිය යුතු දේ, සෑම ණය ඉන්වොයිසියක්ම, සෑම ඉන්වොයිසියකම <strong>ණයට ගත් භාණ්ඩ</strong>, සහ ලැබුණු සෑම ගෙවීමක්ම පෙන්වයි. <strong>Print</strong> පාරිභෝගිකයා සඳහා එම ප්‍රකාශයම A4 මත ලබා දෙයි.</p>
+
+  <h3>බැංකු ගිණුමක් එක් කිරීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Accounts</strong> වෙත යන්න → Bank Accounts යටතේ, <strong>➕ Add New Bank</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">බැංකුවේ නම, ගිණුම් අංකය සහ ආරම්භක ශේෂය (ඔබේ ආරම්භක දිනයේ බැංකු ප්‍රකාශයෙන්) ඇතුළත් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save ක්ලික් කරන්න. බැංකු ගිණුම දැන් සියලු ගෙවීම් පතන ලැයිස්තුවල (Sales, Purchases, Expenses) පෙනේ.</div></div>
+
+  <h3>මාරු කිරීම් පැනලය</h3>
+  <p>ඔබේම ගිණුම් අතර මුදල් ගෙනයන විට Transfers පැනලය භාවිතා කරන්න — උදාහරණයක් ලෙස, මුදල් ඔබේ බැංකු ගිණුමේ තැන්පත් කිරීම, හෝ බැංකු ගිණුම් දෙකක් අතර මාරු කිරීම.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Transfers</strong> වෙත යන්න. <strong>Inter-Accounts Transfer</strong> හි, <strong>Paid From</strong> (උදා: Cash in Hand) සහ <strong>Received In</strong> (උදා: HDFC Bank) තෝරන්න — එක් එක් එකේ පවතින ශේෂය ඒ අසල පෙන්වයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">Amount සහ Date ඇතුළත් කරන්න, සහ අවශ්‍ය නම් Reference සහ Description.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Add Transfer</strong> ක්ලික් කරන්න. මුදල් අඩු වේ, බැංකුව වැඩි වේ — ශේෂ දෙකම යාවත්කාලීන වේ. එය Recent Transfers යටතේ පෙනේ.</div></div>
+  <figure class="shot"><a href="manual_images/transfers.png" target="_blank"><img src="manual_images/transfers.png" alt="Transfers" loading="lazy"></a><figcaption>Transfers — වම් පස මාරු කිරීමේ පෝරමය, දකුණු පස Transfer History Search.</figcaption></figure>
+  <p>දිනය සහ ගිණුම අනුව පැරණි මාරු කිරීම් සොයා ගැනීමට දකුණු පස ඇති <strong>Transfer History Search</strong> ද, ඒවා මුද්‍රණය කිරීමට <strong>Print Report</strong> ද භාවිතා කරන්න.</p>
+
+  <div class="warn">⚠ බැංකු තැන්පතුවක් කිසි විටෙක "ආදායමක්" හෝ "ලදුපතක්" ලෙස සටහන් නොකරන්න — සැමවිටම Transfers පැනලය භාවිතා කරන්න. එය වෙනත් තැනක සටහන් කිරීමෙන් ඔබේ ආදායම් සංඛ්‍යා වැඩි වී පෙනේ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 13 -->
+<div class="chapter-banner">පරිච්ඡේදය 13 — වාර්තා සහ ණය කාලය</div>
+<div class="section" id="ch13">
+  <h2>13. වාර්තා, දත්ත සැසඳීම සහ ණය කාල වාර්තාව</h2>
+
+  <h3>දත්ත සැසඳීම (වාර්තා) පැනලය</h3>
+  <p>මූල්‍ය සාරාංශ සහ සැසඳීම් සාදයි:</p>
+  <ul>
+    <li><strong>මාසික විකුණුම් එදිරිව මිලදී ගැනීම්</strong> — සෑම මාසයකම එකතුව පෙන්වන තීරු ප්‍රස්තාරය සහ වගුව</li>
+    <li><strong>ශුද්ධ ලාභය</strong> — විකුණුම් වලින් මිලදී ගැනීම් සහ වියදම් අඩු කළ විට</li>
+    <li><strong>පාර්ශව ප්‍රකාශය</strong> — ඔබ සහ ඕනෑම පාර්ශවයක් අතර සම්පූර්ණ ගනුදෙනු ඉතිහාසය</li>
+    <li><strong>ගිණුම් ප්‍රකාශය</strong> — නිශ්චිත මුදල් හෝ බැංකු ගිණුමක සියලු ගනුදෙනු</li>
+  </ul>
+  <p>වාර්තාව ගොනුවක් ලෙස සුරැකීමට <strong>Export (Ctrl+E)</strong> බොත්තම, හෝ සෘජුවම මුද්‍රණය කිරීමට <strong>Print (Ctrl+P)</strong> භාවිතා කරන්න.</p>
+
+  <h3>ණය කාල වාර්තා පැනලය</h3>
+  <p>Aging Report ඔබේ පාරිභෝගිකයින්ගේ ගෙවිය යුතු ඉන්වොයිස් කොපමණ කලක් නොගෙවා ඇත්දැයි, සහ ඔබේ සැපයුම්කරුවන්ගේ බිල්පත් කොපමණ කලක් ගෙවිය යුතුව ඇත්දැයි පෙන්වයි.</p>
+  <table>
+    <tr><th>කාල කාණ්ඩය</th><th>අර්ථය</th></tr>
+    <tr><td>දින 0–30</td><td>මෑත — සාමාන්‍ය ණය කාලය</td></tr>
+    <tr><td>දින 31–60</td><td>පැරණි වෙමින් — පසු විපරම නිර්දේශිතයි</td></tr>
+    <tr><td>දින 61–90</td><td>කල් ඉකුත් — පාර්ශවය අමතන්න</td></tr>
+    <tr><td>දින 90+</td><td>බොහෝ කල් ඉකුත් — දැඩි කරන්න හෝ කපා හරින්න</td></tr>
+  </table>
+  <p>පසු විපරම් ඇමතුම් අවශ්‍ය පාරිභෝගිකයින් සහ හදිසි ගෙවීම් අවශ්‍ය සැපයුම්කරු බිල්පත් හඳුනා ගැනීමට මෙම වාර්තාව භාවිතා කරන්න.</p>
+
+  <h3>අවසන් කිරීමේ (Finalization) පැනලය</h3>
+  <p>මූල්‍ය වර්ෂය අවසානයේ, ඔබේ <strong>Profit &amp; Loss Statement</strong> සහ <strong>Balance Sheet</strong> සෑදීමට <strong>Finalization</strong> වෙත යන්න. මෙම වාර්තා ඔබේ ගණකාධිකාරී හෝ විගණකවරයා සඳහා මුද්‍රණය හෝ අපනයනය කළ හැක.</p>
+  <p>Finalization මූල්‍ය වර්ෂය ද වසා දමයි. පෙර වර්ෂයක් බැලීමට, කවුළුවේ පහළ ඇති තත්ව තීරුවෙන් මූල්‍ය වර්ෂය මාරු කරන්න.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 14 -->
+<div class="chapter-banner">පරිච්ඡේදය 14 — සේවකයින් සහ වැටුප්</div>
+<div class="section" id="ch14">
+  <h2>14. සේවකයින් සහ වැටුප්</h2>
+  <p>Accelent ඔබේ කාර්ය මණ්ඩල වාර්තා තබා ගනී, පැමිණීම, අතිකාල සහ අත්තිකාරම් වලින් සෑම මාසයකම වැටුප ගණනය කරයි, එය මුදල් හෝ බැංකු ගිණුමකින් ගෙවයි, සහ සෑම සේවකයෙකුටම වැටුප් පත්‍රිකාවක් ලබා දෙයි — මුද්‍රිතව හෝ WhatsApp හි. පහත පියවර එක් මාසයක් ආරම්භයේ සිට අවසානය දක්වා අනුගමනය කරයි.</p>
+
+  <h3>Accelent වැටුපක් ගණනය කරන ආකාරය</h3>
+  <p>සෑම සේවකයෙකුටම <strong>වැටුප් වර්ගයක්</strong> ඇත. ඔබ ඇතුළත් කරන <strong>Amount</strong> එක් එක් එකට වෙනස් අර්ථයක් ඇත:</p>
+  <table>
+    <tr><th>වැටුප් වර්ගය</th><th>Amount යනු</th><th>මාසයේ වැටුප</th></tr>
+    <tr><td><strong>Fixed</strong></td><td>මසකට</td><td>මාසික වැටුප ÷ වැඩ කරන දින × වැඩ කළ දින</td></tr>
+    <tr><td><strong>Daily</strong></td><td>දිනකට</td><td>දෛනික වැටුප × වැඩ කළ දින</td></tr>
+    <tr><td><strong>Hourly</strong></td><td>පැයකට</td><td>පැය වැටුප × දිනකට වැඩ කරන පැය × වැඩ කළ දින</td></tr>
+    <tr><td><strong>Piece</strong></td><td>කැබැල්ලකට (හෝ ඔබේ ඒකකයට)</td><td>නිෂ්පාදිත ඒකක × ඒකකයකට අනුපාතය</td></tr>
+  </table>
+  <p><strong>වැඩ කළ දින</strong> = පැමිණීම − නිවාඩු. <strong>අතිකාල</strong> (Fixed, Daily, Hourly) = පැය අනුපාතය × අතිකාල පැය × අතිකාල ගුණකය (උදා: 1.5). <strong>ශුද්ධ වැටුප</strong> = මූලික වැටුප + අතිකාල − අය කර ගත් අත්තිකාරම්. සේවකයා සේවයට බැඳුණු මාසයක් බැඳුණු දින සිට ගණන් කෙරේ.</p>
+
+  <h3>සේවකයෙකු එක් කිරීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Employees</strong> වෙත යන්න → <strong>➕ Add Employee</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">නම, තනතුර, <strong>ජංගම අංකය</strong> (වැටුප් පත්‍රිකා WhatsApp හි එයට යයි), ලිපිනය සහ <strong>සේවයට බැඳුණු දිනය</strong> ඇතුළත් කරන්න. දිනවල දිනය මුලින්ම එයි: <code>01/08/2026</code> යනු 2026 අගෝස්තු 1 යි; ඔබට එය දින දර්ශනයෙන් ද තෝරා ගත හැක. අවශ්‍ය නම් හැඳුනුම් සාක්ෂියක් සහ ඇපකරුවෙකු එක් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Salary Type</strong> තෝරා <strong>Amount</strong> ඇතුළත් කරන්න — කොටුව <em>/ month</em>, <em>/ day</em>, <em>/ hour</em> හෝ <em>/ unit</em> පෙන්වන නිසා එහි අර්ථය ඔබට පෙනේ. Piece වැඩ සඳහා, ඒකකයේ නම ද ඇතුළත් කරන්න (උදා: <em>pieces</em>).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">මසකට වැඩ කරන දින, දිනකට වැඩ කරන පැය සහ අතිකාල ගුණකය සකසා, <strong>Save Employee</strong> ක්ලික් කරන්න.</div></div>
+
+  <h3>වැටුප් පත්‍රය</h3>
+  <p>සේවකයෙකු තෝරා <strong>📊 Salary Spreadsheet</strong> ක්ලික් කරන්න. එය සේවකයා බැඳුණු දින සිට සෑම <strong>අවසන් වූ මාසයක්ම</strong> ලැයිස්තුගත කරයි — වත්මන් මාසය අවසන් වූ පසු පෙනේ. සෑම මාසයක් සඳහාම ඔබට <strong>Attendance</strong>, <strong>Leaves</strong>, <strong>OT Hours</strong>, <strong>Advances</strong> සහ, කැබලි සේවකයින් සඳහා, <strong>Units</strong> වෙනස් කළ හැක; ඔබ ටයිප් කරන විට Base Pay, OT Pay, Gross සහ Net Payable යාවත්කාලීන වේ. <strong>Status</strong> තීරුව ⏳ Pending, 📝 Saved, not paid, හෝ ✅ Paid පෙන්වයි.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>💾 Save (not paid yet)</strong> කිසිවක් නොගෙවා ඔබ ඇතුළත් කළ දේ තබා ගනී. මාසය තුළ එය භාවිතා කරන්න; ඊළඟ වතාවේ පත්‍රය ඔබේ ඇතුළත් කිරීම් පෙන්වයි. ඔබ නොසුරැකූ වෙනස්කම් සමඟ පත්‍රය වසා දැමුවහොත්, Accelent මුලින්ම අසයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>ගෙවීමට පෙර පරීක්ෂා කරන්න:</strong> මාසය තෝරා <strong>🖨 Payslip</strong> ක්ලික් කරන්න. තවම නොගෙවූ මාසයක් සඳහා ඔබට අළු පාට <strong>DRAFT</strong> වැටුප් පත්‍රිකාවක් ලැබේ (<em>Not paid yet</em> ලෙස සලකුණු කර, අත්සන හෝ මුද්‍රාව නොමැතිව) සේවකයා සමඟ සංඛ්‍යා එකඟ කර ගැනීමට.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>💰 Pay Salary</strong> තවම නොගෙවූ සෑම මාසයක්ම ගෙවයි: මුදල් හෝ බැංකු ගිණුම තෝරන්න, සහ සෑම මාසයක්ම ගිණුම්වල සටහන් වී ✅ Paid ලෙස සලකුණු වේ. වැටුපක් නැති මාසයක් (උදා: ඒකක ඇතුළත් නොකළ කැබලි වැඩ) ගෙවනු ලබන්නේ ඔබ එසේ කීවොත් පමණි; එසේ නොමැති නම් එය pending ලෙස පවතී.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ගෙවූ වහාම, Accelent නවතම මාසයේ වැටුප් පත්‍රිකාව ලබා දෙයි: <strong>📄 Send on WhatsApp</strong>, <strong>🖨 View / Print</strong> හෝ <strong>Later</strong>.</div></div>
+
+  <h3>වැටුප් පත්‍රිකා</h3>
+  <p>වැටුප් පත්‍රිකාවක් ඔබේ සමාගම් ශීර්ෂය සහ ලාංඡනය, සේවකයාගේ විස්තර, වැඩ කළ දින, නිවාඩු සහ අතිකාල, ගෙවූ දිනය සහ එය ගෙවූ ගිණුම, ඉපැයීම් සහ අඩු කිරීම්, <strong>වචනයෙන් ශුද්ධ වැටුප</strong>, සහ ඔබේ අත්සන සහ මුද්‍රාව පෙන්වයි (Settings → 🏢 Company හි <em>Signature &amp; Stamp</em> බලන්න).</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">වැටුප් පත්‍රයේ, ගෙවූ මාසයක් තෝරා එය බැලීමට, මුද්‍රණය කිරීමට හෝ PDF ලෙස සුරැකීමට <strong>🖨 Payslip</strong>, හෝ <strong>📄 Send Payslip on WhatsApp</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">WhatsApp කෙටි පණිවිඩයක් සහ පිටපත් කළ වැටුප් පත්‍රිකා PDF එක සමඟ සේවකයාගේ කතාබහ විවෘත කරයි: එය අමුණන්න <strong>Ctrl+V</strong> ඔබා, පසුව <strong>Send</strong> (බිල්පත් සඳහා මෙන් — <em>WhatsApp හි බිල්පත් යැවීම</em> බලන්න).</div></div>
+  <div class="tip">💡 සියලු සේවකයින්ගේ ගෙවූ සියලු මාස <strong>Payroll History</strong> ටැබයේ ද ඇත: මාසයක් සහ වර්ෂයක් තෝරා, පේළියක් තෝරා, එම <strong>🖨 Payslip</strong> සහ <strong>📄 Send Payslip on WhatsApp</strong> බොත්තම් භාවිතා කරන්න (පේළියක් දෙවරක් ක්ලික් කිරීම ද වැටුප් පත්‍රිකාව විවෘත කරයි).</div>
+
+  <h3>අත්තිකාරම්</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">සේවකයා තෝරන්න → <strong>💰 Add Advance</strong> (හෝ සේවකයා විවෘත කර <strong>Advances</strong> ටැබය භාවිතා කරන්න). දිනය, මුදල, හේතුව සහ එය ගෙවන මුදල් හෝ බැංකු ගිණුම ඇතුළත් කරන්න. පිටතට යන මුදල් <em>Employee Advance</em> වියදමක් ලෙස සටහන් වේ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Normal</strong> අත්තිකාරමක් මාසයක වැටුපෙන් 40% දක්වා විය හැකි අතර සේවකයා මේ මාසයේ මේ දක්වා උපයා ගත් ප්‍රමාණයට වඩා වැඩි නොවිය යුතුය. ඊට වඩා විශාල එකක් <strong>Forced</strong> අත්තිකාරමක් වන අතර අනුමත කරන්නාගේ නමක් අවශ්‍යයි. කැබලි සේවකයින් සඳහා මාසයේ වැටුප ඔවුන්ගේ අවසාන ගෙවූ මාසයයි.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ඉතිරි අත්තිකාරම් ඊළඟ නොගෙවූ මාසයේ <strong>Advances</strong> තීරුවේ පෙනෙන අතර එම වැටුපෙන් අඩු කෙරේ. කොටසක් පමණක් අය කර ගැනීමට, එහි කුඩා මුදල ටයිප් කරන්න: ඉතිරිය ඊළඟ මාසය සඳහා ඉතිරි වේ.</div></div>
+  <div class="tip">💡 සේවකයාගේ <strong>Advances</strong> ටැබයේ, <strong>Extend</strong> අත්තිකාරමක මුදල වෙනස් කරයි — Accelent වෙනස පමණක් ගෙවූ හෝ ආපසු දුන් ලෙස සටහන් කරයි. <strong>Close / Settle</strong> අත්තිකාරමක් අවසන් ලෙස සලකුණු කරයි; සේවකයා එය මුදලින් ආපසු ගෙවූයේ නම්, එම මුදල් <strong>Receipts</strong> යටතේ සටහන් කරන්න.</div>
+
+  <h3>වැරදීමකින් කළ ගෙවීමක් නිවැරදි කිරීම</h3>
+  <p>ගෙවූ මාසයක් අහම්බෙන් වෙනස් නොවන ලෙස අගුළු දමා ඇත. එය වැරදි සංඛ්‍යාවකින් ගෙවා ඇත්නම්: වැටුප් පත්‍රයේ, මාසය තෝරන්න → <strong>↩ Undo Payment</strong> → පරිපාලක මුරපදයෙන් තහවුරු කරන්න. ගෙවීම සහ එහි මුදල්/බැංකු සටහන ඉවත් කෙරේ, එය අය කර ගත් ඕනෑම අත්තිකාරමක් නැවත ඉතිරි වේ, සහ මාසය එම සංඛ්‍යාම සමඟ <em>Saved, not paid</em> වෙත ආපසු යයි — ඒවා නිවැරදි කර <strong>💰 Pay Salary</strong> ක්ලික් කරන්න. අහෝසි කිරීම <strong>Deletion Watcher</strong> හි සටහන් වේ. වසා දැමූ මූල්‍ය වර්ෂයක මාසයක් අහෝසි කළ නොහැක.</p>
+
+  <h3>කාට කුමක් කළ හැකිද</h3>
+  <p>පරිපාලකට වැටුප් පෙනෙන අතර ගෙවීමට, ගෙවීම් අහෝසි කිරීමට සහ වැටුප් පත්‍රිකා යැවීමට හැක. කාර්ය මණ්ඩල ගිණුමකට ඒ වෙනුවට <strong>📋 Attendance Sheet</strong> පෙනේ — පැමිණීම, නිවාඩු, අතිකාල සහ ඒකක පමණි, මුදල් සංඛ්‍යා නැත — සහ පරිපාලකට ගෙවීමට <strong>💾 Save (not paid yet)</strong> මඟින් ඇතුළත් කිරීම් සුරැකිය හැක.</p>
+
+  <h3>යමෙකු ඉවත් වන විට</h3>
+  <p>සේවකයා තෝරන්න → <strong>🚫 Terminate</strong>. ඔවුන් ක්‍රියාකාරී ලැයිස්තුවෙන් ඉවත් වන නමුත් ඔවුන්ගේ වැටුප් ඉතිහාසය පවතී; <strong>Show Terminated</strong> ඔවුන් නැවත ලැයිස්තුගත කරයි.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 15 -->
+<div class="chapter-banner">පරිච්ඡේදය 15 — GST ප්‍රතිලාභ සහ ඊ-ඉන්වොයිස්</div>
+<div class="section" id="ch15">
+  <h2>15. GST ප්‍රතිලාභ සහ ඊ-ඉන්වොයිස් (IRN)</h2>
+
+  <h3>GST ප්‍රතිලාභ පැනලය</h3>
+  <p>මෙම පැනලය ඔබේ විකුණුම් සහ මිලදී ගැනීම් දත්ත GST විස්තර සමඟ සාරාංශ කිරීමෙන් ඔබේ මාසික GST ගොනු කිරීම් (GSTR-1, GSTR-3B) සකස් කිරීමට උදව් කරයි.</p>
+  <ul>
+    <li><strong>GSTR-1</strong> — බාහිර සැපයුම් (ඔබේ විකුණුම්) — ඊළඟ මාසයේ 11 වන දිනට පෙර ගොනු කෙරේ</li>
+    <li><strong>GSTR-3B</strong> — ගෙවිය යුතු බද්ද සමඟ විකුණුම් සහ මිලදී ගැනීම්වල සාරාංශ ප්‍රතිලාභය — 20 වන දිනට පෙර ගොනු කෙරේ</li>
+    <li><strong>GSTR-2B සැසඳීම</strong> — ඔබේ මිලදී ගැනීමේ බිල්පත් ඔබේ සැපයුම්කරුවන්ගේ GSTR-2B සමඟ සසඳයි, එවිට ඔබ ඔවුන් වාර්තා කළ ආදාන බදු බැර පමණක් ඉල්ලයි</li>
+  </ul>
+  <figure class="shot"><a href="manual_images/gst-dashboard.png" target="_blank"><img src="manual_images/gst-dashboard.png" alt="GST Management" loading="lazy"></a><figcaption>GST Management — ඉහළින් මෙම කාලයේ බදු වගකීම සහ ආදාන බදු බැර, සහ ලෙජරය, ප්‍රතිලාභ, GSTR-2B සැසඳීම, E-Way Bill සහ තවත් දේ සඳහා ටැබ්.</figcaption></figure>
+  <p>Accelent ඔබේ තොග භාණ්ඩවලට පවරා ඇති HSN කේත වලින් CGST, SGST, සහ IGST ගණනය කරයි. Inventory පැනලයේ සියලු භාණ්ඩවලට නිවැරදි HSN කේතය සහ GST අනුපාතය පවරා ඇති බවට වග බලා ගන්න.</p>
+  <ul>
+    <li><strong>දුරකථන ඇතුළත් කිරීම් ඇතුළත් වේ:</strong> දුරකථනයෙන් කළ විකුණුම් සහ මිලදී ගැනීම් ඩෙස්ක්ටොප් ඇතුළත් කිරීම් මෙන්ම ප්‍රතිදාන බද්ද, ආදාන බදු බැර සහ GST සාරාංශයට ගණන් වේ. දුරකථන ඇතුළත් කිරීම් ඔබේම ප්‍රාන්තය තුළ (CGST + SGST) ලෙස සලකනු ලැබේ.</li>
+    <li><strong>HSN කේත:</strong> GSTR-1 HSN සාරාංශය සෑම භාණ්ඩයකම සැබෑ HSN කේතය අනුව විකුණුම් කණ්ඩායම් කරයි. GSTR-1 අපනයනයකට පෙර, Accelent HSN කේතයක් නැති විකුණූ භාණ්ඩ ලැයිස්තුගත කරයි — මුලින්ම ඒවා Inventory හි එක් කර, පසුව නැවත අපනයනය කරන්න.</li>
+    <li><strong>මකන ලද හෝ සංස්කරණය කළ බිල්පත්:</strong> බිල්පතක් මැකීමෙන් එහි බද්ද GST Returns වෙතින් ඉවත් වන අතර, විකුණුමක් සංස්කරණය කිරීම දෙවැන්නක් එක් කරනවා වෙනුවට එහි බදු සටහන ප්‍රතිස්ථාපනය කරයි.</li>
+  </ul>
+
+  <h3>ඊ-ඉන්වොයිස් / IRN පැනලය</h3>
+  <p>රජයේ සීමාවට වඩා වාර්ෂික පිරිවැටුමක් ඇති ව්‍යාපාර NIC e-Invoice ද්වාරය හරහා සෑම B2B ඉන්වොයිසියක් සඳහාම <strong>IRN (Invoice Reference Number)</strong> එකක් සෑදිය යුතුය.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>E-Invoice</strong> පැනලයට යන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ලැයිස්තුවෙන් ඉන්වොයිසියක් තෝරා <strong>Generate IRN</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Accelent NIC අනුකූල JSON ගොනුව සාදයි. IRN සහ QR කේතය ලබා ගැනීමට එය e-Invoice ද්වාරයට ඉදිරිපත් කරන්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">IRN ඉන්වොයිසිය සමඟ සුරැකී ඉන්වොයිස් පිටපතේ මුද්‍රණය වේ.</div></div>
+
+  <div class="warn">⚠ ඔබේ ඊ-ඉන්වොයිස් අදාළත්ව සීමාව සහ නියමිත දින තහවුරු කර ගැනීමට ඔබේ ගණකාධිකාරී හෝ බදු උපදේශකයාගෙන් විමසන්න. නීති කලින් කලට වෙනස් වේ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 16 -->
+<div class="chapter-banner">පරිච්ඡේදය 16 — සැකසුම් සහ පරිපාලනය</div>
+<div class="section" id="ch16">
+  <h2>16. සැකසුම් සහ පරිපාලනය</h2>
+
+  <p>Settings පැනලයේ ටැබ් හයක් ඇත. එක් එක් එක කරන්නේ මෙයයි:</p>
+
+  <table>
+    <tr><th>ටැබය</th><th>ඔබට කළ හැකි දේ</th></tr>
+    <tr><td>🔍 Deletion Watcher</td><td>යෙදුමේ මකන ලද සෑම වාර්තාවකම විගණන මාර්ගය. ඔබට විස්තර බැලීමට, මකන ලද වාර්තා ප්‍රතිසාධනය කිරීමට, හෝ ලොග් සටහන් ස්ථිරවම ඉවත් කිරීමට හැක. <strong>අගුළු දමා ඇත — ප්‍රවේශ වීමට පරිපාලක PIN අවශ්‍යයි.</strong></td></tr>
+    <tr><td>⚙️ App Settings</td><td>ගනුදෙනු වලින් සියලු ශේෂ නැවත ගණනය කිරීම, දත්ත ගොනුව උපස්ථ කිරීම, උපස්ථයකින් ප්‍රතිසාධනය කිරීම, සංකේතනය කළ Cloud Backup සැකසීම, දත්ත ගොනුව යළි පිහිටුවීම (අනතුරුදායකයි!), භාෂාව සහ තේමාව වෙනස් කිරීම.</td></tr>
+    <tr><td>🏢 Company</td><td>සමාගමේ නම, ලිපිනය, සම්බන්ධතා, GST/TIN, ලාංඡනය, සහ ඉන්වොයිස් සහ වාර්තාවල භාවිතා වන අත්සන සහ සාප්පු මුද්‍රාව සංස්කරණය කිරීම. <strong>Business Type</strong> මෙනුවේ තිර තෝරා ගනී: <em>Restaurant</em> එකකට Sales, Returns, Aging Report සහ E-Invoice වෙනුවට 🍽 Restaurant තිරය ලැබේ (<a href="#ch9b">පරිච්ඡේදය 9b</a> බලන්න), සහ <em>Hotel, lodge or guest house</em> එකකට 🛏 Rooms ද ලැබේ (<a href="#ch9c">පරිච්ඡේදය 9c</a> බලන්න); වෙනස Accelent නැවත විවෘත කිරීමෙන් පසු පෙනේ.</td></tr>
+    <tr><td>👥 Users</td><td>කාර්ය මණ්ඩල ගිණුම් සෑදීම, එක් එක් කෙනාට දැකිය හැකි සහ කළ හැකි දේ තෝරා ගැනීම (🔐 Permissions), සහ දුරකථන යෙදුම භාවිතා කළ හැක්කේ කාටද යන්න තීරණය කිරීම. පරිපාලක ගිණුම ප්‍රධාන ගිණුමයි — එහි මුරපදය ආරක්ෂිතව තබා ගන්න.</td></tr>
+    <tr><td>🔑 License</td><td>ඔබේ දායකත්වය සක්‍රිය කිරීම හෝ අලුත් කිරීම, හෝ ඔබේ අත්හදා බැලීමේ තත්වය පරීක්ෂා කිරීම.</td></tr>
+    <tr><td>📊 Balances</td><td>මුදල්, බැංකු ගිණුම්, පාර්ශව, පාරිභෝගිකයින් සහ සේවකයින් සඳහා ආරම්භක ශේෂ සංස්කරණය කිරීම.</td></tr>
+  </table>
+
+  <h3>🔒 Deletion Watcher අගුළු දමා ඇත්තේ ඇයි?</h3>
+  <p>Deletion Watcher ටැබය ඉතා වැදගත් හේතුවක් නිසා <strong>PIN / පරිපාලක සත්‍යාපනය</strong> මඟින් ආරක්ෂා කර ඇත: එයට <strong>ඕනෑම මකන ලද වාර්තාවක් ප්‍රතිසාධනය කිරීමේ</strong> බලය ඇත — ඉන්වොයිස්, මිලදී ගැනීම්, වියදම්, තොග භාණ්ඩ සහ තවත් දේ.</p>
+  <p>මෙය සියලු කාර්ය මණ්ඩලයට විවෘත නම්, ඕනෑම ක්‍රියාකරුවෙකුට:</p>
+  <ul>
+    <li>මකන ලද ඉන්වොයිසියක් ප්‍රතිසාධනය කර එය ඉවත් කළ බව සැඟවිය හැක</li>
+    <li>සම්පූර්ණ විගණන මාර්ගය බලා ඔවුන් නිරීක්ෂණය වන බව දැනගත හැක</li>
+    <li>හැසිරවීමේ සාක්ෂි මකා දැමීමට ලොග් සටහන් ස්ථිරවම මකා දැමිය හැක</li>
+  </ul>
+  <p>අගුළ <strong>ව්‍යාපාර හිමිකරුට හෝ පරිපාලකට පමණක්</strong> මෙම සංවේදී ප්‍රදේශයට ප්‍රවේශ විය හැකි බව සහතික කරයි. ක්‍රියාකරුවන් ලෙස පිවිසෙන කාර්ය මණ්ඩලයට මෙම ටැබය කිසි විටෙක නොපෙනේ.</p>
+
+  <h4>Deletion Watcher අගුළු හරින ආකාරය</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 🔍 Deletion Watcher</strong> වෙත යන්න. ඔබට 🔒 අගුළු දර්ශකයක් පෙනේ — වගුව සහ බොත්තම් අක්‍රියයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Authenticate</strong> බොත්තම ක්ලික් කර ඔබේ පරිපාලක මුරපදය ඇතුළත් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">දර්ශකය 🔓 Active වෙත වෙනස් වන අතර සම්පූර්ණ විගණන මාර්ගය දෘශ්‍යමාන වේ.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">ඔබ Settings වසා දමන විට හෝ පැනල මාරු කරන විට පැනලය ස්වයංක්‍රීයව නැවත අගුළු වැටේ — ඔබ ඉවතට ගියත් එය ආරක්ෂිතව තබයි.</div></div>
+  <p>සෑම පේළියකම බොත්තම් හතරක් ඇත: <strong>V</strong> විස්තර බලන්න, <strong>M</strong> සමාලෝචනය කළ ලෙස සලකුණු කරන්න, <strong>R</strong> ප්‍රතිසාධනය කරන්න, <strong>D</strong> සටහන මකන්න. පේළි බොහොමයක එකවර ක්‍රියා කිරීමට, ඒවා තෝරා (ක්ලික්, Shift+ක්ලික්, Ctrl+ක්ලික් හෝ Ctrl+A), දකුණු-ක්ලික් කර <strong>Restore selected</strong>, <strong>Mark selected as reviewed</strong> හෝ <strong>Delete selected entries permanently</strong> තෝරන්න.</p>
+
+  <div class="warn">⚠ <strong>ඔබේ පරිපාලක මුරපදය කිසි විටෙක කාර්ය මණ්ඩලය සමඟ බෙදා නොගන්න.</strong> Deletion Watcher ඔබේ වඩාත්ම බලවත් ප්‍රතිසාධන සහ විගණන මෙවලමයි — එයට ප්‍රවේශ විය යුත්තේ ව්‍යාපාර හිමිකරුට පමණි.</div>
+
+  <h3>ශේෂ නැවත ගණනය කිරීම</h3>
+  <p>ශේෂයක් වැරදි ලෙස පෙනේ නම්, <strong>Settings → App Settings → 🔄 Recalculate All Balances</strong> වෙත යන්න. මෙය සම්පූර්ණ ගනුදෙනු ඉතිහාසයෙන් සෑම ගිණුම් ශේෂයක්ම නැවත ගණනය කර ඕනෑම විෂමතාවයක් නිවැරදි කරයි.</p>
+
+  <h3>පරිශීලක කළමනාකරණය</h3>
+  <p>ඔබට කාර්ය මණ්ඩලය සඳහා (මුදල් අයකරුවන්, දත්ත ඇතුළත් කරන ක්‍රියාකරුවන්, ගබඩා භාරකරුවන්) වෙනම පරිශීලක ගිණුම් සෑදිය හැක. සෑම කාර්ය මණ්ඩල සාමාජිකයෙක්ම තමන්ගේම මුරපදයෙන් පිවිසේ. පරිපාලක ගිණුමට සැමවිටම සියල්ලට සම්පූර්ණ ප්‍රවේශය ඇත.</p>
+
+  <h3>🔐 කාර්ය මණ්ඩල අවසර — එක් එක් සාමාජිකයාට දැකිය හැකි සහ කළ හැකි දේ</h3>
+  <p>සෑම කාර්ය මණ්ඩල ගිණුමක් සඳහාම ඔවුන්ට දැකිය හැකි සහ කළ හැකි දේ ඔබ හරියටම තීරණය කරයි. ඔවුන්ට ඉඩ නොදෙන තිර ඔවුන්ගේ මෙනුවෙන් අතුරුදහන් වන අතර, දුරකථන යෙදුමේ ද එම නීතිම අදාළ වේ.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 👥 Users</strong> වෙත ගොස් පරිපාලක මුරපදයෙන් Settings අගුළු හරින්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">කාර්ය මණ්ඩල සාමාජිකයෙකු අසල, <strong>🔐</strong> බොත්තම ක්ලික් කරන්න (එය ඔවුන්ගේ වත්මන් සැකිල්ල පෙන්වයි, උදා: <em>🔐 Billing Staff</em>).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ආරම්භ කිරීමට <strong>සැකිල්ලක්</strong> තෝරා, පසුව අවසර 12 න් ඕනෑම එකක් සලකුණු කරන්න හෝ සලකුණ ඉවත් කරන්න. <strong>Save</strong> ක්ලික් කරන්න.</div></div>
+  <figure class="shot"><a href="manual_images/staff-permissions.png" target="_blank"><img src="manual_images/staff-permissions.png" alt="Staff Permissions window" loading="lazy" style="max-width:420px;width:100%"></a><figcaption>Permissions කවුළුව — ඉහළින් ආරම්භක සැකිල්ලක්, පසුව කණ්ඩායම්වල අවසර 12.</figcaption></figure>
+  <table>
+    <tr><th>සැකිල්ල</th><th>සාමාන්‍ය භාවිතය</th><th>කළ හැකි දේ</th></tr>
+    <tr><td>Billing Staff</td><td>කවුන්ටරය / මුදල් අයකරු</td><td>විකුණුම් සෑදීම පමණි — මුදල් සංඛ්‍යා නැත, මිලදී ගැනීමේ පිරිවැය නැත</td></tr>
+    <tr><td>Store Keeper</td><td>තොග සහ මිලදී ගැනීම්</td><td>මිලදී ගැනීම්, තොග වෙනස්කම්, ආපසු දීම්, මිලදී ගැනීමේ පිරිවැය</td></tr>
+    <tr><td>Accountant</td><td>පොත් සහ GST</td><td>වැටුප් සහ පැරණි බිල්පත් සංස්කරණය හෝ මැකීම හැර සියල්ල</td></tr>
+    <tr><td>Manager</td><td>විශ්වාසවන්ත ජ්‍යෙෂ්ඨ කාර්ය මණ්ඩලය</td><td>සියල්ල (දුරකථන ප්‍රවේශය වෙනම සකසනු ලැබේ)</td></tr>
+  </table>
+  <div class="tip">💡 නව කාර්ය මණ්ඩල ගිණුම් <strong>Billing Staff</strong> ලෙස ආරම්භ වේ. 🔐 බොත්තම මඟින් එක් එක් කෙනාට අවශ්‍ය දේ දෙන්න. වෙනස්කම් ඔවුන් ඊළඟ වතාවේ ඩෙස්ක්ටොප් වෙත පිවිසෙන විට, සහ ඔවුන්ගේ දුරකථනයේ වහාම අදාළ වේ.</div>
+  <div class="warn">⚠ අවසර ඔබේ දත්ත කාර්ය මණ්ඩලයෙන් ආරක්ෂා කරයි — ඒවා පරිපාලක ගිණුම ආරක්ෂා නොකරයි. පරිපාලක මුරපදය දන්නා ඕනෑම කෙනෙකුට සම්පූර්ණ ප්‍රවේශය ඇත, එබැවින් එය රහසිගතව තබා ගන්න.</div>
+
+  <h3>🔑 ඔබේ දායකත්වය</h3>
+  <ul>
+    <li><strong>නොමිලේ අත්හදා බැලීම:</strong> සියලු විශේෂාංග සමඟ දින 45ක්, සැපයුම්කරු බිල්පත් ස්කෑන් 15ක් ඇතුළුව.</li>
+    <li><strong>දායකත්වය:</strong> සක්‍රිය කිරීමෙන් පසු, ඔබේ බලපත්‍රය වසරක් ක්‍රියාත්මක වේ. තත්ව තීරුව <em>"Licensed until …"</em> පෙන්වයි.</li>
+    <li><strong>අලුත් කිරීම:</strong> අවසන් දිනයට දින 30කට පෙර සිට මතක් කිරීම් ආරම්භ වන අතර, ඔබේ අලුත් කිරීමේ යතුර සමඟ Settings → 🔑 License වෙතින් අලුත් කළ හැක. කලින් අලුත් කිරීම ඔබට ඉතිරි දින මත වසර එක් කරයි.</li>
+    <li><strong>දායකත්වය අවසන් වුවහොත්:</strong> බිල්පත් ස්කෑන් කිරීම වහාම නතර වේ, නමුත් තත්ව තීරුවේ ගණන් කිරීමක් සමඟ බිල්පත් සුරැකීම <strong>තවත් දින 7ක්</strong> දිගටම ක්‍රියා කරයි. ඉන්පසු, ඔබ අලුත් කරන තුරු සුරැකීම නතර වේ. ඔබේ දත්ත සැමවිටම බැලිය හැක.</li>
+    <li><strong>බලපත්‍රයකට එක් PC එකක්:</strong> බලපත්‍රයක් එය සක්‍රිය කළ PC එකට බැඳී ඇත. නව PC එකකට යාමට, සහාය අමතන්න.</li>
+  </ul>
+
+  <div class="err">🚨 <strong>ඔබේ පරිපාලක මුරපදය කිසි විටෙක බෙදා නොගන්න.</strong> ක්‍රියාකරුවෙකු ඉවත් වුවහොත්, Settings → Users → එම පරිශීලකයා තෝරන්න → <em>Disable</em> ක්ලික් කරන්න. ඔවුන්ගේ දත්ත ඇතුළත් කිරීමේ ඉතිහාසය ආරක්ෂා වන නමුත් ඔවුන්ට තවදුරටත් පිවිසිය නොහැක.</div>
+
+  <h3>🔑 ඔබේ ගිණුමේ Recovery Key</h3>
+  <p>ඔබ පළමු වරට ඔබේම මුරපදය සකසන විට — ස්ථාපනයෙන් පසු වහාම (තාවකාලික පෙරනිමි මුරපදය ප්‍රතිස්ථාපනය කරමින්) හෝ පසුව ඕනෑම වේලාවක — Accelent ඔබේ ගිණුම සඳහා අද්විතීය <strong>Recovery Key</strong> එකක් සාදා එය ඔබට <strong>හරියටම එක් වරක්</strong> පෙන්වයි, එය වැසීමට පෙර ඔබ සුරැකූ බව තහවුරු කළ යුතු කොටුවක.</p>
+  <div class="tip">💡 මෙම යතුර ඉරිවලින් වෙන් කළ අකුරු/අංක කණ්ඩායම් මාලාවක් ලෙස පෙනේ, උදා: <code>3F7A9C21-8B4E0D6F-...</code>. එය මුරපද කළමනාකරුවෙකුට පිටපත් කරන්න, කඩදාසියක ලියා ආරක්ෂිත ස්ථානයක තබන්න, හෝ අගුළු දැමූ සටහනක ගබඩා කරන්න — එකම PC එකේ පැහැදිලි නමක් ඇති ගොනුවක් හැර ඕනෑම තැනක.</div>
+  <p>මෙම යතුර පවතින්නේ එක් අරමුණක් සඳහා ය: ඔබට කවදා හෝ ඔබේ පරිපාලක මුරපදය අමතක වුවහොත්, හෝ වැරදි උත්සාහයන් බොහොමයකින් පසු ඔබේ ගිණුම අගුළු වැටුණහොත්, Recovery Key ඔබට පිවිසුම් තිරයෙන්ම, මිනිත්තුවකටත් අඩු කාලයකින් සම්පූර්ණයෙන්ම නව මුරපදයක් ඔබම සැකසීමට ඉඩ දෙයි — <strong>කිසිදු ව්‍යාපාර දත්තයක් අහිමි නොකර</strong> සහ සහාය ඇමතීමට අවශ්‍ය නොවී.</p>
+  <div class="warn">⚠ Accelent කිසි විටෙක ඔබේ Recovery Key කියවිය හැකි ආකාරයෙන් ගබඩා නොකරයි — එහි ආරක්ෂිත hash එකක් පමණි, මුරපද ආරක්ෂා කරන ආකාරයටම. ඔබට යතුර නැති වුවහොත්, කිසිවෙකුට (ඔබේ මෘදුකාංග සැපයුම්කරු ඇතුළුව) එය ඔබ වෙනුවෙන් ප්‍රතිසාධනය කළ නොහැක. ඔබට වෙනත් ක්‍රම හරහා නව මුරපදයක් සකසා නව යතුරක් සෑදීමට සිදු වේ.</div>
+
+  <h4>නව Recovery Key එකක් ලබා ගැනීම</h4>
+  <p>ඔබට ලබා දුන් Recovery Key එකක් ඔබ දකින්නේ එක් වරක් පමණි. ඔබට එය නැති වී ඇත්නම්, හෝ නව එකක් අවශ්‍ය නම්, ඔබ පරිපාලක ලෙස පිවිසී සිටින ඕනෑම වේලාවක ප්‍රතිස්ථාපනයක් සෑදිය හැක — නව එකක් නිකුත් කළ වහාම පෙර යතුර ක්‍රියා කිරීම නවතී.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → 👥 Users</strong> (පරිපාලක ගිණුම) වෙත ගොස් නව Recovery Key එකක් සෑදීමේ විකල්පය භාවිතා කරන්න, නැතහොත් ඔබේ පරිපාලක මුරපදය වෙනස් කරන්න — ඔබ සතුව දැනටමත් එකක් නැති සෑම විටම නව යතුරක් ස්වයංක්‍රීයව ලබා දෙයි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">නව කේතය ඉහත විස්තර කළ පරිදිම සුරකින්න. කොටුව වැසීමට <strong>"I have saved this recovery code somewhere safe"</strong> සලකුණු කරන්න — එය නැවත නොපෙන්වයි.</div></div>
+
+  <h3>🔓 මුරපදය අමතකද? ස්වයං-සේවා ප්‍රතිසාධනය</h3>
+  <p>ඔබට කවදා හෝ ඔබේ පරිපාලක මුරපදය අමතක වුවහොත් — හෝ නැවත නැවත වැරදි උත්සාහයන්ගෙන් පසු ගිණුම ඉබේම අගුළු වැටුණහොත් — සහාය සඳහා රැඳී සිටීමට අවශ්‍ය නැත. පිවිසුම් තිරයේ, මුරපද ක්ෂේත්‍රයට පහළින් ඇති කුඩා <strong>"Forgot password?"</strong> සබැඳිය ක්ලික් කරන්න.</p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">පිවිසුම් තිරයේ <strong>Forgot password?</strong> ක්ලික් කරන්න. <strong>Account Recovery</strong> කවුළුව විවෘත වේ.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඔබේ <strong>පරිශීලක නාමය</strong> සහ ඔබ කලින් සුරැකූ <strong>Recovery Key</strong> ඇතුළත් කරන්න (ඉහත බලන්න).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>නව මුරපදයක්</strong> ඇතුළත් කර තහවුරු කරන්න (අවම අක්ෂර 8).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Reset Password</strong> ක්ලික් කරන්න. මෙය ඕනෑම ගිණුම් අගුළක් ද ස්වයංක්‍රීයව ඉවත් කරයි. ඔබේ නව මුරපදයෙන් වහාම පිවිසෙන්න.</div></div>
+  <div class="good">✅ මෙය ඔබේ පිවිසුම් මුරපදය පමණක් යළි සකසයි — ඔබේ ඉන්වොයිස්, තොග, ශේෂ, හෝ වෙනත් ව්‍යාපාර දත්ත කිසිවක් කිසිදු ආකාරයකින් ස්පර්ශ නොවේ.</div>
+  <div class="err">🚨 ඔබ කිසි විටෙක Recovery Key එකක් සුරැකී නැති අතර අගුළු වැටී ඇත්නම්, ස්වයං-සේවා ප්‍රතිසාධනය කළ නොහැක — සහාය සඳහා ඔබේ මෘදුකාංග සැපයුම්කරු අමතන්න.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 17 -->
+<div class="chapter-banner">පරිච්ඡේදය 17 — ඔබේ දත්ත</div>
+<div class="section" id="ch17">
+  <h2>17. ඔබේ දත්ත — ස්ථානය, උපස්ථය සහ ප්‍රතිසාධනය</h2>
+
+  <h3>ඔබේ දත්ත කොහේද?</h3>
+  <p>ඔබේ සියලු දත්ත ඔබේ Windows PC එකේ එක් SQLite දත්ත ගොනුවක ගබඩා වේ:</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\inventory.db</span>
+  </div>
+  <p>ස්වයංක්‍රීය උපස්ථ ෆෝල්ඩරයක් ද ඇත:</p>
+  <div style="text-align:center; margin: 16px 0;">
+    <span class="path">C:\Users\[YourWindowsName]\AppData\Roaming\BrandAccShay\backups\</span>
+  </div>
+  <p>Accelent ආරම්භ වන සෑම වතාවකම ස්වයංක්‍රීය උපස්ථයක් සාදයි. මෑත උපස්ථ 10ක් දක්වා ස්වයංක්‍රීයව තබා ගනී.</p>
+
+  <div class="tip">💡 AppData ඉක්මනින් විවෘත කිරීමට, <strong>Windows+R</strong> ඔබා, <code>%APPDATA%\BrandAccShay</code> ටයිප් කර Enter ඔබන්න.</div>
+
+  <h3>අතින් උපස්ථයක් ගැනීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → 💾 Backup Data</strong> වෙත යන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">උපස්ථ ගොනුව සුරැකිය යුතු ස්ථානය තෝරන්න (USB ධාවකය, Google Drive ෆෝල්ඩරය, හෝ බාහිර දෘඪ තැටිය).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Save ක්ලික් කරන්න. උපස්ථය ඔබේ සියලු දත්ත ඇති එක් <code>.db</code> ගොනුවකි.</div></div>
+
+  <div class="good">✅ <strong>නිර්දේශිත උපස්ථ පිළිවෙත:</strong><br>
+  • දිනපතා: Accelent ට ස්වයංක්‍රීයව උපස්ථ කිරීමට ඉඩ දෙන්න (ආරම්භයේදී ස්වයංක්‍රීයව සිදු වේ)<br>
+  • සතිපතා: USB ධාවකයකට හෝ Google Drive වෙත අතින් උපස්ථය<br>
+  • මාසිකව: සම්පූර්ණ AppData\BrandAccShay ෆෝල්ඩරය බාහිර දෘඪ තැටියකට පිටපත් කරන්න</div>
+
+  <h3>උපස්ථයකින් ප්‍රතිසාධනය කිරීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → 📂 Restore Data</strong> වෙත යන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඔබේ උපස්ථ <code>.db</code> ගොනුව වෙත බ්‍රවුස් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Open ක්ලික් කරන්න. Accelent වත්මන් දත්ත ගොනුව උපස්ථයෙන් ප්‍රතිස්ථාපනය කරයි. <strong>යෙදුම ස්වයංක්‍රීයව නැවත ආරම්භ වේ.</strong></div></div>
+
+  <div class="warn">⚠ උපස්ථයක් ප්‍රතිසාධනය කිරීමෙන් සියලු වත්මන් දත්ත උපස්ථ දත්ත වලින් ප්‍රතිස්ථාපනය වේ. උපස්ථ දිනයෙන් පසු ඇතුළත් කළ ඕනෑම ගනුදෙනුවක් අහිමි වේ. බරපතල දෝෂයකින් ප්‍රතිසාධනය වීමට අවශ්‍ය විට පමණක් ප්‍රතිසාධනය කරන්න.</div>
+
+  <h3>☁️ Cloud Backup — ස්වයංක්‍රීය සංකේතනය කළ පිටත-ස්ථාන උපස්ථය</h3>
+  <p>ඉහත අතින් උපස්ථ දේශීයව සුරැකේ — ඔබේ PC එක නැති වුවහොත්, සොරකම් කළහොත්, හෝ හානි වුවහොත්, දේශීය-පමණක් උපස්ථයක් ද එය සමඟ යා හැක. <strong>Cloud Backup</strong> මෙය විසඳයි: එය ඔබේම PC එකේ ඔබේ දත්ත ගොනුවේ පිටපතක් සංකේතනය කර <strong>ඔබේම</strong> වලාකුළු ගබඩාවට (OneDrive, Google Drive, Dropbox ආදිය) සමමුහුර්ත වන ෆෝල්ඩරයකට සුරකියි. ඔබේ මෘදුකාංග සැපයුම්කරුට කිසි විටෙක ඔබේ දත්ත නොපෙනේ — ගොනුව ඔබේ පරිගණකයෙන් පිටවීමට පෙරම සංකේතනය වේ.</p>
+
+  <h4>Cloud Backup සැකසීම</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup</strong> වෙත ගොස් <strong>Set Up Cloud Backup</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Browse...</strong> ක්ලික් කර ඔබේ වලාකුළු ගබඩා යෙදුම මඟින් සමමුහුර්ත කරන ෆෝල්ඩරයක් තෝරන්න (උදා: ඔබේ <code>OneDrive</code> හෝ <code>Google Drive</code> ෆෝල්ඩරය).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Backup Password</strong> එකක් (අවම අක්ෂර 8) තෝරා එය තහවුරු කරන්න. මෙම මුරපදය සෑම උපස්ථයක්ම සංකේතනය කරයි — එය මතක තබා ගන්න, සහ එය ඔබේ පරිපාලක පිවිසුම් මුරපදයෙන් වෙනම තබා ගන්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Continue</strong> ක්ලික් කරන්න. Accelent පළමු උපස්ථය ධාවනය කර පසුව එක් වරක් පමණක් <strong>Recovery Code</strong> එකක් කොටුවක පෙන්වයි, එය වැසීමට පෙර ඔබ සුරැකූ බව තහවුරු කළ යුතුය.</div></div>
+
+  <div class="warn">⚠ <strong>Cloud Backup මුරපදය සහ Cloud Backup ප්‍රතිසාධන කේතය ඔබේ පිවිසුම් Recovery Key එකෙන් වෙනස් වේ</strong> (පරිච්ඡේදය 16). ඒවා පටලවා නොගැනීමට පැහැදිලිව වෙන් කර ලේබල් කර තබා ගන්න:
+    <ul style="margin-top:6px;">
+      <li><strong>පිවිසුම් Recovery Key</strong> — පිවිසුම් තිරයේදී, සහාය නොමැතිව, ඔබේ යෙදුම් මුරපදය ඔබම යළි සකසයි.</li>
+      <li><strong>Cloud Backup මුරපදය</strong> — ඔබේ වලාකුළු උපස්ථ ගොනු විකේතනය කරයි; ඔබ ප්‍රතිසාධනය කරන සෑම වතාවකම අවශ්‍යයි.</li>
+      <li><strong>Cloud Backup ප්‍රතිසාධන කේතය</strong> — ඔබට Cloud Backup මුරපදය අමතක වුවහොත්, සහාය වෙතින් ලැබෙන නිදහස් කිරීමේ කේතයක් සමඟ පමණක් ප්‍රයෝජනවත්.</li>
+    </ul>
+  </div>
+
+  <h4>දෛනික භාවිතය</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ඔබේ වලාකුළු ෆෝල්ඩරයට උඩුගත කළ ක්ෂණික සංකේතනය කළ උපස්ථයක් අවශ්‍ය ඕනෑම වේලාවක <strong>⬆️ Backup Now</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඔබට මතක තබා ගැනීමට අවශ්‍ය නොවී Accelent ට තමන්ගේම කාලසටහනට ඔබේ දත්ත උපස්ථ කිරීමට ඉඩ දීමට <strong>Automatic daily backup</strong> සලකුණු කරන්න.</div></div>
+
+  <h4>Cloud Backup එකකින් ප්‍රතිසාධනය කිරීම</h4>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → ⚙️ App Settings → ☁️ Cloud Backup → ⬇️ Restore from Cloud Backup</strong> වෙත යන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ලැයිස්තුවෙන් ඔබට අවශ්‍ය උපස්ථය තෝරා (නවතම එක මුලින්ම පෙන්වයි) ඔබේ <strong>Backup Password</strong> ඇතුළත් කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ප්‍රතිසාධන අනතුරු ඇඟවීම තහවුරු කරන්න. <strong>වත්මන් දත්ත ප්‍රතිස්ථාපනය වේ</strong> — ඉන්පසු යෙදුම නැවත ආරම්භ කරන්න.</div></div>
+
+  <div class="tip">💡 <strong>ඔබේ Cloud Backup මුරපදය අමතකද?</strong> ප්‍රතිසාධන කවුළුවේ <strong>"Forgot password? Use recovery code instead"</strong> ක්ලික් කරන්න. මෙම මාර්ගයට සැකසීමේදී ඔබ සුරැකූ ප්‍රතිසාධන කේතය <strong>සහ</strong> ඔබේ මෘදුකාංග සැපයුම්කරුගේ සහායෙන් නිදහස් කිරීමේ කේතයක් යන දෙකම අවශ්‍යයි — එය පවතින්නේ කිසිදු කොටසකට තනිවම ඔබේ උපස්ථය අගුළු හැරිය නොහැකි ලෙස ය.</div>
+
+  <div class="good">✅ Cloud Backup අත්‍යවශ්‍ය නොවන අතර Accelent සෑම ආරම්භයකදීම දැනටමත් සාදන ස්වයංක්‍රීය දේශීය උපස්ථ වලින් වෙනම ය — ශක්තිමත්ම ආරක්ෂාව සඳහා දෙකම භාවිතා කරන්න: එකම PC එකේ ඉක්මන් ප්‍රතිසාධනය සඳහා දේශීය උපස්ථ, PC එකම නැති වුවහොත් හෝ හානි වුවහොත් ආරක්ෂාව සඳහා Cloud Backup.</div>
+
+  <h3>යෙදුම නව PC එකකට ගෙනයාම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">පැරණි PC එකේ, අතින් උපස්ථයක් ගන්න (Settings → Backup Data).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">උපස්ථ <code>.db</code> ගොනුව USB ධාවකයකට පිටපත් කරන්න හෝ Google Drive / WhatsApp හරහා යවන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">නව PC එකේ Accelent ස්ථාපනය කරන්න (පරිච්ඡේදය 3).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">පළමු ආරම්භයේදී, Settings → Restore Data වෙත ගොස් → USB ධාවකයෙන් උපස්ථ ගොනුව තෝරන්න. ඔබේ සියලු දත්ත දැන් නව PC එකේ ඇත.</div></div>
+
+  <div class="warn">⚠ ඔබේ බලපත්‍රය එය සක්‍රිය කළ PC එකට බැඳී ඇත. ගෙනයාමට පෙර, ඔබේ බලපත්‍රය නව PC එකට ගෙනයාමට සහාය අමතන්න; පසුව Settings → 🔑 License වෙතින් එය සක්‍රිය කරන්න.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 18 -->
+<div class="chapter-banner">පරිච්ඡේදය 18 — නව අනුවාදයකට යාවත්කාලීන කිරීම</div>
+<div class="section" id="ch18">
+  <h2>18. නව අනුවාදයකට යාවත්කාලීන කිරීම</h2>
+  <p>Accelent හි නව අනුවාදයක් නිකුත් වූ විට, මෙම පියවර අනුගමනය කරන්න. <strong>යාවත්කාලීන කිරීමක් අතරතුර ඔබේ දත්ත සැමවිටම ආරක්ෂිතයි</strong>, මන්ද දත්ත ගොනුව වැඩසටහන් ගොනු වලින් වෙනම පවතින නිසා.</p>
+
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>මුලින්ම උපස්ථයක් ගන්න</strong> — Settings → Backup Data වෙත ගොස් USB ධාවකයකට හෝ වලාකුළට සුරකින්න. මෙය පූර්වාරක්ෂාවකි, සාමාන්‍යයෙන් අවශ්‍ය නොවේ, නමුත් සැමවිටම හොඳ පුරුද්දකි.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Accelent වසා දමන්න</strong> — යෙදුම ධාවනය නොවන බවට වග බලා ගන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>නව අනුවාදය බාගත කරන්න</strong> — <strong>accelentapp.com</strong> වෙතින් නවතම <code>Accelent_Setup_v….exe</code> ලබා ගන්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>ස්ථාපකය ධාවනය කරන්න</strong> ඔබේ පවතින ස්ථාපනය මතම. (ඒ වෙනුවට අතේ ගෙන යා හැකි zip භාවිතා කරනවාද? එය පෙර පරිදිම එකම ෆෝල්ඩරයට නිස්සාරණය කර ගොනු ප්‍රතිස්ථාපනය කිරීමට අසන විට <strong>Yes to All</strong> ක්ලික් කරන්න.)</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Accelent විවෘත කරන්න.</strong> එය <code>%APPDATA%\BrandAccShay\inventory.db</code> හි ඔබේ පවතින දත්ත ගොනුව ස්වයංක්‍රීයව සොයා ගනී. ඔබේ සියලු දත්ත එහි ඇති අතර, නව අනුවාදයේ ඇතුළත් ඕනෑම නිවැරදි කිරීමක් මෙම පළමු ආරම්භයේදී යොදනු ලැබේ.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Settings → Recalculate All Balances වෙත යන්න</strong> — මෙය නව අනුවාදයේ ඕනෑම දත්ත ගොනු ව්‍යුහ වෙනසක් නිවැරදිව යොදන බව සහතික කරයි.</div></div>
+
+  <div class="good">✅ <strong>යාවත්කාලීන කිරීමක් අතරතුර ඔබට කිසි විටෙක දත්ත අහිමි නොවේ.</strong> වැඩසටහන් ගොනු එක් ෆෝල්ඩරයක ඇත; ඔබේ දත්ත AppData හි ඇත. වැඩසටහන් ගොනු ප්‍රතිස්ථාපනය කිරීම ඔබේ දත්ත ස්පර්ශ නොකරයි.</div>
+
+  <div class="tip">💡 අතේ ගෙන යා හැකි zip සහ දුරකථන යෙදුම භාවිතා කරනවාද? යාවත්කාලීන කිරීමෙන් පසු එක් වරක් <code>setup.bat</code> නැවත ධාවනය කරන්න (ස්ථාපකය මෙය ඉබේම කරයි). දුරකථනයට සම්බන්ධ විය නොහැකි නම්, 📱 Mobile Connect කවුළුවේ <strong>❓ Phone can't connect?</strong> භාවිතා කරන්න.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 19 -->
+<div class="chapter-banner">පරිච්ඡේදය 19 — ජංගම යෙදුම</div>
+<div class="section" id="ch19">
+  <h2>19. ජංගම යෙදුම සැකසීම සහ භාවිතය</h2>
+
+  <h3>යෙදුම ස්ථාපනය කිරීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">දුරකථනයේ <strong>accelentapp.com</strong> වෙතින් <code>Accelent_v1.7.3.apk</code> බාගත කරන්න, නැතහොත් USB කේබලය, WhatsApp, හෝ Google Drive හරහා මාරු කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">දුරකථනයේ, ඔබේ Downloads හෝ Files යෙදුමෙන් ගොනුව විවෘත කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><em>unknown sources</em> ගැන අසයි නම්, <strong>Settings</strong> තට්ටු කර, ඔබේ ගොනු කළමනාකරු සඳහා <em>Install unknown apps</em> සක්‍රිය කර, ආපසු ගොස් ස්ථාපනය කරන්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Install</strong> → <strong>Open</strong> තට්ටු කරන්න.</div></div>
+
+  <h3>ඩෙස්ක්ටොප් සමඟ සම්බන්ධ වීම</h3>
+  <p><strong>ක්‍රමය A — QR කේතය (නිර්දේශිත)</strong></p>
+  <div class="step"><div class="step-num">1</div><div class="step-body">ඔබේ PC එකේ ඩෙස්ක්ටොප් යෙදුම ධාවනය වන බවට වග බලා ගන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>📱 Mobile Connect</strong> බොත්තම ක්ලික් කරන්න (ඩෙස්ක්ටොප් එකේ පහළ-දකුණ).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">QR කේතයක් පෙනේ. කවුළුව විවෘතව තබන්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body">දුරකථනයේ, Accelent විවෘත කරන්න → ⚙️ නිරූපකය තට්ටු කරන්න → <strong>Scan QR Code</strong> → කැමරාව ඩෙස්ක්ටොප් තිරය දෙසට යොමු කරන්න.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">කොළ පාට "Connected!" බැනරයක් සම්බන්ධතාවය තහවුරු කරයි.</div></div>
+
+  <p><strong>ක්‍රමය B — අතින් IP</strong></p>
+  <p>QR ස්කෑන් කිරීම අසාර්ථක වුවහොත්, දුරකථනයේ Settings වෙත යන්න → <em>Desktop IP Address</em> ක්ෂේත්‍රයේ ඩෙස්ක්ටොප් එකේ IP ලිපිනය ටයිප් කරන්න → <strong>Test Connection</strong> → <strong>Save</strong> තට්ටු කරන්න.</p>
+  <div class="tip">💡 ලිපිනය ක්‍රියා කරන්නේ වෙළඳසැලේ WiFi හි පමණක්ද නැතහොත් ඕනෑම තැනක සිටද යන්න Mobile Connect කවුළුව පවසයි. දුරකථනයට සම්බන්ධ විය නොහැකි නම්, එම කවුළුවේ <strong>❓ Phone can't connect?</strong> ක්ලික් කරන්න: එය මෙම PC එක (Accelent හි දුරකථන සේවාව, Windows Firewall, ජාලය) පරීක්ෂා කර දුරකථනයේ උත්සාහ කළ යුතු දේ ලැයිස්තුගත කරයි.</div>
+
+  <h3>වෙළඳසැලෙන් පිටත සිට භාවිතය (Tailscale)</h3>
+  <p>ඔබ වෙළඳසැලෙන් ඈතින් සිටින විට (ජංගම දත්ත හෝ වෙනත් WiFi), ඩෙස්ක්ටොප් සහ දුරකථනය යන දෙකෙහිම <strong>Tailscale</strong> (නොමිලේ) ස්ථාපනය කර එකම ගිණුමෙන් පිවිසෙන්න. ඉන්පසු <strong>📱 Mobile Connect</strong> සංවාදයෙන් Tailscale QR කේතය ස්කෑන් කරන්න. දැන් ඔබට ලෝකයේ ඕනෑම තැනක සිට ඔබේ ව්‍යාපාරය බැලීමට සහ කළමනාකරණය කිරීමට හැක. පියවර, මෙම PC එක සඳහා බාගත කිරීමේ සබැඳිය, සහ දුරකථනයේ Play Store හි Tailscale විවෘත කරන QR කේතයක් සඳහා Mobile Connect කවුළුවේ <strong>🌐 Connect from anywhere…</strong> ක්ලික් කරන්න.</p>
+
+  <h3>ජංගම යෙදුමේ පැනල</h3>
+  <div class="panel-grid">
+    <div class="panel-card"><h4>📊 උපකරණ පුවරුව</h4><p>අද විකුණුම්, වියදම්, මුදල් සහ බැංකු ශේෂ, සහ මෑත ගනුදෙනු. නැවුම් කිරීමට පහළට අදින්න.</p></div>
+    <div class="panel-card"><h4>🧾 විකුණුම්</h4><p>සියලු ඉන්වොයිස් බලන්න. Paid/Unpaid පෙරන්න. ඔබේ දුරකථනයෙන් නව ඉන්වොයිසියක් සෑදීමට + තට්ටු කරන්න. බිල්පත PDF එකක් ලෙස බෙදා ගැනීමට ඉන්වොයිසියක් විවෘත කර 📄 තට්ටු කරන්න.</p></div>
+    <div class="panel-card"><h4>🛒 මිලදී ගැනීම්</h4><p>මිලදී ගැනීමේ ඇණවුම් බලන්න. නව මිලදී ගැනීමක් සටහන් කිරීමට + තට්ටු කරන්න. ඩෙස්ක්ටොප් එකේ තොගය වහාම යාවත්කාලීන වේ.</p></div>
+    <div class="panel-card"><h4>📦 තොග</h4><p>සියලු තොග භාණ්ඩ සොයන්න සහ පෙරන්න. රතු = තොගය අවසන්. තැඹිලි = අඩු තොගය.</p></div>
+    <div class="panel-card"><h4>👥 පාර්ශවයන්</h4><p>සජීවී ශේෂ සමඟ සියලු පාරිභෝගිකයින් සහ සැපයුම්කරුවන්. කොළ = ඔවුන් ඔබට ණයයි. රතු = ඔබ ඔවුන්ට ණයයි.</p></div>
+    <div class="panel-card"><h4>🏦 ගිණුම්</h4><p>සම්පූර්ණ ගනුදෙනු ඉතිහාසය සමඟ සජීවී මුදල් සහ බැංකු ශේෂ.</p></div>
+  </div>
+
+  <h3>දුරකථනයේ ණය මිලදී ගැනීම් සහ විකුණුම්</h3>
+  <p>ඔබ නව මිලදී ගැනීමක <strong>Pending</strong>, හෝ නව විකුණුමක <strong>Unpaid</strong> තෝරන විට, දුරකථනය Cash / Bank / UPI බොත්තම් සඟවයි — තවම කිසිවක් ගෙවා නැත. ඩෙස්ක්ටොප් එය ණය ලෙස සටහන් කරයි: මිලදී ගැනීමක් සඳහා <em>Credit to Vendor</em>, විකුණුමක් සඳහා <em>Credit to Party</em> (පාරිභෝගිකයාගේ ණය සීමාව පරීක්ෂා කර). එය Accounts හි එම සැපයුම්කරු හෝ පාරිභෝගිකයා යටතේ පෙනේ, ඩෙස්ක්ටොප් එකේ කළ ණය සටහනක් මෙන්ම.</p>
+
+  <h3>දුරකථන යෙදුම භාවිතා කළ හැක්කේ කාටද</h3>
+  <ul>
+    <li>පරිපාලකට සැමවිටම සම්බන්ධ විය හැක. කාර්ය මණ්ඩලයට පරිපාලක Settings → 👥 Users හි ඔවුන්ගේ <strong>📱 Mobile</strong> සැකසුම සක්‍රිය කිරීම අවශ්‍යයි.</li>
+    <li>සෑම කාර්ය මණ්ඩල ගිණුමක්ම එක් දුරකථන ආසනයක් භාවිතා කරයි. එකම පුද්ගලයාගේ දුරකථනයේ යෙදුම නැවත ස්ථාපනය කිරීම ඔවුන්ගේ ආසනය ගෙනයයි — එය තවත් එකක් භාවිතා නොකරයි.</li>
+    <li>දුරකථනය පෙන්වන්නේ කාර්ය මණ්ඩල සාමාජිකයාගේ අවසර ඉඩ දෙන දේ පමණි; උදාහරණයක් ලෙස, "See money figures" නොමැතිව උපකරණ පුවරුව විකුණුම් සහ ලාභ සංඛ්‍යා වෙනුවට සටහනක් පෙන්වයි.</li>
+  </ul>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ CH 19b -->
+<div class="chapter-banner">පරිච්ඡේදය 19b — ඩෙස්ක්ටොප්–ජංගම පණිවිඩ</div>
+<div class="section" id="ch19b">
+  <h2>19b. 💬 ඩෙස්ක්ටොප්–ජංගම පණිවිඩ</h2>
+  <p>Accelent හි ඩෙස්ක්ටොප් හිමිකරුට සහ ජංගම යෙදුම් පරිශීලකයාට එකිනෙකාට සජීවීව සටහන් යැවීමට ඉඩ දෙන බිල්ට්-ඉන් පණිවිඩ පද්ධතියක් ඇත — WhatsApp හෝ බාහිර යෙදුමක් අවශ්‍ය නැත. පණිවිඩ ඔබේ දේශීය දත්ත ගොනුවේ ආරක්ෂිතව ගබඩා වේ.</p>
+
+  <h3>Messages බොත්තම කොහේද?</h3>
+  <p>ඩෙස්ක්ටොප් කවුළුවේ පහළින්ම, තත්ව තීරුවේ, ඔබට <strong>💬 Messages</strong> බොත්තමක් පෙනේ. කතාබහ කවුළුව විවෘත කිරීමට එය ක්ලික් කරන්න. නව පණිවිඩ පැමිණෙන විට බොත්තම නොකියවූ ගණන පෙන්වයි:</p>
+  <table>
+    <tr><th>බොත්තමේ පෙනුම</th><th>අර්ථය</th></tr>
+    <tr><td><code>💬 Messages</code></td><td>නව පණිවිඩ නැත</td></tr>
+    <tr><td><code>💬 Messages (3)</code> — කොළ පාටින් ඉස්මතු කර</td><td>ජංගම යෙදුමෙන් නොකියවූ පණිවිඩ 3ක්</td></tr>
+  </table>
+
+  <h3>ඩෙස්ක්ටොප් එකෙන් පණිවිඩයක් යැවීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">තිරයේ පහළ තත්ව තීරුවේ <strong>💬 Messages</strong> ක්ලික් කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">කතාබහ කවුළුව විවෘත වේ. පෙර පණිවිඩ ඉතිහාසයෙන් පූරණය වේ.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">පහළ ඇති පෙළ කොටුවේ ඔබේ පණිවිඩය ටයිප් කරන්න.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Enter</strong> ඔබන්න හෝ <strong>Send</strong> ක්ලික් කරන්න. ඔබේ පණිවිඩය දකුණු පස (නිල් බුබුල) පෙනේ.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body">ජංගම පරිශීලකයාට තත්පර 5ක් ඇතුළත ඔවුන්ගේ දුරකථනයේ ඔබේ පණිවිඩය පෙනේ.</div></div>
+
+  <h3>ජංගම යෙදුමෙන් පණිවිඩයක් යැවීම</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body">දුරකථනයේ, උපකරණ පුවරුවෙන් හෝ සංචාලන මෙනුවෙන් <strong>💬 Chat</strong> නිරූපකය තට්ටු කරන්න.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body">ඔබේ පණිවිඩය ටයිප් කර <strong>Send</strong> තට්ටු කරන්න.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body">ඩෙස්ක්ටොප් එකට තත්පර 5ක් ඇතුළත පණිවිඩය ලැබී 💬 Messages බොත්තමේ ගණනක් පෙන්වයි.</div></div>
+
+  <h3>ඩෙස්ක්ටොප් දැනුම්දීම් (System Tray)</h3>
+  <p>කතාබහ කවුළුව <strong>වසා හෝ අවම කර</strong> ඇති අතර ජංගම යෙදුමෙන් නව පණිවිඩයක් පැමිණෙන විට, Windows system tray හි (තිරයේ පහළ-දකුණු කෙළවර) මෙසේ පවසන <strong>උත්පතන දැනුම්දීමක්</strong> පෙනේ:</p>
+  <p style="text-align:center; font-style:italic; color:#555;">"📱 You have a new message from the mobile app"</p>
+  <p>එය කියවීමට දැනුම්දීම ක්ලික් කරන්න හෝ යෙදුමේ <strong>💬 Messages</strong> ක්ලික් කරන්න.</p>
+
+  <h3>පණිවිඩ ගබඩා කරන ආකාරය</h3>
+  <p>සියලු පණිවිඩ ඔබේ දේශීය දත්ත ගොනුවේ (<code>inventory.db</code>) සුරැකේ — ඔබේ සියලු ව්‍යාපාර දත්ත ඇති එකම ගොනුව. ඒවා සෑම උපස්ථයකටම ඇතුළත් වේ. බාහිර සේවාදායකයක් සම්බන්ධ නැත — පණිවිඩ ගමන් කරන්නේ ඔබේම ජාලය හරහා ඔබේ ඩෙස්ක්ටොප් සහ දුරකථනය අතර පමණි.</p>
+
+  <div class="tip">💡 <strong>පණිවිඩවල සුලභ භාවිත:</strong>
+    <ul style="margin-top:6px;">
+      <li>හිමිකරු ඈතින් සිටී — ජංගම පරිශීලකයා අසයි: "පාරිභෝගිකයාට X පෙට්ටි 10ක් අවශ්‍යයි, තොගය තිබේද?" — හිමිකරු ඩෙස්ක්ටොප් එකෙන් පිළිතුරු දෙයි</li>
+      <li>ඩෙස්ක්ටොප් ක්‍රියාකරු ජංගම පරිශීලකයාට දන්වයි: "ABC Traders වෙතින් නව ගෙවීමක් ලැබුණා"</li>
+      <li>පුද්ගලික දුරකථන අංක අවශ්‍ය නොවී වෙළඳසැල් කාර්ය මණ්ඩලය අතර ඉක්මන් සටහන්</li>
+    </ul>
+  </div>
+
+  <div class="warn">⚠ පණිවිඩ ලබා දීමට <strong>ජංගම යෙදුම ඩෙස්ක්ටොප් සමඟ සම්බන්ධ විය යුතුය</strong>. දුරකථනය "Not Connected" පෙන්වයි නම්, පණිවිඩ පෝලිමේ රැඳී සම්බන්ධතාවය යථා තත්වයට පත් වූ පසු ලබා දෙනු ලැබේ.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ CH 20 -->
+<div class="chapter-banner">පරිච්ඡේදය 20 — ගැටලු නිරාකරණය</div>
+<div class="section" id="ch20">
+  <h2>20. ගැටලු නිරාකරණය</h2>
+
+  <table>
+    <tr><th>ගැටලුව</th><th>හේතුව</th><th>විසඳුම</th></tr>
+    <tr><td>යෙදුම විවෘත නොවේ / SmartScreen අනතුරු ඇඟවීම</td><td>යෙදුම ඩිජිටල් අත්සන් කර නැත</td><td>"More info" → "Run anyway" ක්ලික් කරන්න. මෙය එක් වරක් පමණක් අසනු ලැබේ.</td></tr>
+    <tr><td>ශේෂ වැරදි ලෙස පෙනේ</td><td>දත්ත සමමුහුර්ත ගැටලුවක්</td><td>Settings → App Settings → 🔄 Recalculate All Balances.</td></tr>
+    <tr><td>විකුණුමකින් පසු තොගය යාවත්කාලීන නොවේ</td><td>භාණ්ඩය තොගයට සම්බන්ධ නැත</td><td>තොග භාණ්ඩ අතින් ටයිප් නොකර උත්පතනයෙන් තෝරා ඇති බවට වග බලා ගන්න.</td></tr>
+    <tr><td>ඉන්වොයිස් පැනලය "Feature Under Development" පෙන්වයි</td><td>පළමු පූරණයේදී යෙදුම් දෝෂයක්</td><td>යෙදුම සම්පූර්ණයෙන්ම වසා නැවත විවෘත කරන්න. මෙය කලාතුරකින් සිදු වේ.</td></tr>
+    <tr><td>ඉන්වොයිසියේ GST අංක නොපෙනේ</td><td>සමාගම් GSTIN ඇතුළත් කර නැත</td><td>Settings → Company → ඔබේ GSTIN ඇතුළත් කරන්න → Save.</td></tr>
+    <tr><td>ජංගම යෙදුම හිස් හෝ "Could not load" පෙන්වයි</td><td>ඩෙස්ක්ටොප් යෙදුම ධාවනය නොවේ</td><td>ඩෙස්ක්ටොප් PC එකේ Accelent විවෘතව ඇති බවට වග බලා ගන්න.</td></tr>
+    <tr><td>QR ස්කෑන් ක්‍රියා නොකරයි</td><td>කැමරා අවසරය ප්‍රතික්ෂේප කර ඇත</td><td>දුරකථන Settings → Apps → Accelent → Permissions → Camera සක්‍රිය කරන්න.</td></tr>
+    <tr><td>WiFi හි ක්‍රියා කරයි, ජංගම දත්ත වල නොවේ</td><td>දේශීය IP දුරස්ථව ළඟා විය නොහැක</td><td>ඩෙස්ක්ටොප් සහ දුරකථනයේ Tailscale ස්ථාපනය කරන්න. Tailscale QR කේතය භාවිතා කරන්න.</td></tr>
+    <tr><td>APK දුරකථනයේ ස්ථාපනය නොවේ</td><td>Unknown sources අවහිර කර ඇත</td><td>Android Settings → Apps → ඔබේ ගොනු කළමනාකරු → Install unknown apps → සක්‍රිය කරන්න.</td></tr>
+    <tr><td>පළමු ආරම්භයේදී වැරදි රට තෝරා ඇත</td><td>පළමු විකුණුම, මිලදී ගැනීම හෝ භාණ්ඩයෙන් පසු රට අගුළු වැටේ</td><td>කිසිදු දත්තයක් ඇතුළත් කිරීමට පෙර: Settings → App Settings → Reset Database, පසුව නැවත රට තෝරන්න. දත්ත පැවතීමෙන් පසු, සහාය අමතන්න.</td></tr>
+    <tr><td>දත්ත ගොනුව නැත / යෙදුම යළි පිහිටුවීමට අසයි</td><td>AppData ෆෝල්ඩර ගැටලුවක්</td><td>උපස්ථයකින් ප්‍රතිසාධනය කරන්න: Settings → Restore Data. උපස්ථයක් නැත්නම්, සහාය අමතන්න.</td></tr>
+    <tr><td>පරිපාලක මුරපදය අමතකයි / ගිණුම අගුළු වැටී ඇත</td><td>මුරපදය නැති වී හෝ අසාර්ථක පිවිසුම් උත්සාහයන් බොහොමයක්</td><td>පිවිසුම් තිරයේ <strong>"Forgot password?"</strong> ක්ලික් කර නව මුරපදයක් ඔබම සැකසීමට ඔබ සුරැකූ Recovery Key භාවිතා කරන්න (පරිච්ඡේදය 16). Recovery Key සුරැකී නැද්ද? ඔබේ මෘදුකාංග සැපයුම්කරු අමතන්න.</td></tr>
+    <tr><td>Cloud Backup මුරපදය අමතකයි</td><td>උපස්ථ මුරපදය නැති වී ඇත</td><td>Restore කවුළුවේ "Forgot password? Use recovery code instead" ක්ලික් කරන්න — ඔබ සුරැකූ Cloud Backup ප්‍රතිසාධන කේතය සහ සහායෙන් නිදහස් කිරීමේ කේතයක් අවශ්‍යයි (පරිච්ඡේදය 17).</td></tr>
+    <tr><td>පළමු ආරම්භයේදී යෙදුම ඉතා මන්දගාමී</td><td>ආරම්භක Python ආරම්භය</td><td>සාමාන්‍යයි — පළමු ආරම්භයට තත්පර 5–10ක් ගතවේ. පසුකාලීන ආරම්භ වේගවත් වේ.</td></tr>
+    <tr><td>"Computer Date Is Wrong" පණිවිඩය</td><td>PC ඔරලෝසුව පසුපසින් ඇත (බොහෝ විට දුර්වල මවු පුවරු/CMOS බැටරියක්)</td><td>Windows හි නිවැරදි දිනය සහ වේලාව සකසන්න, නැතහොත් එක් වරක් අන්තර්ජාලයට සම්බන්ධ වී Accelent නැවත ආරම්භ කරන්න. එය නැවත නැවත සිදු වේ නම් CMOS බැටරිය ප්‍රතිස්ථාපනය කරන්න.</td></tr>
+    <tr><td>දුරකථනයේ "Phone limit reached"</td><td>සියලු දුරකථන ආසන භාවිතයේ ඇත</td><td>පණිවිඩය සම්බන්ධ වී ඇත්තේ කවුදැයි නම් කරයි. Mobile Connect හි පැරණි දුරකථනයක් ඉවත් කරන්න, නැතහොත් ඔබේ සැලැස්ම උසස් කරන්න.</td></tr>
+    <tr><td>කාර්ය මණ්ඩල සාමාජිකයෙකුට තිරයක් හෝ බොත්තමක් නොපෙනේ</td><td>ඔවුන්ගේ අවසරවල එය ඇතුළත් නැත</td><td>පරිපාලක: Settings → 👥 Users → ඔවුන්ගේ නම අසල 🔐 → අවසරය සලකුණු කරන්න → Save. ඔවුන්ගේ ඊළඟ පිවිසුමේදී ඔවුන්ට එය පෙනේ.</td></tr>
+    <tr><td>බිල්පත් ස්කෑන් කිරීම අත්හදා බැලීමේ ස්කෑන් භාවිතා කර ඇති බව පවසයි</td><td>නොමිලේ අත්හදා බැලීමට බිල්පත් ස්කෑන් 15ක් ඇතුළත් වේ</td><td>අසීමිත ස්කෑන් කිරීම සඳහා බලපත්‍රයක් සක්‍රිය කරන්න. අත්හදා බැලීම අවසන් වන තුරු අනෙක් සියල්ල දිගටම ක්‍රියා කරයි.</td></tr>
+    <tr><td>තත්ව තීරුවේ "Subscription expired"</td><td>වාර්ෂික දායකත්වය අවසන් වී ඇත</td><td>Settings → 🔑 License වෙතින් අලුත් කරන්න. අවසන් දිනයෙන් පසු දින 7ක් බිල්පත් සෑදීම දිගටම ක්‍රියා කරයි; ඔබේ දත්ත සැමවිටම බැලිය හැක.</td></tr>
+    <tr><td>GSTR-1 අපනයනය HSN නැති භාණ්ඩ ලැයිස්තුගත කරයි</td><td>එම භාණ්ඩවලට Inventory හි HSN කේතයක් නැත</td><td>Inventory හි ඒවායේ HSN කේත එක් කර, පසුව නැවත අපනයනය කරන්න.</td></tr>
+  </table>
+
+  <div class="tip">💡 <strong>සැමවිටම මුලින්ම උත්සාහ කරන්න:</strong> Accelent සම්පූර්ණයෙන්ම වසා, තත්පර 5ක් රැඳී සිට, නැවත විවෘත කරන්න. මෙය අනපේක්ෂිත ගැටලුවලින් 70% ක් විසඳයි.</div>
+
+  <div class="good">✅ <strong>වෙනත් ඕනෑම ගැටලුවක් සඳහා:</strong> දෝෂ පණිවිඩයේ තිර රුවක් ගෙන, එම තිර රුව සහ දෝෂය සිදු වූ විට ඔබ කරමින් සිටි දේ පිළිබඳ විස්තරයක් සමඟ ඔබේ මෘදුකාංග සැපයුම්කරු අමතන්න.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ QUICK REF -->
+<div class="section">
+  <h2>ඉක්මන් යොමුව — දෛනික වැඩ ප්‍රවාහය</h2>
+  <table>
+    <tr><th>කාර්යය</th><th>පැනලය</th><th>පියවර</th></tr>
+    <tr><td>විකුණුමක් සටහන් කිරීම</td><td>Sales</td><td>පෝරමය පුරවන්න → භාණ්ඩ එක් කරන්න → ගෙවීම තෝරන්න → Save Invoice</td></tr>
+    <tr><td>මිලදී ගැනීමක් සටහන් කිරීම</td><td>Purchases</td><td>+ New Purchase → සැපයුම්කරු → භාණ්ඩ → ගෙවීම → Save</td></tr>
+    <tr><td>වියදමක් සටහන් කිරීම</td><td>Expenses</td><td>+ Add Expense → Category → මුදල → Cash/Bank → Save</td></tr>
+    <tr><td>මුදල් ශේෂය පරීක්ෂා කිරීම</td><td>Accounts</td><td>Accounts ක්ලික් කරන්න → Cash ටයිලය වත්මන් ශේෂය පෙන්වයි</td></tr>
+    <tr><td>පාරිභෝගිකයෙකු ණය මුදල පරීක්ෂා කිරීම</td><td>Accounts → Parties</td><td>පාර්ශවයේ නම සොයන්න — ශේෂය කොළ පාටින් (ලැබිය යුතු) පෙන්වයි</td></tr>
+    <tr><td>පාරිභෝගිකයෙකුගෙන් ගෙවීම් ලැබීම</td><td>Receipts</td><td>+ New Receipt → පාරිභෝගිකයා තෝරන්න → මුදල → Save</td></tr>
+    <tr><td>සැපයුම්කරුවෙකුට ගෙවීම</td><td>Receipts</td><td>+ New Payment → සැපයුම්කරු තෝරන්න → මුදල → Save</td></tr>
+    <tr><td>අඩු තොගය පරීක්ෂා කිරීම</td><td>Inventory</td><td>තැඹිලි/රතු පාටින් පෙන්වන භාණ්ඩ නැවත ඇණවුම් කළ යුතුය</td></tr>
+    <tr><td>සැපයුම්කරුවෙකුගෙන් නැවත ඇණවුම් කිරීම</td><td>Low Stock Monitor</td><td>Order from Vendor → සැපයුම්කරු තෝරන්න → භාණ්ඩ සමාලෝචනය කරන්න → Save (කෙටුම්පත් PO එකක් සාදයි)</td></tr>
+    <tr><td>ඉන්වොයිසියක් මුද්‍රණය කිරීම</td><td>Sales</td><td>ලැයිස්තුවේ ඉන්වොයිසිය සොයන්න → 🖨 Print බොත්තම ක්ලික් කරන්න</td></tr>
+    <tr><td>උපස්ථයක් ගැනීම</td><td>Settings</td><td>App Settings → 💾 Backup Data → ස්ථානය තෝරන්න → Save</td></tr>
+  </table>
+</div>
+
+<footer>Accelent — පරිශීලක මාර්ගෝපදේශය (සිංහල)<br>ඩෙස්ක්ටොප් සහ ජංගම ගිණුම්කරණ පද්ධතිය &nbsp;·&nbsp; 2026<br><br><em>සහාය සඳහා, ඕනෑම දෝෂ පණිවිඩයක තිර රුවක් සමඟ ඔබේ මෘදුකාංග සැපයුම්කරු අමතන්න.</em></footer>
+
+<script>
+/* Opened from Accelent: ?type=general|restaurant|hotel (&production=1) shows only that business's chapters. */
+(function () {
+  var q = new URLSearchParams(location.search), t = q.get("type");
+  var names = {"general": "වෙළඳසැල්, වෙළඳාම, සේවා හෝ නිෂ්පාදන ව්‍යාපාර සඳහා වන", "restaurant": "අවන්හල් සඳහා වන", "hotel": "හෝටල් සඳහා වන"};
+  if (!names[t]) return;
+  var prod = q.get("production") === "1" || t !== "general";
+  function shows(f) { return f.split(" ").some(function (x) { return x === t || (x === "production" && prod); }); }
+  var hidden = [];
+  document.querySelectorAll(".section[data-for]").forEach(function (s) {
+    if (shows(s.getAttribute("data-for"))) return;
+    hidden.push(s.id); s.style.display = "none";
+    var b = s.previousElementSibling;
+    if (b && b.classList.contains("chapter-banner")) b.style.display = "none";
+  });
+  hidden.forEach(function (id) {
+    document.querySelectorAll('.toc-grid a[href="#' + id + '"]').forEach(function (a) {
+      a.style.display = "none";
+      var br = a.nextElementSibling; if (br && br.tagName === "BR") br.style.display = "none";
+    });
+  });
+  var n = document.getElementById("guideFilter");
+  if (n) n.innerHTML = "" + names[t] + " පරිච්ඡේද පෙන්වයි. <a href=\"" + location.pathname + "\">සියලු පරිච්ඡේද පෙන්වන්න</a>";
+})();
+</script>
+</body>
+</html>
+
