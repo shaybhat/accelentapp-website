@@ -143,7 +143,7 @@
       <a href="#ch7"><span class="toc-num">7.</span>Dashboard</a><br>
       <a href="#ch8"><span class="toc-num">8.</span>Inventory Panel</a><br>
       <a href="#ch8b"><span class="toc-num">8b.</span>Low Stock Monitor</a><br>
-      <a href="#ch8c"><span class="toc-num">8c.</span>Production</a><br>
+      <a href="#ch8c"><span class="toc-num">8c.</span>Production (Factories and Processing)</a><br>
       <a href="#ch9"><span class="toc-num">9.</span>Sales Panel</a><br>
       <a href="#ch9b"><span class="toc-num">9b.</span>Restaurant</a><br>
       <a href="#ch9c"><span class="toc-num">9c.</span>Rooms (Hotel, Lodge)</a><br>
@@ -169,7 +169,7 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 1 -->
-<div class="guide-filter" id="guideFilter">Accelent shows only the screens your kind of business uses (chosen at the first start, or in <strong>Settings → 🏢 Company</strong>). Chapters marked <em>For restaurants and hotels</em>, <em>For hotels</em> or <em>For shops, traders and services</em> apply only to them; the rest are for everyone. Opened from Accelent (F1 or 📖 User Guide), this guide shows only the chapters for your business.</div>
+<div class="guide-filter" id="guideFilter">Accelent shows only the screens your kind of business uses (chosen at the first start, or in <strong>Settings → 🏢 Company</strong>). Chapters marked <em>For factories, restaurants and hotels</em>, <em>For workshops, repair shops, tailors and job work</em>, <em>For restaurants and hotels</em>, <em>For hotels</em> or <em>For shops, traders and services</em> apply only to them; the rest are for everyone. Opened from Accelent (F1 or 📖 User Guide), this guide shows only the chapters for your business.</div>
 <div class="chapter-banner">Chapter 1 — Introduction</div>
 <div class="section" id="ch1">
   <h2>1. What is Accelent?</h2>
@@ -567,9 +567,9 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 8c -->
-<div class="chapter-banner" data-for="production">Chapter 8c — Production <span class="for-badge">For manufacturers, restaurants and hotels</span></div>
+<div class="chapter-banner" data-for="production">Chapter 8c — Production <span class="for-badge">For factories, restaurants and hotels</span></div>
 <div class="section" id="ch8c" data-for="production">
-  <h2>8c. Production (Making Your Own Products)</h2>
+  <h2>8c. Production: Factories and Processing (Making Your Own Products)</h2>
   <div class="tip">💡 <strong>🏭 Production</strong> is in the menu of a <em>Factory</em>, a <em>Restaurant</em> and a <em>Hotel</em> (their recipes live there). A shop that starts making its own products sets its <strong>Business Type</strong> to <em>Factory: manufacturing or processing</em> in <strong>Settings → 🏢 Company</strong>, then closes and reopens Accelent.</div>
   <p>If you make what you sell — cakes, furniture, garments, spices, assembled goods — Accelent can keep the stock and the cost right for you. You write a <strong>recipe</strong> once (what one batch uses); each time you make something, Accelent takes the materials out of stock, adds the finished items, and works out what each one cost. Open it from <strong>Inventory → 🏭 Production</strong>.</p>
 
@@ -884,8 +884,8 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ CH 9f -->
-<div class="chapter-banner" data-for="general">Chapter 9f — Job Cards <span class="for-badge">For workshops, repair shops, tailors and job work</span></div>
-<div class="section" id="ch9f" data-for="general">
+<div class="chapter-banner" data-for="workshop">Chapter 9f — Job Cards <span class="for-badge">For workshops, repair shops, tailors and job work</span></div>
+<div class="section" id="ch9f" data-for="workshop">
   <h2>9f. Job Cards (Repairs, Workshops, Tailoring, Job Work)</h2>
   <p>For work you take in from a customer: a vehicle or machine to repair, clothes to stitch, goods to process on the customer's own material. A job card keeps everything about the job until it is billed. Choose the Business Type <strong>Workshop: repairs, tailoring or job work</strong> at the first start or in <strong>Settings → 🏢 Company</strong>, and <strong>🛠 Job Cards</strong> appears under FINANCE after a restart.</p>
 
@@ -1503,13 +1503,14 @@
 </footer>
 
 <script>
-/* Opened from Accelent: ?type=general|restaurant|hotel (&production=1) shows only that business's chapters. */
+/* Opened from Accelent: ?type=general|factory|workshop|restaurant|hotel shows only that business's chapters
+   (a factory and a workshop also see the shop chapters). */
 (function () {
   var q = new URLSearchParams(location.search), t = q.get("type");
-  var names = {general: "a shop, factory or workshop", restaurant: "a restaurant", hotel: "a hotel"};
+  var names = {general: "a shop", factory: "a factory", workshop: "a workshop", restaurant: "a restaurant", hotel: "a hotel"};
   if (!names[t]) return;
-  var prod = q.get("production") === "1" || t !== "general";
-  function shows(f) { return f.split(" ").some(function (x) { return x === t || (x === "production" && prod); }); }
+  var prod = q.get("production") === "1" || t === "factory" || t === "restaurant" || t === "hotel";
+  function shows(f) { return f.split(" ").some(function (x) { return x === t || (x === "production" && prod) || (x === "general" && (t === "factory" || t === "workshop")); }); }
   var hidden = [];
   document.querySelectorAll(".section[data-for]").forEach(function (s) {
     if (shows(s.getAttribute("data-for"))) return;
