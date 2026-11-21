@@ -118,7 +118,7 @@
   <img src="logo.png" alt="Accelent" style="height:100px;width:auto;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" />
   <h1>Accelent</h1>
   <div class="sub">Complete User Guide — Accounting &amp; Inventory Management</div>
-  <div class="ver">Version 2.4.20 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
+  <div class="ver">Version 2.4.21 &nbsp;·&nbsp; Desktop + Mobile &nbsp;·&nbsp; 2026</div>
   <div class="cover-badges">
     <span class="badge">🖥️ Windows Desktop</span>
     <span class="badge">📱 Android Mobile</span>
@@ -255,11 +255,11 @@
     <li>Windows 10 or Windows 11 (64-bit)</li>
     <li><strong>RAM:</strong> 8 GB recommended for the quickest bill scanning. 4 GB is the minimum — everything works, but bill scans take longer.</li>
     <li>About 1 GB of free disk space</li>
-    <li>The installer: <code>Accelent_Setup_v2.4.20.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
+    <li>The installer: <code>Accelent_Setup_v2.4.21.exe</code>, downloaded from <strong>accelentapp.com</strong></li>
   </ul>
 
   <h3>Installing with the Installer (Recommended)</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.20.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_Setup_v2.4.21.exe</code> from <strong>accelentapp.com</strong> → Download for Windows.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Double-click it. If Windows shows a SmartScreen warning, click <strong>"More info"</strong> then <strong>"Run anyway"</strong>.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Follow the steps and click <strong>Install</strong>. The installer also sets up the Windows components that bill scanning needs.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Open Accelent from the Start menu or the desktop shortcut.</div></div>
@@ -277,10 +277,10 @@
   <div class="tip">💡 Accelent installs as a normal program folder and works offline. It connects to the internet only to check your licence (and, if you turn it on, to store a share of your encrypted backup key). Your business data never leaves your PC. If a warning still worries you, write to <strong>support@accelentapp.com</strong>.</div>
 
   <h3>Portable Zip (Alternative)</h3>
-  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.20.zip</code> instead and follow these steps:</p>
+  <p>If you prefer not to install, download <code>Accelent_Desktop_v2.4.21.zip</code> instead and follow these steps:</p>
 
   <h3>Installation Steps</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.20.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Right-click <code>Accelent_Desktop_v2.4.21.zip</code> → <strong>Extract All</strong>. Choose a permanent location such as <code>C:\Accelent</code> or <code>D:\Accelent</code>. <strong>Do not run from inside the zip.</strong></div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Open the extracted <code>Accelent</code> folder. You will see <code>Accelent.exe</code>, <code>setup.bat</code>, and several support folders.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">Double-click <strong>Accelent.exe</strong>. Windows may show a SmartScreen warning — click <strong>"More info"</strong> then <strong>"Run anyway"</strong>. This happens because the app is not yet digitally signed.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">The app opens. On first launch, it creates your database file automatically at <span class="path">C:\Users\[YourName]\AppData\Roaming\BrandAccShay\</span></div></div>
@@ -384,7 +384,7 @@
 
   <h3>Bringing Your Stock Into Accelent</h3>
   <p>You don't need to type your items one by one. Export your item list or stock report from your old software (or use your own Excel sheet) and import it in one go. Accelent reads Excel (<code>.xlsx</code>) and CSV files.</p>
-  <div class="tip">💡 Imported stock is kept as your <strong>opening stock</strong>: in Purchases it shows as <em>📦 Opening stock (import)</em>, not as a purchase. The suppliers, phone numbers and GST numbers in your sheet are filled in for you.</div>
+  <div class="tip">💡 Imported stock is kept as your <strong>opening stock</strong>, not as a purchase: see it in <strong>Inventory → 📥 Import / Export → 📦 Opening stock from imports</strong>. The suppliers, phone numbers and GST numbers in your sheet are filled in for you.</div>
   <div class="tip">💡 "Opening Stock (Import)" is only the name Accelent gives this stock, not a supplier. If a bill is ever booked to it, Accelent asks you at start to open the bill and choose the real supplier.</div>
 
   <h4>The Import / Export button</h4>
@@ -772,12 +772,22 @@
   <h3>Kitchen Printer</h3>
   <p>In <strong>⚙ Restaurant Settings</strong>, choose the <strong>Kitchen printer</strong>, for example a small thermal printer in the kitchen. Every KOT, from the PC and from waiters' phones, then prints straight to it, while bills keep printing on your normal printer. Without a kitchen printer, a KOT opens as a preview to print, or goes straight to Windows' default printer if you tick that option.</p>
 
+  <h3>Kitchen Screen on a Tablet</h3>
+  <p>A phone or tablet in the kitchen can show the kitchen tickets. Give the cook a login with the <strong>Kitchen</strong> template and phone access: the Accelent app then opens straight on the <strong>🍳 Kitchen</strong> screen.</p>
+  <ul>
+    <li>Each KOT is a card, oldest first: the table (or takeaway, room service), the time sent, the minutes waiting, the dishes, the notes, and anything cancelled in red. The card turns orange when its dishes should be ready and red when they are late.</li>
+    <li>A new KOT beeps and vibrates. The screen stays on while the Kitchen screen is open.</li>
+    <li>When the food is cooked, the cook taps <strong>✅ Ready</strong> (<strong>Undo</strong> works for a minute). The waiters' phones and the PC then show the table as <strong>🍽 Ready</strong>; the waiter takes the food out and taps <strong>Served</strong>.</li>
+  </ul>
+  <div class="tip">💡 KOTs keep printing as before. When the kitchen works from its tablet alone, untick <strong>Print KOTs on paper</strong> in <strong>⚙ Restaurant Settings → 🍳 Kitchen Settings</strong>. The Kitchen screen shows no prices or totals, and the tablet uses one of the phone places in your plan.</div>
+
   <h3>Waiters' Phones</h3>
   <p>Waiters can take orders at the tables on their phones with the Accelent app (see <a href="#ch19">Chapter 19</a>). When the PC's Business Type is Restaurant or Hotel, the app's dashboard shows <strong>🍽 Restaurant</strong>:</p>
   <ul>
     <li>Tap a <strong>table</strong> (busy ones show their total and minutes), or <strong>New Takeaway</strong>, or in a hotel <strong>Room Service</strong> (only when a guest is staying).</li>
     <li><strong>Add Dishes</strong> opens the menu by section, with search; tap a dish to add one. Change quantities with <strong>− / +</strong>, and tap a dish to give the kitchen a note.</li>
     <li><strong>Send to Kitchen</strong> prints the KOT at the PC (with the waiter's name). The button then shows <strong>✓ Sent to kitchen</strong> until something new is added.</li>
+    <li>When the cook marks food <strong>Ready</strong> on the kitchen tablet, the table turns orange and shows <strong>🍽 Ready</strong>. Take the food out and tap <strong>Served</strong> in the order.</li>
     <li><strong>Ask for Bill</strong> tells the counter: the PC beeps, shows a banner with the table and waiter, and marks the table <strong>🧾 Bill asked</strong>. The cashier opens the table and presses 💵 Bill, which takes the payment.</li>
     <li>In a hotel, <strong>Charge to Room</strong> puts the order on a staying guest's account.</li>
   </ul>
@@ -1282,12 +1292,13 @@
   <p>For each staff account you decide exactly what they can see and do. Screens they are not allowed simply disappear from their menu, and the same rules apply on the phone app.</p>
   <div class="step"><div class="step-num">1</div><div class="step-body">Go to <strong>Settings → 👥 Users</strong> and unlock Settings with the admin password.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">Next to a staff member, click the <strong>🔐</strong> button (it shows their current template, e.g. <em>🔐 Billing Staff</em>).</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-body">Pick a <strong>template</strong> to start from, then tick or untick any of the 14 permissions. Click <strong>Save</strong>.</div></div>
-  <figure class="shot"><a href="manual_images/staff-permissions.png" target="_blank"><img src="manual_images/staff-permissions.png" alt="Staff Permissions window" loading="lazy" style="max-width:420px;width:100%"></a><figcaption>The Permissions window — a starting template at the top, then the 14 permissions in groups.</figcaption></figure>
+  <div class="step"><div class="step-num">3</div><div class="step-body">Pick a <strong>template</strong> to start from, then tick or untick any of the 15 permissions. Click <strong>Save</strong>.</div></div>
+  <figure class="shot"><a href="manual_images/staff-permissions.png" target="_blank"><img src="manual_images/staff-permissions.png" alt="Staff Permissions window" loading="lazy" style="max-width:420px;width:100%"></a><figcaption>The Permissions window — a starting template at the top, then the 15 permissions in groups.</figcaption></figure>
   <table>
     <tr><th>Template</th><th>Typical use</th><th>Can do</th></tr>
     <tr><td>Billing Staff</td><td>Counter / cashier</td><td>Create sales only — no money figures, no purchase costs; sees only the bills they made</td></tr>
     <tr><td>Waiter</td><td>Restaurant / hotel waiter</td><td>Take table orders only — tables, kitchen orders (KOT), served; no bills</td></tr>
+    <tr><td>Kitchen</td><td>Restaurant / hotel kitchen</td><td>The kitchen screen only — on a phone or tablet, the kitchen tickets (KOT) and Ready; no money figures. Phone only: Accelent on the PC refuses this login</td></tr>
     <tr><td>Floor Worker</td><td>Factory floor worker</td><td>Work on the factory floor only — on the phone, the Work Orders given to them: steps started and done; no costs, no stock changes. Phone only: Accelent on the PC refuses this login</td></tr>
     <tr><td>Store Keeper</td><td>Stock and purchasing</td><td>Purchases, inventory changes, returns, purchase costs</td></tr>
     <tr><td>Accountant</td><td>Books and GST</td><td>Everything except payroll and editing or deleting past bills</td></tr>
@@ -1436,7 +1447,7 @@
   <h2>19. Mobile App Setup &amp; Use</h2>
 
   <h3>Installing the App</h3>
-  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_v1.7.7.apk</code> from <strong>accelentapp.com</strong> on the phone, or transfer it via USB cable, WhatsApp, or Google Drive.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-body">Download <code>Accelent_v1.7.8.apk</code> from <strong>accelentapp.com</strong> on the phone, or transfer it via USB cable, WhatsApp, or Google Drive.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body">On the phone, open the file from your Downloads or Files app.</div></div>
   <div class="step"><div class="step-num">3</div><div class="step-body">If prompted about <em>unknown sources</em>, tap <strong>Settings</strong>, enable <em>Install unknown apps</em> for your file manager, then go back and install.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-body">Tap <strong>Install</strong> → <strong>Open</strong>.</div></div>
@@ -1583,7 +1594,7 @@
 </div>
 
 <footer>
-  Accelent v2.4.20 — Complete User Guide<br>
+  Accelent v2.4.21 — Complete User Guide<br>
   Desktop &amp; Mobile Accounting System &nbsp;·&nbsp; 2026<br><br>
   <em>For support, contact your software provider with a screenshot of any error message.</em>
 </footer>
